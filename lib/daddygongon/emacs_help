@@ -1,9 +1,9 @@
 ---
 :head:
-- "\n  特殊キー操作\n"
-- "\tc-f, controlキーを押しながら    'f'\n"
-- "\t\tM-f, escキーを押した後一度離して'f'\n"
-- "\t操作の中断c-g, 操作の取り消し(Undo) c-x u \n"
+- "\n特殊キー操作\n"
+- "  c-f, controlキーを押しながら    'f'\n"
+- "  M-f, escキーを押した後一度離して'f'\n"
+- "    操作の中断c-g, 操作の取り消し(Undo) c-x u \n"
 :cursor:
   :opts:
     :short: "-c"
