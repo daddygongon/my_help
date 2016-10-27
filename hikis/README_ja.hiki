@@ -15,9 +15,8 @@ commandや文法を覚えるのに苦労します．少しのkey(とっかかり
 * いつもおなじことをwebで検索して
 * 同じとこ見ている
 * memoしても，どこへ置いたか忘れる
-などです．hikiでやろうとしていることの半分くらいはこのあたりのことなの
-かもしれません．memoソフトでは，検索が必要となりますが，my_helpは
-key(記憶のとっかかり)を提供することが目的です．
+
+などです．
 
 !特徴
 これらをgem環境として提供しようというのが，このgemの目的です．
@@ -27,6 +26,10 @@ key(記憶のとっかかり)を提供することが目的です．
 ** おなじformat, looks, 操作, 階層構造
 * すぐに手が届く
 * それらを追加・修正・削除できる
+
+hikiでやろうとしていることの半分くらいはこのあたりのことなの
+かもしれません．memoソフトでは，検索が必要となりますが，my_helpは
+key(記憶のとっかかり)を提供することが目的です．
 
 !userの独自helpの達成方法
 exe中のファイルをrakeで自動生成．
@@ -62,7 +65,7 @@ task :my_help do
     target_files = [file, file_name[0][0]+"_"+file_name[1][0]]
     p cont_name = File.join(user_name,file)
 #    exe_cont << "require '#{cont_name}'\n"
-    exe_cont << "require 'emacs_help'\n"
+    exe_cont << "require 'my_help'\n"
     exe_cont << "EmacsHelp::Command.run(ARGV)\n"
     target_files.each{|name|
       p target=File.join('exe',name)
