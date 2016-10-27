@@ -56,7 +56,7 @@ gem uninstall my_help
 gem uninstall emacs_help
 ```
 でそこをcleanにしておくことが望ましい．
-```
+```ruby
 desc "make own help from lib/daddygongon/files"
 task :my_help do
   exe_cont="#!/usr/bin/env ruby\n"
