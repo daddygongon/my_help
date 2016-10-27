@@ -59,13 +59,14 @@ task :my_help do
     p file
     p file_name=file.split('_')
     target_files = [file, file_name[0][0]+"_"+file_name[1][0]]
-    p cont_name = File.join(user_name,file)
-#    exe_cont << "require '#{cont_name}'\n"
+    p cont_name = File.join('lib',user_name,file)
     exe_cont << "require 'my_help'\n"
-    exe_cont << "EmacsHelp::Command.run(ARGV)\n"
+    exe_cont << "MyHelp::Command.run('#{cont_name}', ARGV)\n"
     target_files.each{|name|
+      p ''
       p target=File.join('exe',name)
       File.open(target,'w'){|file|
+        print exe_cont
         file.print exe_cont
       }
       FileUtils.chmod('a+x', target, :verbose => true)

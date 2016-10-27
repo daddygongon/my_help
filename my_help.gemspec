@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["shigeto_nishitani@me.com"]
 
   spec.summary       = %q{display emacs key bindings in Japanese.}
-  spec.description   = %q{Emulating CUI(CLI) help, user make and display his own help.}
+  spec.description   = %q{Emulating CUI(CLI) help, an user makes and displays his own helps.}
   spec.homepage      = "https://github.com/daddygongon/my_help"
   spec.license       = "MIT"
 
@@ -34,4 +34,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "hiki2md"
   spec.add_development_dependency "mathjax-yard"
   spec.add_development_dependency "hiki2latex"
+
 end
