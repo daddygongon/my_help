@@ -28,35 +28,6 @@ key(記憶のとっかかり)を提供することが目的です．
 - すぐに手が届く
 - それらを追加・修正・削除できる
 
-# どちらがいいか
-Rubyで日本語が使えるから，optionsを日本語にしてみた．
-```
-Usage: eh [options]
-    -v, --version                    show program Version.
-    -c, --カーソル                       Cursor移動
-    -p, --ページ                        Page移動
-    -f, --ファイル                       File操作
-    -e, --編集                         Edit操作
-    -w, --ウィンドウ                      Window操作
-    -b, --バッファ                       Buffer操作
-    -q, --終了                         終了操作
-```
-半角，全角がoptparseでは適切に判断できない様で，表示があまり揃っていない．
-しかし，初心者の振る舞いを見ているとわざわざ日本語に切り替えて打ち込むことは稀であり，
-key wordをhelpで参照してshort optionで入力している．そこで，
-```
-Usage: eh [options]
-    -v, --version      show program Version.
-    -c, --cursor       カーソル移動
-    -p, --page         ページ移動
-    -f, --file         ファイル操作
-    -e, --edit         編集操作
-    -w, --window       ウィンドウ操作
-    -b, --buffer       バッファ操作
-    -q, --quit         終了操作
-```
-としたほうがいいと提案する．アンケートを実施してみてほしい．
-
 # userの独自helpの達成方法
 exe中のファイルをrakeで自動生成．
 ./lib/daddygongon/にそれらのdataを保存．以下ではその名前から
@@ -71,7 +42,7 @@ exe
 ```
 ということ．これは，
 ```
-rake petit_help
+rake my_help
 ```
 で実行される．これを
 ```
@@ -79,9 +50,15 @@ rake install:local
 ```
 すれば必要とするhelpがlocalな環境で表示される．
 
+たくさんの実行ファイルを/usr/loca/binに置くことになるので，
+```
+gem uninstall my_help
+gem uninstall emacs_help
+```
+でそこをcleanにしておくことが望ましい．
 ```
 desc "make own help from lib/daddygongon/files"
-task :petit_help do
+task :my_help do
   exe_cont="#!/usr/bin/env ruby\n"
   user_name = 'daddygongon'
   p entries=Dir.entries(File.join('.','lib',user_name))[2..-1]
@@ -110,3 +87,32 @@ end
 1. hush形式でdataをいれ，それをrequireして使う
 
 かのどちらかで実装．speedとかdebugを比較・検証する必要あり．
+
+# どちらがいいか
+Rubyで日本語が使えるから，optionsを日本語にしてみた．
+```
+Usage: eh [options]
+    -v, --version                    show program Version.
+    -c, --カーソル                       Cursor移動
+    -p, --ページ                        Page移動
+    -f, --ファイル                       File操作
+    -e, --編集                         Edit操作
+    -w, --ウィンドウ                      Window操作
+    -b, --バッファ                       Buffer操作
+    -q, --終了                         終了操作
+```
+半角，全角がoptparseでは適切に判断できない様で，表示があまり揃っていない．
+しかし，初心者の振る舞いを見ているとわざわざ日本語に切り替えて打ち込むことは稀であり，
+key wordをhelpで参照してshort optionで入力している．そこで，
+```
+Usage: eh [options]
+    -v, --version      show program Version.
+    -c, --cursor       カーソル移動
+    -p, --page         ページ移動
+    -f, --file         ファイル操作
+    -e, --edit         編集操作
+    -w, --window       ウィンドウ操作
+    -b, --buffer       バッファ操作
+    -q, --quit         終了操作
+```
+としたほうがいいと提案する．アンケートを実施してみてほしい．

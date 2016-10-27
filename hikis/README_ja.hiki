@@ -28,6 +28,60 @@ key(記憶のとっかかり)を提供することが目的です．
 * すぐに手が届く
 * それらを追加・修正・削除できる
 
+!userの独自helpの達成方法
+exe中のファイルをrakeで自動生成．
+./lib/daddygongon/にそれらのdataを保存．以下ではその名前から
+exe中に実行ファイルを自動生成させている．
+<<<
+lib/daddygongon/
+└── emacs_help
+
+exe
+├── e_h
+└── emacs_help
+>>>
+ということ．これは，
+ rake my_help
+で実行される．これを
+ rake install:local
+すれば必要とするhelpがlocalな環境で表示される．
+
+たくさんの実行ファイルを/usr/loca/binに置くことになるので，
+ gem uninstall my_help
+ gem uninstall emacs_help
+でそこをcleanにしておくことが望ましい．
+<<<
+desc "make own help from lib/daddygongon/files"
+task :my_help do
+  exe_cont="#!/usr/bin/env ruby\n"
+  user_name = 'daddygongon'
+  p entries=Dir.entries(File.join('.','lib',user_name))[2..-1]
+  entries.each{|file|
+    p file
+    p file_name=file.split('_')
+    target_files = [file, file_name[0][0]+"_"+file_name[1][0]]
+    p cont_name = File.join(user_name,file)
+#    exe_cont << "require '#{cont_name}'\n"
+    exe_cont << "require 'emacs_help'\n"
+    exe_cont << "EmacsHelp::Command.run(ARGV)\n"
+    target_files.each{|name|
+      p target=File.join('exe',name)
+      File.open(target,'w'){|file|
+        file.print exe_cont
+      }
+      FileUtils.chmod('a+x', target, :verbose => true)
+    }
+  }
+end
+>>>
+
+この後の実装方法は，emacs_helpに
+
+# yaml形式でdataを入れ，command.runの入力ファイルとする
+# hush形式でdataをいれ，それをrequireして使う
+
+かのどちらかで実装．speedとかdebugを比較・検証する必要あり．
+
 !どちらがいいか
 Rubyで日本語が使えるから，optionsを日本語にしてみた．
 <<<
@@ -57,52 +111,3 @@ Usage: eh [options]
 >>>
 としたほうがいいと提案する．アンケートを実施してみてほしい．
 
-!userの独自helpの達成方法
-exe中のファイルをrakeで自動生成．
-./lib/daddygongon/にそれらのdataを保存．以下ではその名前から
-exe中に実行ファイルを自動生成させている．
-<<<
-lib/daddygongon/
-└── emacs_help
-
-exe
-├── e_h
-└── emacs_help
->>>
-ということ．これは，
- rake petit_help
-で実行される．これを
- rake install:local
-すれば必要とするhelpがlocalな環境で表示される．
-
-<<<
-desc "make own help from lib/daddygongon/files"
-task :petit_help do
-  exe_cont="#!/usr/bin/env ruby\n"
-  user_name = 'daddygongon'
-  p entries=Dir.entries(File.join('.','lib',user_name))[2..-1]
-  entries.each{|file|
-    p file
-    p file_name=file.split('_')
-    target_files = [file, file_name[0][0]+"_"+file_name[1][0]]
-    p cont_name = File.join(user_name,file)
-#    exe_cont << "require '#{cont_name}'\n"
-    exe_cont << "require 'emacs_help'\n"
-    exe_cont << "EmacsHelp::Command.run(ARGV)\n"
-    target_files.each{|name|
-      p target=File.join('exe',name)
-      File.open(target,'w'){|file|
-        file.print exe_cont
-      }
-      FileUtils.chmod('a+x', target, :verbose => true)
-    }
-  }
-end
->>>
-
-この後の実装方法は，emacs_helpに
-
-# yaml形式でdataを入れ，command.runの入力ファイルとする
-# hush形式でdataをいれ，それをrequireして使う
-
-かのどちらかで実装．speedとかdebugを比較・検証する必要あり．
