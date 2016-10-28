@@ -59,6 +59,12 @@ gem uninstall my_help
 gem uninstall emacs_help
 ```
 でそこをcleanにしておくことが望ましい．
+
+Rakefileの中身は以下の通り．
+```
+in Rakefile
+```
+
 ```ruby
 desc "make own help from lib/daddygongon/files"
 task :my_help do
@@ -69,13 +75,15 @@ task :my_help do
     p file
     p file_name=file.split('_')
     target_files = [file, file_name[0][0]+"_"+file_name[1][0]]
-    p cont_name = File.join(user_name,file)
-#    exe_cont << "require '#{cont_name}'\n"
-    exe_cont << "require 'emacs_help'\n"
-    exe_cont << "EmacsHelp::Command.run(ARGV)\n"
+    p cont_name = File.join('lib',user_name,file)
+    exe_cont << "require 'my_help'\n"
+    exe_cont << "help_file = File.expand_path(\"../../#{cont_name}\", __FILE__)\n"
+    exe_cont << "MyHelp::Command.run(help_file, ARGV)\n"
     target_files.each{|name|
+      p ''
       p target=File.join('exe',name)
       File.open(target,'w'){|file|
+        print exe_cont
         file.print exe_cont
       }
       FileUtils.chmod('a+x', target, :verbose => true)
@@ -84,12 +92,27 @@ task :my_help do
 end
 ```
 
-この後の実装方法は，emacs_helpに
+実装方法は，emacs_helpに
 
 1. yaml形式でdataを入れ，command.runの入力ファイルとする
 1. hush形式でdataをいれ，それをrequireして使う
 
 かのどちらかで実装．speedとかdebugを比較・検証する必要あり．
+今の所，No.1の方を実装．No.2のためのhushデータは，
+
+```ruby
+require 'yaml'
+require 'pp'
+
+pp YAML.load(File.read(ARGV[0]))
+```
+
+```
+ruby test.rb lib/daddygongon/emacs_help
+```
+
+で構築できる．実装してみて．
+
 
 # どちらがいいか
 Rubyで日本語が使えるから，optionsを日本語にしてみた．

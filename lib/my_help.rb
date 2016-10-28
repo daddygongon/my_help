@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 require "optparse"
 require "yaml"
-require "emacs_help/version"
+#require "emacs_help/version"
 require "my_help/version"
-require "emacs_help"
+#require "emacs_help"
 
 module MyHelp
   class Command
@@ -14,7 +14,6 @@ module MyHelp
 
     def initialize(file,argv=[])
       @help_cont = YAML.load(File.read(file))
-#      @help_cont = YAML.load(File.read('lib/daddygongon/emacs_help'))
       @help_cont[:head].each{|line| print line }
       @argv = argv
     end
@@ -23,7 +22,7 @@ module MyHelp
       @argv << '--help' if @argv.size==0
       command_parser = OptionParser.new do |opt|
         opt.on('-v', '--version','show program Version.') { |v|
-          opt.version = EmacsHelp::VERSION
+          opt.version = MyHelp::VERSION
           puts opt.ver
         }
         @help_cont.each_pair{|key,val|
@@ -56,5 +55,4 @@ module MyHelp
       disp(items[:cont])
     end
   end
-
 end
