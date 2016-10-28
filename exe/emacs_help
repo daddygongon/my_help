@@ -1,3 +1,4 @@
 #!/usr/bin/env ruby
 require 'my_help'
-MyHelp::Command.run('lib/daddygongon/emacs_help', ARGV)
+help_file = File.expand_path("../../lib/daddygongon/emacs_help", __FILE__)
+MyHelp::Command.run(help_file, ARGV)

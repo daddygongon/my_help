@@ -61,7 +61,8 @@ task :my_help do
     target_files = [file, file_name[0][0]+"_"+file_name[1][0]]
     p cont_name = File.join('lib',user_name,file)
     exe_cont << "require 'my_help'\n"
-    exe_cont << "MyHelp::Command.run('#{cont_name}', ARGV)\n"
+    exe_cont << "help_file = File.expand_path(\"../../#{cont_name}\", __FILE__)\n"
+    exe_cont << "MyHelp::Command.run(help_file, ARGV)\n"
     target_files.each{|name|
       p ''
       p target=File.join('exe',name)
