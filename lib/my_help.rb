@@ -8,14 +8,13 @@ require "my_help/version"
 module MyHelp
   class Command
 
-    def self.run(file,argv=[])
-      new(file, argv).execute
+    def self.run(argv=[])
+      new(argv).execute
     end
 
-    def initialize(file,argv=[])
-      @help_cont = YAML.load(File.read(file))
-      @help_cont[:head].each{|line| print line }
+    def initialize(argv=[])
       @argv = argv
+      p @target_dir = File.expand_path("../../lib/daddygongon", __FILE__)
     end
 
     def execute
@@ -25,11 +24,10 @@ module MyHelp
           opt.version = MyHelp::VERSION
           puts opt.ver
         }
-        @help_cont.each_pair{|key,val|
-          next if key==:head
-          opts = val[:opts]
-          opt.on(opts[:short],opts[:long],opts[:desc]) {disp_from_help_cont(key)}
-        }
+        opt.on('-l', '--list', 'list specific helps.'){list_helps}
+        opt.on('-e NAME', '--edit NAME', 'edit NAME help.'){|file| edit_help(file)}
+        opt.on('-i NAME', '--init NAME', 'initialize NAME help.'){}
+        opt.on('-m', '--make', 'make and install:local all helps.'){}
       end
       begin
         command_parser.parse!(@argv)
@@ -39,20 +37,15 @@ module MyHelp
       exit
     end
 
-    def disp(lines)
-      lines.each{|line|
-        if line.include?(',')
-          puts "  #{line}"
-        else
-          puts "    #{line}"
-        end
-      }
+    def edit_help(file)
+      p File.join(@target,file)
     end
 
-    def disp_from_help_cont(key_word)
-      items =@help_cont[key_word]
-      puts items[:title]
-      disp(items[:cont])
+    def list_helps
+      print "Specific help file:\n"
+      Dir.entries(@target_dir)[2..-1].each{|file|
+        print "  "+file+"\n"
+      }
     end
   end
 end

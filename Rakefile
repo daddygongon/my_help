@@ -33,7 +33,7 @@ task :hiki2md do
   readme_en="#{basename}.wiki/README_en.md"
   readme_ja="#{basename}.wiki/README_ja.md"
   if File.exists?(readme_en)
-    FileUtils.cp(readme_en,"./README.md",:verbose=>true)  
+    FileUtils.cp(readme_en,"./README.md",:verbose=>true)
   elsif File.exists?(readme_ja)
     FileUtils.cp(readme_ja,"./README.md",:verbose=>true)
     FileUtils.cp(readme_ja,"#{basename}.wiki/Home.md",:verbose=>true)
@@ -60,9 +60,9 @@ task :my_help do
     p file_name=file.split('_')
     target_files = [file, file_name[0][0]+"_"+file_name[1][0]]
     p cont_name = File.join('lib',user_name,file)
-    exe_cont << "require 'my_help'\n"
+    exe_cont << "require 'specific_help'\n"
     exe_cont << "help_file = File.expand_path(\"../../#{cont_name}\", __FILE__)\n"
-    exe_cont << "MyHelp::Command.run(help_file, ARGV)\n"
+    exe_cont << "SpecificHelp::Command.run(help_file, ARGV)\n"
     target_files.each{|name|
       p ''
       p target=File.join('exe',name)
