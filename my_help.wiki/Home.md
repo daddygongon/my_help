@@ -32,9 +32,17 @@ hikiでやろうとしていることの半分くらいはこのあたりのこ�
 key(記憶のとっかかり)を提供することが目的です．
 
 # 使用法
+## インストール
+インストールですが，gemの標準とは違ったやり方になります．GithubからForkしてcloneします．
+```
+git clone git@github.com:daddygongon/my_help.git
+```
+あとの作業はbundleを使って行います．これは，最後のrake install:localをコマンドから実行する方法がわからんかったからですが．．．helpファイルのpush共有とかも考えるとこれがいいのかも．
+
 用意されているコマンドは，
 
 ```
+bob%  bundle exec exe/my_help
 Usage: my_help [options]
     -v, --version                    show program Version.
     -l, --list                       個別(specific)ヘルプのList表示.
@@ -45,17 +53,40 @@ Usage: my_help [options]
 です．まず，-lでdefaultで入っているリストを見てください．
 
 ```
-bob%  my_help -l
+bob%  bundle exec exe/my_help -l
 "/usr/local/lib/ruby/gems/2.2.0/gems/my_help-0.2.1/lib/daddygongon"
 ["-l"]
 Specific help file:
   emacs_help
   test_help
 ```
-これで，CUIでemacs_help, e_h, test_help, t_hが用意されています．
+これで，CUIでemacs_help, e_h, test_help, t_hが用意されています．少し振る舞いに慣れてください．
 
+## 独自のhelpを作る方法
+さて，独自のhelpを作る方法です．まずは，
+
+```
+bob%  bundle exec exe/my_help -i new_help
+"/usr/local/lib/ruby/gems/2.2.0/gems/my_help-0.2.1/lib/daddygongon"
+["-i", "new_help"]
+"/usr/local/lib/ruby/gems/2.2.0/gems/my_help-0.2.1/lib/daddygongon/new_help"
+"/usr/local/lib/ruby/gems/2.2.0/gems/my_help-0.2.1/lib/my_help/template_help"
+cp /usr/local/lib/ruby/gems/2.2.0/gems/my_help-0.2.1/lib/my_help/template_help 
+  /usr/local/lib/ruby/gems/2.2.0/gems/my_help-0.2.1/lib/daddygongon/new_help
+```
+で，new_helpというtemplateが用意されます．-e new_helpで編集してください．そのあと，-mすると自動でnew_helpがexeディレクトリーに追加されます．
+
+そのあと，my_helpのdirectoryで
+```
+ git add -A
+ git commit -m 'add new help'
+ rake install:local
+```
+してください．
 
 # userの独自helpの達成方法
+(rake my_helpでやっていたが，今は，my_help -mに移行)
+
 exe中のファイルをrakeで自動生成．
 ./lib/daddygongon/にそれらのdataを保存．以下ではその名前から
 exe中に実行ファイルを自動生成させている．
