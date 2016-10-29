@@ -47,6 +47,7 @@ Usage: my_help [options]
     -e, --edit NAME                  NAME(例：test_help)をEdit編集.
     -i, --init NAME                  NAME(例：test_help)のtemplateを作成.
     -m, --make                       make and install:local all helps.
+    -c, --clean                      clean up exe dir.
 >>>
 です．まず，-lでdefaultで入っているリストを見てください．
 
@@ -74,13 +75,17 @@ cp /usr/local/lib/ruby/gems/2.2.0/gems/my_help-0.2.1/lib/my_help/template_help
 >>>
 で，new_helpというtemplateが用意されます．-e new_helpで編集してください．そのあと，-mすると自動でnew_helpがexeディレクトリーに追加されます．
 
-そのあと，my_helpのdirectoryで
+!!独自helpを使えるように
+最後，my_helpのdirectoryで
 <<<
  git add -A
  git commit -m 'add new help'
  rake install:local
 >>>
 してください．
+
+これで終わり．new_helpや短縮形のn_hでhelpが使えます．
+もし使えないときは，bin pathが通ってないので，terminalをnewしてください．
 
 !userの独自helpの達成方法
 (rake my_helpでやっていたが，今は，my_help -mに移行)

@@ -30,6 +30,7 @@ module MyHelp
         opt.on('-e NAME', '--edit NAME', 'NAME(例：test_help)をEdit編集.'){|file| edit_help(file)}
         opt.on('-i NAME', '--init NAME', 'NAME(例：test_help)のtemplateを作成.'){|file| init_help(file)}
         opt.on('-m', '--make', 'make and install:local all helps.'){make_help}
+        opt.on('-c', '--clean', 'clean up exe dir.'){clean_exe}
       end
       begin
         command_parser.parse!(@argv)
@@ -58,6 +59,22 @@ module MyHelp
             file.print exe_cont
           }
           FileUtils.chmod('a+x', target, :verbose => true)
+        }
+      }
+    end
+
+    def clean_exe
+      p entries=Dir.entries(@target_dir)[2..-1]
+      entries.each{|file|
+        p file
+        next if file[0]=='#' or file[-1]=='~'
+        p file_name=file.split('_')
+        target_files = [file, file_name[0][0]+"_"+file_name[1][0]]
+        target = File.join(@target_dir,file)
+        target_files.each{|name|
+          print "\n"
+          p target=File.join('exe',name)
+          FileUtils::Verbose.rm(target)
         }
       }
     end
