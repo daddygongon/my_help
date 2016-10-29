@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require 'specific_help'
+help_file = '/Users/bob/Github/my_help/lib/daddygongon/new_help'
+SpecificHelp::Command.run(help_file, ARGV)
