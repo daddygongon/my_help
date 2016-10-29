@@ -15,8 +15,7 @@ module MyHelp
 
     def initialize(argv=[])
       @argv = argv
-      p @target_dir = File.expand_path("../../lib/daddygongon", __FILE__)
-      p @argv
+      @target_dir = File.expand_path("../../lib/daddygongon", __FILE__)
     end
 
     def execute
@@ -40,39 +39,29 @@ module MyHelp
       exit
     end
 
+    def short_name(file)
+      file_name=file.split('_')
+      return file_name[0][0]+"_"+file_name[1][0]
+    end
+
     def make_help
-      p entries=Dir.entries(@target_dir)[2..-1]
-      entries.each{|file|
-        p file
+      Dir.entries(@target_dir)[2..-1].each{|file|
         next if file[0]=='#' or file[-1]=='~'
         exe_cont="#!/usr/bin/env ruby\nrequire 'specific_help'\n"
-        p file_name=file.split('_')
-        target_files = [file, file_name[0][0]+"_"+file_name[1][0]]
-        target = File.join(@target_dir,file)
-        exe_cont << "help_file = '#{target}'\n"
+        exe_cont << "help_file = '#{File.join(@target_dir,file)}'\n"
         exe_cont << "SpecificHelp::Command.run(help_file, ARGV)\n"
-        target_files.each{|name|
-          print "\n"
+        [file, short_name(file)].each{|name|
           p target=File.join('exe',name)
-          File.open(target,'w'){|file|
-            print exe_cont
-            file.print exe_cont
-          }
+          File.open(target,'w'){|file| file.print exe_cont}
           FileUtils.chmod('a+x', target, :verbose => true)
         }
       }
     end
 
     def clean_exe
-      p entries=Dir.entries(@target_dir)[2..-1]
-      entries.each{|file|
-        p file
+      Dir.entries(@target_dir)[2..-1].each{|file|
         next if file[0]=='#' or file[-1]=='~'
-        p file_name=file.split('_')
-        target_files = [file, file_name[0][0]+"_"+file_name[1][0]]
-        target = File.join(@target_dir,file)
-        target_files.each{|name|
-          print "\n"
+        [file, short_name(file)].each{|name|
           p target=File.join('exe',name)
           FileUtils::Verbose.rm(target)
         }
