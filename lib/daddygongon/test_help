@@ -1,0 +1,24 @@
+---
+:head:
+- "TODO: ヘルプ内容の概略.\n"
+- "  常に表示される内容を記述.\n"
+- "  下を参照して変更してください．\n"
+:item: 
+  :opts: 
+    :short: "-i" 
+    :long: "--item"
+    :desc: 単元(item)
+  :title: "\n単元\n"
+  :cont:
+  - c-f, move Forwrard,    前or右へ
+  - フォーマットは自由です. ','があるときは2文字下げ，ないときは4文字下げ
+:item2: 
+  :opts: 
+    :short: "-j" 
+    :long: "--item2"
+    :desc: 単元2(item2)
+  :title: "\n単元2\n"
+  :cont:
+  - c-f, move Forwrard,    前or右へ
+  - フォーマットは自由です. 
+

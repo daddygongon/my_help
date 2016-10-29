@@ -52,11 +52,12 @@ end
 
 desc "make own help from lib/daddygongon/files"
 task :my_help do
-  exe_cont="#!/usr/bin/env ruby\n"
   user_name = 'daddygongon'
   p entries=Dir.entries(File.join('.','lib',user_name))[2..-1]
   entries.each{|file|
     p file
+    next if file[0]=='#' or file[-1]=='~'
+    exe_cont="#!/usr/bin/env ruby\n"
     p file_name=file.split('_')
     target_files = [file, file_name[0][0]+"_"+file_name[1][0]]
     p cont_name = File.join('lib',user_name,file)
@@ -64,7 +65,7 @@ task :my_help do
     exe_cont << "help_file = File.expand_path(\"../../#{cont_name}\", __FILE__)\n"
     exe_cont << "SpecificHelp::Command.run(help_file, ARGV)\n"
     target_files.each{|name|
-      p ''
+      print "\n"
       p target=File.join('exe',name)
       File.open(target,'w'){|file|
         print exe_cont

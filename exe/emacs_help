@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 require 'specific_help'
-help_file = File.expand_path("../../lib/daddygongon/emacs_help", __FILE__)
+help_file = '/Users/bob/Github/my_help/lib/daddygongon/emacs_help'
 SpecificHelp::Command.run(help_file, ARGV)
