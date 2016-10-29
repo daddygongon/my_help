@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 require "optparse"
 require "yaml"
+require "fileutils"
 #require "emacs_help/version"
 require "my_help/version"
 #require "emacs_help"

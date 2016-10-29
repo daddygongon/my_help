@@ -1,6 +1,6 @@
 !名前
 
-petit_help, general_help, my_help, ...
+my_help
 
 !概要
 
@@ -30,6 +30,30 @@ commandや文法を覚えるのに苦労します．少しのkey(とっかかり
 hikiでやろうとしていることの半分くらいはこのあたりのことなの
 かもしれません．memoソフトでは，検索が必要となりますが，my_helpは
 key(記憶のとっかかり)を提供することが目的です．
+
+!使用法
+用意されているコマンドは，
+
+<<<
+Usage: my_help [options]
+    -v, --version                    show program Version.
+    -l, --list                       個別(specific)ヘルプのList表示.
+    -e, --edit NAME                  NAME(例：test_help)をEdit編集.
+    -i, --init NAME                  NAME(例：test_help)のtemplateを作成.
+    -m, --make                       make and install:local all helps.
+>>>
+です．まず，-lでdefaultで入っているリストを見てください．
+
+<<<
+bob%  my_help -l
+"/usr/local/lib/ruby/gems/2.2.0/gems/my_help-0.2.1/lib/daddygongon"
+["-l"]
+Specific help file:
+  emacs_help
+  test_help
+>>>
+これで，CUIでemacs_help, e_h, test_help, t_hが用意されています．
+
 
 !userの独自helpの達成方法
 exe中のファイルをrakeで自動生成．
