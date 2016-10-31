@@ -37,7 +37,11 @@ key(記憶のとっかかり)を提供することが目的です．
 ```
 git clone git@github.com:daddygongon/my_help.git
 ```
-あとの作業はbundleを使って行います．これは，最後のrake install:localをコマンドから実行する方法がわからんかったからですが．．．helpファイルのpush共有とかも考えるとこれがいいのかも．
+あとの作業はbundleを使って行います．
+
+これは，最後のrake install:localをコマンドから実行する方法がわからんかったからですが．．．
+- helpファイルのpush共有とかも考えるとこれがいいのかも．
+- home以下に置く方法と比較分析してください．
 
 用意されているコマンドは，
 

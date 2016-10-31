@@ -72,3 +72,17 @@ task :my_help do
     }
   }
 end
+
+desc "make hiki documents"
+task :mk_hiki do
+  p entries=Dir.entries(File.join('.','hikis'))[2..-1]
+  hiki_dir='/Users/bob/Sites/nishitani0/Internal/data/text'
+  entries.each{|file|
+    next if file[0]=='#' or file[-1]=='~'
+    p src=File.join('.','hikis',file)
+    p file_name='MyHelp_'+File.basename(file,'.hiki')
+    p des=File.join(hiki_dir,file_name)
+    FileUtils::Verbose.cp(src,des)
+    FileUtils::Verbose.chmod('a+w',des)
+  }
+end
