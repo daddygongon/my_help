@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require 'specific_help'
+help_file = '/usr/local/lib/ruby/gems/2.2.0/gems/my_help-0.2.2/lib/daddygongon/ruby_help'
+SpecificHelp::Command.run(help_file, ARGV)
