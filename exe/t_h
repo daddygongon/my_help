@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
 require 'specific_help'
-help_file = '/Users/bob/MultiScaleModeling/2016/my_help/lib/daddygongon/test_help'
+target_dir = File.expand_path("../../lib/daddygongon", __FILE__)
+help_file = File.join(target_dir,'test_help')
 SpecificHelp::Command.run(help_file, ARGV)
