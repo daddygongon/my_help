@@ -30,6 +30,7 @@ module MyHelp
         opt.on('-i NAME', '--init NAME', 'NAME(例：test_help)のtemplateを作成.'){|file| init_help(file)}
         opt.on('-m', '--make', 'make and install:local all helps.'){make_help}
         opt.on('-c', '--clean', 'clean up exe dir.'){clean_exe}
+        opt.on('--install_local','install local after edit helps'){install_local}
       end
       begin
         command_parser.parse!(@argv)
@@ -37,6 +38,14 @@ module MyHelp
         p eval
       end
       exit
+    end
+
+    def install_local
+      Dir.chdir(File.expand_path('../..',@target_dir))
+      p Dir.pwd
+      system "git add -A"
+      system "git commit -m 'update exe dirs'"
+      system "Rake install:local"
     end
 
     def short_name(file)
@@ -48,8 +57,6 @@ module MyHelp
       Dir.entries(@target_dir)[2..-1].each{|file|
         next if file[0]=='#' or file[-1]=='~'
         exe_cont="#!/usr/bin/env ruby\nrequire 'specific_help'\n"
-#        exe_cont << "help_file = '#{File.join(@target_dir,file)}'\n"
-#        exe_cont << @target_dir
         exe_cont << 'target_dir = File.expand_path("../../lib/daddygongon", __FILE__)'+"\n"
         exe_cont << "help_file = File.join(target_dir,'#{file}')\n"
         exe_cont << "SpecificHelp::Command.run(help_file, ARGV)\n"
