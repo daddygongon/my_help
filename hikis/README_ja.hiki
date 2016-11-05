@@ -92,10 +92,11 @@ cp /usr/local/lib/ruby/gems/2.2.0/gems/my_help-0.2.1/lib/my_help/template_help
 もし使えないときは，bin pathが通ってないので，terminalをnewしてください．
 
 !userの独自helpの達成方法
-(rake my_helpでやっていたが，今は，my_help -mに移行)
+* rake my_helpでやっていたが，今は，my_help -mに移行
+* @target dirをmy_help/lib/daddygongonからENV['HOME']/.my_helpに変更
 
 exe中のファイルをrakeで自動生成．
-./lib/daddygongon/にそれらのdataを保存．以下ではその名前から
+@target_dirにそれらのdataを保存．以下ではその名前から
 exe中に実行ファイルを自動生成させている．
 <<<
 lib/daddygongon/
@@ -106,19 +107,17 @@ exe
 └── emacs_help
 >>>
 ということ．これは，
- rake my_help
+ my_help -m
 で実行される．これを
  rake install:local
-すれば必要とするhelpがlocalな環境で表示される．
+すれば必要とするhelpがlocalな環境でbin dirに移され，CUI commandとして実行可能になる．
 
-たくさんの実行ファイルを/usr/loca/binに置くことになるので，
+たくさんの実行ファイルを/usr/loca/binに置くことになるので，あらたなmy_helpを作成するときには
  gem uninstall my_help
  gem uninstall emacs_help
-でそこをcleanにしておくことが望ましい．
+でそのdirをcleanにしておくことが望ましい．
 
-Rakefileの中身は以下の通り．
- in Rakefile
-
+中身は以下の通り．
 <<< ruby
 desc "make own help from lib/daddygongon/files"
 task :my_help do
@@ -194,4 +193,5 @@ Usage: eh [options]
     -q, --quit         終了操作
 >>>
 としたほうがいいと提案する．アンケートを実施してみてほしい．
+
 
