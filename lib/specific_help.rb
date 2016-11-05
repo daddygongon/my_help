@@ -29,22 +29,31 @@ module SpecificHelp
           opts = val[:opts]
           opt.on(opts[:short],opts[:long],opts[:desc]) {disp_from_help_cont(key)}
         }
+        opt.on('--to_hiki','convert to hikidoc format'){to_hiki}
       end
-      begin
+#      begin
         command_parser.parse!(@argv)
-      rescue=> eval
-        p eval
-      end
+#      rescue=> eval
+#       p eval
+#      end
       exit
+    end
+
+    def to_hiki
+      puts '>>>'
+      @help_cont.each_pair{|key,val|
+        p key,val
+#        opts = val[:opts]
+#        puts opts[:short].to_s,opts[:long].to_s,opts[:desc].to_s
+        items =@help_cont[key]
+        puts items[:title]
+        disp(items[:cont])
+      }
     end
 
     def disp(lines)
       lines.each{|line|
-        if line.include?(',')
-          puts "  #{line}"
-        else
-          puts "    #{line}"
-        end
+        puts "  #{line}"
       }
     end
 

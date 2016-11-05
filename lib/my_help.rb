@@ -15,7 +15,20 @@ module MyHelp
 
     def initialize(argv=[])
       @argv = argv
-      @target_dir = File.expand_path("../../lib/daddygongon", __FILE__)
+      @source_dir = File.expand_path("../../lib/daddygongon", __FILE__)
+      @target_dir = File.join(ENV['HOME'],'.my_help')
+      set_help_dir_if_not_exists
+    end
+
+    def set_help_dir_if_not_exists
+      return if File::exists?(@target_dir)
+      FileUtils.mkdir_p(@target_dir)
+      helps =Dir.entries(@source_dir)
+      helps[2..-1].each{|file|
+        file_path=File.join(@target_dir,file)
+        next if File::exists?(file_path)
+        FileUtils.cp((File.join(@source_dir,file)),@target_dir,:verbose=>true)
+      }
     end
 
     def execute
@@ -31,6 +44,7 @@ module MyHelp
         opt.on('-m', '--make', 'make and install:local all helps.'){make_help}
         opt.on('-c', '--clean', 'clean up exe dir.'){clean_exe}
         opt.on('--install_local','install local after edit helps'){install_local}
+#        opt.on('--initialize','initialize local help directory'){initialize_local}
       end
       begin
         command_parser.parse!(@argv)
@@ -57,7 +71,8 @@ module MyHelp
       Dir.entries(@target_dir)[2..-1].each{|file|
         next if file[0]=='#' or file[-1]=='~'
         exe_cont="#!/usr/bin/env ruby\nrequire 'specific_help'\n"
-        exe_cont << 'target_dir = File.expand_path("../../lib/daddygongon", __FILE__)'+"\n"
+#        exe_cont << 'target_dir = File.expand_path("../../lib/daddygongon", __FILE__)'+"\n"
+        exe_cont << "target_dir = File.join(ENV['HOME'],'.my_help')"+"\n"
         exe_cont << "help_file = File.join(target_dir,'#{file}')\n"
         exe_cont << "SpecificHelp::Command.run(help_file, ARGV)\n"
         [file, short_name(file)].each{|name|
@@ -80,7 +95,7 @@ module MyHelp
 
     def init_help(file)
       p target_help=File.join(@target_dir,file)
-      p template = File.join(File.dirname(@target_dir),'my_help','template_help')
+      p template = File.join(File.dirname(@source_dir),'my_help','template_help')
       FileUtils::Verbose.cp(template,target_help)
     end
 
