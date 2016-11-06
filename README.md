@@ -42,6 +42,7 @@ git clone git@github.com:daddygongon/my_help.git
 これは，最後のrake install:localをコマンドから実行する方法がわからんかったからですが．．．
 - helpファイルのpush共有とかも考えるとこれがいいのかも．
 - home以下に置く方法と比較分析してください．
+  - lib/daddygongonにあたらしいhelpを置くようにしていましたが，helpに個人情報を入れるとgit pushでさらしてしまうので，やめました．
 
 用意されているコマンドは，
 
