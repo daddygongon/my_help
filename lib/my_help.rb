@@ -22,9 +22,8 @@ module MyHelp
 
     def set_help_dir_if_not_exists
       return if File::exists?(@target_dir)
-      FileUtils.mkdir_p(@target_dir)
-      helps =Dir.entries(@source_dir)
-      helps[2..-1].each{|file|
+      FileUtils.mkdir_p(@target_dir, :verbose=>true)
+      Dir.entries(@source_dir).each{|file|
         file_path=File.join(@target_dir,file)
         next if File::exists?(file_path)
         FileUtils.cp((File.join(@source_dir,file)),@target_dir,:verbose=>true)
@@ -108,7 +107,9 @@ module MyHelp
       print "Specific help file:\n"
       Dir.entries(@target_dir)[2..-1].each{|file|
         next if file[0]=='#' or file[-1]=='~'
-        print "  "+file+"\n"
+        file_path=File.join(@target_dir,file)
+        help_cont = YAML.load(File.read(file_path))
+        print "  #{file}\t:#{help_cont[:head][0][0..-1]}"
       }
     end
   end
