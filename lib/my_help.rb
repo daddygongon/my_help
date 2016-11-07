@@ -4,6 +4,7 @@ require "yaml"
 require "fileutils"
 #require "emacs_help/version"
 require "my_help/version"
+require "systemu"
 #require "emacs_help"
 
 module MyHelp
@@ -53,11 +54,13 @@ module MyHelp
     end
 
     def install_local
+      inst_dir="USER INSTALLATION DIRECTORY:"
+      systemu "gem env|grep '#{inst_dir}'"
       Dir.chdir(File.expand_path('../..',@target_dir))
       p Dir.pwd
-      system "git add -A"
-      system "git commit -m 'update exe dirs'"
-      system "Rake install:local"
+#      system "git add -A"
+#      system "git commit -m 'update exe dirs'"
+#      system "Rake install:local"
     end
 
     def short_name(file)
