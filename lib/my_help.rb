@@ -93,6 +93,8 @@ module MyHelp
     def clean_exe
       Dir.entries(@target_dir)[2..-1].each{|file|
         next if file[0]=='#' or file[-1]=='~'
+        next if file.include?('emacs_help') or file.include?('e_h')
+        next if file.include?('template_help') or file.include?('t_h')
         [file, short_name(file)].each{|name|
           p target=File.join('exe',name)
           FileUtils::Verbose.rm(target)
@@ -106,7 +108,7 @@ module MyHelp
         puts "File exists. rm it first to initialize it."
         exit
       end
-      p template = File.join(File.dirname(@source_dir),'my_help','template_help')
+      p template = File.join(@source_dir,'template_help')
       FileUtils::Verbose.cp(template,target_help)
     end
 

@@ -1,5 +1,0 @@
-#!/usr/bin/env ruby
-require 'specific_help'
-target_dir = File.join(ENV['HOME'],'.my_help')
-help_file = File.join(target_dir,'member_help')
-SpecificHelp::Command.run(help_file, ARGV)
