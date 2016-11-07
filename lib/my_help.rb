@@ -55,12 +55,17 @@ module MyHelp
 
     def install_local
       inst_dir="USER INSTALLATION DIRECTORY:"
-      systemu "gem env|grep '#{inst_dir}'"
-      Dir.chdir(File.expand_path('../..',@target_dir))
-      p Dir.pwd
-#      system "git add -A"
-#      system "git commit -m 'update exe dirs'"
-#      system "Rake install:local"
+      status, stdout, stderr = systemu "gem env|grep '#{inst_dir}'"
+      p system_inst_dir = stdout.split(': ')[1].chomp
+      Dir.chdir(File.expand_path('../..',@source_dir))
+      p pwd_dir = Dir.pwd
+      if pwd_dir == system_inst_dir
+        "download my_help from github, and using bundle for edit helps"
+        exit
+      end
+      system "git add -A"
+      system "git commit -m 'update exe dirs'"
+      system "Rake install:local"
     end
 
     def short_name(file)
