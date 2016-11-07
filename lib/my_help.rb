@@ -78,9 +78,7 @@ module MyHelp
       Dir.entries(@target_dir)[2..-1].each{|file|
         next if file[0]=='#' or file[-1]=='~'
         exe_cont="#!/usr/bin/env ruby\nrequire 'specific_help'\n"
-#        exe_cont << 'target_dir = File.expand_path("../../lib/daddygongon", __FILE__)'+"\n"
-        exe_cont << "target_dir = File.join(ENV['HOME'],'.my_help')"+"\n"
-        exe_cont << "help_file = File.join(target_dir,'#{file}')\n"
+        exe_cont << "help_file = File.join(ENV['HOME'],'.my_help','#{file}')\n"
         exe_cont << "SpecificHelp::Command.run(help_file, ARGV)\n"
         [file, short_name(file)].each{|name|
           p target=File.join('exe',name)
