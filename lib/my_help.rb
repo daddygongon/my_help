@@ -107,6 +107,7 @@ module MyHelp
     def list_helps
       print "Specific help file:\n"
       Dir.entries(@target_dir)[2..-1].each{|file|
+        next if file[0]=='#' or file[-1]=='~'
         print "  "+file+"\n"
       }
     end

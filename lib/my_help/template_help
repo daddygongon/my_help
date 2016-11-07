@@ -1,17 +1,22 @@
 ---
-:head:
-- "TODO: ヘルプ内容の概略.\n"
-- "  常に表示される内容を記述.\n"
+#start header, which appears every time.
+:head:         #never change
+- "TODO: ヘルプ内容の概略.\n"  #describe the contents
+- "  常に表示される内容を記述.\n" #head '- ' is necessary
 - "  下を参照して変更してください．\n"
-:item: 
-  :opts: 
-    :short: "-i" 
-    :long: "--item"
-    :desc: 単元(item)
-  :title: "\n単元\n"
-  :cont:
-  - c-f, move Forwrard,    前or右へ
-  - フォーマットは自由です. ','があるときは2文字下げ，ないときは4文字下げ
+
+# start the first item
+:item:         #change snake word
+  :opts:          #never change
+    :short: "-i"      #change short option
+    :long: "--item"   #change long option
+    :desc: 単元(item) #describe what for in help list
+  :title: "\n単元\n"  #describe what for in each help
+  :cont:              #the following lines are appeared.
+  - c-f, move Forwrard,    前or右へ  #top '  - ' are necessary for yaml format
+  - フォーマットは自由です. 
+
+# start the second item... and so on.
 :item2: 
   :opts: 
     :short: "-j" 
