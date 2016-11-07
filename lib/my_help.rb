@@ -40,10 +40,9 @@ module MyHelp
         opt.on('-l', '--list', '個別(specific)ヘルプのList表示.'){list_helps}
         opt.on('-e NAME', '--edit NAME', 'NAME(例：test_help)をEdit編集.'){|file| edit_help(file)}
         opt.on('-i NAME', '--init NAME', 'NAME(例：test_help)のtemplateを作成.'){|file| init_help(file)}
-        opt.on('-m', '--make', 'make and install:local all helps.'){make_help}
+        opt.on('-m', '--make', 'make executables for all helps.'){make_help}
         opt.on('-c', '--clean', 'clean up exe dir.'){clean_exe}
         opt.on('--install_local','install local after edit helps'){install_local}
-#        opt.on('--initialize','initialize local help directory'){initialize_local}
       end
       begin
         command_parser.parse!(@argv)
@@ -94,6 +93,10 @@ module MyHelp
 
     def init_help(file)
       p target_help=File.join(@target_dir,file)
+      if File::exists?(target_help)
+        puts "File exists. rm it first to initialize it."
+        exit
+      end
       p template = File.join(File.dirname(@source_dir),'my_help','template_help')
       FileUtils::Verbose.cp(template,target_help)
     end

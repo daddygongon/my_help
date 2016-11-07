@@ -1,5 +1,6 @@
 ---
 :head:
+- "emacsのキーバインド\n"
 - "\n特殊キー操作\n"
 - "  c-f, controlキーを押しながら    'f'\n"
 - "  M-f, escキーを押した後一度離して'f'\n"
@@ -52,7 +53,7 @@
     :desc: Edit操作
   :title: |2-
 
-    編集操作editor
+    編集操作edit
   :cont:
   - c-d, Delete char, 一字削除
   - c-k, Kill line,   一行抹消，カット
@@ -82,7 +83,7 @@
     :desc: Buffer操作
   :title: |2-
 
-    バッファー操作buffer
+    バッファー操作buffer(すでにopenしてemacsにバッファーされたfile)
   :cont:
   - c-x b, show Buffer,   バッファのリスト
   - c-x c-b, next Buffer, 次のバッファへ移動

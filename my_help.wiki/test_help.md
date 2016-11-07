@@ -1,3 +1,22 @@
+# template_helpの出力結果
+
+```
+  ヘルプのサンプル雛形.
+    headに常に表示される内容を記述.
+
+単元
+  c-f, move Forwrard,    前or右へ
+  フォーマットは自由です.
+
+単元2
+  c-f, move Forwrard,    前or右へ
+  フォーマットは自由です.
+```
+
+# template_helpの中身
+helpの実態は~/.my_helpに保存されたYAML形式のfileです．書き方はコメントを参照ください．
+
+```yaml
 ---
 #start header, which appears every time.
 :head:         #never change
@@ -25,4 +44,4 @@
   :cont:
   - c-f, move Forwrard,    前or右へ
   - フォーマットは自由です. 
-
+```

@@ -40,15 +40,17 @@ module SpecificHelp
     end
 
     def to_hiki
-      puts '>>>'
+      puts '<<<'
       @help_cont.each_pair{|key,val|
-        p key,val
-#        opts = val[:opts]
-#        puts opts[:short].to_s,opts[:long].to_s,opts[:desc].to_s
-        items =@help_cont[key]
-        puts items[:title]
-        disp(items[:cont])
+        if key==:head
+          disp(val)
+        else
+          items =@help_cont[key]
+          puts items[:title]
+          disp(items[:cont])
+        end
       }
+      puts '>>>'
     end
 
     def disp(lines)
