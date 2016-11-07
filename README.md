@@ -53,8 +53,9 @@ Usage: my_help [options]
     -l, --list                       個別(specific)ヘルプのList表示.
     -e, --edit NAME                  NAME(例：test_help)をEdit編集.
     -i, --init NAME                  NAME(例：test_help)のtemplateを作成.
-    -m, --make                       make and install:local all helps.
+    -m, --make                       make executables for all helps.
     -c, --clean                      clean up exe dir.
+        --install_local              install local after edit helps
 ```
 です．まず，-lでdefaultで入っているリストを見てください．
 

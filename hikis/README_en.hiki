@@ -51,10 +51,12 @@ Supplied commands are
 bob%  bundle exec exe/my_help
 Usage: my_help [options]
     -v, --version                    show program Version.
-    -l, --list                       個別(specific)ヘルプのList表示.
-    -e, --edit NAME                  NAME(例：test_help)をEdit編集.
-    -i, --init NAME                  NAME(例：test_help)のtemplateを作成.
+    -l, --list                       list specific help.
+    -e, --edit NAME                  edit NAME(cf test_help).
+    -i, --init NAME                  initialize NAME(cf, test_help) template.
     -m, --make                       make and install:local all helps.
+    -c, --clean                      clean up exe dir.
+        --install_local              install local after edit helps
 >>>
 
 At first, see the list of supplied helps by the option of -l.
