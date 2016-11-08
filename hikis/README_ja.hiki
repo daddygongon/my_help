@@ -194,4 +194,57 @@ Usage: eh [options]
 >>>
 としたほうがいいと提案する．アンケートを実施してみてほしい．
 
+!uninstall
+my_help -mでinstallするとEXECUTABLE DIRECTORYにhelpのexec filesが自動で追加される．
+~/.my_helpを修正したときには，あらかじめ
+ gem unistall my_help
+でそれらをuninstallしておくと良い．
 
+<<<
+bob% gem uninstall my_help
+
+Select gem to uninstall:
+ 1. my_help-0.1.0
+ 2. my_help-0.2.0
+ 3. my_help-0.2.1
+ 4. my_help-0.2.2
+ 5. my_help-0.2.3
+ 6. my_help-0.3.0
+ 7. my_help-0.3.1
+ 8. my_help-0.3.2
+ 9. All versions
+> 9
+Successfully uninstalled my_help-0.1.0
+Successfully uninstalled my_help-0.2.0
+Remove executables:
+	#my_help#
+
+in addition to the gem? [Yn]  Y
+Removing #my_help#
+Successfully uninstalled my_help-0.2.1
+Successfully uninstalled my_help-0.2.2
+Successfully uninstalled my_help-0.2.3
+Successfully uninstalled my_help-0.3.0
+Remove executables:
+	test_help
+
+in addition to the gem? [Yn]  Y
+Removing test_help
+Successfully uninstalled my_help-0.3.1
+Remove executables:
+	e_h, emacs_help, m_h, member_help, my_help, n_h, new_help, r_h, ruby_help, t_h, template_help
+
+in addition to the gem? [Yn]  Y
+Removing e_h
+Removing emacs_help
+Removing m_h
+Removing member_help
+Removing my_help
+Removing n_h
+Removing new_help
+Removing r_h
+Removing ruby_help
+Removing t_h
+Removing template_help
+Successfully uninstalled my_help-0.3.2
+>>>

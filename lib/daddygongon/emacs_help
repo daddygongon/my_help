@@ -1,18 +1,18 @@
 ---
 :head:
-- "emacsのキーバインド\n"
-- "\n特殊キー操作\n"
-- "  c-f, controlキーを押しながら    'f'\n"
-- "  M-f, escキーを押した後一度離して'f'\n"
-- "    操作の中断c-g, 操作の取り消し(Undo) c-x u \n"
+- "emacsのキーバインド"
+- "\n特殊キー操作"
+- "  c-f, controlキーを押しながら    'f'"
+- "  M-f, escキーを押した後一度離して'f'"
+- "    操作の中断c-g, 操作の取り消し(Undo) c-x u"
+:license:
+- "     cc by Shigeto R. Nishitani, 2016"
 :cursor:
   :opts:
     :short: "-c"
     :long: "--cursor"
     :desc: Cursor移動
-  :title: |2-
-
-    カーソル移動cursor
+  :title: カーソル移動cursor
   :cont:
   - c-f, move Forwrard,    前or右へ
   - c-b, move Backwrard,   後or左へ
@@ -25,9 +25,7 @@
     :short: "-p"
     :long: "--ページ"
     :desc: Page移動
-  :title: |2-
-
-    ページ移動page
+  :title: ページ移動page
   :cont:
   - c-v, move Vertical,          次のページへ
   - M-v, move reversive Vertical,前のページへ
@@ -39,9 +37,7 @@
     :short: "-f"
     :long: "--ファイル"
     :desc: File操作
-  :title: |2-
-
-    ファイル操作file
+  :title: ファイル操作file
   :cont:
   - c-x c-f, Find file, ファイルを開く
   - c-x c-s, Save file, ファイルを保存
@@ -51,9 +47,7 @@
     :short: "-e"
     :long: "--編集"
     :desc: Edit操作
-  :title: |2-
-
-    編集操作edit
+  :title: 編集操作edit
   :cont:
   - c-d, Delete char, 一字削除
   - c-k, Kill line,   一行抹消，カット
@@ -68,9 +62,7 @@
     :short: "-w"
     :long: "--ウィンドウ"
     :desc: Window操作
-  :title: |2-
-
-    ウィンドウ操作window
+  :title: ウィンドウ操作window
   :cont:
   - c-x 2, 2 windows, 二つに分割
   - c-x 1, 1 windows, 一つに戻す
@@ -81,9 +73,7 @@
     :short: "-b"
     :long: "--バッファ"
     :desc: Buffer操作
-  :title: |2-
-
-    バッファー操作buffer(すでにopenしてemacsにバッファーされたfile)
+  :title: バッファー操作buffer(すでにopenしてemacsにバッファーされたfile)
   :cont:
   - c-x b, show Buffer,   バッファのリスト
   - c-x c-b, next Buffer, 次のバッファへ移動
@@ -92,9 +82,7 @@
     :short: "-q"
     :long: "--終了"
     :desc: "終了操作"
-  :title: |2-
-
-    終了操作quit
+  :title: 終了操作quit
   :cont:
   - c-x c-c, Quit emacs, ファイルを保存して終了
   - c-z, suspend emacs,  一時停止，fgで復活

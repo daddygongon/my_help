@@ -87,11 +87,12 @@ bob%  bundle exec exe/my_help -i new_help
 cp /usr/local/lib/ruby/gems/2.2.0/gems/my_help-0.2.1/lib/my_help/template_help 
   /usr/local/lib/ruby/gems/2.2.0/gems/my_help-0.2.1/lib/daddygongon/new_help
 ```
-it makes get ready the template of new_help in daddygongon dir.
+it makes get ready the template of new_help in ~/.my_help directory.
 Edit it by -e new_help.
-Then -m make new_help and n_h in exe directory.
+Then -m makes new_help and n_h in exe directory.
 
-## Activate own help
+## Activate own help (which is automatically done by -m)
+
 For the last step, at the my_help directory, put the commands in as follows:
 
 ```

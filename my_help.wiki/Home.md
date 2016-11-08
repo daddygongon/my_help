@@ -67,23 +67,21 @@ Specific help file:
   emacs_help
   test_help
 ```
-これで，CUIでemacs_help, e_h, test_help, t_hが用意されています．少し振る舞いに慣れてください．
+これで，CUIでemacs_help, e_h, template_help, t_hが用意されています．少し振る舞いに慣れてください．
 
 ## 独自のhelpを作る方法
 さて，独自のhelpを作る方法です．まずは，
 
 ```
 bob%  bundle exec exe/my_help -i new_help
-"/usr/local/lib/ruby/gems/2.2.0/gems/my_help-0.2.1/lib/daddygongon"
-["-i", "new_help"]
-"/usr/local/lib/ruby/gems/2.2.0/gems/my_help-0.2.1/lib/daddygongon/new_help"
-"/usr/local/lib/ruby/gems/2.2.0/gems/my_help-0.2.1/lib/my_help/template_help"
-cp /usr/local/lib/ruby/gems/2.2.0/gems/my_help-0.2.1/lib/my_help/template_help 
-  /usr/local/lib/ruby/gems/2.2.0/gems/my_help-0.2.1/lib/daddygongon/new_help
+"/Users/bob/.my_help/new_help"
+"/Users/bob/Github/my_help/lib/daddygongon/template_help"
+cp /Users/bob/Github/my_help/lib/daddygongon/template_help /Users/bob/.my_help/new_help
 ```
 で，new_helpというtemplateが用意されます．-e new_helpで編集してください．そのあと，-mすると自動でnew_helpがexeディレクトリーに追加されます．
 
 ## 独自helpを使えるように
+(これは，-mで自動的に行われるように修正されています)
 最後，my_helpのdirectoryで
 ```
  git add -A
@@ -205,3 +203,60 @@ Usage: eh [options]
     -q, --quit         終了操作
 ```
 としたほうがいいと提案する．アンケートを実施してみてほしい．
+
+# uninstall
+my_help -mでinstallするとEXECUTABLE DIRECTORYにhelpのexec filesが自動で追加される．
+~/.my_helpを修正したときには，あらかじめ
+```
+gem unistall my_help
+```
+でそれらをuninstallしておくと良い．
+
+```
+bob% gem uninstall my_help
+
+Select gem to uninstall:
+ 1. my_help-0.1.0
+ 2. my_help-0.2.0
+ 3. my_help-0.2.1
+ 4. my_help-0.2.2
+ 5. my_help-0.2.3
+ 6. my_help-0.3.0
+ 7. my_help-0.3.1
+ 8. my_help-0.3.2
+ 9. All versions
+> 9
+Successfully uninstalled my_help-0.1.0
+Successfully uninstalled my_help-0.2.0
+Remove executables:
+	#my_help#
+
+in addition to the gem? [Yn]  Y
+Removing #my_help#
+Successfully uninstalled my_help-0.2.1
+Successfully uninstalled my_help-0.2.2
+Successfully uninstalled my_help-0.2.3
+Successfully uninstalled my_help-0.3.0
+Remove executables:
+	test_help
+
+in addition to the gem? [Yn]  Y
+Removing test_help
+Successfully uninstalled my_help-0.3.1
+Remove executables:
+	e_h, emacs_help, m_h, member_help, my_help, n_h, new_help, r_h, ruby_help, t_h, template_help
+
+in addition to the gem? [Yn]  Y
+Removing e_h
+Removing emacs_help
+Removing m_h
+Removing member_help
+Removing my_help
+Removing n_h
+Removing new_help
+Removing r_h
+Removing ruby_help
+Removing t_h
+Removing template_help
+Successfully uninstalled my_help-0.3.2
+```
