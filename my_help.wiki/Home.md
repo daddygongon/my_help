@@ -78,7 +78,12 @@ bob%  bundle exec exe/my_help -i new_help
 "/Users/bob/Github/my_help/lib/daddygongon/template_help"
 cp /Users/bob/Github/my_help/lib/daddygongon/template_help /Users/bob/.my_help/new_help
 ```
-で，new_helpというtemplateが用意されます．-e new_helpで編集してください．そのあと，-mすると自動でnew_helpがexeディレクトリーに追加されます．
+で，new_helpというtemplateが用意されます．-e new_helpで編集してください．
+YAML形式で，格納されています．サンプルが，
+```
+my_help/lib/daddygongon
+```
+にあります．このあと，-mすると自動でnew_helpがexeディレクトリーに追加されます．
 
 ## 独自helpを使えるように
 (これは，-mで自動的に行われるように修正されています)
@@ -98,8 +103,8 @@ cp /Users/bob/Github/my_help/lib/daddygongon/template_help /Users/bob/.my_help/n
 - @target dirをmy_help/lib/daddygongonからENV['HOME']/.my_helpに変更
 
 exe中のファイルをrakeで自動生成．
-@target_dirにそれらのdataを保存．以下ではその名前から
-exe中に実行ファイルを自動生成させている．
+@target_dirにそれらのdataを保存．
+その名前からexe中に実行ファイルを自動生成させている．
 ```
 lib/daddygongon/
 └── emacs_help
@@ -123,34 +128,32 @@ rake install:local
 gem uninstall my_help
 gem uninstall emacs_help
 ```
-でそのdirをcleanにしておくことが望ましい．
+でそのdirをcleanにしておくことが望ましい．下のuninstallの項目を参照．
 
-中身は以下の通り．
+-mでやっている中身は以下の通り．
 ```ruby
-desc "make own help from lib/daddygongon/files"
-task :my_help do
-  exe_cont="#!/usr/bin/env ruby\n"
-  user_name = 'daddygongon'
-  p entries=Dir.entries(File.join('.','lib',user_name))[2..-1]
-  entries.each{|file|
-    p file
-    p file_name=file.split('_')
-    target_files = [file, file_name[0][0]+"_"+file_name[1][0]]
-    p cont_name = File.join('lib',user_name,file)
-    exe_cont << "require 'my_help'\n"
-    exe_cont << "help_file = File.expand_path(\"../../#{cont_name}\", __FILE__)\n"
-    exe_cont << "MyHelp::Command.run(help_file, ARGV)\n"
-    target_files.each{|name|
-      p ''
-      p target=File.join('exe',name)
-      File.open(target,'w'){|file|
-        print exe_cont
-        file.print exe_cont
+    def make_help
+      Dir.entries(@target_dir)[2..-1].each{|file|
+        next if file[0]=='#' or file[-1]=='~'
+        exe_cont="#!/usr/bin/env ruby\nrequire 'specific_help'\n"
+        exe_cont << "help_file = File.join(ENV['HOME'],'.my_help','#{file}')\n"
+        exe_cont << "SpecificHelp::Command.run(help_file, ARGV)\n"
+        [file, short_name(file)].each{|name|
+          p target=File.join('exe',name)
+          File.open(target,'w'){|file| file.print exe_cont}
+          FileUtils.chmod('a+x', target, :verbose => true)
+        }
       }
-      FileUtils.chmod('a+x', target, :verbose => true)
-    }
-  }
-end
+      install_local
+    end
+
+    def install_local
+      #中略
+      system "git add -A"
+      system "git commit -m 'update exe dirs'"
+      system "Rake install:local"
+    end
+
 ```
 
 実装方法は，emacs_helpに
