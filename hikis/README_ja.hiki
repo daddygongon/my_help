@@ -65,23 +65,21 @@ Specific help file:
   emacs_help
   test_help
 >>>
-これで，CUIでemacs_help, e_h, test_help, t_hが用意されています．少し振る舞いに慣れてください．
+これで，CUIでemacs_help, e_h, template_help, t_hが用意されています．少し振る舞いに慣れてください．
 
 !!独自のhelpを作る方法
 さて，独自のhelpを作る方法です．まずは，
 
 <<<
 bob%  bundle exec exe/my_help -i new_help
-"/usr/local/lib/ruby/gems/2.2.0/gems/my_help-0.2.1/lib/daddygongon"
-["-i", "new_help"]
-"/usr/local/lib/ruby/gems/2.2.0/gems/my_help-0.2.1/lib/daddygongon/new_help"
-"/usr/local/lib/ruby/gems/2.2.0/gems/my_help-0.2.1/lib/my_help/template_help"
-cp /usr/local/lib/ruby/gems/2.2.0/gems/my_help-0.2.1/lib/my_help/template_help 
-  /usr/local/lib/ruby/gems/2.2.0/gems/my_help-0.2.1/lib/daddygongon/new_help
+"/Users/bob/.my_help/new_help"
+"/Users/bob/Github/my_help/lib/daddygongon/template_help"
+cp /Users/bob/Github/my_help/lib/daddygongon/template_help /Users/bob/.my_help/new_help
 >>>
 で，new_helpというtemplateが用意されます．-e new_helpで編集してください．そのあと，-mすると自動でnew_helpがexeディレクトリーに追加されます．
 
 !!独自helpを使えるように
+(これは，-mで自動的に行われるように修正されています)
 最後，my_helpのdirectoryで
 <<<
  git add -A

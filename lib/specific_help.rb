@@ -12,8 +12,11 @@ module SpecificHelp
     end
 
     def initialize(file,argv=[])
+      @source_file = file
       @help_cont = YAML.load(File.read(file))
-      @help_cont[:head].each{|line| print line }
+      @help_cont[:head].each{|line| print line.chomp+"\n" }
+      @help_cont[:license].each{|line| print line } if @help_cont[:license] != nil
+      print "---\n" #separater
       @argv = argv
     end
 
@@ -25,24 +28,29 @@ module SpecificHelp
           puts opt.ver
         }
         @help_cont.each_pair{|key,val|
-          next if key==:head
+          next if key==:head or key==:license
           opts = val[:opts]
           opt.on(opts[:short],opts[:long],opts[:desc]) {disp_from_help_cont(key)}
         }
+        opt.on('--edit','edit help contents'){edit_help}
         opt.on('--to_hiki','convert to hikidoc format'){to_hiki}
       end
 #      begin
-        command_parser.parse!(@argv)
+      command_parser.parse!(@argv)
 #      rescue=> eval
 #       p eval
 #      end
       exit
     end
 
+    def edit_help
+      system("emacs #{@source_file}")
+    end
+
     def to_hiki
       puts '<<<'
       @help_cont.each_pair{|key,val|
-        if key==:head
+        if key==:head or key==:license
           disp(val)
         else
           items =@help_cont[key]

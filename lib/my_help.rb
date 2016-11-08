@@ -38,9 +38,9 @@ module MyHelp
           opt.version = MyHelp::VERSION
           puts opt.ver
         }
-        opt.on('-l', '--list', '個別(specific)ヘルプのList表示.'){list_helps}
-        opt.on('-e NAME', '--edit NAME', 'NAME(例：test_help)をEdit編集.'){|file| edit_help(file)}
-        opt.on('-i NAME', '--init NAME', 'NAME(例：test_help)のtemplateを作成.'){|file| init_help(file)}
+        opt.on('-l', '--list', 'list specific helps'){list_helps}
+        opt.on('-e NAME', '--edit NAME', 'edit NAME help(eg test_help)'){|file| edit_help(file)}
+        opt.on('-i NAME', '--init NAME', 'initialize NAME help(eg test_help).'){|file| init_help(file)}
         opt.on('-m', '--make', 'make executables for all helps.'){make_help}
         opt.on('-c', '--clean', 'clean up exe dir.'){clean_exe}
         opt.on('--install_local','install local after edit helps'){install_local}
@@ -56,12 +56,14 @@ module MyHelp
     def install_local
       Dir.chdir(File.expand_path('../..',@source_dir))
       p pwd_dir = Dir.pwd
-      # check that the working dir should not the gem installed dir
+      # check that the working dir should not the gem installed dir,
+      # which destroys itself.
       inst_dir="USER INSTALLATION DIRECTORY:"
       status, stdout, stderr = systemu "gem env|grep '#{inst_dir}'"
       p system_inst_dir = stdout.split(': ')[1].chomp
       if pwd_dir == system_inst_dir
-        "download my_help from github, and using bundle for edit helps"
+        puts "Download my_help from github, and using bundle for edit helps\n"
+        puts "Read README in detail.\n"
         exit
       end
       system "git add -A"
@@ -86,6 +88,7 @@ module MyHelp
           FileUtils.chmod('a+x', target, :verbose => true)
         }
       }
+      install_local
     end
 
     def clean_exe
@@ -121,7 +124,7 @@ module MyHelp
         next if file[0]=='#' or file[-1]=='~'
         file_path=File.join(@target_dir,file)
         help_cont = YAML.load(File.read(file_path))
-        print "  #{file}\t:#{help_cont[:head][0][0..-1]}"
+        print "  #{file}\t:#{help_cont[:head][0][0..-1]}\n"
       }
     end
   end
