@@ -29,7 +29,7 @@ module SpecificHelp
         @help_cont.each_pair{|key,val|
           next if key==:head or key==:license
           opts = val[:opts]
-          opt.on(opts[:short],opts[:long],opts[:desc]) {disp_from_help_cont(key)}
+          opt.on(opts[:short],opts[:long],opts[:desc]) {disp_help(key)}
         }
         opt.on('--edit','edit help contents'){edit_help}
         opt.on('--to_hiki','convert to hikidoc format'){to_hiki}
@@ -49,29 +49,37 @@ module SpecificHelp
     def to_hiki
       @help_cont.each_pair{|key,val|
         if key==:head or key==:license
-          disp(val)
+          hiki_disp(val)
         else
-          disp_from_help_cont(key)
+          hiki_help(key)
         end
       }
     end
 
-    def disp(lines)
-      lines.each{|line|
-        puts "  *#{line}"
-      }
+    def hiki_help(key_word)
+      items =@help_cont[key_word]
+      puts "\n!!"+items[:title]+"\n"
+      hiki_disp(items[:cont])
     end
 
-    def print_separater
-      print "---\n"
+    def hiki_disp(lines)
+      lines.each{|line| puts "*#{line}"}
     end
 
-    def disp_from_help_cont(key_word)
+    def disp_help(key_word)
       print_separater
       items =@help_cont[key_word]
       puts items[:title]
       disp(items[:cont])
       print_separater
+    end
+
+    def disp(lines)
+      lines.each{|line| puts "  *#{line}"}
+    end
+
+    def print_separater
+      print "---\n"
     end
   end
 end

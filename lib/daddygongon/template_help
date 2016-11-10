@@ -1,10 +1,12 @@
+# -*- coding: utf-8 -*-
 ---
 #start header, which appears every time.
 :head:         #never change
 - ヘルプのサンプル雛形               #describe the contents breafly.
 - "  headに常に表示される内容を記述" #head '- ' is necessary
-:license:         #never change
-- "     cc by Shigeto R. Nishitani, 2016"  #show licence
+:license:
+- "     cc by Shigeto R. Nishitani, 2016"
+
 # start the first item
 :item:         #change snake word
   :opts:          #never change
@@ -14,16 +16,16 @@
   :title: 単元  #describe what for in each help
   :cont:              #the following lines are appeared.
   - c-f, move Forwrard,    前or右へ  #top '  - ' are necessary for yaml format
-  - フォーマットは自由です. 
+  - フォーマットは自由です.
 
 # start the second item... and so on.
-:item2: 
-  :opts: 
-    :short: -j
-    :long: --item2
-    :desc: 単元2(item2)
-  :title: 単元2
+:item2: #text here too
+  :opts:
+    :short: -char
+    :long: --word
+    :desc: text
+  :title: text
   :cont:
-  - c-f, move Forwrard,    前or右へ
-  - フォーマットは自由です. 
+  - text
+
 
