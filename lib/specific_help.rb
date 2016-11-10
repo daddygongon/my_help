@@ -16,7 +16,6 @@ module SpecificHelp
       @help_cont = YAML.load(File.read(file))
       @help_cont[:head].each{|line| print line.chomp+"\n" }
       @help_cont[:license].each{|line| print line } if @help_cont[:license] != nil
-      print "---\n" #separater
       @argv = argv
     end
 
@@ -48,29 +47,31 @@ module SpecificHelp
     end
 
     def to_hiki
-      puts '<<<'
       @help_cont.each_pair{|key,val|
         if key==:head or key==:license
           disp(val)
         else
-          items =@help_cont[key]
-          puts items[:title]
-          disp(items[:cont])
+          disp_from_help_cont(key)
         end
       }
-      puts '>>>'
     end
 
     def disp(lines)
       lines.each{|line|
-        puts "  #{line}"
+        puts "  *#{line}"
       }
     end
 
+    def print_separater
+      print "---\n"
+    end
+
     def disp_from_help_cont(key_word)
+      print_separater
       items =@help_cont[key_word]
       puts items[:title]
       disp(items[:cont])
+      print_separater
     end
   end
 end
