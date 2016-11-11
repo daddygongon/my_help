@@ -14,6 +14,15 @@ task :yard => [:hiki2md] do
   YARD::Rake::YardocTask.new
 end
 
+desc "clean up exe dir"
+task :clean_exe do
+  files = Dir.entries('exe')
+  files.each{|file|
+    next if ["my_help",".","..",".DS_Store"].include?(file)
+    FileUtils.rm(File.join('./exe',file), :verbose=>true)
+  }
+end
+
 desc "transfer hikis/*.hiki to wiki"
 task :hiki2md do
   files = Dir.entries('hikis')
