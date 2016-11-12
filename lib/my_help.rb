@@ -53,12 +53,12 @@ module MyHelp
       exit
     end
 
+    INST_DIR="USER INSTALLATION DIRECTORY:"
     def install_local
       Dir.chdir(File.expand_path('../..',@source_dir))
       p pwd_dir = Dir.pwd
       # check that the working dir should not the gem installed dir,
       # which destroys itself.
-      INST_DIR="USER INSTALLATION DIRECTORY:"
       status, stdout, stderr = systemu "gem env|grep '#{INST_DIR}'"
       p system_inst_dir = stdout.split(': ')[1].chomp
       if pwd_dir == system_inst_dir
