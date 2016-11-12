@@ -15,7 +15,7 @@ module SpecificHelp
       @source_file = file
       @help_cont = YAML.load(File.read(file))
       @help_cont[:head].each{|line| print line.chomp+"\n" }
-      @help_cont[:license].each{|line| print line } if @help_cont[:license] != nil
+      @help_cont[:license].each{|line| print "#{line.chomp}\n" } if @help_cont[:license] != nil
       @argv = argv
     end
 
