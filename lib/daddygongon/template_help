@@ -21,11 +21,13 @@
 # start the second item... and so on.
 :item2: #text here too
   :opts:
-    :short: -char
+    :short: -c
     :long: --word
     :desc: text
   :title: text
   :cont:
-  - text
+  - |
+  text line0
+  text line1
 
 

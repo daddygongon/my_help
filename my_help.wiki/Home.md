@@ -30,7 +30,8 @@ commandや文法を覚えるのに苦労します．少しのkey(とっかかり
 hikiでやろうとしていることの半分くらいはこのあたりのことなの
 かもしれません．memoソフトでは，検索が必要となりますが，my_helpは
 key(記憶のとっかかり)を提供することが目的です．
-RPGで，レベル上げとかアイテムを貯めるようにして，プログラミングスキルを発展させてください．
+RPGでレベル上げとかアイテムを貯めるようにして，
+プログラミングでスキルを発展させてください．
 
 物覚えの悪い作者は，人の名前をitem分けして，こそっと使っています．
 
@@ -169,10 +170,30 @@ gem uninstall emacs_help
 今の所，No.1の方を実装．No.2のためのhushデータは，
 
 ```ruby
+# -*- coding: utf-8 -*-
 require 'yaml'
 require 'pp'
+yaml =<<EOF
+:file:
+  :opts:
+    :short: "-f"
+  :cont:
+  - c-x c-f, Find file, ファイルを開く
+  - c-x c-s, Save file, ファイルを保存
+EOF
+pp data=YAML.load(yaml)
+print YAML.dump(data)
 
-pp YAML.load(File.read(ARGV[0]))
+
+data0={:file=>
+  {:opts=>{:short=>"-f", :long=>"--ファイル", :desc=>"File操作"},
+   :title=>"ファイル操作file",
+   :cont=>
+    ["c-x c-f, Find file, ファイルを開く
+     c-x c-s, Save file, ファイルを保存
+     c-x c-w, Write file NAME, ファイルを別名で書き込む"]}}
+
+print YAML.dump(data0)
 ```
 
 ```
