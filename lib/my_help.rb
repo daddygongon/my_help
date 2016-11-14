@@ -16,18 +16,18 @@ module MyHelp
 
     def initialize(argv=[])
       @argv = argv
-      @source_dir = File.expand_path("../../lib/daddygongon", __FILE__)
-      @target_dir = File.join(ENV['HOME'],'.my_help')
+      @default_help_dir = File.expand_path("../../lib/daddygongon", __FILE__)
+      @local_help_dir = File.join(ENV['HOME'],'.my_help')
       set_help_dir_if_not_exists
     end
 
     def set_help_dir_if_not_exists
-      return if File::exists?(@target_dir)
-      FileUtils.mkdir_p(@target_dir, :verbose=>true)
-      Dir.entries(@source_dir).each{|file|
-        file_path=File.join(@target_dir,file)
+      return if File::exists?(@local_help_dir)
+      FileUtils.mkdir_p(@local_help_dir, :verbose=>true)
+      Dir.entries(@default_help_dir).each{|file|
+        file_path=File.join(@local_help_dir,file)
         next if File::exists?(file_path)
-        FileUtils.cp((File.join(@source_dir,file)),@target_dir,:verbose=>true)
+        FileUtils.cp((File.join(@default_help_dir,file)),@local_help_dir,:verbose=>true)
       }
     end
 
@@ -44,6 +44,7 @@ module MyHelp
         opt.on('-m', '--make', 'make executables for all helps.'){make_help}
         opt.on('-c', '--clean', 'clean up exe dir.'){clean_exe}
         opt.on('--install_local','install local after edit helps'){install_local}
+        opt.on('--delete NAME','delete NAME help'){|file| delete_help(file)}
       end
       begin
         command_parser.parse!(@argv)
@@ -53,9 +54,21 @@ module MyHelp
       exit
     end
 
+    def delete_help(file)
+      del_files=[]
+      del_files << File.join(@local_help_dir,file)
+       exe_dir=File.join(File.expand_path('../..',@default_help_dir),'exe')
+       del_files << File.join(exe_dir,file)
+      p del_files << File.join(exe_dir,short_name(file))
+      print "Are you sure to delete these files?[yes]"
+      if gets.chomp=='yes' then
+        del_files.each{|file| FileUtils.rm(file,:verbose=>true)}
+      end
+    end
+
     INST_DIR="USER INSTALLATION DIRECTORY:"
     def install_local
-      Dir.chdir(File.expand_path('../..',@source_dir))
+      Dir.chdir(File.expand_path('../..',@default_help_dir))
       p pwd_dir = Dir.pwd
       # check that the working dir should not the gem installed dir,
       # which destroys itself.
@@ -77,7 +90,7 @@ module MyHelp
     end
 
     def make_help
-      Dir.entries(@target_dir)[2..-1].each{|file|
+      Dir.entries(@local_help_dir)[2..-1].each{|file|
         next if file[0]=='#' or file[-1]=='~'
         exe_cont="#!/usr/bin/env ruby\nrequire 'specific_help'\n"
         exe_cont << "help_file = File.join(ENV['HOME'],'.my_help','#{file}')\n"
@@ -92,7 +105,7 @@ module MyHelp
     end
 
     def clean_exe
-      Dir.entries(@target_dir)[2..-1].each{|file|
+      Dir.entries(@local_help_dir)[2..-1].each{|file|
         next if file[0]=='#' or file[-1]=='~'
         next if file.include?('emacs_help') or file.include?('e_h')
         next if file.include?('template_help') or file.include?('t_h')
@@ -104,25 +117,25 @@ module MyHelp
     end
 
     def init_help(file)
-      p target_help=File.join(@target_dir,file)
+      p target_help=File.join(@local_help_dir,file)
       if File::exists?(target_help)
         puts "File exists. rm it first to initialize it."
         exit
       end
-      p template = File.join(@source_dir,'template_help')
+      p template = File.join(@default_help_dir,'template_help')
       FileUtils::Verbose.cp(template,target_help)
     end
 
     def edit_help(file)
-      p target_help=File.join(@target_dir,file)
+      p target_help=File.join(@local_help_dir,file)
       system "emacs #{target_help}"
     end
 
     def list_helps
       print "Specific help file:\n"
-      Dir.entries(@target_dir)[2..-1].each{|file|
+      Dir.entries(@local_help_dir)[2..-1].each{|file|
         next if file[0]=='#' or file[-1]=='~'
-        file_path=File.join(@target_dir,file)
+        file_path=File.join(@local_help_dir,file)
         help_cont = YAML.load(File.read(file_path))
         print "  #{file}\t:#{help_cont[:head][0][0..-1]}\n"
       }

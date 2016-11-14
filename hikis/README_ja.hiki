@@ -59,6 +59,7 @@ Usage: my_help [options]
     -m, --make                       make executables for all helps.
     -c, --clean                      clean up exe dir.
         --install_local              install local after edit helps
+        --delete NAME                delete NAME help
 >>>
 です．まず，-lでdefaultで入っているリストを見てください．
 
@@ -68,9 +69,8 @@ bob%  bundle exec exe/my_help -l
 ["-l"]
 Specific help file:
   emacs_help
-  test_help
 >>>
-これで，CUIでemacs_help, e_h, template_help, t_hが用意されています．少し振る舞いに慣れてください．
+これで，CUIでemacs_help, e_hが用意されています．少し振る舞いに慣れてください．
 
 !!独自のhelpを作る方法
 さて，独自のhelpを作る方法です．まずは，
