@@ -33,6 +33,7 @@ module SpecificHelp
         }
         opt.on('--edit','edit help contents'){edit_help}
         opt.on('--to_hiki','convert to hikidoc format'){to_hiki}
+        opt.on('--all','display all helps'){all_help}
       end
 #      begin
       command_parser.parse!(@argv)
@@ -52,6 +53,16 @@ module SpecificHelp
           hiki_disp(val)
         else
           hiki_help(key)
+        end
+      }
+    end
+
+    def all_help
+      @help_cont.each_pair{|key,val|
+        if key==:head or key==:license
+          disp(val)
+        else
+          disp_help(key)
         end
       }
     end
