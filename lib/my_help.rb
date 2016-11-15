@@ -137,7 +137,7 @@ module MyHelp
       entries= []
       Dir.entries(@local_help_dir).each{|file|
         next unless file.include?('_')
-        next if file[0]=='#' or file[-1]=='~'
+        next if file[0]=='#' or file[-1]=='~' or file[0]=='.'
         entries << file
       }
       return entries
