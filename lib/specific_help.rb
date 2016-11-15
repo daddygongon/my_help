@@ -3,7 +3,6 @@ require "optparse"
 require "yaml"
 require "my_help/version"
 
-
 module SpecificHelp
   class Command
 
@@ -34,6 +33,9 @@ module SpecificHelp
         opt.on('--edit','edit help contents'){edit_help}
         opt.on('--to_hiki','convert to hikidoc format'){to_hiki}
         opt.on('--all','display all helps'){all_help}
+        opt.on('--store [item]','store [item] in back'){|item| store_item(item)}
+        opt.on('--remove [item]','remove [item] in back'){|item| remove_item(item)}
+        opt.on('--add_item','add new item'){add_item}
       end
 #      begin
       command_parser.parse!(@argv)
@@ -41,6 +43,35 @@ module SpecificHelp
 #       p eval
 #      end
       exit
+    end
+
+    def mk_backup_file(file)
+      path = File.dirname(file)
+      base = File.basename(file)
+      backup= File.join(path,"."+base)
+      FileUtils.touch(backup) unless File.exists?(backup)
+      return backup
+    end
+
+    def store_item(item)
+      backup=mk_backup_file(@source_file)
+      store_item = @help_cont[item.to_sym]
+      p store_name = item+"_"+Time.now.strftime("%Y%m%d_%H%M%S")
+      cont = {store_name.to_sym => store_item}
+      File.open(backup,'a'){|file| file.print(YAML.dump(cont))}
+    end
+
+    def add_item
+      new_item={:opts=>{:short=>"-n", :long=>"--new_item", :desc=>"new item"},
+          :title=>"new_item", :cont=> ["new cont"]}
+      @help_cont[:new_item]=new_item
+      File.open(@source_file,'w'){|file| file.print YAML.dump(@help_cont)}
+    end
+
+    def remove_item(item)
+      store_item(item)
+      @help_cont.delete(item.to_sym)
+      File.open(@source_file,'w'){|file| file.print YAML.dump(@help_cont)}
     end
 
     def edit_help

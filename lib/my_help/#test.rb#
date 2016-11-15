@@ -5,13 +5,13 @@ yaml =<<EOF
 :file:
   :opts:
     :short: "-f"
-    :long: "--ãƒ•ã‚¡ã‚¤ãƒ«"
-    :desc: Fileæ“ä½œ
-  :title: ãƒ•ã‚¡ã‚¤ãƒ«æ“ä½œfile
+    :long: "--’¥Õ’¥¡’¥¤’¥ë"
+    :desc: File’Áà’ºî
+  :title: ’¥Õ’¥¡’¥¤’¥ë’Áà’ºîfile
   :cont:
-  - c-x c-f, Find file, ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‹ã
-  - c-x c-s, Save file, ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä¿å­˜
-  - c-x c-w, Write file NAME, ãƒ•ã‚¡ã‚¤ãƒ«ã‚’åˆ¥åã§æ›¸ãè¾¼ã‚€
+  - c-x c-f, Find file, ’¥Õ’¥¡’¥¤’¥ë’¤ò’³«’¤¯
+  - c-x c-s, Save file, ’¥Õ’¥¡’¥¤’¥ë’¤ò’ÊÝ’Â¸
+  - c-x c-w, Write file NAME, ’¥Õ’¥¡’¥¤’¥ë’¤ò’ÊÌ’Ì¾’¤Ç’½ñ’¤­’¹þ’¤à
 EOF
 pp data=YAML.load(yaml)
 print YAML.dump(data)
