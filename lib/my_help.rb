@@ -138,6 +138,7 @@ module MyHelp
       }
       return entries
     end
+
     def list_helps
       print "Specific help file:\n"
       local_help_entries.each{|file|
