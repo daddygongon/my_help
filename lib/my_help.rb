@@ -135,6 +135,7 @@ module MyHelp
       print "Specific help file:\n"
       Dir.entries(@local_help_dir)[2..-1].each{|file|
         next if file[0]=='#' or file[-1]=='~'
+        next unless file.include?('_')
         file_path=File.join(@local_help_dir,file)
         help_cont = YAML.load(File.read(file_path))
         print "  #{file}\t:#{help_cont[:head][0][0..-1]}\n"
