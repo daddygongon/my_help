@@ -90,8 +90,7 @@ module MyHelp
     end
 
     def make_help
-      Dir.entries(@local_help_dir)[2..-1].each{|file|
-        next if file[0]=='#' or file[-1]=='~'
+      local_help_entries.each{|file|
         exe_cont="#!/usr/bin/env ruby\nrequire 'specific_help'\n"
         exe_cont << "help_file = File.join(ENV['HOME'],'.my_help','#{file}')\n"
         exe_cont << "SpecificHelp::Command.run(help_file, ARGV)\n"
@@ -105,8 +104,7 @@ module MyHelp
     end
 
     def clean_exe
-      Dir.entries(@local_help_dir)[2..-1].each{|file|
-        next if file[0]=='#' or file[-1]=='~'
+      local_help_entries.each{|file|
         next if file.include?('emacs_help') or file.include?('e_h')
         next if file.include?('template_help') or file.include?('t_h')
         [file, short_name(file)].each{|name|
@@ -131,14 +129,21 @@ module MyHelp
       system "emacs #{target_help}"
     end
 
+    def local_help_entries
+      entries= []
+      Dir.entries(@local_help_dir).each{|file|
+        next unless file.include?('_')
+        next if file[0]=='#' or file[-1]=='~'
+        entries << file
+      }
+      return entries
+    end
     def list_helps
       print "Specific help file:\n"
-      Dir.entries(@local_help_dir)[2..-1].each{|file|
-        next if file[0]=='#' or file[-1]=='~'
-        next unless file.include?('_')
+      local_help_entries.each{|file|
         file_path=File.join(@local_help_dir,file)
-        help_cont = YAML.load(File.read(file_path))
-        print "  #{file}\t:#{help_cont[:head][0][0..-1]}\n"
+        help = YAML.load(File.read(file_path))
+        print "  #{file}\t:#{help[:head][0]}\n"
       }
     end
   end
