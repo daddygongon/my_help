@@ -66,17 +66,13 @@ module MyHelp
       end
     end
 
-    USER_INST_DIR="USER INSTALLATION DIRECTORY:"
-    INST_DIR="INSTALLATION DIRECTORY:"
+    INST_DIR="USER INSTALLATION DIRECTORY:"
     def install_local
       Dir.chdir(File.expand_path('../..',@default_help_dir))
       p pwd_dir = Dir.pwd
       # check that the working dir should not the gem installed dir,
       # which destroys itself.
-      status, stdout, stderr = systemu "gem env|grep '#{USER_INST_DIR}'"
-      if stdout==""
-        status, stdout, stderr = systemu "gem env|grep '#{INST_DIR}'"
-      end
+      status, stdout, stderr = systemu "gem env|grep '#{INST_DIR}'"
       p system_inst_dir = stdout.split(': ')[1].chomp
       if pwd_dir == system_inst_dir
         puts "Download my_help from github, and using bundle for edit helps\n"
