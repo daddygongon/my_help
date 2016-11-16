@@ -13,7 +13,7 @@ module SpecificHelp
     def initialize(file,argv=[])
       @source_file = file
       @help_cont = YAML.load(File.read(file))
-      @help_cont[:head].each{|line| print line.chomp+"\n" }
+      @help_cont[:head].each{|line| print line.chomp+"\n" } if @help_cont[:head] != nil
       @help_cont[:license].each{|line| print "#{line.chomp}\n" } if @help_cont[:license] != nil
       @argv = argv
     end
@@ -21,9 +21,9 @@ module SpecificHelp
     def execute
       if @argv.size==0
         if @source_file.include?('todo')
-          @argv << '--all' 
+          @argv << '--all'
         else
-          @argv << '--help' 
+          @argv << '--help'
         end
       end
       command_parser = OptionParser.new do |opt|
@@ -111,7 +111,7 @@ module SpecificHelp
     end
 
     def hiki_disp(lines)
-      lines.each{|line| puts "*#{line}"}
+      lines.each{|line| puts "*#{line}"}  if lines != nil
     end
 
     def disp_help(key_word)
@@ -123,7 +123,7 @@ module SpecificHelp
     end
 
     def disp(lines)
-      lines.each{|line| puts "  *#{line}"}
+      lines.each{|line| puts "  *#{line}"} if lines != nil
     end
 
     def print_separater
