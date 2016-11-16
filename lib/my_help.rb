@@ -110,7 +110,7 @@ module MyHelp
     def clean_exe
       local_help_entries.each{|file|
         next if file.include?('emacs_help') or file.include?('e_h')
-        next if file.include?('template_help') or file.include?('t_h')
+#        next if file.include?('template_help') or file.include?('t_h')
         [file, short_name(file)].each{|name|
           p target=File.join('exe',name)
           FileUtils::Verbose.rm(target)
