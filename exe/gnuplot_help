@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require 'specific_help'
+help_file = File.join(ENV['HOME'],'.my_help','gnuplot_help')
+SpecificHelp::Command.run(help_file, ARGV)
