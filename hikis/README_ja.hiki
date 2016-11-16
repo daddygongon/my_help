@@ -70,7 +70,34 @@ bob%  bundle exec exe/my_help -l
 Specific help file:
   emacs_help
 >>>
-これで，CUIでemacs_help, e_hが用意されています．少し振る舞いに慣れてください．
+これで，CUIでemacs_help, e_hが用意されています．
+
+<<<
+emacsのキーバインド
+
+特殊キー操作
+  c-f, controlキーを押しながら    'f'
+  M-f, escキーを押した後一度離して'f'
+    操作の中断c-g, 操作の取り消し(Undo) c-x u
+     cc by Shigeto R. Nishitani, 2016
+Usage: e_h [options]
+    -v, --version                    show program Version.
+    -c, --cursor                     Cursor移動
+    -e, --編集                         Edit操作
+    -f, --ファイル                       File操作
+    -q, --終了                         終了操作
+    -p, --ページ                        Page移動
+    -w, --ウィンドウ                      Window操作
+    -b, --バッファ                       Buffer操作
+    -m, --mode                       モード切り替え
+        --edit                       edit help contents
+        --to_hiki                    convert to hikidoc format
+        --all                        display all helps
+        --store [item]               store [item] in back
+        --remove [item]              remove [item] in back
+        --add [item]                 add new [item]
+>>>
+少し振る舞いに慣れてください．
 
 !!独自のhelpを作る方法
 さて，独自のhelpを作る方法です．まずは，

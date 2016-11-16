@@ -53,12 +53,13 @@ Supplied commands are
 bob%  bundle exec exe/my_help
 Usage: my_help [options]
     -v, --version                    show program Version.
-    -l, --list                       list specific help.
-    -e, --edit NAME                  edit NAME(cf test_help).
-    -i, --init NAME                  initialize NAME(cf, test_help) template.
-    -m, --make                       make and install:local all helps.
+    -l, --list                       list specific helps
+    -e, --edit NAME                  edit NAME help(eg test_help)
+    -i, --init NAME                  initialize NAME help(eg test_help).
+    -m, --make                       make executables for all helps.
     -c, --clean                      clean up exe dir.
         --install_local              install local after edit helps
+        --delete NAME                delete NAME help
 ```
 
 At first, see the list of supplied helps by the option of -l.
@@ -73,6 +74,32 @@ Specific help file:
 ```
 emacs_help, e_h, test_help, t_h are ready to use.
 Play them by a command such as 'bundle exec exe/e_h'.
+
+emacsのキーバインド
+
+```
+特殊キー操作
+  c-f, controlキーを押しながら    'f'
+  M-f, escキーを押した後一度離して'f'
+    操作の中断c-g, 操作の取り消し(Undo) c-x u
+     cc by Shigeto R. Nishitani, 2016
+Usage: e_h [options]
+    -v, --version                    show program Version.
+    -c, --cursor                     Cursor移動
+    -e, --編集                         Edit操作
+    -f, --ファイル                       File操作
+    -q, --終了                         終了操作
+    -p, --ページ                        Page移動
+    -w, --ウィンドウ                      Window操作
+    -b, --バッファ                       Buffer操作
+    -m, --mode                       モード切り替え
+        --edit                       edit help contents
+        --to_hiki                    convert to hikidoc format
+        --all                        display all helps
+        --store [item]               store [item] in back
+        --remove [item]              remove [item] in back
+        --add [item]                 add new [item]
+```
 
 ## Make own help
 The next step is making own help.  

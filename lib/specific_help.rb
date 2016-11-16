@@ -19,7 +19,13 @@ module SpecificHelp
     end
 
     def execute
-      @argv << '--help' if @argv.size==0
+      if @argv.size==0
+        if @source_file.include?('todo')
+          @argv << '--all' 
+        else
+          @argv << '--help' 
+        end
+      end
       command_parser = OptionParser.new do |opt|
         opt.on('-v', '--version','show program Version.') { |v|
           opt.version = MyHelp::VERSION
@@ -33,9 +39,9 @@ module SpecificHelp
         opt.on('--edit','edit help contents'){edit_help}
         opt.on('--to_hiki','convert to hikidoc format'){to_hiki}
         opt.on('--all','display all helps'){all_help}
-        opt.on('--store [item]','store [item] in back'){|item| store_item(item)}
-        opt.on('--remove [item]','remove [item] in back'){|item| remove_item(item)}
-        opt.on('--add_item','add new item'){add_item}
+        opt.on('--store [item]','store [item] in backfile'){|item| store(item)}
+        opt.on('--remove [item]','remove [item] and store in backfile'){|item| remove(item) }
+        opt.on('--add [item]','add new [item]'){|item| add(item) }
       end
 #      begin
       command_parser.parse!(@argv)
@@ -53,7 +59,7 @@ module SpecificHelp
       return backup
     end
 
-    def store_item(item)
+    def store(item)
       backup=mk_backup_file(@source_file)
       store_item = @help_cont[item.to_sym]
       p store_name = item+"_"+Time.now.strftime("%Y%m%d_%H%M%S")
@@ -61,15 +67,15 @@ module SpecificHelp
       File.open(backup,'a'){|file| file.print(YAML.dump(cont))}
     end
 
-    def add_item
-      new_item={:opts=>{:short=>"-n", :long=>"--new_item", :desc=>"new item"},
-          :title=>"new_item", :cont=> ["new cont"]}
-      @help_cont[:new_item]=new_item
+    def add(item='new_item')
+      new_item={:opts=>{:short=>'-'+item[0], :long=>'--'+item, :desc=>item},
+          :title=>item, :cont=> [item]}
+      @help_cont[item.to_sym]=new_item
       File.open(@source_file,'w'){|file| file.print YAML.dump(@help_cont)}
     end
 
-    def remove_item(item)
-      store_item(item)
+    def remove(item)
+      store(item)
       @help_cont.delete(item.to_sym)
       File.open(@source_file,'w'){|file| file.print YAML.dump(@help_cont)}
     end
