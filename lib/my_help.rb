@@ -2,10 +2,8 @@
 require "optparse"
 require "yaml"
 require "fileutils"
-#require "emacs_help/version"
 require "my_help/version"
 require "systemu"
-#require "emacs_help"
 
 module MyHelp
   class Command
@@ -25,6 +23,7 @@ module MyHelp
       return if File::exists?(@local_help_dir)
       FileUtils.mkdir_p(@local_help_dir, :verbose=>true)
       Dir.entries(@default_help_dir).each{|file|
+        next if file=='template_help'
         file_path=File.join(@local_help_dir,file)
         next if File::exists?(file_path)
         FileUtils.cp((File.join(@default_help_dir,file)),@local_help_dir,:verbose=>true)
@@ -110,7 +109,7 @@ module MyHelp
     def clean_exe
       local_help_entries.each{|file|
         next if file.include?('emacs_help') or file.include?('e_h')
-#        next if file.include?('template_help') or file.include?('t_h')
+        next if file.include?('git_help') or file.include?('t_h')
         [file, short_name(file)].each{|name|
           p target=File.join('exe',name)
           FileUtils::Verbose.rm(target)

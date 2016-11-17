@@ -19,7 +19,7 @@ task :clean_exe do
   files = Dir.entries('exe')
   files.each{|file|
     next if ["my_help",".","..",".DS_Store",
-             "emacs_help","e_h"].include?(file)
+             "emacs_help","e_h","git_help"].include?(file)
     FileUtils.rm(File.join('./exe',file), :verbose=>true)
   }
 end

@@ -26,8 +26,8 @@
     :desc: text
   :title: text
   :cont:
-  - |
-  text line0
-  text line1
+  - text line0
+  - text line1
+
 
 
