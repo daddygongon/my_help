@@ -114,8 +114,7 @@ YAML形式で，格納されています．サンプルが，
 にあります．このあと，-mすると自動でnew_helpがexeディレクトリーに追加されます．
 
 !!独自helpを使えるように
-(これは，-mで自動的に行われるように修正されています)
-最後，my_helpのdirectoryで
+これは，-mで自動的に行われるように修正しましたが，gem環境によっては正常にinstallできません．その場合は，いかにしたがって，手動で/usr/local/binなどにinstallする必要があります．my_helpのdirectoryで
 <<<
  git add -A
  git commit -m 'add new help'
