@@ -2,6 +2,7 @@
 require "optparse"
 require "yaml"
 require "my_help/version"
+require 'fileutils'
 
 module SpecificHelp
   class Command
