@@ -149,6 +149,7 @@ module MyHelp
       local_help_entries.each{|file|
         file_path=File.join(@local_help_dir,file)
         help = YAML.load(File.read(file_path))
+        file = File.basename(file,'.yml')
         print "  #{file}\t:#{help[:head][0]}\n"
       }
     end
