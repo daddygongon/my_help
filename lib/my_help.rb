@@ -109,8 +109,7 @@ module MyHelp
 
     def clean_exe
       local_help_entries.each{|file|
-        next if file.include?('emacs_help') or file.include?('e_h')
-        next if file.include?('git_help') or file.include?('t_h')
+        next if ['emacs_help','e_h','todo_help','git_help'].include?(file)
         file = File.basename(file,'.yml')
         [file, short_name(file)].each{|name|
           p target=File.join('exe',name)
