@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 require 'specific_help'
-help_file = File.join(ENV['HOME'],'.my_help','ruby_help')
+help_file = File.join(ENV['HOME'],'.my_help','ruby_help.yml')
 SpecificHelp::Command.run(help_file, ARGV)

@@ -9,6 +9,18 @@ task :default do
   system 'rake -T'
 end
 
+desc "add .yml on all help files"
+task :to_yml do
+  p Dir.chdir(File.join(ENV['HOME'],'.my_help'))
+  Dir.entries('.').each{|file|
+    next if file == '.' or file=='..'
+    next if file[0]=='#' or file[-1]=='~'
+    next unless File.extname(file)==''
+    #FileUtils::DryRun.mv(file, file+'.yml',:verbose=>true)
+    FileUtils.mv(file, file+'.yml',:verbose=>true)
+  }
+end
+
 desc "make documents by yard"
 task :yard => [:hiki2md] do
   YARD::Rake::YardocTask.new

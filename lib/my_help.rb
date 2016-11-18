@@ -97,6 +97,7 @@ module MyHelp
         exe_cont="#!/usr/bin/env ruby\nrequire 'specific_help'\n"
         exe_cont << "help_file = File.join(ENV['HOME'],'.my_help','#{file}')\n"
         exe_cont << "SpecificHelp::Command.run(help_file, ARGV)\n"
+        file = File.basename(file,'.yml')
         [file, short_name(file)].each{|name|
           p target=File.join('exe',name)
           File.open(target,'w'){|file| file.print exe_cont}
@@ -110,6 +111,7 @@ module MyHelp
       local_help_entries.each{|file|
         next if file.include?('emacs_help') or file.include?('e_h')
         next if file.include?('git_help') or file.include?('t_h')
+        file = File.basename(file,'.yml')
         [file, short_name(file)].each{|name|
           p target=File.join('exe',name)
           FileUtils::Verbose.rm(target)
