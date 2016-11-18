@@ -23,7 +23,7 @@ module MyHelp
       return if File::exists?(@local_help_dir)
       FileUtils.mkdir_p(@local_help_dir, :verbose=>true)
       Dir.entries(@default_help_dir).each{|file|
-        next if file=='template_help'
+        next if file=='template_help.yml'
         file_path=File.join(@local_help_dir,file)
         next if File::exists?(file_path)
         FileUtils.cp((File.join(@default_help_dir,file)),@local_help_dir,:verbose=>true)
@@ -125,7 +125,7 @@ module MyHelp
         puts "File exists. rm it first to initialize it."
         exit
       end
-      p template = File.join(@default_help_dir,'template_help')
+      p template = File.join(@default_help_dir,'template_help.yml')
       FileUtils::Verbose.cp(template,target_help)
     end
 
