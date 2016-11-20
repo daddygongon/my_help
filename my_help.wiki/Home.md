@@ -314,3 +314,17 @@ Removing t_h
 Removing template_help
 Successfully uninstalled my_help-0.3.2
 ```
+
+# Rakefile
+幾つかの環境設定用のtoolがRakefileに用意されている．
+```
+rake add_yml          # add .yml mode on ~/.emacs.d/init.el
+rake clean_exe        # clean up exe dir
+rake to_yml           # add .yml on all help files
+```
+add_yml, to_ymlは3.6から4.0へ移行する時に行ったhelpファイルの拡張子変更，
+3.6では拡張子なしで4.0では'.yml'，に対する対応のために用意したツール．
+add_ymlは~/.my_help/*_helpファイルを全て~/.my_help/*_help.ymlに変える．
+to_ymlは~/.emacs.d/init.elに'.yml'の設定が書き込まれていない時，ruby-modeでemacsを起動するsciptを埋め込む．
+
+clean_exeは，githubへuploadする時に，開発者個人のhelpファイルをrmして整頓する．

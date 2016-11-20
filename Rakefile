@@ -9,6 +9,22 @@ task :default do
   system 'rake -T'
 end
 
+desc "add .yml mode on ~/.emacs.d/init.el"
+task :add_yml do
+  adds = <<EOS
+;; =================
+;;  .yml auto ruby-mode 
+;; =================
+(add-to-list 'auto-mode-alist '("\\.yml$" . ruby-mode))
+EOS
+  print adds
+  p Dir.chdir(File.join(ENV['HOME'],'.emacs.d'))
+  File.open('init.el','a+'){|file|
+    cont=file.read
+    cont.include?('.yml') ? break : file.write(adds)
+  }
+end
+
 desc "add .yml on all help files"
 task :to_yml do
   p Dir.chdir(File.join(ENV['HOME'],'.my_help'))
