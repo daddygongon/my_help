@@ -43,6 +43,7 @@ module SpecificHelp
         opt.on('--store [item]','store [item] in backfile'){|item| store(item)}
         opt.on('--remove [item]','remove [item] and store in backfile'){|item| remove(item) }
         opt.on('--add [item]','add new [item]'){|item| add(item) }
+        opt.on('--backup_list [val]','show backup up last [val] list'){|val| backup_list(val.to_i)}
       end
 #      begin
       command_parser.parse!(@argv)
@@ -50,6 +51,15 @@ module SpecificHelp
 #       p eval
 #      end
       exit
+    end
+
+    def backup_list(val=10)
+      backup=mk_backup_file(@source_file)
+      File.open(backup,'r'){|file| 
+        backup_cont = YAML.load(File.read(backup))
+        p        backup_size = backup_cont.size
+#        backup_cont[-10..-1].each{|
+      }
     end
 
     def mk_backup_file(file)
