@@ -1,0 +1,100 @@
+# -*- coding: utf-8 -*-
+---
+:weekly_20161115_154621:
+  :opts:
+    :short: "-w"
+    :long: "--weekly"
+    :desc: "週間目標"
+  :title: "週間目標"
+  :cont:
+  - my todoの完成
+  - hiki2help
+  - help2hiki
+:daily_20161115_155746:
+  :opts:
+    :short: "-d"
+    :long: "--daily"
+    :desc: 今日の予定
+  :title: 今日の予定
+  :cont:
+  - my todoの完成, storeの実装
+  - 3325の作成
+:daily_20161116_090551:
+  :opts:
+    :short: "-d"
+    :long: "--daily"
+    :desc: 今日の予定
+  :title: 今日の予定
+  :cont:
+  - 学習曲線モデルの作成
+  - 2223の追加実行, xx=-3を追加(20161115完了)
+:daily_20161116_174854:
+  :opts:
+    :short: "-d"
+    :long: "--daily"
+    :desc: daily
+  :title: daily
+  :cont:
+  - 3325の計算実行, 固定latticeでの計算投入
+  - 2223の追加計算，fullrelaxが最安定とは言い難い．．．
+  - sshとRSA暗号
+  - https://users.miraclelinux.com/support/?q=node/152
+  - http://qiita.com/hotpepsi/items/128f3a660cee8b5467c6
+:daily_20161117_175058:
+  :opts:
+    :short: "-d"
+    :long: "--daily"
+    :desc: daily
+  :title: daily
+  :cont:
+  - DONE:3325の新しいmodel構築，full_relax計算実行
+  - DONE:2223の追加, x=-6, y=1..4
+  - DONE:member_help -sの晒し方, とりあえず情報共有サイトで
+  - DONE:3325の計算実行, 固定latticeでの計算結果確認=>最安定を囲えず
+  - DONE:2223の追加計算結果確認
+  - DONE:2223の追加, x=-5, y=1..4
+  - DONE:高等教育推進センター会議
+  - DONE:交通費書類提出
+  - DONE:weight_recorderのconfiguration(hamlへのinstance変数でのデータ渡しがわからんのでやめ)
+:daily_20161118_131647:
+  :opts:
+    :short: "-d"
+    :long: "--daily"
+    :desc: daily
+  :title: daily
+  :cont:
+  - donkey修正
+  - 数値計算講義
+  - ゼミ
+  - 2223の追加計算確認
+:daily_20161118_131926: 
+:weekly_20161118_152632:
+  :opts:
+    :short: "-w"
+    :long: "--weekly"
+    :desc: 週間目標
+  :title: 週間目標
+  :cont:
+  - DONE:my todoの完成, storeの実装(20161115完了)
+  - 研究室紹介(20161115着手)
+  - DONE:member_help -sの晒し方
+  - DONE:weight_recorderのconfiguration(20161116断念)
+  - my_helpを山根に，hikiutilsをなすに
+  - 私的使用マニュアル作成CUI my_helpの開発
+  - hikiutilsの改良
+  - hikiの動作確認
+  - hiki2latex or latex2hikiの先ビツの起動確認，
+  - 先ビツはhelp2hikiがいいかも．
+  - my_todoとhikiの連携
+  - faviconの作成
+:daily_20161118_171513:
+  :opts:
+    :short: "-d"
+    :long: "--daily"
+    :desc: daily
+  :title: daily
+  :cont:
+  - DONE:donkey修正
+  - DONE:数値計算講義，group grade
+  - DONE:ゼミ
+  - DONE:2223の追加計算確認
