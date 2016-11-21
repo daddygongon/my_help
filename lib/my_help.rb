@@ -130,7 +130,7 @@ module MyHelp
 
     def edit_help(file)
       p target_help=File.join(@local_help_dir,file)
-      system "emacs #{target_help}"
+      system "emacs #{target_help}.yml"
     end
 
     def local_help_entries

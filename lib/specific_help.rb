@@ -82,7 +82,9 @@ module SpecificHelp
       store_item = @help_cont[item.to_sym]
       p store_name = item+"_"+Time.now.strftime("%Y%m%d_%H%M%S")
       cont = {store_name.to_sym => store_item}
-      File.open(backup,'a'){|file| file.print(YAML.dump(cont))}
+      backup_cont=YAML.load(File.read(backup))
+      backup_cont[store_name.to_sym]=store_item
+      File.open(backup,'w'){|file| file.print(YAML.dump(backup_cont))}
     end
 
     def add(item='new_item')
