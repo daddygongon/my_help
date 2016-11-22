@@ -79,7 +79,7 @@ module SpecificHelp
 
     def store(item)
       backup=mk_backup_file(@source_file)
-      if store_item = @help_cont[item.to_sym] then
+      unless store_item = @help_cont[item.to_sym] then
         print "No #{item} in this help.  The items are following...\n"
         keys = @help_cont.keys
         keys.each{|key|
