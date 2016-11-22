@@ -45,11 +45,11 @@ module SpecificHelp
         opt.on('--add [item]','add new [item]'){|item| add(item) }
         opt.on('--backup_list [val]','show last [val] backup list'){|val| backup_list(val)}
       end
-#      begin
+      begin
       command_parser.parse!(@argv)
-#      rescue=> eval
-#       p eval
-#      end
+      rescue=> eval
+       p eval
+      end
       exit
     end
 
@@ -79,7 +79,14 @@ module SpecificHelp
 
     def store(item)
       backup=mk_backup_file(@source_file)
-      store_item = @help_cont[item.to_sym]
+      unless store_item = @help_cont[item.to_sym] then
+        print "No #{item} in this help.  The items are following...\n"
+        keys = @help_cont.keys
+        keys.each{|key|
+          p key
+        }
+        exit
+      end
       p store_name = item+"_"+Time.now.strftime("%Y%m%d_%H%M%S")
       cont = {store_name.to_sym => store_item}
       backup_cont=YAML.load(File.read(backup))

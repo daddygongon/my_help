@@ -147,8 +147,16 @@ module MyHelp
       print "Specific help file:\n"
       local_help_entries.each{|file|
         file_path=File.join(@local_help_dir,file)
-        help = YAML.load(File.read(file_path))
         file = File.basename(file,'.yml')
+        begin
+          help = YAML.load(File.read(file_path))
+        rescue=> eval
+          p eval
+          print "\n YAML load error in #{file}."
+          print "  See the line shown above and revise by\n"
+          print "  emacs #{file_path}\n"
+          exit
+        end
         print "  #{file}\t:#{help[:head][0]}\n"
       }
     end
