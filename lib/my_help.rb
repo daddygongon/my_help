@@ -119,7 +119,7 @@ module MyHelp
     end
 
     def init_help(file)
-      p target_help=File.join(@local_help_dir,file)
+      p target_help=File.join(@local_help_dir,file+'.yml')
       if File::exists?(target_help)
         puts "File exists. rm it first to initialize it."
         exit
