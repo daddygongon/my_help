@@ -327,4 +327,4 @@ add_yml, to_ymlは3.6から4.0へ移行する時に行ったhelpファイルの�
 add_ymlは~/.my_help/*_helpファイルを全て~/.my_help/*_help.ymlに変える．
 to_ymlは~/.emacs.d/init.elに'.yml'の設定が書き込まれていない時，ruby-modeでemacsを起動するsciptを埋め込む．
 
-clean_exeは，githubへuploadする時に，開発者個人のhelpファイルをrmして整頓する．
+clean_exeは，githubへuploadする時に，開発者個人のexeファイルをrmして整頓する．
