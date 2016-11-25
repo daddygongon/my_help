@@ -9,6 +9,17 @@ task :default do
   system 'rake -T'
 end
 
+desc "auto re-install"
+task :auto_reinstall do
+  puts "gem uninstall my_help"
+  puts "cd my_help"
+  puts "git remote add upstrem git@github.com:daddygongon/my_help.git"
+  puts "git pull upstrem master"
+  puts "rake clean_exe"
+  puts "bundle exec exe/my_help -m"
+  puts "source ~/.zshrc"
+end
+
 desc "add .yml mode on ~/.emacs.d/init.el"
 task :add_yml do
   adds = <<EOS
