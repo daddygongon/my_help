@@ -46,9 +46,9 @@ module SpecificHelp
         opt.on('--backup_list [val]','show last [val] backup list'){|val| backup_list(val)}
       end
       begin
-      command_parser.parse!(@argv)
+        command_parser.parse!(@argv)
       rescue=> eval
-       p eval
+        p eval
       end
       exit
     end
@@ -64,7 +64,8 @@ module SpecificHelp
         backup_keys = backup_cont.keys
         backup_keys.reverse.each_with_index{|item,i|
           break if i>=backup_size
-          print item.to_s+"\n"
+          line = item.to_s.split('_')
+          printf("%10s : %8s%8s\n",line[0],line[1],line[2])
         }
       }
     end
@@ -78,6 +79,12 @@ module SpecificHelp
     end
 
     def store(item)
+      if item==nil
+        print "spcify --store [item].\n"
+        exit
+      else
+        print "Trying to store #{item}\n"
+      end
       backup=mk_backup_file(@source_file)
       unless store_item = @help_cont[item.to_sym] then
         print "No #{item} in this help.  The items are following...\n"
@@ -95,6 +102,7 @@ module SpecificHelp
     end
 
     def add(item='new_item')
+      print "Trying to add #{item}\n"
       new_item={:opts=>{:short=>'-'+item[0], :long=>'--'+item, :desc=>item},
           :title=>item, :cont=> [item]}
       @help_cont[item.to_sym]=new_item
@@ -102,6 +110,7 @@ module SpecificHelp
     end
 
     def remove(item)
+      print "Trying to remove #{item}\n"
       store(item)
       @help_cont.delete(item.to_sym)
       File.open(@source_file,'w'){|file| file.print YAML.dump(@help_cont)}

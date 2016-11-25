@@ -14,29 +14,17 @@
   :title: "my_helpのinstall"
   :cont:
   - "[sudo] gem uninstall my_help"
-  - "自分[hogehoge]のgithubにある古いmy_helpをdelete"
-  - "Fork from https://github.com/daddygongon/my_help"
-  - "git clone git@github.com:[hogehoge]/my_help.git"
   - "cd my_help"
-  - "[sudo] bundle exec exe/my_help -c"
+  - "git remote add upstrem git@github.com:daddygongon/my_help.git"
+  - "git pull upstrem master"
+  - "rake to_yml"
+  - "rake clean_exe"
   - "[sudo] bundle exec exe/my_help -m"
-  - "新しいterminalを開ける"
+  - "source ~/.zshrc or source ~/.cshrc"
   - "my_help -l"
-
-:restart: #text here too
-  :opts:
-    :short: -r
-    :long: --restart
-    :desc: 新しいhelpをmake
-  :title: "my_helpのinstall"
-  :cont:
-  - "[sudo] gem uninstall my_help"
-  - "cd my_help"
-  - "[sudo] bundle exec exe/my_help -c"
-  - "[sudo] bundle exec exe/my_help -m"
-  - "could not find expected ':' while scanning a ...がでたら"
-  - "rm ~/.my_help/template_helpを試す"
-  - "あるいはemacs ~/.my_help/template_helpでyamlを修正"
+  - "rake add_yml"
+  - "--editで編集画面を開けてみて，色が付いてなかったら，"
+  - "mv ~/.emacs ~/.emacs.d/init.elを試してみる"
 
 :make: #text here too
   :opts:
