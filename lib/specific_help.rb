@@ -79,7 +79,12 @@ module SpecificHelp
     end
 
     def store(item)
-      print "Trying to store #{item}\n"
+      if item==nil
+        print "spcify --store [item].\n"
+        exit
+      else
+        print "Trying to store #{item}\n"
+      end
       backup=mk_backup_file(@source_file)
       unless store_item = @help_cont[item.to_sym] then
         print "No #{item} in this help.  The items are following...\n"
