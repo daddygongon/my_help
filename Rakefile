@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 require "bundler/gem_tasks"
 require 'yard'
 require "rake/testtask"
@@ -11,13 +12,19 @@ end
 
 desc "auto re-install"
 task :auto_reinstall do
-  puts "gem uninstall my_help"
+  puts "[sudo] gem uninstall my_help"
   puts "cd my_help"
   puts "git remote add upstrem git@github.com:daddygongon/my_help.git"
   puts "git pull upstrem master"
   puts "rake clean_exe"
-  puts "bundle exec exe/my_help -m"
-  puts "source ~/.zshrc"
+  puts "rake to_yml"
+  puts "*cp lib/daddygongon/todo_help.yml ~/.my_help"
+  puts "[sudo] bundle exec exe/my_help -m"
+  puts "*source ~/.zshrc or source ~/.cshrc"
+  puts "*my_help -l"
+  puts "*rake add_yml"
+  puts "*--editで編集画面を開けてみて，色が付いてなかったら，"
+  puts "*mv ~/.emacs ~/.emacs.d/init.elを試してみる"
 end
 
 desc "add .yml mode on ~/.emacs.d/init.el"
