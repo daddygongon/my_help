@@ -3,6 +3,7 @@ require "optparse"
 require "yaml"
 require "my_help/version"
 require 'fileutils'
+require "coderay"
 
 module SpecificHelp
   class Command
@@ -158,7 +159,8 @@ module SpecificHelp
     end
 
     def disp(lines)
-      lines.each{|line| puts "  *#{line}"} if lines != nil
+#      lines.each{|line| puts "  *#{line}"} if lines != nil
+      lines.each{|line| puts CodeRay.scan("*#{line}", :diff).term}
     end
 
     def print_separater

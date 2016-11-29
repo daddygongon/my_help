@@ -1,13 +1,19 @@
 # -*- coding: utf-8 -*-
 require "bundler/gem_tasks"
 require 'yard'
-require "rake/testtask"
+#require "rake/testtask"
+require "rspec/core/rake_task"
 require 'fileutils'
 p base_path = File.expand_path('..', __FILE__)
 p basename = File.basename(base_path)
 
 task :default do
   system 'rake -T'
+end
+
+desc "rspec test for aruba"
+task :rspec do
+  RSpec::Core::RakeTask.new(:spec)
 end
 
 desc "auto re-install"
