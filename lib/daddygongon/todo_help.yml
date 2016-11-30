@@ -15,8 +15,8 @@
   :cont:
   - "[sudo] gem uninstall my_help"
   - "cd my_help"
-  - "git remote add upstrem git@github.com:daddygongon/my_help.git"
-  - "git pull upstrem master"
+  - "git remote add upstream git@github.com:daddygongon/my_help.git"
+  - "git pull upstream master"
   - "rake to_yml"
   - "rake clean_exe"
   - "[sudo] bundle exec exe/my_help -m"

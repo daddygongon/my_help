@@ -133,6 +133,7 @@ module SpecificHelp
     def all_help
       @help_cont.each_pair{|key,val|
         if key==:head or key==:license
+          val[0]+=":"
           disp(val)
         else
           disp_help(key)
@@ -153,14 +154,16 @@ module SpecificHelp
     def disp_help(key_word)
       print_separater
       items =@help_cont[key_word]
-      puts items[:title]
+#      puts items[:title]
+      puts CodeRay.scan(items[:title]+":", :Taskpaper).term
       disp(items[:cont])
       print_separater
     end
 
     def disp(lines)
 #      lines.each{|line| puts "  *#{line}"} if lines != nil
-      lines.each{|line| puts CodeRay.scan("*#{line}", :diff).term}
+#      lines.each{|line| puts CodeRay.scan("*#{line}", :diff).term}
+      lines.each{|line| puts CodeRay.scan("*#{line}", :Taskpaper).term}
     end
 
     def print_separater
