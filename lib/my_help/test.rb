@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 require 'yaml'
+require 'coderay'
 require 'pp'
 yaml =<<EOF
 :file:
@@ -24,3 +25,5 @@ data0={:new_item=>
     ["new cont"]}}
 
 print YAML.dump(data0)
+puts CodeRay.scan(YAML.dump(data0),:yaml).term
+puts CodeRay.scan(yaml,:yaml).term

@@ -34,5 +34,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "hiki2md"
   spec.add_development_dependency "mathjax-yard"
   spec.add_development_dependency "hiki2latex"
+  spec.add_development_dependency "rspec", "~> 3.0"
+  spec.add_development_dependency "aruba"
   spec.add_dependency "systemu"
+  spec.add_dependency "coderay"
 end
