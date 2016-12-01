@@ -161,7 +161,7 @@ module SpecificHelp
     end
 
     def disp(lines)
-#      lines.each{|line| puts "  *#{line}"} if lines != nil
+#      lines.each{|line| puts "  +#{line}"} if lines != nil
 #      lines.each{|line| puts CodeRay.scan("*#{line}", :diff).term}
       lines.each{|line| puts CodeRay.scan("+#{line}", :Taskpaper).term}
     end
