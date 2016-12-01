@@ -1,0 +1,49 @@
+# -*- coding: utf-8 -*-
+---
+:head:
+- my todo
+:daily:
+  :opts:
+    :short: "-d"
+    :long: "--daily"
+    :desc: daily
+  :title: daily
+  :cont:
+  - fixとfullrelaxを同時に作っていいやん！！いらんかったら後で消せばいい．
+  - RSpec, cucumberのPart2を読み切る
+  - 3325_3のfull_relaxを．．．
+  - 3325をもっと下げる方法を考えな．サイズをあげる
+  - org-modeとmy_helpの違いを列挙
+  - VirtualBoxへのwindows7のinstall
+  - 7へのcygwinのinstall
+  - VirtualBoxへのwindows10のinstall
+  - シラバス入力
+:weekly:
+  :opts:
+    :short: "-w"
+    :long: "--weekly"
+    :desc: weekly
+  :title: weekly
+  :cont:
+  - ruby terminal colorizing, https://www.ruby-toolbox.com/categories/Terminal_Coloring
+  - DONE:Coderayを使って書き換え，http://melborne.github.io/2010/11/07/Ruby-ANSI/,
+  - DONE:Coderayあまりいいのがない, TaskPaperで少し良くなったかも．
+  - DONE:my_helpのbehavior記述を日本語で．
+  - DONE:hikutilsのoption書き換えをthorと比較．
+  - DONE:rubynoviceのテストをarubaで．
+  - DONE:cucumberの日本語化を実行, nasuにふった
+  - Rakefileをどうやってinstallするか．．．
+  - emacs org-modeがmy_helpと全くかぶる
+  - org-modeへの移行を助ける
+  - golfscore appli, 一打ずつ記録するアプリはない，自分のメモ代わりにも
+  - faviconの作成
+:motto:
+  :opts:
+    :short: "-m"
+    :long: "--motto"
+    :desc: motto
+  :title: motto
+  :cont:
+  - "DRY(Don't repeat yourself)"
+  - "TDD(spec, red, green, and refactoring)"
+
