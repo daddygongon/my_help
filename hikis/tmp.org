@@ -1,0 +1,20 @@
+*TODO org-mode_helpをつくる
+** M-x org-mode
+** TODOと書く
+** c-c c-tでTODO->DONE-> no titleと変遷(trans)
+** c-iでoutline的に出したり，入れたり．
+* Daily
+** TODO fixとfullrelaxを同時に作っていいやん！！いらんかったら後で消せばいい．
+**TODO RSpec, cucumberのPart2を読み切る
+**TODO 3325_3のfull_relaxを．．．
+** TODO 3325をもっと下げる方法を考えな．サイズをあげる
+* Weekly
+**TODO ruby terminal colorizing, https://www.ruby-toolbox.com/categories/Terminal_Coloring
+** DONE Coderayを使って書き換え，http://melborne.github.io/2010/11/07/Ruby-ANSI/, あまりいいのがない, TaskPaperで少し良くなったかも．
+**TODO my_helpのbehavior記述を日本語で．
+**TODO hikutilsのoption書き換えをthorと比較．
+**TODO rubynoviceのテストをarubaで．
+**TODO golfscore appli, 一打ずつ記録するアプリはない，自分のメモ代わりにも
+**TODO faviconの作成
+**TODO Rakefileをどうやってinstallするか．．．
+**TODO org-mode_helpをつくってしばらく使ってみる．
