@@ -42,7 +42,7 @@ module SpecificHelp
         opt.on('--to_hiki','convert to hikidoc format'){to_hiki}
         opt.on('--all','display all helps'){all_help}
         opt.on('--store [item]','store [item] in backfile'){|item| store(item)}
-        opt.on('--push [item]', 'push [item] on remote host'){|item| remote_push(item)}
+#        opt.on('--push [item]', 'push [item] on remote host'){|item| remote_push(item)}
         opt.on('--remove [item]','remove [item] and store in backfile'){|item| remove(item) }
         opt.on('--add [item]','add new [item]'){|item| add(item) }
         opt.on('--backup_list [val]','show last [val] backup list'){|val| backup_list(val)}
