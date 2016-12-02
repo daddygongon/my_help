@@ -4,11 +4,20 @@ require 'yard'
 #require "rake/testtask"
 require "rspec/core/rake_task"
 require 'fileutils'
+require 'cucumber/rake/task'
+
 p base_path = File.expand_path('..', __FILE__)
 p basename = File.basename(base_path)
 
 task :default do
   system 'rake -T'
+end
+
+desc "cucumber with Japanese"
+task :cucumber do
+  Cucumber::Rake::Task.new do |t|
+    t.cucumber_opts = %w{--format pretty -l ja}
+  end
 end
 
 desc "rspec test for aruba"
@@ -71,7 +80,7 @@ task :clean_exe do
   files = Dir.entries('exe')
   files.each{|file|
     next if ["my_help",".","..",".DS_Store",
-             "emacs_help","e_h","todo_help"].include?(file)
+             "emacs_help","e_h","my_todo"].include?(file)
     FileUtils.rm(File.join('./exe',file), :verbose=>true)
   }
 end
@@ -98,14 +107,4 @@ task :hiki2md do
   FileUtils.cp(readme_ja,"./README.md",:verbose=>true)
   FileUtils.cp(readme_ja,"#{basename}.wiki/Home.md",:verbose=>true)
 end
-
-desc "transfer hikis/*.hiki to latex"
-task :latex do
-  target = 'handout_sample'
-  command = "hiki2latex --pre latexes/handout_pre.tex hikis/#{target}.hiki > latexes/#{target}.tex"
-  system command
-  command = "open latexes/#{target}.tex"
-  system command
-end
-
 
