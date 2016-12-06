@@ -38,6 +38,7 @@ module SpecificHelp
           opts = val[:opts]
           opt.on(opts[:short],opts[:long],opts[:desc]) {disp_help(key)}
         }
+<<<<<<< HEAD
 #        opt.on('--edit','edit help contents'){edit_help}
         opt.on('--edit','edit help contentsを開く'){edit_help}
 #        opt.on('--to_hiki','convert to hikidoc format'){to_hiki}
@@ -52,6 +53,16 @@ module SpecificHelp
        opt.on('--add [item]','add new [item]で新しいhelpを作る'){|item| add(item) }
 #        opt.on('--backup_list [val]','show last [val] backup list'){|val| backup_list(val)}
         opt.on('--backup_list [val]','back upしているlistを表示させる'){|val| backup_list(val)}
+=======
+        opt.on('--edit','edit help contents'){edit_help}
+        opt.on('--to_hiki','convert to hikidoc format'){to_hiki}
+        opt.on('--all','display all helps'){all_help}
+        opt.on('--store [item]','store [item] in backfile'){|item| store(item)}
+#        opt.on('--push [item]', 'push [item] on remote host'){|item| remote_push(item)}
+        opt.on('--remove [item]','remove [item] and store in backfile'){|item| remove(item) }
+        opt.on('--add [item]','add new [item]'){|item| add(item) }
+        opt.on('--backup_list [val]','show last [val] backup list'){|val| backup_list(val)}
+>>>>>>> fc871ec1fd1c556a44dea3194302e0fee1535836
       end
       begin
         command_parser.parse!(@argv)
