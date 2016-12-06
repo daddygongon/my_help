@@ -3,6 +3,7 @@ require "optparse"
 require "yaml"
 require "my_help/version"
 require 'fileutils'
+require "coderay"
 
 module SpecificHelp
   class Command
@@ -37,13 +38,20 @@ module SpecificHelp
           opts = val[:opts]
           opt.on(opts[:short],opts[:long],opts[:desc]) {disp_help(key)}
         }
+#        opt.on('--edit','edit help contents'){edit_help}
         opt.on('--edit','edit help contents'){edit_help}
+#        opt.on('--to_hiki','convert to hikidoc format'){to_hiki}
         opt.on('--to_hiki','convert to hikidoc format'){to_hiki}
-        opt.on('--all','display all helps'){all_help}
-        opt.on('--store [item]','store [item] in backfile'){|item| store(item)}
-        opt.on('--remove [item]','remove [item] and store in backfile'){|item| remove(item) }
-        opt.on('--add [item]','add new [item]'){|item| add(item) }
-        opt.on('--backup_list [val]','show last [val] backup list'){|val| backup_list(val)}
+#        opt.on('--all','display all helps'){all_help}
+        opt.on('--all','すべてのhelp画面を表示させる'){all_help}
+#        opt.on('--store [item]','store [item] in backfile'){|item| store(item)}
+        opt.on('--store [item]','store [item] でback upをとる'){|item| store(item)}
+#        opt.on('--remove [item]','remove [item] and store in backfile'){|item| remove(item) }
+        opt.on('--remove [item]','remove [item] back upしてるlistを消去する'){|item| remove(item) } 
+#       opt.on('--add [item]','add new [item]'){|item| add(item) }
+       opt.on('--add [item]','add new [item]で新しいhelpを作る'){|item| add(item) }
+#        opt.on('--backup_list [val]','show last [val] backup list'){|val| backup_list(val)}
+        opt.on('--backup_list [val]','back upしているlistを表示させる'){|val| backup_list(val)}
       end
       begin
         command_parser.parse!(@argv)
@@ -95,10 +103,7 @@ module SpecificHelp
         exit
       end
       p store_name = item+"_"+Time.now.strftime("%Y%m%d_%H%M%S")
-<<<<<<< HEAD
       cont = {store_name.to_sym => store_item}
-=======
->>>>>>> 5a08526e548ef9445c43cb9c17bb8a8b5bf7dc94
       backup_cont=YAML.load(File.read(backup)) || {}
       backup_cont[store_name.to_sym]=store_item
       File.open(backup,'w'){|file| file.print(YAML.dump(backup_cont))}
@@ -136,6 +141,7 @@ module SpecificHelp
     def all_help
       @help_cont.each_pair{|key,val|
         if key==:head or key==:license
+          val[0]+=":"
           disp(val)
         else
           disp_help(key)
@@ -156,13 +162,16 @@ module SpecificHelp
     def disp_help(key_word)
       print_separater
       items =@help_cont[key_word]
-      puts items[:title]
+#      puts items[:title]
+      puts CodeRay.scan("-#{items[:title]}:", :Taskpaper).term
       disp(items[:cont])
       print_separater
     end
 
     def disp(lines)
-      lines.each{|line| puts "  *#{line}"} if lines != nil
+#      lines.each{|line| puts "  +#{line}"} if lines != nil
+#      lines.each{|line| puts CodeRay.scan("*#{line}", :diff).term}
+      lines.each{|line| puts CodeRay.scan("+#{line}", :Taskpaper).term}
     end
 
     def print_separater
