@@ -118,7 +118,8 @@ module SpecificHelp
     end
 
     def edit_help
-      system("emacs #{@source_file}")
+#      system("emacs #{@source_file}")
+      exec("emacs #{@source_file}")
     end
 
     def to_hiki
