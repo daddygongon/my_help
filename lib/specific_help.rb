@@ -118,8 +118,16 @@ module SpecificHelp
     end
 
     def edit_help
-#      system("emacs #{@source_file}")
-      exec("emacs #{@source_file}")
+      p help_file =@source_file
+      begin
+        p command= "emacs #{help_file}"
+        exec command
+      rescue => e
+        print "\nOption edit is not executable on windows. \n"
+        print "Type the following shell command;\n\n"
+        print "emacs /home/#{ENV['USER']}/.my_help/#{File.basename(@source_file)}\n\n"
+        print "M-x ruby-mode should be good for edit.\n"
+      end
     end
 
     def to_hiki
