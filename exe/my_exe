@@ -1,4 +1,0 @@
-#!/usr/bin/env ruby
-require 'specific_help'
-help_file = File.join(ENV['HOME'],'.my_help','my_exe.yml')
-SpecificHelp::Command.run(help_file, ARGV)
