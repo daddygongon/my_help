@@ -25,7 +25,7 @@ module EmacsHelp
           puts opt.ver
         }
         opt.on('-c','--カーソル','Cursor移動') {cursor_move}
-        opt.on('-p','--ページ','Page移動') {page_move}
+        opt.on('-p','--ペ','Page移動') {page_move}
         opt.on('-f','--ファイル','File操作') {file}
         opt.on('-e','--編集','Edit操作') {edit}
         opt.on('-w','--ウィンドウ','Window操作') {window}
