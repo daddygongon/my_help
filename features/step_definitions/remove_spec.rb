@@ -13,6 +13,6 @@ end
   input
 end
 
-ならば(/^入力したitemが消える$/) do
+ならば(/^~\/\.my_help\/emacs_help\.ymlからitemが消える$/) do
   remove
 end
