@@ -1,12 +1,4 @@
-!ユーザメモソフトmy_helpの開発
-
-!目的
-なんか．
-
-![[my_help_nasu_features]]
-
-!卒業論文
-my_helpのマニュアル
+!卒業論文：ユーザメモソフトmy_helpの開発
 
 関西学院大学　理工学部
 
@@ -17,3 +9,20 @@ my_helpのマニュアル
 2017年3月
 
 !概要
+
+![[イントロダクション|my_help_nasu_introduction]]
+
+!方法
+!!BDD
+!! features + cucumberの説明
+
+!my_helpの使用法
+開発にあたり，my_helpの仕様を決定するために想定した使用法を以下に示す．
+
+!featuresの記述
+BDDの具体的な記述と，想定した使用法との対比を次に示す．
+[[my_help_nasu_features]]
+!
+
+
+
