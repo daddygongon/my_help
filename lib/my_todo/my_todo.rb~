@@ -1,0 +1,7 @@
+module My_todo
+  class Todo
+    def open
+    end
+  end
+end
+    
