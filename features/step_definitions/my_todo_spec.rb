@@ -1,11 +1,25 @@
-前提(/^過去のtodoを残したい$/) do
+
+前提(/^todoを編集したい$/) do
 
 end
 
-もし(/^my_todo \-\-store \[item\]と入力する$/) do
+もし(/^"([^"]*)"と入力する$/) do |command|
+  
+end
+
+ならば(/^editが開かれる$/) do
+  Mytodo::Todo.new.oepn
+end
+
+ならば(/^自分のtodoを書き込む$/) do
 
 end
 
-ならば(/^今書かれているitemのバックアップがとられる$/) do
+前提(/^todoの編集が終わった$/) do
 
 end
+
+ならば(/^itemのバックアップを取る$/) do
+
+end
+
