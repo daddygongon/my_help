@@ -33,7 +33,7 @@ task :auto_reinstall do
   puts "git pull upstrem master"
   puts "rake clean_exe"
   puts "rake to_yml"
-  puts "*cp lib/daddygongon/todo_help.yml ~/.my_help"
+  puts "*cp lib/daddygongon/my_todo.yml ~/.my_help"
   puts "[sudo] bundle exec exe/my_help -m"
   puts "*source ~/.zshrc or source ~/.cshrc"
   puts "*my_help -l"

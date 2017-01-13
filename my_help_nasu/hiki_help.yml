@@ -1,0 +1,66 @@
+begin
+  target_dir = File.readlines('./.hikirc')[0].chomp
+rescue => e
+  puts e
+  exit
+end
+p target_dir
+
+task :default do
+  system 'rake -T'
+end
+
+desc "convert fig size SCALE TARGET_DIR"
+task :convert do
+  scale = ARGV[1]
+  target_dir=ARGV[2]
+  Dir.entries(target_dir)[2..-1].each{|file|
+    p file
+    source = File.join(target_dir,file)
+    target = File.join('figs',file)
+    p command = "convert #{source} -resize #{scale}\% #{target}"
+    system command
+  }
+  exit
+end
+
+desc "sync hikis and figs to hiki directory"
+task :sync do
+  p dirnames=Dir.pwd.split('/')
+  p basename = (dirnames[-1]=='hikis')? dirnames[-2] : dirnames[-1]
+  p entries=Dir.entries('.')
+  entries[2..-1].each{|source| #cp *.hiki
+    next unless source.include?('.hiki')
+    next if source.include?('.hikirc')
+    p base = source.split('.')[0]
+    name = (base==basename)? base : basename+'_'+base
+    p target = File.join(target_dir,'text',name)
+    FileUtils.cp(source,target,:verbose=>true)
+  }
+  p entries=Dir.entries('./figs') #cp files in figs
+  p target = File.join(target_dir,'cache','attach',basename)
+  FileUtils.mkdir(target,:verbose=>true) unless File.exists?(target)
+  entries[2..-1].each{|file|
+    p source = File.join('./figs',file)
+    FileUtils.cp(source,target,:verbose=>true)
+  }
+  exit
+end
+
+desc "For hiki Errno::ENOENT, Errno::EACCES"
+task :chenv do
+  p user = ENV['USER']
+  system("sudo chmod -R a+w #{target_dir}")
+#  system("sudo chown -R #{user} #{target_dir}")
+end
+
+desc "self copy to hikiutils template directory"
+task :self_copy do
+  p cp_files=[['Rakefile','Rakefile_hiki_sync'],
+            [File.join(ENV['HOME'],'.my_help','hiki_help.yml'),'hiki_help.yml']]
+  cp_files.each{|files|
+    p source = File.join(Dir.pwd,'Rakefile')
+    p target = File.join('/Users/bob/Github/hikiutils/lib/templates/',files[1])
+    FileUtils.cp(source,target,:verbose=>true)
+  }
+end
