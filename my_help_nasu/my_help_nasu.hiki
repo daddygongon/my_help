@@ -8,13 +8,13 @@
 
 2017年3月
 
-!概要
+![[概要|my_help_nasu_overview]]
 
 ![[イントロダクション|my_help_nasu_introduction]]
 
 !方法
-!!BDD
-!! features + cucumberの説明
+!![[BDD|my_help_nasu_bdd]]
+!![[features + cucumberの説明|my_help_nasu_features_cucumber]]
 
 !my_helpの使用法
 開発にあたり，my_helpの仕様を決定するために想定した使用法を以下に示す．
