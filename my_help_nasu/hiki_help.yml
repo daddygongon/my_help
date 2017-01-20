@@ -10,6 +10,26 @@ task :default do
   system 'rake -T'
 end
 
+desc "increment fig NUBERS in FILE"
+task :increment do
+  number=ARGV[1]
+  file = ARGV[2]
+  dir = ARGV[3] || nil
+  lines = File.readlines(file)
+  cont = ""
+  lines.each{|line|
+    if m=line.match(/\{\{attach_view\((\w+|_).(\d+).jpeg\)\}\}/)
+      new_num=sprintf("%03d",m[2].to_i+number.to_i)
+      line="\{\{attach_view\(#{m[1]}.#{new_num}.jpeg,#{dir}\)\}\}\n"
+      cont << line
+    else
+      cont << line
+    end
+  }
+  print cont
+  exit
+end
+
 desc "convert fig size SCALE TARGET_DIR"
 task :convert do
   scale = ARGV[1]
