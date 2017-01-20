@@ -16,7 +16,7 @@
 !![[BDD|my_help_nasu_bdd]]
 !![[features + cucumberの説明|my_help_nasu_features_cucumber]]
 
-!my_helpの使用法
+![[my_helpの使用法|my_help_nasu_use]]
 開発にあたり，my_helpの仕様を決定するために想定した使用法を以下に示す．
 
 !featuresの記述
