@@ -1,13 +1,38 @@
+# -*- coding: utf-8 -*-
+require 'systemu'
+# -*- coding: utf-8 -*-
 begin
   target_dir = File.readlines('./.hikirc')[0].chomp
 rescue => e
   puts e
   exit
 end
+p dirnames=Dir.pwd.split('/')
+p basename = (dirnames[-1]=='hikis')? dirnames[-2] : dirnames[-1]
 p target_dir
 
 task :default do
   system 'rake -T'
+end
+
+desc "increment fig NUBERS in FILE"
+task :increment do
+  number=ARGV[1]
+  file = ARGV[2]
+  dir = ARGV[3] || nil
+  lines = File.readlines(file)
+  cont = ""
+  lines.each{|line|
+    if m=line.match(/\{\{attach_view\((\w+|_).(\d+).jpeg\)\}\}/)
+      new_num=sprintf("%03d",m[2].to_i+number.to_i)
+      line="\{\{attach_view\(#{m[1]}.#{new_num}.jpeg,#{dir}\)\}\}\n"
+      cont << line
+    else
+      cont << line
+    end
+  }
+  print cont
+  exit
 end
 
 desc "convert fig size SCALE TARGET_DIR"
@@ -24,11 +49,16 @@ task :convert do
   exit
 end
 
-desc "sync hikis and figs to hiki directory"
-task :sync do
-  p dirnames=Dir.pwd.split('/')
-  p basename = (dirnames[-1]=='hikis')? dirnames[-2] : dirnames[-1]
-  p entries=Dir.entries('.')
+desc "normal sync hikis and figs to hiki directory"
+task :sync => [:check_previous,:sync0]
+
+
+desc "force_sync hikis and figs to hiki directory"
+task :force_sync => [:sync0]
+
+desc "sync0 hikis and figs to hiki directory"
+task :sync0 do
+  entries=Dir.entries('.')
   entries[2..-1].each{|source| #cp *.hiki
     next unless source.include?('.hiki')
     next if source.include?('.hikirc')
@@ -44,6 +74,14 @@ task :sync do
     p source = File.join('./figs',file)
     FileUtils.cp(source,target,:verbose=>true)
   }
+
+  File.open('./.hikirc','w'){|file|
+    status, stdout, stderr =systemu "hiki -l #{basename}*"
+    file.print(target_dir+"\n")
+    stdout.split("\n")[3..-1].each{|line|
+      file.print line+"\n"
+    }
+  }
   exit
 end
 
@@ -56,11 +94,42 @@ end
 
 desc "self copy to hikiutils template directory"
 task :self_copy do
-  p cp_files=[['Rakefile','Rakefile_hiki_sync'],
+  p cp_files=[[File.join(Dir.pwd,'Rakefile'),'Rakefile_hiki_sync'],
             [File.join(ENV['HOME'],'.my_help','hiki_help.yml'),'hiki_help.yml']]
   cp_files.each{|files|
-    p source = File.join(Dir.pwd,'Rakefile')
+    p source = files[0]
     p target = File.join('/Users/bob/Github/hikiutils/lib/templates/',files[1])
     FileUtils.cp(source,target,:verbose=>true)
   }
+end
+
+desc "check previou and current sync"
+task :check_previous do
+  current={}
+  status, stdout, stderr = systemu("hiki -l #{basename}*")
+  stdout.split("\n")[3..-1].each{|line|
+    p file=   line.split(/\s+/)[-1]
+    current[file]=line
+  }
+  previous={}
+  File.readlines('.hikirc')[1..-1].each{|line|
+    p file=   line.split(/\s+/)[-1]
+    previous[file]=line.chomp
+  }
+  added,changed = [],[]
+  current.each_pair{|key,val|
+    if !previous.include?(key)
+      added[key]=val
+    elsif previous[key]!=val
+      changed << val+"\n"
+    else
+
+    end
+  }
+  if changed.size != 0 or added.size !=0
+    print("hiki dirで変更が発生しています．\n")
+    changed.each{|line| print line+"\n"}
+    added.each{|line| print line+"\n"}
+    exit
+  end
 end
