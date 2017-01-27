@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 require 'systemu'
+require 'tempfile'
 # -*- coding: utf-8 -*-
 begin
   target_dir = File.readlines('./.hikirc')[0].chomp
@@ -7,12 +8,123 @@ rescue => e
   puts e
   exit
 end
-p dirnames=Dir.pwd.split('/')
-p basename = (dirnames[-1]=='hikis')? dirnames[-2] : dirnames[-1]
-p target_dir
+dirnames=Dir.pwd.split('/')
+basename = (dirnames[-1]=='hikis')? dirnames[-2] : dirnames[-1]
+$latex_dir= 'latex_dir'
 
 task :default do
   system 'rake -T'
+end
+
+desc "latex conversion FILE1"
+task :latex => [:latex_base] do
+  exit
+end
+
+desc "latex conversion FILE1 with wrap format"
+task :latex_wrap => [:latex_base, :change_wrap] do
+  exit
+end
+
+desc "latex conversion whole hiki files in the current dir."
+task :latex_all do
+  p entries=Dir.entries('.')
+  main_file=""
+  entries.each{|file|
+    next unless file.include?('.hiki')
+    next if file.include?('.hikirc')
+    f_name =File.basename(file,'.hiki')
+    if f_name==basename
+      option="--listings --head latex_dir/head.tex -p "
+      main_file=f_name
+    else
+      option="-l 1 --listings -b "
+    end
+    convert_to_latex(file, option)
+  }
+  cont=""
+  File.readlines(File.join($latex_dir,"#{main_file}.tex")).each{|line|
+    if line.match(/\\section{(.+)}/) 
+      if m=line.match(/\\section{\\verb\|(.+)\|}/) 
+        p m
+        p reg_exp = Regexp.new("#{basename}_(.+)")
+        p m_t=m[1].match(reg_exp)[1]
+        line = "\\include{#{m_t}}\n"
+      else
+        line = ""
+      end
+    end
+    cont << line
+  }
+  File.open(File.join($latex_dir,"#{main_file}.tex"),'w'){|file| file.print cont}
+  system "open latex_dir/#{main_file}.tex"
+  exit
+end
+
+desc "change latex figures to wrap format"
+task :change_wrap do
+  lines = File.readlines($save_name)
+
+  cont = ""
+  lines.each{|line|
+    if line.include?('\begin{figure}[htbp]\begin{center}')
+      p line
+      cont << '\begin{wrapfigure}{r}{8cm}'+"\n"
+      cont << '\vspace{-2\baselineskip}'+"\n"
+      cont << '\begin{center}'+"\n"
+    elsif line.include?('\label{default}\end{center}\end{figure}')
+      p line
+      cont << '\end{center}'+"\n"
+      cont << '\vspace{2\baselineskip}'+"\n"
+      cont << '\end{wrapfigure}'+"\n"
+    else
+      cont << line
+    end
+  }
+  File.open($save_name,'w'){|file| file.print cont }
+
+  system("open #{$save_name}")
+  exit
+end
+
+
+desc "latex conversion FILE1(hiki) to FILE2(latex)"
+task :latex_base do
+  Dir.mkdir($latex_dir) unless Dir.exist?($latex_dir)
+  convert_to_latex(ARGV[1])
+  system("open #{$save_name}")
+end
+
+def convert_to_latex(file_name, option=nil)
+  p file_name = file_name.include?('.hiki')? file_name : file_name+'.hiki'
+  p tex_name = File.basename(file_name,'.hiki')+'.tex'
+  p $save_name = ARGV[2] || File.join($latex_dir,tex_name)
+  pre_name = File.join($latex_dir,'pre.tex')
+  p pre_command = File.exist?(pre_name) ? '--pre '+pre_name : nil
+  lines = File.readlines(file_name)
+  cont = ""
+  lines.each{|line|
+    if m=line.match(/\{\{attach_view\((.*),(.*)\)\}\}/)
+      p line="\{\{attach_view\(#{m[1]}\)\}\}\n"
+    end
+    cont << line
+  }
+  tf1,tf2='tmp1.txt','tmp2.txt'
+  File.open(tf1,'w'){|file| file.print cont}
+  system "hiki2latex #{pre_command} #{option} #{tf1} > #{tf2}"
+  lines = File.readlines(tf2)
+  system "rm #{tf1} #{tf2}"
+
+  cont = ""
+  lines.each{|line|
+    if m=line.match(/\\includegraphics\[width=6cm\]\{(.+)\}/)
+      p line="\\includegraphics\[width=6cm,bb=0 0 442 500\]\{../figs/#{m[1]}\}\n"
+      cont << line
+    else
+      cont << line
+    end
+  }
+  File.open($save_name,'w'){|file| file.print cont }
 end
 
 desc "increment fig NUBERS in FILE"
@@ -27,6 +139,27 @@ task :increment do
       new_num=sprintf("%03d",m[2].to_i+number.to_i)
       line="\{\{attach_view\(#{m[1]}.#{new_num}.jpeg,#{dir}\)\}\}\n"
       cont << line
+    else
+      cont << line
+    end
+  }
+  print cont
+  exit
+end
+
+desc "numbering figs from the NUBER in FILE"
+task :number do
+  number=ARGV[1].to_i
+  file = ARGV[2]
+  dir = ARGV[3] || nil
+  lines = File.readlines(file)
+  cont = ""
+  lines.each{|line|
+    if m=line.match(/\{\{attach_view\((\w+|_).(\d+).jpeg,(\w+)\)\}\}/)
+      new_num=sprintf("%03d",number)
+      line="\{\{attach_view\(#{m[1]}.#{new_num}.jpeg,#{m[3]}\)\}\}\n"
+      cont << line
+      number += 1
     else
       cont << line
     end
@@ -106,30 +239,29 @@ end
 desc "check previou and current sync"
 task :check_previous do
   current={}
+  print "current hiki dir\n"
   status, stdout, stderr = systemu("hiki -l #{basename}*")
   stdout.split("\n")[3..-1].each{|line|
-    p file=   line.split(/\s+/)[-1]
+    p line
+    file=   line.split(/\s+/)[-1]
     current[file]=line
   }
   previous={}
+  print "previous sync\n"
   File.readlines('.hikirc')[1..-1].each{|line|
-    p file=   line.split(/\s+/)[-1]
+    p line.chomp
+    file=   line.split(/\s+/)[-1]
     previous[file]=line.chomp
   }
-  added,changed = [],[]
+  changed = []
   current.each_pair{|key,val|
-    if !previous.include?(key)
-      added[key]=val
-    elsif previous[key]!=val
+    if !previous.include?(key) or previous[key]!=val
       changed << val+"\n"
-    else
-
     end
   }
-  if changed.size != 0 or added.size !=0
+  if changed.size != 0
     print("hiki dirで変更が発生しています．\n")
-    changed.each{|line| print line+"\n"}
-    added.each{|line| print line+"\n"}
+    changed.each{|line| print line+"\n"} 
     exit
   end
 end
