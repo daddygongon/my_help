@@ -1,0 +1,33 @@
+!my_helpのインストール
+!!githubに行ってdaddygongonのmy_helpをforkする
+#git clone git@github.com:daddygongon/my_help.git
+#cd my_help
+#rake to_yml
+#rake clean_exe
+#[sudo] bundle exec exe/my_help -m
+#source ~/.zshrc or source ~/.cshrc
+#my_help -l
+#rake add_yml
+
+!my_helpの更新
+
+!!gitを用いてmy_helpを新しくする．
+#git remote -vをする(remoteの確認).
+#(upstreamがなければ)git remote add upstream git@github.com:gitname/my_help.git
+#git add -A
+#git commit -m 'hogehoge'
+#git push upstream master(ここで自分のmy_helpをupstreamに送っとく)
+#git pull origin master(新しいmy_helpを取ってくる)
+
+!!次にとってきた.ymlを~/.my_helpにcpする．
+#cd my_helpでmy_helpに移動．
+#cp hogehoge.yml ~/.my_help
+
+それを動かすために
+(sudo)bundle exec ruby exe/my_help -mをする.
+
+ここで過去にsudoをした人はpermissionがrootになっているので，sudoをつけないとerrorが出る．
+
+(sudoで実行していたら権限がrootに移行される)
+
+新しいターミナルを開いて動くかチェックする．

@@ -8,7 +8,7 @@ end
 end
 
 ならば(/^editが開かれる$/) do
-
+  Mytodo::Todo.new.oepn
 end
 
 ならば(/^自分のtodoを書き込む$/) do
