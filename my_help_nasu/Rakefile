@@ -202,7 +202,7 @@ task :sync0 do
   }
   p entries=Dir.entries('./figs') #cp files in figs
   p target = File.join(target_dir,'cache','attach',basename)
-  FileUtils.mkdir(target,:verbose=>true) unless File.exists?(target)
+  FileUtils.mkdir_p(target,:verbose=>true) unless File.exists?(target)
   entries[2..-1].each{|file|
     p source = File.join('./figs',file)
     FileUtils.cp(source,target,:verbose=>true)
