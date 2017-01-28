@@ -1,0 +1,239 @@
+\section{実際にBDDを使ってコードを書く流れを説明する．}
+ここでは，卒業研究の目的の意義を理解してもらうために，全体の概要を説明する．
+
+\section{todoを更新するときのマニュアル}\begin{enumerate}
+\item my\_todo --editを入力して~/.my\_help/my\_todo.ymlを開く
+\item todoを書き込む（今週やることならweeklyというitemを作ってそこに書き込む）
+\item 保存して~/.my\_help/my\_todo.ymlを閉じる
+\item my\_todoと打ち込んで更新されていたら完成
+\item my\_todo --store [item]を入力してitemのバックアップをとる
+\end{enumerate}
+これを実際に振る舞いがきちんとできているのかを確認する．
+
+\section{インストール}
+\subsection{まずrspecとcucumberをgemでinstallする}\begin{enumerate}
+\item gem install rspec --version 2.0.0
+\item rspec --helpと入力して
+\end{enumerate}\begin{quote}\begin{verbatim}
+/Users/nasubi/nasu% rspec --help
+Usage: rspec [options] [files or directories]
+\end{verbatim}\end{quote}
+のような表示がされていればinstallができている．
+\begin{enumerate}
+\item gem install cucumber --version 0.9.2
+\item cucumber --helpと入力して
+\end{enumerate}\begin{quote}\begin{verbatim}
+cucumber --help
+Usage: cucumber [options] [ [FILE|DIR|URL][:LINE[:LINE]*] ]+
+\end{verbatim}\end{quote}
+のような表示がされていればinstallできている．
+
+\section{Cucumber}
+以下はtodoの更新を行うときのfeatureである．
+\begin{enumerate}
+\item 適当なディレクトリにfeaturesというディレクトリを作成する．
+\item そのfeaturesディレクトリにmy\_todo.featureを作成する．
+\end{enumerate}\begin{lstlisting}[style=]
+
+# language: ja #言語の設定（ここでは日本語に設定している）
+
+機能: todoの更新を行う
+todoは更新していくものであり,新しく書いたり終わったものを\\
+消したいのでバックアップをとって，過去のtodoを残しておく
+
+シナリオ: コマンドを入力してtodoを更新していく
+          前提 todoを編集したい
+          もし "my_todo --edit"と入力する
+          ならば editが開かれる
+          かつ 自分のtodoを書き込む
+
+シナリオ: コマンドを入力してバックアップをとる
+          前提 todoの編集が終わった
+          もし "my_todo --store [item]"と入力する
+          ならば itemのバックアップを取る
+
+\end{lstlisting}
+　featureを書けたら次はcucumberを実行してみる
+\begin{quote}\begin{verbatim}
+/Users/nasubi/nasu% cucumber features/my_todo.feature 
+# language: ja
+機能: todoの更新を行う
+todoは更新していくものであり,新しく書いたり終わったものを消したいのでバックアップをとって，過去のtodoを残しておく
+
+  シナリオ: コマンドを入力してtodoを更新していく # features/my_todo.feature:6
+    前提todoを編集したい             # features/my_todo.feature:7
+    もし"my_todo --edit"と入力する  # features/my_todo.feature:8
+    ならばeditが開かれる             # features/my_todo.feature:9
+    かつ自分のtodoを書き込む           # features/my_todo.feature:10
+
+  シナリオ: コマンドを入力してバックアップをとる          # features/my_todo.feature:12
+    前提todoの編集が終わった                  # features/my_todo.feature:13
+    もし"my_todo --store [item]"と入力する # features/my_todo.feature:14
+    ならばitemのバックアップを取る               # features/my_todo.feature:15
+
+2 scenarios (2 undefined)
+7 steps (7 undefined)
+0m0.080s
+
+You can implement step definitions for undefined steps with these snippets:
+
+前提(/^todoを編集したい$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+もし(/^"([^"]*)"と入力する$/) do |arg1|
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+ならば(/^editが開かれる$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+ならば(/^自分のtodoを書き込む$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+前提(/^todoの編集が終わった$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+ならば(/^itemのバックアップを取る$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+
+\end{verbatim}\end{quote}
+と表示される．
+
+次にfeaturesディレクトリの中でstep\_definitionsディレクトリを作成する．
+step\_definitionsディレクトリの中にmy\_todo\_spec.rbを作成する．
+中身は以下の通りである．
+\begin{lstlisting}[style=]
+前提(/^todoを編集したい$/) do
+  pending # Write code here that turns the phrase above into concrete actions          
+end
+
+もし(/^"([^"]*)"と入力する$/) do |arg1|
+  pending # Write code here that turns the phrase above into concrete actions          
+end
+
+ならば(/^editが開かれる$/) do
+  pending # Write code here that turns the phrase above into concrete actions          
+end
+
+ならば(/^自分のtodoを書き込む$/) do
+  pending # Write code here that turns the phrase above into concrete actions          
+end
+
+前提(/^todoの編集が終わった$/) do
+  pending # Write code here that turns the phrase above into concrete actions          
+end
+
+ならば(/^itemのバックアップを取る$/) do
+  pending # Write code here that turns the phrase above into concrete actions          
+end
+
+\end{lstlisting}
+ここでもう一度cucumberを実行してみると
+\begin{quote}\begin{verbatim}
+/Users/nasubi/nasu% cucumber features/my_todo.feature 
+# language: ja
+機能: todoの更新を行う
+todoは更新していくものであり,新しく書いたり終わったものを消したいのでバックアップをとって，過去のtodoを残しておく
+
+  シナリオ: コマンドを入力してtodoを更新していく # features/my_todo.feature:6
+    前提todoを編集したい             # features/step_definitions/my_todo_spec.rb:1
+      TODO (Cucumber::Pending)
+      ./features/step_definitions/my_todo_spec.rb:2:in `/^todoを編集したい$/'
+      features/my_todo.feature:7:in `前提todoを編集したい'
+    もし"my_todo --edit"と入力する  # features/step_definitions/my_todo_spec.rb:5
+    ならばeditが開かれる             # features/step_definitions/my_todo_spec.rb:9
+    かつ自分のtodoを書き込む           # features/step_definitions/my_todo_spec.rb:13
+
+  シナリオ: コマンドを入力してバックアップをとる          # features/my_todo.feature:12
+    前提todoの編集が終わった                  # features/step_definitions/my_todo_spec.rb:17
+      TODO (Cucumber::Pending)
+      ./features/step_definitions/my_todo_spec.rb:18:in `/^todoの編集が終わった$/'
+      features/my_todo.feature:13:in `前提todoの編集が終わった'
+    もし"my_todo --store [item]"と入力する # features/step_definitions/my_todo_spec.rb:5
+    ならばitemのバックアップを取る               # features/step_definitions/my_todo_spec.rb:21
+
+2 scenarios (2 pending)
+7 steps (5 skipped, 2 pending)
+0m0.045s
+
+\end{verbatim}\end{quote}
+と変化が出てくる．
+2 scenarios (2 pending)
+7 steps (5 skipped, 2 pending)
+これは2つのシナリオの内２つがpendingであり，７つのstepの内２つがpendingで５つがskippしたことを表している．
+step\_definitionsのmy\_todo\_spec.rbのpending部分を書き換えて進行していく．
+下記が書き直したコードである．
+
+\subsection{step}\begin{lstlisting}[style=]
+完成したやつ
+\end{lstlisting}
+ここでcucumberを実行すると全て成功しているのがわかります．
+\begin{lstlisting}[style=]
+/Users/nasubi/my_help% cucumber features/my_todo.feature              
+# language: ja
+機能: todoの更新を行う
+todoは更新していくものであり,新しく書いたり終わったものを消したいのでバックアップをとって，過去のtodoを残しておく
+
+  シナリオ: コマンドを入力してtodoを更新していく # features/my_todo.feature:6
+    前提todoを編集したい             # features/step_definitions/my_todo_spec.rb:2
+    もし"my_todo --edit"と入力する  # features/step_definitions/my_todo_spec.rb:6
+    ならばeditが開かれる             # features/step_definitions/my_todo_spec.rb:10
+    かつ自分のtodoを書き込む           # features/step_definitions/my_todo_spec.rb:14
+
+  シナリオ: コマンドを入力してバックアップをとる          # features/my_todo.feature:12
+    前提todoの編集が終わった                  # features/step_definitions/my_todo_spec.rb:18
+    もし"my_todo --store [item]"と入力する # features/step_definitions/my_todo_spec.rb:6
+    ならばitemのバックアップを取る               # features/step_definitions/my_todo_spec.rb:22
+
+2 scenarios (2 passed)
+7 steps (7 passed)
+0m0.029s
+
+\end{lstlisting}
+\section{RSpec}
+次にRSpecを使って実際にtodoを更新する振る舞いをするコード書いていく．
+
+そのための準備として，まずspecというディレクトリを作成し，my\_todoというサブディレクトリを追加する．
+次に，このサブディレクトリにtodo\_spec.rbというファイルを追加する．
+作業を進める過程で，lib/my\_todo/my\_todo.rbソースファイルとspec/my\_todo/todo\_spec.rbスペックファイルが１対１に対応するといった要領で，
+並列のディレクトリ構造を築いていく．
+この機能はmy\_help --editと入力されれば，~/.my\_help/my\_todo.ymlが開かれるのでその振る舞いをするコードを書きます．
+まずtodo\_spec.rbは下記の通りになります
+\begin{lstlisting}[style=]
+require 'spec_helper'
+
+
+module Mytodo
+  describe Todo do
+    describe "#open" do
+      it "open file my_todo.yml" 
+    end
+  end
+end
+
+\end{lstlisting}
+describe()メソッドは，RSpecのAPIにアクセスしてRSpec::Core::ExampleGroupのサブクラスを返します．
+ExampleGroupクラスはオブジェクトに期待される振る舞いのサンプルを示すグループです．
+it()メソッドはサンプルを作成します．
+
+このスペックを実行するために，specディレクトリにspec\_helper.rbを追加します．
+中身は下記の通りです．
+\begin{lstlisting}[style=]
+$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
+require 'my_help'
+require 'todo'
+\end{lstlisting}
+これで事前準備は完成でコードを書いていきます．
+
+完成したコードを下記の通りです．
+\begin{lstlisting}[style=]
+完成したやつ
+\end{lstlisting}
+このように他の振る舞いのコードも書き進めていくのがBDDであり，今回のシステムの開発です．
+

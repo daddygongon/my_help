@@ -1,0 +1,447 @@
+This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (utf8.euc) (TeX Live 2016) (preloaded format=platex 2017.1.26)  28 JAN 2017 15:46
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**my_help_nasu.tex
+(./my_help_nasu.tex
+pLaTeX2e <2016/11/29> (based on LaTeX2e <2017/01/01>)
+Babel <3.9r> and hyphenation patterns for 83 language(s) loaded.
+(/usr/local/texlive/2016/texmf-dist/tex/platex/jsclasses/jsarticle.cls
+Document Class: jsarticle 2017/01/13 okumura, texjporg
+\jsc@mpt=\dimen118
+\jsc@mmm=\dimen119
+\jsc@smallskipamount=\skip41
+LaTeX Info: Redefining \rmfamily on input line 468.
+LaTeX Info: Redefining \sffamily on input line 471.
+LaTeX Info: Redefining \ttfamily on input line 474.
+LaTeX Info: Redefining \textmc on input line 477.
+LaTeX Info: Redefining \textgt on input line 479.
+\symmincho=\mathgroup4
+LaTeX Font Info:    Overwriting symbol font `mincho' in version `bold'
+(Font)                  JY1/mc/m/n --> JY1/gt/m/n on input line 540.
+LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
+(Font)              scaled to size 9.60999pt on input line 731.
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 9.60999pt on input line 731.
+\fullwidth=\dimen120
+LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
+(Font)              scaled to size 7.68799pt on input line 883.
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 7.68799pt on input line 883.
+\c@part=\count82
+\c@section=\count83
+\c@subsection=\count84
+\c@subsubsection=\count85
+\c@paragraph=\count86
+\c@subparagraph=\count87
+\@abstractbox=\box41
+\c@figure=\count88
+\c@table=\count89
+\abovecaptionskip=\skip42
+\belowcaptionskip=\skip43
+\jsc@tocl@width=\dimen121
+\@lnumwidth=\dimen122
+\bibindent=\dimen123
+(/usr/local/texlive/2016/texmf-dist/tex/platex/jsclasses/jslogo.sty
+Package: jslogo 2016/07/14 okumura, texjporg
+LaTeX Info: Redefining \TeX on input line 94.
+LaTeX Info: Redefining \LaTeX on input line 147.
+LaTeX Info: Redefining \LaTeXe on input line 200.
+)
+\heisei=\count90
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks15
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2016/10/09 v1.0u Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: dvipdfmx.def on input line 99.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics-def/dvipdfmx.def
+File: dvipdfmx.def 2016/07/11 v4.12 LaTeX color/graphics driver for dvipdfmx (L
+3/ChoF)
+))
+\Gin@req@height=\dimen124
+\Gin@req@width=\dimen125
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: dvipdfmx.def on input line 147.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/dvipsnam.def
+File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
+))
+(/usr/local/texlive/2016/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count91
+\lst@gtempboxa=\box42
+\lst@token=\toks16
+\lst@length=\count92
+\lst@currlwidth=\dimen126
+\lst@column=\count93
+\lst@pos=\count94
+\lst@lostspace=\dimen127
+\lst@width=\dimen128
+\lst@newlines=\count95
+\lst@lineno=\count96
+\lst@maxwidth=\dimen129
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+\c@lstnumber=\count97
+\lst@skipnumbers=\count98
+\lst@framebox=\box43
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2015/06/04 1.6 listings configuration
+))
+Package: listings 2015/06/04 1.6 (Carsten Heinz)
+
+(./my_help_nasu.aux (./overview).aux) (./purpose.aux) (./bdd.aux)
+(./features_cucumber.aux) (./usage.aux) (./code.aux) (./features.aux))
+\openout1 = `my_help_nasu.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+\c@lstlisting=\count99
+LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
+(Font)              scaled to size 16.60605pt on input line 45.
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 16.60605pt on input line 45.
+LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
+(Font)              scaled to size 11.53198pt on input line 45.
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 11.53198pt on input line 45.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 45.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 45.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 45.
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 5.76599pt on input line 45.
+LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
+(Font)              scaled to size 9.60999pt on input line 46.
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 9.60999pt on input line 46.
+LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
+(Font)              scaled to size 13.83836pt on input line 46.
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 13.83836pt on input line 46.
+LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
+(Font)              scaled to size 13.83836pt on input line 46.
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 13.83836pt on input line 46.
+
+(./my_help_nasu.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 1.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 1.
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 6.72699pt on input line 1.
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 4.805pt on input line 1.
+ [1
+
+] [2])
+\tf@toc=\write3
+\openout3 = `my_help_nasu.toc'.
+
+ (./my_help_nasu.toc)
+\tf@toc=\write4
+\openout4 = `my_help_nasu.toc'.
+
+ [3]
+\openout2 = `overview).aux'.
+
+
+No file overview).tex.
+\openout2 = `purpose.aux'.
+
+(./purpose.tex
+LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
+(Font)              scaled to size 11.53198pt on input line 1.
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 11.53198pt on input line 1.
+) [4
+
+
+
+]
+\openout2 = `bdd.aux'.
+
+ (./bdd.tex
+Overfull \hbox (7.83887pt too wide) in paragraph at lines 18--21
+[]\OT1/cmr/m/n/10 BDD \JY1/mc/m/n/10 サイクルの図を以下に示します \OT1/cmr/m/n/
+10 [1]\JY1/mc/m/n/10 ． \OT1/cmtt/m/n/10 {{attach_view(my_help_nasu.001.jpg)}}
+ []
+
+) [5
+
+
+]
+\openout2 = `features_cucumber.aux'.
+
+ (./features_cucumber.tex
+(/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstlang2.sty
+File: lstlang2.sty 2015/06/04 1.6 listings language file
+)
+LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
+(Font)              scaled to size 8.64899pt on input line 10.
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 8.64899pt on input line 10.
+LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
+(Font)              scaled to size 8.64899pt on input line 10.
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 8.64899pt on input line 10.
+LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
+(Font)              scaled to size 6.72699pt on input line 11.
+LaTeX Font Info:    Font shape `JT1/gt/m/it' in size <9> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 11.
+LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
+(Font)              scaled to size 8.64899pt on input line 11.
+LaTeX Font Info:    Font shape `JY1/gt/m/it' in size <9> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 11.
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 8.64899pt on input line 11.
+
+Overfull \hbox (77.04199pt too wide) in paragraph at lines 34--54
+ [][][] 
+ []
+
+) [6
+
+
+] [7]
+\openout2 = `usage.aux'.
+
+ (./usage.tex [8
+
+
+]
+Overfull \hbox (21.92567pt too wide) in paragraph at lines 51--52
+[]\OT1/cmr/m/n/10 (upstream \JY1/mc/m/n/10 がなければ\OT1/cmr/m/n/10 )git re-mo
+te add up-stream git@github.com:gitname/my[]help.git 
+ []
+
+) [9] [10
+
+]
+\openout2 = `code.aux'.
+
+ (./code.tex [11
+
+]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 41.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 41.
+
+Overfull \hbox (39.28061pt too wide) in paragraph at lines 105--105
+ []  \JY1/gt/m/n/10 シナリオ\OT1/cmtt/m/n/10 : \JY1/gt/m/n/10 コマンドを入力し
+て \OT1/cmtt/m/n/10 todo \JY1/gt/m/n/10 を更新していく \OT1/cmtt/m/n/10 # featu
+res/my_todo.feature:6[] 
+ []
+
+[12]
+Overfull \hbox (5.39305pt too wide) in paragraph at lines 105--105
+ []    \JY1/gt/m/n/10 かつ自分の \OT1/cmtt/m/n/10 todo \JY1/gt/m/n/10 を書き込
+む           \OT1/cmtt/m/n/10 # features/my_todo.feature:10[] 
+ []
+
+
+Overfull \hbox (85.19681pt too wide) in paragraph at lines 105--105
+ []  \JY1/gt/m/n/10 シナリオ\OT1/cmtt/m/n/10 : \JY1/gt/m/n/10 コマンドを入力し
+てバ ックア ップをとる          \OT1/cmtt/m/n/10 # features/my_todo.feature:12[
+] 
+ []
+
+
+Overfull \hbox (42.14273pt too wide) in paragraph at lines 105--105
+ []    \JY1/gt/m/n/10 前提 \OT1/cmtt/m/n/10 todo \JY1/gt/m/n/10 の編集が終わ っ
+た                  \OT1/cmtt/m/n/10 # features/my_todo.feature:13[] 
+ []
+
+
+Overfull \hbox (26.62915pt too wide) in paragraph at lines 105--105
+ []    \JY1/gt/m/n/10 もし\OT1/cmtt/m/n/10 "my_todo --store [item]"\JY1/gt/m/n/
+10 と入力する \OT1/cmtt/m/n/10 # features/my_todo.feature:14[] 
+ []
+
+
+Overfull \hbox (53.85626pt too wide) in paragraph at lines 105--105
+ []    \JY1/gt/m/n/10 ならば \OT1/cmtt/m/n/10 item \JY1/gt/m/n/10 のバ ックア 
+ップを取る               \OT1/cmtt/m/n/10 # features/my_todo.feature:15[] 
+ []
+
+
+Overfull \hbox (51.6123pt too wide) in paragraph at lines 105--105
+ []\OT1/cmtt/m/n/10 You can implement step definitions for undefined steps with
+ these snippets:[] 
+ []
+
+
+Overfull \hbox (62.11221pt too wide) in paragraph at lines 105--105
+ []  \OT1/cmtt/m/n/10 pending # Write code here that turns the phrase above int
+o concrete actions[] 
+ []
+
+
+Overfull \hbox (62.11221pt too wide) in paragraph at lines 105--105
+ []  \OT1/cmtt/m/n/10 pending # Write code here that turns the phrase above int
+o concrete actions[] 
+ []
+
+
+Overfull \hbox (62.11221pt too wide) in paragraph at lines 105--105
+ []  \OT1/cmtt/m/n/10 pending # Write code here that turns the phrase above int
+o concrete actions[] 
+ []
+
+
+Overfull \hbox (62.11221pt too wide) in paragraph at lines 105--105
+ []  \OT1/cmtt/m/n/10 pending # Write code here that turns the phrase above int
+o concrete actions[] 
+ []
+
+
+Overfull \hbox (62.11221pt too wide) in paragraph at lines 105--105
+ []  \OT1/cmtt/m/n/10 pending # Write code here that turns the phrase above int
+o concrete actions[] 
+ []
+
+[13]
+Overfull \hbox (62.11221pt too wide) in paragraph at lines 105--105
+ []  \OT1/cmtt/m/n/10 pending # Write code here that turns the phrase above int
+o concrete actions[] 
+ []
+
+[14]
+Overfull \hbox (39.28061pt too wide) in paragraph at lines 165--165
+ []  \JY1/gt/m/n/10 シナリオ\OT1/cmtt/m/n/10 : \JY1/gt/m/n/10 コマンドを入力し
+て \OT1/cmtt/m/n/10 todo \JY1/gt/m/n/10 を更新していく \OT1/cmtt/m/n/10 # featu
+res/my_todo.feature:6[] 
+ []
+
+
+Overfull \hbox (81.5833pt too wide) in paragraph at lines 165--165
+ []    \JY1/gt/m/n/10 前提 \OT1/cmtt/m/n/10 todo \JY1/gt/m/n/10 を編集したい   
+          \OT1/cmtt/m/n/10 # features/step_definitions/my_todo_spec.rb:1[] 
+ []
+
+
+Underfull \hbox (badness 3460) in paragraph at lines 165--165
+ []      \OT1/cmtt/m/n/10 ./features/step_definitions/my_todo_spec.rb:2:in `/^t
+odo \JY1/gt/m/n/10 を
+ []
+
+
+Overfull \hbox (73.87874pt too wide) in paragraph at lines 165--165
+ []    \JY1/gt/m/n/10 もし\OT1/cmtt/m/n/10 "my_todo --edit"\JY1/gt/m/n/10 と入
+力する  \OT1/cmtt/m/n/10 # features/step_definitions/my_todo_spec.rb:5[] 
+ []
+
+
+Overfull \hbox (81.5833pt too wide) in paragraph at lines 165--165
+ []    \JY1/gt/m/n/10 ならば \OT1/cmtt/m/n/10 edit \JY1/gt/m/n/10 が開かれる   
+          \OT1/cmtt/m/n/10 # features/step_definitions/my_todo_spec.rb:9[] 
+ []
+
+
+Overfull \hbox (94.64227pt too wide) in paragraph at lines 165--165
+ []    \JY1/gt/m/n/10 かつ自分の \OT1/cmtt/m/n/10 todo \JY1/gt/m/n/10 を書き込
+む           \OT1/cmtt/m/n/10 # features/step_definitions/my_todo_spec.rb:13[] 
+
+ []
+
+
+Overfull \hbox (85.19681pt too wide) in paragraph at lines 165--165
+ []  \JY1/gt/m/n/10 シナリオ\OT1/cmtt/m/n/10 : \JY1/gt/m/n/10 コマンドを入力し
+てバ ックア ップをとる          \OT1/cmtt/m/n/10 # features/my_todo.feature:12[
+] 
+ []
+
+
+Overfull \hbox (131.39195pt too wide) in paragraph at lines 165--165
+ []    \JY1/gt/m/n/10 前提 \OT1/cmtt/m/n/10 todo \JY1/gt/m/n/10 の編集が終わ っ
+た                  \OT1/cmtt/m/n/10 # features/step_definitions/my_todo_spec.r
+b:17[] 
+ []
+
+
+Overfull \hbox (110.62842pt too wide) in paragraph at lines 165--165
+ []    \JY1/gt/m/n/10 もし\OT1/cmtt/m/n/10 "my_todo --store [item]"\JY1/gt/m/n/
+10 と入力する \OT1/cmtt/m/n/10 # features/step_definitions/my_todo_spec.rb:5[] 
+
+ []
+
+
+Overfull \hbox (143.10548pt too wide) in paragraph at lines 165--165
+ []    \JY1/gt/m/n/10 ならば \OT1/cmtt/m/n/10 item \JY1/gt/m/n/10 のバ ックア 
+ップを取る               \OT1/cmtt/m/n/10 # features/step_definitions/my_todo_s
+pec.rb:21[] 
+ []
+
+[15] [16] [17]) [18]
+\openout2 = `features.aux'.
+
+ (./features.tex [19
+
+
+]) [20]
+Overfull \hbox (71.53888pt too wide) in paragraph at lines 65--66
+[]\OT1/cmr/m/n/10 Shigeot R. Nishi-tani, my[]help \JY1/mc/m/n/10 の \OT1/cmr/m/
+n/10 README, \OT1/cmtt/m/n/10 http://www.rubydoc.info/gems/my_help/0.4.3\OT1/cm
+r/m/n/10 . 
+ []
+
+[21
+
+] (./my_help_nasu.aux (./overview).aux) (./purpose.aux) (./bdd.aux)
+(./features_cucumber.aux) (./usage.aux) (./code.aux) (./features.aux)) ) 
+Here is how much of TeX's memory you used:
+ 2505 strings out of 493683
+ 34314 string characters out of 6149653
+ 159017 words of memory out of 5000000
+ 6036 multiletter control sequences out of 15000+600000
+ 15673 words of font info for 72 fonts, out of 8000000 for 9000
+ 934 hyphenation exceptions out of 8191
+ 34i,9n,51p,222b,1565s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on my_help_nasu.dvi (21 pages, 48780 bytes).

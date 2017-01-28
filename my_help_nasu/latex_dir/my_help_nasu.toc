@@ -1,0 +1,26 @@
+\contentsline {subsection}{\numberline {0.1}my\_helpというソフト}{4}
+\contentsline {subsection}{\numberline {0.2}共同開発のためには，テストが必要だが，不十分．}{4}
+\contentsline {subsection}{\numberline {0.3}BDDに従ってテストを書いていく}{4}
+\contentsline {section}{\numberline {1}BDD}{5}
+\contentsline {section}{\numberline {2}Cucumberとfeaturesの説明}{6}
+\contentsline {section}{\numberline {3}my\_helpについて}{8}
+\contentsline {section}{\numberline {4}my\_helpのインストール}{8}
+\contentsline {subsection}{\numberline {4.1}githubに行ってdaddygongonのmy\_helpをforkする}{8}
+\contentsline {section}{\numberline {5}my\_helpの更新}{9}
+\contentsline {subsection}{\numberline {5.1}gitを用いてmy\_helpを新しくする．}{9}
+\contentsline {subsection}{\numberline {5.2}次にとってきた.ymlを\nobreakspace {}/.my\_helpにcpする．}{9}
+\contentsline {section}{\numberline {6}実際にBDDを使ってコードを書く流れを説明する．}{11}
+\contentsline {section}{\numberline {7}todoを更新するときのマニュアル}{11}
+\contentsline {section}{\numberline {8}インストール}{11}
+\contentsline {subsection}{\numberline {8.1}まずrspecとcucumberをgemでinstallする}{11}
+\contentsline {section}{\numberline {9}Cucumber}{12}
+\contentsline {subsection}{\numberline {9.1}step}{16}
+\contentsline {section}{\numberline {10}RSpec}{17}
+\contentsline {section}{\numberline {11}新しいitemをspecific\_helpに追加}{19}
+\contentsline {section}{\numberline {12}全てのhelp画面の表示}{19}
+\contentsline {section}{\numberline {13}過去にバックアップしてあるitemのリストの表示}{19}
+\contentsline {section}{\numberline {14}helpコマンドの追加や削除，編集をするファイルの開示}{19}
+\contentsline {section}{\numberline {15}specific\_helpのitemの消去}{19}
+\contentsline {section}{\numberline {16}itemのバックアップ}{19}
+\contentsline {section}{\numberline {17}hikiへのformatの変更}{20}
+\contentsline {section}{\numberline {18}todoの更新}{20}

@@ -1,0 +1,56 @@
+
+\section{新しいitemをspecific\_helpに追加}
+シナリオ：コマンドを入力してspecific\_helpにitemを追加する
+
+コマンド：emacs\_help --add [item]
+
+specific\_helpとは，ユーザが作成するそれぞれのヘルプである．
+
+ヘルプの内容は~/.my\_help/emacs\_help.ymlに元dataがある．
+
+\section{全てのhelp画面の表示}
+シナリオ：コマンドをニュ力してすべてのhelp画面を見る
+コマンド：emacs\_help --all
+
+\section{過去にバックアップしてあるitemのリストの表示}
+シナリオ：コマンドを入力してバックアップのリストを見る
+コマンド：emacs\_help --backup\_list
+
+\section{helpコマンドの追加や削除，編集をするファイルの開示}
+シナリオ：コマンドを入力してeditを開く
+コマンド：emacs\_help --edit
+
+元dataである~/.my\_help/emacs\_help.ymlを開く．
+
+ここで編集を行い，emacsで開いているのでC-x,C-sで保存する．
+
+\section{specific\_helpのitemの消去}
+シナリオ：コマンドを入力してitemを消す
+
+コマンド：emacs\_help --remove
+
+\section{itemのバックアップ}
+シナリオ：コマンドを入力してバックアップをとる
+
+コマンド：emacs\_help --store [item]
+
+\section{hikiへのformatの変更}
+シナリオ：コマンドを入力してformatをhikiモードにする
+
+コマンド：emacs\_help --to\_hiki
+
+\section{todoの更新}
+シナリオ１：コマンドを入力してtodoを更新する
+シナリオ２：コマンドを入力してバックアップをとる
+
+コマンド１：my\_todo --edit
+コマンド２：my\_todo --store [item]
+
+my\_todo --editで~/.my\_help/my\_todo.ymlを開く．
+
+ここで編集を行い，emacsで開いているのでC-x,C-sで保存する．
+
+my\_todo --store [item]でtodoのitemをバックアップとっておく．
+
+この動作により過去のバックアップを閲覧することができ，どんどん更新することが可能である．
+

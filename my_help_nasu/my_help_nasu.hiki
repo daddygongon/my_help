@@ -7,9 +7,9 @@
 !序論
 !![[my_help_nasu_purpose]]
 !!先行研究，方法
-*[[my_help_nasu_bdd]]
-*[[my_help_nasu_features_cucumber]]
-*[[my_help_nasu_usage]]
+!!![[my_help_nasu_bdd]]
+!!![[my_help_nasu_features_cucumber]]
+!!![[my_help_nasu_usage]]
 !本論
 !!結果と分析
 !!考察
@@ -18,10 +18,12 @@
 
 !featuresの記述
 BDDの具体的な記述と，想定した使用法との対比を次に示す．
-*[[my_help_nasu_code]]
-*[[my_help_nasu_features]]
+
+!![[my_help_nasu_code]]
+!![[my_help_nasu_features]]
 
 !参考文献
-# The RSpec Book　著者：David Chelimsky Dave Astels Zach Dennis ほか　翻訳：株式会社クイーブ　監修：株式会社クイーブ　角谷信太郎　豊田裕司
+
+# The RSpec Book　著者：David Chelimsky Dave Astels Zach Dennis ほか　翻訳：株式会社クイーブ　監修：株式会社クイーブ　角谷信太郎　豊田裕司.
+# Shigeot R. Nishitani, my_helpのREADME, [[http://www.rubydoc.info/gems/my_help/0.4.3]].
 //# (西谷先生のところから引用したいのですが，書き方がわかりません．．．)
-# Shigeot R. Nishitani, README of my_help, http://www.rubydoc.info/gems/my_help/0.4.3

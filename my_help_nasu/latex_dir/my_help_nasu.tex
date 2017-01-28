@@ -1,0 +1,67 @@
+\documentclass[12pt,a4paper]{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage[dvipdfmx]{color}
+\usepackage{listings}
+% to use japanese correctly, install jlistings.
+\lstset{
+  basicstyle={\small\ttfamily},
+  identifierstyle={\small},
+  commentstyle={\small\itshape\color{red}},
+  keywordstyle={\small\bfseries\color{cyan}},
+  ndkeywordstyle={\small},
+  stringstyle={\small\color{blue}},
+  frame={tb},
+  breaklines=true,
+  numbers=left,
+  numberstyle={\scriptsize},
+  stepnumber=1,
+  numbersep=1zw,
+  xrightmargin=0zw,
+  xleftmargin=3zw,
+  lineskip=-0.5ex
+}
+\lstdefinestyle{customCsh}{
+  language={csh},
+  numbers=none,
+}
+\lstdefinestyle{customRuby}{
+  language={ruby},
+  numbers=left,
+}
+\lstdefinestyle{customTex}{
+  language={tex},
+  numbers=none,
+}
+\lstdefinestyle{customJava}{
+  language={java},
+  numbers=left,
+}
+\begin{document}
+\title{卒業論文\\
+\vspace{4cm} ユーザメモソフトmy\_helpの開発}
+\author{ 関西学院大学　理工学部　情報科学科\\\\2535 那須比呂貴}
+\date{\vspace{3cm} 2017年  3月\\
+\vspace{3cm} 指導教員　　西谷　滋人　教授}
+\maketitle
+\tableofcontents
+
+\title{ユーザメモソフトmy\_helpの開発}
+\author{那須比呂貴}
+\date{}
+\maketitle
+\tableofcontents
+\include{overview)}
+\include{purpose}
+\include{bdd}
+\include{features_cucumber}
+\include{usage}
+BDDの具体的な記述と，想定した使用法との対比を次に示す．
+
+\include{code}
+\include{features}
+
+\begin{enumerate}
+\item The RSpec Book　著者：David Chelimsky Dave Astels Zach Dennis ほか　翻訳：株式会社クイーブ　監修：株式会社クイーブ　角谷信太郎　豊田裕司.
+\item Shigeot R. Nishitani, my\_helpのREADME, \verb|http://www.rubydoc.info/gems/my_help/0.4.3|.
+\end{enumerate}
+\end{document}

@@ -44,8 +44,8 @@ task :latex_all do
   }
   cont=""
   File.readlines(File.join($latex_dir,"#{main_file}.tex")).each{|line|
-    if line.match(/\\section{(.+)}/) 
-      if m=line.match(/\\section{\\verb\|(.+)\|}/) 
+    if line.match(/section{(.+)}/) 
+      if m=line.match(/section{\\verb\|(.+)\|}/) 
         p m
         p reg_exp = Regexp.new("#{basename}_(.+)")
         p m_t=m[1].match(reg_exp)[1]
@@ -60,33 +60,6 @@ task :latex_all do
   system "open latex_dir/#{main_file}.tex"
   exit
 end
-
-desc "change latex figures to wrap format"
-task :change_wrap do
-  lines = File.readlines($save_name)
-
-  cont = ""
-  lines.each{|line|
-    if line.include?('\begin{figure}[htbp]\begin{center}')
-      p line
-      cont << '\begin{wrapfigure}{r}{8cm}'+"\n"
-      cont << '\vspace{-2\baselineskip}'+"\n"
-      cont << '\begin{center}'+"\n"
-    elsif line.include?('\label{default}\end{center}\end{figure}')
-      p line
-      cont << '\end{center}'+"\n"
-      cont << '\vspace{2\baselineskip}'+"\n"
-      cont << '\end{wrapfigure}'+"\n"
-    else
-      cont << line
-    end
-  }
-  File.open($save_name,'w'){|file| file.print cont }
-
-  system("open #{$save_name}")
-  exit
-end
-
 
 desc "latex conversion FILE1(hiki) to FILE2(latex)"
 task :latex_base do
@@ -126,6 +99,33 @@ def convert_to_latex(file_name, option=nil)
   }
   File.open($save_name,'w'){|file| file.print cont }
 end
+
+desc "change latex figures to wrap format"
+task :change_wrap do
+  lines = File.readlines($save_name)
+
+  cont = ""
+  lines.each{|line|
+    if line.include?('\begin{figure}[htbp]\begin{center}')
+      p line
+      cont << '\begin{wrapfigure}{r}{8cm}'+"\n"
+      cont << '\vspace{-2\baselineskip}'+"\n"
+      cont << '\begin{center}'+"\n"
+    elsif line.include?('\label{default}\end{center}\end{figure}')
+      p line
+      cont << '\end{center}'+"\n"
+      cont << '\vspace{2\baselineskip}'+"\n"
+      cont << '\end{wrapfigure}'+"\n"
+    else
+      cont << line
+    end
+  }
+  File.open($save_name,'w'){|file| file.print cont }
+
+  system("open #{$save_name}")
+  exit
+end
+
 
 desc "increment fig NUBERS in FILE"
 task :increment do
