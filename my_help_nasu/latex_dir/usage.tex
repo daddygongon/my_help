@@ -4,6 +4,7 @@ my\_helpは本研究室の西谷が開発したものです．
 以下はmy\_helpのREADMEです[2]．
 
 CUI(CLI)ヘルプのUsage出力を真似て，user独自のhelpを作成・提供するgem.
+
 \begin{enumerate}
 \item 問題点
 \end{enumerate}
@@ -17,6 +18,7 @@ commandや文法を覚えるのに苦労します．少しのkey(とっかかり
 - memoしても，どこへ置いたか忘れる
 
 などです．
+
 \begin{enumerate}
 \item 特徴
 \end{enumerate}
@@ -35,7 +37,8 @@ hikiでやろうとしていることの半分くらいはこのあたりのこ�
 key(記憶のとっかかり)を提供することが目的です．
 
 \section{my\_helpのインストール}
-\subsection{githubに行ってdaddygongonのmy\_helpをforkする}\begin{enumerate}
+\subsection{githubに行ってdaddygongonのmy\_helpをforkする}
+\begin{enumerate}
 \item git clone git@github.com:daddygongon/my\_help.git
 \item cd my\_help
 \item rake to\_yml
@@ -46,7 +49,8 @@ key(記憶のとっかかり)を提供することが目的です．
 \item rake add\_yml
 \end{enumerate}
 \section{my\_helpの更新}
-\subsection{gitを用いてmy\_helpを新しくする．}\begin{enumerate}
+\subsection{gitを用いてmy\_helpを新しくする．}
+\begin{enumerate}
 \item git remote -vをする(remoteの確認).
 \item (upstreamがなければ)git remote add upstream git@github.com:gitname/my\_help.git
 \item git add -A
@@ -54,7 +58,8 @@ key(記憶のとっかかり)を提供することが目的です．
 \item git push upstream master(ここで自分のmy\_helpをupstreamに送っとく)
 \item git pull origin master(新しいmy\_helpを取ってくる)
 \end{enumerate}
-\subsection{次にとってきた.ymlを~/.my\_helpにcpする．}\begin{enumerate}
+\subsection{次にとってきた.ymlを~/.my\_helpにcpする．}
+\begin{enumerate}
 \item cd my\_helpでmy\_helpに移動．
 \item cp hogehoge.yml ~/.my\_help
 \end{enumerate}

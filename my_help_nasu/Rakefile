@@ -51,7 +51,7 @@ task :latex_all do
         p m_t=m[1].match(reg_exp)[1]
         line = "\\include{#{m_t}}\n"
       else
-        line = ""
+#        line = ""
       end
     end
     cont << line

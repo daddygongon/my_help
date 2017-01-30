@@ -1,7 +1,8 @@
 \section{実際にBDDを使ってコードを書く流れを説明する．}
 ここでは，卒業研究の目的の意義を理解してもらうために，全体の概要を説明する．
 
-\section{todoを更新するときのマニュアル}\begin{enumerate}
+\section{todoを更新するときのマニュアル}
+\begin{enumerate}
 \item my\_todo --editを入力して~/.my\_help/my\_todo.ymlを開く
 \item todoを書き込む（今週やることならweeklyというitemを作ってそこに書き込む）
 \item 保存して~/.my\_help/my\_todo.ymlを閉じる
@@ -11,7 +12,8 @@
 これを実際に振る舞いがきちんとできているのかを確認する．
 
 \section{インストール}
-\subsection{まずrspecとcucumberをgemでinstallする}\begin{enumerate}
+\subsection{まずrspecとcucumberをgemでinstallする}
+\begin{enumerate}
 \item gem install rspec --version 2.0.0
 \item rspec --helpと入力して
 \end{enumerate}\begin{quote}\begin{verbatim}
@@ -19,6 +21,7 @@
 Usage: rspec [options] [files or directories]
 \end{verbatim}\end{quote}
 のような表示がされていればinstallができている．
+
 \begin{enumerate}
 \item gem install cucumber --version 0.9.2
 \item cucumber --helpと入力して
@@ -30,6 +33,7 @@ Usage: cucumber [options] [ [FILE|DIR|URL][:LINE[:LINE]*] ]+
 
 \section{Cucumber}
 以下はtodoの更新を行うときのfeatureである．
+
 \begin{enumerate}
 \item 適当なディレクトリにfeaturesというディレクトリを作成する．
 \item そのfeaturesディレクトリにmy\_todo.featureを作成する．
