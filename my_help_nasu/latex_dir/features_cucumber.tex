@@ -1,12 +1,13 @@
 \section{Cucumberとfeaturesの説明}
-BDDはフルスタックのアジャイル開発技法です．BDDはATDP(Acceptance Test-Driven Planning)と呼ばれるAcceptance TDDの一種を含め，エクストリームプログラミングからヒントを得ています．
-ATDPでは，顧客受け入れテストを導入し，それを主体にコードの開発を進めて行きます．
-それらは顧客と開発チームによる共同作業の結果であることが理想的です．
-開発チームによってテストが書かれた後，顧客がレビューと承認を行うこともあります．
-いずれにしても，それらのテストは顧客と向き合うものなので，顧客が理解できる言語とフォーマットで表現されていなければなりません．
-Cucumberを利用すれば，そのための言語とフォーマットを手に入れることができます．
-Cucumberは，アプリケーションの機能とサンプルシナリオを説明するテキストを読み取り，そのシナリオの手順に従って開発中のコードとのやり取りを自動化します[1]．
-下記に例を示しています．
+Cucumberが提供するBDDの内容をまとめると
+
+\begin{quotation}
+BDDはフルスタックのアジャイル開発技法です．BDDはATDP(Acceptance Test-Driven Planning)と呼ばれるAcceptance TDDの一種を含め，エクストリームプログラミングからヒントを得ています．ATDPでは，顧客受け入れテストを導入し，それを主体にコードの開発を進めて行きます．それらは顧客と開発チームによる共同作業の結果であることが理想的です．開発チームによってテストが書かれた後，顧客がレビューと承認を行うこともあります．いずれにしても，それらのテストは顧客と向き合うものなので，顧客が理解できる言語とフォーマットで表現されていなければなりません．Cucumberを利用すれば，そのための言語とフォーマットを手に入れることができます．Cucumberは，アプリケーションの機能とサンプルシナリオを説明するテキストを読み取り，そのシナリオの手順に従って開発中のコードとのやり取りを自動化します[1, 7pp.]．
+
+\end{quotation}
+と記されている．
+
+下記にmy\_todoに対するfeaturesファイルの具体例を示す．
 \begin{lstlisting}[style=customRuby]
 # language: ja
 
@@ -27,7 +28,18 @@ todoは更新していくものであり,新しく書いたり終わったもの
 \end{lstlisting}
 このように日本語でシナリオを書くことができ，顧客にもわかりやすく，開発者も書きやすくなっている．
 
-featureファイルに書くキーワードは下記の通りになっている．
+ファイルの先頭で，
+\begin{quote}\begin{verbatim}
+# language: ja
+\end{verbatim}\end{quote}
+と記すと日本語のkeywordが認識される．もし英語で書いたら，
+\begin{quote}\begin{verbatim}
+function:...
+
+\end{verbatim}\end{quote}
+となる．
+
+featureファイルで使えるkeywordの対応は下記の通りになっている．
 
 \begin{table}[htbp]\begin{center}
 \caption{}
@@ -53,4 +65,25 @@ but (code)    &"しかし", "但し", "ただし"   \\
 \label{default}
 \end{center}\end{table}
 %for inserting separate lines, use \hline, \cline{2-3} etc.
+
+\section{下記にCucumberとRSpecのインストール方法を示す[1, pp11-12]．}
+\subsection{インストール}
+\subsubsection{まずrspecとcucumberをgemでinstallする}
+\begin{enumerate}
+\item gem install rspec --version 2.0.0
+\item rspec --helpと入力して
+\end{enumerate}\begin{quote}\begin{verbatim}
+/Users/nasubi/nasu% rspec --help
+Usage: rspec [options] [files or directories]
+\end{verbatim}\end{quote}
+のような表示がされていればinstallができている．
+
+\begin{enumerate}
+\item gem install cucumber --version 0.9.2
+\item cucumber --helpと入力して
+\end{enumerate}\begin{quote}\begin{verbatim}
+cucumber --help
+Usage: cucumber [options] [ [FILE|DIR|URL][:LINE[:LINE]*] ]+
+\end{verbatim}\end{quote}
+のような表示がされていればinstallできている．
 

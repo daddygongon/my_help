@@ -201,9 +201,9 @@ task :force_sync => [:sync0]
 
 desc "sync0 hikis and figs to hiki directory"
 task :sync0 do
-  entries=Dir.entries('.')
+  p entries=Dir.entries('.')
   entries[2..-1].each{|source| #cp *.hiki
-    next unless source.include?('.hiki')
+    next unless source.split('.')[1]=='hiki'
     next if source.include?('.hikirc')
     p base = source.split('.')[0]
     name = (base==basename)? base : basename+'_'+base

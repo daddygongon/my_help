@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (utf8.euc) (TeX Live 2016) (preloaded format=platex 2017.1.26)  28 JAN 2017 15:57
+This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (utf8.euc) (TeX Live 2016) (preloaded format=platex 2017.1.26)  31 JAN 2017 17:00
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -112,8 +112,8 @@ File: listings.cfg 2015/06/04 1.6 listings configuration
 ))
 Package: listings 2015/06/04 1.6 (Carsten Heinz)
 
-(./my_help_nasu.aux (./overview).aux) (./purpose.aux) (./bdd.aux)
-(./features_cucumber.aux) (./usage.aux) (./code.aux) (./features.aux))
+(./my_help_nasu.aux (./overview.aux) (./purpose.aux) (./rspec.aux) (./bdd.aux)
+(./features_cucumber.aux) (./usage.aux) (./code.aux))
 \openout1 = `my_help_nasu.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
@@ -161,19 +161,19 @@ LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
 (Font)              scaled to size 13.83836pt on input line 46.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 (Font)              scaled to size 13.83836pt on input line 46.
-
-(./my_help_nasu.toc [1
-
-]
+ (./my_help_nasu.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 2.
+(Font)              <7> on input line 1.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 2.
+(Font)              <5> on input line 1.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 6.72699pt on input line 2.
+(Font)              scaled to size 6.72699pt on input line 1.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 4.805pt on input line 2.
- [2])
+(Font)              scaled to size 4.805pt on input line 1.
+
+[1
+
+])
 \tf@toc=\write3
 \openout3 = `my_help_nasu.toc'.
 
@@ -181,13 +181,10 @@ LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
 \tf@toc=\write4
 \openout4 = `my_help_nasu.toc'.
 
- [3]
-\openout2 = `overview).aux'.
+ [2]
+\openout2 = `overview.aux'.
 
-
-No file overview).tex.
-[4
-
+ (./overview.tex) [3
 
 ]
 \openout2 = `purpose.aux'.
@@ -197,20 +194,28 @@ LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
 (Font)              scaled to size 11.53198pt on input line 1.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 (Font)              scaled to size 11.53198pt on input line 1.
-) [5
+) [4
 
-] [6
 
 ]
+\openout2 = `rspec.aux'.
+
+
+(./rspec.tex [5
+
+
+]) [6]
 \openout2 = `bdd.aux'.
 
  (./bdd.tex
-Overfull \hbox (7.83887pt too wide) in paragraph at lines 18--21
+Overfull \hbox (31.95004pt too wide) in paragraph at lines 18--21
 []\OT1/cmr/m/n/10 BDD \JY1/mc/m/n/10 サイクルの図を以下に示します \OT1/cmr/m/n/
-10 [1]\JY1/mc/m/n/10 ． \OT1/cmtt/m/n/10 {{attach_view(my_help_nasu.001.jpg)}}
+10 [1, 9pp.]\JY1/mc/m/n/10 ． \OT1/cmtt/m/n/10 {{attach_view(my_help_nasu.001.j
+pg)}}
  []
 
 ) [7
+
 
 ]
 \openout2 = `features_cucumber.aux'.
@@ -223,35 +228,35 @@ File: lstlang1.sty 2015/06/04 1.6 listings language file
 File: lstlang2.sty 2015/06/04 1.6 listings language file
 )
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 10.
+(Font)              scaled to size 8.64899pt on input line 11.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 10.
+(Font)              scaled to size 8.64899pt on input line 11.
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 10.
+(Font)              scaled to size 8.64899pt on input line 11.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 10.
+(Font)              scaled to size 8.64899pt on input line 11.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 6.72699pt on input line 11.
+(Font)              scaled to size 6.72699pt on input line 12.
 LaTeX Font Info:    Font shape `JT1/gt/m/it' in size <9> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 11.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 12.
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 11.
+(Font)              scaled to size 8.64899pt on input line 12.
 LaTeX Font Info:    Font shape `JY1/gt/m/it' in size <9> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 11.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 12.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 11.
+(Font)              scaled to size 8.64899pt on input line 12.
+ [8
 
-Overfull \hbox (77.04199pt too wide) in paragraph at lines 34--54
+
+]
+Overfull \hbox (77.04199pt too wide) in paragraph at lines 46--66
  [][][] 
  []
 
-) [8
-
-
-] [9]
+[9]) [10]
 \openout2 = `usage.aux'.
 
- (./usage.tex [10
+ (./usage.tex [11
 
 
 ]
@@ -260,175 +265,169 @@ Overfull \hbox (21.92567pt too wide) in paragraph at lines 55--56
 te add up-stream git@github.com:gitname/my[]help.git 
  []
 
-) [11] [12
+) [12] [13
 
 ]
 \openout2 = `code.aux'.
 
- (./code.tex [13
-
-]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 45.
+ (./code.tex
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 27.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 45.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 27.
+ [14
 
-Overfull \hbox (39.28061pt too wide) in paragraph at lines 109--109
+]
+Overfull \hbox (39.28061pt too wide) in paragraph at lines 91--91
  []  \JY1/gt/m/n/10 シナリオ\OT1/cmtt/m/n/10 : \JY1/gt/m/n/10 コマンドを入力し
 て \OT1/cmtt/m/n/10 todo \JY1/gt/m/n/10 を更新していく \OT1/cmtt/m/n/10 # featu
 res/my_todo.feature:6[] 
  []
 
-[14]
-Overfull \hbox (5.39305pt too wide) in paragraph at lines 109--109
+
+Overfull \hbox (5.39305pt too wide) in paragraph at lines 91--91
  []    \JY1/gt/m/n/10 かつ自分の \OT1/cmtt/m/n/10 todo \JY1/gt/m/n/10 を書き込
 む           \OT1/cmtt/m/n/10 # features/my_todo.feature:10[] 
  []
 
 
-Overfull \hbox (85.19681pt too wide) in paragraph at lines 109--109
+Overfull \hbox (85.19681pt too wide) in paragraph at lines 91--91
  []  \JY1/gt/m/n/10 シナリオ\OT1/cmtt/m/n/10 : \JY1/gt/m/n/10 コマンドを入力し
 てバ ックア ップをとる          \OT1/cmtt/m/n/10 # features/my_todo.feature:12[
 ] 
  []
 
 
-Overfull \hbox (42.14273pt too wide) in paragraph at lines 109--109
+Overfull \hbox (42.14273pt too wide) in paragraph at lines 91--91
  []    \JY1/gt/m/n/10 前提 \OT1/cmtt/m/n/10 todo \JY1/gt/m/n/10 の編集が終わ っ
 た                  \OT1/cmtt/m/n/10 # features/my_todo.feature:13[] 
  []
 
 
-Overfull \hbox (26.62915pt too wide) in paragraph at lines 109--109
+Overfull \hbox (26.62915pt too wide) in paragraph at lines 91--91
  []    \JY1/gt/m/n/10 もし\OT1/cmtt/m/n/10 "my_todo --store [item]"\JY1/gt/m/n/
 10 と入力する \OT1/cmtt/m/n/10 # features/my_todo.feature:14[] 
  []
 
 
-Overfull \hbox (53.85626pt too wide) in paragraph at lines 109--109
+Overfull \hbox (53.85626pt too wide) in paragraph at lines 91--91
  []    \JY1/gt/m/n/10 ならば \OT1/cmtt/m/n/10 item \JY1/gt/m/n/10 のバ ックア 
 ップを取る               \OT1/cmtt/m/n/10 # features/my_todo.feature:15[] 
  []
 
 
-Overfull \hbox (51.6123pt too wide) in paragraph at lines 109--109
+Overfull \hbox (51.6123pt too wide) in paragraph at lines 91--91
  []\OT1/cmtt/m/n/10 You can implement step definitions for undefined steps with
  these snippets:[] 
  []
 
 
-Overfull \hbox (62.11221pt too wide) in paragraph at lines 109--109
- []  \OT1/cmtt/m/n/10 pending # Write code here that turns the phrase above int
-o concrete actions[] 
- []
-
-
-Overfull \hbox (62.11221pt too wide) in paragraph at lines 109--109
- []  \OT1/cmtt/m/n/10 pending # Write code here that turns the phrase above int
-o concrete actions[] 
- []
-
-
-Overfull \hbox (62.11221pt too wide) in paragraph at lines 109--109
- []  \OT1/cmtt/m/n/10 pending # Write code here that turns the phrase above int
-o concrete actions[] 
- []
-
-
-Overfull \hbox (62.11221pt too wide) in paragraph at lines 109--109
- []  \OT1/cmtt/m/n/10 pending # Write code here that turns the phrase above int
-o concrete actions[] 
- []
-
-
-Overfull \hbox (62.11221pt too wide) in paragraph at lines 109--109
+Overfull \hbox (62.11221pt too wide) in paragraph at lines 91--91
  []  \OT1/cmtt/m/n/10 pending # Write code here that turns the phrase above int
 o concrete actions[] 
  []
 
 [15]
-Overfull \hbox (62.11221pt too wide) in paragraph at lines 109--109
+Overfull \hbox (62.11221pt too wide) in paragraph at lines 91--91
+ []  \OT1/cmtt/m/n/10 pending # Write code here that turns the phrase above int
+o concrete actions[] 
+ []
+
+
+Overfull \hbox (62.11221pt too wide) in paragraph at lines 91--91
+ []  \OT1/cmtt/m/n/10 pending # Write code here that turns the phrase above int
+o concrete actions[] 
+ []
+
+
+Overfull \hbox (62.11221pt too wide) in paragraph at lines 91--91
+ []  \OT1/cmtt/m/n/10 pending # Write code here that turns the phrase above int
+o concrete actions[] 
+ []
+
+
+Overfull \hbox (62.11221pt too wide) in paragraph at lines 91--91
+ []  \OT1/cmtt/m/n/10 pending # Write code here that turns the phrase above int
+o concrete actions[] 
+ []
+
+
+Overfull \hbox (62.11221pt too wide) in paragraph at lines 91--91
  []  \OT1/cmtt/m/n/10 pending # Write code here that turns the phrase above int
 o concrete actions[] 
  []
 
 [16]
-Overfull \hbox (39.28061pt too wide) in paragraph at lines 169--169
+Overfull \hbox (39.28061pt too wide) in paragraph at lines 151--151
  []  \JY1/gt/m/n/10 シナリオ\OT1/cmtt/m/n/10 : \JY1/gt/m/n/10 コマンドを入力し
 て \OT1/cmtt/m/n/10 todo \JY1/gt/m/n/10 を更新していく \OT1/cmtt/m/n/10 # featu
 res/my_todo.feature:6[] 
  []
 
 
-Overfull \hbox (81.5833pt too wide) in paragraph at lines 169--169
+Overfull \hbox (81.5833pt too wide) in paragraph at lines 151--151
  []    \JY1/gt/m/n/10 前提 \OT1/cmtt/m/n/10 todo \JY1/gt/m/n/10 を編集したい   
           \OT1/cmtt/m/n/10 # features/step_definitions/my_todo_spec.rb:1[] 
  []
 
 
-Underfull \hbox (badness 3460) in paragraph at lines 169--169
+Underfull \hbox (badness 3460) in paragraph at lines 151--151
  []      \OT1/cmtt/m/n/10 ./features/step_definitions/my_todo_spec.rb:2:in `/^t
 odo \JY1/gt/m/n/10 を
  []
 
-
-Overfull \hbox (73.87874pt too wide) in paragraph at lines 169--169
+[17]
+Overfull \hbox (73.87874pt too wide) in paragraph at lines 151--151
  []    \JY1/gt/m/n/10 もし\OT1/cmtt/m/n/10 "my_todo --edit"\JY1/gt/m/n/10 と入
 力する  \OT1/cmtt/m/n/10 # features/step_definitions/my_todo_spec.rb:5[] 
  []
 
 
-Overfull \hbox (81.5833pt too wide) in paragraph at lines 169--169
+Overfull \hbox (81.5833pt too wide) in paragraph at lines 151--151
  []    \JY1/gt/m/n/10 ならば \OT1/cmtt/m/n/10 edit \JY1/gt/m/n/10 が開かれる   
           \OT1/cmtt/m/n/10 # features/step_definitions/my_todo_spec.rb:9[] 
  []
 
 
-Overfull \hbox (94.64227pt too wide) in paragraph at lines 169--169
+Overfull \hbox (94.64227pt too wide) in paragraph at lines 151--151
  []    \JY1/gt/m/n/10 かつ自分の \OT1/cmtt/m/n/10 todo \JY1/gt/m/n/10 を書き込
 む           \OT1/cmtt/m/n/10 # features/step_definitions/my_todo_spec.rb:13[] 
 
  []
 
 
-Overfull \hbox (85.19681pt too wide) in paragraph at lines 169--169
+Overfull \hbox (85.19681pt too wide) in paragraph at lines 151--151
  []  \JY1/gt/m/n/10 シナリオ\OT1/cmtt/m/n/10 : \JY1/gt/m/n/10 コマンドを入力し
 てバ ックア ップをとる          \OT1/cmtt/m/n/10 # features/my_todo.feature:12[
 ] 
  []
 
 
-Overfull \hbox (131.39195pt too wide) in paragraph at lines 169--169
+Overfull \hbox (131.39195pt too wide) in paragraph at lines 151--151
  []    \JY1/gt/m/n/10 前提 \OT1/cmtt/m/n/10 todo \JY1/gt/m/n/10 の編集が終わ っ
 た                  \OT1/cmtt/m/n/10 # features/step_definitions/my_todo_spec.r
 b:17[] 
  []
 
 
-Overfull \hbox (110.62842pt too wide) in paragraph at lines 169--169
+Overfull \hbox (110.62842pt too wide) in paragraph at lines 151--151
  []    \JY1/gt/m/n/10 もし\OT1/cmtt/m/n/10 "my_todo --store [item]"\JY1/gt/m/n/
 10 と入力する \OT1/cmtt/m/n/10 # features/step_definitions/my_todo_spec.rb:5[] 
 
  []
 
 
-Overfull \hbox (143.10548pt too wide) in paragraph at lines 169--169
+Overfull \hbox (143.10548pt too wide) in paragraph at lines 151--151
  []    \JY1/gt/m/n/10 ならば \OT1/cmtt/m/n/10 item \JY1/gt/m/n/10 のバ ックア 
 ップを取る               \OT1/cmtt/m/n/10 # features/step_definitions/my_todo_s
 pec.rb:21[] 
  []
 
-[17] [18] [19]) [20]
-\openout2 = `features.aux'.
-
- (./features.tex [21
-
-
-]) [22]
-Overfull \hbox (71.53888pt too wide) in paragraph at lines 72--73
+[18] [19] [20] [21]) [22]
+Overfull \hbox (71.53888pt too wide) in paragraph at lines 65--66
 []\OT1/cmr/m/n/10 Shigeot R. Nishi-tani, my[]help \JY1/mc/m/n/10 の \OT1/cmr/m/
 n/10 README, \OT1/cmtt/m/n/10 http://www.rubydoc.info/gems/my_help/0.4.3\OT1/cm
 r/m/n/10 . 
@@ -436,15 +435,19 @@ r/m/n/10 .
 
 [23
 
-] (./my_help_nasu.aux (./overview).aux) (./purpose.aux) (./bdd.aux)
-(./features_cucumber.aux) (./usage.aux) (./code.aux) (./features.aux)) ) 
+] (./my_help_nasu.aux (./overview.aux) (./purpose.aux) (./rspec.aux)
+(./bdd.aux) (./features_cucumber.aux) (./usage.aux) (./code.aux))
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 2505 strings out of 493683
- 34314 string characters out of 6149653
- 159018 words of memory out of 5000000
- 6036 multiletter control sequences out of 15000+600000
+ 2546 strings out of 493683
+ 34720 string characters out of 6149653
+ 172100 words of memory out of 5000000
+ 6075 multiletter control sequences out of 15000+600000
  15673 words of font info for 72 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
- 34i,9n,51p,222b,1565s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,9n,51p,813b,1575s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on my_help_nasu.dvi (23 pages, 50808 bytes).
+Output written on my_help_nasu.dvi (23 pages, 59296 bytes).

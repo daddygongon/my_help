@@ -1,6 +1,29 @@
 {{toc}}
-!新しいitemをspecific_helpに追加
-<<< add.feature
+!featuresでの記述とその意味
+featuresでの記述は，コマンドの振る舞いを説明する自然な記述となる．
+その様子をspecific_helpが用意しているデフォルトのコマンドについて
+説明する．specific_helpとは，ユーザが作成するそれぞれのヘルプである．
+speific_helpの--helpを表示させると，
+<<< 
+        --edit                       edit help contentsを開く
+        --to_hiki                    hikiのformatに変更する
+        --all                        すべてのhelp画面を表示させる
+        --store [item]               store [item] でback upをとる
+        --remove [item]              remove [item] back upしてるlistを消去する
+        --add [item]                 add new [item]で新しいhelpを作る
+        --backup_list [val]          back upしているlistを表示させる
+>>>
+が得られる．これらの項目について順に詳細な振る舞いとそれを記述する
+シナリオを検討していく．
+
+!!--add [item]
+このコマンドは新しいitemをspecific_helpに追加する．
+提供される機能を
+シナリオの先頭に内容をかいつまんでこの振る舞いが記述されている．
+実装では，ヘルプの内容は~/.my_help/emacs_help.ymlに元dataがある
+
+<<< 
+nasu% cat add.feature
 #language: ja
 
 #--add [item]
@@ -14,13 +37,8 @@ specific_helpとは，ユーザが作成するそれぞれのヘルプである
         ならば ~/.my_help/emacs_help.ymlに新しいitemが自動的に追加される
 
 >>>
-シナリオ：コマンドを入力してspecific_helpにitemを追加する
 
-コマンド：emacs_help --add [item]
 
-specific_helpとは，ユーザが作成するそれぞれのヘルプである．
-
-ヘルプの内容は~/.my_help/emacs_help.ymlに元dataがある．
 !全てのhelp画面の表示
 <<< all_help.feature
 

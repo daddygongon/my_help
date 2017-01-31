@@ -1,4 +1,6 @@
-\section{実際にBDDを使ってコードを書く流れを説明する．}
+
+\subsection{BDDにしたがったcode記述の手順}
+実際にBDDを使ってコードを書く流れを説明する．
 ここでは，卒業研究の目的の意義を理解してもらうために，全体の概要を説明する．
 
 \section{todoを更新するときのマニュアル}
@@ -9,27 +11,7 @@
 \item my\_todoと打ち込んで更新されていたら完成
 \item my\_todo --store [item]を入力してitemのバックアップをとる
 \end{enumerate}
-これを実際に振る舞いがきちんとできているのかを確認する．
-
-\section{インストール}
-\subsection{まずrspecとcucumberをgemでinstallする}
-\begin{enumerate}
-\item gem install rspec --version 2.0.0
-\item rspec --helpと入力して
-\end{enumerate}\begin{quote}\begin{verbatim}
-/Users/nasubi/nasu% rspec --help
-Usage: rspec [options] [files or directories]
-\end{verbatim}\end{quote}
-のような表示がされていればinstallができている．
-
-\begin{enumerate}
-\item gem install cucumber --version 0.9.2
-\item cucumber --helpと入力して
-\end{enumerate}\begin{quote}\begin{verbatim}
-cucumber --help
-Usage: cucumber [options] [ [FILE|DIR|URL][:LINE[:LINE]*] ]+
-\end{verbatim}\end{quote}
-のような表示がされていればinstallできている．
+これを実際に振る舞いがきちんとできているのかをテストする．
 
 \section{Cucumber}
 以下はtodoの更新を行うときのfeatureである．
@@ -170,12 +152,31 @@ todoは更新していくものであり,新しく書いたり終わったもの
 と変化が出てくる．
 2 scenarios (2 pending)
 7 steps (5 skipped, 2 pending)
-これは2つのシナリオの内２つがpendingであり，７つのstepの内２つがpendingで５つがskippしたことを表している．
+これは2つのシナリオの内２つがpendingであり，７つのstepの内２つがpendingで５つがskipしたことを表している．
 step\_definitionsのmy\_todo\_spec.rbのpending部分を書き換えて進行していく．
-下記が書き直したコードである．
 
-\subsection{step}\begin{lstlisting}[style=]
-完成したやつ
+cucumberが成功すると下記のような結果となる．
+\begin{lstlisting}[style=]
+/Users/nasubi/my_help% cucumber features/my_todo.feature 
+# language: ja
+機能: todoの更新を行う
+todoは更新していくものであり,新しく書いたり終わったものを消したいのでバックアップをとって，過去のtodoを残しておく
+
+  シナリオ: コマンドを入力してtodoを更新していく # features/my_todo.feature:6
+    前提todoを編集したい             # features/step_definitions/my_todo_spec.rb:2
+    もし"my_todo --edit"と入力する  # features/step_definitions/my_todo_spec.rb:6
+    ならばeditが開かれる             # features/step_definitions/my_todo_spec.rb:10
+    かつ自分のtodoを書き込む           # features/step_definitions/my_todo_spec.rb:14
+
+  シナリオ: コマンドを入力してバックアップをとる          # features/my_todo.feature:12
+    前提todoの編集が終わった                  # features/step_definitions/my_todo_spec.rb:18
+    もし"my_todo --store [item]"と入力する # features/step_definitions/my_todo_spec.rb:6
+    ならばitemのバックアップを取る               # features/step_definitions/my_todo_spec.rb:22
+
+2 scenarios (2 passed)
+7 steps (7 passed)
+0m0.030s
+
 \end{lstlisting}
 ここでcucumberを実行すると全て成功しているのがわかります．
 \begin{lstlisting}[style=]
@@ -237,7 +238,41 @@ require 'todo'
 
 完成したコードを下記の通りです．
 \begin{lstlisting}[style=]
-完成したやつ
+require 'spec_helper'
+
+
+module Mytodo
+  describe Todo do
+    describe "#open" do
+      it "open file my_todo.yml" do
+          system("emacs ~/.my_help/my_todo.yml")
+      end
+    end
+  end
+end
+
 \end{lstlisting}
-このように他の振る舞いのコードも書き進めていくのがBDDであり，今回のシステムの開発です．
+これでrspecを実行すると以下のような結果が表示される．
+\begin{lstlisting}[style=]
+/Users/nasubi/my_help% rspec spec --color
+
+my_help command
+  version option
+    should be successfully executed
+    should have output: "my_help 0.4.3"
+  help option
+    should be successfully executed
+    should have output: "Usage: my_help [options]\n    -v, --version                    show program Version.\n    -l, --list...              install local after edit helps\n        --delete NAME                delete NAME help"
+
+Mytodo::Todo
+  #open
+    open file my_todo.yml
+
+Finished in 3.87 seconds (files took 0.30703 seconds to load)
+5 examples, 0 failures
+
+\end{lstlisting}
+これでtodoを更新するときの振る舞いのテストはうまく成功した．
+
+この方法でBDDでmy\_helpのテスト開発を行い，仕様を決定していった．
 

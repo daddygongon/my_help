@@ -1,3 +1,6 @@
+{{toc}}
+!!BDDにしたがったcode記述の手順
+
 実際にBDDを使ってコードを書く流れを説明する．
 // アプリの振る舞いを説明する
 // なぜ自分が作ったかを納得してもらえないから．
@@ -154,7 +157,7 @@ todoは更新していくものであり,新しく書いたり終わったもの
 と変化が出てくる．
 2 scenarios (2 pending)
 7 steps (5 skipped, 2 pending)
-これは2つのシナリオの内２つがpendingであり，７つのstepの内２つがpendingで５つがskippしたことを表している．
+これは2つのシナリオの内２つがpendingであり，７つのstepの内２つがpendingで５つがskipしたことを表している．
 step_definitionsのmy_todo_spec.rbのpending部分を書き換えて進行していく．
 
 cucumberが成功すると下記のような結果となる．
