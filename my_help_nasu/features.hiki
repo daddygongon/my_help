@@ -1,5 +1,19 @@
 {{toc}}
 !新しいitemをspecific_helpに追加
+<<< add.feature
+#language: ja
+
+#--add [item]
+機能: 新しいitemをspecific_helpに追加する
+specific_helpとは，ユーザが作成するそれぞれのヘルプである
+新しいhelp画面を追加したい
+
+シナリオ: コマンドを入力してspecific_helpにitemを追加する
+        前提 新たなhelpコマンドを追加したい
+        もし emacs_help --add[item]を入力する
+        ならば ~/.my_help/emacs_help.ymlに新しいitemが自動的に追加される
+
+>>>
 シナリオ：コマンドを入力してspecific_helpにitemを追加する
 
 コマンド：emacs_help --add [item]
@@ -8,14 +22,52 @@ specific_helpとは，ユーザが作成するそれぞれのヘルプである�
 
 ヘルプの内容は~/.my_help/emacs_help.ymlに元dataがある．
 !全てのhelp画面の表示
+<<< all_help.feature
+
+#language: ja
+
+#--all
+機能: 全てのhelp画面を見る
+複数のhelp画面を一度に見たい時に便利である
+
+シナリオ: コマンドを入力してすべてのhelpを見る
+        前提 複数のhelp画面を表示したい
+        もし emacs_help --allと入力する
+        ならば すべてのhelp画面が表示される
+>>>
 シナリオ：コマンドをニュ力してすべてのhelp画面を見る
+
 コマンド：emacs_help --all
 
 !過去にバックアップしてあるitemのリストの表示
+<<< backup_list.feature
+#language: ja
+
+#--backup_list
+機能: 過去にバックアップしてあるitemのリストを表示させる
+何をバックアップしたかの確認をしたい
+
+シナリオ: コマンドを入力してバックアップのリストを見る
+        前提 バックアップのリストを見たい
+        もし emacs_help --backup_listを入力する
+        ならば バックアップしているitemのリストが表示される
+        
+>>>
 シナリオ：コマンドを入力してバックアップのリストを見る
 コマンド：emacs_help --backup_list
 
 !helpコマンドの追加や削除，編集をするファイルの開示
+<<< edit_help.feature
+# language: ja
+#--edit
+機能: helpコマンドの追加や削除，編集をするためのeiditを開く
+emacs_helpと入力したときに出てくるhelpのコマンドの追加や削除，編集ができる
+
+シナリオ: コマンドを入力してeditを開く
+        前提 emacs_helpのコマンドの編集がしたい
+        もし emacs_help --editと入力する
+        ならば ~/.my_help/emacs_help.ymlがemacsで開かれる
+>>>
 シナリオ：コマンドを入力してeditを開く
 コマンド：emacs_help --edit
 
@@ -24,21 +76,77 @@ specific_helpとは，ユーザが作成するそれぞれのヘルプである�
 ここで編集を行い，emacsで開いているのでC-x,C-sで保存する．
 
 !specific_helpのitemの消去
+<<< remove.feature
+#language: ja
+
+#--remove [item]
+機能: specific_helpのitemを消す
+いらなくなったitemを消したいときに使う
+
+シナリオ: コマンドを入力してitemを消す
+        前提 いらないitemを消したい
+        もし emacs_help remove [item]
+        ならば ~/.my_help/emacs_help.ymlからitemが消える
+
+>>>
 シナリオ：コマンドを入力してitemを消す
 
 コマンド：emacs_help --remove
 
 !itemのバックアップ
+<<< store.feature
+#language: ja
+
+#--store [item]
+機能: itemのバックアップを取る
+バックアップとして残したいitemがあるときに使う
+
+シナリオ: コマンドを入力してitemのバックアップをとる
+        前提 バックアップをとっておきたい
+        もし emacs_help --store [item]と入力する
+        ならば 入力したitemのバックアップが作られる
+>>>
+
 シナリオ：コマンドを入力してバックアップをとる
 
 コマンド：emacs_help --store [item]
 
 !hikiへのformatの変更
+<<< to_hiki.feature
+# language: ja
+
+#--to_hiki
+機能:formatをhikiモードに変更する
+一つ一つエディタで開いて変更するのがめんどくさい時に有益である
+
+シナリオ: コマンドを入力してformatをhikiモードに変える
+        前提 hikiモードに変更したい
+        もし emacs_help --to_hikiと入力する
+        ならば formatがhikiモードに変更される
+>>>
 シナリオ：コマンドを入力してformatをhikiモードにする
 
 コマンド：emacs_help --to_hiki
 
 !todoの更新
+<<< my_todo.feature
+# language: ja
+
+機能: todoの更新を行う
+todoは更新していくものであり,新しく書いたり終わったものを消したいのでバック\
+アップをとって，過去のtodoを残しておく
+
+シナリオ: コマンドを入力してtodoを更新していく
+          前提 todoを編集したい
+          もし "my_todo --edit"と入力する
+          ならば editが開かれる
+          かつ 自分のtodoを書き込む
+
+シナリオ: コマンドを入力してバックアップをとる
+          前提 todoの編集が終わった
+          もし "my_todo --store [item]"と入力する
+          ならば itemのバックアップを取る
+>>>
 シナリオ１：コマンドを入力してtodoを更新する
 シナリオ２：コマンドを入力してバックアップをとる
 
