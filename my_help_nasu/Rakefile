@@ -12,6 +12,12 @@ dirnames=Dir.pwd.split('/')
 basename = (dirnames[-1]=='hikis')? dirnames[-2] : dirnames[-1]
 $latex_dir= 'latex_dir'
 
+task :github do
+  status, stdout, stderr = systemu %q( git remote -v |grep origin )
+  p github_dir=stdout.match(/(.+):(.+) \(push\)/)[2]
+  system "open https://github.com/#{github_dir}"
+end
+
 task :default do
   system 'rake -T'
 end
@@ -43,15 +49,19 @@ task :latex_all do
     convert_to_latex(file, option)
   }
   cont=""
+  p reg_exp = Regexp.new("#{basename}_(.+)")
   File.readlines(File.join($latex_dir,"#{main_file}.tex")).each{|line|
-    if line.match(/section{(.+)}/) 
-      if m=line.match(/section{\\verb\|(.+)\|}/) 
+    if line.match(/section{(.+)}/)
+      if m=line.match(/\\verb\|(.+)\((.+)\)\|/)
         p m
-        p reg_exp = Regexp.new("#{basename}_(.+)")
+        p m_t=m[2].match(reg_exp)[1]
+        line = "\\include{#{m_t}}\n"
+      elsif m=line.match(/section{\\verb\|(.+)\|}/)
+        p m
         p m_t=m[1].match(reg_exp)[1]
         line = "\\include{#{m_t}}\n"
       else
-#        line = ""
+        line = ""
       end
     end
     cont << line
