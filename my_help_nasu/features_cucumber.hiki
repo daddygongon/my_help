@@ -1,12 +1,11 @@
 !Cucumberとfeaturesの説明
-// 引用必要よ．pageを記述！！[1, p....]
 BDDはフルスタックのアジャイル開発技法です．BDDはATDP(Acceptance Test-Driven Planning)と呼ばれるAcceptance TDDの一種を含め，エクストリームプログラミングからヒントを得ています．
 ATDPでは，顧客受け入れテストを導入し，それを主体にコードの開発を進めて行きます．
 それらは顧客と開発チームによる共同作業の結果であることが理想的です．
 開発チームによってテストが書かれた後，顧客がレビューと承認を行うこともあります．
 いずれにしても，それらのテストは顧客と向き合うものなので，顧客が理解できる言語とフォーマットで表現されていなければなりません．
 Cucumberを利用すれば，そのための言語とフォーマットを手に入れることができます．
-Cucumberは，アプリケーションの機能とサンプルシナリオを説明するテキストを読み取り，そのシナリオの手順に従って開発中のコードとのやり取りを自動化します[1]．
+Cucumberは，アプリケーションの機能とサンプルシナリオを説明するテキストを読み取り，そのシナリオの手順に従って開発中のコードとのやり取りを自動化します[1, 7pp.]．
 下記に例を示しています．
 <<< ruby
 # language: ja
@@ -46,3 +45,21 @@ featureファイルに書くキーワードは下記の通りになっている�
 || then (code) || "ならば"           ||
 || and (code)  || "かつ"            ||
 || but (code)  || "しかし", "但し", "ただし" ||
+
+!下記にCucumberとRSpecのインストール方法を示す[1, pp11-12]．
+!!インストール
+!!!まずrspecとcucumberをgemでinstallする
+#gem install rspec --version 2.0.0
+#rspec --helpと入力して
+<<<
+/Users/nasubi/nasu% rspec --help
+Usage: rspec [options] [files or directories]
+>>>
+のような表示がされていればinstallができている．
+#gem install cucumber --version 0.9.2
+#cucumber --helpと入力して
+<<<
+cucumber --help
+Usage: cucumber [options] [ [FILE|DIR|URL][:LINE[:LINE]*] ]+
+>>>
+のような表示がされていればinstallできている．
