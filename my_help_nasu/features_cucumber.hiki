@@ -1,3 +1,4 @@
+{{toc}}
 !Cucumberとfeaturesの説明
 Cucumberが提供するBDDの内容をまとめると
 ""BDDはフルスタックのアジャイル開発技法です．BDDはATDP(Acceptance Test-Driven Planning)と呼ばれるAcceptance TDDの一種を含め，エクストリームプログラミングからヒントを得ています．ATDPでは，顧客受け入れテストを導入し，それを主体にコードの開発を進めて行きます．それらは顧客と開発チームによる共同作業の結果であることが理想的です．開発チームによってテストが書かれた後，顧客がレビューと承認を行うこともあります．いずれにしても，それらのテストは顧客と向き合うものなので，顧客が理解できる言語とフォーマットで表現されていなければなりません．Cucumberを利用すれば，そのための言語とフォーマットを手に入れることができます．Cucumberは，アプリケーションの機能とサンプルシナリオを説明するテキストを読み取り，そのシナリオの手順に従って開発中のコードとのやり取りを自動化します[1, 7pp.]．
@@ -24,16 +25,25 @@ todoは更新していくものであり,新しく書いたり終わったもの
 >>>
 このように日本語でシナリオを書くことができ，顧客にもわかりやすく，開発者も書きやすくなっている．
 
+!!下記が英語のfeaturesのひな形である．
+<<< features
+#言語の指定は不要
+
+Feature: Description of feature
+
+Scenario: Description of scenario
+  Given I want to explain scenario
+  Then I investigate
+  When I know the meaning
+  
+>>>
+
+
 ファイルの先頭で，
  # language: ja
-と記すと日本語のkeywordが認識される．もし英語で書いたら，
+と記すと日本語のkeywordが認識される．
 
-<<<
-function:...
-
->>>
-となる．
-
+!keyword
 featureファイルで使えるkeywordの対応は下記の通りになっている．
 
 || feature|| "フィーチャ", "機能"   ||
@@ -71,3 +81,68 @@ cucumber --help
 Usage: cucumber [options] [ [FILE|DIR|URL][:LINE[:LINE]*] ]+
 >>>
 のような表示がされていればinstallできている．
+
+!Cucumberの使用方法
+#まず適当なディレクトリの中にfeaturesというサブディレクトリを作成します．
+そのfeaturesの中に書きたいシナリオを書いた，hogehoge.featureを作成します．
+featureの具体例は上記に示してします．
+#次にシェルを開いて，先ほど述べた適当なディレクトリの場所で，cucumber features hogehoge.featureと入力します．
+そうすると以下のような出力が得られます．
+<<< hogehoge.feature
+
+Feature: Description of feature
+
+  Scenario: Description of scenario  # features/hogehoge.feature:3
+    Given I want to explain scenario # features/hogehoge.feature:4
+    Then I investigate               # features/hogehoge.feature:5
+    When I know the meaning          # features/hogehoge.feature:6
+
+1 scenario (1 undefined)
+3 steps (3 undefined)
+0m0.066s
+
+You can implement step definitions for undefined steps with these snippets:
+
+Given(/^I want to explain scenario$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^I investigate$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+When(/^I know the meaning$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+>>>
+
+ここではステップ定義に使用することができるコードブロックが表示されています．
+ステップ定義はステップを作成するための方法です．このサンプルでは，Giver(), When(), Then()no
+3つのメソッドを使ってステップを記述します．
+これらのメソッドはそれぞれRegexpとブロックを受け取ります．
+Cucumberはシナリオの最初のステップを読み取り,そのステップにマッチする正規表現を持つステップ定義を探して，そのステップ定義のブロックを実行します．
+　このシナリオを成功させるには，Cucumberが読み込めるファイルにステップ定義を保存する必要があります[1, pp15.]．
+そこで，featuresディレクトリの下にstep_definitionsというディレクトリを追加し，そこにhogehoge_step.rbというファイルを作成します．
+
+<<< hogehoge_step.rb
+
+Given(/^I want to explain scenario$/) do
+  pending # Write code here that turns the phrase above into concrete actio\
+ns                                                                          
+end
+
+Then(/^I investigate$/) do
+  pending # Write code here that turns the phrase above into concrete actio\
+ns                                                                          
+end
+
+When(/^I know the meaning$/) do
+  pending # Write code here that turns the phrase above into concrete actio\
+ns                                                                          
+end
+
+>>>
+
+pendingを削除して，そこにあれば良いなと思うコードを記述していきます．
+ここまでがCucumberの使用方法のテンプレートです．
