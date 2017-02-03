@@ -4,18 +4,14 @@
 !author:2535 那須比呂貴
 ![[概要|my_help_nasu_overview]]
 
-!序論
-!![[my_help_nasu_purpose]]
-!!先行研究，方法
-!!![[my_help_nasu_rspec]]
-!!![[my_help_nasu_bdd]]
-!!![[my_help_nasu_features_cucumber]]
-!!![[my_help_nasu_usage]]
+![[序論|my_help_nasu_purpose]]
+!先行研究，方法
+!![[my_help_nasu_method_bdd]]
+!![[my_help_nasu_method_cucumber]]
+!![[my_help_nasu_method_usage]]
 !本論
-下記にfeaturesの記述を示す．
-[[my_help_nasu_features]]
+!![[my_help_nasu_features]]
 !![[結果と分析|my_help_nasu_code]]
-
 !![[考察|my_help_nasu_consideration]]
 
 !結論

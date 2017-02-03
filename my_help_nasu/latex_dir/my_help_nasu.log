@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (utf8.euc) (TeX Live 2016) (preloaded format=platex 2017.1.26)  31 JAN 2017 17:00
+This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (utf8.euc) (TeX Live 2016) (preloaded format=platex 2017.1.26)  3 FEB 2017 16:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -112,8 +112,15 @@ File: listings.cfg 2015/06/04 1.6 listings configuration
 ))
 Package: listings 2015/06/04 1.6 (Carsten Heinz)
 
-(./my_help_nasu.aux (./overview.aux) (./purpose.aux) (./rspec.aux) (./bdd.aux)
-(./features_cucumber.aux) (./usage.aux) (./code.aux))
+(./my_help_nasu.aux (./overview.aux) (./purpose.aux) (./method_bdd.aux
+
+LaTeX Warning: Label `default' multiply defined.
+
+) (./method_cucumber.aux
+
+LaTeX Warning: Label `default' multiply defined.
+
+) (./method_usage.aux) (./features.aux) (./code.aux) (./consideration.aux))
 \openout1 = `my_help_nasu.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
@@ -150,30 +157,30 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
 (Font)              scaled to size 5.76599pt on input line 45.
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 46.
+(Font)              scaled to size 9.60999pt on input line 47.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 46.
+(Font)              scaled to size 9.60999pt on input line 47.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 13.83836pt on input line 46.
+(Font)              scaled to size 13.83836pt on input line 47.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 13.83836pt on input line 46.
+(Font)              scaled to size 13.83836pt on input line 47.
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 13.83836pt on input line 46.
+(Font)              scaled to size 13.83836pt on input line 47.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 13.83836pt on input line 46.
- (./my_help_nasu.toc
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 1.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 1.
-LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 6.72699pt on input line 1.
-LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 4.805pt on input line 1.
+(Font)              scaled to size 13.83836pt on input line 47.
 
-[1
+(./my_help_nasu.toc [1
 
-])
+]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 3.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 3.
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 6.72699pt on input line 3.
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 4.805pt on input line 3.
+ [2])
 \tf@toc=\write3
 \openout3 = `my_help_nasu.toc'.
 
@@ -181,104 +188,109 @@ LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
 \tf@toc=\write4
 \openout4 = `my_help_nasu.toc'.
 
- [2]
+ [3]
 \openout2 = `overview.aux'.
 
- (./overview.tex) [3
+ (./overview.tex) [4
 
 ]
 \openout2 = `purpose.aux'.
 
- (./purpose.tex
+
+(./purpose.tex) [5
+
+
+] [6
+
+]
+\openout2 = `method_bdd.aux'.
+
+ (./method_bdd.tex
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 11.53198pt on input line 1.
+(Font)              scaled to size 11.53198pt on input line 2.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 11.53198pt on input line 1.
-) [4
+(Font)              scaled to size 11.53198pt on input line 2.
+File: ../figs/./my_help_nasu.001.jpg Graphic file (type eps)
+ <../figs/./my_help_nasu.001.jpg>
+LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
+(Font)              scaled to size 8.64899pt on input line 11.
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 8.64899pt on input line 11.
+File: ../figs/./my_help_nasu1.001.jpg Graphic file (type eps)
 
+<../figs/./my_help_nasu1.001.jpg>) [7
 
-]
-\openout2 = `rspec.aux'.
+] [8]
+\openout2 = `method_cucumber.aux'.
 
-
-(./rspec.tex [5
-
-
-]) [6]
-\openout2 = `bdd.aux'.
-
- (./bdd.tex
-Overfull \hbox (31.95004pt too wide) in paragraph at lines 18--21
-[]\OT1/cmr/m/n/10 BDD \JY1/mc/m/n/10 サイクルの図を以下に示します \OT1/cmr/m/n/
-10 [1, 9pp.]\JY1/mc/m/n/10 ． \OT1/cmtt/m/n/10 {{attach_view(my_help_nasu.001.j
-pg)}}
- []
-
-) [7
-
-
-]
-\openout2 = `features_cucumber.aux'.
-
- (./features_cucumber.tex
+ (./method_cucumber.tex
 (/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 (/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstlang2.sty
 File: lstlang2.sty 2015/06/04 1.6 listings language file
 )
-LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 11.
-LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 11.
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 11.
+(Font)              scaled to size 8.64899pt on input line 12.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 11.
+(Font)              scaled to size 8.64899pt on input line 12.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 6.72699pt on input line 12.
+(Font)              scaled to size 6.72699pt on input line 13.
 LaTeX Font Info:    Font shape `JT1/gt/m/it' in size <9> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 12.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 13.
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 12.
+(Font)              scaled to size 8.64899pt on input line 13.
 LaTeX Font Info:    Font shape `JY1/gt/m/it' in size <9> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 12.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 13.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 12.
- [8
+(Font)              scaled to size 8.64899pt on input line 13.
+ [9
 
 
 ]
-Overfull \hbox (77.04199pt too wide) in paragraph at lines 46--66
+Overfull \hbox (77.04199pt too wide) in paragraph at lines 55--75
  [][][] 
  []
 
-[9]) [10]
-\openout2 = `usage.aux'.
+[10] [11] [12]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 153.
 
- (./usage.tex [11
+ (/usr/local/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 153.
+)
+[13]
+\openout2 = `method_usage.aux'.
+
+ (./method_usage.tex [14
 
 
 ]
-Overfull \hbox (21.92567pt too wide) in paragraph at lines 55--56
+Overfull \hbox (21.92567pt too wide) in paragraph at lines 57--58
 []\OT1/cmr/m/n/10 (upstream \JY1/mc/m/n/10 がなければ\OT1/cmr/m/n/10 )git re-mo
 te add up-stream git@github.com:gitname/my[]help.git 
  []
 
-) [12] [13
+) [15] [16
 
 ]
+\openout2 = `features.aux'.
+
+ (./features.tex
+Underfull \hbox (badness 1072) in paragraph at lines 15--15
+ []        \OT1/cmtt/m/n/10 --remove [item]              remove [item] back up 
+\JY1/gt/m/n/10 してる
+ []
+
+[17
+
+] [18] [19] [20]) [21]
 \openout2 = `code.aux'.
 
- (./code.tex
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 27.
+ (./code.tex [22
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 27.
- [14
 
 ]
 Overfull \hbox (39.28061pt too wide) in paragraph at lines 91--91
@@ -330,7 +342,7 @@ Overfull \hbox (62.11221pt too wide) in paragraph at lines 91--91
 o concrete actions[] 
  []
 
-[15]
+[23]
 Overfull \hbox (62.11221pt too wide) in paragraph at lines 91--91
  []  \OT1/cmtt/m/n/10 pending # Write code here that turns the phrase above int
 o concrete actions[] 
@@ -360,7 +372,7 @@ Overfull \hbox (62.11221pt too wide) in paragraph at lines 91--91
 o concrete actions[] 
  []
 
-[16]
+[24]
 Overfull \hbox (39.28061pt too wide) in paragraph at lines 151--151
  []  \JY1/gt/m/n/10 シナリオ\OT1/cmtt/m/n/10 : \JY1/gt/m/n/10 コマンドを入力し
 て \OT1/cmtt/m/n/10 todo \JY1/gt/m/n/10 を更新していく \OT1/cmtt/m/n/10 # featu
@@ -379,7 +391,7 @@ Underfull \hbox (badness 3460) in paragraph at lines 151--151
 odo \JY1/gt/m/n/10 を
  []
 
-[17]
+[25]
 Overfull \hbox (73.87874pt too wide) in paragraph at lines 151--151
  []    \JY1/gt/m/n/10 もし\OT1/cmtt/m/n/10 "my_todo --edit"\JY1/gt/m/n/10 と入
 力する  \OT1/cmtt/m/n/10 # features/step_definitions/my_todo_spec.rb:5[] 
@@ -426,28 +438,35 @@ Overfull \hbox (143.10548pt too wide) in paragraph at lines 151--151
 pec.rb:21[] 
  []
 
-[18] [19] [20] [21]) [22]
-Overfull \hbox (71.53888pt too wide) in paragraph at lines 65--66
+[26] [27] [28] [29]) [30]
+\openout2 = `consideration.aux'.
+
+ (./consideration.tex) [31
+
+
+]
+Overfull \hbox (71.53888pt too wide) in paragraph at lines 69--70
 []\OT1/cmr/m/n/10 Shigeot R. Nishi-tani, my[]help \JY1/mc/m/n/10 の \OT1/cmr/m/
 n/10 README, \OT1/cmtt/m/n/10 http://www.rubydoc.info/gems/my_help/0.4.3\OT1/cm
 r/m/n/10 . 
  []
 
-[23
+[32
 
-] (./my_help_nasu.aux (./overview.aux) (./purpose.aux) (./rspec.aux)
-(./bdd.aux) (./features_cucumber.aux) (./usage.aux) (./code.aux))
+] (./my_help_nasu.aux (./overview.aux) (./purpose.aux) (./method_bdd.aux)
+(./method_cucumber.aux) (./method_usage.aux) (./features.aux) (./code.aux)
+(./consideration.aux))
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 2546 strings out of 493683
- 34720 string characters out of 6149653
- 172100 words of memory out of 5000000
- 6075 multiletter control sequences out of 15000+600000
+ 2603 strings out of 493683
+ 35610 string characters out of 6149653
+ 178460 words of memory out of 5000000
+ 6121 multiletter control sequences out of 15000+600000
  15673 words of font info for 72 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
- 34i,9n,51p,813b,1575s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,9n,51p,811b,1575s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on my_help_nasu.dvi (23 pages, 59296 bytes).
+Output written on my_help_nasu.dvi (32 pages, 86832 bytes).

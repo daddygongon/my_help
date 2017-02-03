@@ -1,9 +1,9 @@
 
-\subsection{BDDにしたがったcode記述の手順}
+\subsubsection{BDDにしたがったcode記述の手順}
 実際にBDDを使ってコードを書く流れを説明する．
 ここでは，卒業研究の目的の意義を理解してもらうために，全体の概要を説明する．
 
-\section{todoを更新するときのマニュアル}
+\subsection{todoを更新するときのマニュアル}
 \begin{enumerate}
 \item my\_todo --editを入力して~/.my\_help/my\_todo.ymlを開く
 \item todoを書き込む（今週やることならweeklyというitemを作ってそこに書き込む）
@@ -13,7 +13,7 @@
 \end{enumerate}
 これを実際に振る舞いがきちんとできているのかをテストする．
 
-\section{Cucumber}
+\subsection{Cucumber}
 以下はtodoの更新を行うときのfeatureである．
 
 \begin{enumerate}
@@ -201,7 +201,7 @@ todoは更新していくものであり,新しく書いたり終わったもの
 0m0.029s
 
 \end{lstlisting}
-\section{RSpec}
+\subsection{RSpec}
 次にRSpecを使って実際にtodoを更新する振る舞いをするコード書いていく．
 
 そのための準備として，まずspecというディレクトリを作成し，my\_todoというサブディレクトリを追加する．

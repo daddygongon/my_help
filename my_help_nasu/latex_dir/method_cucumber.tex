@@ -1,11 +1,15 @@
-{{toc}}
-!Cucumberとfeaturesの説明
+
+\subsection{Cucumberの説明}
 Cucumberが提供するBDDの内容をまとめると
-""BDDはフルスタックのアジャイル開発技法です．BDDはATDP(Acceptance Test-Driven Planning)と呼ばれるAcceptance TDDの一種を含め，エクストリームプログラミングからヒントを得ています．ATDPでは，顧客受け入れテストを導入し，それを主体にコードの開発を進めて行きます．それらは顧客と開発チームによる共同作業の結果であることが理想的です．開発チームによってテストが書かれた後，顧客がレビューと承認を行うこともあります．いずれにしても，それらのテストは顧客と向き合うものなので，顧客が理解できる言語とフォーマットで表現されていなければなりません．Cucumberを利用すれば，そのための言語とフォーマットを手に入れることができます．Cucumberは，アプリケーションの機能とサンプルシナリオを説明するテキストを読み取り，そのシナリオの手順に従って開発中のコードとのやり取りを自動化します[1, 7pp.]．
+
+\begin{quotation}
+BDDはフルスタックのアジャイル開発技法です．BDDはATDP(Acceptance Test-Driven Planning)と呼ばれるAcceptance TDDの一種を含め，エクストリームプログラミングからヒントを得ています．ATDPでは，顧客受け入れテストを導入し，それを主体にコードの開発を進めて行きます．それらは顧客と開発チームによる共同作業の結果であることが理想的です．開発チームによってテストが書かれた後，顧客がレビューと承認を行うこともあります．いずれにしても，それらのテストは顧客と向き合うものなので，顧客が理解できる言語とフォーマットで表現されていなければなりません．Cucumberを利用すれば，そのための言語とフォーマットを手に入れることができます．Cucumberは，アプリケーションの機能とサンプルシナリオを説明するテキストを読み取り，そのシナリオの手順に従って開発中のコードとのやり取りを自動化します[1, 7pp.]．
+
+\end{quotation}
 と記されている．
 
-下記にmy_todoに対するfeaturesファイルの具体例を示す．
-<<< ruby
+下記にmy\_todoに対するfeaturesファイルの具体例を示す．
+\begin{lstlisting}[style=customRuby]
 # language: ja
 
 機能: todoの更新を行う
@@ -22,11 +26,11 @@ todoは更新していくものであり,新しく書いたり終わったもの
           前提 todoの編集が終わった
           もし "my_todo --store [item]"と入力する
           ならば itemのバックアップを取る
->>>
+\end{lstlisting}
 このように日本語でシナリオを書くことができ，顧客にもわかりやすく，開発者も書きやすくなっている．
 
-!!下記が英語のfeaturesのひな形である．
-<<< features
+下記が英語のfeaturesのひな形である．
+\begin{lstlisting}[style=]
 #言語の指定は不要
 
 Feature: Description of feature
@@ -36,59 +40,78 @@ Scenario: Description of scenario
   Then I investigate
   When I know the meaning
   
->>>
-
-
+\end{lstlisting}
 ファイルの先頭で，
- # language: ja
+\begin{quote}\begin{verbatim}
+# language: ja
+\end{verbatim}\end{quote}
 と記すと日本語のkeywordが認識される．
 
-!keyword
+\subsubsection{featuresの日本語keyword}
 featureファイルで使えるkeywordの対応は下記の通りになっている．
 
-|| feature|| "フィーチャ", "機能"   ||
-|| background|| "背景"            ||
-|| scenario|| "シナリオ"          ||
-|| scenario_outline || "シナリオアウトライン", "シナリオテンプレート", "テンプレ", "シナリオテンプレ" ||
-|| examples|| "例", "サンプル"     ||
-|| given || "* ", "前提"      ||
-|| when || "* ", "もし"      ||
-|| then || "* ", "ならば"     ||
-|| and  || "* ", "かつ"      ||
-|| but  || "* ", "しかし", "但し", "ただし"||
-|| given (code) || "前提"            ||
-|| when (code) || "もし"            ||
-|| then (code) || "ならば"           ||
-|| and (code)  || "かつ"            ||
-|| but (code)  || "しかし", "但し", "ただし" ||
+\begin{table}[htbp]\begin{center}
+\caption{}
+\begin{tabular}{lll}
+\hline
+feature  &"フィーチャ", "機能"     \\ \hline
+background  &"背景"              \\
+scenario  &"シナリオ"            \\
+scenario\_outline   &"シナリオアウトライン", "シナリオテンプレート", "テンプレ", "シナリオテンプレ"   \\
+examples  &"例", "サンプル"       \\
+given   &"* ", "前提"        \\
+when   &"* ", "もし"        \\
+then   &"* ", "ならば"       \\
+and    &"* ", "かつ"        \\
+but    &"* ", "しかし", "但し", "ただし"  \\
+given (code)   &"前提"              \\
+when (code)   &"もし"              \\
+then (code)   &"ならば"             \\
+and (code)    &"かつ"              \\
+but (code)    &"しかし", "但し", "ただし"   \\
+\hline
+\end{tabular}
+\label{default}
+\end{center}\end{table}
+%for inserting separate lines, use \hline, \cline{2-3} etc.
 
+\subsubsection{Cucumber,RSpecインストール}
+まずrspecをgemでinstallする．
 
-
-!下記にCucumberとRSpecのインストール方法を示す[1, pp11-12]．
-!!インストール
-!!!まずrspecとcucumberをgemでinstallする
-#gem install rspec --version 2.0.0
-#rspec --helpと入力して
-<<<
+\begin{enumerate}
+\item gem install rspec --version 2.0.0
+\item rspec --help
+\end{enumerate}
+と入力して
+\begin{quote}\begin{verbatim}
 /Users/nasubi/nasu% rspec --help
 Usage: rspec [options] [files or directories]
->>>
-のような表示がされていればinstallができている．
-#gem install cucumber --version 0.9.2
-#cucumber --helpと入力して
-<<<
+\end{verbatim}\end{quote}
+のような表示がされていればinstallができている．次に，cucumberをinstallする
+
+\begin{enumerate}
+\item gem install cucumber --version 0.9.2
+\item cucumber --help
+\end{enumerate}
+と入力して
+\begin{quote}\begin{verbatim}
 cucumber --help
 Usage: cucumber [options] [ [FILE|DIR|URL][:LINE[:LINE]*] ]+
->>>
+\end{verbatim}\end{quote}
 のような表示がされていればinstallできている．
 
-!Cucumberの使用方法
-#まず適当なディレクトリの中にfeaturesというサブディレクトリを作成します．
+\subsubsection{Cucumberの使用方法}
+\begin{enumerate}
+\item まず適当なディレクトリの中にfeaturesというサブディレクトリを作成します．
+\end{enumerate}
 そのfeaturesの中に書きたいシナリオを書いた，hogehoge.featureを作成します．
 featureの具体例は上記に示してします．
-#次にシェルを開いて，先ほど述べた適当なディレクトリの場所で，cucumber features hogehoge.featureと入力します．
+
+\begin{enumerate}
+\item 次にシェルを開いて，先ほど述べた適当なディレクトリの場所で，cucumber features hogehoge.featureと入力します．
+\end{enumerate}
 そうすると以下のような出力が得られます．
-<<< hogehoge.feature
+\begin{lstlisting}[style=]
 
 Feature: Description of feature
 
@@ -115,17 +138,16 @@ When(/^I know the meaning$/) do
   pending # Write code here that turns the phrase above into concrete actions
 end
 
->>>
-
+\end{lstlisting}
 ここではステップ定義に使用することができるコードブロックが表示されています．
 ステップ定義はステップを作成するための方法です．このサンプルでは，Giver(), When(), Then()no
 3つのメソッドを使ってステップを記述します．
 これらのメソッドはそれぞれRegexpとブロックを受け取ります．
 Cucumberはシナリオの最初のステップを読み取り,そのステップにマッチする正規表現を持つステップ定義を探して，そのステップ定義のブロックを実行します．
-　このシナリオを成功させるには，Cucumberが読み込めるファイルにステップ定義を保存する必要があります[1, pp15.]．
-そこで，featuresディレクトリの下にstep_definitionsというディレクトリを追加し，そこにhogehoge_step.rbというファイルを作成します．
 
-<<< hogehoge_step.rb
+このシナリオを成功させるには，Cucumberが読み込めるファイルにステップ定義を保存する必要があります[1, pp15.]．
+そこで，featuresディレクトリの下にstep\_definitionsというディレクトリを追加し，そこにhogehoge\_step.rbというファイルを作成します．
+\begin{lstlisting}[style=]
 
 Given(/^I want to explain scenario$/) do
   pending # Write code here that turns the phrase above into concrete actio\
@@ -142,7 +164,7 @@ When(/^I know the meaning$/) do
 ns                                                                          
 end
 
->>>
-
+\end{lstlisting}
 pendingを削除して，そこにあれば良いなと思うコードを記述していきます．
 ここまでがCucumberの使用方法のテンプレートです．
+

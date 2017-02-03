@@ -43,23 +43,27 @@
 \date{\vspace{3cm} 2017年  3月\\
 \vspace{3cm} 指導教員　　西谷　滋人　教授}
 \maketitle
+\setcounter{tocdepth}{4}
 \tableofcontents
 
-\title{ユーザメモソフトmy\_helpの開発}
-\author{2535 那須比呂貴}
-\date{}
-\maketitle
 \tableofcontents
 \include{overview}
 \include{purpose}
-\include{rspec}
-\include{bdd}
-\include{features_cucumber}
-\include{usage}
-下記にfeaturesの記述を示す．
-\verb|my_help_nasu_features|
-
+\section{先行研究，方法}
+\include{method_bdd}
+\include{method_cucumber}
+\include{method_usage}
+\section{本論}
+\include{features}
 \include{code}
+\include{consideration}
+\section{結論}
+\section{謝辞}
+　本研究を進めるにあたり，様々なご指導を頂きました西谷滋人教授先生に深く感謝いたします．
+また，本研究の進行に伴い，様々な助力，知識の供給を頂きました西谷研究室の同輩，先輩方に心から感謝の意を示します．
+本当にありがとうございました．
+
+\section{参考文献}
 \begin{enumerate}
 \item The RSpec Book　著者：David Chelimsky Dave Astels Zach Dennis ほか　翻訳：株式会社クイーブ　監修：株式会社クイーブ　角谷信太郎　豊田裕司.
 \item Shigeot R. Nishitani, my\_helpのREADME, \verb|http://www.rubydoc.info/gems/my_help/0.4.3|.
