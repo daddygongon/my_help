@@ -49,32 +49,23 @@ Scenario: Description of scenario
 
 \subsubsection{featuresの日本語keyword}
 featureファイルで使えるkeywordの対応は下記の通りになっている．
-
-\begin{table}[htbp]\begin{center}
-\caption{}
-\begin{tabular}{lll}
-\hline
-feature  &"フィーチャ", "機能"     \\ \hline
-background  &"背景"              \\
-scenario  &"シナリオ"            \\
-scenario\_outline   &"シナリオアウトライン", "シナリオテンプレート", "テンプレ", "シナリオテンプレ"   \\
-examples  &"例", "サンプル"       \\
-given   &"* ", "前提"        \\
-when   &"* ", "もし"        \\
-then   &"* ", "ならば"       \\
-and    &"* ", "かつ"        \\
-but    &"* ", "しかし", "但し", "ただし"  \\
-given (code)   &"前提"              \\
-when (code)   &"もし"              \\
-then (code)   &"ならば"             \\
-and (code)    &"かつ"              \\
-but (code)    &"しかし", "但し", "ただし"   \\
-\hline
-\end{tabular}
-\label{default}
-\end{center}\end{table}
-%for inserting separate lines, use \hline, \cline{2-3} etc.
-
+\begin{quote}\begin{verbatim}
+|| feature|| "フィーチャ", "機能"   ||
+|| background|| "背景"            ||
+|| scenario|| "シナリオ"          ||
+|| scenario_outline || "シナリオアウトライン", "シナリオテンプレート", "テンプレ", "シナリオテンプレ" ||
+|| examples|| "例", "サンプル"     ||
+|| given || "* ", "前提"      ||
+|| when || "* ", "もし"      ||
+|| then || "* ", "ならば"     ||
+|| and  || "* ", "かつ"      ||
+|| but  || "* ", "しかし", "但し", "ただし"||
+|| given (code) || "前提"            ||
+|| when (code) || "もし"            ||
+|| then (code) || "ならば"           ||
+|| and (code)  || "かつ"            ||
+|| but (code)  || "しかし", "但し", "ただし" ||
+\end{verbatim}\end{quote}
 \subsubsection{Cucumber,RSpecインストール}
 まずrspecをgemでinstallする．
 

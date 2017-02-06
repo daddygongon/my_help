@@ -9,12 +9,11 @@
 !![[my_help_nasu_method_bdd]]
 !![[my_help_nasu_method_cucumber]]
 !![[my_help_nasu_method_usage]]
-!本論
-!![[my_help_nasu_features]]
-!![[結果と分析|my_help_nasu_code]]
-!![[考察|my_help_nasu_consideration]]
 
-!結論
+![[本論|my_help_nasu_code]]
+!![[my_help_nasu_features]]
+![[結論,考察|my_help_nasu_consideration]]
+
 
 !謝辞
 　本研究を進めるにあたり，様々なご指導を頂きました西谷滋人教授先生に深く感謝いたします．
