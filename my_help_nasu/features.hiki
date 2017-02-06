@@ -1,5 +1,5 @@
 {{toc}}
-!featuresでの記述とその意味
+!!featuresでの記述とその意味
 featuresでの記述は，コマンドの振る舞いを説明する自然な記述となる．
 その様子をspecific_helpが用意しているデフォルトのコマンドについて
 説明する．specific_helpとは，ユーザが作成するそれぞれのヘルプである．
@@ -16,7 +16,11 @@ speific_helpの--helpを表示させると，
 が得られる．これらの項目について順に詳細な振る舞いとそれを記述する
 シナリオを検討していく．
 
-!!--add [item]
+
+!!my_helpのfeatures
+下記は私が作成したmy_helpの一部をfeaturesで書いたものである．
+
+!!!--add [item]
 このコマンドは新しいitemをspecific_helpに追加する．
 提供される機能を
 シナリオの先頭に内容をかいつまんでこの振る舞いが記述されている．
@@ -39,7 +43,7 @@ specific_helpとは，ユーザが作成するそれぞれのヘルプである
 >>>
 
 
-!全てのhelp画面の表示
+!!!全てのhelp画面の表示
 <<< all_help.feature
 
 #language: ja
@@ -57,7 +61,7 @@ specific_helpとは，ユーザが作成するそれぞれのヘルプである
 
 コマンド：emacs_help --all
 
-!過去にバックアップしてあるitemのリストの表示
+!!!過去にバックアップしてあるitemのリストの表示
 <<< backup_list.feature
 #language: ja
 
@@ -74,7 +78,7 @@ specific_helpとは，ユーザが作成するそれぞれのヘルプである
 シナリオ：コマンドを入力してバックアップのリストを見る
 コマンド：emacs_help --backup_list
 
-!helpコマンドの追加や削除，編集をするファイルの開示
+!!!helpコマンドの追加や削除，編集をするファイルの開示
 <<< edit_help.feature
 # language: ja
 #--edit
@@ -93,7 +97,7 @@ emacs_helpと入力したときに出てくるhelpのコマンドの追加や削
 
 ここで編集を行い，emacsで開いているのでC-x,C-sで保存する．
 
-!specific_helpのitemの消去
+!!!specific_helpのitemの消去
 <<< remove.feature
 #language: ja
 
@@ -111,7 +115,7 @@ emacs_helpと入力したときに出てくるhelpのコマンドの追加や削
 
 コマンド：emacs_help --remove
 
-!itemのバックアップ
+!!!itemのバックアップ
 <<< store.feature
 #language: ja
 
@@ -129,7 +133,7 @@ emacs_helpと入力したときに出てくるhelpのコマンドの追加や削
 
 コマンド：emacs_help --store [item]
 
-!hikiへのformatの変更
+!!!hikiへのformatの変更
 <<< to_hiki.feature
 # language: ja
 
@@ -146,7 +150,7 @@ emacs_helpと入力したときに出てくるhelpのコマンドの追加や削
 
 コマンド：emacs_help --to_hiki
 
-!todoの更新
+!!!todoの更新
 <<< my_todo.feature
 # language: ja
 

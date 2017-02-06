@@ -3,7 +3,7 @@
 \contentsline {subsection}{\numberline {2.1}RSpecとBDDについて}{7}
 \contentsline {subsection}{\numberline {2.2}Cucumberの説明}{9}
 \contentsline {subsubsection}{\numberline {2.2.1}featuresの日本語keyword}{10}
-\contentsline {subsubsection}{\numberline {2.2.2}Cucumber,RSpecインストール}{10}
+\contentsline {subsubsection}{\numberline {2.2.2}Cucumber,RSpecインストール}{11}
 \contentsline {subsubsection}{\numberline {2.2.3}Cucumberの使用方法}{11}
 \contentsline {subsection}{\numberline {2.3}my\_helpについて}{14}
 \contentsline {subsubsection}{\numberline {2.3.1}使用法}{14}
@@ -12,21 +12,20 @@
 \contentsline {subsubsection}{\numberline {2.3.4}my\_helpの更新}{15}
 \contentsline {paragraph}{gitを用いてmy\_helpを新しくする．}{15}
 \contentsline {paragraph}{次にとってきた.ymlを\nobreakspace {}/.my\_helpにcpする．}{15}
-\contentsline {section}{\numberline {3}本論}{16}
-\contentsline {subsection}{\numberline {3.1}featuresでの記述とその意味}{17}
-\contentsline {subsubsection}{\numberline {3.1.1}--add [item]}{17}
-\contentsline {subsection}{\numberline {3.2}全てのhelp画面の表示}{18}
-\contentsline {subsection}{\numberline {3.3}過去にバックアップしてあるitemのリストの表示}{18}
-\contentsline {subsection}{\numberline {3.4}helpコマンドの追加や削除，編集をするファイルの開示}{19}
-\contentsline {subsection}{\numberline {3.5}specific\_helpのitemの消去}{19}
-\contentsline {subsection}{\numberline {3.6}itemのバックアップ}{20}
-\contentsline {subsection}{\numberline {3.7}hikiへのformatの変更}{20}
-\contentsline {subsection}{\numberline {3.8}todoの更新}{21}
-\contentsline {subsubsection}{\numberline {3.8.1}BDDにしたがったcode記述の手順}{22}
-\contentsline {subsection}{\numberline {3.9}todoを更新するときのマニュアル}{22}
-\contentsline {subsection}{\numberline {3.10}Cucumber}{22}
-\contentsline {subsection}{\numberline {3.11}RSpec}{28}
-\contentsline {subsection}{\numberline {3.12}考察}{31}
-\contentsline {section}{\numberline {4}結論}{32}
-\contentsline {section}{\numberline {5}謝辞}{32}
-\contentsline {section}{\numberline {6}参考文献}{32}
+\contentsline {section}{\numberline {3}BDDでのmy\_helpのテスト開発}{16}
+\contentsline {subsection}{\numberline {3.1}todoを更新するときのマニュアル}{16}
+\contentsline {subsection}{\numberline {3.2}Cucumber}{16}
+\contentsline {subsection}{\numberline {3.3}RSpec}{22}
+\contentsline {subsubsection}{\numberline {3.3.1}featuresでの記述とその意味}{25}
+\contentsline {subsubsection}{\numberline {3.3.2}my\_helpのfeatures}{25}
+\contentsline {paragraph}{--add [item]}{25}
+\contentsline {paragraph}{全てのhelp画面の表示}{26}
+\contentsline {paragraph}{過去にバックアップしてあるitemのリストの表示}{26}
+\contentsline {paragraph}{helpコマンドの追加や削除，編集をするファイルの開示}{27}
+\contentsline {paragraph}{specific\_helpのitemの消去}{27}
+\contentsline {paragraph}{itemのバックアップ}{27}
+\contentsline {paragraph}{hikiへのformatの変更}{28}
+\contentsline {paragraph}{todoの更新}{28}
+\contentsline {section}{\numberline {4}考察}{30}
+\contentsline {section}{\numberline {5}謝辞}{31}
+\contentsline {section}{\numberline {6}参考文献}{31}

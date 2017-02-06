@@ -45,7 +45,7 @@ Scenario: Description of scenario
 
 !!featuresの日本語keyword
 featureファイルで使えるkeywordの対応は下記の通りになっている．
-
+<<<
 || feature|| "フィーチャ", "機能"   ||
 || background|| "背景"            ||
 || scenario|| "シナリオ"          ||
@@ -61,7 +61,7 @@ featureファイルで使えるkeywordの対応は下記の通りになってい
 || then (code) || "ならば"           ||
 || and (code)  || "かつ"            ||
 || but (code)  || "しかし", "但し", "ただし" ||
-
+>>>
 !!Cucumber,RSpecインストール
 まずrspecをgemでinstallする．
 #gem install rspec --version 2.0.0

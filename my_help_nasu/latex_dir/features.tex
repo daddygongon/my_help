@@ -1,5 +1,5 @@
 
-\subsection{featuresでの記述とその意味}
+\subsubsection{featuresでの記述とその意味}
 featuresでの記述は，コマンドの振る舞いを説明する自然な記述となる．
 その様子をspecific\_helpが用意しているデフォルトのコマンドについて
 説明する．specific\_helpとは，ユーザが作成するそれぞれのヘルプである．
@@ -16,7 +16,10 @@ speific\_helpの--helpを表示させると，
 が得られる．これらの項目について順に詳細な振る舞いとそれを記述する
 シナリオを検討していく．
 
-\subsubsection{--add [item]}
+\subsubsection{my\_helpのfeatures}
+下記は私が作成したmy\_helpの一部をfeaturesで書いたものである．
+
+\paragraph{--add [item]}
 このコマンドは新しいitemをspecific\_helpに追加する．
 提供される機能を
 シナリオの先頭に内容をかいつまんでこの振る舞いが記述されている．
@@ -36,7 +39,7 @@ specific_helpとは，ユーザが作成するそれぞれのヘルプである
         ならば ~/.my_help/emacs_help.ymlに新しいitemが自動的に追加される
 
 \end{verbatim}\end{quote}
-\subsection{全てのhelp画面の表示}\begin{lstlisting}[style=]
+\paragraph{全てのhelp画面の表示}\begin{lstlisting}[style=]
 
 #language: ja
 
@@ -53,7 +56,7 @@ specific_helpとは，ユーザが作成するそれぞれのヘルプである
 
 コマンド：emacs\_help --all
 
-\subsection{過去にバックアップしてあるitemのリストの表示}\begin{lstlisting}[style=]
+\paragraph{過去にバックアップしてあるitemのリストの表示}\begin{lstlisting}[style=]
 #language: ja
 
 #--backup_list
@@ -69,7 +72,7 @@ specific_helpとは，ユーザが作成するそれぞれのヘルプである
 シナリオ：コマンドを入力してバックアップのリストを見る
 コマンド：emacs\_help --backup\_list
 
-\subsection{helpコマンドの追加や削除，編集をするファイルの開示}\begin{lstlisting}[style=]
+\paragraph{helpコマンドの追加や削除，編集をするファイルの開示}\begin{lstlisting}[style=]
 # language: ja
 #--edit
 機能: helpコマンドの追加や削除，編集をするためのeiditを開く
@@ -87,7 +90,7 @@ emacs_helpと入力したときに出てくるhelpのコマンドの追加や削
 
 ここで編集を行い，emacsで開いているのでC-x,C-sで保存する．
 
-\subsection{specific\_helpのitemの消去}\begin{lstlisting}[style=]
+\paragraph{specific\_helpのitemの消去}\begin{lstlisting}[style=]
 #language: ja
 
 #--remove [item]
@@ -104,7 +107,7 @@ emacs_helpと入力したときに出てくるhelpのコマンドの追加や削
 
 コマンド：emacs\_help --remove
 
-\subsection{itemのバックアップ}\begin{lstlisting}[style=]
+\paragraph{itemのバックアップ}\begin{lstlisting}[style=]
 #language: ja
 
 #--store [item]
@@ -120,7 +123,7 @@ emacs_helpと入力したときに出てくるhelpのコマンドの追加や削
 
 コマンド：emacs\_help --store [item]
 
-\subsection{hikiへのformatの変更}\begin{lstlisting}[style=]
+\paragraph{hikiへのformatの変更}\begin{lstlisting}[style=]
 # language: ja
 
 #--to_hiki
@@ -136,7 +139,7 @@ emacs_helpと入力したときに出てくるhelpのコマンドの追加や削
 
 コマンド：emacs\_help --to\_hiki
 
-\subsection{todoの更新}\begin{lstlisting}[style=]
+\paragraph{todoの更新}\begin{lstlisting}[style=]
 # language: ja
 
 機能: todoの更新を行う
