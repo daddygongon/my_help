@@ -1,29 +1,25 @@
-This is e-pTeX, Version 3.14159265-p3.5-130605-2.6 (utf8.euc) (TeX Live 2014) (preloaded format=platex 2014.11.26)  7 FEB 2017 14:37
-entering extended mode
- restricted \write18 enabled.
+This is pTeXk, Version 3.141592-p3.1.11 (utf8.euc) (Web2C 7.5.4) (format=platex 2011.7.24)  7 FEB 2017 15:06
  file:line:error style messages enabled.
- %&-line parsing enabled.
 **my_help_nasu
 (./my_help_nasu.tex
-pLaTeX2e <2006/11/10> (based on LaTeX2e <2014/05/01> patch level 0)
-Babel <3.9k> and hyphenation patterns for 78 languages loaded.
-(/usr/local/texlive/2014/texmf-dist/tex/platex/jsclasses/jsarticle.cls
-Document Class: jsarticle 2014/02/07 okumura
-LaTeX Info: Redefining \rmfamily on input line 352.
-LaTeX Info: Redefining \sffamily on input line 355.
-LaTeX Info: Redefining \ttfamily on input line 358.
+pLaTeX2e <2006/11/10>+0 (based on LaTeX2e <2003/12/01> patch level 0)
+(/Applications/UpTeX.app/teTeX/share/texmf/ptex/platex/jsclasses/jsarticle.cls
+Document Class: jsarticle 2009/02/22 okumura
+LaTeX Info: Redefining \rmfamily on input line 332.
+LaTeX Info: Redefining \sffamily on input line 335.
+LaTeX Info: Redefining \ttfamily on input line 338.
 \symmincho=\mathgroup4
 LaTeX Font Info:    Overwriting symbol font `mincho' in version `bold'
-(Font)                  JY1/mc/m/n --> JY1/gt/m/n on input line 423.
+(Font)                  JY1/mc/m/n --> JY1/gt/m/n on input line 403.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 613.
+(Font)              scaled to size 9.60999pt on input line 601.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 613.
+(Font)              scaled to size 9.60999pt on input line 601.
 \fullwidth=\dimen118
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 7.68799pt on input line 760.
+(Font)              scaled to size 7.68799pt on input line 748.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 7.68799pt on input line 760.
+(Font)              scaled to size 7.68799pt on input line 748.
 \c@part=\count81
 \c@section=\count82
 \c@subsection=\count83
@@ -35,75 +31,79 @@ LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
 \c@table=\count88
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
-\js@tocl@width=\dimen119
-\@lnumwidth=\dimen120
-\bibindent=\dimen121
-LaTeX Info: Redefining \TeX on input line 1731.
-LaTeX Info: Redefining \LaTeX on input line 1757.
-LaTeX Info: Redefining \LaTeXe on input line 1782.
+\@lnumwidth=\dimen119
+\bibindent=\dimen120
+LaTeX Info: Redefining \TeX on input line 1702.
+LaTeX Info: Redefining \LaTeX on input line 1728.
+LaTeX Info: Redefining \LaTeXe on input line 1753.
 \heisei=\count89
-) (/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
-
-(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/keyval.sty
-Package: keyval 2014/05/08 v1.15 key=value parser (DPC)
+)
+(/Applications/UpTeX.app/teTeX/share/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+(/Applications/UpTeX.app/teTeX/share/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks15
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+(/Applications/UpTeX.app/teTeX/share/texmf/tex/latex/graphics/dvipdfmx-contrib-
+latex/graphics.sty
+Package: graphics 2001/07/07 v1.0n Standard LaTeX Graphics (DPC,SPQR)
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/trig.sty
+(/Applications/UpTeX.app/teTeX/share/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/latexconfig/graphics.cfg
-File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+(/Applications/UpTeX.app/teTeX/share/texmf-dist/tex/latex/graphics/graphics.cfg
+File: graphics.cfg 2005/02/03 v1.3 graphics configuration of teTeX/TeXLive
 )
-Package graphics Info: Driver file: dvipdfmx.def on input line 91.
+Package graphics Info: Driver file: dvipdfmx.def on input line 81.
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/dvipdfmx-def/dvipdfmx.def
-File: dvipdfmx.def 2014/04/28 v4.01 LaTeX color/graphics driver for dvipdfmx (T
-eX Live/ChoF)
+(/Applications/UpTeX.app/teTeX/share/texmf/tex/latex/graphics/dvipdfmx-contrib-
+latex/dvipdfmx.def
+File: dvipdfmx.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
 ))
-\Gin@req@height=\dimen122
-\Gin@req@width=\dimen123
+\Gin@req@height=\dimen121
+\Gin@req@width=\dimen122
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/color.sty
-Package: color 2014/04/23 v1.1a Standard LaTeX Color (DPC)
+(/Applications/UpTeX.app/teTeX/share/texmf/tex/latex/graphics/dvipdfmx-contrib-
+latex/color.sty
+Package: color 1999/02/16 v1.0i Standard LaTeX Color (DPC)
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/latexconfig/color.cfg
-File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+(/Applications/UpTeX.app/teTeX/share/texmf-dist/tex/latex/graphics/color.cfg
+File: color.cfg 2005/02/03 v1.3 color configuration of teTeX/TeXLive
 )
-Package color Info: Driver file: dvipdfmx.def on input line 137.
+Package color Info: Driver file: dvipdfmx.def on input line 126.
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/dvipsnam.def
-File: dvipsnam.def 2014/04/23 v3.0j Driver-dependant file (DPC,SPQR)
+(/Applications/UpTeX.app/teTeX/share/texmf-dist/tex/latex/graphics/dvipsnam.def
+File: dvipsnam.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
 ))
-(/usr/local/texlive/2014/texmf-dist/tex/latex/listings/listings.sty
+(/Applications/UpTeX.app/teTeX/share/texmf-dist/tex/latex/listings/listings.sty
 \lst@mode=\count90
 \lst@gtempboxa=\box42
 \lst@token=\toks16
 \lst@length=\count91
-\lst@currlwidth=\dimen124
+\lst@currlwidth=\dimen123
 \lst@column=\count92
 \lst@pos=\count93
-\lst@lostspace=\dimen125
-\lst@width=\dimen126
+\lst@lostspace=\dimen124
+\lst@width=\dimen125
 \lst@newlines=\count94
 \lst@lineno=\count95
-\lst@maxwidth=\dimen127
+\c@lstlisting=\count96
+\lst@maxwidth=\dimen126
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/listings/lstmisc.sty
-File: lstmisc.sty 2014/03/04 1.5c (Carsten Heinz)
-\c@lstnumber=\count96
-\lst@skipnumbers=\count97
+(/Applications/UpTeX.app/teTeX/share/texmf-dist/tex/latex/listings/lstpatch.sty
+File: lstpatch.sty 2004/10/17 1.3b (Carsten Heinz)
+)
+(/Applications/UpTeX.app/teTeX/share/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2004/09/07 1.3 (Carsten Heinz)
+\c@lstnumber=\count97
+\lst@skipnumbers=\count98
 \lst@framebox=\box43
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/listings/listings.cfg
-File: listings.cfg 2014/03/04 1.5c listings configuration
+(/Applications/UpTeX.app/teTeX/share/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2004/09/05 1.3 listings configuration
 ))
-Package: listings 2014/03/04 1.5c (Carsten Heinz)
-
-(./my_help_nasu.aux (./overview.aux) (./purpose.aux) (./method_bdd.aux
+Package: listings 2004/10/17 1.3b (Carsten Heinz)
+ (./my_help_nasu.aux (./overview.aux) (./introduction.aux) (./method_bdd.aux
 
 LaTeX Warning: Label `default' multiply defined.
 
@@ -127,7 +127,6 @@ LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 39.
 LaTeX Font Info:    ... okay on input line 39.
 LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 39.
 LaTeX Font Info:    ... okay on input line 39.
-\c@lstlisting=\count98
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
 (Font)              scaled to size 16.60605pt on input line 45.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
@@ -144,10 +143,6 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 45.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
 (Font)              scaled to size 5.76599pt on input line 45.
-LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 47.
-LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 47.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
 (Font)              scaled to size 13.83836pt on input line 47.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
@@ -156,7 +151,12 @@ LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
 (Font)              scaled to size 13.83836pt on input line 47.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 (Font)              scaled to size 13.83836pt on input line 47.
- (./my_help_nasu.toc [1
+ (./my_help_nasu.toc
+LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
+(Font)              scaled to size 9.60999pt on input line 1.
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 9.60999pt on input line 1.
+ [1
 
 ]
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -182,9 +182,9 @@ LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
  (./overview.tex) [4
 
 ]
-\openout2 = `purpose.aux'.
+\openout2 = `introduction.aux'.
 
- (./purpose.tex) [5
+ (./introduction.tex) [5
 
 
 ] [6
@@ -211,39 +211,21 @@ File: ../figs/./my_help_nasu1.001.jpg Graphic file (type eps)
 [8]
 \openout2 = `method_cucumber.aux'.
 
- (./method_cucumber.tex
-(/usr/local/texlive/2014/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2014/03/04 1.5c listings language file
-)
-(/usr/local/texlive/2014/texmf-dist/tex/latex/listings/lstlang2.sty
-File: lstlang2.sty 2014/03/04 1.5c listings language file
-)
-LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 12.
-LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 12.
+ (./method_cucumber.tex [9
+
+
+] [10]
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 6.72699pt on input line 13.
-LaTeX Font Info:    Font shape `JT1/gt/m/it' in size <9> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 13.
-LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 13.
-LaTeX Font Info:    Font shape `JY1/gt/m/it' in size <9> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 13.
-LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 13.
- [9
+(Font)              scaled to size 6.72699pt on input line 104.
+ [11] [12]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 141.
 
 
-]
-[10] [11] [12]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 144.
-
- (/usr/local/texlive/2014/texmf-dist/tex/latex/base/omscmr.fd
+(/Applications/UpTeX.app/teTeX/share/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 144.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 141.
 )
 [13]
 \openout2 = `method_usage.aux'.
@@ -428,7 +410,7 @@ Underfull \hbox (badness 1072) in paragraph at lines 15--15
 
 
 ]
-Overfull \hbox (71.53888pt too wide) in paragraph at lines 67--68
+Overfull \hbox (71.53888pt too wide) in paragraph at lines 73--74
 []\OT1/cmr/m/n/10 Shigeot R. Nishi-tani, my[]help \JY1/mc/m/n/10 の \OT1/cmr/m/
 n/10 README, \OT1/cmtt/m/n/10 http://www.rubydoc.info/gems/my_help/0.4.3\OT1/cm
 r/m/n/10 . 
@@ -436,20 +418,20 @@ r/m/n/10 .
 
 [31
 
-] (./my_help_nasu.aux (./overview.aux) (./purpose.aux) (./method_bdd.aux)
-(./method_cucumber.aux) (./method_usage.aux) (./code.aux) (./features.aux)
-(./consideration.aux))
+] (./my_help_nasu.aux (./overview.aux) (./introduction.aux)
+(./method_bdd.aux) (./method_cucumber.aux) (./method_usage.aux) (./code.aux)
+(./features.aux) (./consideration.aux))
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 2523 strings out of 493807
- 34480 string characters out of 6151950
- 173428 words of memory out of 5000000
- 5942 multiletter control sequences out of 15000+600000
- 15681 words of font info for 72 fonts, out of 8000000 for 9000
- 934 hyphenation exceptions out of 8191
- 34i,6n,51p,807b,1567s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 2181 strings out of 94681
+ 30840 string characters out of 1174371
+ 127068 words of memory out of 1500000
+ 5427 multiletter control sequences out of 10000+50000
+ 15224 words of font info for 69 fonts, out of 1200000 for 2000
+ 571 hyphenation exceptions out of 8191
+ 30i,6n,42p,807b,1747s stack positions out of 5000i,500n,6000p,200000b,5000s
 
-Output written on my_help_nasu.dvi (31 pages, 85824 bytes).
+Output written on my_help_nasu.dvi (31 pages, 84832 bytes).

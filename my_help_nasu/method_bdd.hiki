@@ -18,3 +18,7 @@ BDDの基本的な考え方は次の通りまとめられています．
 
 !!!caption:RSpecとCucumberの手順．
 {{attach_view(my_help_nasu1.001.jpg,my_help_nasu)}}
+
+まずCucumberで一つのシナリオに焦点を当てて，その振る舞いを記述するfeatureを書きます．一つずつつぶしていくのがこつです．一つのfeatureが書けたら、次に，それぞれfeatureを実現するステップに分けて仕様を決めて行きます．これはTDDのred green refactoringの前に行う作業，「仕様をきめる」に対応しています．このプロセスが終了したら，RSpecに行きます．
+RSpecでは実際にテストコードを書き，ここでもred, green, refactoringを行います．
+RSpecが成功したら，Cucumberのrefactoringを行います．

@@ -6,6 +6,12 @@
 
 ![[序論|my_help_nasu_introduction]]
 !先行研究，方法
+ここでは、本研究で使用するcucumberの特徴について詳述する．
+cucumberはビヘイビア駆動開発(bdd)を実現するフレームワークである．
+まずはbddの現れた背景や現状を示した後、Cucumberの記述の具体例を示して，
+その特徴を詳述する．
+さらに，本研究の対象となるmy_helpの振る舞いを使用法とともに示す．
+
 !![[my_help_nasu_method_bdd]]
 !![[my_help_nasu_method_cucumber]]
 !![[my_help_nasu_method_usage]]

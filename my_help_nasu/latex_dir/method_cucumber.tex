@@ -8,13 +8,28 @@ BDDはフルスタックのアジャイル開発技法です．BDDはATDP(Accept
 \end{quotation}
 と記されている．
 
+英語のfeaturesのひな形を次に示す．
+\begin{quote}\begin{verbatim}
+Feature: Description of feature
+
+Scenario: Description of scenario
+  Given I want to explain scenario
+  Then I investigate
+  When I know the meaning
+\end{verbatim}\end{quote}
+ファイルの先頭で，
+\begin{quote}\begin{verbatim}
+# language: ja
+\end{verbatim}\end{quote}
+と記すと日本語でのkeywordが認識される．
+
 下記にmy\_todoに対するfeaturesファイルの具体例を示す．
-\begin{lstlisting}[style=customRuby]
+\begin{quote}\begin{verbatim}
 # language: ja
 
 機能: todoの更新を行う
-todoは更新していくものであり,新しく書いたり終わったものを消したいのでバッ\
-クアップをとって，過去のtodoを残しておく
+todoは更新していくものであり，新しく書いたり終わったものを消したいので
+バックアップをとって，過去のtodoを残しておく
 
 シナリオ: コマンドを入力してtodoを更新していく
           前提 todoを編集したい
@@ -26,26 +41,8 @@ todoは更新していくものであり,新しく書いたり終わったもの
           前提 todoの編集が終わった
           もし "my_todo --store [item]"と入力する
           ならば itemのバックアップを取る
-\end{lstlisting}
-このように日本語でシナリオを書くことができ，顧客にもわかりやすく，開発者も書きやすくなっている．
-
-下記が英語のfeaturesのひな形である．
-\begin{lstlisting}[style=]
-#言語の指定は不要
-
-Feature: Description of feature
-
-Scenario: Description of scenario
-  Given I want to explain scenario
-  Then I investigate
-  When I know the meaning
-  
-\end{lstlisting}
-ファイルの先頭で，
-\begin{quote}\begin{verbatim}
-# language: ja
 \end{verbatim}\end{quote}
-と記すと日本語のkeywordが認識される．
+このように日本語でシナリオを書くことができ，顧客にもわかりやすく，開発者も書きやすくなっている．
 
 \subsubsection{featuresの日本語keyword}
 featureファイルで使えるkeywordの対応は下記の通りになっている．
