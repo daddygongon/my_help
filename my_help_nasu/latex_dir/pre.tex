@@ -1,0 +1,36 @@
+\documentclass[10pt,a4j]{article}
+
+\def\Vec#1{\mbox{\boldmath $#1$}}
+\usepackage[dvipdfmx]{graphicx}
+
+\setlength{\textheight}{275mm}
+\headheight 5mm
+\topmargin -20mm
+\textwidth 160mm
+\textheight 250mm
+\oddsidemargin -0mm
+\evensidemargin -5mm
+
+\pagestyle{empty}
+\makeatletter
+  \def\@maketitle{%
+  \newpage\null
+  \vskip 2em%
+  \begin{center}%
+  \let\footnote\thanks
+    {\large\bf \@title \par}%
+    \vskip 1.5em%
+    {\large\bf \@author \par}%
+    \vskip 1.5em%
+    {\small \@date}%
+  \end{center}%
+}
+\makeatother
+
+%\documentclass[10pt, a4j]{article}
+%%\usepackage{citesort}
+\usepackage{amssymb}
+\usepackage[dvipdfmx]{graphicx}% 図を入れるときに使用
+\usepackage{wrapfig}% 図の周りに本文を流し込みたいときに使用
+\usepackage{subfigure}
+\usepackage{here}
