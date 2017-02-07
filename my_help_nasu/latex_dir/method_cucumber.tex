@@ -12,7 +12,7 @@ BDDはフルスタックのアジャイル開発技法です．BDDはATDP(Accept
 \subsubsection{features}
 Cucumberでは先の引用にある通り、振る舞いをシナリオとしてまず記述します．
 次に，英語のfeaturesのひな形を示します．
-\begin{quote}\begin{verbatim}
+\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
 % cat ./featrues/sample_e.feature
 Feature: Description of feature
 
@@ -20,13 +20,13 @@ Scenario: Description of scenario
   Given I want to explain scenario
   Then I investigate
   When I know the meaning
-\end{verbatim}\end{quote}
+\end{lstlisting}
 ファイルの先頭で，
 \begin{quote}\begin{verbatim}
 # language: ja
 \end{verbatim}\end{quote}
-と記すと日本語でのkeywordが認識されます．下記にmy\_todoに対するfeaturesファイルの具体例を示す．
-\begin{quote}\begin{verbatim}
+と記すと日本語でのkeywordが認識されます．下記にmy\_todoに対するfeaturesファイルの具体例を示します．
+\begin{lstlisting}[style=customCsh,basicstyle={\scriptsize\ttfamily}]
 # language: ja
 
 機能: todoの更新を行う
@@ -43,7 +43,7 @@ todoは更新していくものであり，新しく書いたり終わったも�
  前提 todoの編集が終わった
  もし "my_todo --store [item]"と入力する
  ならば itemのバックアップを取る
-\end{verbatim}\end{quote}
+\end{lstlisting}
 このようにFeature, Scenario, Given, Then, Whenなどのcucumberが解釈する大文字で始まる
 keywordsに対して，それぞれ機能，シナリオ，前提，もし，ならばなどの単語があてられています．
 この機能により，より自然な日本語でfeaturesを書くことができ，
@@ -60,10 +60,13 @@ cucumber --i18n LANG
 \begin{tabular}{llll}
 \hline
 keyword   &ja(japanese)   &en(english)  \\ \hline
-feature  &"フィーチャ", "機能"      &"Feature", "Business Need", "Ability"     \\
+ feature  & "フィーチャ", "機能"      &"Feature", "Business Need",   \\
+ & &"Ability"     \\
 background  &"背景"  &"Background"   \\
 scenario  &"シナリオ"        &"Scenario"     \\
-scenario\_outline   &"シナリオアウトライン", "シナリオテンプレート","テンプレ", "シナリオテンプレ"   &"Scenario Outline", "Scenario Template"   \\
+ &"シナリオアウトライン",  &"Scenario Outline",  \\
+ scenario\_outline   &"シナリオテンプレート","テンプレ",  & "Scenario Template"   \\
+ &"シナリオテンプレ"   & \\
 examples  &"例", "サンプル"   &"Examples", "Scenarios"          \\
 given   &"* ", "前提"        &"* ", "Given "          \\
 when   &"* ", "もし"        &"* ", "When "  \\
@@ -89,10 +92,10 @@ but (code)    &"しかし", "但し","ただし"   &"But"          \\
 \item rspec --help
 \end{enumerate}
 と入力して
-\begin{quote}\begin{verbatim}
+\begin{lstlisting}[style=customCsh,basicstyle={\scriptsize\ttfamily}]
 /Users/nasubi/nasu% rspec --help
 Usage: rspec [options] [files or directories]
-\end{verbatim}\end{quote}
+\end{lstlisting}
 のような表示がされていればinstallができている．次に，cucumberをinstallする
 
 \begin{enumerate}
@@ -100,16 +103,16 @@ Usage: rspec [options] [files or directories]
 \item cucumber --help
 \end{enumerate}
 と入力して
-\begin{quote}\begin{verbatim}
+\begin{lstlisting}[style=customCsh,basicstyle={\scriptsize\ttfamily}]
 cucumber --help
 Usage: cucumber [options] [ [FILE|DIR|URL][:LINE[:LINE]*] ]+
-\end{verbatim}\end{quote}
+\end{lstlisting}
 のような表示がされていればinstallできている．
 
 \subsubsection{ディレクトリー構造と使用手順}
 cucumberはRubygemsの提供する基本directory構造での作業を前提としています．
 その構造を表示すると次のようになります．
-\begin{lstlisting}[style=]
+\begin{quote}\begin{verbatim}
 bob% tree .
 .
 ├── Gemfile
@@ -132,7 +135,7 @@ bob% tree .
 │   ├── spec_helper.rb
 │   └── support
 │       └── aruba.rb
-\end{lstlisting}
+\end{verbatim}\end{quote}
 カレントディレクトリ(.)の中にfeaturesというサブディレクトリを作成します．
 そのfeaturesの中に書きたいシナリオを書いた，hogehoge.featureを作成します．
 featureの具体例は上記に示してします．
@@ -142,7 +145,7 @@ featureの具体例は上記に示してします．
 cucumber features hogehoge.feature
 \end{verbatim}\end{quote}
 と入力します．そうすると以下のような出力が得られます．
-\begin{lstlisting}[style=]
+\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
 Feature: Description of feature
 
   Scenario: Description of scenario  # features/hogehoge.feature:3
@@ -179,7 +182,7 @@ Cucumberはシナリオの最初のステップを読み取り,そのステッ�
 これはfeaturesディレクトリの下にstep\_definitionsディレクトリーにあることになっています．
 このシナリオを成功させるには，Cucumberが読み込めるファイルにステップ定義を保存する必要があります[1, pp15.]．
 その内容は次の通りcucumberから自動生成されます．
-\begin{lstlisting}[style=]
+\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
 
 Given(/^I want to explain scenario$/) do
   pending # Write code here that turns the phrase above into concrete actio\

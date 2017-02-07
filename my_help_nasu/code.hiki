@@ -25,7 +25,7 @@ CucumberとRSpecを用いてBDDでmy_helpのテスト開発を進めて行きま
 以下はtodoの更新を行うときのfeatureです．
 まず，適当なディレクトリにfeaturesというディレクトリを作成します．
 次に先ほど作成した，featuresディレクトリにmy_todo.featureを作成します．
-<<< tiny
+<<< tcsh
 # language: ja 
 
 機能: todoの更新を行う
@@ -59,7 +59,7 @@ featuresディレクトリにあるmy_todo.featureファイルをcucumberで実�
 
 実行すると以下のようになります．
 
-<<< tiny
+<<< tcsh
 # language: ja
 機能: todoの更新を行う
 todoは更新していくものであり,新しく書いたり終わったものを消したいのでバックアップをとって，過去のtodoを残しておく
@@ -113,7 +113,7 @@ end
 featureを書いた時点でcucumberを実行すると，ステップ定義の元となるコマンドを，cucumberが自動的に作成してくれるからです．
 
 以下がcucumberから出力されたステップ定義の元となる部分です．
-<<<
+<<< tcsh
 You can implement step definitions for undefined steps with these snippets:
 
 前提(/^todoを編集したい$/) do
@@ -144,7 +144,7 @@ end
 これをコピーして，featuresディレクトリの中でstep_definitionsディレクトリを作成し，その中にmy_todo_spec.rbを作成し，そこに貼付けます．
 
 ここでもう一度cucumberを実行してみると
-<<<
+<<< tcsh
 /Users/nasubi/nasu% cucumber features/my_todo.feature 
 # language: ja
 機能: todoの更新を行う
@@ -180,7 +180,7 @@ step_definitionsのmy_todo_spec.rbのpending部分を書き換えて，step_defi
 
 cucumberが成功すると下記のような結果となります．
 
-<<< text
+<<< ruby
 /Users/nasubi/my_help% cucumber features/my_todo.feature 
 # language: ja
 機能: todoの更新を行う
@@ -213,7 +213,7 @@ todoは更新していくものであり,新しく書いたり終わったもの
 この機能はmy_help --editと入力されれば，~/.my_help/my_todo.ymlが開かれるのでその振る舞いをするコードを書きます．
 まずtodo_spec.rbは下記の通りになります
 
-<<< todo_spec.rb
+<<< ruby
 require 'spec_helper'
 
 
@@ -234,7 +234,7 @@ it()メソッドはサンプルを作成します．
 このスペックを実行するために，specディレクトリにspec_helper.rbを追加します．
 中身は下記の通りです．
 
-<<< spec_helper.rb
+<<< ruby
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'my_help'
 require 'todo'
@@ -244,7 +244,7 @@ require 'todo'
 
 完成したコードを下記の通りです．
 
-<<< todo_spec.rb
+<<< ruby
 require 'spec_helper'
 
 
@@ -261,7 +261,7 @@ end
 >>>
 
 これでrspecを実行すると以下のような結果が表示される．
-<<< rspec
+<<< tcsh
 /Users/nasubi/my_help% rspec spec --color
 
 my_help command
