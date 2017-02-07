@@ -4,64 +4,65 @@ Cucumberが提供するBDDの内容をまとめると
 ""BDDはフルスタックのアジャイル開発技法です．BDDはATDP(Acceptance Test-Driven Planning)と呼ばれるAcceptance TDDの一種を含め，エクストリームプログラミングからヒントを得ています．ATDPでは，顧客受け入れテストを導入し，それを主体にコードの開発を進めて行きます．それらは顧客と開発チームによる共同作業の結果であることが理想的です．開発チームによってテストが書かれた後，顧客がレビューと承認を行うこともあります．いずれにしても，それらのテストは顧客と向き合うものなので，顧客が理解できる言語とフォーマットで表現されていなければなりません．Cucumberを利用すれば，そのための言語とフォーマットを手に入れることができます．Cucumberは，アプリケーションの機能とサンプルシナリオを説明するテキストを読み取り，そのシナリオの手順に従って開発中のコードとのやり取りを自動化します[1, 7pp.]．
 と記されている．
 
-下記にmy_todoに対するfeaturesファイルの具体例を示す．
-<<< ruby
-# language: ja
-
-機能: todoの更新を行う
-todoは更新していくものであり,新しく書いたり終わったものを消したいのでバッ\
-クアップをとって，過去のtodoを残しておく
-
-シナリオ: コマンドを入力してtodoを更新していく
-          前提 todoを編集したい
-          もし "my_todo --edit"と入力する
-          ならば editが開かれる
-          かつ 自分のtodoを書き込む
-
-シナリオ: コマンドを入力してバックアップをとる
-          前提 todoの編集が終わった
-          もし "my_todo --store [item]"と入力する
-          ならば itemのバックアップを取る
->>>
-このように日本語でシナリオを書くことができ，顧客にもわかりやすく，開発者も書きやすくなっている．
-
-下記が英語のfeaturesのひな形である．
-<<< features
-#言語の指定は不要
-
+Cucumberでは先の引用にある通り、振る舞いをシナリオとしてまず記述します．
+次に，英語のfeaturesのひな形を示します．
+<<<
+% cat ./featrues/sample_e.feature
 Feature: Description of feature
 
 Scenario: Description of scenario
   Given I want to explain scenario
   Then I investigate
   When I know the meaning
-  
 >>>
-
 
 ファイルの先頭で，
  # language: ja
-と記すと日本語のkeywordが認識される．
-
-!!featuresの日本語keyword
-featureファイルで使えるkeywordの対応は下記の通りになっている．
+と記すと日本語でのkeywordが認識されます．下記にmy_todoに対するfeaturesファイルの具体例を示す．
 <<<
-|| feature|| "フィーチャ", "機能"   ||
-|| background|| "背景"            ||
-|| scenario|| "シナリオ"          ||
-|| scenario_outline || "シナリオアウトライン", "シナリオテンプレート", "テンプレ", "シナリオテンプレ" ||
-|| examples|| "例", "サンプル"     ||
-|| given || "* ", "前提"      ||
-|| when || "* ", "もし"      ||
-|| then || "* ", "ならば"     ||
-|| and  || "* ", "かつ"      ||
-|| but  || "* ", "しかし", "但し", "ただし"||
-|| given (code) || "前提"            ||
-|| when (code) || "もし"            ||
-|| then (code) || "ならば"           ||
-|| and (code)  || "かつ"            ||
-|| but (code)  || "しかし", "但し", "ただし" ||
+# language: ja
+
+機能: todoの更新を行う
+todoは更新していくものであり，新しく書いたり終わったものを消したいので
+バックアップをとって，過去のtodoを残しておく
+
+シナリオ: コマンドを入力してtodoを更新していく
+ 前提 todoを編集したい
+ もし "my_todo --edit"と入力する
+ ならば editが開かれる
+ かつ 自分のtodoを書き込む
+
+シナリオ: コマンドを入力してバックアップをとる
+ 前提 todoの編集が終わった
+ もし "my_todo --store [item]"と入力する
+ ならば itemのバックアップを取る
 >>>
+このようにFeature, Scenario, Given, Then, Whenなどのcucumberが解釈する大文字で始まる
+keywordsに対して，それぞれ機能，シナリオ，前提，もし，ならばなどの単語があてられています．
+この機能により，より自然な日本語でfeaturesを書くことができ，
+顧客にもわかりやすく，開発者も書きやすくなっています。
+
+featureファイルで用意されているkeywordは
+ cucumber --i18n LANG
+によって表示される．LANG=ja, enに対しては下記の通りになっています．
+
+|| keyword ||　ja(japanese) || en(english)
+|| feature|| "フィーチャ", "機能"    ||"Feature", "Business Need", "Ability"   ||
+|| background|| "背景"|| "Background" ||
+|| scenario|| "シナリオ"      || "Scenario"   ||
+|| scenario_outline || "シナリオアウトライン", "シナリオテンプレート","テンプレ", "シナリオテンプレ" || "Scenario Outline", "Scenario Template" ||
+|| examples|| "例", "サンプル" || "Examples", "Scenarios"        ||
+|| given ||"* ", "前提"      || "* ", "Given "        ||
+|| when ||"* ", "もし"      || "* ", "When "||
+|| then || "* ", "ならば"     || "* ", "Then "||
+|| and  || "* ", "かつ"      || "* ", "And " ||
+|| but  || "* ", "しかし", "但し", "ただし"|| "* ", "But " ||
+|| given (code) || "前提" || "Given"      ||
+|| when (code) || "もし"   ||  "When"       ||
+|| then (code) || "ならば" || "Then"       ||
+|| and (code)  || "かつ"   || "And"        ||
+|| but (code)  || "しかし", "但し","ただし" ||  "But"        ||
+
 !!Cucumber,RSpecインストール
 まずrspecをgemでinstallする．
 #gem install rspec --version 2.0.0
@@ -93,8 +94,8 @@ Feature: Description of feature
 
   Scenario: Description of scenario  # features/hogehoge.feature:3
     Given I want to explain scenario # features/hogehoge.feature:4
-    Then I investigate               # features/hogehoge.feature:5
-    When I know the meaning          # features/hogehoge.feature:6
+    Then I investigate      # features/hogehoge.feature:5
+    When I know the meaning # features/hogehoge.feature:6
 
 1 scenario (1 undefined)
 3 steps (3 undefined)
@@ -129,17 +130,17 @@ Cucumberはシナリオの最初のステップを読み取り,そのステッ�
 
 Given(/^I want to explain scenario$/) do
   pending # Write code here that turns the phrase above into concrete actio\
-ns                                                                          
+ns  
 end
 
 Then(/^I investigate$/) do
   pending # Write code here that turns the phrase above into concrete actio\
-ns                                                                          
+ns  
 end
 
 When(/^I know the meaning$/) do
   pending # Write code here that turns the phrase above into concrete actio\
-ns                                                                          
+ns  
 end
 
 >>>

@@ -1,7 +1,7 @@
 {{toc}}
 !BDDでのmy_helpのテスト開発
 
-実際にBDDを使ってコードを書く流れを説明する．
+ここでは，CucumberとRSpecを用いてBDDでmy_helpのテスト開発を進めていきます．
 // アプリの振る舞いを説明する
 // なぜ自分が作ったかを納得してもらえないから．
 // 自分の作業の目的の意義を説明するために，全体の概要を説明することは妥当
@@ -19,11 +19,11 @@
 !!Cucumber
 
 以下はtodoの更新を行うときのfeatureである．
-#適当なディレクトリにfeaturesというディレクトリを作成する．
-#そのfeaturesディレクトリにmy_todo.featureを作成する．
+まず，適当なディレクトリにfeaturesというディレクトリを作成します．
+次に先ほど作成した，featuresディレクトリにmy_todo.featureを作成します．
 <<<
 
-# language: ja #言語の指定
+# language: ja 
 
 機能: todoの更新を行う
 todoは更新していくものであり,新しく書いたり終わったものを
@@ -43,10 +43,22 @@ todoは更新していくものであり,新しく書いたり終わったもの
 
 >>>
 
-　featureを書けたら次はcucumberを実行してみる
+機能とは，このシステムの機能のことを記述します．ここでは，todoを更新するシステムですので，「todoの更新を行う」です．
+機能の下には，機能の補足説明を記述します．機能の補足説明では，ルールがないので自分がわかりやすいように，記述するのが常識です．
+シナリオは，その名の通りtodoを更新する時のユーザの行動やシステム振る舞いを前提，もし，ならば，かつ，しかしに分類して記述します．
+　
+このようにfeatureが記述できたら，次はcucumberコマンドを実行してみます．
+コマンドは以下の通りです．
 
 <<<
 /Users/nasubi/nasu% cucumber features/my_todo.feature 
+>>>
+
+featuresディレクトリにあるmy_todo.featureファイルをcucumberで実行するという意味です．
+実行すると以下のようになります．
+
+<<<
+
 # language: ja
 機能: todoの更新を行う
 todoは更新していくものであり,新しく書いたり終わったものを消したいのでバックアップをとって，過去のtodoを残しておく
@@ -94,37 +106,46 @@ end
 
 
 >>>
-と表示される．
 
-次にfeaturesディレクトリの中でstep_definitionsディレクトリを作成する．
-step_definitionsディレクトリの中にmy_todo_spec.rbを作成する．
-中身は以下の通りである．
-<<< my_todo_spec.rb
+ここでは，2つのscenarioと7つのstepが失敗しています．
+まだstep定義を記述していないので当たり前です．
+
+一度cucumberを実行したのには理由があります．
+featureを書いた時点でcucumberを実行すると，ステップ定義の元となる文書が作成してくれます．
+以下がステップ定義の元の部分です．
+
+<<<
+
+You can implement step definitions for undefined steps with these snippets:
+
 前提(/^todoを編集したい$/) do
-  pending # Write code here that turns the phrase above into concrete actions          
+  pending # Write code here that turns the phrase above into concrete actions
 end
 
 もし(/^"([^"]*)"と入力する$/) do |arg1|
-  pending # Write code here that turns the phrase above into concrete actions          
+  pending # Write code here that turns the phrase above into concrete actions
 end
 
 ならば(/^editが開かれる$/) do
-  pending # Write code here that turns the phrase above into concrete actions          
+  pending # Write code here that turns the phrase above into concrete actions
 end
 
 ならば(/^自分のtodoを書き込む$/) do
-  pending # Write code here that turns the phrase above into concrete actions          
+  pending # Write code here that turns the phrase above into concrete actions
 end
 
 前提(/^todoの編集が終わった$/) do
-  pending # Write code here that turns the phrase above into concrete actions          
+  pending # Write code here that turns the phrase above into concrete actions
 end
 
 ならば(/^itemのバックアップを取る$/) do
-  pending # Write code here that turns the phrase above into concrete actions          
+  pending # Write code here that turns the phrase above into concrete actions
 end
 
 >>>
+
+これをコピーして，featuresディレクトリの中でstep_definitionsディレクトリを作成し，step_definitionsディレクトリの中にmy_todo_spec.rbを作成したら，そこに貼付けます．
+
 
 ここでもう一度cucumberを実行してみると
 <<<
