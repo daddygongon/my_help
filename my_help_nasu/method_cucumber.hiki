@@ -82,14 +82,46 @@ Usage: cucumber [options] [ [FILE|DIR|URL][:LINE[:LINE]*] ]+
 >>>
 のような表示がされていればinstallできている．
 
-!!Cucumberの使用方法
-#まず適当なディレクトリの中にfeaturesというサブディレクトリを作成します．
+!!ファイル配置
+cucumberはRubygemsの提供する基本directory構造での作業を前提としています．
+その構造を表示すると次のようになります．
+<<<
+bob% tree .
+.
+├── Gemfile
+├── Rakefile
+├── features
+│   ├── hogehoge.feature
+│   ├── step_definitions
+│   │   ├── add_spec.rb
+│   │   └── to_hiki_spec.rb
+│   ├── store.feature
+│   ├── support
+│   │   ├── env.rb
+│   ├── test.feature
+│   └── to_hiki.feature
+├── lib
+│   ├── daddygongon
+│   │   ├── emacs_help.yml
+│   │   ├── my_todo.yml
+├── pkg
+├── spec
+│   ├── my_help_spec.rb
+│   ├── my_todo
+│   │   ├── todo_spec.rb
+│   ├── spec_helper.rb
+│   └── support
+│       └── aruba.rb
+>>>
+
+カレントディレクトリ(.)の中にfeaturesというサブディレクトリを作成します．
 そのfeaturesの中に書きたいシナリオを書いた，hogehoge.featureを作成します．
 featureの具体例は上記に示してします．
-#次にシェルを開いて，先ほど述べた適当なディレクトリの場所で，cucumber features hogehoge.featureと入力します．
-そうすると以下のような出力が得られます．
-<<< hogehoge.feature
 
+次にシェルを開いて，カレントディレクトリで，
+ cucumber features hogehoge.feature
+と入力します．そうすると以下のような出力が得られます．
+<<< 
 Feature: Description of feature
 
   Scenario: Description of scenario  # features/hogehoge.feature:3
