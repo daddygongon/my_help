@@ -22,3 +22,7 @@ BDDの目的は，ソフトウェアが使われる状況を説明するため�
 \includegraphics[width=10cm,bb= 0 0 737 453]{../figs/./my_help_nasu1.001.jpg}
 \caption{RSpecとCucumberの手順．}
 \label{default}\end{center}\end{figure}
+まずCucumberで一つのシナリオに焦点を当てて，その振る舞いを記述するfeatureを書きます．一つずつつぶしていくのがこつです．一つのfeatureが書けたら、次に，それぞれfeatureを実現するステップに分けて仕様を決めて行きます．これはTDDのred green refactoringの前に行う作業，「仕様をきめる」に対応しています．このプロセスが終了したら，RSpecに行きます．
+RSpecでは実際にテストコードを書き，ここでもred, green, refactoringを行います．
+RSpecが成功したら，Cucumberのrefactoringを行います．
+
