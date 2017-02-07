@@ -1,28 +1,31 @@
 {{toc}}
-!BDDでのmy_helpのテスト開発
+!結果
 
-ここでは，CucumberとRSpecを用いてBDDでmy_helpのテスト開発を進めていきます．
+CucumberとRSpecを用いてBDDでmy_helpのテスト開発を進めて行きました．
 // アプリの振る舞いを説明する
 // なぜ自分が作ったかを納得してもらえないから．
 // 自分の作業の目的の意義を説明するために，全体の概要を説明することは妥当
 // 先行研究->先行開発，ソフト開発==研究，why!!
-ここでは，卒業研究の目的の意義を理解してもらうために，全体の概要を説明する．
-!!todoを更新するときのマニュアル
+ここでは，焦点を合わせたmy_helpの中での一つの振る舞いである
+「todoの更新」を例として詳しく見て行きます．
+
+!!todoの更新マニュアル
+最初に，todoを更新するときの手順を示します．
+
 #my_todo --editを入力して~/.my_help/my_todo.ymlを開く
-#todoを書き込む（今週やることならweeklyというitemを作ってそこに書き込む）
+#editorでtodoを書き込む（今週やることならweeklyというitemを作ってそこに書き込む）
 #保存して~/.my_help/my_todo.ymlを閉じる
 #my_todoと打ち込んで更新されていたら完成
 #my_todo --store [item]を入力してitemのバックアップをとる
 
-これを実際に振る舞いがきちんとできているのかをテストする．
+この振る舞いがきちんとできているのかを実際にテスト構築して行きます．
 
 !!Cucumber
 
-以下はtodoの更新を行うときのfeatureである．
+以下はtodoの更新を行うときのfeatureです．
 まず，適当なディレクトリにfeaturesというディレクトリを作成します．
 次に先ほど作成した，featuresディレクトリにmy_todo.featureを作成します．
-<<<
-
+<<< tiny
 # language: ja 
 
 機能: todoの更新を行う
@@ -46,19 +49,17 @@ todoは更新していくものであり,新しく書いたり終わったもの
 機能とは，このシステムの機能のことを記述します．ここでは，todoを更新するシステムですので，「todoの更新を行う」です．
 機能の下には，機能の補足説明を記述します．機能の補足説明では，ルールがないので自分がわかりやすいように，記述するのが常識です．
 シナリオは，その名の通りtodoを更新する時のユーザの行動やシステム振る舞いを前提，もし，ならば，かつ，しかしに分類して記述します．
-　
-このようにfeatureが記述できたら，次はcucumberコマンドを実行してみます．
+シナリオは，一つの機能に対して複数書くことが可能です．ここでは、「todoを更新する」と「バックアップをとる」という二つの
+シナリオをたてています．
+
+ここまでfeatureが記述できたら，次はcucumberコマンドを実行してみます．
 コマンドは以下の通りです．
-
-<<<
-/Users/nasubi/nasu% cucumber features/my_todo.feature 
->>>
-
+　/Users/nasubi/nasu% cucumber features/my_todo.feature 
 featuresディレクトリにあるmy_todo.featureファイルをcucumberで実行するという意味です．
+
 実行すると以下のようになります．
 
-<<<
-
+<<< tiny
 # language: ja
 機能: todoの更新を行う
 todoは更新していくものであり,新しく書いたり終わったものを消したいのでバックアップをとって，過去のtodoを残しておく
@@ -103,19 +104,16 @@ end
 ならば(/^itemのバックアップを取る$/) do
   pending # Write code here that turns the phrase above into concrete actions
 end
-
-
 >>>
 
 ここでは，2つのscenarioと7つのstepが失敗しています．
 まだstep定義を記述していないので当たり前です．
 
 一度cucumberを実行したのには理由があります．
-featureを書いた時点でcucumberを実行すると，ステップ定義の元となる文書が作成してくれます．
-以下がステップ定義の元の部分です．
+featureを書いた時点でcucumberを実行すると，ステップ定義の元となるコマンドを，cucumberが自動的に作成してくれるからです．
 
+以下がcucumberから出力されたステップ定義の元となる部分です．
 <<<
-
 You can implement step definitions for undefined steps with these snippets:
 
 前提(/^todoを編集したい$/) do
@@ -141,11 +139,9 @@ end
 ならば(/^itemのバックアップを取る$/) do
   pending # Write code here that turns the phrase above into concrete actions
 end
-
 >>>
 
-これをコピーして，featuresディレクトリの中でstep_definitionsディレクトリを作成し，step_definitionsディレクトリの中にmy_todo_spec.rbを作成したら，そこに貼付けます．
-
+これをコピーして，featuresディレクトリの中でstep_definitionsディレクトリを作成し，その中にmy_todo_spec.rbを作成し，そこに貼付けます．
 
 ここでもう一度cucumberを実行してみると
 <<<
@@ -176,15 +172,15 @@ todoは更新していくものであり,新しく書いたり終わったもの
 0m0.045s
 
 >>>
-と変化が出てくる．
-2 scenarios (2 pending)
-7 steps (5 skipped, 2 pending)
-これは2つのシナリオの内２つがpendingであり，７つのstepの内２つがpendingで５つがskipしたことを表している．
-step_definitionsのmy_todo_spec.rbのpending部分を書き換えて進行していく．
+と変化が出てきます．
+ 2 scenarios (2 pending)
+ 7 steps (5 skipped, 2 pending)
+これは2つのシナリオの内２つがpendingであり，７つのstepの内２つがpendingで５つがskipしたことを表しています．
+step_definitionsのmy_todo_spec.rbのpending部分を書き換えて，step_definitionsの記述を進めて行きます．
 
-cucumberが成功すると下記のような結果となる．
+cucumberが成功すると下記のような結果となります．
 
-<<< cucumber
+<<< text
 /Users/nasubi/my_help% cucumber features/my_todo.feature 
 # language: ja
 機能: todoの更新を行う
@@ -204,30 +200,6 @@ todoは更新していくものであり,新しく書いたり終わったもの
 2 scenarios (2 passed)
 7 steps (7 passed)
 0m0.030s
-
->>>
-
-ここでcucumberを実行すると全て成功しているのがわかります．
-<<< cucumber
-/Users/nasubi/my_help% cucumber features/my_todo.feature              
-# language: ja
-機能: todoの更新を行う
-todoは更新していくものであり,新しく書いたり終わったものを消したいのでバックアップをとって，過去のtodoを残しておく
-
-  シナリオ: コマンドを入力してtodoを更新していく # features/my_todo.feature:6
-    前提todoを編集したい             # features/step_definitions/my_todo_spec.rb:2
-    もし"my_todo --edit"と入力する  # features/step_definitions/my_todo_spec.rb:6
-    ならばeditが開かれる             # features/step_definitions/my_todo_spec.rb:10
-    かつ自分のtodoを書き込む           # features/step_definitions/my_todo_spec.rb:14
-
-  シナリオ: コマンドを入力してバックアップをとる          # features/my_todo.feature:12
-    前提todoの編集が終わった                  # features/step_definitions/my_todo_spec.rb:18
-    もし"my_todo --store [item]"と入力する # features/step_definitions/my_todo_spec.rb:6
-    ならばitemのバックアップを取る               # features/step_definitions/my_todo_spec.rb:22
-
-2 scenarios (2 passed)
-7 steps (7 passed)
-0m0.029s
 
 >>>
 

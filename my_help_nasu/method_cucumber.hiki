@@ -1,9 +1,11 @@
 {{toc}}
-!Cucumberの説明
+!Cucumberについて
+!!概要
 Cucumberが提供するBDDの内容をまとめると
 ""BDDはフルスタックのアジャイル開発技法です．BDDはATDP(Acceptance Test-Driven Planning)と呼ばれるAcceptance TDDの一種を含め，エクストリームプログラミングからヒントを得ています．ATDPでは，顧客受け入れテストを導入し，それを主体にコードの開発を進めて行きます．それらは顧客と開発チームによる共同作業の結果であることが理想的です．開発チームによってテストが書かれた後，顧客がレビューと承認を行うこともあります．いずれにしても，それらのテストは顧客と向き合うものなので，顧客が理解できる言語とフォーマットで表現されていなければなりません．Cucumberを利用すれば，そのための言語とフォーマットを手に入れることができます．Cucumberは，アプリケーションの機能とサンプルシナリオを説明するテキストを読み取り，そのシナリオの手順に従って開発中のコードとのやり取りを自動化します[1, 7pp.]．
 と記されている．
 
+!!features
 Cucumberでは先の引用にある通り、振る舞いをシナリオとしてまず記述します．
 次に，英語のfeaturesのひな形を示します．
 <<<
@@ -46,7 +48,7 @@ featureファイルで用意されているkeywordは
  cucumber --i18n LANG
 によって表示される．LANG=ja, enに対しては下記の通りになっています．
 
-|| keyword ||　ja(japanese) || en(english)
+|| keyword || ja(japanese) || en(english)
 || feature|| "フィーチャ", "機能"    ||"Feature", "Business Need", "Ability"   ||
 || background|| "背景"|| "Background" ||
 || scenario|| "シナリオ"      || "Scenario"   ||
@@ -82,36 +84,32 @@ Usage: cucumber [options] [ [FILE|DIR|URL][:LINE[:LINE]*] ]+
 >>>
 のような表示がされていればinstallできている．
 
-!!ファイル配置
+!!ディレクトリー構造と使用手順
 cucumberはRubygemsの提供する基本directory構造での作業を前提としています．
 その構造を表示すると次のようになります．
-<<<
+<<< zsh
 bob% tree .
 .
 ├── Gemfile
 ├── Rakefile
 ├── features
-│   ├── hogehoge.feature
-│   ├── step_definitions
-│   │   ├── add_spec.rb
-│   │   └── to_hiki_spec.rb
-│   ├── store.feature
-│   ├── support
-│   │   ├── env.rb
-│   ├── test.feature
-│   └── to_hiki.feature
+│   ├── hogehoge.feature
+│   ├── step_definitions
+│   │   └── hogehoge_step.rb
+│   ├── support
+│       ├── env.rb
 ├── lib
-│   ├── daddygongon
-│   │   ├── emacs_help.yml
-│   │   ├── my_todo.yml
+│   ├── daddygongon
+│   │   ├── emacs_help.yml
+│   │   ├── my_todo.yml
 ├── pkg
 ├── spec
-│   ├── my_help_spec.rb
-│   ├── my_todo
-│   │   ├── todo_spec.rb
-│   ├── spec_helper.rb
-│   └── support
-│       └── aruba.rb
+│   ├── my_help_spec.rb
+│   ├── my_todo
+│   │   ├── todo_spec.rb
+│   ├── spec_helper.rb
+│   └── support
+│       └── aruba.rb
 >>>
 
 カレントディレクトリ(.)の中にfeaturesというサブディレクトリを作成します．
@@ -121,7 +119,7 @@ featureの具体例は上記に示してします．
 次にシェルを開いて，カレントディレクトリで，
  cucumber features hogehoge.feature
 と入力します．そうすると以下のような出力が得られます．
-<<< 
+<<< text
 Feature: Description of feature
 
   Scenario: Description of scenario  # features/hogehoge.feature:3
@@ -150,15 +148,17 @@ end
 >>>
 
 ここではステップ定義に使用することができるコードブロックが表示されています．
-ステップ定義はステップを作成するための方法です．このサンプルでは，Giver(), When(), Then()no
+ステップ定義はステップを作成するための方法です．このサンプルでは，Giver(), When(), Then()の
 3つのメソッドを使ってステップを記述します．
-これらのメソッドはそれぞれRegexpとブロックを受け取ります．
-Cucumberはシナリオの最初のステップを読み取り,そのステップにマッチする正規表現を持つステップ定義を探して，そのステップ定義のブロックを実行します．
+これらのメソッドはそれぞれ\/\/で囲まれたRegexp(正規表現)とブロックを受け取ります．
+Cucumberはシナリオの最初のステップを読み取り,そのステップにマッチする正規表現を持つステップ定義を探します．
+その中の対応するステップ定義のブロックを実行します．
 
+これはfeaturesディレクトリの下にstep_definitionsディレクトリーにあることになっています．
 このシナリオを成功させるには，Cucumberが読み込めるファイルにステップ定義を保存する必要があります[1, pp15.]．
-そこで，featuresディレクトリの下にstep_definitionsというディレクトリを追加し，そこにhogehoge_step.rbというファイルを作成します．
+その内容は次の通りcucumberから自動生成されます．
 
-<<< hogehoge_step.rb
+<<< text
 
 Given(/^I want to explain scenario$/) do
   pending # Write code here that turns the phrase above into concrete actio\
