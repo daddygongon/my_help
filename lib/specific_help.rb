@@ -4,6 +4,7 @@ require "yaml"
 require "my_help/version"
 require 'fileutils'
 require "coderay"
+require 'colorize'
 
 module SpecificHelp
   class Command
@@ -182,8 +183,8 @@ module SpecificHelp
 
     def disp(lines)
 #      lines.each{|line| puts "  +#{line}"} if lines != nil
-#      lines.each{|line| puts CodeRay.scan("*#{line}", :diff).term}
-      lines.each{|line| puts CodeRay.scan("+#{line}", :Taskpaper).term}
+      lines.each{|line| puts "*#{line}".green}
+#      lines.each{|line| puts CodeRay.scan("+#{line}", :Taskpaper).term}
     end
 
     def print_separater

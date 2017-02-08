@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 require 'systemu'
 require 'tempfile'
+require 'colorize'
 # -*- coding: utf-8 -*-
 begin
   $hiki_dir = File.readlines('./.hikirc')[0].chomp
@@ -20,7 +21,8 @@ end
 desc "Githubのdirをsafariでopen"
 task :github do
   status, stdout, stderr = systemu %q( git remote -v |grep origin )
-  p github_dir=stdout.match(/(.+):(.+) \(push\)/)[2]
+  github_dir=stdout.match(/(.+):(.+) \(push\)/)[2]
+  puts github_dir.blue
   system "open https://github.com/#{github_dir}"
 end
 
@@ -34,7 +36,7 @@ task :reset_hiki do
   }
   p r_files = files.reverse[0..-4]
   r_files.each{|file|
-    print "remove #{file}[ynqlA]?"
+    print "remove #{file}[ynqlA]? ".red
     input=STDIN.gets.chomp
     case input
     when 'y'

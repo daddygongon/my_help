@@ -23,7 +23,7 @@
 \contentsline {paragraph}{全てのhelp画面の表示}{24}
 \contentsline {paragraph}{過去にバックアップしてあるitemのリストの表示}{24}
 \contentsline {paragraph}{helpコマンドの追加や削除，編集をするファイルの開示}{24}
-\contentsline {paragraph}{specific\_helpのitemの消去}{24}
+\contentsline {paragraph}{specific\_helpのitemの消去}{25}
 \contentsline {paragraph}{itemのバックアップ}{25}
 \contentsline {paragraph}{hikiへのformatの変更}{25}
 \contentsline {paragraph}{todoの更新}{25}

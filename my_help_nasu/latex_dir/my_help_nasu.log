@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (utf8.euc) (TeX Live 2016) (preloaded format=platex 2017.1.26)  8 FEB 2017 07:07
+This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (utf8.euc) (TeX Live 2016) (preloaded format=platex 2017.1.26)  8 FEB 2017 11:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -242,23 +242,10 @@ LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
 (Font)              scaled to size 6.72699pt on input line 15.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 (Font)              scaled to size 6.72699pt on input line 15.
-LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 16.
-LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 16.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
-)
-LaTeX Font Info:    Font shape `JT1/gt/m/it' in size <9> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 30.
-LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 30.
-LaTeX Font Info:    Font shape `JY1/gt/m/it' in size <9> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 30.
-LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 30.
- [10
+) [10
 
 
 ]
@@ -266,18 +253,18 @@ Overfull \hbox (14.18181pt too wide) in paragraph at lines 60--84
  [][][] 
  []
 
-[11] [12]
-LaTeX Font Info:    Font shape `JT1/gt/bx/n' in size <9> not available
+[11] [12] [13]
+LaTeX Font Info:    Font shape `JT1/gt/bx/n' in size <7> not available
 (Font)              Font shape `JT1/gt/m/n' tried instead on input line 160.
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 160.
-LaTeX Font Info:    Font shape `JY1/gt/bx/n' in size <9> not available
+(Font)              scaled to size 6.72699pt on input line 160.
+LaTeX Font Info:    Font shape `JY1/gt/bx/n' in size <7> not available
 (Font)              Font shape `JY1/gt/m/n' tried instead on input line 160.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 160.
-LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <9> not available
+(Font)              scaled to size 6.72699pt on input line 160.
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <7> not available
 (Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 160.
- [13]) [14]
+) [14]
 \openout2 = `method_usage.aux'.
 
  (./method_usage.tex [15
@@ -330,12 +317,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 2670 strings out of 493683
- 37184 string characters out of 6149653
- 255613 words of memory out of 5000000
- 6185 multiletter control sequences out of 15000+600000
- 16122 words of font info for 75 fonts, out of 8000000 for 9000
+ 2663 strings out of 493683
+ 37098 string characters out of 6149653
+ 224603 words of memory out of 5000000
+ 6179 multiletter control sequences out of 15000+600000
+ 15673 words of font info for 72 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  35i,9n,51p,811b,1683s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on my_help_nasu.dvi (28 pages, 140504 bytes).
+Output written on my_help_nasu.dvi (28 pages, 141132 bytes).
