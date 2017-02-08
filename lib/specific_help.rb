@@ -175,15 +175,15 @@ module SpecificHelp
     def disp_help(key_word)
       print_separater
       items =@help_cont[key_word]
-#      puts items[:title]
-      puts CodeRay.scan("-#{items[:title]}:", :Taskpaper).term
+      puts items[:title].red
+#      puts CodeRay.scan("-#{items[:title]}:", :Taskpaper).term
       disp(items[:cont])
       print_separater
     end
 
     def disp(lines)
 #      lines.each{|line| puts "  +#{line}"} if lines != nil
-      lines.each{|line| puts "*#{line}".green}
+      lines.each{|line| puts "*#{line}".blue}
 #      lines.each{|line| puts CodeRay.scan("+#{line}", :Taskpaper).term}
     end
 
