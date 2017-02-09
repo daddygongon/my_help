@@ -4,6 +4,7 @@ require "yaml"
 require "fileutils"
 require "my_help/version"
 require "systemu"
+require "colorize"
 
 module MyHelp
   class Command
@@ -39,8 +40,8 @@ module MyHelp
         }
         opt.on('-l', '--list', 'list specific helps'){list_helps}
         opt.on('-e NAME', '--edit NAME', 'edit NAME help(eg test_help)'){|file| edit_help(file)}
-        opt.on('-i NAME', '--init NAME', 'initialize NAME help(eg test_help).'){|file| init_help(file)}
-        opt.on('-m', '--make', 'make executables for all helps.'){make_help}
+        opt.on('-i NAME', '--init NAME', 'initialize NAME help(eg test_help)'){|file| init_help(file)}
+        opt.on('-m', '--make', 'make executables for all helps'){make_help}
         opt.on('-c', '--clean', 'clean up exe dir.'){clean_exe}
         opt.on('--install_local','install local after edit helps'){install_local}
         opt.on('--delete NAME','delete NAME help'){|file| delete_help(file)}
@@ -55,14 +56,26 @@ module MyHelp
 
     def delete_help(file)
       del_files=[]
-      del_files << File.join(@local_help_dir,file)
-       exe_dir=File.join(File.expand_path('../..',@default_help_dir),'exe')
-       del_files << File.join(exe_dir,file)
-      p del_files << File.join(exe_dir,short_name(file))
-      print "Are you sure to delete these files?[yes]"
-      if gets.chomp=='yes' then
-        del_files.each{|file| FileUtils.rm(file,:verbose=>true)}
-      end
+      del_files << File.join(@local_help_dir,file+'.yml')
+      exe_dir=File.join(File.expand_path('../..',@default_help_dir),'exe')
+      exe_0_dir='/usr/local/bin'
+      del_files << File.join(exe_dir,file)
+      del_files << File.join(exe_0_dir,file)
+      del_files << File.join(exe_dir,short_name(file))
+      del_files << File.join(exe_0_dir,short_name(file))
+      del_files.each{|file|
+        print "Are you sure to delete "+file.blue+"?[Ynq] ".red
+        case gets.chomp
+        when 'Y'
+          begin
+            FileUtils.rm(file,:verbose=>true)
+          rescue => error
+            puts error.to_s.red
+          end
+        when 'n' ; next
+        when 'q' ; exit
+        end
+      }
     end
 
     USER_INST_DIR="USER INSTALLATION DIRECTORY:"
@@ -151,13 +164,12 @@ module MyHelp
         begin
           help = YAML.load(File.read(file_path))
         rescue=> eval
-          p eval
-          print "\n YAML load error in #{file}."
-          print "  See the line shown above and revise by\n"
-          print "  emacs #{file_path}\n"
+          p eval.to_s.red
+          print "\n YAML load error in #{file}.".red
+          print "  Revise it by "+"my_help --edit #{file}\n".red
           exit
         end
-        print "  #{file}\t:#{help[:head][0]}\n"
+        print "  #{file}\t:#{help[:head][0]}\n".blue
       }
     end
   end
