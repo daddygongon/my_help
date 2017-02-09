@@ -1,6 +1,7 @@
 module Mytodo
-  class Todo
+  class Edit
     def open
+
     end
   end
 end

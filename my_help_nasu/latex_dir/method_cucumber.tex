@@ -11,8 +11,9 @@ BDDはフルスタックのアジャイル開発技法です．BDDはATDP(Accept
 
 \subsubsection{features}
 Cucumberでは先の引用にある通り、振る舞いをシナリオとしてまず記述します．
+シナリオとは，一つひとつの振る舞いを，主にGiven(前提), Then(もし), When(ならば)に分けてfeaturesを記述します．
 次に，英語のfeaturesのひな形を示します．
-\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
+\begin{lstlisting}[style=customRuby]
 % cat ./featrues/sample_e.feature
 Feature: Description of feature
 
@@ -26,23 +27,17 @@ Scenario: Description of scenario
 # language: ja
 \end{verbatim}\end{quote}
 と記すと日本語でのkeywordが認識されます．下記にmy\_todoに対するfeaturesファイルの具体例を示します．
-\begin{lstlisting}[style=customCsh,basicstyle={\scriptsize\ttfamily}]
+\begin{lstlisting}[style=customCsh]
 # language: ja
 
 機能: todoの更新を行う
-todoは更新していくものであり，新しく書いたり終わったものを消したいので
-バックアップをとって，過去のtodoを残しておく
+自分のするべきことを書き込むためのtodoを更新する
 
 シナリオ: コマンドを入力してtodoを更新していく
  前提 todoを編集したい
  もし "my_todo --edit"と入力する
  ならば editが開かれる
  かつ 自分のtodoを書き込む
-
-シナリオ: コマンドを入力してバックアップをとる
- 前提 todoの編集が終わった
- もし "my_todo --store [item]"と入力する
- ならば itemのバックアップを取る
 \end{lstlisting}
 このようにFeature, Scenario, Given, Then, Whenなどのcucumberが解釈する大文字で始まる
 keywordsに対して，それぞれ機能，シナリオ，前提，もし，ならばなどの単語があてられています．
@@ -92,7 +87,7 @@ but (code)    &"しかし", "但し","ただし"   &"But"          \\
 \item rspec --help
 \end{enumerate}
 と入力して
-\begin{lstlisting}[style=customCsh,basicstyle={\scriptsize\ttfamily}]
+\begin{lstlisting}[style=customCsh]
 /Users/nasubi/nasu% rspec --help
 Usage: rspec [options] [files or directories]
 \end{lstlisting}
@@ -103,7 +98,7 @@ Usage: rspec [options] [files or directories]
 \item cucumber --help
 \end{enumerate}
 と入力して
-\begin{lstlisting}[style=customCsh,basicstyle={\scriptsize\ttfamily}]
+\begin{lstlisting}[style=customCsh]
 cucumber --help
 Usage: cucumber [options] [ [FILE|DIR|URL][:LINE[:LINE]*] ]+
 \end{lstlisting}
@@ -145,7 +140,7 @@ featureの具体例は上記に示してします．
 cucumber features hogehoge.feature
 \end{verbatim}\end{quote}
 と入力します．そうすると以下のような出力が得られます．
-\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
+\begin{lstlisting}[style=customRuby]
 Feature: Description of feature
 
   Scenario: Description of scenario  # features/hogehoge.feature:3
@@ -182,7 +177,7 @@ Cucumberはシナリオの最初のステップを読み取り,そのステッ�
 これはfeaturesディレクトリの下にstep\_definitionsディレクトリーにあることになっています．
 このシナリオを成功させるには，Cucumberが読み込めるファイルにステップ定義を保存する必要があります[1, pp15.]．
 その内容は次の通りcucumberから自動生成されます．
-\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
+\begin{lstlisting}[style=customRuby]
 
 Given(/^I want to explain scenario$/) do
   pending # Write code here that turns the phrase above into concrete actio\

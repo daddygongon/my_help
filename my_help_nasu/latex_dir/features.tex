@@ -39,7 +39,7 @@ specific_helpとは，ユーザが作成するそれぞれのヘルプである
         ならば ~/.my_help/emacs_help.ymlに新しいitemが自動的に追加される
 
 \end{verbatim}\end{quote}
-\paragraph{全てのhelp画面の表示}\begin{lstlisting}[style=,basicstyle={\scriptsize\ttfamily}]
+\paragraph{全てのhelp画面の表示}\begin{lstlisting}[style=]
 
 #language: ja
 
@@ -56,7 +56,7 @@ specific_helpとは，ユーザが作成するそれぞれのヘルプである
 
 コマンド：emacs\_help --all
 
-\paragraph{過去にバックアップしてあるitemのリストの表示}\begin{lstlisting}[style=,basicstyle={\scriptsize\ttfamily}]
+\paragraph{過去にバックアップしてあるitemのリストの表示}\begin{lstlisting}[style=]
 #language: ja
 
 #--backup_list
@@ -72,7 +72,7 @@ specific_helpとは，ユーザが作成するそれぞれのヘルプである
 シナリオ：コマンドを入力してバックアップのリストを見る
 コマンド：emacs\_help --backup\_list
 
-\paragraph{helpコマンドの追加や削除，編集をするファイルの開示}\begin{lstlisting}[style=,basicstyle={\scriptsize\ttfamily}]
+\paragraph{helpコマンドの追加や削除，編集をするファイルの開示}\begin{lstlisting}[style=]
 # language: ja
 #--edit
 機能: helpコマンドの追加や削除，編集をするためのeiditを開く
@@ -90,7 +90,7 @@ emacs_helpと入力したときに出てくるhelpのコマンドの追加や削
 
 ここで編集を行い，emacsで開いているのでC-x,C-sで保存する．
 
-\paragraph{specific\_helpのitemの消去}\begin{lstlisting}[style=,basicstyle={\scriptsize\ttfamily}]
+\paragraph{specific\_helpのitemの消去}\begin{lstlisting}[style=]
 #language: ja
 
 #--remove [item]
@@ -107,7 +107,7 @@ emacs_helpと入力したときに出てくるhelpのコマンドの追加や削
 
 コマンド：emacs\_help --remove
 
-\paragraph{itemのバックアップ}\begin{lstlisting}[style=,basicstyle={\scriptsize\ttfamily}]
+\paragraph{itemのバックアップ}\begin{lstlisting}[style=]
 #language: ja
 
 #--store [item]
@@ -123,7 +123,7 @@ emacs_helpと入力したときに出てくるhelpのコマンドの追加や削
 
 コマンド：emacs\_help --store [item]
 
-\paragraph{hikiへのformatの変更}\begin{lstlisting}[style=,basicstyle={\scriptsize\ttfamily}]
+\paragraph{hikiへのformatの変更}\begin{lstlisting}[style=]
 # language: ja
 
 #--to_hiki
@@ -139,12 +139,11 @@ emacs_helpと入力したときに出てくるhelpのコマンドの追加や削
 
 コマンド：emacs\_help --to\_hiki
 
-\paragraph{todoの更新}\begin{lstlisting}[style=,basicstyle={\scriptsize\ttfamily}]
+\paragraph{todoの更新}\begin{lstlisting}[style=]
 # language: ja
 
 機能: todoの更新を行う
-todoは更新していくものであり,新しく書いたり終わったものを消したいのでバック\
-アップをとって，過去のtodoを残しておく
+自分のするべきことを書き込むためのtodoを更新する
 
 シナリオ: コマンドを入力してtodoを更新していく
           前提 todoを編集したい
@@ -152,22 +151,12 @@ todoは更新していくものであり,新しく書いたり終わったもの
           ならば editが開かれる
           かつ 自分のtodoを書き込む
 
-シナリオ: コマンドを入力してバックアップをとる
-          前提 todoの編集が終わった
-          もし "my_todo --store [item]"と入力する
-          ならば itemのバックアップを取る
 \end{lstlisting}
 シナリオ１：コマンドを入力してtodoを更新する
-シナリオ２：コマンドを入力してバックアップをとる
 
 コマンド１：my\_todo --edit
-コマンド２：my\_todo --store [item]
 
 my\_todo --editで~/.my\_help/my\_todo.ymlを開く．
 
 ここで編集を行い，emacsで開いているのでC-x,C-sで保存する．
-
-my\_todo --store [item]でtodoのitemをバックアップとっておく．
-
-この動作により過去のバックアップを閲覧することができ，どんどん更新することが可能である．
 
