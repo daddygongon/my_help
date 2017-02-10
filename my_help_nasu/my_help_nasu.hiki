@@ -1,6 +1,6 @@
 {{toc}}
 
-!title:ユーザメモソフトmy_helpの開発
+!title:ユーザメモソフトmy_helpのビヘイビアテスト開発
 !author:2535 那須比呂貴
 ![[概要|my_help_nasu_overview]]
 
@@ -18,7 +18,7 @@ cucumberはビヘイビア駆動開発(bdd)を実現するフレームワーク�
 
 ![[本論|my_help_nasu_new_code]]
 !![[my_help_nasu_features]]
-![[結論,考察|my_help_nasu_consideration]]
+![[結論,考察|my_help_nasu_discussion]]
 
 
 !謝辞

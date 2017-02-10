@@ -1,5 +1,5 @@
 {{toc}}
-!結果
+!実践
 
 CucumberとRSpecを用いてBDDでmy_helpのテスト開発を進めて行きました．
 // アプリの振る舞いを説明する
@@ -29,7 +29,7 @@ CucumberとRSpecを用いてBDDでmy_helpのテスト開発を進めて行きま
 # language: ja 
 
 機能: todoの更新を行う
-自分のするべきことを書き込むためのtodoを更新する
+自分のするべきことを書き込むためにtodoを更新する
 
  シナリオ: コマンドを入力してtodoを更新していく
           前提 todoを編集したい
@@ -56,38 +56,9 @@ featuresディレクトリにあるmy_todo.featureファイルをcucumberで実�
 
 実行すると以下のようになります．
 
+{{attach_view(cucumber1.jpg,my_help_nasu)}}
 
-
-<<< tcsh
-
-＜省略＞
-
-1 scenarios (1 undefined)
-4 steps (4 undefined)
-0m0.080s
-
-You can implement step definitions for undefined steps with these snippets:
-
-前提(/^todoを編集したい$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-end
-
-もし(/^"([^"]*)"と入力する$/) do |arg1|
-  pending # Write code here that turns the phrase above into concrete actions
-end
-
-ならば(/^editが開かれる$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-end
-
-ならば(/^自分のtodoを書き込む$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-end
->>>
-
-
-
-ここでは，2つのscenarioと7つのstepが失敗しています．
+ここでは，1つのscenarioと4つのstepが失敗しています．
 まだstep定義を記述していないので当たり前です．
 
 一度cucumberを実行したのには理由があります．
@@ -118,26 +89,9 @@ end
 これをコピーして，featuresディレクトリの中でstep_definitionsディレクトリを作成し，その中にmy_todo_spec.rbを作成し，そこに貼付けます．
 
 ここでもう一度cucumberを実行してみると
-<<< tcsh
-/Users/nasubi/nasu% cucumber features/my_todo.feature 
-# language: ja
-機能: todoの更新を行う
-自分のするべきことを書き込むためのtodoを更新する
 
-  シナリオ: コマンドを入力してtodoを更新していく # features/my_todo.feature:6
-    前提todoを編集したい             # features/step_definitions/my_todo_spec.rb:1
-      TODO (Cucumber::Pending)
-      ./features/step_definitions/my_todo_spec.rb:2:in `/^todoを編集したい$/'
-      features/my_todo.feature:7:in `前提todoを編集したい'
-    もし"my_todo --edit"と入力する  # features/step_definitions/my_todo_spec.rb:5
-    ならばeditが開かれる             # features/step_definitions/my_todo_spec.rb:9
-    かつ自分のtodoを書き込む           # features/step_definitions/my_todo_spec.rb:13
+{{attach_view(cucumber2.jpg,my_help_nasu)}}
 
-1 scenarios (1 pending)
-4 steps (3 skipped, 1 pending)
-0m0.045s
-
->>>
 と変化が出てきます．
  1 scenarios (1 pending)
  4 steps (3 skipped, 1 pending)
@@ -159,29 +113,7 @@ end
 pendingの部分が書けたので，もう一度cucumber features/my_todo.featureを実行します．
 すると，下記のような結果が返ってきました．
 
-<<< tcsh
-/Users/nasubi/my_help% cucumber features/my_todo.feature              
-# language: ja
-機能: todoの更新を行う
-自分のするべきことを書き込むためのtodoを更新する
-
-  シナリオ: コマンドを入力してtodoを更新していく # features/my_todo.feature:6
-    前提todoを編集したい             # features/step_definitions/my_todo_spec.rb:20
-    もし"my_todo --edit"と入力する  # features/step_definitions/my_todo_spec.rb:24
-    ならばeditが開かれる             # features/step_definitions/my_todo_spec.rb:27
-      uninitialized constant Mytodo (NameError)
-      ./features/step_definitions/my_todo_spec.rb:28:in `/^editが開かれる$/'
-      features/my_todo.feature:9:in `ならばeditが開かれる'
-    かつ自分のtodoを書き込む           # features/step_definitions/my_todo_spec.rb:31
-
-Failing Scenarios:
-cucumber features/my_todo.feature:6 # シナリオ: コマンドを入力してtodoを更新していく
-
-1 scenarios (1 failed)
-4 steps (1 failed, 1 skipped, 2 passed)
-0m0.055s
-
->>>
+{{attach_view(cucumber3.jpg,my_help_nasu)}}
 
 Cucumberは，エラーが出たステップのすぐ後ろにエラーを表示してくれます．
 ここでCucumberでエラーが出たので，この「ならば　editが開かれる」のシナリオに注目してRSpecに進むことにします．
@@ -241,19 +173,18 @@ specディレクトリのmy_todoディレクトリをrspecで実行すると下�
 <<< tcsh
 /Users/nasubi/my_help% rspec spec/my_todo/ --color
 /Users/nasubi/my_help/spec/my_todo/todo_spec.rb:6:in `<module:Mytodo>': uninitialized constant Mytodo::Edit (NameError)
-	from /Users/nasubi/my_help/spec/my_todo/todo_spec.rb:5:in `<top (required)>'
-	from /Users/nasubi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/rspec-core-3.5.4/lib/rspec/core/configuration.rb:1435:in `load'
-	from /Users/nasubi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/rspec-core-3.5.4/lib/rspec/core/configuration.rb:1435:in `block in load_spec_files'
-	from /Users/nasubi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/rspec-core-3.5.4/lib/rspec/core/configuration.rb:1433:in `each'
-	from /Users/nasubi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/rspec-core-3.5.4/lib/rspec/core/configuration.rb:1433:in `load_spec_files'
-	from /Users/nasubi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/rspec-core-3.5.4/lib/rspec/core/runner.rb:100:in `setup'
-	from /Users/nasubi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/rspec-core-3.5.4/lib/rspec/core/runner.rb:86:in `run'
-	from /Users/nasubi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/rspec-core-3.5.4/lib/rspec/core/runner.rb:71:in `run'
-	from /Users/nasubi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/rspec-core-3.5.4/lib/rspec/core/runner.rb:45:in `invoke'
-	from /Users/nasubi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/rspec-core-3.5.4/exe/rspec:4:in `<top (required)>'
-	from /Users/nasubi/.rbenv/versions/2.2.2/bin/rspec:23:in `load'
-	from /Users/nasubi/.rbenv/versions/2.2.2/bin/rspec:23:in `<main>'
-
+from /Users/nasubi/my_help/spec/my_todo/todo_spec.rb:5:in `<top (required)>'
+from /Users/nasubi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/rspec-core-3.5.4/lib/rspec/core/configuration.rb:1435:in `load'
+from /Users/nasubi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/rspec-core-3.5.4/lib/rspec/core/configuration.rb:1435:in `block in load_spec_files'
+from /Users/nasubi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/rspec-core-3.5.4/lib/rspec/core/configuration.rb:1433:in `each'
+from /Users/nasubi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/rspec-core-3.5.4/lib/rspec/core/configuration.rb:1433:in `load_spec_files'
+from /Users/nasubi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/rspec-core-3.5.4/lib/rspec/core/runner.rb:100:in `setup'
+from /Users/nasubi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/rspec-core-3.5.4/lib/rspec/core/runner.rb:86:in `run'
+from /Users/nasubi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/rspec-core-3.5.4/lib/rspec/core/runner.rb:71:in `run'
+from /Users/nasubi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/rspec-core-3.5.4/lib/rspec/core/runner.rb:45:in `invoke'
+from /Users/nasubi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/rspec-core-3.5.4/exe/rspec:4:in `<top (required)>'
+from /Users/nasubi/.rbenv/versions/2.2.2/bin/rspec:23:in `load'
+from /Users/nasubi/.rbenv/versions/2.2.2/bin/rspec:23:in `<main>'
 >>>
 
 エラーが出てしまっているのがわかると思います．
@@ -303,17 +234,8 @@ require 'todo'
 
 これでもう一度rspecを実行してみます．
 
-<<< tcsh
-/Users/nasubi/my_help% rspec spec/my_todo --color
+{{attach_view(rspec2.jpg,my_help_nasu)}}
 
-Mytodo::Edit
-  #open
-    open file my_todo.yml
-
-Finished in 2.97 seconds (files took 0.30255 seconds to load)
-1 example, 0 failures
-
->>>
 エラーが消えて成功しているのがわかります．
 これで「ならば　editが開かれる」のシナリオのRSpec部分が成功しました．
 Red, Greenと進めたので次はRefactoringをするのですが，ここではあまり必要のないので省略します．
@@ -332,22 +254,9 @@ require 'todo'
 これでcucumberもlib/の中身を読み取ってくれます．
 
 もう一度cucumberを実行してみると，
-<<< tcsh
-/Users/nasubi/my_help% cucumber features/my_todo.feature 
-# language: ja
-機能: todoの更新を行う
-自分のするべきことを書き込むためのtodoを更新する
 
-  シナリオ: コマンドを入力してtodoを更新していく # features/my_todo.feature:6
-    前提todoを編集したい             # features/step_definitions/my_todo_spec.rb:2
-    もし"my_todo --edit"と入力する  # features/step_definitions/my_todo_spec.rb:6
-    ならばeditが開かれる             # features/step_definitions/my_todo_spec.rb:9
-    かつ自分のtodoを書き込む           # features/step_definitions/my_todo_spec.rb:13
+{{attach_view(cucumber4.jpg,my_help_nasu)}}
 
-1 scenarios (1 passed)
-4 steps (4 passed)
-0m0.027s
->>>
 エラーが消えています．
 
 これでBDDが成功しました．

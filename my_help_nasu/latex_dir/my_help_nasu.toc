@@ -12,10 +12,10 @@
 \contentsline {subsubsection}{\numberline {2.3.3}my\_helpの更新}{16}
 \contentsline {paragraph}{gitを用いてmy\_helpを新しくする．}{16}
 \contentsline {paragraph}{次にとってきた.ymlを\nobreakspace {}/.my\_helpにcpする．}{16}
-\contentsline {section}{\numberline {3}結果}{18}
+\contentsline {section}{\numberline {3}実践}{18}
 \contentsline {subsection}{\numberline {3.1}todoの更新マニュアル}{18}
 \contentsline {subsection}{\numberline {3.2}Cucumber}{18}
-\contentsline {subsection}{\numberline {3.3}RSpec}{22}
+\contentsline {subsection}{\numberline {3.3}RSpec}{21}
 \contentsline {subsubsection}{\numberline {3.3.1}featuresでの記述とその意味}{26}
 \contentsline {subsubsection}{\numberline {3.3.2}my\_helpのfeatures}{26}
 \contentsline {paragraph}{--add [item]}{26}
@@ -26,8 +26,8 @@
 \contentsline {paragraph}{itemのバックアップ}{28}
 \contentsline {paragraph}{hikiへのformatの変更}{29}
 \contentsline {paragraph}{todoの更新}{29}
-\contentsline {section}{\numberline {4}考察}{31}
-\contentsline {section}{\numberline {5}本研究による成果}{31}
-\contentsline {section}{\numberline {6}現状の評価}{31}
-\contentsline {section}{\numberline {7}謝辞}{33}
-\contentsline {section}{\numberline {8}参考文献}{33}
+\contentsline {section}{\numberline {4}結果と今後の課題}{31}
+\contentsline {subsection}{\numberline {4.1}本研究の成果}{31}
+\contentsline {subsection}{\numberline {4.2}今後の課題}{31}
+\contentsline {section}{\numberline {5}謝辞}{33}
+\contentsline {section}{\numberline {6}参考文献}{33}
