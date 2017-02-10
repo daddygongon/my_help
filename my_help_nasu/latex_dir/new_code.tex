@@ -1,0 +1,309 @@
+
+\section{結果}
+CucumberとRSpecを用いてBDDでmy\_helpのテスト開発を進めて行きました．
+ここでは，焦点を合わせたmy\_helpの中での一つの振る舞いである
+「todoの更新」を例として詳しく見て行きます．
+
+\subsection{todoの更新マニュアル}
+最初に，todoを更新するときの手順を示します．
+
+\begin{enumerate}
+\item my\_todo --editを入力して~/.my\_help/my\_todo.ymlを開く
+\item editorでtodoを書き込む（今週やることならweeklyというitemを作ってそこに書き込む）
+\item 保存して~/.my\_help/my\_todo.ymlを閉じる
+\end{enumerate}
+この振る舞いがきちんとできているのかをBDDでテストを書いていきます．
+
+\subsection{Cucumber}
+以下はtodoの更新を行うときのfeatureです．
+まず，適当なディレクトリにfeaturesというディレクトリを作成します．
+次に先ほど作成した，featuresディレクトリにmy\_todo.featureを作成します．
+\begin{lstlisting}[style=customCsh,basicstyle={\scriptsize\ttfamily}]
+# language: ja 
+
+機能: todoの更新を行う
+自分のするべきことを書き込むためのtodoを更新する
+
+ シナリオ: コマンドを入力してtodoを更新していく
+          前提 todoを編集したい
+          もし "my_todo --edit"と入力する
+          ならば editが開かれる
+          かつ 自分のtodoを書き込む
+\end{lstlisting}
+機能とは，このシステムの機能のことを記述します．ここでは，todoを更新するシステムですので，「todoの更新を行う」です．
+機能の下には，機能の補足説明を記述します．機能の補足説明では，ルールがないので自分がわかりやすいように，記述するのが常識です．
+シナリオは，その名の通りtodoを更新する時のユーザの行動やシステム振る舞いを前提，もし，ならば，かつ，しかしに分類して記述します．
+
+ここまでfeatureが記述できたら，次はcucumberコマンドを実行してみます．
+コマンドは以下の通りです．
+　/Users/nasubi/nasu% cucumber features/my\_todo.feature 
+featuresディレクトリにあるmy\_todo.featureファイルをcucumberで実行するという意味です．
+
+実行すると以下のようになります．
+\begin{lstlisting}[style=customCsh,basicstyle={\scriptsize\ttfamily}]
+
+＜省略＞
+
+1 scenarios (1 undefined)
+4 steps (4 undefined)
+0m0.080s
+
+You can implement step definitions for undefined steps with these snippets:
+
+前提(/^todoを編集したい$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+もし(/^"([^"]*)"と入力する$/) do |arg1|
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+ならば(/^editが開かれる$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+ならば(/^自分のtodoを書き込む$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+\end{lstlisting}
+ここでは，2つのscenarioと7つのstepが失敗しています．
+まだstep定義を記述していないので当たり前です．
+
+一度cucumberを実行したのには理由があります．
+featureを書いた時点でcucumberを実行すると，ステップ定義の元となるコマンドを，cucumberが自動的に作成してくれるからです．
+
+以下がcucumberから出力されたステップ定義の元となる部分です．
+\begin{lstlisting}[style=customCsh,basicstyle={\scriptsize\ttfamily}]
+前提(/^todoを編集したい$/) do
+
+end
+
+もし(/^"([^"]*)"と入力する$/) do |command|
+
+end
+
+ならば(/^editが開かれる$/) do
+  
+end
+
+ならば(/^自分のtodoを書き込む$/) do
+
+end
+\end{lstlisting}
+これをコピーして，featuresディレクトリの中でstep\_definitionsディレクトリを作成し，その中にmy\_todo\_spec.rbを作成し，そこに貼付けます．
+
+ここでもう一度cucumberを実行してみると
+\begin{lstlisting}[style=customCsh,basicstyle={\scriptsize\ttfamily}]
+/Users/nasubi/nasu% cucumber features/my_todo.feature 
+# language: ja
+機能: todoの更新を行う
+自分のするべきことを書き込むためのtodoを更新する
+
+  シナリオ: コマンドを入力してtodoを更新していく # features/my_todo.feature:6
+    前提todoを編集したい             # features/step_definitions/my_todo_spec.rb:1
+      TODO (Cucumber::Pending)
+      ./features/step_definitions/my_todo_spec.rb:2:in `/^todoを編集したい$/'
+      features/my_todo.feature:7:in `前提todoを編集したい'
+    もし"my_todo --edit"と入力する  # features/step_definitions/my_todo_spec.rb:5
+    ならばeditが開かれる             # features/step_definitions/my_todo_spec.rb:9
+    かつ自分のtodoを書き込む           # features/step_definitions/my_todo_spec.rb:13
+
+1 scenarios (1 pending)
+4 steps (3 skipped, 1 pending)
+0m0.045s
+
+\end{lstlisting}
+と変化が出てきます．
+\begin{quote}\begin{verbatim}
+1 scenarios (1 pending)
+4 steps (3 skipped, 1 pending)
+\end{verbatim}\end{quote}
+これは1つのシナリオがあり，1つがpendingであり，4つのstepの内1つがpendingで3つがskipしたことを表しています．
+step\_definitionsのmy\_todo\_spec.rbのpending部分を書き換えて，step\_definitionsの記述を進めて行きます.
+
+まず，「前提」を見てみるとmy\_helpが何か振る舞いをすることはありません．
+よって，このままにしておきます．
+「もし」もユーザが入力するコマンドであり，my\_helpが何か振る舞いをすることはないのでこのままにしておきます．
+次に，「ならば」を見てみるとmy\_helpがeditを開くという振る舞いをしています．
+ステップ定義では，あれば良いと思うコードを記述するので私は下記のように記述しました．
+\begin{lstlisting}[style=customCsh,basicstyle={\scriptsize\ttfamily}]
+ならば(/^editが開かれる$/) do
+  Mytodo::Edit.new.open
+end
+\end{lstlisting}
+pendingの部分が書けたので，もう一度cucumber features/my\_todo.featureを実行します．
+すると，下記のような結果が返ってきました．
+\begin{lstlisting}[style=customCsh,basicstyle={\scriptsize\ttfamily}]
+/Users/nasubi/my_help% cucumber features/my_todo.feature              
+# language: ja
+機能: todoの更新を行う
+自分のするべきことを書き込むためのtodoを更新する
+
+  シナリオ: コマンドを入力してtodoを更新していく # features/my_todo.feature:6
+    前提todoを編集したい             # features/step_definitions/my_todo_spec.rb:20
+    もし"my_todo --edit"と入力する  # features/step_definitions/my_todo_spec.rb:24
+    ならばeditが開かれる             # features/step_definitions/my_todo_spec.rb:27
+      uninitialized constant Mytodo (NameError)
+      ./features/step_definitions/my_todo_spec.rb:28:in `/^editが開かれる$/'
+      features/my_todo.feature:9:in `ならばeditが開かれる'
+    かつ自分のtodoを書き込む           # features/step_definitions/my_todo_spec.rb:31
+
+Failing Scenarios:
+cucumber features/my_todo.feature:6 # シナリオ: コマンドを入力してtodoを更新していく
+
+1 scenarios (1 failed)
+4 steps (1 failed, 1 skipped, 2 passed)
+0m0.055s
+
+\end{lstlisting}
+Cucumberは，エラーが出たステップのすぐ後ろにエラーを表示してくれます．
+ここでCucumberでエラーが出たので，この「ならば　editが開かれる」のシナリオに注目してRSpecに進むことにします．
+
+\subsection{RSpec}
+次にRSpecを使って実際にtodoを更新する振る舞いをするコード書いていきます．
+
+そのための準備として，まずspecというディレクトリを作成し，my\_todoというサブディレクトリを追加します．
+次に，このサブディレクトリにtodo\_spec.rbというファイルを追加します．
+作業を進める過程で，lib/my\_todo/my\_todo.rbソースファイルとspec/my\_todo/todo\_spec.rbスペックファイルが１対１に対応するといった要領で，
+並列のディレクトリ構造を築いていきます．
+この機能はmy\_help --editと入力されれば，~/.my\_help/my\_todo.ymlが開かれるのでその振る舞いをするコードを書きます．
+まずtodo\_spec.rbは下記の通りになります．
+\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
+require 'spec_helper'
+
+
+module Mytodo
+  describe Todo do
+    describe "#open" do
+      it "open file my_todo.yml" 
+    end
+  end
+end
+
+\end{lstlisting}
+describe()メソッドは，RSpecのAPIにアクセスしてRSpec::Core::ExampleGroupのサブクラスを返します．
+ExampleGroupクラスはオブジェクトに期待される振る舞いのサンプルを示すグループです．
+it()メソッドはサンプルを作成します．
+
+完成したコードを下記の通りです．
+\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
+require 'spec_helper'
+
+
+module Mytodo
+  describe Todo do
+    describe "#open" do
+      it "open file my_todo.yml" do
+          system("emacs ~/.my_help/my_todo.yml")
+      end
+    end
+  end
+end
+
+\end{lstlisting}
+specディレクトリのmy\_todoディレクトリをrspecで実行すると下記のような結果がでました．
+--colorを付け加えるとわかりやすく色づけをしてくれて，見やすくなります．
+\begin{lstlisting}[style=customCsh,basicstyle={\scriptsize\ttfamily}]
+/Users/nasubi/my_help% rspec spec/my_todo/ --color
+/Users/nasubi/my_help/spec/my_todo/todo_spec.rb:6:in `<module:Mytodo>': uninitialized constant Mytodo::Edit (NameError)
+	from /Users/nasubi/my_help/spec/my_todo/todo_spec.rb:5:in `<top (required)>'
+	from /Users/nasubi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/rspec-core-3.5.4/lib/rspec/core/configuration.rb:1435:in `load'
+	from /Users/nasubi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/rspec-core-3.5.4/lib/rspec/core/configuration.rb:1435:in `block in load_spec_files'
+	from /Users/nasubi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/rspec-core-3.5.4/lib/rspec/core/configuration.rb:1433:in `each'
+	from /Users/nasubi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/rspec-core-3.5.4/lib/rspec/core/configuration.rb:1433:in `load_spec_files'
+	from /Users/nasubi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/rspec-core-3.5.4/lib/rspec/core/runner.rb:100:in `setup'
+	from /Users/nasubi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/rspec-core-3.5.4/lib/rspec/core/runner.rb:86:in `run'
+	from /Users/nasubi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/rspec-core-3.5.4/lib/rspec/core/runner.rb:71:in `run'
+	from /Users/nasubi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/rspec-core-3.5.4/lib/rspec/core/runner.rb:45:in `invoke'
+	from /Users/nasubi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/rspec-core-3.5.4/exe/rspec:4:in `<top (required)>'
+	from /Users/nasubi/.rbenv/versions/2.2.2/bin/rspec:23:in `load'
+	from /Users/nasubi/.rbenv/versions/2.2.2/bin/rspec:23:in `<main>'
+
+\end{lstlisting}
+エラーが出てしまっているのがわかると思います．
+
+　`<module:Mytodo>': uninitialized constant Mytodo::Edit (NameError)
+
+上記のエラーを解決するために，specディレクトリの一つ上の構造のディレクトリにlibディレクトリを作成します．
+その中にmy\_todoというディレクトリを作成し，my\_todo.rbを作成します．
+
+構造を表示すると以下のようになっています．
+　/Users/nasubi/my\_help/lib/my\_todo% ls
+　my\_todo.rb
+
+my\_todo.rbに先ほどのエラーでMytodoというmoduleがないといわれているので，
+ここで作成します．
+
+/Users/nasubi/my\_help/lib/my\_todo/my\_todo.rbの中に以下のコードを記述します．
+\begin{lstlisting}[style=customCsh,basicstyle={\scriptsize\ttfamily}]
+module Mytodo
+  class Edit
+    def open
+
+    end
+  end
+end
+\end{lstlisting}
+また，これをrequireいないといけないので，lib/todo.rbとして，以下を追加します．
+\begin{quote}\begin{verbatim}
+require 'my_todo/my_todo'
+\end{verbatim}\end{quote}
+これだけでは，rspecがlib/my\_todo/my\_todo.rbを読み込んでいないため，このスペックを実行するために，specディレクトリにspec\_helper.rbに以下を追加します．
+\begin{lstlisting}[style=customCsh,basicstyle={\scriptsize\ttfamily}]
+$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
+require 'todo'
+\end{lstlisting}\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
+$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
+require 'todo'
+\end{lstlisting}
+これでもう一度rspecを実行してみます．
+\begin{lstlisting}[style=customCsh,basicstyle={\scriptsize\ttfamily}]
+/Users/nasubi/my_help% rspec spec/my_todo --color
+
+Mytodo::Edit
+  #open
+    open file my_todo.yml
+
+Finished in 2.97 seconds (files took 0.30255 seconds to load)
+1 example, 0 failures
+
+\end{lstlisting}
+エラーが消えて成功しているのがわかります．
+これで「ならば　editが開かれる」のシナリオのRSpec部分が成功しました．
+Red, Greenと進めたので次はRefactoringをするのですが，ここではあまり必要のないので省略します．
+RSpecが終わったので，Cucumberに戻ります．
+
+先ほどlibディレクトリでlib/my\_todo/my\_todo.rbを作成したので，cucumberでも読み込むために，以下を作成します．
+
+　/Users/nasubi/my\_help/features/support/env.rb
+
+env.rbの中は以下の通りです．
+\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
+$LOAD_PATH.unshift File.expand_path('../../../lib', __FILE__)
+require 'todo'
+\end{lstlisting}
+これでcucumberもlib/の中身を読み取ってくれます．
+
+もう一度cucumberを実行してみると，
+\begin{lstlisting}[style=customCsh,basicstyle={\scriptsize\ttfamily}]
+/Users/nasubi/my_help% cucumber features/my_todo.feature 
+# language: ja
+機能: todoの更新を行う
+自分のするべきことを書き込むためのtodoを更新する
+
+  シナリオ: コマンドを入力してtodoを更新していく # features/my_todo.feature:6
+    前提todoを編集したい             # features/step_definitions/my_todo_spec.rb:2
+    もし"my_todo --edit"と入力する  # features/step_definitions/my_todo_spec.rb:6
+    ならばeditが開かれる             # features/step_definitions/my_todo_spec.rb:9
+    かつ自分のtodoを書き込む           # features/step_definitions/my_todo_spec.rb:13
+
+1 scenarios (1 passed)
+4 steps (4 passed)
+0m0.027s
+\end{lstlisting}
+エラーが消えています．
+
+これでBDDが成功しました．
+残りの「自分のtodoを書き込む」もmy\_helpが何か振る舞いをするわけではないので，「コマンドを入力してtodoを更新する」シナリオ全てのテスト開発が終わりました．
+このようにBDDでmy\_helpのテスト開発を行っていきました．
+

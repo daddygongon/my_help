@@ -1,8 +1,9 @@
+
 require 'spec_helper'
 
 
 module Mytodo
-  describe Todo do
+  describe Edit do
     describe "#open" do
       it "open file my_todo.yml" do
 #        if command == "my_todo --edit"

@@ -34,7 +34,7 @@ task :reset_hiki do
   stdout.split("\n").each{|line|
     files << line.split(/\s+/)[-1]
   }
-  p r_files = files.reverse[0..-4]
+  r_files = files.reverse[0..-4]
   r_files.each{|file|
     print "remove #{file}[ynqlA]? ".red
     input=STDIN.gets.chomp
@@ -49,7 +49,7 @@ task :reset_hiki do
     when 'q'
       exit
     when 'A'
-      print "\nAre you sure?[Yn]"
+      print "\nAre you sure[Yn]? ".magenta
       input2 = STDIN.gets.chomp
       case input2
         when 'Y'
@@ -80,14 +80,10 @@ task :mk_toc do
     if m=line.match(/\\contentsline \{(.+)\}\{\\numberline \{([\d|\.]+)\}(.+)\}\{\d+\}/)
       layer,sec_no,title=m[1],m[2],m[3]
       d = case m[1]
-          when 'section'
-            1
-          when 'subsection'
-            2
-          when 'subsubsection'
-            3
-          else
-            4
+          when 'section'; 1
+          when 'subsection'; 2
+          when 'subsubsection'; 3
+          else; 4
           end
       layer = "!"*d
       title.gsub!('\_','_')
@@ -101,7 +97,8 @@ end
 desc "FILE.hikiあるいはhikiファイルすべてを最新状態に更新"
 task :touch do
   if file=ARGV[1] 
-    p target = $basename+"_"+file.split('.')[0]
+    file_split=file.split(".")
+    p target = $basename==file_split[0] ? $basename : $basename+"_"+file_split[0]
     system "hiki -u #{target}"
   else
     p target = File.join($hiki_dir,'cache','attach',$basename)
@@ -109,12 +106,12 @@ task :touch do
     Dir.entries('.').each{|file|
       file_split=file.split(".")
       if file_split[1]=='hiki'
-        next if file_split[0]==$basename
-        p target = $basename+"_"+file_split[0]
+        p target = $basename==file_split[0] ? $basename : $basename+"_"+file_split[0]
         system "hiki -u #{target}"
       end
     }
   end
+  exit
 end
 
 desc "FILE.hikiあるいはhikiファイルをedtiorで開く"
@@ -143,6 +140,7 @@ task :latex_wrap => [:latex_base, :change_wrap] do
 end
 
 def latex_loop(entries,opts={})
+  check_bounding_box
   main_file=""
   entries.each{|file|
     options={:latex_all=>true}
@@ -183,20 +181,26 @@ end
 
 def check_bounding_box
 #  $bounding_box="0 0 442 432"
-  $bounding_box=" 0 0 737 453"
+  $bounding_box=" 0 0 737 553"
 end
 
 desc "すべてのhikiファイルをlatex変換"
 task :latex_all do
   p entries=Dir.entries('.')
-  check_bounding_box
   main_file = latex_loop(entries,opts={:main=>true})
   latex_loop(entries)
   cont=""
   p reg_exp = Regexp.new("#{$basename}_(.+)")
   toc = false
   File.readlines(File.join($latex_dir,"#{main_file}.tex")).each{|line|
-    line, toc = "", true if line.match(/\\tableofcontents/) and toc == true #only one
+#    line, toc = "", true if line.match(/\\tableofcontents/) and toc == true #only one
+    if line.match(/\\tableofcontents/)
+      if toc == false #only one
+        toc = true 
+      else
+        line = ''
+      end
+    end
     line ="\\usepackage{listings,jlisting}" if line.match(/\\usepackage{listings}/)
     if line.match(/section{(.+)}/)
       if m=line.match(/\\verb\|(.+)\((.+)\)\|/)
@@ -219,6 +223,7 @@ task :latex_all do
 end
 
 task :latex_base do
+  check_bounding_box
   Dir.mkdir($latex_dir) unless Dir.exist?($latex_dir)
   convert_to_latex(ARGV[1])
   system("open #{$save_name}")
@@ -246,8 +251,25 @@ def convert_to_latex(file_name, options={})
   system "hiki2latex #{pre_command} #{options[:latex]} #{tf1} > #{tf2}"
   lines = File.readlines(tf2)
   system "rm #{tf1} #{tf2}"
-  cont = ""
+  in_bib,cont=false,""
   lines.each{|line|
+    line=latex_cite_ref(line)
+    if m=line.match(/\\caption{\s*\((.+?)\)(.+)}/)
+      p m
+      puts line = "\\caption{#{m[2]}}\n\\label{#{m[1]}}\n"
+    end
+    if m=line.match(/\\section{reference:}(.+)/) and in_bib==false
+      in_bib=true
+      line = "\\begin{thebibliography}{99}\n"
+      puts line.blue
+    end
+    if m=line.match(/\\end{description}/) and in_bib==true
+      in_bib=false
+      line = "\\end{thebibliography}\n"
+    end
+    if m=line.match(/\\item\[(.+)\](.+)/) and in_bib==true
+      line ="\\bibitem{#{m[1]}} #{m[2]}"
+    end
     if m=line.match(/\\includegraphics\[width=6cm\]\{(.+)\}/)
       p line="\\includegraphics\[width=10cm,bb=#{$bounding_box}\]\{../figs/#{m[1]}\}\n"
       cont << line
@@ -256,6 +278,18 @@ def convert_to_latex(file_name, options={})
     end
   }
   File.open($save_name,'w'){|file| file.print cont }
+end
+
+def latex_cite_ref(line)
+  r_pair=[/\\verb\|{{cite\((.+?)\)}}\|/,/\\verb\|{{ref\((.+?)\)}}\|/]
+  while m=line.match(r_pair[0])
+    line.sub!(r_pair[0],"\\cite\{#{m[1]}\}")
+  end
+  while m=line.match(r_pair[1])
+    line.sub!(r_pair[1],"\\ref\{#{m[1]}\}")
+  end
+#  puts line.chomp.blue
+  return line
 end
 
 task :change_wrap do
@@ -346,6 +380,26 @@ task :sync => [:check_previous,:sync0]
 desc "hikiの強制同期"
 task :force_sync => [:sync0]
 
+def hiki_cite_ref(file)
+  tf1 = 'tmp1.txt'
+  lines = File.readlines(file)
+  inside_pre_form,cont = false,""
+  lines.each{|line|
+    inside_pre_form=true if line.match(/^<<</) and !inside_pre_form
+    inside_pre_form=false if line.match(/^>>>/) and inside_pre_form
+    tr_pair=[/\{\{cite\((.+?)\)\}\}/,/\{\{ref\((.+)\)\}\}/]
+    while m=line.match(tr_pair[0]) and !inside_pre_form
+      puts line.sub!(tr_pair[0], "\[[[#{m[1]}|#{$basename}_references]]\]").chomp.green
+    end
+    while m=line.match(tr_pair[1]) and !inside_pre_form
+      puts line.sub!(tr_pair[1],"#{m[1]}").chomp.green
+    end
+    cont << line
+  }
+  File.open(tf1,'w'){|file| file.print cont }
+  return tf1
+end
+
 task :sync0 do
   entries=Dir.entries('.')
   entries[2..-1].each{|source| #cp *.hiki
@@ -354,6 +408,7 @@ task :sync0 do
     p base = source.split('.')[0]
     name = (base==$basename)? base : $basename+'_'+base
     p target = File.join($hiki_dir,'text',name)
+    source = hiki_cite_ref(source)
     FileUtils.cp(source,target,:verbose=>true)
   }
   p entries=Dir.entries('./figs') #cp files in figs

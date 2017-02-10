@@ -53,20 +53,8 @@ featuresディレクトリにあるmy\_todo.featureファイルをcucumberで実
 
 実行すると以下のようになります．
 \begin{lstlisting}[style=customCsh,basicstyle={\scriptsize\ttfamily}]
-# language: ja
-機能: todoの更新を行う
-todoは更新していくものであり,新しく書いたり終わったものを消したいのでバックアップをとって，過去のtodoを残しておく
 
-  シナリオ: コマンドを入力してtodoを更新していく # features/my_todo.feature:6
-    前提todoを編集したい             # features/my_todo.feature:7
-    もし"my_todo --edit"と入力する  # features/my_todo.feature:8
-    ならばeditが開かれる             # features/my_todo.feature:9
-    かつ自分のtodoを書き込む           # features/my_todo.feature:10
-
-  シナリオ: コマンドを入力してバックアップをとる          # features/my_todo.feature:12
-    前提todoの編集が終わった                  # features/my_todo.feature:13
-    もし"my_todo --store [item]"と入力する # features/my_todo.feature:14
-    ならばitemのバックアップを取る               # features/my_todo.feature:15
+＜省略＞
 
 2 scenarios (2 undefined)
 7 steps (7 undefined)
@@ -195,14 +183,14 @@ todoは更新していくものであり,新しく書いたり終わったもの
 
 \end{lstlisting}
 \subsection{RSpec}
-次にRSpecを使って実際にtodoを更新する振る舞いをするコード書いていく．
+次にRSpecを使って実際にtodoを更新する振る舞いをするコード書いていきます．
 
-そのための準備として，まずspecというディレクトリを作成し，my\_todoというサブディレクトリを追加する．
-次に，このサブディレクトリにtodo\_spec.rbというファイルを追加する．
+そのための準備として，まずspecというディレクトリを作成し，my\_todoというサブディレクトリを追加します．
+次に，このサブディレクトリにtodo\_spec.rbというファイルを追加します．
 作業を進める過程で，lib/my\_todo/my\_todo.rbソースファイルとspec/my\_todo/todo\_spec.rbスペックファイルが１対１に対応するといった要領で，
-並列のディレクトリ構造を築いていく．
+並列のディレクトリ構造を築いていきます．
 この機能はmy\_help --editと入力されれば，~/.my\_help/my\_todo.ymlが開かれるのでその振る舞いをするコードを書きます．
-まずtodo\_spec.rbは下記の通りになります
+まずtodo\_spec.rbは下記の通りになります．
 \begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
 require 'spec_helper'
 
@@ -245,7 +233,7 @@ module Mytodo
 end
 
 \end{lstlisting}
-これでrspecを実行すると以下のような結果が表示される．
+これでrspecを実行すると以下のような結果が表示されます．
 \begin{lstlisting}[style=customCsh,basicstyle={\scriptsize\ttfamily}]
 /Users/nasubi/my_help% rspec spec --color
 
@@ -265,7 +253,7 @@ Finished in 3.87 seconds (files took 0.30703 seconds to load)
 5 examples, 0 failures
 
 \end{lstlisting}
-これでtodoを更新するときの振る舞いのテストはうまく成功した．
+これでtodoを更新するときの振る舞いのテストはうまく成功しました．
 
-この方法でBDDでmy\_helpのテスト開発を行い，仕様を決定していった．
+この方法でBDDでmy\_helpのテスト開発を行い，仕様を決定していきました．
 
