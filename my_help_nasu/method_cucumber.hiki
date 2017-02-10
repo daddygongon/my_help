@@ -7,6 +7,7 @@ Cucumberが提供するBDDの内容をまとめると
 
 !!features
 Cucumberでは先の引用にある通り、振る舞いをシナリオとしてまず記述します．
+シナリオとは，一つひとつの振る舞いを，主にGiven(前提), Then(もし), When(ならば)に分けてfeaturesを記述します．
 次に，英語のfeaturesのひな形を示します．
 <<< ruby
 % cat ./featrues/sample_e.feature
@@ -25,19 +26,13 @@ Scenario: Description of scenario
 # language: ja
 
 機能: todoの更新を行う
-todoは更新していくものであり，新しく書いたり終わったものを消したいので
-バックアップをとって，過去のtodoを残しておく
+自分のするべきことを書き込むためのtodoを更新する
 
 シナリオ: コマンドを入力してtodoを更新していく
- 前提 todoを編集したい
- もし "my_todo --edit"と入力する
+ 前提   todoを編集したい
+ もし   "my_todo --edit"と入力する
  ならば editが開かれる
- かつ 自分のtodoを書き込む
-
-シナリオ: コマンドを入力してバックアップをとる
- 前提 todoの編集が終わった
- もし "my_todo --store [item]"と入力する
- ならば itemのバックアップを取る
+ かつ   自分のtodoを書き込む
 >>>
 このようにFeature, Scenario, Given, Then, Whenなどのcucumberが解釈する大文字で始まる
 keywordsに対して，それぞれ機能，シナリオ，前提，もし，ならばなどの単語があてられています．
@@ -46,8 +41,9 @@ keywordsに対して，それぞれ機能，シナリオ，前提，もし，な
 
 featureファイルで用意されているkeywordは
  cucumber --i18n LANG
-によって表示される．LANG=ja, enに対しては下記の通りになっています．
+によって表示される．LANG=ja, enに対しては表{{ref(table:one)}}の通りになっています．
 
+!!!caption: (table:one)featureファイルで用意されているkeywordの日本語(ja)，英語(en)の対応表．
 || keyword || ja(japanese) || en(english)
 ||^ feature||^ "フィーチャ", "機能"    ||"Feature", "Business Need", 
 ||"Ability"   ||

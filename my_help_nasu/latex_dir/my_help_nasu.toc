@@ -7,26 +7,27 @@
 \contentsline {subsubsection}{\numberline {2.2.3}Cucumber,RSpecインストール}{11}
 \contentsline {subsubsection}{\numberline {2.2.4}ディレクトリー構造と使用手順}{12}
 \contentsline {subsection}{\numberline {2.3}my\_helpについて}{15}
-\contentsline {subsubsection}{\numberline {2.3.1}使用法}{15}
-\contentsline {subsubsection}{\numberline {2.3.2}my\_helpのインストール}{15}
-\contentsline {subsubsection}{\numberline {2.3.3}githubに行ってdaddygongonのmy\_helpをforkする}{15}
-\contentsline {subsubsection}{\numberline {2.3.4}my\_helpの更新}{16}
-\contentsline {paragraph}{gitを用いてmy\_helpを新しくする．}{16}
-\contentsline {paragraph}{次にとってきた.ymlを\nobreakspace {}/.my\_helpにcpする．}{16}
+\contentsline {subsubsection}{\numberline {2.3.1}my\_helpのインストール}{15}
+\contentsline {subsubsection}{\numberline {2.3.2}githubに行ってdaddygongonのmy\_helpをforkする}{15}
+\contentsline {subsubsection}{\numberline {2.3.3}my\_helpの更新}{15}
+\contentsline {paragraph}{gitを用いてmy\_helpを新しくする．}{15}
+\contentsline {paragraph}{次にとってきた.ymlを\nobreakspace {}/.my\_helpにcpする．}{15}
 \contentsline {section}{\numberline {3}結果}{17}
 \contentsline {subsection}{\numberline {3.1}todoの更新マニュアル}{17}
 \contentsline {subsection}{\numberline {3.2}Cucumber}{17}
-\contentsline {subsection}{\numberline {3.3}RSpec}{21}
-\contentsline {subsubsection}{\numberline {3.3.1}featuresでの記述とその意味}{23}
-\contentsline {subsubsection}{\numberline {3.3.2}my\_helpのfeatures}{23}
-\contentsline {paragraph}{--add [item]}{23}
-\contentsline {paragraph}{全てのhelp画面の表示}{24}
-\contentsline {paragraph}{過去にバックアップしてあるitemのリストの表示}{24}
-\contentsline {paragraph}{helpコマンドの追加や削除，編集をするファイルの開示}{24}
-\contentsline {paragraph}{specific\_helpのitemの消去}{25}
-\contentsline {paragraph}{itemのバックアップ}{25}
-\contentsline {paragraph}{hikiへのformatの変更}{25}
-\contentsline {paragraph}{todoの更新}{25}
-\contentsline {section}{\numberline {4}考察}{27}
-\contentsline {section}{\numberline {5}謝辞}{28}
-\contentsline {section}{\numberline {6}参考文献}{28}
+\contentsline {subsection}{\numberline {3.3}RSpec}{20}
+\contentsline {subsubsection}{\numberline {3.3.1}featuresでの記述とその意味}{24}
+\contentsline {subsubsection}{\numberline {3.3.2}my\_helpのfeatures}{24}
+\contentsline {paragraph}{--add [item]}{24}
+\contentsline {paragraph}{全てのhelp画面の表示}{25}
+\contentsline {paragraph}{過去にバックアップしてあるitemのリストの表示}{25}
+\contentsline {paragraph}{helpコマンドの追加や削除，編集をするファイルの開示}{25}
+\contentsline {paragraph}{specific\_helpのitemの消去}{26}
+\contentsline {paragraph}{itemのバックアップ}{26}
+\contentsline {paragraph}{hikiへのformatの変更}{26}
+\contentsline {paragraph}{todoの更新}{26}
+\contentsline {section}{\numberline {4}考察}{28}
+\contentsline {section}{\numberline {5}本研究による成果}{28}
+\contentsline {section}{\numberline {6}現状の評価}{28}
+\contentsline {section}{\numberline {7}謝辞}{30}
+\contentsline {section}{\numberline {8}参考文献}{30}
