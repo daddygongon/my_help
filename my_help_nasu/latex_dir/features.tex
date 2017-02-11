@@ -1,10 +1,10 @@
 
 \subsection{featuresでの記述とその意味}
-featuresでの記述は，コマンドの振る舞いを説明する自然な記述となる．
-その様子をspecific\_helpが用意しているデフォルトのコマンドについて
-説明する．specific\_helpとは，ユーザが作成するそれぞれのヘルプである．
+featuresでの記述は，コマンドの振る舞いを説明する自然な記述です．
+その様子をspecific\_helpが用意しているデフォルトのコマンドについて説明します．
+specific\_helpとは，ユーザが作成するそれぞれのヘルプです．
 speific\_helpの--helpを表示させると，
-\begin{lstlisting}[style=customCsh,basicstyle={\scriptsize\ttfamily}]
+\begin{lstlisting}[style=customCsh]
         --edit                       edit help contentsを開く
         --to_hiki                    hikiのformatに変更する
         --all                        すべてのhelp画面を表示させる
@@ -13,15 +13,14 @@ speific\_helpの--helpを表示させると，
         --add [item]                 add new [item]で新しいhelpを作る
         --backup_list [val]          back upしているlistを表示させる
 \end{lstlisting}
-が得られる．これらの項目について順に詳細な振る舞いとそれを記述する
-シナリオを検討していく．
+が得られます．
+これらの項目について順に詳細な振る舞いとそれを記述するシナリオを検討していきます．
 
 \subsubsection{--add [item]}
-このコマンドは新しいitemをspecific\_helpに追加する．
-提供される機能を
-シナリオの先頭に内容をかいつまんでこの振る舞いが記述されている．
-実装では，ヘルプの内容は~/.my\_help/emacs\_help.ymlに元dataがある
-\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
+このコマンドは新しいitemをspecific\_helpに追加します．
+提供される機能をシナリオの先頭に内容をかいつまんでこの振る舞いが記述されています．
+実装では，ヘルプの内容は~/.my\_help/emacs\_help.ymlに元dataがあります．
+\begin{lstlisting}[style=customRuby]
 nasu% cat add.feature
 #language: ja
 
@@ -36,7 +35,11 @@ specific_helpとは，ユーザが作成するそれぞれのヘルプである
         ならば ~/.my_help/emacs_help.ymlに新しいitemが自動的に追加される
 
 \end{lstlisting}
-\subsubsection{全てのhelp画面の表示}\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
+\subsubsection{--all}
+このコマンドはspecific\_helpにあるhelpを一度に全て表示させます．
+するとspecific\_helpにあるitemを全て表示します．
+実装では，元データが~/.my\_help/emacs\_help.ymlにあるので，それを全て表示します．
+\begin{lstlisting}[style=customRuby]
 nasu% cat all_help.feature
 #language: ja
 
@@ -49,11 +52,11 @@ nasu% cat all_help.feature
         もし emacs_help --allと入力する
         ならば すべてのhelp画面が表示される
 \end{lstlisting}
-シナリオ：コマンドをニュ力してすべてのhelp画面を見る
-
-コマンド：emacs\_help --all
-
-\subsubsection{過去にバックアップしてあるitemのリストの表示}\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
+\subsubsection{--backup\_list}
+このコマンドは過去にバックアップをとったことのあるitemを表示させます．
+自分がどのitemをバックアップしたのかの確認を行えます．
+また，そのitemのバックアップをとった時間も表示されるので，いつバックアップをとったのかの確認も行えます．
+\begin{lstlisting}[style=customRuby]
 nasu% cat backup_list.feature
 #language: ja
 
@@ -67,10 +70,11 @@ nasu% cat backup_list.feature
         ならば バックアップしているitemのリストが表示される
         
 \end{lstlisting}
-シナリオ：コマンドを入力してバックアップのリストを見る
-コマンド：emacs\_help --backup\_list
-
-\subsubsection{helpコマンドの追加や削除，編集をするファイルの開示}\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
+\subsubsection{--edit}
+このコマンドはspecific\_helpのitemの編集ができます．
+実装では，元データのある~/.my\_help/emacs\_help.ymlがemacsで開かれ，自分で編集ができます．
+編集作業が終了したら，emacsで開かれているので， [C-x C-s]で保存，[C-x C-c]でeditを閉じます．
+\begin{lstlisting}[style=customRuby]
 nasu% cat edit_help.feature
 # language: ja
 #--edit
@@ -82,14 +86,11 @@ emacs_helpと入力したときに出てくるhelpのコマンドの追加や削
         もし emacs_help --editと入力する
         ならば ~/.my_help/emacs_help.ymlがemacsで開かれる
 \end{lstlisting}
-シナリオ：コマンドを入力してeditを開く
-コマンド：emacs\_help --edit
-
-元dataである~/.my\_help/emacs\_help.ymlを開く．
-
-ここで編集を行い，emacsで開いているのでC-x,C-sで保存する．
-
-\subsubsection{specific\_helpのitemの消去}\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
+\subsubsection{--remove [item]}
+このコマンドは新しいitemをspecific\_helpから削除します．
+提供される機能をシナリオの先頭に内容をかいつまんでこの振る舞いが記述されています．
+実装では，ヘルプの内容は~/.my\_help/emacs\_help.ymlに元dataがあります．
+\begin{lstlisting}[style=customRuby]
 nasu% cat remove.feature
 #language: ja
 
@@ -103,11 +104,10 @@ nasu% cat remove.feature
         ならば ~/.my_help/emacs_help.ymlからitemが消える
 
 \end{lstlisting}
-シナリオ：コマンドを入力してitemを消す
-
-コマンド：emacs\_help --remove
-
-\subsubsection{itemのバックアップ}\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
+\subsubsection{--store [item]}
+このコマンドはspecific\_helpのitemのバックアップをとります．
+少しhelpを新しくしたいが，過去のhelpを残しておけば安心できます．
+\begin{lstlisting}[style=customRuby]
 nasu% cat store.feature
 #language: ja
 
@@ -120,11 +120,9 @@ nasu% cat store.feature
         もし emacs_help --store [item]と入力する
         ならば 入力したitemのバックアップが作られる
 \end{lstlisting}
-シナリオ：コマンドを入力してバックアップをとる
-
-コマンド：emacs\_help --store [item]
-
-\subsubsection{hikiへのformatの変更}\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
+\subsubsection{--to\_hiki}
+このコマンドはformatをhikiに変更します．
+\begin{lstlisting}[style=customRuby]
 nasu% cat to_hiki.feature
 # language: ja
 
@@ -137,16 +135,18 @@ nasu% cat to_hiki.feature
         もし emacs_help --to_hikiと入力する
         ならば formatがhikiモードに変更される
 \end{lstlisting}
-シナリオ：コマンドを入力してformatをhikiモードにする
-
-コマンド：emacs\_help --to\_hiki
-
-\subsubsection{todoの更新}\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
+\subsubsection{todoの更新}
+まず，todoを書き込むために，editを開くために，my\_todo --editと入力します．
+--editコマンドは上記で説明した動きをします．
+しかし，ここでは元データは~/.my\_help/todo\_help.ymlです．
+editが開かれたら，todoを書き込みます．（今週やることならweeklyというitemを作ってそこに書き込む）
+保存方法や，editの閉じ方はemacsと同じ操作方法です．
+\begin{lstlisting}[style=customRuby]
 nasu% my_todo.feature
 # language: ja
 
 機能: todoの更新を行う
-自分のするべきことを書き込むためのtodoを更新する
+自分のするべきことを書き込むためにtodoを更新する
 
 シナリオ: コマンドを入力してtodoを更新していく
           前提 todoを編集したい
@@ -155,11 +155,3 @@ nasu% my_todo.feature
           かつ 自分のtodoを書き込む
 
 \end{lstlisting}
-シナリオ１：コマンドを入力してtodoを更新する
-
-コマンド１：my\_todo --edit
-
-my\_todo --editで~/.my\_help/my\_todo.ymlを開く．
-
-ここで編集を行い，emacsで開いているのでC-x,C-sで保存する．
-

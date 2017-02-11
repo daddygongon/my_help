@@ -1,8 +1,8 @@
 {{toc}}
 !featuresでの記述とその意味
-featuresでの記述は，コマンドの振る舞いを説明する自然な記述となる．
-その様子をspecific_helpが用意しているデフォルトのコマンドについて
-説明する．specific_helpとは，ユーザが作成するそれぞれのヘルプである．
+featuresでの記述は，コマンドの振る舞いを説明する自然な記述です．
+その様子をspecific_helpが用意しているデフォルトのコマンドについて説明します．
+specific_helpとは，ユーザが作成するそれぞれのヘルプです．
 speific_helpの--helpを表示させると，
 <<< tcsh
         --edit                       edit help contentsを開く
@@ -13,14 +13,13 @@ speific_helpの--helpを表示させると，
         --add [item]                 add new [item]で新しいhelpを作る
         --backup_list [val]          back upしているlistを表示させる
 >>>
-が得られる．これらの項目について順に詳細な振る舞いとそれを記述する
-シナリオを検討していく．
+が得られます．
+これらの項目について順に詳細な振る舞いとそれを記述するシナリオを検討していきます．
 
 !!--add [item]
-このコマンドは新しいitemをspecific_helpに追加する．
-提供される機能を
-シナリオの先頭に内容をかいつまんでこの振る舞いが記述されている．
-実装では，ヘルプの内容は~/.my_help/emacs_help.ymlに元dataがある
+このコマンドは新しいitemをspecific_helpに追加します．
+提供される機能をシナリオの先頭に内容をかいつまんでこの振る舞いが記述されています．
+実装では，ヘルプの内容は~/.my_help/emacs_help.ymlに元dataがあります．
 
 <<< ruby
 nasu% cat add.feature
@@ -38,7 +37,11 @@ specific_helpとは，ユーザが作成するそれぞれのヘルプである
 
 >>>
 
-!!全てのhelp画面の表示
+!!--all
+このコマンドはspecific_helpにあるhelpを一度に全て表示させます．
+するとspecific_helpにあるitemを全て表示します．
+実装では，元データが~/.my_help/emacs_help.ymlにあるので，それを全て表示します．
+
 <<< ruby
 nasu% cat all_help.feature
 #language: ja
@@ -52,11 +55,12 @@ nasu% cat all_help.feature
         もし emacs_help --allと入力する
         ならば すべてのhelp画面が表示される
 >>>
-シナリオ：コマンドをニュ力してすべてのhelp画面を見る
 
-コマンド：emacs_help --all
 
-!!過去にバックアップしてあるitemのリストの表示
+!!--backup_list
+このコマンドは過去にバックアップをとったことのあるitemを表示させます．
+自分がどのitemをバックアップしたのかの確認を行えます．
+また，そのitemのバックアップをとった時間も表示されるので，いつバックアップをとったのかの確認も行えます．
 <<< ruby
 nasu% cat backup_list.feature
 #language: ja
@@ -71,10 +75,12 @@ nasu% cat backup_list.feature
         ならば バックアップしているitemのリストが表示される
         
 >>>
-シナリオ：コマンドを入力してバックアップのリストを見る
-コマンド：emacs_help --backup_list
 
-!!helpコマンドの追加や削除，編集をするファイルの開示
+
+!!--edit
+このコマンドはspecific_helpのitemの編集ができます．
+実装では，元データのある~/.my_help/emacs_help.ymlがemacsで開かれ，自分で編集ができます．
+編集作業が終了したら，emacsで開かれているので， [C-x C-s]で保存，[C-x C-c]でeditを閉じます．
 <<< ruby
 nasu% cat edit_help.feature
 # language: ja
@@ -87,14 +93,11 @@ emacs_helpと入力したときに出てくるhelpのコマンドの追加や削
         もし emacs_help --editと入力する
         ならば ~/.my_help/emacs_help.ymlがemacsで開かれる
 >>>
-シナリオ：コマンドを入力してeditを開く
-コマンド：emacs_help --edit
 
-元dataである~/.my_help/emacs_help.ymlを開く．
-
-ここで編集を行い，emacsで開いているのでC-x,C-sで保存する．
-
-!!specific_helpのitemの消去
+!!--remove [item]
+このコマンドは新しいitemをspecific_helpから削除します．
+提供される機能をシナリオの先頭に内容をかいつまんでこの振る舞いが記述されています．
+実装では，ヘルプの内容は~/.my_help/emacs_help.ymlに元dataがあります．
 <<< ruby
 nasu% cat remove.feature
 #language: ja
@@ -109,11 +112,12 @@ nasu% cat remove.feature
         ならば ~/.my_help/emacs_help.ymlからitemが消える
 
 >>>
-シナリオ：コマンドを入力してitemを消す
 
-コマンド：emacs_help --remove
+!!--store [item]
+このコマンドはspecific_helpのitemのバックアップをとります．
+少しhelpを新しくしたいが，過去のhelpを残しておけば安心できます．
+//どこに保存されるのかを書く．
 
-!!itemのバックアップ
 <<< ruby
 nasu% cat store.feature
 #language: ja
@@ -128,11 +132,10 @@ nasu% cat store.feature
         ならば 入力したitemのバックアップが作られる
 >>>
 
-シナリオ：コマンドを入力してバックアップをとる
+!!--to_hiki
+このコマンドはformatをhikiに変更します．
+//使用方法がわからない．--allと変わらない振る舞いをする．
 
-コマンド：emacs_help --store [item]
-
-!!hikiへのformatの変更
 <<< ruby
 nasu% cat to_hiki.feature
 # language: ja
@@ -146,17 +149,19 @@ nasu% cat to_hiki.feature
         もし emacs_help --to_hikiと入力する
         ならば formatがhikiモードに変更される
 >>>
-シナリオ：コマンドを入力してformatをhikiモードにする
-
-コマンド：emacs_help --to_hiki
 
 !!todoの更新
+まず，todoを書き込むために，editを開くために，my_todo --editと入力します．
+--editコマンドは上記で説明した動きをします．
+しかし，ここでは元データは~/.my_help/todo_help.ymlです．
+editが開かれたら，todoを書き込みます．（今週やることならweeklyというitemを作ってそこに書き込む）
+保存方法や，editの閉じ方はemacsと同じ操作方法です．
 <<< ruby
 nasu% my_todo.feature
 # language: ja
 
 機能: todoの更新を行う
-自分のするべきことを書き込むためのtodoを更新する
+自分のするべきことを書き込むためにtodoを更新する
 
 シナリオ: コマンドを入力してtodoを更新していく
           前提 todoを編集したい
@@ -165,11 +170,3 @@ nasu% my_todo.feature
           かつ 自分のtodoを書き込む
 
 >>>
-シナリオ１：コマンドを入力してtodoを更新する
-
-コマンド１：my_todo --edit
-
-my_todo --editで~/.my_help/my_todo.ymlを開く．
-
-ここで編集を行い，emacsで開いているのでC-x,C-sで保存する．
-

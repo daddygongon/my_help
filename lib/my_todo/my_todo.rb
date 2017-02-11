@@ -1,3 +1,4 @@
+=begin
 module Mytodo
   class Edit
     def open
@@ -6,3 +7,4 @@ module Mytodo
   end
 end
 
+=end

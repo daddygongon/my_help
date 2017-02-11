@@ -1,5 +1,5 @@
 {{toc}}
-!実践
+!ビヘイビア駆動開発の実践
 
 CucumberとRSpecを用いてBDDでmy_helpのテスト開発を進めて行きました．
 // アプリの振る舞いを説明する
@@ -38,27 +38,21 @@ CucumberとRSpecを用いてBDDでmy_helpのテスト開発を進めて行きま
           ならば editが開かれる
           かつ 自分のtodoを書き込む
 >>>
-//シナリオ: コマンドを入力してバックアップをとる
-//         前提 todoの編集が終わった
-//          もし "my_todo --store [item]"と入力する
-//          ならば itemのバックアップを取る
-
 
 機能とは，このシステムの機能のことを記述します．ここでは，todoを更新するシステムですので，「todoの更新を行う」です．
 機能の下には，機能の補足説明を記述します．機能の補足説明では，ルールがないので自分がわかりやすいように，記述するのが常識です．
 シナリオは，その名の通りtodoを更新する時のユーザの行動やシステム振る舞いを前提，もし，ならば，かつ，しかしに分類して記述します．
-//シナリオは，一つの機能に対して複数書くことが可能です．ここでは、「todoを更新する」と「バックアップをとる」という二つの
-//シナリオをたてています．
+
 
 ここまでfeatureが記述できたら，次はcucumberコマンドを実行してみます．
 コマンドは以下の通りです．
  nasu% cucumber features/my_todo.feature 
 featuresディレクトリにあるmy_todo.featureファイルをcucumberで実行するという意味です．
 
-実行すると図{{ref(fig:cucumber1)}}のようになります．
+実行すると図{{ref(cucumber01)}}のようになります．
 
-!!!caption:(fig:cucumber1)step定義をする前のcucumberの実行結果．
-{{attach_view(cucumber1.jpg,my_help_nasu)}}
+!!!caption:(fig:cucumber01)step定義をする前のcucumberの実行結果．
+{{attach_view(cucumber01.001.jpg,my_help_nasu)}})
 
 ここでは，1つのscenarioと4つのstepが失敗しています．
 まだstep定義を記述していないので当たり前です．
@@ -86,13 +80,11 @@ end
 end
 >>>
 
-
-
 これをコピーして，featuresディレクトリの中でstep_definitionsディレクトリを作成し，その中にmy_todo_spec.rbを作成し，そこに貼付けます．
 
-ここでもう一度cucumberを実行してみると図{{ref(fig:cucumber2)}}のように変化が出てきます．
-!!!caption:(fig:cucumber2)defaultのstep定義を貼り付けた後のcucumberの実行結果．
-{{attach_view(cucumber2.jpg,my_help_nasu)}}
+ここでもう一度cucumberを実行してみると図{{ref(cucumber02)}}のように変化が出てきます．
+!!!caption:(fig:cucumber02)defaultのstep定義を貼り付けた後のcucumberの実行結果．
+{{attach_view(cucumber02.001.jpg,my_help_nasu)}}
 
 
  1 scenarios (1 pending)
@@ -113,10 +105,10 @@ end
 >>>
 
 pendingの部分が書けたので，もう一度cucumber features/my_todo.featureを実行します．
-すると，図{{ref(fig:cucumber3)}}のような結果が返ってきました．
+すると，図{{ref(fig:cucumber03)}}のような結果が返ってきました．
 
-!!!caption:(fig:cucumber3)pendingのstep定義を書き込んだ後のcucumberの実行結果．
-{{attach_view(cucumber3.jpg,my_help_nasu)}}
+!!!caption:(fig:cucumber03)pendingのstep定義を書き込んだ後のcucumberの実行結果．
+{{attach_view(cucumber03.001.jpg,my_help_nasu)}}
 
 Cucumberは，エラーが出たステップのすぐ後ろにエラーを表示してくれます．
 ここでCucumberでエラーが出たので，この「ならば　editが開かれる」のシナリオに注目してRSpecに進むことにします．
@@ -169,28 +161,13 @@ end
 
 >>>
 
-
-
 specディレクトリのmy_todoディレクトリをrspecで実行すると下記のような結果がでました．
 [[--color]]を付け加えるとわかりやすく色づけをしてくれて，見やすくなります．
-<<< tcsh
-/Users/nasubi/my_help% rspec spec/my_todo/ --color
-/Users/nasubi/my_help/spec/my_todo/todo_spec.rb:6:in `<module:Mytodo>': uninitialized constant Mytodo::Edit (NameError)
-from /Users/nasubi/my_help/spec/my_todo/todo_spec.rb:5:in `<top (required)>'
-from /Users/nasubi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/rspec-core-3.5.4/lib/rspec/core/configuration.rb:1435:in `load'
-from /Users/nasubi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/rspec-core-3.5.4/lib/rspec/core/configuration.rb:1435:in `block in load_spec_files'
-from /Users/nasubi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/rspec-core-3.5.4/lib/rspec/core/configuration.rb:1433:in `each'
-from /Users/nasubi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/rspec-core-3.5.4/lib/rspec/core/configuration.rb:1433:in `load_spec_files'
-from /Users/nasubi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/rspec-core-3.5.4/lib/rspec/core/runner.rb:100:in `setup'
-from /Users/nasubi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/rspec-core-3.5.4/lib/rspec/core/runner.rb:86:in `run'
-from /Users/nasubi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/rspec-core-3.5.4/lib/rspec/core/runner.rb:71:in `run'
-from /Users/nasubi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/rspec-core-3.5.4/lib/rspec/core/runner.rb:45:in `invoke'
-from /Users/nasubi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/rspec-core-3.5.4/exe/rspec:4:in `<top (required)>'
-from /Users/nasubi/.rbenv/versions/2.2.2/bin/rspec:23:in `load'
-from /Users/nasubi/.rbenv/versions/2.2.2/bin/rspec:23:in `<main>'
->>>
 
-エラーが出てしまっているのがわかると思います．
+!!!caption:(fig:cucumber04)pendingのstep定義を書き込んだ後のcucumberの実行結果．
+{{attach_view(cucumber04.001.jpg,my_help_nasu)}}
+
+図{{ref(fig:cucumber04)}}を見るとエラーが出てしまっているのがわかります．
 
  `<module:Mytodo>': uninitialized constant Mytodo::Edit (NameError)
 
@@ -230,7 +207,8 @@ require 'todo'
 
 これでもう一度rspecを実行してみます．
 
-{{attach_view(rspec2.jpg,my_help_nasu)}}
+!!!caption:(fig:rspec01)redを修正してgreenになったrspecの実行結果
+{{attach_view(rspec01.001.jpg,my_help_nasu)}}
 
 エラーが消えて成功しているのがわかります．
 これで「ならば　editが開かれる」のシナリオのRSpec部分が成功しました．
@@ -251,7 +229,8 @@ require 'todo'
 
 もう一度cucumberを実行してみると，
 
-{{attach_view(cucumber4.jpg,my_help_nasu)}}
+!!!caption:(fig:cucumber05)libの中身を読み込むようにしたcucumberの実行結果．
+{{attach_view(cucumber05.001.jpg,my_help_nasu)}}
 
 エラーが消えています．
 

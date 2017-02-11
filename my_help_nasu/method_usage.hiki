@@ -6,7 +6,7 @@ tarminal上で簡単に提示させることができるため，プログラミ
 また，自分の見やすいように初心者でも簡単に編集することができ，すぐに参照できるメモとしても使うことができます．
 
 !!my_helpのインストール
-!!githubに行ってdaddygongonのmy_helpをforkする
+githubに行ってdaddygongonのmy_helpをforkします．
 #git clone git@github.com:daddygongon/my_help.git
 #cd my_help
 #rake to_yml
@@ -17,8 +17,8 @@ tarminal上で簡単に提示させることができるため，プログラミ
 #rake add_yml
 
 !!my_helpの更新
+git hubを用いてmy_helpを新しくします．
 
-!!!gitを用いてmy_helpを新しくする．
 #git remote -vをする(remoteの確認).
 #(upstreamがなければ)git remote add upstream git@github.com:gitname/my_help.git
 #git add -A
@@ -26,19 +26,17 @@ tarminal上で簡単に提示させることができるため，プログラミ
 #git push upstream master(ここで自分のmy_helpをupstreamに送っとく)
 #git pull origin master(新しいmy_helpを取ってくる)
 
-!!!次にとってきた.ymlを~/.my_helpにcpする．
+次にとってきた.ymlを~/.my_helpにcpする．
 #cd my_helpでmy_helpに移動．
 #cp hogehoge.yml ~/.my_help
 
 それを動かすために
 (sudo)bundle exec ruby exe/my_help -mをする.
-
-ここで過去にsudoをした人はpermissionがrootになっているので，sudoをつけないとerrorが出る．
-
+ここで過去にsudoをした人はpermissionがrootになっているので，sudoをつけないとerrorが出ます．
 (sudoで実行していたら権限がrootに移行される)
+#新しいターミナルを開いて動くかチェックする．
 
-新しいターミナルを開いて動くかチェックする．
-
+!!my_helpの特徴や問題点
 以下はmy_helpのREADMEです[2]．
 
 CUI(CLI)ヘルプのUsage出力を真似て，user独自のhelpを作成・提供するgem.
