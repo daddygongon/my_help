@@ -1,4 +1,25 @@
+前提(/^todoを編集したい$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
 
+もし(/^"([^"]*)"と入力する$/) do |arg1|
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+ならば(/^editが開かれる$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+ならば(/^自分のtodoを書き込む$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+
+
+
+
+
+=begin
 前提(/^todoを編集したい$/) do
   
 end
@@ -13,7 +34,8 @@ end
 ならば(/^自分のtodoを書き込む$/) do
 
 end
-
+=end
+=begin
 前提(/^todoの編集が終わった$/) do
 
 end
@@ -22,3 +44,4 @@ end
 
 end
 
+=end
