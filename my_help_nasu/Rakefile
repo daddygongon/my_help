@@ -2,6 +2,8 @@
 require 'systemu'
 require 'tempfile'
 require 'colorize'
+require 'coderay'
+
 # -*- coding: utf-8 -*-
 begin
   $hiki_dir = File.readlines('./.hikirc')[0].chomp
@@ -66,9 +68,11 @@ end
 desc "latex_dirのゴミを掃除"
 task :reset_latex_dir do
   system "mv latex_dir/head.tex ."
+  system "mv latex_dir/jlisting.sty ."
   system "rm -rf latex_dir"
   system "mkdir latex_dir"
   system "mv head.tex latex_dir/"
+  system "mv jlisting.sty latex_dir/"
   system "rake latex_all"
 end
 
@@ -116,7 +120,8 @@ end
 
 desc "FILE.hikiあるいはhikiファイルをedtiorで開く"
 task :open do
-  if file=ARGV[1] 
+  if file=ARGV[1]
+    file += '.hiki' if file.split(".")[1]==nil
     system "open -a mi #{file}"
   else
     Dir.entries('.').each{|file|
@@ -443,7 +448,14 @@ task :self_copy do
   cp_files.each{|files|
     p source = files[0]
     p target = File.join('/Users/bob/Github/hikiutils/lib/templates/',files[1])
-    FileUtils.cp(source,target,:verbose=>true)
+    command = "diff #{source} #{target}"
+    status, stdout, stderr=systemu command
+    if stdout!=''
+      puts command.red
+      puts CodeRay.scan(stdout, :Diff).term  
+      print " Are you sure to save #{source}? [Yn]  ".red
+      FileUtils.cp(source,target,:verbose=>true) if STDIN.gets.chomp=='Y'
+    end
   }
 end
 

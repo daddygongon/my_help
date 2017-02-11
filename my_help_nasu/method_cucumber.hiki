@@ -26,7 +26,7 @@ Scenario: Description of scenario
 # language: ja
 
 機能: todoの更新を行う
-自分のするべきことを書き込むためのtodoを更新する
+自分のするべきことを書き込むためにtodoを更新する
 
 シナリオ: コマンドを入力してtodoを更新していく
  前提   todoを編集したい

@@ -1,10 +1,10 @@
 
-\subsubsection{featuresでの記述とその意味}
+\subsection{featuresでの記述とその意味}
 featuresでの記述は，コマンドの振る舞いを説明する自然な記述となる．
 その様子をspecific\_helpが用意しているデフォルトのコマンドについて
 説明する．specific\_helpとは，ユーザが作成するそれぞれのヘルプである．
 speific\_helpの--helpを表示させると，
-\begin{quote}\begin{verbatim}
+\begin{lstlisting}[style=customCsh,basicstyle={\scriptsize\ttfamily}]
         --edit                       edit help contentsを開く
         --to_hiki                    hikiのformatに変更する
         --all                        すべてのhelp画面を表示させる
@@ -12,19 +12,16 @@ speific\_helpの--helpを表示させると，
         --remove [item]              remove [item] back upしてるlistを消去する
         --add [item]                 add new [item]で新しいhelpを作る
         --backup_list [val]          back upしているlistを表示させる
-\end{verbatim}\end{quote}
+\end{lstlisting}
 が得られる．これらの項目について順に詳細な振る舞いとそれを記述する
 シナリオを検討していく．
 
-\subsubsection{my\_helpのfeatures}
-下記は私が作成したmy\_helpの一部をfeaturesで書いたものである．
-
-\paragraph{--add [item]}
+\subsubsection{--add [item]}
 このコマンドは新しいitemをspecific\_helpに追加する．
 提供される機能を
 シナリオの先頭に内容をかいつまんでこの振る舞いが記述されている．
 実装では，ヘルプの内容は~/.my\_help/emacs\_help.ymlに元dataがある
-\begin{quote}\begin{verbatim}
+\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
 nasu% cat add.feature
 #language: ja
 
@@ -38,9 +35,9 @@ specific_helpとは，ユーザが作成するそれぞれのヘルプである
         もし emacs_help --add[item]を入力する
         ならば ~/.my_help/emacs_help.ymlに新しいitemが自動的に追加される
 
-\end{verbatim}\end{quote}
-\paragraph{全てのhelp画面の表示}\begin{lstlisting}[style=,basicstyle={\scriptsize\ttfamily}]
-
+\end{lstlisting}
+\subsubsection{全てのhelp画面の表示}\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
+nasu% cat all_help.feature
 #language: ja
 
 #--all
@@ -56,7 +53,8 @@ specific_helpとは，ユーザが作成するそれぞれのヘルプである
 
 コマンド：emacs\_help --all
 
-\paragraph{過去にバックアップしてあるitemのリストの表示}\begin{lstlisting}[style=,basicstyle={\scriptsize\ttfamily}]
+\subsubsection{過去にバックアップしてあるitemのリストの表示}\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
+nasu% cat backup_list.feature
 #language: ja
 
 #--backup_list
@@ -72,7 +70,8 @@ specific_helpとは，ユーザが作成するそれぞれのヘルプである
 シナリオ：コマンドを入力してバックアップのリストを見る
 コマンド：emacs\_help --backup\_list
 
-\paragraph{helpコマンドの追加や削除，編集をするファイルの開示}\begin{lstlisting}[style=,basicstyle={\scriptsize\ttfamily}]
+\subsubsection{helpコマンドの追加や削除，編集をするファイルの開示}\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
+nasu% cat edit_help.feature
 # language: ja
 #--edit
 機能: helpコマンドの追加や削除，編集をするためのeiditを開く
@@ -90,7 +89,8 @@ emacs_helpと入力したときに出てくるhelpのコマンドの追加や削
 
 ここで編集を行い，emacsで開いているのでC-x,C-sで保存する．
 
-\paragraph{specific\_helpのitemの消去}\begin{lstlisting}[style=,basicstyle={\scriptsize\ttfamily}]
+\subsubsection{specific\_helpのitemの消去}\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
+nasu% cat remove.feature
 #language: ja
 
 #--remove [item]
@@ -107,7 +107,8 @@ emacs_helpと入力したときに出てくるhelpのコマンドの追加や削
 
 コマンド：emacs\_help --remove
 
-\paragraph{itemのバックアップ}\begin{lstlisting}[style=,basicstyle={\scriptsize\ttfamily}]
+\subsubsection{itemのバックアップ}\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
+nasu% cat store.feature
 #language: ja
 
 #--store [item]
@@ -123,7 +124,8 @@ emacs_helpと入力したときに出てくるhelpのコマンドの追加や削
 
 コマンド：emacs\_help --store [item]
 
-\paragraph{hikiへのformatの変更}\begin{lstlisting}[style=,basicstyle={\scriptsize\ttfamily}]
+\subsubsection{hikiへのformatの変更}\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
+nasu% cat to_hiki.feature
 # language: ja
 
 #--to_hiki
@@ -139,7 +141,8 @@ emacs_helpと入力したときに出てくるhelpのコマンドの追加や削
 
 コマンド：emacs\_help --to\_hiki
 
-\paragraph{todoの更新}\begin{lstlisting}[style=,basicstyle={\scriptsize\ttfamily}]
+\subsubsection{todoの更新}\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
+nasu% my_todo.feature
 # language: ja
 
 機能: todoの更新を行う

@@ -37,7 +37,7 @@
 }
 \begin{document}
 \title{卒業論文\\
-\vspace{4cm} ユーザメモソフトmy\_helpの開発}
+\vspace{4cm} ユーザメモソフトmy\_helpのビヘイビアテスト開発}
 \author{ 関西学院大学　理工学部　情報科学科\\\\2535 那須比呂貴}
 \date{\vspace{3cm} 2017年  3月\\
 \vspace{3cm} 指導教員　　西谷　滋人　教授}
@@ -45,6 +45,9 @@
 \setcounter{tocdepth}{4}
 \tableofcontents
 
+\begin{itemize}
+\item \verb|{{attach_anchor(my_help_nasu.pdf,my_help_nasu)}}|
+\end{itemize}
 \include{overview}
 \include{introduction}
 \section{先行研究，方法}
@@ -59,15 +62,28 @@ cucumberはビヘイビア駆動開発(bdd)を実現するフレームワーク�
 \include{method_usage}
 \include{new_code}
 \include{features}
-\include{consideration}
+\include{discussion}
 \section{謝辞}
 　本研究を進めるにあたり，様々なご指導を頂きました西谷滋人教授先生に深く感謝いたします．
 また，本研究の進行に伴い，様々な助力，知識の供給を頂きました西谷研究室の同輩，先輩方に心から感謝の意を示します．
 本当にありがとうございました．
 
-\section{参考文献}
-\begin{enumerate}
-\item The RSpec Book　著者：David Chelimsky Dave Astels Zach Dennis ほか　翻訳：株式会社クイーブ　監修：株式会社クイーブ　角谷信太郎　豊田裕司.
-\item Shigeot R. Nishitani, my\_helpのREADME, \verb|http://www.rubydoc.info/gems/my_help/0.4.3|.
-\end{enumerate}
+\begin{thebibliography}{99}
+\bibitem{RSpecBook}   "The RSpec Book", David Chelimsky, Dave Astels, Zach Dennis, 訳, 株式会社クイーブ, 監修, 角谷信太郎, 豊田裕司 (翔泳社, 2012).
+\bibitem{README}   my\_help README, Shigeot R. Nishitani, \verb|http://www.rubydoc.info/gems/my_help/0.4.3| 2017/2/11アクセス.
+\end{thebibliography}
+1. referenceなおしました．
+2. keynoteにすべて貼り付けて，イメージの書き出しをしてください．サイズが狂います
+3. attach\_viewのさんしょうを修正してください．
+4. p.21の「--colorを付け加えると」のところをsnap shotに変えてください．
+5. 入力の頭の空白が全角になっています．
+6. 他のattach\_viewも直したcaptionを参照して，修正してください．
+7. all\_latexするとそのあたりのref参照が解決されているはずです．
+成功したcompileをpdfにしてfigから参照するようにしています．
+my\_help\_nasuからdlして確認してください．
+
+3.の「実践」は，「ビヘイビア駆動開発の実践」としましょう．
+3.4の構造変えました．ちゃんと記述するか，省くかしてください．
+2.3の項目おかしいんで治してください．
+4.discussionはよく読んで修正してください．そのままコメントとして残しておいても．．．
 \end{document}

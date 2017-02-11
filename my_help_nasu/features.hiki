@@ -1,10 +1,10 @@
 {{toc}}
-!!featuresでの記述とその意味
+!featuresでの記述とその意味
 featuresでの記述は，コマンドの振る舞いを説明する自然な記述となる．
 その様子をspecific_helpが用意しているデフォルトのコマンドについて
 説明する．specific_helpとは，ユーザが作成するそれぞれのヘルプである．
 speific_helpの--helpを表示させると，
-<<< 
+<<< tcsh
         --edit                       edit help contentsを開く
         --to_hiki                    hikiのformatに変更する
         --all                        すべてのhelp画面を表示させる
@@ -16,17 +16,13 @@ speific_helpの--helpを表示させると，
 が得られる．これらの項目について順に詳細な振る舞いとそれを記述する
 シナリオを検討していく．
 
-
-!!my_helpのfeatures
-下記は私が作成したmy_helpの一部をfeaturesで書いたものである．
-
-!!!--add [item]
+!!--add [item]
 このコマンドは新しいitemをspecific_helpに追加する．
 提供される機能を
 シナリオの先頭に内容をかいつまんでこの振る舞いが記述されている．
 実装では，ヘルプの内容は~/.my_help/emacs_help.ymlに元dataがある
 
-<<< 
+<<< ruby
 nasu% cat add.feature
 #language: ja
 
@@ -42,10 +38,9 @@ specific_helpとは，ユーザが作成するそれぞれのヘルプである
 
 >>>
 
-
-!!!全てのhelp画面の表示
-<<< all_help.feature
-
+!!全てのhelp画面の表示
+<<< ruby
+nasu% cat all_help.feature
 #language: ja
 
 #--all
@@ -61,8 +56,9 @@ specific_helpとは，ユーザが作成するそれぞれのヘルプである
 
 コマンド：emacs_help --all
 
-!!!過去にバックアップしてあるitemのリストの表示
-<<< backup_list.feature
+!!過去にバックアップしてあるitemのリストの表示
+<<< ruby
+nasu% cat backup_list.feature
 #language: ja
 
 #--backup_list
@@ -78,8 +74,9 @@ specific_helpとは，ユーザが作成するそれぞれのヘルプである
 シナリオ：コマンドを入力してバックアップのリストを見る
 コマンド：emacs_help --backup_list
 
-!!!helpコマンドの追加や削除，編集をするファイルの開示
-<<< edit_help.feature
+!!helpコマンドの追加や削除，編集をするファイルの開示
+<<< ruby
+nasu% cat edit_help.feature
 # language: ja
 #--edit
 機能: helpコマンドの追加や削除，編集をするためのeiditを開く
@@ -97,8 +94,9 @@ emacs_helpと入力したときに出てくるhelpのコマンドの追加や削
 
 ここで編集を行い，emacsで開いているのでC-x,C-sで保存する．
 
-!!!specific_helpのitemの消去
-<<< remove.feature
+!!specific_helpのitemの消去
+<<< ruby
+nasu% cat remove.feature
 #language: ja
 
 #--remove [item]
@@ -115,8 +113,9 @@ emacs_helpと入力したときに出てくるhelpのコマンドの追加や削
 
 コマンド：emacs_help --remove
 
-!!!itemのバックアップ
-<<< store.feature
+!!itemのバックアップ
+<<< ruby
+nasu% cat store.feature
 #language: ja
 
 #--store [item]
@@ -133,8 +132,9 @@ emacs_helpと入力したときに出てくるhelpのコマンドの追加や削
 
 コマンド：emacs_help --store [item]
 
-!!!hikiへのformatの変更
-<<< to_hiki.feature
+!!hikiへのformatの変更
+<<< ruby
+nasu% cat to_hiki.feature
 # language: ja
 
 #--to_hiki
@@ -150,8 +150,9 @@ emacs_helpと入力したときに出てくるhelpのコマンドの追加や削
 
 コマンド：emacs_help --to_hiki
 
-!!!todoの更新
-<<< my_todo.feature
+!!todoの更新
+<<< ruby
+nasu% my_todo.feature
 # language: ja
 
 機能: todoの更新を行う
