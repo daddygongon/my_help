@@ -1,5 +1,5 @@
 
-\section{実践}
+\section{ビヘイビア駆動開発の実践}
 CucumberとRSpecを用いてBDDでmy\_helpのテスト開発を進めて行きました．
 ビヘイビア駆動開発のコツとして「焦点を合わせる」ことが強調されています．
 ここでは，焦点を合わせたmy\_helpの中での一つの振る舞いである
@@ -19,7 +19,7 @@ CucumberとRSpecを用いてBDDでmy\_helpのテスト開発を進めて行き�
 以下はtodoの更新を行うときのfeatureです．
 まず，適当なディレクトリにfeaturesというディレクトリを作成します．
 次に先ほど作成した，featuresディレクトリにmy\_todo.featureを作成します．
-\begin{lstlisting}[style=customCsh,basicstyle={\scriptsize\ttfamily}]
+\begin{lstlisting}[style=customCsh]
 # language: ja 
 
 機能: todoの更新を行う
@@ -42,12 +42,12 @@ nasu% cucumber features/my_todo.feature
 \end{verbatim}\end{quote}
 featuresディレクトリにあるmy\_todo.featureファイルをcucumberで実行するという意味です．
 
-実行すると図\ref{fig:cucumber1}のようになります．
+実行すると図\ref{cucumber01}のようになります．
 
+\subsubsection{caption:(fig:cucumber01)step定義をする前のcucumberの実行結果．}
 \begin{figure}[htbp]\begin{center}
-\includegraphics[width=10cm,bb= 0 0 737 553]{../figs/./cucumber1.jpg}
-\caption{step定義をする前のcucumberの実行結果．}
-\label{fig:cucumber1}
+\includegraphics[width=10cm,bb= 0 0 737 553]{../figs/./cucumber01.001.jpg}
+\caption{}
 \label{default}\end{center}\end{figure}
 ここでは，1つのscenarioと4つのstepが失敗しています．
 まだstep定義を記述していないので当たり前です．
@@ -56,7 +56,7 @@ featuresディレクトリにあるmy\_todo.featureファイルをcucumberで実
 featureを書いた時点でcucumberを実行すると，ステップ定義の元となるコマンドを，cucumberが自動的に作成してくれるからです．
 
 以下がcucumberから出力されたステップ定義の元となる部分です．
-\begin{lstlisting}[style=customCsh,basicstyle={\scriptsize\ttfamily}]
+\begin{lstlisting}[style=customCsh]
 前提(/^todoを編集したい$/) do
 
 end
@@ -75,12 +75,12 @@ end
 \end{lstlisting}
 これをコピーして，featuresディレクトリの中でstep\_definitionsディレクトリを作成し，その中にmy\_todo\_spec.rbを作成し，そこに貼付けます．
 
-ここでもう一度cucumberを実行してみると図\ref{fig:cucumber2}のように変化が出てきます．
+ここでもう一度cucumberを実行してみると図\ref{cucumber02}のように変化が出てきます．
 
+\subsubsection{caption:(fig:cucumber02)defaultのstep定義を貼り付けた後のcucumberの実行結果．}
 \begin{figure}[htbp]\begin{center}
-\includegraphics[width=10cm,bb= 0 0 737 553]{../figs/./cucumber2.jpg}
-\caption{defaultのstep定義を貼り付けた後のcucumberの実行結果．}
-\label{fig:cucumber2}
+\includegraphics[width=10cm,bb= 0 0 737 553]{../figs/./cucumber02.001.jpg}
+\caption{}
 \label{default}\end{center}\end{figure}\begin{quote}\begin{verbatim}
 1 scenarios (1 pending)
 4 steps (3 skipped, 1 pending)
@@ -93,18 +93,18 @@ step\_definitionsのmy\_todo\_spec.rbのpending部分を書き換えて，step\_
 「もし」もユーザが入力するコマンドであり，my\_helpが何か振る舞いをすることはないのでこのままにしておきます．
 次に，「ならば」を見てみるとmy\_helpがeditを開くという振る舞いをしています．
 ステップ定義では，あれば良いと思うコードを記述するので私は下記のように記述しました．
-\begin{lstlisting}[style=customCsh,basicstyle={\scriptsize\ttfamily}]
+\begin{lstlisting}[style=customCsh]
 ならば(/^editが開かれる$/) do
   Mytodo::Edit.new.open
 end
 \end{lstlisting}
 pendingの部分が書けたので，もう一度cucumber features/my\_todo.featureを実行します．
-すると，図\ref{fig:cucumber3}のような結果が返ってきました．
+すると，図\ref{fig:cucumber03}のような結果が返ってきました．
 
+\subsubsection{caption:(fig:cucumber03)pendingのstep定義を書き込んだ後のcucumberの実行結果．}
 \begin{figure}[htbp]\begin{center}
-\includegraphics[width=10cm,bb= 0 0 737 553]{../figs/./cucumber3.jpg}
-\caption{pendingのstep定義を書き込んだ後のcucumberの実行結果．}
-\label{fig:cucumber3}
+\includegraphics[width=10cm,bb= 0 0 737 553]{../figs/./cucumber03.001.jpg}
+\caption{}
 \label{default}\end{center}\end{figure}
 Cucumberは，エラーが出たステップのすぐ後ろにエラーを表示してくれます．
 ここでCucumberでエラーが出たので，この「ならば　editが開かれる」のシナリオに注目してRSpecに進むことにします．
@@ -118,7 +118,7 @@ Cucumberは，エラーが出たステップのすぐ後ろにエラーを表示
 並列のディレクトリ構造を築いていきます．
 この機能はmy\_help --editと入力されれば，~/.my\_help/my\_todo.ymlが開かれるのでその振る舞いをするコードを書きます．
 まずtodo\_spec.rbは下記の通りになります．
-\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
+\begin{lstlisting}[style=customRuby]
 require 'spec_helper'
 
 
@@ -136,7 +136,7 @@ ExampleGroupクラスはオブジェクトに期待される振る舞いのサ�
 it()メソッドはサンプルを作成します．
 
 完成したコードを下記の通りです．
-\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
+\begin{lstlisting}[style=customRuby]
 require 'spec_helper'
 
 
@@ -153,23 +153,13 @@ end
 \end{lstlisting}
 specディレクトリのmy\_todoディレクトリをrspecで実行すると下記のような結果がでました．
 \verb|--color|を付け加えるとわかりやすく色づけをしてくれて，見やすくなります．
-\begin{lstlisting}[style=customCsh,basicstyle={\scriptsize\ttfamily}]
-/Users/nasubi/my_help% rspec spec/my_todo/ --color
-/Users/nasubi/my_help/spec/my_todo/todo_spec.rb:6:in `<module:Mytodo>': uninitialized constant Mytodo::Edit (NameError)
-from /Users/nasubi/my_help/spec/my_todo/todo_spec.rb:5:in `<top (required)>'
-from /Users/nasubi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/rspec-core-3.5.4/lib/rspec/core/configuration.rb:1435:in `load'
-from /Users/nasubi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/rspec-core-3.5.4/lib/rspec/core/configuration.rb:1435:in `block in load_spec_files'
-from /Users/nasubi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/rspec-core-3.5.4/lib/rspec/core/configuration.rb:1433:in `each'
-from /Users/nasubi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/rspec-core-3.5.4/lib/rspec/core/configuration.rb:1433:in `load_spec_files'
-from /Users/nasubi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/rspec-core-3.5.4/lib/rspec/core/runner.rb:100:in `setup'
-from /Users/nasubi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/rspec-core-3.5.4/lib/rspec/core/runner.rb:86:in `run'
-from /Users/nasubi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/rspec-core-3.5.4/lib/rspec/core/runner.rb:71:in `run'
-from /Users/nasubi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/rspec-core-3.5.4/lib/rspec/core/runner.rb:45:in `invoke'
-from /Users/nasubi/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/rspec-core-3.5.4/exe/rspec:4:in `<top (required)>'
-from /Users/nasubi/.rbenv/versions/2.2.2/bin/rspec:23:in `load'
-from /Users/nasubi/.rbenv/versions/2.2.2/bin/rspec:23:in `<main>'
-\end{lstlisting}
-エラーが出てしまっているのがわかると思います．
+
+\subsubsection{caption:(fig:cucumber04)pendingのstep定義を書き込んだ後のcucumberの実行結果．}
+\begin{figure}[htbp]\begin{center}
+\includegraphics[width=10cm,bb= 0 0 737 553]{../figs/./cucumber04.001.jpg}
+\caption{}
+\label{default}\end{center}\end{figure}
+図\ref{fig:cucumber04}を見るとエラーが出てしまっているのがわかります．
 \begin{quote}\begin{verbatim}
 `<module:Mytodo>': uninitialized constant Mytodo::Edit (NameError)
 \end{verbatim}\end{quote}
@@ -185,7 +175,7 @@ my\_todo.rbに先ほどのエラーでMytodoというmoduleがないといわれ
 ここで作成します．
 
 /Users/nasubi/my\_help/lib/my\_todo/my\_todo.rbの中に以下のコードを記述します．
-\begin{lstlisting}[style=customCsh,basicstyle={\scriptsize\ttfamily}]
+\begin{lstlisting}[style=customCsh]
 module Mytodo
   class Edit
     def open
@@ -199,14 +189,15 @@ end
 require 'my_todo/my_todo'
 \end{verbatim}\end{quote}
 これだけでは，rspecがlib/my\_todo/my\_todo.rbを読み込んでいないため，このスペックを実行するために，specディレクトリにspec\_helper.rbに以下を追加します．
-\begin{lstlisting}[style=customCsh,basicstyle={\scriptsize\ttfamily}]
+\begin{lstlisting}[style=customCsh]
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'todo'
 \end{lstlisting}
 これでもう一度rspecを実行してみます．
 
+\subsubsection{caption:(fig:rspec01)redを修正してgreenになったrspecの実行結果}
 \begin{figure}[htbp]\begin{center}
-\includegraphics[width=10cm,bb= 0 0 737 553]{../figs/./rspec2.jpg}
+\includegraphics[width=10cm,bb= 0 0 737 553]{../figs/./rspec01.001.jpg}
 \caption{}
 \label{default}\end{center}\end{figure}
 エラーが消えて成功しているのがわかります．
@@ -219,7 +210,7 @@ RSpecが終わったので，Cucumberに戻ります．
 /Users/nasubi/my_help/features/support/env.rb
 \end{verbatim}\end{quote}
 env.rbの中は以下の通りです．
-\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
+\begin{lstlisting}[style=customRuby]
 $LOAD_PATH.unshift File.expand_path('../../../lib', __FILE__)
 require 'todo'
 \end{lstlisting}
@@ -227,8 +218,9 @@ require 'todo'
 
 もう一度cucumberを実行してみると，
 
+\subsubsection{caption:(fig:cucumber05)libの中身を読み込むようにしたcucumberの実行結果．}
 \begin{figure}[htbp]\begin{center}
-\includegraphics[width=10cm,bb= 0 0 737 553]{../figs/./cucumber4.jpg}
+\includegraphics[width=10cm,bb= 0 0 737 553]{../figs/./cucumber05.001.jpg}
 \caption{}
 \label{default}\end{center}\end{figure}
 エラーが消えています．

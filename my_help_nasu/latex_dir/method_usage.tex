@@ -6,7 +6,8 @@ tarminal上で簡単に提示させることができるため，プログラミ
 また，自分の見やすいように初心者でも簡単に編集することができ，すぐに参照できるメモとしても使うことができます．
 
 \subsubsection{my\_helpのインストール}
-\subsubsection{githubに行ってdaddygongonのmy\_helpをforkする}
+githubに行ってdaddygongonのmy\_helpをforkします．
+
 \begin{enumerate}
 \item git clone git@github.com:daddygongon/my\_help.git
 \item cd my\_help
@@ -18,7 +19,8 @@ tarminal上で簡単に提示させることができるため，プログラミ
 \item rake add\_yml
 \end{enumerate}
 \subsubsection{my\_helpの更新}
-\paragraph{gitを用いてmy\_helpを新しくする．}
+git hubを用いてmy\_helpを新しくします．
+
 \begin{enumerate}
 \item git remote -vをする(remoteの確認).
 \item (upstreamがなければ)git remote add upstream git@github.com:gitname/my\_help.git
@@ -27,20 +29,21 @@ tarminal上で簡単に提示させることができるため，プログラミ
 \item git push upstream master(ここで自分のmy\_helpをupstreamに送っとく)
 \item git pull origin master(新しいmy\_helpを取ってくる)
 \end{enumerate}
-\paragraph{次にとってきた.ymlを~/.my\_helpにcpする．}
+次にとってきた.ymlを~/.my\_helpにcpする．
+
 \begin{enumerate}
 \item cd my\_helpでmy\_helpに移動．
 \item cp hogehoge.yml ~/.my\_help
 \end{enumerate}
 それを動かすために
 (sudo)bundle exec ruby exe/my\_help -mをする.
-
-ここで過去にsudoをした人はpermissionがrootになっているので，sudoをつけないとerrorが出る．
-
+ここで過去にsudoをした人はpermissionがrootになっているので，sudoをつけないとerrorが出ます．
 (sudoで実行していたら権限がrootに移行される)
 
-新しいターミナルを開いて動くかチェックする．
-
+\begin{enumerate}
+\item 新しいターミナルを開いて動くかチェックする．
+\end{enumerate}
+\subsubsection{my\_helpの特徴や問題点}
 以下はmy\_helpのREADMEです[2]．
 
 CUI(CLI)ヘルプのUsage出力を真似て，user独自のhelpを作成・提供するgem.
