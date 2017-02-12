@@ -116,8 +116,10 @@ nasu% cat remove.feature
 !!--store [item]
 このコマンドはspecific_helpのitemのバックアップをとります．
 少しhelpを新しくしたいが，過去のhelpを残しておけば安心できます．
-//どこに保存されるのかを書く．
-
+~/.my_helpディレクトリーの中に，同じ名前の先頭に'.'をつけたファイルに追記されていきます．
+ -rw-r--r--   1 bob  501   3231  2 10 17:11 my_todo.yml
+ -rw-r--r--   1 bob  501  31925  2  3 19:49 .my_todo.yml
+などとしてます．
 <<< ruby
 nasu% cat store.feature
 #language: ja
@@ -134,6 +136,27 @@ nasu% cat store.feature
 
 !!--to_hiki
 このコマンドはformatをhikiに変更します．
+
+<<< 
+:カーソル移動:cursor
+*C-f, move Forwrard,    前or右へ
+*C-b, move Backwrard,   後or左へ
+*C-a, go Ahead of line, 行頭へ
+*C-e, go End of line,   行末へ
+*C-n, move Next line,   次行へ
+*C-p, move Previous line, 前行へ
+>>>
+などとhiki記法で出力されます．これをhikiの本文中に入れると
+:カーソル移動:cursor
+*C-f, move Forwrard,    前or右へ
+*C-b, move Backwrard,   後or左へ
+*C-a, go Ahead of line, 行頭へ
+*C-e, go End of line,   行末へ
+*C-n, move Next line,   次行へ
+*C-p, move Previous line, 前行へ
+などとweb上で表示されます．
+
+
 //使用方法がわからない．--allと変わらない振る舞いをする．
 
 <<< ruby

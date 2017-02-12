@@ -5,6 +5,43 @@ my\_helpとはユーザメモソフトであり，CUIスキルの習得を助け
 tarminal上で簡単に提示させることができるため，プログラミングに集中することができるといった特徴があります．
 また，自分の見やすいように初心者でも簡単に編集することができ，すぐに参照できるメモとしても使うことができます．
 
+\subsubsection{my\_helpの開発動機と特徴}
+以下はmy\_helpのREADMEからの抜粋です[2]．
+
+\paragraph{概要}
+my\_help - CUI(CLI)ヘルプのUsage出力を真似て，user独自のhelpを作成・提供するgem.
+
+\paragraph{開発動機}
+CUIやshell, 何かのプログラミング言語などを習得しようとする初心者は，
+commandや文法を覚えるのに苦労します．少しのkey(とっかかり)があると
+思い出すんですが，うろ覚えでは間違えて路頭に迷います．問題点は，
+
+\begin{itemize}
+\item manは基本的に英語
+\item manualでは重たい
+\item いつもおなじことをwebで検索して
+\item 同じとこ見ている
+\item memoしても，どこへ置いたか忘れる
+\end{itemize}
+などです．
+
+\paragraph{特徴}
+これらをgem環境として提供しようというのが，このgemの目的です．
+仕様としては，
+
+\begin{itemize}
+\item userが自分にあったmanを作成
+\item 雛形を提供
+\begin{itemize}
+\item おなじformat, looks, 操作, 階層構造
+\end{itemize}
+\item すぐに手が届く
+\item それらを追加・修正・削除できる
+\end{itemize}
+hikiでやろうとしていることの半分くらいはこのあたりのことなの
+かもしれません．memoソフトでは，検索が必要となりますが，my\_helpは
+key(記憶のとっかかり)を提供することが目的です．
+
 \subsubsection{my\_helpのインストール}
 githubに行ってdaddygongonのmy\_helpをforkします．
 
@@ -43,39 +80,3 @@ git hubを用いてmy\_helpを新しくします．
 \begin{enumerate}
 \item 新しいターミナルを開いて動くかチェックする．
 \end{enumerate}
-\subsubsection{my\_helpの特徴や問題点}
-以下はmy\_helpのREADMEです[2]．
-
-CUI(CLI)ヘルプのUsage出力を真似て，user独自のhelpを作成・提供するgem.
-
-\begin{enumerate}
-\item 問題点
-\end{enumerate}
-CUIやshell, 何かのプログラミング言語などを習得しようとする初心者は，
-commandや文法を覚えるのに苦労します．少しのkey(とっかかり)があると
-思い出すんですが，うろ覚えでは間違えて路頭に迷います．問題点は，
-- manは基本的に英語
-- manualでは重たい
-- いつもおなじことをwebで検索して
-- 同じとこ見ている
-- memoしても，どこへ置いたか忘れる
-
-などです．
-
-\begin{enumerate}
-\item 特徴
-\end{enumerate}
-これらをgem環境として提供しようというのが，このgemの目的です．
-仕様としては，
-- userが自分にあったmanを作成
-- 雛形を提供
-\begin{quote}\begin{verbatim}
- - おなじformat, looks, 操作, 階層構造
-\end{verbatim}\end{quote}
-- すぐに手が届く
-- それらを追加・修正・削除できる
-
-hikiでやろうとしていることの半分くらいはこのあたりのことなの
-かもしれません．memoソフトでは，検索が必要となりますが，my\_helpは
-key(記憶のとっかかり)を提供することが目的です．
-

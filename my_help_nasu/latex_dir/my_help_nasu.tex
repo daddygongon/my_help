@@ -3,21 +3,21 @@
 \usepackage[dvipdfmx]{color}
 \usepackage{listings,jlisting}% to use japanese correctly, install jlistings.
 \lstset{
-  basicstyle={\small\ttfamily},
-  identifierstyle={\small},
-  commentstyle={\small\itshape\color{red}},
-  keywordstyle={\small\bfseries\color{cyan}},
-  ndkeywordstyle={\small},
-  stringstyle={\small\color{blue}},
+  basicstyle={\ttfamily},
+  identifierstyle={},
+  commentstyle={\color{red}},
+  keywordstyle={\bfseries\color{cyan}},
+  ndkeywordstyle={},
+  stringstyle={\color{blue}},
   frame={tb},
   breaklines=true,
   numbers=left,
-  numberstyle={\scriptsize},
+  numberstyle={},
   stepnumber=1,
   numbersep=1zw,
   xrightmargin=0zw,
   xleftmargin=3zw,
-  lineskip=-0.5ex
+  lineskip=0.5ex
 }
 \lstdefinestyle{customCsh}{
   language={csh},
@@ -73,11 +73,4 @@ cucumberはビヘイビア駆動開発(bdd)を実現するフレームワーク�
 \bibitem{RSpecBook}   "The RSpec Book", David Chelimsky, Dave Astels, Zach Dennis, 訳, 株式会社クイーブ, 監修, 角谷信太郎, 豊田裕司 (翔泳社, 2012).
 \bibitem{README}   my\_help README, Shigeot R. Nishitani, \verb|http://www.rubydoc.info/gems/my_help/0.4.3| 2017/2/11アクセス.
 \end{thebibliography}
-3. attach\_viewのさんしょうを修正してください．
-5. 入力の頭の空白が全角になっています．
-成功したcompileをpdfにしてfigから参照するようにしています．
-my\_help\_nasuからdlして確認してください．
-
-2.3の項目おかしいんで治してください．
-4.discussionはよく読んで修正してください．そのままコメントとして残しておいても．．．
 \end{document}

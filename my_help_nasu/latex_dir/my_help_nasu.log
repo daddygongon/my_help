@@ -1,109 +1,118 @@
-This is pTeXk, Version 3.141592-p3.1.11 (utf8.euc) (Web2C 7.5.4) (format=platex 2011.7.24)  12 FEB 2017 01:53
+This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (utf8.euc) (TeX Live 2016) (preloaded format=platex 2017.1.26)  12 FEB 2017 10:41
+entering extended mode
+ restricted \write18 enabled.
  file:line:error style messages enabled.
-**my_help_nasu
+ %&-line parsing enabled.
+**my_help_nasu.tex
 (./my_help_nasu.tex
-pLaTeX2e <2006/11/10>+0 (based on LaTeX2e <2003/12/01> patch level 0)
-(/Applications/UpTeX.app/teTeX/share/texmf/ptex/platex/jsclasses/jsarticle.cls
-Document Class: jsarticle 2009/02/22 okumura
-LaTeX Info: Redefining \rmfamily on input line 332.
-LaTeX Info: Redefining \sffamily on input line 335.
-LaTeX Info: Redefining \ttfamily on input line 338.
+pLaTeX2e <2016/11/29> (based on LaTeX2e <2017/01/01>)
+Babel <3.9r> and hyphenation patterns for 83 language(s) loaded.
+(/usr/local/texlive/2016/texmf-dist/tex/platex/jsclasses/jsarticle.cls
+Document Class: jsarticle 2017/01/13 okumura, texjporg
+\jsc@mpt=\dimen118
+\jsc@mmm=\dimen119
+\jsc@smallskipamount=\skip41
+LaTeX Info: Redefining \rmfamily on input line 468.
+LaTeX Info: Redefining \sffamily on input line 471.
+LaTeX Info: Redefining \ttfamily on input line 474.
+LaTeX Info: Redefining \textmc on input line 477.
+LaTeX Info: Redefining \textgt on input line 479.
 \symmincho=\mathgroup4
 LaTeX Font Info:    Overwriting symbol font `mincho' in version `bold'
-(Font)                  JY1/mc/m/n --> JY1/gt/m/n on input line 403.
+(Font)                  JY1/mc/m/n --> JY1/gt/m/n on input line 540.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 601.
+(Font)              scaled to size 9.60999pt on input line 731.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 601.
-\fullwidth=\dimen118
+(Font)              scaled to size 9.60999pt on input line 731.
+\fullwidth=\dimen120
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 7.68799pt on input line 748.
+(Font)              scaled to size 7.68799pt on input line 883.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 7.68799pt on input line 748.
-\c@part=\count81
-\c@section=\count82
-\c@subsection=\count83
-\c@subsubsection=\count84
-\c@paragraph=\count85
-\c@subparagraph=\count86
+(Font)              scaled to size 7.68799pt on input line 883.
+\c@part=\count82
+\c@section=\count83
+\c@subsection=\count84
+\c@subsubsection=\count85
+\c@paragraph=\count86
+\c@subparagraph=\count87
 \@abstractbox=\box41
-\c@figure=\count87
-\c@table=\count88
-\abovecaptionskip=\skip41
-\belowcaptionskip=\skip42
-\@lnumwidth=\dimen119
-\bibindent=\dimen120
-LaTeX Info: Redefining \TeX on input line 1702.
-LaTeX Info: Redefining \LaTeX on input line 1728.
-LaTeX Info: Redefining \LaTeXe on input line 1753.
-\heisei=\count89
+\c@figure=\count88
+\c@table=\count89
+\abovecaptionskip=\skip42
+\belowcaptionskip=\skip43
+\jsc@tocl@width=\dimen121
+\@lnumwidth=\dimen122
+\bibindent=\dimen123
+(/usr/local/texlive/2016/texmf-dist/tex/platex/jsclasses/jslogo.sty
+Package: jslogo 2016/07/14 okumura, texjporg
+LaTeX Info: Redefining \TeX on input line 94.
+LaTeX Info: Redefining \LaTeX on input line 147.
+LaTeX Info: Redefining \LaTeXe on input line 200.
 )
-(/Applications/UpTeX.app/teTeX/share/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
-(/Applications/UpTeX.app/teTeX/share/texmf-dist/tex/latex/graphics/keyval.sty
-Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\heisei=\count90
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks15
 )
-(/Applications/UpTeX.app/teTeX/share/texmf/tex/latex/graphics/dvipdfmx-contrib-
-latex/graphics.sty
-Package: graphics 2001/07/07 v1.0n Standard LaTeX Graphics (DPC,SPQR)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2016/10/09 v1.0u Standard LaTeX Graphics (DPC,SPQR)
 
-(/Applications/UpTeX.app/teTeX/share/texmf-dist/tex/latex/graphics/trig.sty
-Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-(/Applications/UpTeX.app/teTeX/share/texmf-dist/tex/latex/graphics/graphics.cfg
-File: graphics.cfg 2005/02/03 v1.3 graphics configuration of teTeX/TeXLive
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: dvipdfmx.def on input line 81.
+Package graphics Info: Driver file: dvipdfmx.def on input line 99.
 
-(/Applications/UpTeX.app/teTeX/share/texmf/tex/latex/graphics/dvipdfmx-contrib-
-latex/dvipdfmx.def
-File: dvipdfmx.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics-def/dvipdfmx.def
+File: dvipdfmx.def 2016/07/11 v4.12 LaTeX color/graphics driver for dvipdfmx (L
+3/ChoF)
 ))
-\Gin@req@height=\dimen121
-\Gin@req@width=\dimen122
+\Gin@req@height=\dimen124
+\Gin@req@width=\dimen125
 )
-(/Applications/UpTeX.app/teTeX/share/texmf/tex/latex/graphics/dvipdfmx-contrib-
-latex/color.sty
-Package: color 1999/02/16 v1.0i Standard LaTeX Color (DPC)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
 
-(/Applications/UpTeX.app/teTeX/share/texmf-dist/tex/latex/graphics/color.cfg
-File: color.cfg 2005/02/03 v1.3 color configuration of teTeX/TeXLive
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
-Package color Info: Driver file: dvipdfmx.def on input line 126.
+Package color Info: Driver file: dvipdfmx.def on input line 147.
 
-(/Applications/UpTeX.app/teTeX/share/texmf-dist/tex/latex/graphics/dvipsnam.def
-File: dvipsnam.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/dvipsnam.def
+File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
 ))
-(/Applications/UpTeX.app/teTeX/share/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count90
+(/usr/local/texlive/2016/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count91
 \lst@gtempboxa=\box42
 \lst@token=\toks16
-\lst@length=\count91
-\lst@currlwidth=\dimen123
-\lst@column=\count92
-\lst@pos=\count93
-\lst@lostspace=\dimen124
-\lst@width=\dimen125
-\lst@newlines=\count94
-\lst@lineno=\count95
-\c@lstlisting=\count96
-\lst@maxwidth=\dimen126
+\lst@length=\count92
+\lst@currlwidth=\dimen126
+\lst@column=\count93
+\lst@pos=\count94
+\lst@lostspace=\dimen127
+\lst@width=\dimen128
+\lst@newlines=\count95
+\lst@lineno=\count96
+\lst@maxwidth=\dimen129
 
-(/Applications/UpTeX.app/teTeX/share/texmf-dist/tex/latex/listings/lstpatch.sty
-File: lstpatch.sty 2004/10/17 1.3b (Carsten Heinz)
-)
-(/Applications/UpTeX.app/teTeX/share/texmf-dist/tex/latex/listings/lstmisc.sty
-File: lstmisc.sty 2004/09/07 1.3 (Carsten Heinz)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 \c@lstnumber=\count97
 \lst@skipnumbers=\count98
 \lst@framebox=\box43
 )
-(/Applications/UpTeX.app/teTeX/share/texmf-dist/tex/latex/listings/listings.cfg
-File: listings.cfg 2004/09/05 1.3 listings configuration
+(/usr/local/texlive/2016/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2015/06/04 1.6 listings configuration
 ))
-Package: listings 2004/10/17 1.3b (Carsten Heinz)
- (./jlisting.sty
+Package: listings 2015/06/04 1.6 (Carsten Heinz)
+
+(./jlisting.sty
 Package: jlisting 2006/02/20 0.2 (Thor)
 \lst@nextchar=\count99
 \lst@inputfile=\read1
@@ -154,6 +163,7 @@ LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 38.
 LaTeX Font Info:    ... okay on input line 38.
 LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 38.
 LaTeX Font Info:    ... okay on input line 38.
+\c@lstlisting=\count100
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
 (Font)              scaled to size 16.60605pt on input line 44.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
@@ -170,6 +180,10 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 44.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
 (Font)              scaled to size 5.76599pt on input line 44.
+LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
+(Font)              scaled to size 9.60999pt on input line 46.
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 9.60999pt on input line 46.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
 (Font)              scaled to size 13.83836pt on input line 46.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
@@ -178,12 +192,7 @@ LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
 (Font)              scaled to size 13.83836pt on input line 46.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 (Font)              scaled to size 13.83836pt on input line 46.
- (./my_help_nasu.toc
-LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 1.
-LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 1.
- [1
+ (./my_help_nasu.toc [1
 
 ]
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -200,24 +209,23 @@ LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
 
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 49.
 
-(/Applications/UpTeX.app/teTeX/share/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 49.
-
-[3]
+ [3]
 \openout2 = `overview.aux'.
 
- (./overview.tex) [4
 
-]
+No file overview.tex.
 \openout2 = `introduction.aux'.
 
- (./introduction.tex) [5
+(./introduction.tex) [4
 
 
-] [6
+
+] [5
 
 ]
 \openout2 = `method_bdd.aux'.
@@ -228,129 +236,104 @@ LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 (Font)              scaled to size 11.53198pt on input line 2.
 File: ../figs/./my_help_nasu.png Graphic file (type bmp)
-
-<../figs/./my_help_nasu.png>
+ <../figs/./my_help_nasu.png>
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
 (Font)              scaled to size 8.64899pt on input line 11.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
 (Font)              scaled to size 8.64899pt on input line 11.
 File: ../figs/./my_help_nasu1.001.jpg Graphic file (type eps)
- <../figs/./my_help_nasu1.001.jpg> [7
 
-] [8])
-[9]
+<../figs/./my_help_nasu1.001.jpg> [6
+
+] [7]) [8]
 \openout2 = `method_cucumber.aux'.
 
  (./method_cucumber.tex
-(/Applications/UpTeX.app/teTeX/share/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2004/09/05 1.3 listings language file
+(/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
-(/Applications/UpTeX.app/teTeX/share/texmf-dist/tex/latex/listings/lstlang2.sty
-File: lstlang2.sty 2004/09/05 1.3 listings language file
+(/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstlang2.sty
+File: lstlang2.sty 2015/06/04 1.6 listings language file
 )
-LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 16.
-LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 16.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 6.72699pt on input line 17.
+(Font)              scaled to size 6.72699pt on input line 16.
+LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
+(Font)              scaled to size 6.72699pt on input line 16.
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 6.72699pt on input line 16.
 
-(/Applications/UpTeX.app/teTeX/share/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2004/09/05 1.3 listings language file
-) [10
+(/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+) [9
 
 
 ]
-LaTeX Font Info:    Font shape `JT1/gt/m/it' in size <9> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 31.
-LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 31.
-LaTeX Font Info:    Font shape `JY1/gt/m/it' in size <9> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 31.
-LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 31.
-LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 51.
-LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 51.
-LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 51.
-LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 51.
-
-
-LaTeX Warning: Reference `table:one' on page 11 undefined on input line 51.
-
-
 Overfull \hbox (14.18181pt too wide) in paragraph at lines 56--80
- [] 
+ [][][] 
  []
 
-[11] [12] [13]
-LaTeX Font Info:    Font shape `JT1/gt/bx/n' in size <9> not available
+[10] [11]
+LaTeX Font Info:    Font shape `JT1/gt/bx/n' in size <7> not available
 (Font)              Font shape `JT1/gt/m/n' tried instead on input line 156.
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 156.
-LaTeX Font Info:    Font shape `JY1/gt/bx/n' in size <9> not available
+(Font)              scaled to size 6.72699pt on input line 156.
+LaTeX Font Info:    Font shape `JY1/gt/bx/n' in size <7> not available
 (Font)              Font shape `JY1/gt/m/n' tried instead on input line 156.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 156.
-LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <9> not available
+(Font)              scaled to size 6.72699pt on input line 156.
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <7> not available
 (Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 156.
- [14]) [15]
+ [12]) [13]
 \openout2 = `method_usage.aux'.
 
  (./method_usage.tex
-Overfull \hbox (21.92567pt too wide) in paragraph at lines 26--27
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 36.
+LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
+(Font)              scaled to size 9.60999pt on input line 36.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 36.
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 9.60999pt on input line 36.
+ [14
+
+
+]
+Overfull \hbox (21.92567pt too wide) in paragraph at lines 63--64
 []\OT1/cmr/m/n/10 (upstream \JY1/mc/m/n/10 がなければ\OT1/cmr/m/n/10 )git re-mo
 te add up-stream git@github.com:gitname/my[]help.git 
  []
 
-[16
-
-
-]) [17]
+) [15]
 \openout2 = `new_code.aux'.
 
- (./new_code.tex [18
+ (./new_code.tex [16
 
 
 ]
-
-LaTeX Warning: Reference `cucumber01' on page 19 undefined on input line 45.
-
 File: ../figs/./cucumber01.001.jpg Graphic file (type eps)
-<../figs/./cucumber01.001.jpg> [19]
+ <../figs/./cucumber01.001.jpg> [17]
 
-LaTeX Warning: Reference `cucumber02' on page 20 undefined on input line 78.
+LaTeX Warning: Reference `cucumber02' on page 18 undefined on input line 78.
 
 File: ../figs/./cucumber02.001.jpg Graphic file (type eps)
-<../figs/./cucumber02.001.jpg>
-
-LaTeX Warning: Reference `fig:cucumber03' on page 20 undefined on input line 10
-2.
-
-[20]
+<../figs/./cucumber02.001.jpg> [18]
 File: ../figs/./cucumber03.001.jpg Graphic file (type eps)
- <../figs/./cucumber03.001.jpg> [21] [22]
+ <../figs/./cucumber03.001.jpg> [19]
 File: ../figs/./cucumber04.001.jpg Graphic file (type eps)
- <../figs/./cucumber04.001.jpg>
 
-LaTeX Warning: Reference `fig:cucumber04' on page 23 undefined on input line 16
-2.
-
-
-Overfull \hbox (4.36272pt too wide) in paragraph at lines 165--165
+<../figs/./cucumber04.001.jpg>
+Overfull \hbox (4.36272pt too wide) in paragraph at lines 162--162
  []\OT1/cmtt/m/n/10 `<module:Mytodo>': uninitialized constant Mytodo::Edit (Nam
 eError)[] 
  []
 
-[23]
+[20] [21]
 File: ../figs/./rspec01.001.jpg Graphic file (type eps)
- <../figs/./rspec01.001.jpg> [24]
+ <../figs/./rspec01.001.jpg>
 File: ../figs/./cucumber05.001.jpg Graphic file (type eps)
- <../figs/./cucumber05.001.jpg>) [25]
-[26]
+ <../figs/./cucumber05.001.jpg> [22])
+[23]
 \openout2 = `features.aux'.
 
  (./features.tex
@@ -360,27 +343,22 @@ m/n/10 を全て表示します ． 実装では ， 元デ ータが \OT1/cmr/m
 macs[]help.yml
  []
 
-[27
+[24
 
 
-] [28]
-Overfull \hbox (74.67043pt too wide) in paragraph at lines 82--84
-[][][][] 
- []
-
-[29]) [30]
+] [25] [26] [27]) [28]
 \openout2 = `discussion.aux'.
 
- (./discussion.tex [31
+ (./discussion.tex [29
 
 
-]) [32]
+]) [30]
 Overfull \hbox (50.3748pt too wide) in paragraph at lines 74--75
 []\OT1/cmr/m/n/10 my[]help README, Shi-geot R. Nishi-tani, \OT1/cmtt/m/n/10 htt
 p://www.rubydoc.info/gems/my_help/0.4.3
  []
 
-[33
+[31
 
 ] (./my_help_nasu.aux (./overview.aux) (./introduction.aux)
 (./method_bdd.aux) (./method_cucumber.aux) (./method_usage.aux) (./new_code.aux
@@ -393,12 +371,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 2530 strings out of 94681
- 36260 string characters out of 1174371
- 147961 words of memory out of 1500000
- 5758 multiletter control sequences out of 10000+50000
- 15981 words of font info for 73 fonts, out of 1200000 for 2000
- 571 hyphenation exceptions out of 8191
- 34i,9n,56p,807b,1814s stack positions out of 5000i,500n,6000p,200000b,5000s
+ 2690 strings out of 493683
+ 37755 string characters out of 6149653
+ 182866 words of memory out of 5000000
+ 6200 multiletter control sequences out of 15000+600000
+ 15981 words of font info for 73 fonts, out of 8000000 for 9000
+ 934 hyphenation exceptions out of 8191
+ 35i,9n,51p,811b,1679s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on my_help_nasu.dvi (33 pages, 114388 bytes).
+Output written on my_help_nasu.dvi (31 pages, 106972 bytes).

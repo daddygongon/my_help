@@ -4,7 +4,7 @@ featuresでの記述は，コマンドの振る舞いを説明する自然な記
 その様子をspecific\_helpが用意しているデフォルトのコマンドについて説明します．
 specific\_helpとは，ユーザが作成するそれぞれのヘルプです．
 speific\_helpの--helpを表示させると，
-\begin{lstlisting}[style=customCsh]
+\begin{lstlisting}[style=customCsh,basicstyle={\scriptsize\ttfamily}]
         --edit                       edit help contentsを開く
         --to_hiki                    hikiのformatに変更する
         --all                        すべてのhelp画面を表示させる
@@ -20,7 +20,7 @@ speific\_helpの--helpを表示させると，
 このコマンドは新しいitemをspecific\_helpに追加します．
 提供される機能をシナリオの先頭に内容をかいつまんでこの振る舞いが記述されています．
 実装では，ヘルプの内容は~/.my\_help/emacs\_help.ymlに元dataがあります．
-\begin{lstlisting}[style=customRuby]
+\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
 nasu% cat add.feature
 #language: ja
 
@@ -39,7 +39,7 @@ specific_helpとは，ユーザが作成するそれぞれのヘルプである
 このコマンドはspecific\_helpにあるhelpを一度に全て表示させます．
 するとspecific\_helpにあるitemを全て表示します．
 実装では，元データが~/.my\_help/emacs\_help.ymlにあるので，それを全て表示します．
-\begin{lstlisting}[style=customRuby]
+\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
 nasu% cat all_help.feature
 #language: ja
 
@@ -56,7 +56,7 @@ nasu% cat all_help.feature
 このコマンドは過去にバックアップをとったことのあるitemを表示させます．
 自分がどのitemをバックアップしたのかの確認を行えます．
 また，そのitemのバックアップをとった時間も表示されるので，いつバックアップをとったのかの確認も行えます．
-\begin{lstlisting}[style=customRuby]
+\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
 nasu% cat backup_list.feature
 #language: ja
 
@@ -74,7 +74,7 @@ nasu% cat backup_list.feature
 このコマンドはspecific\_helpのitemの編集ができます．
 実装では，元データのある~/.my\_help/emacs\_help.ymlがemacsで開かれ，自分で編集ができます．
 編集作業が終了したら，emacsで開かれているので， [C-x C-s]で保存，[C-x C-c]でeditを閉じます．
-\begin{lstlisting}[style=customRuby]
+\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
 nasu% cat edit_help.feature
 # language: ja
 #--edit
@@ -90,7 +90,7 @@ emacs_helpと入力したときに出てくるhelpのコマンドの追加や削
 このコマンドは新しいitemをspecific\_helpから削除します．
 提供される機能をシナリオの先頭に内容をかいつまんでこの振る舞いが記述されています．
 実装では，ヘルプの内容は~/.my\_help/emacs\_help.ymlに元dataがあります．
-\begin{lstlisting}[style=customRuby]
+\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
 nasu% cat remove.feature
 #language: ja
 
@@ -107,7 +107,13 @@ nasu% cat remove.feature
 \subsubsection{--store [item]}
 このコマンドはspecific\_helpのitemのバックアップをとります．
 少しhelpを新しくしたいが，過去のhelpを残しておけば安心できます．
-\begin{lstlisting}[style=customRuby]
+~/.my\_helpディレクトリーの中に，同じ名前の先頭に'.'をつけたファイルに追記されていきます．
+\begin{quote}\begin{verbatim}
+-rw-r--r--   1 bob  501   3231  2 10 17:11 my_todo.yml
+-rw-r--r--   1 bob  501  31925  2  3 19:49 .my_todo.yml
+\end{verbatim}\end{quote}
+などとしてます．
+\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
 nasu% cat store.feature
 #language: ja
 
@@ -122,7 +128,30 @@ nasu% cat store.feature
 \end{lstlisting}
 \subsubsection{--to\_hiki}
 このコマンドはformatをhikiに変更します．
-\begin{lstlisting}[style=customRuby]
+\begin{quote}\begin{verbatim}
+:カーソル移動:cursor
+*C-f, move Forwrard,    前or右へ
+*C-b, move Backwrard,   後or左へ
+*C-a, go Ahead of line, 行頭へ
+*C-e, go End of line,   行末へ
+*C-n, move Next line,   次行へ
+*C-p, move Previous line, 前行へ
+\end{verbatim}\end{quote}
+などとhiki記法で出力されます．これをhikiの本文中に入れると
+\begin{description}
+\item[カーソル移動] cursor
+
+\end{description}
+\begin{itemize}
+\item C-f, move Forwrard,    前or右へ
+\item C-b, move Backwrard,   後or左へ
+\item C-a, go Ahead of line, 行頭へ
+\item C-e, go End of line,   行末へ
+\item C-n, move Next line,   次行へ
+\item C-p, move Previous line, 前行へ
+\end{itemize}
+などとweb上で表示されます．
+\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
 nasu% cat to_hiki.feature
 # language: ja
 
@@ -141,7 +170,7 @@ nasu% cat to_hiki.feature
 しかし，ここでは元データは~/.my\_help/todo\_help.ymlです．
 editが開かれたら，todoを書き込みます．（今週やることならweeklyというitemを作ってそこに書き込む）
 保存方法や，editの閉じ方はemacsと同じ操作方法です．
-\begin{lstlisting}[style=customRuby]
+\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
 nasu% my_todo.feature
 # language: ja
 

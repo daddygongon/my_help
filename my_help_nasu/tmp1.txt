@@ -49,7 +49,7 @@ CucumberとRSpecを用いてBDDでmy_helpのテスト開発を進めて行きま
  nasu% cucumber features/my_todo.feature 
 featuresディレクトリにあるmy_todo.featureファイルをcucumberで実行するという意味です．
 
-実行すると図{{ref(fig:cucumber01)}}のようになります．
+実行すると図fig:cucumber01のようになります．
 
 !!!caption:(fig:cucumber01)step定義をする前のcucumberの実行結果．
 {{attach_view(cucumber01.001.jpg,my_help_nasu)}})
@@ -82,7 +82,7 @@ end
 
 これをコピーして，featuresディレクトリの中でstep_definitionsディレクトリを作成し，その中にmy_todo_spec.rbを作成し，そこに貼付けます．
 
-ここでもう一度cucumberを実行してみると図{{ref(cucumber02)}}のように変化が出てきます．
+ここでもう一度cucumberを実行してみると図cucumber02のように変化が出てきます．
 
 !!!caption:(fig:cucumber02)defaultのstep定義を貼り付けた後のcucumberの実行結果．
 {{attach_view(cucumber02.001.jpg,my_help_nasu)}}
@@ -103,7 +103,7 @@ end
 >>>
 
 pendingの部分が書けたので，もう一度cucumber features/my_todo.featureを実行します．
-すると，図{{ref(fig:cucumber03)}}のような結果が返ってきました．
+すると，図fig:cucumber03のような結果が返ってきました．
 
 !!!caption:(fig:cucumber03)pendingのstep定義を書き込んだ後のcucumberの実行結果．
 {{attach_view(cucumber03.001.jpg,my_help_nasu)}}
@@ -165,7 +165,7 @@ specディレクトリのmy_todoディレクトリをrspecで実行すると下�
 !!!caption:(fig:cucumber04)pendingのstep定義を書き込んだ後のcucumberの実行結果．
 {{attach_view(cucumber04.001.jpg,my_help_nasu)}}
 
-図{{ref(fig:cucumber04)}}を見るとエラーが出てしまっているのがわかります．
+図fig:cucumber04を見るとエラーが出てしまっているのがわかります．
 
  `<module:Mytodo>': uninitialized constant Mytodo::Edit (NameError)
 
