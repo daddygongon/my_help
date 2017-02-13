@@ -1,4 +1,4 @@
-This is pTeXk, Version 3.141592-p3.1.11 (utf8.euc) (Web2C 7.5.4) (format=platex 2011.7.24)  13 FEB 2017 11:25
+This is pTeXk, Version 3.141592-p3.1.11 (utf8.euc) (Web2C 7.5.4) (format=platex 2011.7.24)  13 FEB 2017 11:44
  file:line:error style messages enabled.
 **my_help_nasu
 (./my_help_nasu.tex
@@ -227,17 +227,18 @@ LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
 (Font)              scaled to size 11.53198pt on input line 2.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 (Font)              scaled to size 11.53198pt on input line 2.
-File: ../figs/./my_help_nasu.png Graphic file (type bmp)
- <../figs/./my_help_nasu.png>
+File: ../figs/./my_help_nasu.001.jpeg Graphic file (type eps)
+
+<../figs/./my_help_nasu.001.jpeg>
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
 (Font)              scaled to size 8.64899pt on input line 11.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
 (Font)              scaled to size 8.64899pt on input line 11.
-File: ../figs/./my_help_nasu1.001.jpg Graphic file (type eps)
+File: ../figs/./my_help_nasu.002.jpeg Graphic file (type eps)
+ <../figs/./my_help_nasu.002.jpeg> [6
 
-<../figs/./my_help_nasu1.001.jpg> [6
-
-]) [7] [8]
+])
+[7] [8]
 \openout2 = `method_cucumber.aux'.
 
  (./method_cucumber.tex
@@ -358,12 +359,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 2527 strings out of 94681
- 36232 string characters out of 1174371
- 146057 words of memory out of 1500000
- 5756 multiletter control sequences out of 10000+50000
+ 2531 strings out of 94681
+ 36302 string characters out of 1174371
+ 146073 words of memory out of 1500000
+ 5760 multiletter control sequences out of 10000+50000
  15981 words of font info for 73 fonts, out of 1200000 for 2000
  571 hyphenation exceptions out of 8191
  35i,9n,56p,807b,1832s stack positions out of 5000i,500n,6000p,200000b,5000s
 
-Output written on my_help_nasu.dvi (33 pages, 110448 bytes).
+Output written on my_help_nasu.dvi (33 pages, 110456 bytes).
