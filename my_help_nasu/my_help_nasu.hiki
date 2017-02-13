@@ -3,18 +3,12 @@
 !title:ユーザメモソフトmy_helpのビヘイビアテスト開発
 !author:2535 那須比呂貴
 
-*{{attach_anchor(my_help_nasu.pdf,my_help_nasu)}}
 
 ![[概要|my_help_nasu_overview]]
 
 ![[序論|my_help_nasu_introduction]]
-!先行研究，方法
-ここでは、本研究で使用するcucumberの特徴について詳述する．
-cucumberはビヘイビア駆動開発(bdd)を実現するフレームワークである．
-まずはbddの現れた背景や現状を示した後、Cucumberの記述の具体例を示して，
-その特徴を詳述する．
-さらに，本研究の対象となるmy_helpの振る舞いを使用法とともに示す．
-!![[my_help_nasu_method_bdd]]
+
+![[先行研究，方法|my_help_nasu_method_bdd]]
 !![[my_help_nasu_method_cucumber]]
 !![[my_help_nasu_method_usage]]
 
@@ -24,25 +18,11 @@ cucumberはビヘイビア駆動開発(bdd)を実現するフレームワーク�
 
 
 !謝辞
- 本研究を進めるにあたり，様々なご指導を頂きました西谷滋人教授先生に深く感謝いたします．
+本研究を進めるにあたり，様々なご指導を頂きました西谷滋人教授先生に深く感謝いたします．
 また，本研究の進行に伴い，様々な助力，知識の供給を頂きました西谷研究室の同輩，先輩方に心から感謝の意を示します．
 本当にありがとうございました．
 
 !reference:
 :RSpecBook: "The RSpec Book", David Chelimsky, Dave Astels, Zach Dennis, 訳, 株式会社クイーブ, 監修, 角谷信太郎, 豊田裕司 (翔泳社, 2012).
-:README: my_help README, Shigeot R. Nishitani, [[http://www.rubydoc.info/gems/my_help/0.4.3]] 2017/2/11アクセス.
-
-//1. referenceなおしました．
-//2. keynoteにすべて貼り付けて，イメージの書き出しをしてください．サイズが狂います
-//3. attach_viewのさんしょうを修正してください．
-//4. p.21の「--colorを付け加えると」のところをsnap shotに変えてください．
-//5. 入力の頭の空白が全角になっています．
-//6. 他のattach_viewも直したcaptionを参照して，修正してください．
-//7. all_latexするとそのあたりのref参照が解決されているはずです．
-//成功したcompileをpdfにしてfigから参照するようにしています．
-//my_help_nasuからdlして確認してください．
-
-//3.の「実践」は，「ビヘイビア駆動開発の実践」としましょう．
-//3.4の構造変えました．ちゃんと記述するか，省くかしてください．
-//2.3の項目おかしいんで治してください．
-//4.discussionはよく読んで修正してください．そのままコメントとして残しておいても．．．
+:README: my_help README, Shigeto R. Nishitani, [[http://www.rubydoc.info/gems/my_help/0.4.3]] 2017/2/11アクセス.
+:Qiita: rake specにrspecのオプションを渡す, Qiita, [[http://qiita.com/snaka/items/e0808f9cfbad87c49b4e]] 2017/2/13アクセス.

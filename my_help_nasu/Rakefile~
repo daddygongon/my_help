@@ -186,7 +186,10 @@ end
 
 def check_bounding_box
 #  $bounding_box="0 0 442 432"
-  $bounding_box=" 0 0 737 553"
+#  $bounding_box=" 0 0 737 553"
+#  $fig_width="10"
+  $bounding_box=" 0 0 937 753"
+  $fig_width="12"
 end
 
 desc "すべてのhikiファイルをlatex変換"
@@ -276,7 +279,7 @@ def convert_to_latex(file_name, options={})
       line ="\\bibitem{#{m[1]}} #{m[2]}"
     end
     if m=line.match(/\\includegraphics\[width=6cm\]\{(.+)\}/)
-      p line="\\includegraphics\[width=10cm,bb=#{$bounding_box}\]\{../figs/#{m[1]}\}\n"
+      p line="\\includegraphics\[width=#{$fig_width}cm,bb=#{$bounding_box}\]\{../figs/#{m[1]}\}\n"
       cont << line
     else
       cont << line

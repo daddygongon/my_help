@@ -81,7 +81,7 @@ but (code)    &"しかし", "但し","ただし"   &"But"          \\
 %for inserting separate lines, use \hline, \cline{2-3} etc.
 
 \subsubsection{Cucumber,RSpecインストール}
-まずrspecをgemでinstallする．
+まずrspecをgemでinstallします．
 
 \begin{enumerate}
 \item gem install rspec --version 2.0.0
@@ -92,7 +92,8 @@ but (code)    &"しかし", "但し","ただし"   &"But"          \\
 /Users/nasubi/nasu% rspec --help
 Usage: rspec [options] [files or directories]
 \end{lstlisting}
-のような表示がされていればinstallができている．次に，cucumberをinstallする
+のような表示がされていればinstallができています．
+次に，cucumberをinstallします．
 
 \begin{enumerate}
 \item gem install cucumber --version 0.9.2
@@ -103,10 +104,10 @@ Usage: rspec [options] [files or directories]
 cucumber --help
 Usage: cucumber [options] [ [FILE|DIR|URL][:LINE[:LINE]*] ]+
 \end{lstlisting}
-のような表示がされていればinstallできている．
+のような表示がされていればinstallできています．
 
 \subsubsection{ディレクトリー構造と使用手順}
-cucumberはRubygemsの提供する基本directory構造での作業を前提としています．
+CucumberはRubygemsの提供する基本directory構造での作業を前提としています．
 その構造を表示すると次のようになります．
 \begin{quote}\begin{verbatim}
 bob% tree .
@@ -134,7 +135,7 @@ bob% tree .
 \end{verbatim}\end{quote}
 カレントディレクトリ(.)の中にfeaturesというサブディレクトリを作成します．
 そのfeaturesの中に書きたいシナリオを書いた，hogehoge.featureを作成します．
-featureの具体例は上記に示してします．
+featureの具体例は上記に示しています．
 
 次にシェルを開いて，カレントディレクトリで，
 \begin{quote}\begin{verbatim}
@@ -177,7 +178,7 @@ Cucumberはシナリオの最初のステップを読み取り,そのステッ�
 
 これはfeaturesディレクトリの下にstep\_definitionsディレクトリーにあることになっています．
 このシナリオを成功させるには，Cucumberが読み込めるファイルにステップ定義を保存する必要があります[1, pp15.]．
-その内容は次の通りcucumberから自動生成されます．
+その内容は次の通りCucumberから自動生成されます．
 \begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
 
 Given(/^I want to explain scenario$/) do
