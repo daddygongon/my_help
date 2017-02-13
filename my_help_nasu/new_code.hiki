@@ -82,7 +82,7 @@ end
 
 これをコピーして，featuresディレクトリの中でstep_definitionsディレクトリを作成し，その中にmy_todo_spec.rbを作成し，そこに貼付けます．
 
-ここでもう一度cucumberを実行してみると図{{ref(cucumber02)}}のように変化が出てきます．
+ここでもう一度cucumberを実行してみると図{{ref(fig:cucumber02)}}のように変化が出てきます．
 
 !!!caption:(fig:cucumber02)defaultのstep定義を貼り付けた後のcucumberの実行結果．
 {{attach_view(cucumber02.001.jpg,my_help_nasu)}}
