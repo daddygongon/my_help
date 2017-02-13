@@ -14,7 +14,6 @@ cucumberはビヘイビア駆動開発(bdd)を実現するフレームワーク�
 まずはbddの現れた背景や現状を示した後、Cucumberの記述の具体例を示して，
 その特徴を詳述する．
 さらに，本研究の対象となるmy_helpの振る舞いを使用法とともに示す．
-
 !![[my_help_nasu_method_bdd]]
 !![[my_help_nasu_method_cucumber]]
 !![[my_help_nasu_method_usage]]

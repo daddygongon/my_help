@@ -20,7 +20,7 @@ CucumberとRSpecを用いてBDDでmy\_helpのテスト開発を進めて行き�
 以下はtodoの更新を行うときのfeatureです．
 まず，適当なディレクトリにfeaturesというディレクトリを作成します．
 次に先ほど作成した，featuresディレクトリにmy\_todo.featureを作成します．
-\begin{lstlisting}[style=customCsh]
+\begin{lstlisting}[style=customCsh,basicstyle={\scriptsize\ttfamily}]
 # language: ja 
 
 機能: todoの更新を行う
@@ -52,7 +52,7 @@ todoは更新していくものであり,新しく書いたり終わったもの
 featuresディレクトリにあるmy\_todo.featureファイルをcucumberで実行するという意味です．
 
 実行すると以下のようになります．
-\begin{lstlisting}[style=customCsh]
+\begin{lstlisting}[style=customCsh,basicstyle={\scriptsize\ttfamily}]
 
 ＜省略＞
 
@@ -93,7 +93,7 @@ end
 featureを書いた時点でcucumberを実行すると，ステップ定義の元となるコマンドを，cucumberが自動的に作成してくれるからです．
 
 以下がcucumberから出力されたステップ定義の元となる部分です．
-\begin{lstlisting}[style=customCsh]
+\begin{lstlisting}[style=customCsh,basicstyle={\scriptsize\ttfamily}]
 You can implement step definitions for undefined steps with these snippets:
 
 前提(/^todoを編集したい$/) do
@@ -123,7 +123,7 @@ end
 これをコピーして，featuresディレクトリの中でstep\_definitionsディレクトリを作成し，その中にmy\_todo\_spec.rbを作成し，そこに貼付けます．
 
 ここでもう一度cucumberを実行してみると
-\begin{lstlisting}[style=customCsh]
+\begin{lstlisting}[style=customCsh,basicstyle={\scriptsize\ttfamily}]
 /Users/nasubi/nasu% cucumber features/my_todo.feature 
 # language: ja
 機能: todoの更新を行う
@@ -160,7 +160,7 @@ todoは更新していくものであり,新しく書いたり終わったもの
 step\_definitionsのmy\_todo\_spec.rbのpending部分を書き換えて，step\_definitionsの記述を進めて行きます．
 
 cucumberが成功すると下記のような結果となります．
-\begin{lstlisting}[style=customRuby]
+\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
 /Users/nasubi/my_help% cucumber features/my_todo.feature 
 # language: ja
 機能: todoの更新を行う
@@ -191,7 +191,7 @@ todoは更新していくものであり,新しく書いたり終わったもの
 並列のディレクトリ構造を築いていきます．
 この機能はmy\_help --editと入力されれば，~/.my\_help/my\_todo.ymlが開かれるのでその振る舞いをするコードを書きます．
 まずtodo\_spec.rbは下記の通りになります．
-\begin{lstlisting}[style=customRuby]
+\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
 require 'spec_helper'
 
 
@@ -210,7 +210,7 @@ it()メソッドはサンプルを作成します．
 
 このスペックを実行するために，specディレクトリにspec\_helper.rbを追加します．
 中身は下記の通りです．
-\begin{lstlisting}[style=customRuby]
+\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'my_help'
 require 'todo'
@@ -218,7 +218,7 @@ require 'todo'
 これで事前準備は完成でコードを書いていきます．
 
 完成したコードを下記の通りです．
-\begin{lstlisting}[style=customRuby]
+\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
 require 'spec_helper'
 
 
@@ -234,7 +234,7 @@ end
 
 \end{lstlisting}
 これでrspecを実行すると以下のような結果が表示されます．
-\begin{lstlisting}[style=customCsh]
+\begin{lstlisting}[style=customCsh,basicstyle={\scriptsize\ttfamily}]
 /Users/nasubi/my_help% rspec spec --color
 
 my_help command

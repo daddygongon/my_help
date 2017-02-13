@@ -52,7 +52,7 @@ featuresディレクトリにあるmy_todo.featureファイルをcucumberで実�
 実行すると図{{ref(fig:cucumber01)}}のようになります．
 
 !!!caption:(fig:cucumber01)step定義をする前のcucumberの実行結果．
-{{attach_view(cucumber01.001.jpg,my_help_nasu)}})
+{{attach_view(my_help_nasu.003.jpeg,my_help_nasu)}})
 
 ここでは，1つのscenarioと4つのstepが失敗しています．
 まだstep定義を記述していないので当たり前です．

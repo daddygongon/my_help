@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 require 'systemu'
 require 'tempfile'
-#require 'colorize'
+require 'colorize'
 require 'coderay'
 
 # -*- coding: utf-8 -*-
