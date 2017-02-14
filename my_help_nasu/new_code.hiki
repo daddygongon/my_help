@@ -1,14 +1,14 @@
 {{toc}}
 !ビヘイビア駆動開発の実践
 
-CucumberとRSpecを用いてBDDでmy_helpのテスト開発を進めて行きました．
+CucumberとRSpecを用いてBDDでmy_helpのテスト開発を進めていきました．
 // アプリの振る舞いを説明する
 // なぜ自分が作ったかを納得してもらえないから．
 // 自分の作業の目的の意義を説明するために，全体の概要を説明することは妥当
 // 先行研究->先行開発，ソフト開発==研究，why!!
 ビヘイビア駆動開発のコツとして「焦点を合わせる」ことが強調されています．
 ここでは，焦点を合わせたmy_helpの中での一つの振る舞いである
-「todoの更新」を例として詳しく見て行きます．
+「todoの更新」を例として詳しく見ていきます．
 
 !!todoの更新マニュアル
 最初に，todoを更新するときの手順を示します．
@@ -49,10 +49,10 @@ CucumberとRSpecを用いてBDDでmy_helpのテスト開発を進めて行きま
  nasu% cucumber features/my_todo.feature 
 featuresディレクトリにあるmy_todo.featureファイルをcucumberで実行するという意味です．
 
-実行すると図{{ref(fig:cucumber01)}}のようになります．
+実行すると図{{ref(fig:003)}}のようになります．
 
-!!!caption:(fig:cucumber01)step定義をする前のcucumberの実行結果．
-{{attach_view(cucumber01.001.jpg,my_help_nasu)}})
+!!!caption:(fig:003)step定義をする前のcucumberの実行結果．
+{{attach_view(my_help_nasu.003.jpeg,my_help_nasu)}})
 
 ここでは，1つのscenarioと4つのstepが失敗しています．
 まだstep定義を記述していないので当たり前です．
@@ -82,13 +82,13 @@ end
 
 これをコピーして，featuresディレクトリの中でstep_definitionsディレクトリを作成し，その中にmy_todo_spec.rbを作成し，そこに貼付けます．
 
-ここでもう一度cucumberを実行してみると図{{ref(fig:cucumber02)}}のように変化が出てきます．
+ここでもう一度cucumberを実行してみると図{{ref(fig:004)}}のように変化が出てきます．
 
-!!!caption:(fig:cucumber02)defaultのstep定義を貼り付けた後のcucumberの実行結果．
-{{attach_view(cucumber02.001.jpg,my_help_nasu)}}
+!!!caption:(fig:004)defaultのstep定義を貼り付けた後のcucumberの実行結果．
+{{attach_view(my_help_nasu.004.jpeg,my_help_nasu)}}
 
 これは1つのシナリオがあり，1つがpendingであり，4つのstepの内1つがpendingで3つがskipしたことを表しています．
-step_definitionsのmy_todo_spec.rbのpending部分を書き換えて，step_definitionsの記述を進めて行きます.
+step_definitionsのmy_todo_spec.rbのpending部分を書き換えて，step_definitionsの記述を進めていきます.
 
 まず，「前提」を見てみるとmy_helpが何か振る舞いをすることはありません．
 よって，このままにしておきます．
@@ -103,10 +103,10 @@ end
 >>>
 
 pendingの部分が書けたので，もう一度cucumber features/my_todo.featureを実行します．
-すると，図{{ref(fig:cucumber03)}}のような結果が返ってきました．
+すると，図{{ref(fig:005)}}のような結果が返ってきました．
 
-!!!caption:(fig:cucumber03)pendingのstep定義を書き込んだ後のcucumberの実行結果．
-{{attach_view(cucumber03.001.jpg,my_help_nasu)}}
+!!!caption:(fig:005)pendingのstep定義を書き込んだ後のcucumberの実行結果．
+{{attach_view(my_help_nasu.005.jpeg,my_help_nasu)}}
 
 Cucumberは，エラーが出たステップのすぐ後ろにエラーを表示してくれます．
 ここでCucumberでエラーが出たので，この「ならば　editが開かれる」のシナリオに注目してRSpecに進むことにします．
@@ -117,10 +117,8 @@ Cucumberは，エラーが出たステップのすぐ後ろにエラーを表示
 
 そのための準備として，まずspecというディレクトリを作成し，my_todoというサブディレクトリを追加します．
 次に，このサブディレクトリにtodo_spec.rbというファイルを追加します．
-作業を進める過程で，lib/my_todo/my_todo.rbソースファイルとspec/my_todo/todo_spec.rbスペックファイルが１対１に対応するといった要領で，
-並列のディレクトリ構造を築いていきます．
-この機能はmy_help --editと入力されれば，~/.my_help/my_todo.ymlが開かれるのでその振る舞いをするコードを書きます．
-まずtodo_spec.rbは下記の通りになります．
+この機能はmy_help --editと入力されれば，~/.my_help/my_todo.ymlが開かれるので，その振る舞いをするコードを書きます．
+まずtodo_spec.rbは下記の通りです．
 
 <<< ruby
 require 'spec_helper'
@@ -159,20 +157,20 @@ end
 
 >>>
 
-specディレクトリのmy_todoディレクトリをrspecで実行すると下記のような結果がでました．
+specディレクトリのmy_todoディレクトリをrspecで実行すると図{{ref(fig:006)}}結果がでました．
 [[--color]]を付け加えるとわかりやすく色づけをしてくれて，見やすくなります．
 
-!!!caption:(fig:cucumber04)pendingのstep定義を書き込んだ後のcucumberの実行結果．
-{{attach_view(cucumber04.001.jpg,my_help_nasu)}}
+!!!caption:(fig:006)pendingのstep定義を書き込んだ後のcucumberの実行結果．
+{{attach_view(my_help_nasu.006.jpeg,my_help_nasu)}}
 
-図{{ref(fig:cucumber04)}}を見るとエラーが出てしまっているのがわかります．
+図{{ref(fig:006)}}を見るとエラーが出てしまっているのがわかります．
 
  `<module:Mytodo>': uninitialized constant Mytodo::Edit (NameError)
 
 上記のエラーを解決するために，specディレクトリの一つ上の構造のディレクトリにlibディレクトリを作成します．
 その中にmy_todoというディレクトリを作成し，my_todo.rbを作成します．
 
-構造を表示すると以下のようになっています．
+構造を表示すると以下のようになります．
  /Users/nasubi/my_help/lib/my_todo% ls
  my_todo.rb
 
@@ -203,12 +201,12 @@ $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'todo'
 >>>
 
-これでもう一度rspecを実行してみます．
+これでもう一度rspecを実行してみると図{{ref(fig:007)}}の結果が返ってきました．
 
-!!!caption:(fig:rspec01)redを修正してgreenになったrspecの実行結果
-{{attach_view(rspec01.001.jpg,my_help_nasu)}}
+!!!caption:(fig:007)redを修正してgreenになったrspecの実行結果
+{{attach_view(my_help_nasu.007.jpeg,my_help_nasu)}}
 
-エラーが消えて成功しているのがわかります．
+図{{ref(fig:007)}}を見ると，エラーが消えて成功しているのがわかります．
 これで「ならば　editが開かれる」のシナリオのRSpec部分が成功しました．
 Red, Greenと進めたので次はRefactoringをするのですが，ここではあまり必要のないので省略します．
 RSpecが終わったので，Cucumberに戻ります．
@@ -225,13 +223,24 @@ require 'todo'
 
 これでcucumberもlib/の中身を読み取ってくれます．
 
-もう一度cucumberを実行してみると，
+もう一度cucumberを実行してみると,図{{ref(fig:008)}}の結果が返ってきました．
 
-!!!caption:(fig:cucumber05)libの中身を読み込むようにしたcucumberの実行結果．
-{{attach_view(cucumber05.001.jpg,my_help_nasu)}}
+!!!caption:(fig:008)libの中身を読み込むようにしたcucumberの実行結果．
+{{attach_view(my_help_nasu.008.jpeg,my_help_nasu)}}
 
 エラーが消えています．
 
 これでBDDが成功しました．
 残りの「自分のtodoを書き込む」もmy_helpが何か振る舞いをするわけではないので，「コマンドを入力してtodoを更新する」シナリオ全てのテスト開発が終わりました．
 このようにBDDでmy_helpのテスト開発を行っていきました．
+
+!!.rspec options
+図{{ref(fig:006)}}の時に述べたように,[rspec spec --color]で実行すると成功すればGreenで表示され，失敗すればRedで表示されます．
+結果に色がついていると見やすく，どのような結果が出ているかが一目瞭然です．
+しかし，毎回[--color]のコマンドを打ち込むのが面倒になってきます．
+そこで，カレントディレクトリに.rspecを用意し，
+<<<
+--format documentation
+--color
+>>>
+のようにすることで，rspecで実行するときにこのファイルを読み込み，[--color]を入力しなくても実行されます．

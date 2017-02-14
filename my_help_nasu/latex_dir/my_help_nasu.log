@@ -1,4 +1,4 @@
-This is pTeXk, Version 3.141592-p3.1.11 (utf8.euc) (Web2C 7.5.4) (format=platex 2011.7.24)  12 FEB 2017 14:01
+This is pTeXk, Version 3.141592-p3.1.11 (utf8.euc) (Web2C 7.5.4) (format=platex 2011.7.24)  13 FEB 2017 15:45
  file:line:error style messages enabled.
 **my_help_nasu
 (./my_help_nasu.tex
@@ -198,15 +198,7 @@ LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
 \tf@toc=\write3
 \openout3 = `my_help_nasu.toc'.
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 49.
-
-(/Applications/UpTeX.app/teTeX/share/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 49.
-
-[3]
+ [3]
 \openout2 = `overview.aux'.
 
 
@@ -217,27 +209,27 @@ No file overview.tex.
 
 
 
-] [5
-
 ]
 \openout2 = `method_bdd.aux'.
 
  (./method_bdd.tex
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 11.53198pt on input line 2.
+(Font)              scaled to size 11.53198pt on input line 9.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 11.53198pt on input line 2.
-File: ../figs/./my_help_nasu.png Graphic file (type bmp)
- <../figs/./my_help_nasu.png>
+(Font)              scaled to size 11.53198pt on input line 9.
+File: ../figs/./my_help_nasu.001.jpeg Graphic file (type eps)
+ <../figs/./my_help_nasu.001.jpeg>
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 11.
+(Font)              scaled to size 8.64899pt on input line 18.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 11.
-File: ../figs/./my_help_nasu1.001.jpg Graphic file (type eps)
+(Font)              scaled to size 8.64899pt on input line 18.
 
-<../figs/./my_help_nasu1.001.jpg> [6
+[5
 
-] [7]) [8]
+
+]
+File: ../figs/./my_help_nasu.002.jpeg Graphic file (type eps)
+ <../figs/./my_help_nasu.002.jpeg>) [6] [7]
 \openout2 = `method_cucumber.aux'.
 
  (./method_cucumber.tex
@@ -247,59 +239,55 @@ File: lstlang1.sty 2004/09/05 1.3 listings language file
 (/Applications/UpTeX.app/teTeX/share/texmf-dist/tex/latex/listings/lstlang2.sty
 File: lstlang2.sty 2004/09/05 1.3 listings language file
 )
-LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 16.
-LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 16.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 6.72699pt on input line 17.
+(Font)              scaled to size 6.72699pt on input line 16.
+LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
+(Font)              scaled to size 6.72699pt on input line 16.
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 6.72699pt on input line 16.
 
 (/Applications/UpTeX.app/teTeX/share/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2004/09/05 1.3 listings language file
-) [9
+) [8
 
 
 ]
-LaTeX Font Info:    Font shape `JT1/gt/m/it' in size <9> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 31.
-LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 31.
-LaTeX Font Info:    Font shape `JY1/gt/m/it' in size <9> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 31.
-LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 31.
-LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 51.
-LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 51.
-LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 51.
-LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 51.
-
-
-LaTeX Warning: Reference `table:one' on page 10 undefined on input line 51.
-
-
 Overfull \hbox (14.18181pt too wide) in paragraph at lines 56--80
  [] 
  []
 
-[10] [11] [12]
-LaTeX Font Info:    Font shape `JT1/gt/bx/n' in size <9> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 156.
+[9] [10]
+LaTeX Font Info:    Font shape `JT1/gt/bx/n' in size <7> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 157.
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 156.
-LaTeX Font Info:    Font shape `JY1/gt/bx/n' in size <9> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 156.
+(Font)              scaled to size 6.72699pt on input line 157.
+LaTeX Font Info:    Font shape `JY1/gt/bx/n' in size <7> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 157.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 156.
-LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <9> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 156.
- [13]) [14]
+(Font)              scaled to size 6.72699pt on input line 157.
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <7> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 157.
+ [11]) [12]
 \openout2 = `method_usage.aux'.
 
- (./method_usage.tex [15
+ (./method_usage.tex
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 20.
+
+(/Applications/UpTeX.app/teTeX/share/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 20.
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 36.
+LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
+(Font)              scaled to size 9.60999pt on input line 36.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 36.
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 9.60999pt on input line 36.
+
+[13
 
 
 ]
@@ -308,49 +296,34 @@ Overfull \hbox (21.92567pt too wide) in paragraph at lines 63--64
 te add up-stream git@github.com:gitname/my[]help.git 
  []
 
-[16]) [17]
+[14]) [15]
 \openout2 = `new_code.aux'.
 
- (./new_code.tex [18
+ (./new_code.tex [16
 
 
 ]
+File: ../figs/./my_help_nasu.003.jpeg Graphic file (type eps)
+ <../figs/./my_help_nasu.003.jpeg> [17]
+File: ../figs/./my_help_nasu.004.jpeg Graphic file (type eps)
 
-LaTeX Warning: Reference `fig:cucumber1' on page 19 undefined on input line 45.
-
-
-File: ../figs/./cucumber01.001.jpg Graphic file (type eps)
-<../figs/./cucumber01.001.jpg> [19]
-
-LaTeX Warning: Reference `fig:cucumber02' on page 20 undefined on input line 78
-.
-
-File: ../figs/./cucumber02.001.jpg Graphic file (type eps)
-<../figs/./cucumber02.001.jpg>
-
-LaTeX Warning: Reference `fig:cucumber03' on page 20 undefined on input line 99
-.
-
-File: ../figs/./cucumber03.001.jpg Graphic file (type eps)
-<../figs/./cucumber03.001.jpg> [20] [21] [22]
-File: ../figs/./cucumber04.001.jpg Graphic file (type eps)
- <../figs/./cucumber04.001.jpg>
-
-LaTeX Warning: Reference `fig:cucumber04' on page 23 undefined on input line 15
-9.
-
-
-Overfull \hbox (4.36272pt too wide) in paragraph at lines 162--162
+<../figs/./my_help_nasu.004.jpeg>
+File: ../figs/./my_help_nasu.005.jpeg Graphic file (type eps)
+ <../figs/./my_help_nasu.005.jpeg> [18]
+[19] [20]
+File: ../figs/./my_help_nasu.006.jpeg Graphic file (type eps)
+ <../figs/./my_help_nasu.006.jpeg>
+Overfull \hbox (4.36272pt too wide) in paragraph at lines 160--160
  []\OT1/cmtt/m/n/10 `<module:Mytodo>': uninitialized constant Mytodo::Edit (Nam
 eError)[] 
  []
 
-[23]
-File: ../figs/./rspec01.001.jpg Graphic file (type eps)
- <../figs/./rspec01.001.jpg> [24]
-File: ../figs/./cucumber05.001.jpg Graphic file (type eps)
- <../figs/./cucumber05.001.jpg>) [25]
-[26]
+[21]
+File: ../figs/./my_help_nasu.007.jpeg Graphic file (type eps)
+ <../figs/./my_help_nasu.007.jpeg>
+File: ../figs/./my_help_nasu.008.jpeg Graphic file (type eps)
+ <../figs/./my_help_nasu.008.jpeg>
+[22] [23]) [24]
 \openout2 = `features.aux'.
 
  (./features.tex
@@ -360,45 +333,31 @@ m/n/10 を全て表示します ． 実装では ， 元デ ータが \OT1/cmr/m
 macs[]help.yml
  []
 
-[27
+[25
 
 
-] [28]
-Overfull \hbox (74.67043pt too wide) in paragraph at lines 82--84
-[][][][] 
- []
-
-[29] [30]) [31]
+] [26] [27] [28]) [29]
 \openout2 = `discussion.aux'.
 
- (./discussion.tex [32
+ (./discussion.tex [30
 
 
-]) [33]
-Overfull \hbox (50.3748pt too wide) in paragraph at lines 74--75
-[]\OT1/cmr/m/n/10 my[]help README, Shi-geot R. Nishi-tani, \OT1/cmtt/m/n/10 htt
-p://www.rubydoc.info/gems/my_help/0.4.3
- []
+]) [31] [32
 
-[34
-
-] (./my_help_nasu.aux (./overview.aux) (./introduction.aux)
-(./method_bdd.aux) (./method_cucumber.aux) (./method_usage.aux) (./new_code.aux
-) (./features.aux) (./discussion.aux))
-
-LaTeX Warning: There were undefined references.
-
+] (./my_help_nasu.aux (./overview.aux) (./introduction.aux) (./method_bdd.aux)
+(./method_cucumber.aux) (./method_usage.aux) (./new_code.aux) (./features.aux)
+(./discussion.aux))
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 2528 strings out of 94681
- 36241 string characters out of 1174371
- 147960 words of memory out of 1500000
- 5758 multiletter control sequences out of 10000+50000
+ 2535 strings out of 94681
+ 36370 string characters out of 1174371
+ 145987 words of memory out of 1500000
+ 5765 multiletter control sequences out of 10000+50000
  15981 words of font info for 73 fonts, out of 1200000 for 2000
  571 hyphenation exceptions out of 8191
- 34i,9n,56p,807b,1814s stack positions out of 5000i,500n,6000p,200000b,5000s
+ 35i,9n,56p,807b,1832s stack positions out of 5000i,500n,6000p,200000b,5000s
 
-Output written on my_help_nasu.dvi (34 pages, 113948 bytes).
+Output written on my_help_nasu.dvi (32 pages, 111592 bytes).

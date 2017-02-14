@@ -1,41 +1,35 @@
 \contentsline {section}{\numberline {1}序論}{4}
 \contentsline {section}{\numberline {2}先行研究，方法}{5}
-\contentsline {subsection}{\numberline {2.1}RSpecとBDDについて}{6}
-\contentsline {subsection}{\numberline {2.2}Cucumberについて}{9}
-\contentsline {subsubsection}{\numberline {2.2.1}概要}{9}
-\contentsline {subsubsection}{\numberline {2.2.2}features}{9}
-\contentsline {paragraph}{caption: (table:one)featureファイルで用意されているkeywordの日本語(ja)，英語(en)の対応表．}{10}
-\contentsline {subsubsection}{\numberline {2.2.3}Cucumber,RSpecインストール}{10}
-\contentsline {subsubsection}{\numberline {2.2.4}ディレクトリー構造と使用手順}{11}
-\contentsline {subsection}{\numberline {2.3}my\_helpについて}{15}
-\contentsline {subsubsection}{\numberline {2.3.1}my\_helpの開発動機と特徴}{15}
-\contentsline {paragraph}{概要}{15}
-\contentsline {paragraph}{開発動機}{15}
-\contentsline {paragraph}{特徴}{15}
-\contentsline {subsubsection}{\numberline {2.3.2}my\_helpのインストール}{16}
-\contentsline {subsubsection}{\numberline {2.3.3}my\_helpの更新}{16}
-\contentsline {section}{\numberline {3}ビヘイビア駆動開発の実践}{18}
-\contentsline {subsection}{\numberline {3.1}todoの更新マニュアル}{18}
-\contentsline {subsection}{\numberline {3.2}Cucumber}{18}
-\contentsline {subsubsection}{\numberline {3.2.1}caption:(fig:cucumber1)step定義をする前のcucumberの実行結果．}{19}
-\contentsline {subsubsection}{\numberline {3.2.2}caption:(fig:cucumber02)defaultのstep定義を貼り付けた後のcucumberの実行結果．}{20}
-\contentsline {subsubsection}{\numberline {3.2.3}caption:(fig:cucumber03)pendingのstep定義を書き込んだ後のcucumberの実行結果．}{21}
-\contentsline {subsection}{\numberline {3.3}RSpec}{21}
-\contentsline {subsubsection}{\numberline {3.3.1}caption:(fig:cucumber04)pendingのstep定義を書き込んだ後のcucumberの実行結果．}{23}
-\contentsline {subsubsection}{\numberline {3.3.2}caption:(fig:rspec01)redを修正してgreenになったrspecの実行結果}{24}
-\contentsline {subsubsection}{\numberline {3.3.3}caption:(fig:cucumber05)libの中身を読み込むようにしたcucumberの実行結果．}{25}
-\contentsline {subsection}{\numberline {3.4}featuresでの記述とその意味}{27}
-\contentsline {subsubsection}{\numberline {3.4.1}--add [item]}{27}
-\contentsline {subsubsection}{\numberline {3.4.2}--all}{28}
-\contentsline {subsubsection}{\numberline {3.4.3}--backup\_list}{28}
-\contentsline {subsubsection}{\numberline {3.4.4}--edit}{28}
-\contentsline {subsubsection}{\numberline {3.4.5}--remove [item]}{29}
-\contentsline {subsubsection}{\numberline {3.4.6}--store [item]}{29}
-\contentsline {subsubsection}{\numberline {3.4.7}--to\_hiki}{30}
-\contentsline {subsubsection}{\numberline {3.4.8}todoの更新}{31}
-\contentsline {section}{\numberline {4}考察と今後の課題}{32}
-\contentsline {subsection}{\numberline {4.1}考察}{32}
-\contentsline {subsubsection}{\numberline {4.1.1}Cucumberを記述できるようになるまで時間がかかる}{32}
-\contentsline {subsubsection}{\numberline {4.1.2}BDDを行うときにrubyの知識が必要}{32}
-\contentsline {subsection}{\numberline {4.2}my\_helpの今後}{32}
-\contentsline {section}{\numberline {5}謝辞}{34}
+\contentsline {subsection}{\numberline {2.1}RSpecとBDDについて}{5}
+\contentsline {subsection}{\numberline {2.2}Cucumberについて}{8}
+\contentsline {subsubsection}{\numberline {2.2.1}概要}{8}
+\contentsline {subsubsection}{\numberline {2.2.2}features}{8}
+\contentsline {subsubsection}{\numberline {2.2.3}Cucumber,RSpecインストール}{9}
+\contentsline {subsubsection}{\numberline {2.2.4}ディレクトリー構造と使用手順}{10}
+\contentsline {subsection}{\numberline {2.3}my\_helpについて}{13}
+\contentsline {subsubsection}{\numberline {2.3.1}my\_helpの開発動機と特徴}{13}
+\contentsline {paragraph}{概要}{13}
+\contentsline {paragraph}{開発動機}{13}
+\contentsline {paragraph}{特徴}{13}
+\contentsline {subsubsection}{\numberline {2.3.2}my\_helpのインストール}{14}
+\contentsline {subsubsection}{\numberline {2.3.3}my\_helpの更新}{14}
+\contentsline {section}{\numberline {3}ビヘイビア駆動開発の実践}{16}
+\contentsline {subsection}{\numberline {3.1}todoの更新マニュアル}{16}
+\contentsline {subsection}{\numberline {3.2}Cucumber}{16}
+\contentsline {subsection}{\numberline {3.3}RSpec}{19}
+\contentsline {subsection}{\numberline {3.4}.rspec options}{23}
+\contentsline {subsection}{\numberline {3.5}featuresでの記述とその意味}{25}
+\contentsline {subsubsection}{\numberline {3.5.1}--add [item]}{25}
+\contentsline {subsubsection}{\numberline {3.5.2}--all}{25}
+\contentsline {subsubsection}{\numberline {3.5.3}--backup\_list}{26}
+\contentsline {subsubsection}{\numberline {3.5.4}--edit}{26}
+\contentsline {subsubsection}{\numberline {3.5.5}--remove [item]}{27}
+\contentsline {subsubsection}{\numberline {3.5.6}--store [item]}{27}
+\contentsline {subsubsection}{\numberline {3.5.7}--to\_hiki}{27}
+\contentsline {subsubsection}{\numberline {3.5.8}todoの更新}{28}
+\contentsline {section}{\numberline {4}考察と今後の課題}{30}
+\contentsline {subsection}{\numberline {4.1}考察}{30}
+\contentsline {subsubsection}{\numberline {4.1.1}Cucumberを記述できるようになるまで時間がかかる}{30}
+\contentsline {subsubsection}{\numberline {4.1.2}BDDを行うときにrubyの知識が必要}{30}
+\contentsline {subsection}{\numberline {4.2}my\_helpの今後}{30}
+\contentsline {section}{\numberline {5}謝辞}{32}

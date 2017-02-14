@@ -13,7 +13,7 @@ BDDはフルスタックのアジャイル開発技法です．BDDはATDP(Accept
 Cucumberでは先の引用にある通り、振る舞いをシナリオとしてまず記述します．
 シナリオとは，一つひとつの振る舞いを，主にGiven(前提), Then(もし), When(ならば)に分けてfeaturesを記述します．
 次に，英語のfeaturesのひな形を示します．
-\begin{lstlisting}[style=customRuby]
+\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
 % cat ./featrues/sample_e.feature
 Feature: Description of feature
 
@@ -27,7 +27,7 @@ Scenario: Description of scenario
 # language: ja
 \end{verbatim}\end{quote}
 と記すと日本語でのkeywordが認識されます．下記にmy\_todoに対するfeaturesファイルの具体例を示します．
-\begin{lstlisting}[style=customCsh]
+\begin{lstlisting}[style=customCsh,basicstyle={\scriptsize\ttfamily}]
 # language: ja
 
 機能: todoの更新を行う
@@ -50,9 +50,9 @@ cucumber --i18n LANG
 \end{verbatim}\end{quote}
 によって表示される．LANG=ja, enに対しては表\ref{table:one}の通りになっています．
 
-\paragraph{caption: (table:one)featureファイルで用意されているkeywordの日本語(ja)，英語(en)の対応表．}
 \begin{table}[htbp]\begin{center}
-\caption{}
+\caption{featureファイルで用意されているkeywordの日本語(ja)，英語(en)の対応表．}
+\label{table:one}
 \begin{tabular}{llll}
 \hline
 keyword   &ja(japanese)   &en(english)  \\ \hline
@@ -81,32 +81,33 @@ but (code)    &"しかし", "但し","ただし"   &"But"          \\
 %for inserting separate lines, use \hline, \cline{2-3} etc.
 
 \subsubsection{Cucumber,RSpecインストール}
-まずrspecをgemでinstallする．
+まずrspecをgemでinstallします．
 
 \begin{enumerate}
 \item gem install rspec --version 2.0.0
 \item rspec --help
 \end{enumerate}
 と入力して
-\begin{lstlisting}[style=customCsh]
+\begin{lstlisting}[style=customCsh,basicstyle={\scriptsize\ttfamily}]
 /Users/nasubi/nasu% rspec --help
 Usage: rspec [options] [files or directories]
 \end{lstlisting}
-のような表示がされていればinstallができている．次に，cucumberをinstallする
+のような表示がされていればinstallができています．
+次に，cucumberをinstallします．
 
 \begin{enumerate}
 \item gem install cucumber --version 0.9.2
 \item cucumber --help
 \end{enumerate}
 と入力して
-\begin{lstlisting}[style=customCsh]
+\begin{lstlisting}[style=customCsh,basicstyle={\scriptsize\ttfamily}]
 cucumber --help
 Usage: cucumber [options] [ [FILE|DIR|URL][:LINE[:LINE]*] ]+
 \end{lstlisting}
-のような表示がされていればinstallできている．
+のような表示がされていればinstallできています．
 
 \subsubsection{ディレクトリー構造と使用手順}
-cucumberはRubygemsの提供する基本directory構造での作業を前提としています．
+CucumberはRubygemsの提供する基本directory構造での作業を前提としています．
 その構造を表示すると次のようになります．
 \begin{quote}\begin{verbatim}
 bob% tree .
@@ -134,14 +135,14 @@ bob% tree .
 \end{verbatim}\end{quote}
 カレントディレクトリ(.)の中にfeaturesというサブディレクトリを作成します．
 そのfeaturesの中に書きたいシナリオを書いた，hogehoge.featureを作成します．
-featureの具体例は上記に示してします．
+featureの具体例は上記に示しています．
 
 次にシェルを開いて，カレントディレクトリで，
 \begin{quote}\begin{verbatim}
 cucumber features hogehoge.feature
 \end{verbatim}\end{quote}
 と入力します．そうすると以下のような出力が得られます．
-\begin{lstlisting}[style=customRuby]
+\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
 Feature: Description of feature
 
   Scenario: Description of scenario  # features/hogehoge.feature:3
@@ -177,8 +178,8 @@ Cucumberはシナリオの最初のステップを読み取り,そのステッ�
 
 これはfeaturesディレクトリの下にstep\_definitionsディレクトリーにあることになっています．
 このシナリオを成功させるには，Cucumberが読み込めるファイルにステップ定義を保存する必要があります[1, pp15.]．
-その内容は次の通りcucumberから自動生成されます．
-\begin{lstlisting}[style=customRuby]
+その内容は次の通りCucumberから自動生成されます．
+\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
 
 Given(/^I want to explain scenario$/) do
   pending # Write code here that turns the phrase above into concrete actio\
