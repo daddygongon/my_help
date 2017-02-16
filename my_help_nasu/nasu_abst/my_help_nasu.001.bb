@@ -1,5 +1,5 @@
-%%Title: ./my_help_nasu.001.png
-%%Creator: extractbb 20110311
+%%Title: my_help_nasu.001.jpg
+%%Creator: extractbb 20160307
 %%BoundingBox: 0 0 737 553
-%%CreationDate: Wed Feb 15 22:04:21 2017
+%%CreationDate: Thu Feb 16 11:08:20 2017
 
