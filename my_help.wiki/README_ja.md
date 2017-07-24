@@ -118,13 +118,17 @@ my_help/lib/daddygongon
 にあります．このあと，-mすると自動でnew_helpがexeディレクトリーに追加されます．
 
 ## 独自helpを使えるように
-これは，-mで自動的に行われるように修正しましたが，gem環境によっては正常にinstallできません．その場合は，いかにしたがって，手動で/usr/local/binなどにinstallする必要があります．my_helpのdirectoryで
+これは，
+```
+ bob%  bundle exec exe/my_help -m
+```
+で自動的に行われるように修正しましたが，gem環境によっては正常にinstallできません．その場合は，以下にしたがって，手動で/usr/local/binなどにinstallする必要があります．my_helpのdirectoryで
 ```
  git add -A
  git commit -m 'add new help'
  rake install:local
 ```
-してください．
+してください．さらにlocalへのinstallにはsudoがいるかもしれませ．
 
 これで終わり．new_helpや短縮形のn_hでhelpが使えます．
 もし使えないときは，bin pathが通ってないので，terminalをnewしてください．
