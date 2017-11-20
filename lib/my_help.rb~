@@ -115,7 +115,7 @@ module MyHelp
         puts "File exists. rm it first to initialize it."
         exit
       end
-      p template = File.join(@default_help_dir,'template_help.yml')
+      p template = File.join(@default_help_dir,'template_help')
       FileUtils::Verbose.cp(template,target_help)
     end
 

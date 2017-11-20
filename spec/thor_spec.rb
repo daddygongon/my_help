@@ -5,7 +5,7 @@ RSpec.describe 'my_help command', type: :aruba do
   context 'version option' do
     before(:each) { run('my_help version') }
     it { expect(last_command_started).to be_successfully_executed }
-    it { expect(last_command_started).to have_output("my_help 0.4.5") }
+    it { expect(last_command_started).to have_output("0.4.5") }
   end
 
   context 'help option' do
@@ -67,7 +67,7 @@ EXPECTED
   end
 
   context 'list option' do
-    expected = "Specific help file:\n  my_todo\t:my todo\n  emacs_help\t:emacsのキーバインド\n  test_help\t:ヘルプのサンプル雛形\n"
+    expected = "Specific help file:\n  my_todo.yml\t:my todo\n  emacs_help.yml\t:emacsのキーバインド\n  test_help.yml\t:ヘルプのサンプル雛形\n"
 
     before(:each) { run('my_help list') }
     it { expect(last_command_started).to be_successfully_executed }

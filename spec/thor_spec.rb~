@@ -5,7 +5,7 @@ RSpec.describe 'my_help command', type: :aruba do
   context 'version option' do
     before(:each) { run('my_help version') }
     it { expect(last_command_started).to be_successfully_executed }
-    it { expect(last_command_started).to have_output("my_help 0.4.5") }
+    it { expect(last_command_started).to have_output("0.4.5") }
   end
 
   context 'help option' do
