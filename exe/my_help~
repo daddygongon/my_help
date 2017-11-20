@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require "../lib/my_help"
+
+MyHelp::Command.run(ARGV)

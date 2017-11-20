@@ -13,3 +13,18 @@
     :short: -i      #change short option
     :long: --item   #change long option
     :desc: 単元(item) #describe what for in help list
+  :title: 単元  #describe what for in each help
+  :cont:              #the following lines are appeared.
+  - c-f, move Forwrard,    前or右へ  #top '  - ' are necessary for yaml format
+  - フォーマットは自由です.
+
+# start the second item... and so on.
+:item2: #text here too
+  :opts:
+    :short: -c
+    :long: --word
+    :desc: text
+  :title: text
+  :cont:
+  - text line0
+  - text line1
