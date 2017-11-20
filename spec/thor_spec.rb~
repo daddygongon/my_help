@@ -3,30 +3,31 @@ require "./spec_helper.rb"
 
 RSpec.describe 'my_help command', type: :aruba do
   context 'version option' do
-    before(:each) { run('my_help -v') }
+    before(:each) { run('my_help version') }
     it { expect(last_command_started).to be_successfully_executed }
     it { expect(last_command_started).to have_output("my_help 0.4.5") }
   end
 
   context 'help option' do
     expected = <<EXPECTED
-Usage: my_help [options]
-    -v, --version                    show program Version.
-    -l, --list                       list specific helps
-    -e, --edit NAME                  edit NAME help(eg test_help)
-    -i, --init NAME                  initialize NAME help(eg test_help)
-    -m, --make                       make executables for all helps
-    -c, --clean                      clean up exe dir.
-        --install_local              install local after edit helps
-        --delete NAME                delete NAME help
+Commands:
+  my_help clean, --clean                  # clean up exe dir.
+  my_help delete NAME, --delete NAME      # delete NAME help
+  my_help edit NAME, --edit NAME          # edit NAME help(eg test_help)
+  my_help help [COMMAND]                  # Describe available commands or one specific command
+  my_help init NAME, --init NAME          # initialize NAME help(eg test_help).
+  my_help install_local, --install_local  # install local after edit helps
+  my_help list, --list                    # list specific helps
+  my_help make, --make                    # make executables for all helps.
+  my_help version, -v                     # show program version
 EXPECTED
-    before(:each) { run('my_help -h') }
+    before(:each) { run('my_help help') }
     it { expect(last_command_started).to be_successfully_executed }
-    it { expect(last_command_started).to have_output(expected.chomp) }
+    it { expect(last_command_started).to have_output(expected) }
   end
 
   context 'init option1' do
-    before(:each) { run('my_help -i test_help') }
+    before(:each) { run('my_help init') }
 
     expected=<<EOS
 "/Users/OyagiToshiharu/.my_help/test_help.yml"
@@ -41,7 +42,7 @@ EOS
     expected = <<EXPECTED
 #<OptionParser::MissingArgument: -e>
 EXPECTED
-  before(:each) { run('my_help -e') }
+  before(:each) { run('my_help edit') }
   it { expect(last_command_started).to be_successfully_executed }
   it { expect(last_command_started).to have_output(expected.chomp) }
   end
@@ -50,7 +51,7 @@ EXPECTED
     expected = <<EXPECTED
 #<OptionParser::MissingArgument: -i>
 EXPECTED
-  before(:each) { run('my_help -i') }
+  before(:each) { run('my_help init') }
   it { expect(last_command_started).to be_successfully_executed }
   it { expect(last_command_started).to have_output(expected.chomp) }
   end
@@ -60,7 +61,7 @@ EXPECTED
 "exe/my_todo"
 #<Errno::ENOENT: No such file or directory @ rb_sysopen - exe/my_todo>
 EXPECTED
-    before(:each) { run('my_help -m') }
+    before(:each) { run('my_help make') }
     it { expect(last_command_started).to be_successfully_executed }
     it { expect(last_command_started).to have_output(expected.chomp) }
   end
@@ -68,7 +69,7 @@ EXPECTED
   context 'list option' do
     expected = "Specific help file:\n  my_todo\t:my todo\n  emacs_help\t:emacsのキーバインド\n  test_help\t:ヘルプのサンプル雛形\n"
 
-    before(:each) { run('my_help -l') }
+    before(:each) { run('my_help list') }
     it { expect(last_command_started).to be_successfully_executed }
     it { expect(last_command_started).to have_output(expected.chomp) }
   end

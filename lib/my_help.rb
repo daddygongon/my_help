@@ -4,33 +4,26 @@ require "yaml"
 require "fileutils"
 require "my_help/version"
 require "systemu"
-require "colorize"
+require "thor"
 
 module MyHelp
-  class Command
-
+  class Command < Thor
+=begin
     def self.run(argv=[])
       new(argv).execute
     end
-
-    def initialize(argv=[])
-      @argv = argv
-      @default_help_dir = File.expand_path("../../lib/daddygongon", __FILE__)
-      @local_help_dir = File.join(ENV['HOME'],'.my_help')
-      set_help_dir_if_not_exists
-    end
-
-    def set_help_dir_if_not_exists
-      return if File::exists?(@local_help_dir)
-      FileUtils.mkdir_p(@local_help_dir, :verbose=>true)
-      Dir.entries(@default_help_dir).each{|file|
-        next if file=='template_help.yml'
-        file_path=File.join(@local_help_dir,file)
-        next if File::exists?(file_path)
-        FileUtils.cp((File.join(@default_help_dir,file)),@local_help_dir,:verbose=>true)
-      }
-    end
-
+=end
+  
+  def initialize(*args)
+    super
+    @argv = args
+    @default_help_dir = File.expand_path("../../lib/daddygongon", __FILE__)
+    @local_help_dir = File.join(ENV['HOME'],'.my_help')
+    set_help_dir_if_not_exists
+  end
+    
+  
+=begin
     def execute
       @argv << '--help' if @argv.size==0
       command_parser = OptionParser.new do |opt|
@@ -40,8 +33,8 @@ module MyHelp
         }
         opt.on('-l', '--list', 'list specific helps'){list_helps}
         opt.on('-e NAME', '--edit NAME', 'edit NAME help(eg test_help)'){|file| edit_help(file)}
-        opt.on('-i NAME', '--init NAME', 'initialize NAME help(eg test_help)'){|file| init_help(file)}
-        opt.on('-m', '--make', 'make executables for all helps'){make_help}
+        opt.on('-i NAME', '--init NAME', 'initialize NAME help(eg test_help).'){|file| init_help(file)}
+        opt.on('-m', '--make', 'make executables for all helps.'){make_help}
         opt.on('-c', '--clean', 'clean up exe dir.'){clean_exe}
         opt.on('--install_local','install local after edit helps'){install_local}
         opt.on('--delete NAME','delete NAME help'){|file| delete_help(file)}
@@ -53,34 +46,35 @@ module MyHelp
       end
       exit
     end
+=end
 
+  desc 'version, -v', 'show program version'
+  #    map "--version" => "version"                                                                                             
+  map "--version" => "version"
+  def version
+    puts MyHelp::VERSION
+  end
+
+  desc 'delete NAME, --delete NAME','delete NAME help'
+  map "--delete" => "delete"
     def delete_help(file)
       del_files=[]
-      del_files << File.join(@local_help_dir,file+'.yml')
-      exe_dir=File.join(File.expand_path('../..',@default_help_dir),'exe')
-      exe_0_dir='/usr/local/bin'
-      del_files << File.join(exe_dir,file)
-      del_files << File.join(exe_0_dir,file)
-      del_files << File.join(exe_dir,short_name(file))
-      del_files << File.join(exe_0_dir,short_name(file))
-      del_files.each{|file|
-        print "Are you sure to delete "+file.blue+"?[Ynq] ".red
-        case gets.chomp
-        when 'Y'
-          begin
-            FileUtils.rm(file,:verbose=>true)
-          rescue => error
-            puts error.to_s.red
-          end
-        when 'n' ; next
-        when 'q' ; exit
-        end
-      }
+      del_files << File.join(@local_help_dir,file)
+       exe_dir=File.join(File.expand_path('../..',@default_help_dir),'exe')
+       del_files << File.join(exe_dir,file)
+      p del_files << File.join(exe_dir,short_name(file))
+      print "Are you sure to delete these files?[yes]"
+      if gets.chomp=='yes' then
+        del_files.each{|file| FileUtils.rm(file,:verbose=>true)}
+      end
     end
 
     USER_INST_DIR="USER INSTALLATION DIRECTORY:"
-    INST_DIR="INSTALLATION DIRECTORY:"
+    INST_DIR="INSTALLATION DIRECTORY:"    
+    desc 'install_local, --install_local','install local after edit helps'
+    map "--install_local" => "install_local"
     def install_local
+
       Dir.chdir(File.expand_path('../..',@default_help_dir))
       p pwd_dir = Dir.pwd
       # check that the working dir should not the gem installed dir,
@@ -100,17 +94,58 @@ module MyHelp
       system "Rake install:local"
     end
 
-    def short_name(file)
-      file_name=file.split('_')
-      return file_name[0][0]+"_"+file_name[1][0]
+    desc 'clean, --clean', 'clean up exe dir.'
+    map "--clean" => "clean"
+    def clean
+      local_help_entries.each{|file|
+        next if file.include?('emacs_help') or file.include?('e_h')
+        next if file.include?('git_help') or file.include?('t_h')
+        [file, short_name(file)].each{|name|
+          p target=File.join('exe',name)
+          FileUtils::Verbose.rm(target)
+        }
+      }
     end
 
-    def make_help
+    desc 'init NAME, --init NAME', 'initialize NAME help(eg test_help).'
+    map "--init" => "init"
+    def init(file)
+      p target_help=File.join(@local_help_dir,file)
+      if File::exists?(target_help)
+        puts "File exists. rm it first to initialize it."
+        exit
+      end
+      p template = File.join(@default_help_dir,'template_help')
+      FileUtils::Verbose.cp(template,target_help)
+    end
+
+    desc 'edit NAME, --edit NAME', 'edit NAME help(eg test_help)'
+    map "--edit" => "edit"
+    def edit(file)
+      p target_help=File.join(@local_help_dir,file)
+      system "emacs #{target_help}"
+    end
+    
+
+
+    desc 'list, --list', 'list specific helps'
+    map "--list" => "list"
+    def list
+      print "Specific help file:\n"
+      local_help_entries.each{|file|
+        file_path=File.join(@local_help_dir,file)
+        help = YAML.load(File.read(file_path))
+        print "  #{file}\t:#{help[:head][0]}\n"
+      }
+    end
+
+    desc 'make, --make', 'make executables for all helps.'
+    map "--make" => "make"
+    def make
       local_help_entries.each{|file|
         exe_cont="#!/usr/bin/env ruby\nrequire 'specific_help'\n"
         exe_cont << "help_file = File.join(ENV['HOME'],'.my_help','#{file}')\n"
-        exe_cont << "SpecificHelp::Command.run(help_file, ARGV)\n"
-        file = File.basename(file,'.yml')
+          exe_cont << "SpecificHelp::Command.run(help_file, ARGV)\n"
         [file, short_name(file)].each{|name|
           p target=File.join('exe',name)
           File.open(target,'w'){|file| file.print exe_cont}
@@ -119,58 +154,36 @@ module MyHelp
       }
       install_local
     end
-
-    def clean_exe
-      local_help_entries.each{|file|
-        next if ['emacs_help','e_h','my_help','my_todo'].include?(file)
-        file = File.basename(file,'.yml')
-        [file, short_name(file)].each{|name|
-          p target=File.join('exe',name)
-          FileUtils::Verbose.rm(target)
+    
+    no_commands do
+      def set_help_dir_if_not_exists
+        return if File::exists?(@local_help_dir)
+        FileUtils.mkdir_p(@local_help_dir, :verbose=>true)
+        Dir.entries(@default_help_dir).each{|file|
+          next if file=='template_help'
+          file_path=File.join(@local_help_dir,file)
+          next if File::exists?(file_path)
+          FileUtils.cp((File.join(@default_help_dir,file)),@local_help_dir,:verbose=>true)
         }
-      }
-    end
-
-    def init_help(file)
-      p target_help=File.join(@local_help_dir,file+'.yml')
-      if File::exists?(target_help)
-        puts "File exists. rm it first to initialize it."
-        exit
       end
-      p template = File.join(@default_help_dir,'template_help.yml')
-      FileUtils::Verbose.cp(template,target_help)
+
+      #    desc 'test2', 'test3'
+      def local_help_entries
+        entries= []
+        Dir.entries(@local_help_dir).each{|file|
+          next unless file.include?('_')
+          next if file[0]=='#' or file[-1]=='~' or file[0]=='.'
+          entries << file
+        }
+        return entries
+      end
+
+      #   desc 'test4', 'test5'
+      def short_name(file)
+        file_name=file.split('_')
+        return file_name[0][0]+"_"+file_name[1][0]
+      end
     end
 
-    def edit_help(file)
-      p target_help=File.join(@local_help_dir,file)
-      system "emacs #{target_help}.yml"
-    end
-
-    def local_help_entries
-      entries= []
-      Dir.entries(@local_help_dir).each{|file|
-        next unless file.include?('_')
-        next if file[0]=='#' or file[-1]=='~' or file[0]=='.'
-        entries << file
-      }
-      return entries
-    end
-
-    def list_helps
-      print "Specific help file:\n"
-      local_help_entries.each{|file|
-        file_path=File.join(@local_help_dir,file)
-        file = File.basename(file,'.yml')
-        begin
-          help = YAML.load(File.read(file_path))
-        rescue=> eval
-          p eval.to_s.red
-          print "\n YAML load error in #{file}.".red
-          print "  Revise it by "+"my_help --edit #{file}\n".red
-          exit
-        end
-        print "  #{file}\t:#{help[:head][0]}\n".blue
-      }
-    end
   end
 end

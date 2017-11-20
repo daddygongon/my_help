@@ -10,19 +10,20 @@ RSpec.describe 'my_help command', type: :aruba do
 
   context 'help option' do
     expected = <<EXPECTED
-Usage: my_help [options]
-    -v, --version                    show program Version.
-    -l, --list                       list specific helps
-    -e, --edit NAME                  edit NAME help(eg test_help)
-    -i, --init NAME                  initialize NAME help(eg test_help)
-    -m, --make                       make executables for all helps
-    -c, --clean                      clean up exe dir.
-        --install_local              install local after edit helps
-        --delete NAME                delete NAME help
+Commands:
+  my_help clean, --clean                  # clean up exe dir.
+  my_help delete NAME, --delete NAME      # delete NAME help
+  my_help edit NAME, --edit NAME          # edit NAME help(eg test_help)
+  my_help help [COMMAND]                  # Describe available commands or one specific command
+  my_help init NAME, --init NAME          # initialize NAME help(eg test_help).
+  my_help install_local, --install_local  # install local after edit helps
+  my_help list, --list                    # list specific helps
+  my_help make, --make                    # make executables for all helps.
+  my_help version, -v                     # show program version
 EXPECTED
     before(:each) { run('my_help help') }
     it { expect(last_command_started).to be_successfully_executed }
-    it { expect(last_command_started).to have_output(expected.chomp) }
+    it { expect(last_command_started).to have_output(expected) }
   end
 
   context 'init option1' do
