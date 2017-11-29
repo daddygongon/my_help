@@ -65,11 +65,17 @@ EXPECTED
     it { expect(last_command_started).to have_output(expected.chomp) }
   end
 
-  context 'list option' do
-    expected = "Specific help file:\n  my_todo\t:my todo\n  emacs_help\t:emacsのキーバインド\n  test_help\t:ヘルプのサンプル雛形\n"
+  context 'make option' do
+    expected = "  my_todo\t:my todo\n  emacs_help\t:emacsのキーバインド\n  test_help\t:ヘルプのサンプル雛形\n"
 
-    before(:each) { run('my_help -l') }
+    before(:each) { run('my_help -m') }
     it { expect(last_command_started).to be_successfully_executed }
     it { expect(last_command_started).to have_output(expected.chomp) }
   end
+
+
+Specific help file:
+    my_todo:my todo
+  emacs_help:emacsのキーバインド
+  test_help:ヘルプのサンプル雛形
 end

@@ -64,7 +64,7 @@ module MyHelp
       del_files << File.join(exe_dir,file)
       p del_files << File.join(exe_dir,short_name(file))
       print "Are you sure to delete these files?[yes]"
-      if gets.chomp=='yes' then
+      if gets=='yes' then
         del_files.each{|file| FileUtils.rm(file,:verbose=>true)}
       end
     end
