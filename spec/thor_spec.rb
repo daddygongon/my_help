@@ -26,7 +26,7 @@ EXPECTED
     it { expect(last_command_started).to have_output(expected) }
   end
 
-  context 'init option1' do
+  context 'init option' do
     before(:each) { run('my_help init') }
 
     expected=<<EXPECTED
@@ -48,6 +48,7 @@ EXPECTED
   it { expect(last_command_started).to have_output(expected.chomp) }
   end
 
+=begin
   context 'init option2' do
     expected = <<EXPECTED
 ERROR: "my_help init" was called with no arguments
@@ -57,6 +58,8 @@ EXPECTED
   it { expect(last_command_started).to be_successfully_executed }
   it { expect(last_command_started).to have_output(expected.chomp) }
   end
+=end
+
 =begin
   context 'make option' do
     expected = <<EXPECTED
@@ -69,7 +72,7 @@ EXPECTED
   end
 =end
   context 'list option' do
-    expected = "Specific help file:\n  my_todo.yml\t:my todo\n  emacs_help.yml\t:emacsのキーバインド\n  yagi_help2\t:ヘルプのサンプル雛形\n  test_help.yml\t:ヘルプのサンプル雛形\n"
+    expected = "Specific help file:\n  my_todo.yml\t:my todo\n  emacs_help.yml\t:emacsのキーバインド\n  yagi_help2\t:yagiのサンプル\n  test_help.yml\t:ヘルプのサンプル雛形\n"
 
     before(:each) { run('my_help list') }
     it { expect(last_command_started).to be_successfully_executed }

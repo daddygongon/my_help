@@ -14,7 +14,7 @@ Commands:
   my_help clean, --clean                  # clean up exe dir.
   my_help delete NAME, --delete NAME      # delete NAME help
   my_help edit NAME, --edit NAME          # edit NAME help(eg test_help)
-  my_help help [COMMAND]                  # Describe available commands or one specific command
+  my_help help [COMMAND]                  # Describe available commands or on...
   my_help init NAME, --init NAME          # initialize NAME help(eg test_help).
   my_help install_local, --install_local  # install local after edit helps
   my_help list, --list                    # list specific helps
@@ -29,10 +29,10 @@ EXPECTED
   context 'init option1' do
     before(:each) { run('my_help init') }
 
-    expected=<<EOS
-"/Users/OyagiToshiharu/.my_help/test_help.yml"
-File exists. rm it first to initialize it.
-EOS
+    expected=<<EXPECTED
+ERROR: "my_help init" was called with no arguments
+Usage: "my_help init NAME, --init NAME"
+EXPECTED
     it { expect(last_command_started).to be_successfully_executed }
     it { expect(last_command_started).to have_output(expected.chomp) }
   end
@@ -40,21 +40,26 @@ EOS
 
   context 'edit option' do
     expected = <<EXPECTED
-#<OptionParser::MissingArgument: -e>
+ERROR: "my_help edit" was called with no arguments
+Usage: "my_help edit NAME, --edit NAME"
 EXPECTED
   before(:each) { run('my_help edit') }
   it { expect(last_command_started).to be_successfully_executed }
   it { expect(last_command_started).to have_output(expected.chomp) }
   end
 
+=begin
   context 'init option2' do
     expected = <<EXPECTED
-#<OptionParser::MissingArgument: -i>
+ERROR: "my_help init" was called with no arguments
+Usage: "my_help init NAME, --init NAME"
 EXPECTED
   before(:each) { run('my_help init') }
   it { expect(last_command_started).to be_successfully_executed }
   it { expect(last_command_started).to have_output(expected.chomp) }
   end
+=end
+
 =begin
   context 'make option' do
     expected = <<EXPECTED
@@ -67,7 +72,7 @@ EXPECTED
   end
 =end
   context 'list option' do
-    expected = "Specific help file:\n  my_todo.yml\t:my todo\n  emacs_help.yml\t:emacsのキーバインド\n  test_help.yml\t:ヘルプのサンプル雛形\n"
+    expected = "Specific help file:\n  my_todo.yml\t:my todo\n  emacs_help.yml\t:emacsのキーバインド\n  yagi_help2\t:yagiのサンプル\n  test_help.yml\t:ヘルプのサンプル雛形\n"
 
     before(:each) { run('my_help list') }
     it { expect(last_command_started).to be_successfully_executed }
