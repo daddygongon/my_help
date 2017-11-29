@@ -16,7 +16,7 @@ module MyHelp
 
   def initialize(*args)
     super
-    @argv = args
+#    @argv = args
     @default_help_dir = File.expand_path("../../lib/daddygongon", __FILE__)
     @local_help_dir = File.join(ENV['HOME'],'.my_help')
     set_help_dir_if_not_exists
@@ -60,8 +60,8 @@ module MyHelp
     def delete_help(file)
       del_files=[]
       del_files << File.join(@local_help_dir,file)
-       exe_dir=File.join(File.expand_path('../..',@default_help_dir),'exe')
-       del_files << File.join(exe_dir,file)
+      exe_dir=File.join(File.expand_path('../..',@default_help_dir),'exe')
+      del_files << File.join(exe_dir,file)
       p del_files << File.join(exe_dir,short_name(file))
       print "Are you sure to delete these files?[yes]"
       if gets.chomp=='yes' then
