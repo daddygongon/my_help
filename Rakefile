@@ -5,6 +5,7 @@ require 'yard'
 require "rspec/core/rake_task"
 require 'fileutils'
 require 'cucumber/rake/task'
+require 'open3'
 
 p base_path = File.expand_path('..', __FILE__)
 p basename = File.basename(base_path)
@@ -12,6 +13,20 @@ p basename = File.basename(base_path)
 task :default do
   system 'rake -T'
 end
+
+desc "open github origin url"
+task :open_github do
+  out, err, status = Open3.capture3("git remote -v")
+  url = "https://"
+  out.split("\n").each do |line|
+    if m = line.match(/^origin\s+git@(.+) \(push\)$/)
+      p address = m[1].gsub!(':','/')
+      url += address
+    end
+  end
+  system "open #{url}"
+end
+
 
 desc "cucumber with Japanese"
 task :cucumber do
@@ -87,6 +102,8 @@ end
 
 desc "transfer hikis/*.hiki to wiki"
 task :hiki2md do
+  puts "deprecated and sholud rewrite for ipynb (not yet)."
+  exit
   files = Dir.entries('hikis')
   files.each{|file|
     name=file.split('.')
