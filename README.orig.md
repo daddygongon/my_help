@@ -1,7 +1,3 @@
-
-# Table of Contents
- <p><div class="lev1 toc-item"><a href="#名前" data-toc-modified-id="名前-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>名前</a></div><div class="lev1 toc-item"><a href="#概要" data-toc-modified-id="概要-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>概要</a></div><div class="lev1 toc-item"><a href="#(my_helpで解決しようとする)問題点" data-toc-modified-id="(my_helpで解決しようとする)問題点-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>(my_helpで解決しようとする)問題点</a></div><div class="lev1 toc-item"><a href="#特徴" data-toc-modified-id="特徴-4"><span class="toc-item-num">4&nbsp;&nbsp;</span>特徴</a></div><div class="lev1 toc-item"><a href="#名前" data-toc-modified-id="名前-5"><span class="toc-item-num">5&nbsp;&nbsp;</span>名前</a></div><div class="lev1 toc-item"><a href="#概要" data-toc-modified-id="概要-6"><span class="toc-item-num">6&nbsp;&nbsp;</span>概要</a></div><div class="lev1 toc-item"><a href="#問題点" data-toc-modified-id="問題点-7"><span class="toc-item-num">7&nbsp;&nbsp;</span>問題点</a></div><div class="lev1 toc-item"><a href="#特徴" data-toc-modified-id="特徴-8"><span class="toc-item-num">8&nbsp;&nbsp;</span>特徴</a></div><div class="lev1 toc-item"><a href="#使用法" data-toc-modified-id="使用法-9"><span class="toc-item-num">9&nbsp;&nbsp;</span>使用法</a></div><div class="lev2 toc-item"><a href="#インストール" data-toc-modified-id="インストール-91"><span class="toc-item-num">9.1&nbsp;&nbsp;</span>インストール</a></div><div class="lev2 toc-item"><a href="#独自のhelpを作る方法" data-toc-modified-id="独自のhelpを作る方法-92"><span class="toc-item-num">9.2&nbsp;&nbsp;</span>独自のhelpを作る方法</a></div><div class="lev2 toc-item"><a href="#独自helpを使えるように" data-toc-modified-id="独自helpを使えるように-93"><span class="toc-item-num">9.3&nbsp;&nbsp;</span>独自helpを使えるように</a></div><div class="lev1 toc-item"><a href="#userの独自helpの達成方法" data-toc-modified-id="userの独自helpの達成方法-10"><span class="toc-item-num">10&nbsp;&nbsp;</span>userの独自helpの達成方法</a></div><div class="lev1 toc-item"><a href="#どちらがいいか" data-toc-modified-id="どちらがいいか-11"><span class="toc-item-num">11&nbsp;&nbsp;</span>どちらがいいか</a></div><div class="lev1 toc-item"><a href="#uninstall" data-toc-modified-id="uninstall-12"><span class="toc-item-num">12&nbsp;&nbsp;</span>uninstall</a></div><div class="lev1 toc-item"><a href="#Rakefile" data-toc-modified-id="Rakefile-13"><span class="toc-item-num">13&nbsp;&nbsp;</span>Rakefile</a></div>
-
 # 名前
 
 my_help
@@ -10,7 +6,7 @@ my_help
 
 CUI(CLI)ヘルプのUsage出力を真似て，user独自のhelpを作成・提供するgem.
 
-# (my_helpで解決しようとする)問題点
+# 問題点
 CUIやshell, 何かのプログラミング言語などを習得しようとする初心者は，
 commandや文法を覚えるのに苦労します．少しのkey(とっかかり)があると
 思い出すんですが，うろ覚えでは間違えて路頭に迷います．問題点は，
@@ -38,6 +34,7 @@ RPGでレベル上げとかアイテムを貯めるようにして，
 プログラミングでスキルを発展させてください．
 
 物覚えの悪い作者は，人の名前をitem分けして，こそっと使っています．
+
 
 # 使用法
 ## インストール
@@ -235,6 +232,7 @@ ruby test.rb lib/daddygongon/emacs_help
 
 で構築できる．実装してみて．
 
+
 # どちらがいいか
 Rubyで日本語が使えるから，optionsを日本語にしてみた．
 ```
@@ -334,8 +332,3 @@ add_ymlは~/.my_help/*_helpファイルを全て~/.my_help/*_help.ymlに変え�
 to_ymlは~/.emacs.d/init.elに'.yml'の設定が書き込まれていない時，ruby-modeでemacsを起動するsciptを埋め込む．
 
 clean_exeは，githubへuploadする時に，開発者個人のexeファイルをrmして整頓する．
-
-
-```ruby
-
-```
