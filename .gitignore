@@ -1,6 +1,22 @@
-/.DS_Store/
+
+# コメントは `#'
+
+# .svn フォルダ
+# ディレクトリは最後にスラッシュ
+.svn/
+
+# vim のバックアップファイル
+# * は展開される
+*.swp
+
+# /tmp のように '/' から始めれば
+# カレントディレクトリの tmp のみ無視
+# /hoge/tmp などは無視されない
+/tmp
+
+.DS_Store
 /.bundle/
-/.yardoc
+.yardoc/
 /Gemfile.lock
 /_yardoc/
 /coverage/
@@ -10,3 +26,8 @@
 /tmp/
 *~
 #*
+
+# $ git rm -r --cached .
+# $ git add .
+# $ git commit -m ".gitignore is now working"
+# $ git push origin master
