@@ -1,0 +1,133 @@
+%\documentclass[a4j,twocolumn]{jsarticle}
+\documentclass[a4j,twocolumn,uplatex]{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{url}
+\usepackage{listings,jlisting}
+
+\lstset{
+  basicstyle={\ttfamily},
+  identifierstyle={},
+  keywordstyle={\bfseries},
+  ndkeywordstyle={},
+  frame={tb},
+  breaklines=true,
+  numbers=left,
+  numberstyle={},
+  xrightmargin=0zw,
+  xleftmargin=3zw,
+  numberstyle={\scriptsize},
+  stepnumber=1,
+  numbersep=1zw,
+  lineskip=0.5ex
+}
+
+\lstdefinestyle{customRuby}{
+   language={ruby},
+   numbers=left,
+}
+
+\setlength{\textheight}{275mm}
+\headheight 5mm
+\topmargin -30mm
+\textwidth 185mm
+\oddsidemargin -15mm
+\evensidemargin -15mm
+\pagestyle{empty}
+
+
+\begin{document}
+
+\title{コマンドツール作成ライブラリThorによるmy\_helpの書き換え}
+\author{情報科学科 \hspace{5mm} 27014534 \hspace{5mm} 大八木利治}
+\date{}
+\maketitle
+\section{背景}
+my\_helpとはユーザー独自のマニュアルを作成することができるユーザメモソフトである．
+これはterminalだけを用いて簡単に起動，編集，削除などをすることができるため，
+非常に便利である．
+さらに，そのマニュアルは自分ですぐに編集，参照することができるので，
+メモとしての機能も果たしている．
+これにより，プログラミング初心者が，
+頻繁に使うコマンドやキーバインドなどをいちいちweb browserを立ち上げて調べるのではなく，
+terminal上で即座に取得できるため，
+プログラム開発を集中することが期待される．
+
+しかし，my\_helpにある問題のうちの一つとして挙げられるのがサブコマンドの記述法である．
+
+my\_helpの振る舞いを制御しているサブコマンドは，
+マイナスを付した省略記法が取られている．
+プログラミング初心者にとってこの省略記法は，
+覚えにくかったりわかりにくかったりするという問題があり，
+現在はフルワードを使った自然言語に近い記述法が多く用いられている．
+
+そこで，本研究ではコマンドラインツール作成ライブラリを
+自然言語に近いサブコマンド体系を実装しやすいライブラリであるThorに変更する．
+rubyの標準ライブラリであるoptparseで作成されているmy\_helpを，
+Thor\cite{erikhuda}によって書き直し，
+異なった2つライブラリで作成されたmy\_helpの使用感を
+比較検討することを目的とする．
+
+\section{optparseについて}
+今回の研究対象のmy\_helpは，optparseで実装されている．
+%optparseはコマンドの登録と実行するメソッドを分けて記述することが期待されている．
+optparseが操作するオプションは，下記のonメソッドで設定する．
+
+\begin{lstlisting}[style=customRuby,basicstyle={\scriptsize\ttfamily}]
+def execute
+  @argv << '--help' if @argv.size==0
+  command_parser = OptionParser.new do |opt|
+    opt.on('-v', '--version','show program Version.') { |v|
+      opt.version = MyHelp::VERSION
+      puts opt.ver
+    }
+    opt.on('-l', '--list', 'list specific helps'){list_helps}
+    中略
+  end
+  中略
+end
+
+def list_helps
+中略
+end
+後略
+\end{lstlisting}
+
+第1引数はショートオプションで，-a や -d のように設定する．
+同様にして，第2引数はロングオプションを表し，--add や --delete のように，
+第3引数はそのオプションの説明文で，helpで表示される説明文を設定する．
+後ろのブロックには，そのオプションが指定された場合に実行されるコードを記述する\cite{MakuMakuOptParse}．
+しかしこのライブラリでは自然言語に近いサブコマンドを実装するには相当な書き換えが必要となる．
+
+\section{Thorについて}
+本研究ではoptparseの代わりのライブラリとしてThorの採用を検討する．Thorは，コマンドラインツールの作成を支援するライブラリであり，gitやbundlerのようにサブコマンドを含むコマンドラインツールを簡単に作成することができる\cite{succi}．Thorには以下のような特徴がある．
+
+\begin{enumerate}
+\item コマンドラインオプションのパーズやサブコマンドごとのヘルプを作るなどの面倒な作業を簡単にこなすことができ，手早くビルドツールや実行可能なコマンドを作成できる\cite{hibariya}．
+\item 特殊なDSL （Domain Specific Language）を使わずにメソッドを定義することで処理を記述するため，テストを行いやすい\cite{hibariya}．
+\item optparseでは作成することが困難な，マイナスを伴わない（自然言語に近い）サブコマンドを実装することが可能である．
+\end{enumerate}
+
+\section{展望}
+cliのoptionをparseするtoolboxのランキングサイトによると
+high
+%ところが，rubygems.orgでのtotal downloadsを比べると
+%highline(44,223,210)に対してthor(143,011,589)
+%となっており，thorがいかに多くのusersに支持されているかがわかる．
+lineがもっともスコアが高い\cite{toolbox}．
+highlineでも書き換えを行い，コード量およびコマンドの使いやすさ，覚えやすさといった
+使用感についての比較検討を行う．
+
+\vspace{0.3\baselineskip}
+
+{\small\setlength\baselineskip{10pt}	% 参考文献は小さめの文字で行間を詰めてある
+\begin{thebibliography}{9}
+\bibitem{erikhuda}「Thor」，erikhuda，\url{https://github.com/erikhuda/thor}，2017/8/30アクセス
+\bibitem{MakuMakuOptParse}
+"コマンドライン引数によるオプションに対応する (optparse)", まくまくRubyノート, \url{http://maku77.github.io/ruby/io/optparse.html}，2017/9/13アクセス．
+\bibitem{succi}「Thorの使い方まとめ」，succi0303，\url{http://qiita.com/succi0303/items/32560103190436c9435b}，2017/9/3アクセス．
+\bibitem{hibariya}「Thorで簡単にコマンドラインアプリをつくる」,Hibariya, \url{http://note.hibariya.org/articles/20111025/a0.html}，2017/9/3アクセス．
+\bibitem{toolbox} "Toolbox", \url{https://www.ruby-toolbox.com/categories/cli_option_parsers}，2017/9/13アクセス．
+\end{thebibliography}
+}
+
+\end{document}
