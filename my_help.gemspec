@@ -37,4 +37,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "systemu"
   spec.add_dependency "coderay"
   spec.add_dependency "colorize"
+    spec.add_dependency "thor"
 end
