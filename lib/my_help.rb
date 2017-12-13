@@ -133,7 +133,11 @@ EOS
         file = File.basename(file,'.yml')
         [file, short_name(file)].each{|name|
           p target=File.join('exe',name)
+        begin
           FileUtils::Verbose.rm(target)
+        rescue=> eval
+          puts eval.to_s.red
+        end
         }
       }
     end
