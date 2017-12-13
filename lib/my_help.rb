@@ -42,7 +42,7 @@ module MyHelp
         opt.on('-e NAME', '--edit NAME', 'edit NAME help(eg test_help)'){|file| edit_help(file)}
         opt.on('-i NAME', '--init NAME', 'initialize NAME help(eg test_help)'){|file| init_help(file)}
         opt.on('-m', '--make', 'make executables for all helps'){make_help}
-        opt.on('-c', '--clean', 'clean up exe dir.'){clean_exe}
+        opt.on('-c', '--clean', 'clean up exe dir.'){clean_exe_dir}
         opt.on('--install_local','install local after edit helps'){install_local}
         opt.on('--delete NAME','delete NAME help'){|file| delete_help(file)}
       end
@@ -108,11 +108,6 @@ module MyHelp
     def make_help
       local_help_entries.each{|file|
         file = File.basename(file,'.yml')
-=begin
-        exe_cont="#!/usr/bin/env ruby\nrequire 'specific_help'\n"
-        exe_cont << "help_file = File.join(ENV['HOME'],'.my_help','#{file}')\n"
-        exe_cont << "SpecificHelp::Command.run(help_file, ARGV)\n"
-=end
         exe_cont=<<"EOS"
 #!/usr/bin/env ruby
 require 'specific_help'
@@ -132,7 +127,7 @@ EOS
       install_local
     end
 
-    def clean_exe
+    def clean_exe_dir
       local_help_entries.each{|file|
         next if ['emacs_help','e_h','my_help','my_todo'].include?(file)
         file = File.basename(file,'.yml')
@@ -163,6 +158,7 @@ EOS
       Dir.entries(@local_help_dir).each{|file|
         next unless file.include?('_')
         next if file[0]=='#' or file[-1]=='~' or file[0]=='.'
+        next if file.match(/(.+)_e\.yml/)
         entries << file
       }
       return entries
