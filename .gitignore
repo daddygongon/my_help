@@ -13,7 +13,7 @@
 # カレントディレクトリの tmp のみ無視
 # /hoge/tmp などは無視されない
 /tmp
-
+.ipynb_checkpoints/
 .DS_Store
 /.bundle/
 .yardoc/
@@ -31,3 +31,4 @@
 # $ git add .
 # $ git commit -m ".gitignore is now working"
 # $ git push origin master
+
