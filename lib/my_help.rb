@@ -38,9 +38,15 @@ module MyHelp
           opt.version = MyHelp::VERSION
           puts opt.ver
         }
-        opt.on('-l', '--list', '個別(specific)ヘルプのList表示.'){list_helps}
-        opt.on('-e NAME', '--edit NAME', 'NAME(例：test_help)をEdit編集.'){|file| edit_help(file)}
-        opt.on('-i NAME', '--init NAME', 'NAME(例：test_help)のtemplateを作成.'){|file| init_help(file)}
+        if ENV['LANG'] == "C" then
+          opt.on('-l', '--list', 'list specific helps'){list_helps}
+          opt.on('-e NAME', '--edit NAME', 'edit NAME help(eg test_help)'){|file| edit_help(file)}
+          opt.on('-i NAME', '--init NAME', 'initialize NAME help(eq test_help)'){|file| init_help(file)}
+        else
+          opt.on('-l', '--list', '個別(specific)ヘルプのList表示.'){list_helps}
+          opt.on('-e NAME', '--edit NAME', 'NAME(例：test_help)をEdit編集.'){|file| edit_help(file)}
+          opt.on('-i NAME', '--init NAME', 'NAME(例：test_help)のtemplateを作成.'){|file| init_help(file)}
+        end
         opt.on('-m', '--make', 'make executables for all helps'){make_help}
         opt.on('-c', '--clean', 'clean up exe dir.'){clean_exe_dir}
         opt.on('--install_local','install local after edit helps'){install_local}
