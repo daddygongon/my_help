@@ -117,6 +117,8 @@ module MyHelp
       end
       p template = File.join(@default_help_dir,'template_help.yml')
       FileUtils::Verbose.cp(template,target_help)
+      command_template = <<EOS
+EOS
     end
 
     desc 'edit NAME, --edit NAME', 'edit NAME help(eg test_help)'
