@@ -1,0 +1,99 @@
+% -*- LaTeX -*-
+% 
+% Style file for including EPS figures.
+% Copyright (c) 2006, Hiroyuki Ohsaki.
+% All rights reserved.
+% 
+% $Id: insertfig.sty,v 1.8 2015/06/30 16:31:55 ohsaki Exp ohsaki $
+% 
+
+% This code is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY.  No author or distributor
+% accepts responsibility to anyone for the consequences of using it
+% or for whether it serves any particular purpose or works at all,
+% unless he says so in writing.  Refer to the GNU Emacs General Public
+% License for full details.
+
+% Everyone is granted permission to copy, modify and redistribute
+% this code, but only under the conditions described in the
+% GNU Emacs General Public License.   A copy of this license is
+% supposed to have been given to you along with GNU Emacs so you
+% can know your rights and responsibilities.  It should be in a
+% file named COPYING.  Among other things, the copyright notice
+% and this notice must be preserved on all copies.
+
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{ifthen}
+
+% default figure size in the unit of paper width.
+\newcommand{\insertfigsize}{0}
+
+% [size][filename]
+\newcommand{\@insertfig}[2][0]{%
+  \ifthenelse{\equal{#1}{0}}{
+    \ifthenelse{\equal{\insertfigsize}{0}}{
+      \if@twocolumn
+      \includegraphics[width=\columnwidth]{#2}
+      \else
+      \includegraphics[width=.7\columnwidth]{#2}
+      \fi}{
+      \includegraphics[width=\insertfigsize\columnwidth]{#2}}}{
+    \includegraphics[width=#1\columnwidth]{#2}}}
+
+% [size]{name}{caption}
+\newcommand{\insertfig}[3][0]{%
+  \begin{figure}[tb]
+    \centering
+    \leavevmode
+    \@insertfig[#1]{figure/#2.eps}
+    \caption{#3}
+    \label{fig:#2}
+  \end{figure}}
+
+% [size]{name1}{caption1}{name2}{caption2}
+\newcommand{\insertfigs}[5][0]{%
+  \begin{figure}[tb]
+    \begin{minipage}{.49\columnwidth}
+      \centering
+      \leavevmode
+      \@insertfig[1.0]{figure/#2.eps}
+      \caption{#3}
+      \label{fig:#2}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{.49\columnwidth}
+      \centering
+      \leavevmode
+      \@insertfig[1.0]{figure/#4.eps}
+      \caption{#5}
+      \label{fig:#4}
+    \end{minipage}
+  \end{figure}}
+
+% [size]{name1}{subcaption1}{name2}{subcaption2}{label}{caption}
+\newcommand{\insertfigsubs}[7][0]{%
+  \begin{figure}[tb]
+    \centering
+    \leavevmode
+    \ifthenelse{\equal{#3}{}}{
+      % without subfigure captions
+      \subfigure{\@insertfig[#1]{figure/#2.eps}}
+      \subfigure{\@insertfig[#1]{figure/#4.eps}}}{
+      % with subfigure captions
+      \subfigure[#3]{\@insertfig[#1]{figure/#2.eps}}
+      \subfigure[#5]{\@insertfig[#1]{figure/#4.eps}}}
+    \caption{#7}
+    \label{fig:#6}
+  \end{figure}}
+
+% [size]{name}{caption}{english_caption}
+\newcommand{\insertfige}[4][0]{%
+  \begin{figure}[tb]
+    \centering
+    \leavevmode
+    \@insertfig[#1]{figure/#2.eps}
+    \caption{#3}
+    \ecaption{#4}
+    \label{fig:#2}
+  \end{figure}}
