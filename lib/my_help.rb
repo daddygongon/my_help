@@ -15,7 +15,7 @@ module MyHelp
 
     def initialize(argv=[])
       @argv = argv
-      @default_help_dir = File.expand_path("../../lib/daddygongon", __FILE__)
+      @template_dir = File.expand_path("../../lib/templates", __FILE__)
       @local_help_dir = File.join(ENV['HOME'],'.my_help')
       set_help_dir_if_not_exists
     end
@@ -23,11 +23,11 @@ module MyHelp
     def set_help_dir_if_not_exists
       return if File::exists?(@local_help_dir)
       FileUtils.mkdir_p(@local_help_dir, :verbose=>true)
-      Dir.entries(@default_help_dir).each{|file|
+      Dir.entries(@template_dir).each{|file|
         next if file=='template_help.yml'
         file_path=File.join(@local_help_dir,file)
         next if File::exists?(file_path)
-        FileUtils.cp((File.join(@default_help_dir,file)),@local_help_dir,:verbose=>true)
+        FileUtils.cp((File.join(@template_dir,file)),@local_help_dir,:verbose=>true)
       }
     end
 
@@ -42,7 +42,7 @@ module MyHelp
         opt.on('-e NAME', '--edit NAME', 'edit NAME help(eg test_help)'){|file| edit_help(file)}
         opt.on('-i NAME', '--init NAME', 'initialize NAME help(eg test_help)'){|file| init_help(file)}
         opt.on('-m', '--make', 'make executables for all helps'){make_help}
-        opt.on('-c', '--clean', 'clean up exe dir.'){clean_exe}
+        opt.on('-c', '--clean', 'clean up exe dir.'){clean_exe_dir}
         opt.on('--install_local','install local after edit helps'){install_local}
         opt.on('--delete NAME','delete NAME help'){|file| delete_help(file)}
       end
@@ -57,7 +57,7 @@ module MyHelp
     def delete_help(file)
       del_files=[]
       del_files << File.join(@local_help_dir,file+'.yml')
-      exe_dir=File.join(File.expand_path('../..',@default_help_dir),'exe')
+      exe_dir=File.join(File.expand_path('../..',@template_dir),'exe')
       exe_0_dir='/usr/local/bin'
       del_files << File.join(exe_dir,file)
       del_files << File.join(exe_0_dir,file)
@@ -81,7 +81,7 @@ module MyHelp
     USER_INST_DIR="USER INSTALLATION DIRECTORY:"
     INST_DIR="INSTALLATION DIRECTORY:"
     def install_local
-      Dir.chdir(File.expand_path('../..',@default_help_dir))
+      Dir.chdir(File.expand_path('../..',@template_dir))
       p pwd_dir = Dir.pwd
       # check that the working dir should not the gem installed dir,
       # which destroys itself.
@@ -107,10 +107,17 @@ module MyHelp
 
     def make_help
       local_help_entries.each{|file|
-        exe_cont="#!/usr/bin/env ruby\nrequire 'specific_help'\n"
-        exe_cont << "help_file = File.join(ENV['HOME'],'.my_help','#{file}')\n"
-        exe_cont << "SpecificHelp::Command.run(help_file, ARGV)\n"
         file = File.basename(file,'.yml')
+        exe_cont=<<"EOS"
+#!/usr/bin/env ruby
+require 'specific_help'
+if ENV['LANG'] == "C" then
+  help_file = File.join(ENV['HOME'],'.my_help','#{file}_e.yml')
+else
+  help_file = File.join(ENV['HOME'],'.my_help','#{file}.yml')
+end
+SpecificHelp::Command.run(help_file, ARGV)
+EOS
         [file, short_name(file)].each{|name|
           p target=File.join('exe',name)
           File.open(target,'w'){|file| file.print exe_cont}
@@ -120,13 +127,17 @@ module MyHelp
       install_local
     end
 
-    def clean_exe
+    def clean_exe_dir
       local_help_entries.each{|file|
         next if ['emacs_help','e_h','my_help','my_todo'].include?(file)
         file = File.basename(file,'.yml')
         [file, short_name(file)].each{|name|
           p target=File.join('exe',name)
+        begin
           FileUtils::Verbose.rm(target)
+        rescue=> eval
+          puts eval.to_s.red
+        end
         }
       }
     end
@@ -137,7 +148,7 @@ module MyHelp
         puts "File exists. rm it first to initialize it."
         exit
       end
-      p template = File.join(@default_help_dir,'template_help.yml')
+      p template = File.join(@template_dir,'template_help.yml')
       FileUtils::Verbose.cp(template,target_help)
     end
 
@@ -151,6 +162,7 @@ module MyHelp
       Dir.entries(@local_help_dir).each{|file|
         next unless file.include?('_')
         next if file[0]=='#' or file[-1]=='~' or file[0]=='.'
+        next if file.match(/(.+)_e\.yml/) # OK?
         entries << file
       }
       return entries
