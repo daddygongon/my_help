@@ -126,7 +126,7 @@ EOS
         exe_cont << "help_file = File.join(ENV['HOME'],'.my_help','#{file_name}')\n"
         exe_cont << "SpecificHelp::Command.start(ARGV)\n"
         exe_cont << "SpecificHelpOpt::Command.run(help_file, ARGV)\n"
-        [file, short_name(file)].each{|name|
+        [file_name, short_name(file_name)].each{|name|
           p target=File.join('exe',name)
           File.open(target,'w'){|file| file.print exe_cont}
           FileUtils.chmod('a+x', target, :verbose => true)
