@@ -120,7 +120,8 @@ EOS
     def make
       local_help_entries.each{|file|
         file_name=file
-        help_name=File.basename(file,".yml")
+        help_name=file
+        help_name=File.basename(help_name,".yml")
         exe_cont="#!/usr/bin/env ruby\nrequire 'specific_help_opt'\nrequire 'specific_help_thor'\n"
         exe_cont << "ENV['HELP_NAME']='#{help_name}'\n"
         exe_cont << "help_file = File.join(ENV['HOME'],'.my_help','#{file_name}')\n"
