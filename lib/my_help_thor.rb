@@ -84,7 +84,7 @@ module MyHelp
     desc 'init NAME, --init NAME', 'initialize NAME help(eg test_help).'
     map "--init" => "init"
     def init(file)
-      p target_help=File.join(@local_help_dir,file)
+      p target_help=File.join(@local_help_dir,file+'.yml')
       if File::exists?(target_help)
         puts "File exists. rm it first to initialize it."
         exit
@@ -98,7 +98,7 @@ EOS
     desc 'edit NAME, --edit NAME', 'edit NAME help(eg test_help)'
     map "--edit" => "edit"
     def edit(file)
-      p target_help=File.join(@local_help_dir,file)
+      p target_help=File.join(@local_help_dir,file+'.yml')
       system "emacs #{target_help}"
     end
 
