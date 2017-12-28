@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 require 'specific_help_opt'
 require 'specific_help_thor'
-ENV['HELP_NAME']='emacs_help'
+ENV['HELP_NAME']='my_todo'
 help_file = File.join(ENV['HOME'],'.my_help','my_todo.yml')
 SpecificHelp::Command.start(ARGV)
 SpecificHelpOpt::Command.run(help_file, ARGV)
