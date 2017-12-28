@@ -119,10 +119,11 @@ EOS
     map "--make" => "make"
     def make
       local_help_entries.each{|file|
+        file_name=file
         help_name=File.basename(file,".yml")
         exe_cont="#!/usr/bin/env ruby\nrequire 'specific_help_opt'\nrequire 'specific_help_thor'\n"
         exe_cont << "ENV['HELP_NAME']='#{help_name}'\n"
-        exe_cont << "help_file = File.join(ENV['HOME'],'.my_help','#{file}')\n"
+        exe_cont << "help_file = File.join(ENV['HOME'],'.my_help','#{file_name}')\n"
         exe_cont << "SpecificHelp::Command.start(ARGV)\n"
         exe_cont << "SpecificHelpOpt::Command.run(help_file, ARGV)\n"
         [file, short_name(file)].each{|name|
