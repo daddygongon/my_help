@@ -17,7 +17,7 @@ module MyHelp
   def initialize(*args)
     super
 #    @argv = args
-    @default_help_dir = File.expand_path("../../lib/daddygongon", __FILE__)
+    @default_help_dir = File.expand_path("../../lib/templates", __FILE__)
     @local_help_dir = File.join(ENV['HOME'],'.my_help')
     set_help_dir_if_not_exists
   end
