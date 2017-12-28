@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 require 'specific_help_opt'
 require 'specific_help_thor'
-ENV['HELP_NAME']='emacs_help'help_file = File.join(ENV['HOME'],'.my_help','test_help.yml')
+ENV['HELP_NAME']='emacs_help'
+help_file = File.join(ENV['HOME'],'.my_help','test_help.yml')
 SpecificHelp::Command.start(ARGV)
 SpecificHelpOpt::Command.run(help_file, ARGV)

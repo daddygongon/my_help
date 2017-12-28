@@ -120,7 +120,7 @@ EOS
     def make
       local_help_entries.each{|file|
         exe_cont="#!/usr/bin/env ruby\nrequire 'specific_help_opt'\nrequire 'specific_help_thor'\n"
-        exe_cont << "ENV['HELP_NAME']='emacs_help'"
+        exe_cont << "ENV['HELP_NAME']='emacs_help'\n"
         exe_cont << "help_file = File.join(ENV['HOME'],'.my_help','#{file}')\n"
         exe_cont << "SpecificHelp::Command.start(ARGV)\n"
         exe_cont << "SpecificHelpOpt::Command.run(help_file, ARGV)\n"
