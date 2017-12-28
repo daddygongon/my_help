@@ -22,32 +22,6 @@ module MyHelp
     set_help_dir_if_not_exists
   end
 
-
-=begin
-    def execute
-      @argv << '--help' if @argv.size==0
-      command_parser = OptionParser.new do |opt|
-        opt.on('-v', '--version','show program Version.') { |v|
-          opt.version = MyHelp::VERSION
-          puts opt.ver
-        }
-        opt.on('-l', '--list', 'list specific helps'){list_helps}
-        opt.on('-e NAME', '--edit NAME', 'edit NAME help(eg test_help)'){|file| edit_help(file)}
-        opt.on('-i NAME', '--init NAME', 'initialize NAME help(eg test_help).'){|file| init_help(file)}
-        opt.on('-m', '--make', 'make executables for all helps.'){make_help}
-        opt.on('-c', '--clean', 'clean up exe dir.'){clean_exe}
-        opt.on('--install_local','install local after edit helps'){install_local}
-        opt.on('--delete NAME','delete NAME help'){|file| delete_help(file)}
-      end
-      begin
-        command_parser.parse!(@argv)
-      rescue=> eval
-        p eval
-      end
-      exit
-    end
-=end
-
   desc 'version, -v', 'show program version'
   #    map "--version" => "version"
   map "--version" => "version"
@@ -145,9 +119,11 @@ EOS
     map "--make" => "make"
     def make
       local_help_entries.each{|file|
-        exe_cont="#!/usr/bin/env ruby\nrequire 'specific_help'\n"
+        exe_cont="#!/usr/bin/env ruby\nrequire 'specific_help_opt'\nrequire 'specific_help_thor'\n"
+        exe_cont << "ENV['HELP_NAME']='emacs_help'"
         exe_cont << "help_file = File.join(ENV['HOME'],'.my_help','#{file}')\n"
-          exe_cont << "SpecificHelp::Command.run(help_file, ARGV)\n"
+        exe_cont << "SpecificHelp::Command.start(ARGV)\n"
+        exe_cont << "SpecificHelpOpt::Command.run(help_file, ARGV)\n"
         [file, short_name(file)].each{|name|
           p target=File.join('exe',name)
           File.open(target,'w'){|file| file.print exe_cont}
