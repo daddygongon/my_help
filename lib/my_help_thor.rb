@@ -17,36 +17,10 @@ module MyHelp
   def initialize(*args)
     super
 #    @argv = args
-    @default_help_dir = File.expand_path("../../lib/daddygongon", __FILE__)
+    @default_help_dir = File.expand_path("../../lib/templates", __FILE__)
     @local_help_dir = File.join(ENV['HOME'],'.my_help')
     set_help_dir_if_not_exists
   end
-
-
-=begin
-    def execute
-      @argv << '--help' if @argv.size==0
-      command_parser = OptionParser.new do |opt|
-        opt.on('-v', '--version','show program Version.') { |v|
-          opt.version = MyHelp::VERSION
-          puts opt.ver
-        }
-        opt.on('-l', '--list', 'list specific helps'){list_helps}
-        opt.on('-e NAME', '--edit NAME', 'edit NAME help(eg test_help)'){|file| edit_help(file)}
-        opt.on('-i NAME', '--init NAME', 'initialize NAME help(eg test_help).'){|file| init_help(file)}
-        opt.on('-m', '--make', 'make executables for all helps.'){make_help}
-        opt.on('-c', '--clean', 'clean up exe dir.'){clean_exe}
-        opt.on('--install_local','install local after edit helps'){install_local}
-        opt.on('--delete NAME','delete NAME help'){|file| delete_help(file)}
-      end
-      begin
-        command_parser.parse!(@argv)
-      rescue=> eval
-        p eval
-      end
-      exit
-    end
-=end
 
   desc 'version, -v', 'show program version'
   #    map "--version" => "version"
@@ -110,19 +84,21 @@ module MyHelp
     desc 'init NAME, --init NAME', 'initialize NAME help(eg test_help).'
     map "--init" => "init"
     def init(file)
-      p target_help=File.join(@local_help_dir,file)
+      p target_help=File.join(@local_help_dir,file+'.yml')
       if File::exists?(target_help)
         puts "File exists. rm it first to initialize it."
         exit
       end
       p template = File.join(@default_help_dir,'template_help.yml')
       FileUtils::Verbose.cp(template,target_help)
+      command_template = <<EOS
+EOS
     end
 
     desc 'edit NAME, --edit NAME', 'edit NAME help(eg test_help)'
     map "--edit" => "edit"
     def edit(file)
-      p target_help=File.join(@local_help_dir,file)
+      p target_help=File.join(@local_help_dir,file+'.yml')
       system "emacs #{target_help}"
     end
 
@@ -143,10 +119,15 @@ module MyHelp
     map "--make" => "make"
     def make
       local_help_entries.each{|file|
-        exe_cont="#!/usr/bin/env ruby\nrequire 'specific_help'\n"
-        exe_cont << "help_file = File.join(ENV['HOME'],'.my_help','#{file}')\n"
-          exe_cont << "SpecificHelp::Command.run(help_file, ARGV)\n"
-        [file, short_name(file)].each{|name|
+        file_name=file
+        help_name=file
+        help_name=File.basename(help_name,".yml")
+        exe_cont="#!/usr/bin/env ruby\nrequire 'specific_help_opt'\nrequire 'specific_help_thor'\n"
+        exe_cont << "ENV['HELP_NAME']='#{help_name}'\n"
+        exe_cont << "help_file = File.join(ENV['HOME'],'.my_help','#{file_name}')\n"
+        exe_cont << "SpecificHelp::Command.start(ARGV)\n"
+        exe_cont << "SpecificHelpOpt::Command.run(help_file, ARGV)\n"
+        [help_name, short_name(help_name)].each{|name|
           p target=File.join('exe',name)
           File.open(target,'w'){|file| file.print exe_cont}
           FileUtils.chmod('a+x', target, :verbose => true)

@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+require 'specific_help_opt'
+require 'specific_help_thor'
+ENV['HELP_NAME']='yagi_help2'
+help_file = File.join(ENV['HOME'],'.my_help','yagi_help2')
+SpecificHelp::Command.start(ARGV)
+SpecificHelpOpt::Command.run(help_file, ARGV)
