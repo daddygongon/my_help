@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+require 'specific_help_opt'
+require 'specific_help_thor'
+ENV['HELP_NAME']='majimanji_help'
+help_file = File.join(ENV['HOME'],'.my_help','majimanji_help.yml')
+SpecificHelp::Command.start(ARGV)
+SpecificHelpOpt::Command.run(help_file, ARGV)
