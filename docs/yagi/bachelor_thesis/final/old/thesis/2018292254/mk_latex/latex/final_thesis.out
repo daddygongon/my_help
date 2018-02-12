@@ -1,0 +1,15 @@
+\BOOKMARK [1][-]{section.1}{はじめに}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{目的}{section.1}% 2
+\BOOKMARK [1][-]{section.2}{基本的事項}{}% 3
+\BOOKMARK [2][-]{subsection.2.1}{my\137help}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.2}{optparse}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.3}{thor}{section.2}% 6
+\BOOKMARK [2][-]{subsection.2.4}{option}{section.2}% 7
+\BOOKMARK [1][-]{section.3}{研究内容}{}% 8
+\BOOKMARK [2][-]{subsection.3.1}{thor化に伴う書き換え（具体的な作業）}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.2}{thorによるサブコマンド}{section.3}% 10
+\BOOKMARK [2][-]{subsection.3.3}{exeディレクトリの書き換え}{section.3}% 11
+\BOOKMARK [2][-]{subsection.3.4}{libディレクトリ}{section.3}% 12
+\BOOKMARK [2][-]{subsection.3.5}{その他オプション}{section.3}% 13
+\BOOKMARK [1][-]{section.4}{比較}{}% 14
+\BOOKMARK [1][-]{section.5}{総括}{}% 15
