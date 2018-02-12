@@ -1,0 +1,30 @@
+\documentclass[12pt,a4]{jreport}%chapterが使えるスタイル
+
+%setting format and calling packages
+\input{../thesis_pieces/usepackage}% pieces
+\input{../thesis_pieces/form00_style}% pieces
+\input{../thesis_pieces/tightlist_setting}% pieces
+%参考文献の設定============================================================
+\renewcommand{\bibname}{参考文献}
+
+%表紙=====================================================================
+\input{../split_files/informations/informations}
+
+%目次=====================================================================
+\tableofcontents
+
+% 表目次の表示==============================================================
+\listoftables
+
+% 図目次の表示==============================================================
+\listoffigures
+
+%本文======================================================================
+\input{./.splits_location.tex}
+
+%参考文献===================================================================
+\begin{thebibliography}{9}
+\bibitem{}
+\end{thebibliography}
+
+\end{document}
