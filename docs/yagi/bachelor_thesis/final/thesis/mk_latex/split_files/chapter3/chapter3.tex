@@ -1,0 +1,177 @@
+\chapter{研究内容}\label{ux7814ux7a76ux5185ux5bb9}
+
+    \section{thor化に伴う書き換え（具体的な作業）}\label{thorux5316ux306bux4f34ux3046ux66f8ux304dux63dbux3048ux5177ux4f53ux7684ux306aux4f5cux696d}
+
+optparseからthorへの書き換えの際，第一に必要となるのは，\textasciitilde{}.gemspecファイル内にThorがインストールされるように変更を加えることである．
+
+\begin{verbatim}
+spec.add_development_dependency "thor"
+\end{verbatim}
+
+この記述は，作成しているコマンドラインツールがThorに依存性を持つことを意味している．optparseで書いた場合は，Thorに依存性を持つ必要がなく，当然このような記述はされていないので，上の一文を書き加える必要がある．また，bundle
+updateをターミナル上で実行することで，ローカルでのコマンドラインツールを実行した際にThorが適用されるようにアップデートされる．そうすることで，Thorの記述が実際にソースファイルで使用できるようになる．
+
+\section{thorによるサブコマンド}\label{thorux306bux3088ux308bux30b5ux30d6ux30b3ux30deux30f3ux30c9}
+
+次に，コマンドが呼ばれる流れについて説明する．
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  コマンドを実行する．
+\item
+  コマンドを実行すると，exeディレクトリの中にあるコマンド名と同じ名前のファイル（以降コマンドファイルと呼ぶ）が実行される．
+\item
+  コマンドファイル内でlibディレクトリ内のソースファイルをrequireしておき，クラス内のコマンドを解析する関数を呼び出す．
+\item
+  ソースファイル内に書かれた処理が実行される．
+\end{enumerate}
+
+このような流れでコマンドが呼び出され，処理が行われる．Thorとoptpaseの差異は4.におけるコマンドの解析による処理関数への中継の方法である．
+
+\section{exeディレクトリの書き換え}\label{exeux30c7ux30a3ux30ecux30afux30c8ux30eaux306eux66f8ux304dux63dbux3048}
+
+exeディレクトリの中にあるコマンドファイルについて書き換えを行う．まずはoptparseを使用した際のコマンドファイルの記述を記載する．
+
+\begin{screen}
+{\small
+\begin{verbatim}
+!/usr/bin/env ruby                                                                                                               
+require "my_help_opt"
+
+MyHelp::Command.run(ARGV)
+\end{verbatim}}
+\end{screen}
+
+optparseの場合，MyHelp::Command.run(ARGV)というクラス関数を実行することでコマンドを呼び出している．しかし，Thorはoptparseのようにrun(ARGV)を用いず，start(ARGV)というクラス関数を実行してコマンドを呼び出す．よって，runをstartに書き換える作業が必要になる．以下にThorを使用した際のコマンドファイルの記述を記載する．
+
+\begin{screen}
+{\small
+\begin{verbatim}
+!/usr/bin/env ruby                                                                                                               
+require "my_help_thor"
+
+MyHelp::Command.start(ARGV)
+\end{verbatim}}
+\end{screen}
+
+\section{libディレクトリ}\label{libux30c7ux30a3ux30ecux30afux30c8ux30ea}
+
+まず，self.runについてであるが，Thorでは使用されないのでこの一文は削除する．次にinitializeであるが，こちらについては変更が必要である．そもそもinitializeとはmy\_helpを動かすのに必要なディレクトリがあるかどうかを調べるメソッドであり，なければここで作ることができる．optparseのinitializeではargv={[}{]}となっているところをThorでは（アスタリスク）argvとする必要がある．また，大きな違いはsuperの有無である．optparseではsuperは必要ないのだが，Thorでは必要になる．これは，
+
+\section{その他オプション}\label{ux305dux306eux4ed6ux30aaux30d7ux30b7ux30e7ux30f3}
+
+optparseではコマンド実行の際，引数の解析を行い，その引数に合わせた関数を呼び出す，という手順で動作している．その手順を記述した関数がexecuteである．
+
+
+\begin{screen}
+{\small
+\begin{verbatim}
+def execute
+      @argv << '--help' if @argv.size==0
+      command_parser = OptionParser.new do |opt|
+        opt.on('-v', '--version','show program Version.') { |v|
+          opt.version = MyHelp::VERSION
+          puts opt.ver
+        }
+        
+        opt.on('-l', '--list', 'list specific helps'){list_helps}
+        opt.on('-e NAME', '--edit NAME',
+         'edit NAME help(eg test_help)'){|file| edit_help(file)}
+        opt.on('-i NAME', '--init NAME',
+         'initialize NAME help(eg test_help).'){|file| init_help(file)}
+        opt.on('-m', '--make', 'make executables for all helps.'){make_help}
+        opt.on('-c', '--clean', 'clean up exe dir.'){clean_exe}
+        opt.on('--install_local','install local after edit helps')
+        {install_local}
+        opt.on('--delete NAME','delete NAME help'){|file| delete_help(file)}
+      end
+      
+      begin
+        command_parser.parse!(@argv)
+      rescue=> eval
+        p eval
+      end
+      exit
+end
+\end{verbatim}}
+\end{screen}
+
+しかしThorの場合，executeのような間を取り持つ関数を用意する必要がなく，関数自体をコマンドとして登録していく形をとっているので，この関数は不必要である．以下にThorでの関数宣言を記載する．optparseno場合，-iというコマンドで呼び出されている処理をinitというコマンドで呼び出されるように書き換えたのが以下の関数である．
+
+
+\begin{screen}
+{\small
+\begin{verbatim}
+desc 'init NAME, --init NAME', 'initialize NAME help(eg test_help).'
+ # 関数についての説明，ここがヘルプで表示される．
+map "--init" => "init"
+ --オプションでも呼び出すことが可能．
+def init(file)
+以下は変更なし
+    p target_help=File.join(@local_help_dir,file)
+    if File::exists?(target_help)
+        puts "File exists. rm it first to initialize it."
+        exit
+    end
+    p template = File.join(@default_help_dir,'template_help')
+    FileUtils::Verbose.cp(template,target_help)
+end
+\end{verbatim}}
+\end{screen}
+
+このように書き換えることで，Thorを使用したオプションの設定を行うことができるのだが，実際に動かしてみるとエラーが表示されることがある．ここで表示されるエラーは，コマンドとして設定されていない関数があることについての警告文である．その関数はコマンドとして使用しないということを明確に記述することでこの警告を消すことが可能である．
+
+\begin{screen}
+{\small
+\begin{verbatim}
+no_commands do
+
+    この間にコマンド設定しない関数を記述
+
+end
+\end{verbatim}}
+\end{screen}
+
+\section{オプションの比較}\label{ux30aaux30d7ux30b7ux30e7ux30f3ux306eux6bd4ux8f03}
+
+オプションを省略記法から自然言語に近い記法に変更したことでより直感的なコマンド入力が可能になると思われる．
+
+\subsection{optparse版}\label{optparseux7248}
+
+\begin{screen}
+{\small
+\begin{verbatim}
+Usage: my\_help {[}options{]}
+-v, -\/-version show program Version.
+-l, -\/-list 個別(specific)ヘルプのList表示.
+-e, -\/-edit NAME NAME(例：test\_help)をEdit編集.
+-i, -\/-init NAME NAME(例：test\_help)のtemplateを作成.
+-m, -\/-make make executables for all helps.
+-c, -\/-clean clean up exe dir.
+-\/-install\_local install local after edit helps
+-\/-delete NAME delete NAME help
+\end{verbatim}}
+\end{screen}
+
+\subsection{thor版}\label{thorux7248}
+
+\begin{screen}
+{\small
+\begin{verbatim}
+Commands:
+my\_help clean, -\/-clean clean up exe dir.
+my\_help delete NAME, -\/-delete NAME delete NAME help
+my\_help edit NAME, -\/-edit NAME edit NAME help(eg test\_help)
+my\_help help {[}COMMAND{]} Describe available commands or one specific
+command
+my\_help init NAME, -\/-init NAME initialize NAME help(eg test\_help).
+my\_help install\_local, -\/-install\_local install local after edit
+helps
+my\_help list, -\/-list list specific helps
+my\_help make, -\/-make make executables for all helps.
+my\_help version, -v show program version
+\end{verbatim}}
+\end{screen}
+    

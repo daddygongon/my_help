@@ -287,21 +287,19 @@
 
 {{1.1~~}目的}
 
-{{1.2~~}コマンドの重要性}
-
 {{2~~}基本的事項}
 
 {{2.1~~}my\_help}
 
-{{2.1.1~~}目的}
+{{2.1.1~~}my\_helpの目的}
 
-{{2.1.2~~}コマンド}
+{{2.1.2~~}使用法}
 
 {{2.2~~}optparse}
 
 {{2.3~~}thor}
 
-{{2.4~~}awesome}
+{{2.4~~}option}
 
 {{3~~}研究内容}
 
@@ -315,11 +313,17 @@
 
 {{3.5~~}その他オプション}
 
-{{3.6~~}thorで実装できない部分と対処}
+{{3.6~~}オプションの比較}
 
-{{4~~}比較}
+{{3.6.1~~}optparse版}
 
-{{5~~}総括}
+{{3.6.2~~}thor版}
+
+{{4~~}総括}
+
+{{5~~}謝辞}
+
+{{6~~}参考文献}
 
     \section{はじめに}\label{ux306fux3058ux3081ux306b}
 
@@ -328,86 +332,95 @@
 西谷研究室で使われているユーザメモソフト，my
 helpの振る舞いを制御しているサブコマンドは，マイナスを付した省略記法が取られている．プログラミング初心者にとってこの省略記法は，覚えにくかったりわかりにくかったりするという問題があり，現在はフルワードを使った自然言語に近い記述法が多く用いられている．
 そこで，本研究ではコマンドラインツール作成ライブラリを自然言語に近いサブコマンド体系を実装しやすいライブラリであるThorに変更する．rubyの標準ライブラリであるoptparseで作成されているmy
-helpを，Thorによって書き直し，異なった2つライブラリで作成されたmy
+helpをThorによって書き直し，異なった2つライブラリで作成されたmy
 helpの使用感を比較検討することを目的とする．
-
-\subsection{コマンドの重要性}\label{ux30b3ux30deux30f3ux30c9ux306eux91cdux8981ux6027}
-
-今日，複雑な機能を持つコマンドが増加している．そのようなコマンドは，サブコマンドを使用することで適切な動作を実行することが可能になる．例えばgitコマンドはサブコマンドなしでは意味をなさない．サブコマンドでどのような動作をするかが決まるので，サブコマンドを入力することで正常に動作するのである．
-
-そもそも，サブコマンド（オプション）にはショートオプションとロングオプションの２種類がある．ショートオプションはハイフンの後に英字１字を付けた形式のもので，-aや-vなどといったものがショートオプションである．また，ショートオプションは２つ以上のオプションを１つにまとめて実行することもできる．例えば，-l，-a，-tの３つのオプションを１つにまとめて-latとして実行することが可能である．それに対してロングオプションは，ハイフン２つの後に英字２字以上を付けることができる形式である．例えば-\/-allや-\/-versionなどである．ロングオプションは英字を２字以上使用することができるので，どのようなオプションであるかを明確にするために一般的にフルワードが採用されている．-\/-no-の形にすることで否定形のオプションを作成することも可能である．ロングオプションはショートオプションのように複数のオプションを１つにまとめることは不可能であり，１つ１つをスペースで区切る必要がある．
-
-ショートオプションを設定する際，英字１文字しか使用することができないので基本的には対応づけられたロングオプション（そのオプションがどのような動作を行うのかを表す単語）の頭文字であることが多く，慣れている人であればショートオプションを使うことで素早くアプリケーションを動かすことが可能である．しかし，用いるアプリが１つであるとは限らないし，全てのアプリのショートオプションを統一するのも困難である．またinitialとinstallなど，頭文字が重複してしまう２つのオプションがある場合，-iというショートオプションがinitialを意味するのかinstallを意味するのかを判断するのは，初心者には容易ではなく，混乱を引き起こしかねない．そのため，ヒューマンエラーを引き起こしてしまったり，学習コストがかかってしまったりすることがある．
-
-ショートオプションの場合，複数のオプションを一つにまとめることができると記述したが，これは引数を必要としないオプションの場合である．引数を必要とするオプションの場合，２文字目以降の英字は引数扱いになってしまう．例えば上に示した-latにおいて，-lが引数を必要とするオプションであれば，-latはatという引数が与えられた-lという風に解釈されてしまうので注意が必要である．そういった点においてもショートオプションは初心者にとって扱いにくい形式であると言える．
 
     \section{基本的事項}\label{ux57faux672cux7684ux4e8bux9805}
 
 \subsection{my\_help}\label{my_help}
 
-\subsubsection{目的}\label{ux76eeux7684}
+\subsubsection{my\_helpの目的}\label{my_helpux306eux76eeux7684}
 
 my
 helpとは，ユーザー独自のマニュアルを作成することができるユーザメモソフトである．これは，terminalだけを用いて簡単に起動，編集，削除などをすることができるため，非常に便利である．さらに，そのマニュアルは自分ですぐに編集，参照することができるので，メモとしての機能も果たし
 ている．これにより，プログラミング初心者が，頻繁に使うコマンドやキーバインドなどをいちいちweb
 browserを立ち上げて調べるのではなく，terminal上で即座に取得できるため，プログラム開発を集中することが期待される．
 
-また，正式なマニュアルは英語で書かれていることが多く，初心者には理解するのが困難である．my\_helpを使用すれば，自分なりのマニュアルを作成することができるので，仕様を噛み砕いて理解することができる．tarminal上でいつでもメモを参照できるため，どこにメモをしたかを忘れるリスクも軽減される
+メモやtodoリストの作成が行えることや，保存場所を共通化することでどこでも立ち上げることができることなど，emacsのorg-modeと類似している点がいくつか存在する．しかし，明確な相違点も存在する．org-modeはemacsを起動させなければならないが，my
+helpはemacsを起動させる必要がなくterminalで編集することが可能である．また，org-modeを使用するとなるとorg-mode独自のコマンドを学ぶ必要があり，学習コストがかかってしまう．my\_helpにはその必要がなく，非常に単純な操作でアプリを使用することができるので，org-modeの使い方を理解していない初心者にとって使いやすいものとなっている．
 
-しかし，my
-helpにある問題のうちの一つとして挙げられるのがサブコマンドの記述法である．
+また，アプリやプログラミング言語などの正式なマニュアルは英語で書かれていることが多く，初心者には理解するのが困難である．my\_helpを使用すれば，自分なりのマニュアルを作成することができるので，仕様を噛み砕いて理解することが可能である．tarminal上でいつでもメモを参照できるため，どこにメモをしたかを忘れるリスクも軽減される．
 
-\subsubsection{コマンド}\label{ux30b3ux30deux30f3ux30c9}
+\subsubsection{使用法}\label{ux4f7fux7528ux6cd5}
 
-clean exeディレクトリの中のファイルを全て削除する．
+インストールする方法だが，gemの標準とは少し方法が異なっている．
+まず，githubにあるmy
+helpのリポジトリをフォーク，クローンすることでローカル（ネットワークに繋がれていない環境）でもmy
+helpを操作することができるようになる．
 
-delete NAME NAMEのメモを削除する．
+\begin{quote}
+git clone git@github.com:daddygongon/my\_help.git
+\end{quote}
+これ以降の作業はbundleにて行っていく．
 
-edit NAME NAMEのメモを編集する．
+\begin{quote}
+bundle update
+\end{quote}
+を実行することでmy\_help.gemspecに記述されている必要なgemsがbundleされる．ここでCould
+not locate
+Gemfileとエラーが出た場合は、Gemfileのある場所を探し、その配下に移動してから再びコマンドを入力する．
 
-help COMAND COMANDのヘルプを表示する．
+\begin{quote}
+bundle exec exe/my\_help
+\end{quote}
+でmy
+helpに用意されているコマンドを参照することができる．デフォルトでemacs
+helpというemacsのヘルプが用意されている．これはemacs
+helpの他に，省略形のe\_hでも表示されるようになっている．
 
-init NAME my helpの雛形をNAMEにコピーする．
+次に，独自のヘルプを作成する方法であるが，まず，
 
-install\_local
-gemがそのPC内にあるとき，そのgemをコマンドとして実行できるようにする．rake
-buildでパッケージ化されたヘルプを人に渡して，渡されたものをその人がinstall
-localすることでパッケージ化されているヘルプを展開する．
+\begin{quote}
+bundle exec exe/my\_help -i new\_help
+\end{quote}
+とすることでnew
+helpという名前のヘルプが作成され，そこにテンプレートが格納される．また，
 
-list メモのリストを表示する
+\begin{quote}
+bundle exec exe/my\_help -e new\_help
+\end{quote}
+で，自分の好きなように編集することができる．ヘルプが完成したら，
 
-make 新しいメモを作成する．
-
-version my\_helpのバージョンを表示する．
+\begin{quote}
+bundle exec exe/my\_help -m
+\end{quote}
+とすることでexeディレクトリにnew helpが追加され，new
+help，n\_hが使用可能になるという手順である．
 
 \subsection{optparse}\label{optparse}
 
-ここにはoptparseの説明を書く．
-
 今回の研究対象のmy
-helpは，optparseで実装されている．optparseはRubyでコマンドラインのオプションを操作するためのライブラリである．optparseが操作するオプションは，下記のonメソッドで設定する．
+helpは，optparseで実装されている．optparseはRubyの標準ライブラリであり，Rubyでコマンドラインのオプションを操作するためのライブラリである{[}1{]}．optparseが操作するオプションは，下記のonメソッドで設定する．
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{def}\NormalTok{ execute}
-  \OtherTok{@argv}\NormalTok{ << ’--help’ }\KeywordTok{if} \OtherTok{@argv}\NormalTok{.size==}\DecValTok{0}
-\NormalTok{  command_parser = }\DataTypeTok{OptionParser}\NormalTok{.new }\KeywordTok{do}\NormalTok{ |opt|}
-\NormalTok{    opt.on(’-v’, ’--version’,’show␣program␣}\DataTypeTok{Version}\NormalTok{.’ ) \{ |v|}
-\NormalTok{      opt.version = }\DataTypeTok{MyHelp}\NormalTok{::}\DataTypeTok{VERSION}
-\NormalTok{      puts opt.ver}
-\NormalTok{    \}}
-\NormalTok{    opt.on(’-l’, ’--list’, ’list␣specific␣helps’)\{list_helps\}}
-    \CommentTok{#中略}
-  \KeywordTok{end}
-  \CommentTok{#中略}
-\KeywordTok{end}
+\begin{verbatim}
+def execute
+  @argv << ’--help’ if @argv.size==0
+  command_parser = OptionParser.new do |opt|
+    opt.on(’-v’, ’--version’,’show␣program␣Version.’ ) { |v|
+      opt.version = MyHelp::VERSION
+      puts opt.ver
+    }
+    opt.on(’-l’, ’--list’, ’list␣specific␣helps’){list_helps}
+    #中略
+  end
+  #中略
+end
     
-\KeywordTok{def}\NormalTok{ list_helps}
-\CommentTok{#中略}
-\KeywordTok{end}
-\CommentTok{#後略}
-\end{Highlighting}
-\end{Shaded}
+def list_helps
+#中略
+end
+#後略
+\end{verbatim}
 
 第１引数はショートオプションで，-aや-dのような形で設定する．同様にして，第２引数はロングオプションを表し，-\/-addや-\/-deleteのように，第３引数はそのオプションの説明文で，helpで表示される説明文を設定する．後ろのブロックには，そのオプションが指定された場合に実行されるコードを記述する
 {[}2{]}．しかしこのライブラリでは自然言語に近い，ハイフンなしのサブコマンドを実装するには相当な書き換えが必要となる．
@@ -418,12 +431,7 @@ helpは，optparseで実装されている．optparseはRubyでコマンドラ�
 
 helpとversionのサブコマンドはデフォルトで作成される．
 
-参考になりそうなところを見てoptparseについての説明．
-長所短所．thorの長所短所と比較して図．あらかじめ描いてもいい．
-
 \subsection{thor}\label{thor}
-
-上と同じ．
 
 本研究ではoptparseの代わりのライブラリとしてThorの採用を検討する．Thorは，コマンドラインツールの作成を支援するライブラリであり，gitやbundlerのようにサブコマンドを含むコマンドラインツールを簡単に作成することができる
 {[}3{]}．Thorには以下のような特徴がある． 1.
@@ -433,47 +441,75 @@ Language)を使わずにメソッドを定義することで処理を記述す�
 {[}4{]}． 1.
 optparseでは作成することが困難な，マイナスを伴わない(自然言語に近い)サブコマンドを実装することが可能である．
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{desc }\StringTok{'list, --list'}\NormalTok{, }\StringTok{'list specific helps'}
-\NormalTok{    map }\StringTok{"--list"}\NormalTok{ => }\StringTok{"list"}
-    \KeywordTok{def}\NormalTok{ list}
-\NormalTok{      print }\StringTok{"Specific help file:\textbackslash{}n"}
-\NormalTok{      local_help_entries.each\{|file|}
-\NormalTok{        file_path=}\DataTypeTok{File}\NormalTok{.join(}\OtherTok{@local_help_dir}\NormalTok{,file)}
-\NormalTok{        help = }\DataTypeTok{YAML}\NormalTok{.load(}\DataTypeTok{File}\NormalTok{.read(file_path))}
-\NormalTok{        print }\StringTok{"  }\OtherTok{#\{}\NormalTok{file}\OtherTok{\}}\StringTok{\textbackslash{}t:}\OtherTok{#\{}\NormalTok{help[}\StringTok{:head}\NormalTok{][}\DecValTok{0}\NormalTok{]}\OtherTok{\}}\StringTok{\textbackslash{}n"}
-\NormalTok{      \}}
-    \KeywordTok{end}
-\end{Highlighting}
-\end{Shaded}
+\begin{verbatim}
+desc 'list, --list', 'list specific helps'
+    map "--list" => "list"
+    def list
+      print "Specific help file:\n"
+      local_help_entries.each{|file|
+        file_path=File.join(@local_help_dir,file)
+        help = YAML.load(File.read(file_path))
+        print "  #{file}\t:#{help[:head][0]}\n"
+      }
+    end
+end
+\end{verbatim}
 
-optparseではonメソッドでコマンドの登録を行い，その後のdefでコマンドの振る舞いを定義している．それに対してThorは登録と定義を同時に行うことができるのでコードが書きやすい．また，Thorを継承したクラスのパブリックメソッドがそのままコマンドになるので非常に簡単にコマンドを作成することが可能である．また，Thorはコマンドを作成した時点で，自動的にヘルプを生成してくれルため，楽である．コマンドの指定なしで実行するとヘルプを表示する．
+optparseではonメソッドでコマンドの登録を行い，その後のdefでコマンドの振る舞いを定義している．それに対してThorは登録と定義を同時に行うことが可能である．また，Thorを継承したクラスのパブリックメソッドがそのままコマンドになるので非常に簡単にコマンドを作成することが可能である．Thorはコマンドを作成した時点で自動的にヘルプを生成し，コマンドを指定せずにコマンドラインアプリを実行するとヘルプを表示する．
 
-長所短所と説明．optparseと同じく．
-なんでthorなのか，動機，根拠．サブコマンドとか． 論理的に言えるように．
+    \subsection{option}\label{option}
 
-Thorではクラスを作ったらメソッドがそのままサブコマンドの処理になるので便利．optparseではそれができないので不便．
+今日，複雑な機能を持つコマンドが増加している．そのようなコマンドは，オプション（サブコマンド）を使用することで適切な動作を実行することが可能になる．例えばgitコマンドはオプションなしでは意味をなさない．オプションでどのような動作をするかが決まるので，オプションを入力することで正常に動作するのである．
 
-    \subsection{awesome}\label{awesome}
+そもそも，オプションにはショートオプションとロングオプションの２種類がある．ショートオプションはハイフンの後に英字１字を付けた形式のもので，-aや-vなどといったものがショートオプションである．また，ショートオプションは２つ以上のオプションを１つにまとめて実行することもできる．例えば，-l，-a，-tの３つのオプションを１つにまとめて-latとして実行することが可能である．それに対してロングオプションは，ハイフン２つの後に英字２字以上を付けることができる形式である．例えば-\/-allや-\/-versionなどである．ロングオプションは英字を２字以上使用することができるので，どのようなオプションであるかを明確にするために一般的にフルワードが採用されている．-\/-no-の形にすることで否定形のオプションを作成することも可能である．ロングオプションはショートオプションのように複数のオプションを１つにまとめることは不可能であり，１つ１つをスペースで区切る必要がある．
 
-Command line applicationのoptionの記述方法には幾つもの流儀があるようで
+ショートオプションを設定する際，英字１文字しか使用することができないので基本的には対応づけられたロングオプション（そのオプションがどのような動作を行うのかを表す単語）の頭文字であることが多く，慣れている人であればショートオプションを使うことで素早くアプリケーションを動かすことが可能である．しかし，用いるアプリが１つであるとは限らないし，全てのアプリのショートオプションを統一するのも困難である．またinitialとinstallなど，頭文字が重複してしまう２つのオプションがある場合，-iというショートオプションがinitialを意味するのかinstallを意味するのかを判断するのは，初心者には容易ではなく，混乱を引き起こしかねない．そのため，ヒューマンエラーを引き起こしてしまったり，学習コストがかかってしまったりすることがある．
+
+ショートオプションの場合，複数のオプションを一つにまとめることができると記述したが，これは引数を必要としないオプションの場合である．引数を必要とするオプションの場合，２文字目以降の英字は引数扱いになってしまう．例えば上に示した-latにおいて，-lが引数を必要とするオプションであれば，-latはatという引数が与えられた-lという風に解釈されてしまうので注意が必要である．そういった点においてもショートオプションは初心者にとって扱いにくい形式であると言える．
+
+Command line
+applicationのオプションの記述方法には幾つもの流儀があるようで
 何らかの標準があるわけではない．
 しかし，それら全てに対応することはできず，なんらかの
 基準に従ってオプション記法を解釈する必要がある．
 
 ここでは， "Build awesome command-line application in ruby 2"に従って
-option記法と用語をまとめておく．
+オプション記法と用語をまとめておく．
+
+コマンドラインの基本形は，
+
+\begin{quote}
+ls -lat dir\_name
+\end{quote}
+というように
+
+\begin{quote}
+executabel options arguments
+\end{quote}
+での形であった．これは，GNU標準に基本構造が記載されている．
+
+その後，幾つかのswitchやflagを組み合わせて，複雑な
+命令を解釈できるようにするに従って，
+
+\begin{quote}
+grep -\/-igonre-case -C 4 "some string" /tmp
+\end{quote}
+などとほぼ呪文のような形態となってきた．
+
+その後，command line suiteと呼ばれる一群のcommand line
+applicationが登場した．典型的なのはgitである{[}5{]}．
+
+gitはlinuxのバックアップを分散処理するために， Linus
+Torvaldsが開発したものであるが，いくつもの
+機能に従ってそれぞれ個別のコマンドが用意されていた．
+それぞれ，git-commitとかgit-fetchなどであった．
+それがある時，すべてをまとめてsuiteとして
+パッケージし直され，1つのまとまったcommandとして提供された．
+すなわち，git commitやgit fetchなどである{[}6{]}．
 
     \section{研究内容}\label{ux7814ux7a76ux5185ux5bb9}
 
-\subsection{thor化に伴う書き換え（具体的な作業）}\label{thorux5316ux306bux4f34ux3046ux66f8ux304dux63dbux3048ux5177ux4f53ux7684ux306aux4f5cux696d}
-
-ここは汎用的にどう書き換えたらthor化できるかまとめてると良さそう．
-苦労した事とか書くといい．
-
-どうゆう書き換えを行ったのか． thor化しようと思ったら
-どうゆう流れでコマンドが呼び出されているか．（optとthor）
+    \subsection{thor化に伴う書き換え（具体的な作業）}\label{thorux5316ux306bux4f34ux3046ux66f8ux304dux63dbux3048ux5177ux4f53ux7684ux306aux4f5cux696d}
 
 optparseからthorへの書き換えの際，第一に必要となるのは，\textasciitilde{}.gemspecファイル内にThorがインストールされるように変更を加えることである．
 
@@ -507,25 +543,21 @@ updateをターミナル上で実行することで，ローカルでのコマ�
 
 exeディレクトリの中にあるコマンドファイルについて書き換えを行う．まずはoptparseを使用した際のコマンドファイルの記述を記載する．
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{#!/usr/bin/env ruby                                                                                                               }
-\NormalTok{require }\StringTok{"my_help_opt"}
+\begin{verbatim}
+!/usr/bin/env ruby                                                                                                               
+require "my_help_opt"
 
-\DataTypeTok{MyHelp}\NormalTok{::}\DataTypeTok{Command}\NormalTok{.run(}\DataTypeTok{ARGV}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
+MyHelp::Command.run(ARGV)
+\end{verbatim}
 
 optparseの場合，MyHelp::Command.run(ARGV)というクラス関数を実行することでコマンドを呼び出している．しかし，Thorはoptparseのようにrun(ARGV)を用いず，start(ARGV)というクラス関数を実行してコマンドを呼び出す．よって，runをstartに書き換える作業が必要になる．以下にThorを使用した際のコマンドファイルの記述を記載する．
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{#!/usr/bin/env ruby                                                                                                               }
-\NormalTok{require }\StringTok{"my_help_thor"}
+\begin{verbatim}
+!/usr/bin/env ruby                                                                                                               
+require "my_help_thor"
 
-\DataTypeTok{MyHelp}\NormalTok{::}\DataTypeTok{Command}\NormalTok{.start(}\DataTypeTok{ARGV}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
+MyHelp::Command.start(ARGV)
+\end{verbatim}
 
 \subsection{libディレクトリ}\label{libux30c7ux30a3ux30ecux30afux30c8ux30ea}
 
@@ -535,77 +567,148 @@ optparseの場合，MyHelp::Command.run(ARGV)というクラス関数を実行�
 
 optparseではコマンド実行の際，引数の解析を行い，その引数に合わせた関数を呼び出す，という手順で動作している．その手順を記述した関数がexecuteである．
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{def}\NormalTok{ execute}
-      \OtherTok{@argv}\NormalTok{ << }\StringTok{'--help'} \KeywordTok{if} \OtherTok{@argv}\NormalTok{.size==}\DecValTok{0}
-\NormalTok{      command_parser = }\DataTypeTok{OptionParser}\NormalTok{.new }\KeywordTok{do}\NormalTok{ |opt|}
-\NormalTok{        opt.on(}\StringTok{'-v'}\NormalTok{, }\StringTok{'--version'}\NormalTok{,}\StringTok{'show program Version.'}\NormalTok{) \{ |v|}
-\NormalTok{          opt.version = }\DataTypeTok{MyHelp}\NormalTok{::}\DataTypeTok{VERSION}
-\NormalTok{          puts opt.ver}
-\NormalTok{        \}}
+\begin{verbatim}
+def execute
+      @argv << '--help' if @argv.size==0
+      command_parser = OptionParser.new do |opt|
+        opt.on('-v', '--version','show program Version.') { |v|
+          opt.version = MyHelp::VERSION
+          puts opt.ver
+        }
         
-\NormalTok{        opt.on(}\StringTok{'-l'}\NormalTok{, }\StringTok{'--list'}\NormalTok{, }\StringTok{'list specific helps'}\NormalTok{)\{list_helps\}}
-\NormalTok{        opt.on(}\StringTok{'-e NAME'}\NormalTok{, }\StringTok{'--edit NAME'}\NormalTok{, }\StringTok{'edit NAME help(eg test_help)'}\NormalTok{)\{|file| edit_help(file)\}}
-\NormalTok{        opt.on(}\StringTok{'-i NAME'}\NormalTok{, }\StringTok{'--init NAME'}\NormalTok{, }\StringTok{'initialize NAME help(eg test_help).'}\NormalTok{)\{|file| init_help(file)\}}
-\NormalTok{        opt.on(}\StringTok{'-m'}\NormalTok{, }\StringTok{'--make'}\NormalTok{, }\StringTok{'make executables for all helps.'}\NormalTok{)\{make_help\}}
-\NormalTok{        opt.on(}\StringTok{'-c'}\NormalTok{, }\StringTok{'--clean'}\NormalTok{, }\StringTok{'clean up exe dir.'}\NormalTok{)\{clean_exe\}}
-\NormalTok{        opt.on(}\StringTok{'--install_local'}\NormalTok{,}\StringTok{'install local after edit helps'}\NormalTok{)\{install_local\}}
-\NormalTok{        opt.on(}\StringTok{'--delete NAME'}\NormalTok{,}\StringTok{'delete NAME help'}\NormalTok{)\{|file| delete_help(file)\}}
-      \KeywordTok{end}
+        opt.on('-l', '--list', 'list specific helps'){list_helps}
+        opt.on('-e NAME', '--edit NAME', 'edit NAME help(eg test_help)'){|file| edit_help(file)}
+        opt.on('-i NAME', '--init NAME', 'initialize NAME help(eg test_help).'){|file| init_help(file)}
+        opt.on('-m', '--make', 'make executables for all helps.'){make_help}
+        opt.on('-c', '--clean', 'clean up exe dir.'){clean_exe}
+        opt.on('--install_local','install local after edit helps'){install_local}
+        opt.on('--delete NAME','delete NAME help'){|file| delete_help(file)}
+      end
       
-      \KeywordTok{begin}
-\NormalTok{        command_parser.parse!(}\OtherTok{@argv}\NormalTok{)}
-      \KeywordTok{rescue}\NormalTok{=> eval}
-\NormalTok{        p eval}
-      \KeywordTok{end}
-\NormalTok{      exit}
-\KeywordTok{end}
-\end{Highlighting}
-\end{Shaded}
+      begin
+        command_parser.parse!(@argv)
+      rescue=> eval
+        p eval
+      end
+      exit
+end
+\end{verbatim}
 
 しかしThorの場合，executeのような間を取り持つ関数を用意する必要がなく，関数自体をコマンドとして登録していく形をとっているので，この関数は不必要である．以下にThorでの関数宣言を記載する．optparseno場合，-iというコマンドで呼び出されている処理をinitというコマンドで呼び出されるように書き換えたのが以下の関数である．
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{desc }\StringTok{'init NAME, --init NAME'}\NormalTok{, }\StringTok{'initialize NAME help(eg test_help).'}
-\CommentTok{# 関数についての説明，ここがヘルプで表示される．}
-\NormalTok{map }\StringTok{"--init"}\NormalTok{ => }\StringTok{"init"}
-\CommentTok{# --オプションでも呼び出せるようにしてある．}
-\KeywordTok{def}\NormalTok{ init(file)}\CommentTok{# 上にずらずらと書いているが，実際にオプション名として参照しているのは関数名らしい．}
-\CommentTok{#以下は変更なし}
-\NormalTok{    p target_help=}\DataTypeTok{File}\NormalTok{.join(}\OtherTok{@local_help_dir}\NormalTok{,file)}
-    \KeywordTok{if} \DataTypeTok{File}\NormalTok{::exists?(target_help)}
-\NormalTok{        puts }\StringTok{"File exists. rm it first to initialize it."}
-\NormalTok{        exit}
-    \KeywordTok{end}
-\NormalTok{    p template = }\DataTypeTok{File}\NormalTok{.join(}\OtherTok{@default_help_dir}\NormalTok{,}\StringTok{'template_help'}\NormalTok{)}
-    \DataTypeTok{FileUtils}\NormalTok{::}\DataTypeTok{Verbose}\NormalTok{.cp(template,target_help)}
-\KeywordTok{end}
-\end{Highlighting}
-\end{Shaded}
+\begin{verbatim}
+desc 'init NAME, --init NAME', 'initialize NAME help(eg test_help).'
+ 関数についての説明，ここがヘルプで表示される．
+map "--init" => "init"
+ --オプションでも呼び出すことが可能．
+def init(file)
+以下は変更なし
+    p target_help=File.join(@local_help_dir,file)
+    if File::exists?(target_help)
+        puts "File exists. rm it first to initialize it."
+        exit
+    end
+    p template = File.join(@default_help_dir,'template_help')
+    FileUtils::Verbose.cp(template,target_help)
+end
+\end{verbatim}
 
 このように書き換えることで，Thorを使用したオプションの設定を行うことができるのだが，実際に動かしてみるとエラーが表示されることがある．ここで表示されるエラーは，コマンドとして設定されていない関数があることについての警告文である．その関数はコマンドとして使用しないということを明確に記述することでこの警告を消すことが可能である．
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{no_commands }\KeywordTok{do}
+\begin{verbatim}
+no_commands do
 
-    \CommentTok{#この間にコマンド設定しない関数を記述}
+    この間にコマンド設定しない関数を記述
 
-\KeywordTok{end}
-\end{Highlighting}
-\end{Shaded}
+end
+\end{verbatim}
 
-\subsection{thorで実装できない部分と対処}\label{thorux3067ux5b9fux88c5ux3067ux304dux306aux3044ux90e8ux5206ux3068ux5bfeux51e6}
+\subsection{オプションの比較}\label{ux30aaux30d7ux30b7ux30e7ux30f3ux306eux6bd4ux8f03}
 
-optparseとthorの両立に成功したので，それに触れる．ここ真剣に．
+オプションを省略記法から自然言語に近い記法に変更したことでより直感的なコマンド入力が可能になると思われる．
 
-    \section{比較}\label{ux6bd4ux8f03}
+\subsubsection{optparse版}\label{optparseux7248}
 
-ここでoptparse版とthor版の比較をする．
+Usage: my\_help {[}options{]}
+
+-v, -\/-version show program Version.
+
+-l, -\/-list 個別(specific)ヘルプのList表示.
+
+-e, -\/-edit NAME NAME(例：test\_help)をEdit編集.
+
+-i, -\/-init NAME NAME(例：test\_help)のtemplateを作成.
+
+-m, -\/-make make executables for all helps.
+
+-c, -\/-clean clean up exe dir.
+
+-\/-install\_local install local after edit helps
+
+-\/-delete NAME delete NAME help
+
+\subsubsection{thor版}\label{thorux7248}
+
+Commands:
+
+my\_help clean, -\/-clean clean up exe dir.
+
+my\_help delete NAME, -\/-delete NAME delete NAME help
+
+my\_help edit NAME, -\/-edit NAME edit NAME help(eg test\_help)
+
+my\_help help {[}COMMAND{]} Describe available commands or one specific
+command
+
+my\_help init NAME, -\/-init NAME initialize NAME help(eg test\_help).
+
+my\_help install\_local, -\/-install\_local install local after edit
+helps
+
+my\_help list, -\/-list list specific helps
+
+my\_help make, -\/-make make executables for all helps.
+
+my\_help version, -v show program version
 
     \section{総括}\label{ux7dcfux62ec}
+
+今回の研究では，ユーザメモソフトであるmy
+helpのthorによる書き換えを行った．この書き換えによる成果は以下の通りである．
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  オプションの記法を-（ハイフン）を用いた省略記法からフルワードを用いた自然言語に近い記法に変更した．これにより，初心者でも直感的にオプションを使用することができ，学習コストの削減，学習効率の向上に繋がると考えられる．
+\item
+  thorを用いることによってoptparseを用いた時よりもソースコードを短くすることに成功した．
+\end{enumerate}
+
+    \section{謝辞}\label{ux8b1dux8f9e}
+
+本研究を行うにあたって，終始多大なるご指導，ご鞭撻を頂いた関西学院大学理工学部情報科学科西谷滋人教授に対し，深く御礼申し上げます．また，本研究の進行に伴い，様々な助力，協力をして頂きました西谷研究室の先輩方，同輩達に心から感謝いたします．西谷研究室の益々のご発展，ご多幸を心よりお祈り申し上げます．
+
+    \section{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+{[}1{]} library optparse,
+https://docs.ruby-lang.org/ja/latest/library/optparse.html accessed
+2018.2.9.
+
+{[}2{]} コマンドライン引数によるオプションに対応する (optparse),
+http://maku77.github.io/ruby/io/optparse.html accessed 2018.2.1.
+
+{[}3{]} S.Koichiro, Thorの使い方まとめ,
+https://qiita.com/succi0303/items/32560103190436c9435b accessed
+2018.2.9.
+
+{[}4{]} Thorで簡単にコマンドラインアプリをつくる,
+http://note.hibariya.org/entries/20111025/a0.html 2018.2.9.
+
+{[}5{]} David Bryant Copeland, Build Awesome Command-Line Applications
+in Ruby 2, (Pragmatic Bookshelf, 2013), pp.14-5.
+
+{[}6{]} David Bryant Copeland, Build Awesome Command-Line Applications
+in Ruby 2, (Pragmatic Bookshelf, 2013), p.16.
 
 
     % Add a bibliography block to the postdoc
