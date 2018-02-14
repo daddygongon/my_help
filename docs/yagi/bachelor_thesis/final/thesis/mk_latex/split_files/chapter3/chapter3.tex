@@ -1,11 +1,10 @@
 \chapter{研究内容}\label{ux7814ux7a76ux5185ux5bb9}
 
-\section{optparseとthorの比較}\label{}
+\section{optparseとThorの比較}\label{}
 
 \subsection{optparse}\label{optparse}
 
-今回の研究対象のmy
-helpは，optparseで実装されている．optparseはRubyの標準ライブラリであり，Rubyでコマンドラインのオプションを操作するためのライブラリである\cite{opt1}．optparseが操作するオプションは，下記のonメソッドで設定する．
+今回の研究対象のmy\_helpは，optparseで実装されている．optparseはrubyの標準ライブラリであり，rubyでコマンドラインのオプションを操作するためのライブラリである\cite{opt1}．optparseが操作するオプションは，下記のonメソッドで設定する．
 
 \begin{screen}
 {\small
@@ -31,7 +30,7 @@ end
 \end{screen} 
 
 
-上記のコードはoptparse版my helpの一部である．第１引数はショートオプションで，-aや-dのような形で設定する．同様にして，第２引数はロングオプションを表し，-\/-addや-\/-deleteのように，第３引数はそのオプションの説明文で，helpで表示される説明文を設定する．後ろのブロックには，そのオプションが指定された場合に実行されるコードを記述する
+上記のコードはoptparse版my\_helpの一部である．第１引数はショートオプションで，-aや-dのような形で設定する．同様にして，第２引数はロングオプションを表し，-\/-addや-\/-deleteのように，第３引数はそのオプションの説明文で，helpで表示される説明文を設定する．後ろのブロックには，そのオプションが指定された場合に実行されるコードを記述する
 \cite{opt2}．しかしこのライブラリでは自然言語に近い，ハイフンなしのサブコマンドを実装するには相当な書き換えが必要となる．
 
 メソッドの引数でオプションを定義し，引数が指定された時の処理をブロックで記述する．ブロックの引数にはオプションが指定されたことを示すtrueが渡される．onメソッドが呼ばれた時点ではオプションは実行されず，定義されるだけである．parseが呼ばれた際，コマンドラインにオプションが登録されていれば実行される．
@@ -40,7 +39,7 @@ end
 
 helpとversionのサブコマンドはデフォルトで作成される．
 
-\subsection{thor}\label{thor}
+\subsection{Thor}\label{thor}
 
 本研究ではoptparseの代わりのライブラリとしてThorの採用を検討する．Thorは，コマンドラインツールの作成を支援するライブラリであり，gitやbundlerのようにサブコマンドを含むコマンドラインツールを簡単に作成することができる
 \cite{koichiro}．Thorには以下のような特徴がある．
@@ -52,7 +51,7 @@ helpとversionのサブコマンドはデフォルトで作成される．
 Language)を使わずにメソッドを定義することで処理を記述するため，テストを行いやすい
 \cite{hibariya}．
 
-3.optparseでは作成することが困難な，マイナスを伴わない(自然言語に近い)サブコマンドを実装することが可能である．下記はThor版my helpの一部である．
+3.optparseでは作成することが困難な，マイナスを伴わない(自然言語に近い)サブコマンドを実装することが可能である．下記はThor版my\_helpの一部である．
 
 \begin{screen}
 {\small
@@ -87,7 +86,7 @@ optparseではonメソッドでコマンドの登録を行い，その後のdef�
 
 \subsection{比較}\label{}
 
-書き換えの前に，単純なCLIを例にoptparseとthorの比較を行った．今回はコマンドに続けてnameを入力すると，Hello nameと出力するCLIをoptparseとThor，それぞれを用いて作成し，コード量や使用感を比較する．１つめのソースコードがoptparseを用いたもの（optparse.rb），２つめのソースコードがThorを用いたもの（thor.rb）である．
+書き換えの前に，単純なCLIを例にoptparseとThorの比較を行った．今回はコマンドに続けてnameを入力すると，Hello nameと出力するCLIをoptparseとThor，それぞれを用いて作成し，コード量や使用感を比較する．１つめのソースコードがoptparseを用いたもの（optparse.rb），２つめのソースコードがThorを用いたもの（thor.rb）である．
 
 \begin{screen}
 {\small
@@ -137,9 +136,9 @@ optparse.rbは，onメソッドで，入力された名前を受け取る-nと�
 
 コード量は，helpを自動で生成する分，thor.rbの方が短くなっており，descの中で一つのコマンドが完結しているということもあってoptparse.rbよりも書きやすく感じられた．また，実際にコマンドを入力する際，thor.rbの方が自然言語に近いコマンドのため直感的に入力することができた．さらに，thor.rbでhelloの後にname（引数）を入力せずに実行するとhelloコマンドのusageが表示されるなど，使用感はthor.rbの方がよく感じられた．
 
-    \section{thor化に伴う書き換え（具体的な作業）}\label{thorux5316ux306bux4f34ux3046ux66f8ux304dux63dbux3048ux5177ux4f53ux7684ux306aux4f5cux696d}
+    \section{Thor化に伴う書き換え（具体的な作業）}\label{thorux5316ux306bux4f34ux3046ux66f8ux304dux63dbux3048ux5177ux4f53ux7684ux306aux4f5cux696d}
 
-optparseからthorへの書き換えの際，第一に必要となるのは，\textasciitilde{}.gemspecファイル内にThorがインストールされるように変更を加えることである．
+optparseからThorへの書き換えの際，第一に必要となるのは，\textasciitilde{}.gemspecファイル内にThorがインストールされるように変更を加えることである．
 
 \begin{verbatim}
 spec.add_development_dependency "thor"
@@ -148,7 +147,7 @@ spec.add_development_dependency "thor"
 この記述は，作成しているコマンドラインツールがThorに依存性を持つことを意味している．optparseで書いた場合は，Thorに依存性を持つ必要がなく，当然このような記述はされていないので，上の一文を書き加える必要がある．また，bundle
 updateをターミナル上で実行することで，ローカルでのコマンドラインツールを実行した際にThorが適用されるようにアップデートされる．そうすることで，Thorの記述が実際にソースファイルで使用できるようになる．
 
-\section{thorによるサブコマンド}\label{thorux306bux3088ux308bux30b5ux30d6ux30b3ux30deux30f3ux30c9}
+\section{Thorによるサブコマンド}\label{thorux306bux3088ux308bux30b5ux30d6ux30b3ux30deux30f3ux30c9}
 
 次に，コマンドが呼ばれる流れについて説明する．
 
@@ -195,7 +194,7 @@ MyHelp::Command.start(ARGV)
 
 \section{libディレクトリ}\label{libux30c7ux30a3ux30ecux30afux30c8ux30ea}
 
-まず，self.runについてであるが，Thorでは使用されないのでこの一文は削除する．次にinitializeであるが，こちらについては変更が必要である．そもそもinitializeとはmy\_helpを動かすのに必要なディレクトリがあるかどうかを調べるメソッドであり，なければここで作ることができる．optparseのinitializeではargv={[}{]}となっているところをThorでは（アスタリスク）argvとする必要がある．また，大きな違いはsuperの有無である．optparseではsuperは必要ないのだが，Thorでは必要になる．これは，
+まず，self.runについてであるが，Thorでは使用されないのでこの一文は削除する．次にinitializeであるが，こちらについては変更が必要である．そもそもinitializeとはmy\_helpを動かすのに必要なディレクトリがあるかどうかを調べるメソッドであり，なければここで作ることができる．optparseのinitializeではargv={[}{]}となっているところをThorでは（アスタリスク）argvとする必要がある．また，大きな違いはsuperの有無である．optparseではsuperは必要ないのだが，Thorでは必要になる．
 
 \section{その他オプション}\label{ux305dux306eux4ed6ux30aaux30d7ux30b7ux30e7ux30f3}
 
@@ -273,7 +272,7 @@ end
 
 \section{変更後のオプション}\label{}
 
-オプションを省略記法から自然言語に近い記法に変更したことでより直感的なコマンド入力が可能になると思われる．以下にthorで書き換えた後のmy helpのオプション一覧を示す．
+オプションを省略記法から自然言語に近い記法に変更したことでより直感的なコマンド入力が可能になると思われる．以下にThorで書き換えた後のmy\_helpのオプション一覧を示す．
 
 \begin{screen}
 {\small

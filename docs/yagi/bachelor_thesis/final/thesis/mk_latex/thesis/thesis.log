@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.7.1-161114-2.6 (utf8.euc) (TeX Live 2017) (preloaded format=platex 2017.12.7)  14 FEB 2018 13:48
+This is e-pTeX, Version 3.14159265-p3.7.1-161114-2.6 (utf8.euc) (TeX Live 2017) (preloaded format=platex 2017.12.7)  14 FEB 2018 15:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -606,13 +606,13 @@ LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <14.4> not available
 File: ../.././figs/opt_thor.png Graphic file (type bmp)
 <../.././figs/opt_thor.png>
  [11] [12] [13] [14] [15]
-Overfull \hbox (1.65617pt too wide) in paragraph at lines 235--235
+Overfull \hbox (1.65617pt too wide) in paragraph at lines 234--234
 []        \OT1/cmtt/m/n/10.95 opt.on('-m', '--make', 'make executables for all 
 helps.'){make_help}[] 
  []
 
 
-Overfull \hbox (1.65617pt too wide) in paragraph at lines 235--235
+Overfull \hbox (1.65617pt too wide) in paragraph at lines 234--234
 []        \OT1/cmtt/m/n/10.95 opt.on('--delete NAME','delete NAME help'){|file|
  delete_help(file)}[] 
  []
@@ -674,4 +674,4 @@ Here is how much of TeX's memory you used:
  929 hyphenation exceptions out of 8191
  44i,7n,40p,1453b,421s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on thesis.dvi (23 pages, 71844 bytes).
+Output written on thesis.dvi (23 pages, 72052 bytes).
