@@ -1,28 +1,38 @@
-This is e-pTeX, Version 3.14159265-p3.7.1-161114-2.6 (utf8.euc) (TeX Live 2017) (preloaded format=platex 2017.12.7)  13 FEB 2018 13:15
+This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (utf8.euc) (TeX Live 2016) (preloaded format=platex 2017.1.26)  14 FEB 2018 19:09
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
 **chapter6.tex
 (./chapter6.tex
-pLaTeX2e <2017/10/28>+3 (based on LaTeX2e <2017-04-15>)
-Babel <3.15> and hyphenation patterns for 84 language(s) loaded.
-./chapter6.tex:1: Undefined control sequence.
-l.1 \chapter
-            *{参考文献}\label{ux53c2ux8003ux6587ux732e}
+pLaTeX2e <2016/11/29> (based on LaTeX2e <2017/01/01>)
+Babel <3.9r> and hyphenation patterns for 83 language(s) loaded.
+
+./chapter6.tex:3: LaTeX Error: Environment thebibliography undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.3 \begin{thebibliography}
+                           {9}
 ? 
-./chapter6.tex:1: Emergency stop.
-l.1 \chapter
-            *{参考文献}\label{ux53c2ux8003ux6587ux732e}
-End of file on the terminal!
+./chapter6.tex:3: Emergency stop.
+ ...                                              
+                                                  
+l.3 \begin{thebibliography}
+                           {9}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
 
  
 Here is how much of TeX's memory you used:
- 4 strings out of 493643
- 46 string characters out of 6148757
- 54492 words of memory out of 5000000
- 3700 multiletter control sequences out of 15000+600000
+ 6 strings out of 493683
+ 207 string characters out of 6149653
+ 54216 words of memory out of 5000000
+ 3672 multiletter control sequences out of 15000+600000
  7511 words of font info for 31 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 5i,0n,3p,66b,8s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 5i,0n,4p,67b,16s stack positions out of 5000i,500n,10000p,200000b,80000s
 No pages of output.
