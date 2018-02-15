@@ -235,7 +235,7 @@ end
 \end{verbatim}}
 \end{screen}
 
-しかしThorの場合，executeのような間を取り持つ関数を用意する必要がなく，関数自体をコマンドとして登録していく形をとっているので，この関数は不必要である．以下にThorでの関数宣言を記載する．optparseno場合，-iというコマンドで呼び出されている処理をinitというコマンドで呼び出されるように書き換えたのが以下の関数である．
+しかしThorの場合，executeのような間を取り持つ関数を用意する必要がなく，関数自体をコマンドとして登録していく形をとっているので，この関数は不必要である．以下にThorでの関数宣言を記載する．optparseの場合，-iというコマンドで呼び出されている処理をinitというコマンドで呼び出されるように書き換えたのが以下の関数である．
 
 
 \begin{screen}
@@ -279,17 +279,50 @@ end
 {\small
 \begin{verbatim}
 Commands:
-my\_help clean, -\/-clean clean up exe dir.
-my\_help delete NAME, -\/-delete NAME delete NAME help
-my\_help edit NAME, -\/-edit NAME edit NAME help(eg test\_help)
-my\_help help {[}COMMAND{]} Describe available commands or one specific
+my_help clean, --clean clean up exe dir.
+my_help delete NAME, --delete NAME delete NAME help
+my_help edit NAME, --edit NAME edit NAME help(eg test_help)
+my_help help {[}COMMAND{]} Describe available commands or one specific
 command
-my\_help init NAME, -\/-init NAME initialize NAME help(eg test\_help).
-my\_help install\_local, -\/-install\_local install local after edit
+my_help init NAME, --init NAME initialize NAME help(eg test_help).
+my_help install_local, --install_local install local after edit
 helps
-my\_help list, -\/-list list specific helps
-my\_help make, -\/-make make executables for all helps.
-my\_help version, -v show program version
+my_help list, --list list specific helps
+my_help make, --make make executables for all helps.
+my_help version, -v show program version
 \end{verbatim}}
 \end{screen}
-    
+
+\section{コマンドの自動生成}\label{}
+
+自分で作成したヘルプにはデフォルトでどのヘルプにも存在するコマンドと，個別に存在するコマンドがある．デフォルトで存在するコマンドを自動生成する部分をThorで記述しようとすると非常に複雑になるため，その部分の記述をoptparseで記述した．これにより，Thorで記述すると非常に冗長になってしまうソースコードを簡潔に記述することができた．
+
+\begin{screen}
+{\small
+\begin{verbatim}
+Commands:
+  emacs_help add NAME, --add NAME        # add NAME help
+  emacs_help all, --all                  # all help
+  emacs_help backup NAME, --backup NAME  # backup NAME help
+  emacs_help edit, --edit                # edit help
+  emacs_help help [COMMAND]              # Describe available commands
+  emacs_help hiki, --hiki                # hiki help
+  emacs_help remove NAME, --remove NAME  # remove NAME help
+  emacs_help store NAME, --store         # store NAME help
+
+Usage: emacs_help [options]
+    -v, --version                    show program Version.
+    -c, --cursor                     Cursor移動
+    -p, --ページ                        Page移動
+    -f, --ファイル                       File操作
+    -e, --編集                         Edit操作
+    -w, --ウィンドウ                      Window操作
+    -b, --バッファ                       Buffer操作
+    -q, --終了                         終了操作
+\end{verbatim}}
+\end{screen}
+
+上記はemacs\_helpという独自のヘルプのコマンドである．前半部分のコマンドがThorで記述されたもの，後半部分のコマンドはoptparseで自動生成したものである．
+
+
+
