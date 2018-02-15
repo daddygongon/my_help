@@ -18,4 +18,5 @@
 \contentsline {section}{\numberline {3.5}libディレクトリ}{16}{section.3.5}
 \contentsline {section}{\numberline {3.6}その他オプション}{16}{section.3.6}
 \contentsline {section}{\numberline {3.7}変更後のオプション}{18}{section.3.7}
-\contentsline {chapter}{\numberline {第4章}総括}{20}{chapter.4}
+\contentsline {section}{\numberline {3.8}コマンドの自動生成}{19}{section.3.8}
+\contentsline {chapter}{\numberline {第4章}総括}{21}{chapter.4}
