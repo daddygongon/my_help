@@ -1,0 +1,123 @@
+\documentclass[a4j,twocolumn]{jsarticle}
+%\documentclass[a4j,twocolumn,uplatex]{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{url}
+\usepackage{listings}
+
+\lstset{
+  basicstyle={\ttfamily},
+  identifierstyle={},
+  keywordstyle={\bfseries},
+  ndkeywordstyle={},
+  frame={tb},
+  breaklines=true,
+  numbers=left,
+  numberstyle={},
+  xrightmargin=0zw,
+  xleftmargin=3zw,
+  numberstyle={\scriptsize},
+  stepnumber=1,
+  numbersep=1zw,
+  lineskip=0.5ex
+}
+
+\lstdefinestyle{customRuby}{
+   language={ruby},
+   numbers=left,
+}
+
+\setlength{\textheight}{275mm}
+\headheight 5mm
+\topmargin -30mm
+\textwidth 185mm
+\oddsidemargin -15mm
+\evensidemargin -15mm
+\pagestyle{empty}
+
+
+\begin{document}
+
+\title{my\_helpのThorによるインターフェース改善}
+\author{\hspace{5mm} 情報科学科\hspace{5mm} 西谷研究室 \hspace{5mm} 27014534 \hspace{5mm} 大八木利治}
+\date{}
+\maketitle
+\section{動機}
+my\_helpとは西谷研究室で用いられているユーザメモソフトである．
+これのソースコードはrubyの標準ライブラリであるoptparseを用いて記述されており，サブコマンドはマイナスを付した省略記法が取られている\cite{opt1}．しかし現在では，フルワードを用いた自然言語に近いサブコマンド体系が主流となってきている．そこで，my\_helpのソースコードを，自然言語に近いサブコマンド体系を実現しやすいライブラリであるThorによって書き換え，コマンドをより直感的に扱えるように変更する\cite{koichiro}．
+
+\section{my\_helpとは}
+
+my\_help とは，ユーザー独自のマニュアルを作成することができるユーザメモソフトで ある.
+これは，terminal だけを用いて簡単に起動，編集，削除などをすることができるため，非常に便利である.
+さらに，そのマニュアルは自分ですぐに編集，参照することができるので，メモとしての機能も果たしている．これにより，プログラミング初心者が，頻繁に使うコマンドやキーバインドなどをいちいち web browser を立ち上げて調べるのではなく，terminal 上で即座に取得できるため，プログラム開発を集中することが期待される.
+
+
+\section{optparseとthorの比較}
+
+書き換えを行う前に，非常に単純なCLIを作成し，optparseとThorの比較を行った．今回作成したCLIには，キーボードから受け取った引数をnameとし，Hello nameと表示するコマンドを登録した．
+
+optparse版ではコマンドの一覧を自動的に作成できないが，Thor版では自動でコマンド一覧を作成してくれる．また，descriptionの中でコマンドの作成と定義を同時に行えるため，Thor版の方がソースコードが短く簡潔になっている．表１は２つのライブラリの簡単な比較である．
+
+\begin{table}[h]
+\centering
+\caption{optparseとThorの比較}
+\label{my-label}
+\scalebox{0.8}[0.8]{
+\begin{tabular}{|c|c|c|c|}
+\hline
+ & コマンドの記法 & 特徴 & ヘルプコマンド \\ \hline
+optparse & \begin{tabular}[c]{@{}c@{}}マイナスを付した\\ 省略記法\end{tabular} & \begin{tabular}[c]{@{}c@{}}rubyの標準\\ ライブラリであり\\ 古くから使われている\end{tabular} & 手動生成 \\ \hline
+Thor & 任意の文字列 & \begin{tabular}[c]{@{}c@{}}サブコマンドを含む\\ コマンドライン\\ ツールの作成が容易\end{tabular} & 自動生成 \\ \hline
+\end{tabular}
+}
+\end{table}
+
+\section{Thorでの書き換え}
+\subsection{手順}
+optparseからThorへの書き換えの主な手順は以下の通りである．
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+.gemspecファイル内にThorがインストールされるように変更を加える．
+\item
+exeディレクトリの中にあるコマンドファイルを書き換える．
+\item
+ソースファイル内のself.runを消去する．
+\item
+ソースファイル内のinitializeメソッドを書き換え，Thorのinitializeメソッドを継承するように変更する．
+\item
+execute関数を消去する
+\item
+関数宣言を書き換え，自然言語に近いオプションを設定する．
+\item
+コマンド設定しない関数をまとめて，コマンドでないことを宣言する．
+\end{enumerate}
+
+\subsection{コマンドの自動生成について}
+
+my\_helpで作成した自作のヘルプコマンドはデフォルトで存在するオプションと個別に設定されるオプションの２種類を持つ．個別に設定するオプションについてはoptparseを用いて自動設定されている．これをThorで書き換えようとすると冗長で複雑なソースコードになってしまう．そのため，その機能はoptparseで実装し，それ以外の機能をThorで書き換えた．これにより，自作のヘルプコマンドについてはoptparseとThorを連携させて実行できるようにした．
+\section{考察}
+今回，オプションの記法を省略記法からフルワードを用いた記法に変更したことで，コマンドを今までよりも直感的に使用できるようになった．そのため，初心者でもコマンドの意味が理解しやすくなり，学習コストの削減が期待される．
+また，ソースコードを簡略化でき，可読性が上がったことにより，機能拡張が容易になり今後のmy\_helpの継続的な開発が見込まれる．
+
+\vspace{0.3\baselineskip}
+
+{\small\setlength\baselineskip{10pt}	% 参考文献は小さめの文字で行間を詰めてある
+\begin{thebibliography}{9}
+
+%\bibitem{awesome}  David Bryant Copeland, {\it Build Awesome Command-Line Applications in Ruby 2}，(Pragmatic Bookshelf, 2013).
+
+\bibitem{opt1} erikhuda, library optparse,  \\
+\texttt{https://docs.ruby-lang.org/ja/latest/library\slash optparse.html}, 
+accessed 2018.2.9.
+
+\bibitem{koichiro} S.Koichiro,
+Thorの使い方まとめ,\\
+\texttt{http://qiita.com/succi0303/items\slash32560103190436c9435b}, 
+accessed 2018.2.9.
+
+\end{thebibliography}
+}
+
+\end{document}
