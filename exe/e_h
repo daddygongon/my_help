@@ -1,13 +1,8 @@
 #!/usr/bin/env ruby
-<<<<<<< HEAD
-require 'specific_help_opt'
-require 'specific_help_thor'
-ENV['HELP_NAME']='emacs_help'
-help_file = File.join(ENV['HOME'],'.my_help','emacs_help.yml')
-SpecificHelp::Command.start(ARGV)
-SpecificHelpOpt::Command.run(help_file, ARGV)
-=======
 require 'specific_help'
-help_file = File.join(ENV['HOME'],'.my_help','emacs_help.yml')
+if ENV['LANG'] == "C" then
+  help_file = File.join(ENV['HOME'],'.my_help','emacs_help_e.yml')
+else
+  help_file = File.join(ENV['HOME'],'.my_help','emacs_help.yml')
+end
 SpecificHelp::Command.run(help_file, ARGV)
->>>>>>> fb0f8c28ee0cebc7727bb72c9c6d76f732087d41
