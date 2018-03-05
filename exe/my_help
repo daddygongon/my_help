@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
-#require "my_help"
-require "my_help_thor"
+require "my_help"
+MyHelp::Command.run(ARGV)
 
-MyHelp::Command.start(ARGV)
-#MyHelp::Command.run(ARGV)
+#require "my_help_thor"
+#MyHelp::Command.start(ARGV)

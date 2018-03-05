@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-# -*- coding: utf-8 -*-
 require "optparse"
 require "yaml"
 require "my_help/version"
