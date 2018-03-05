@@ -3,7 +3,7 @@
 <div id="text-table-of-contents">
 <ul>
 <li><a href="#">1. 概要</a></li>
-<li><a href="#my_help">2. (my\_helpで解決しようとする)問題点</a></li>
+<li><a href="#my_help">2. (my_helpで解決しようとする)問題点</a></li>
 <li><a href="#">3. 特徴</a></li>
 <li><a href="#">4. 使用法</a>
 <ul>
@@ -17,7 +17,7 @@
 <li><a href="#user-help">5. userの独自helpの達成方法</a></li>
 <li><a href="#">6. どちらがいいか</a></li>
 <li><a href="#uninstall">7. uninstall</a></li>
-<li><a href="#sec-8">8. Rakefile 幾つかの環境設定用のtoolがRakefileに用意されている．</a></li>
+<li><a href="#sec-8">8. Rakefile</a></li>
 </ul>
 </div>
 </div>
@@ -28,7 +28,7 @@
 
 CUI(CLI)ヘルプのUsage出力を真似て，user独自のhelpを作成・提供するgem.
 
-# (my\\\_helpで解決しようとする)問題点<a id="my_helpで解決しようとする問題点" name="my_helpで解決しようとする問題点"></a>
+# (my\_helpで解決しようとする)問題点<a id="my_helpで解決しようとする問題点" name="my_helpで解決しようとする問題点"></a>
 
 
 CUIやshell, 何かのプログラミング言語などを習得しようとする初心者は，
@@ -48,7 +48,7 @@ manは基本的に英語 - manualでは重たい - いつもおなじことをwe
 それらを追加・修正・削除できる
 
 hikiでやろうとしていることの半分くらいはこのあたりのことなの
-かもしれません．memoソフトでは，検索が必要となりますが，my\\\_helpは
+かもしれません．memoソフトでは，検索が必要となりますが，my\_helpは
 key(記憶のとっかかり)を提供することが目的です．
 RPGでレベル上げとかアイテムを貯めるようにして，
 プログラミングでスキルを発展させてください．
@@ -62,12 +62,12 @@ RPGでレベル上げとかアイテムを貯めるようにして，
 ## 簡単な使用法<a id="簡単な使用法" name="簡単な使用法"></a>
 
 
-> $ gem install my\\\_help
+> $ gem install my\_help
 
-でも installがうまくいくと，defaultでmy\\\_help, my\\\_todo,
-emacs\\\_helpが入ります．
+でも installがうまくいくと，defaultでmy\_help, my\_todo,
+emacs\_helpが入ります．
 
-emacs\\\_helpを動かしてみてください．
+emacs\_helpを動かしてみてください．
 
     emacsのキーバインド
     
@@ -97,7 +97,7 @@ emacs\\\_helpを動かしてみてください．
 
 
 インストールですが，gemの標準とは違ったやり方になります．GithubからForkしてcloneします．
->$ git clone git@github.com:daddygongon/my\\\_help.git
+>$ git clone git@github.com:daddygongon/my\_help.git
 
 あとの作業はbundleを使って行います．
 
@@ -113,14 +113,14 @@ pushでさらしてしまうので，やめました．
 
 > $ bundle update
 
-でmy\\\_help.gemspecに記述されている必要なgemsがbundleされます．
+でmy\_help.gemspecに記述されている必要なgemsがbundleされます．
 
 Could not locate
 Gemfileとエラーが出た場合は、Gemfileのある場所を探し、その配下に移動してから再びコマンドを入力する．
 
 用意されているコマンドは，
 
-> $ bundle exec exe/my\\\_help
+> $ bundle exec exe/my\_help
 
     Usage: my_help [options]
         -v, --version                    show program Version.
@@ -134,21 +134,21 @@ Gemfileとエラーが出た場合は、Gemfileのある場所を探し、その
 
 です．まず，-lでdefaultで入っているリストを見てください．
 
-> $ bundle exec exe/my\\\_help -l
+> $ bundle exec exe/my\_help -l
 
     "/usr/local/lib/ruby/gems/2.2.0/gems/my_help-0.2.1/lib/daddygongon"
     ["-l"]
     Specific help file:
       emacs_help
 
-これで，CUIでemacs\\\_help, e\\\_hが用意されています．
+これで，CUIでemacs\_help, e\_hが用意されています．
 これをいじって挙動に馴染んでください．
 &#x2013;addとか&#x2013;editとかで，要素の追加や編集ができます．
 
 ## alpine linuxのためのDockerfile<a id="alpine-linuxのためのdockerfile" name="alpine-linuxのためのdockerfile"></a>
 
 
-my\\\_helpをalpine
+my\_helpをalpine
 linux上で動作させるため、以下のDockerfileを作成しました。
 
     FROM alpine:3.7
@@ -182,29 +182,29 @@ linux上で動作させるため、以下のDockerfileを作成しました。
 
 さて，独自のhelpを作る方法です．まずは，
 
-> $ bundle exec exe/my\\\_help -i new\\\_help
+> $ bundle exec exe/my\_help -i new\_help
 
-"*Users/bob*.my\\\_help/new\\\_help"
-"/Users/bob/Github/my\\\_help/lib/daddygongon/template\\\_help"
+"*Users/bob*.my\_help/new\_help"
+"/Users/bob/Github/my\_help/lib/daddygongon/template\_help"
 
-> $ cp *Users/bob/Github/my\\\_help/lib/daddygongon/template\\\_help
-> /Users/bob*.my\\\_help/new\\\_help
+> $ cp *Users/bob/Github/my\_help/lib/daddygongon/template\_help
+> /Users/bob*.my\_help/new\_help
 
-で，new\\\_helpというtemplateが用意されます．-e
-new\\\_helpで編集してください． YAML形式で，格納されています．サンプルが，
+で，new\_helpというtemplateが用意されます．-e
+new\_helpで編集してください． YAML形式で，格納されています．サンプルが，
 
     my_help/lib/daddygongon
 
-にあります．このあと，-mすると自動でnew\\\_helpがexeディレクトリーに追加されます．
+にあります．このあと，-mすると自動でnew\_helpがexeディレクトリーに追加されます．
 
 ## 独自helpを使えるように<a id="独自helpを使えるように" name="独自helpを使えるように"></a>
 
 
 これは，
 
-> $ bundle exec exe/my\\\_help -m
+> $ bundle exec exe/my\_help -m
 
-で自動的に行われるように修正しましたが，gem環境によっては正常にinstallできません．その場合は，以下にしたがって，手動で/usr/local/binなどにinstallする必要があります．my\\\_helpのdirectoryで
+で自動的に行われるように修正しましたが，gem環境によっては正常にinstallできません．その場合は，以下にしたがって，手動で/usr/local/binなどにinstallする必要があります．my\_helpのdirectoryで
 
 > $ git add -A
 
@@ -214,17 +214,17 @@ new\\\_helpで編集してください． YAML形式で，格納されていま�
 
 してください．さらにlocalへのinstallにはsudoがいるかもしれませ．
 
-これで終わり．new\\\_helpや短縮形のn\\\\\_hでhelpが使えます．
+これで終わり．new\_helpや短縮形のn\_hでhelpが使えます．
 もし使えないときは，bin
 pathが通ってないので，terminalをnewしてください．
 
 # userの独自helpの達成方法<a id="userの独自helpの達成方法" name="userの独自helpの達成方法"></a>
 
 
--   rake my\\\_helpでやっていたが，今は，my\\\\\_help -mに移行
--   @target dirをmy\\\_help/lib/daddygongonからENV['HOME']/.my\\\_helpに変更
+-   rake my\_helpでやっていたが，今は，my\_help -mに移行
+-   @target dirをmy\_help/lib/daddygongonからENV['HOME']/.my\_helpに変更
 
-exe中のファイルをrakeで自動生成． @target\\\_dirにそれらのdataを保存．
+exe中のファイルをrakeで自動生成． @target\_dirにそれらのdataを保存．
 その名前からexe中に実行ファイルを自動生成させている．
 
     lib/daddygongon/
@@ -236,7 +236,7 @@ exe中のファイルをrakeで自動生成． @target\\\_dirにそれらのdata
 
 ということ．これは，
 
-> $ my\\\_help -m
+> $ my\_help -m
 
 で実行される．これを
 
@@ -245,11 +245,11 @@ exe中のファイルをrakeで自動生成． @target\\\_dirにそれらのdata
 すれば必要とするhelpがlocalな環境でbin dirに移され，CUI
 commandとして実行可能になる．
 
-たくさんの実行ファイルを/usr/loca/binに置くことになるので，あらたなmy\\\_helpを作成するときには
+たくさんの実行ファイルを/usr/loca/binに置くことになるので，あらたなmy\_helpを作成するときには
 
-> $ gem uninstall my\\\_help
+> $ gem uninstall my\_help
 
-> $ gem uninstall emacs\\\_help
+> $ gem uninstall emacs\_help
 
 でそのdirをcleanにしておくことが望ましい．下のuninstallの項目を参照．
 
@@ -277,7 +277,7 @@ commandとして実行可能になる．
       system "Rake install:local"
     end
 
-実装方法は，emacs\\\_helpに
+実装方法は，emacs\_helpに
 
 1.  yaml形式でdataを入れ，command.runの入力ファイルとする
 2.  hush形式でdataをいれ，それをrequireして使う
@@ -348,55 +348,52 @@ key wordをhelpで参照してshort optionで入力している．そこで，
 # uninstall<a id="uninstall" name="uninstall"></a>
 
 
-my\\\_help -mでinstallするとEXECUTABLE DIRECTORYにhelpのexec
-filesが自動で追加される． ~/.my\\\_helpを修正したときには，あらかじめ
+my\_help -mでinstallするとEXECUTABLE DIRECTORYにhelpのexec
+filesが自動で追加される． ~/.my\_helpを修正したときには，あらかじめ
 
-> $ gem unistall my\\\_help
+> $ gem unistall my\_help
 
 でそれらをuninstallしておくと良い．
 
-> $ gem uninstall my\\\_help
+> $ gem uninstall my\_help
 > 
-> Select gem to uninstall: 1. my\\\_help-0.1.0 2. my\\\_help-0.2.0 3.
-> my\\\_help-0.2.1 4. my\\\_help-0.2.2 5. my\\\_help-0.2.3 6. my\\\_help-0.3.0 7.
-> my\\\_help-0.3.1 8. my\\\_help-0.3.2 9. All versions
+> Select gem to uninstall: 1. my\_help-0.1.0 2. my\_help-0.2.0 3.
+> my\_help-0.2.1 4. my\_help-0.2.2 5. my\_help-0.2.3 6. my\_help-0.3.0 7.
+> my\_help-0.3.1 8. my\_help-0.3.2 9. All versions
 > 
 > ＞ 9 
-> Successfully uninstalled my\\\_help-0.1.0 Successfully
-> uninstalled my\\\_help-0.2.0 Remove executables: #my\\\_help#
+> Successfully uninstalled my\_help-0.1.0 Successfully
+> uninstalled my\_help-0.2.0 Remove executables: #my\_help#
 > 
-> in addition to the gem? [Yn] Y Removing #my\\\_help# Successfully
-> uninstalled my\\\_help-0.2.1 Successfully uninstalled my\\\_help-0.2.2
-> Successfully uninstalled my\\\_help-0.2.3 Successfully uninstalled
-> my\\\_help-0.3.0 Remove executables: test\\\_help
+> in addition to the gem? [Yn] Y Removing #my\_help# Successfully
+> uninstalled my\_help-0.2.1 Successfully uninstalled my\_help-0.2.2
+> Successfully uninstalled my\_help-0.2.3 Successfully uninstalled
+> my\_help-0.3.0 Remove executables: test\_help
 > 
-> in addition to the gem? [Yn] Y Removing test\\\_help Successfully
-> uninstalled my\\\_help-0.3.1 Remove executables: e\\\_h, emacs\\\_help, m\\\_h,
-> member\\\_help, my\\\_help, n\\\_h, new\\\_help, r\\\_h, ruby\\\_help, t\\\_h,
-> template\\\_help
+> in addition to the gem? [Yn] Y Removing test\_help Successfully
+> uninstalled my\_help-0.3.1 Remove executables: e\_h, emacs\_help, m\_h,
+> member\_help, my\_help, n\_h, new\_help, r\_h, ruby\_help, t\_h,
+> template\_help
 > 
-> in addition to the gem? [Yn] Y Removing e\\\_h Removing emacs\\\_help
-> Removing m\\\_h Removing member\\\_help Removing my\\\_help Removing n\\\_h
-> Removing new\\\_help Removing r\\\_h Removing ruby\\\_help Removing t\\\_h
-> Removing template\\\_help Successfully uninstalled my\\\_help-0.3.2 \`\`\`
+> in addition to the gem? [Yn] Y Removing e\_h Removing emacs\_help
+> Removing m\_h Removing member\_help Removing my\_help Removing n\_h
+> Removing new\_help Removing r\_h Removing ruby\_help Removing t\_h
+> Removing template\_help Successfully uninstalled my\_help-0.3.2 \`\`\`
 
-# Rakefile 幾つかの環境設定用のtoolがRakefileに用意されている．<a id="sec-8" name="sec-8"></a>
+# Rakefile<a id="sec-8" name="sec-8"></a>
 
-      # add .yml mode on ~/.emacs.d/init.el
-    
-    $ rake add\_yml
-    
-      # clean up exe dir
-    
-    $ rake clean\_exe
-    
-      # add .yml on all help files
-    
-    $ rake to\_yml
+幾つかの環境設定用のtoolがRakefileに用意されている．
 
--   add\\\_yml, to\\\_ymlは3.6から4.0へ移行する時に行ったhelpファイルの拡張子変更，
+    # add .yml mode on ~/.emacs.d/init.el
+    $ rake add_yml
+    # clean up exe dir
+    $ rake clean_exe
+    # add .yml on all help files
+    $ rake to_yml
+
+-   add\_yml, to\_ymlは3.6から4.0へ移行する時に行ったhelpファイルの拡張子変更，
 -   3.6では拡張子なしで4.0では'.yml'，に対する対応のために用意したツール．
--   add\\\_ymlは~/.my\\\_help/\*\\\_helpファイルを全て~/.my\\\_help/\*\\\_help.ymlに変える．
--   to\\\_ymlは~/.emacs.d/init.elに'.yml'の設定が書き込まれていない時，ruby-modeでemacsを起動するsciptを埋め込む．
+-   add\_ymlは~/.my\_help/\*\_helpファイルを全て~/.my\_help/\*\_help.ymlに変える．
+-   to\_ymlは~/.emacs.d/init.elに'.yml'の設定が書き込まれていない時，ruby-modeでemacsを起動するsciptを埋め込む．
 
-clean\\\_exeは，githubへuploadする時に，開発者個人のexeファイルをrmして整頓する．
+clean\_exeは，githubへuploadする時に，開発者個人のexeファイルをrmして整頓する．
