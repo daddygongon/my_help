@@ -171,22 +171,19 @@ module SpecificHelp
     end
 
     def hiki_disp(lines)
-      lines.each{|line| puts "*#{line}"}  if lines != nil
+      lines.each{|line| puts "* #{line}"}  if lines != nil
     end
 
     def disp_help(key_word)
       print_separater
       items =@help_cont[key_word]
       puts items[:title].magenta
-#      puts CodeRay.scan("-#{items[:title]}:", :Taskpaper).term
       disp(items[:cont])
       print_separater
     end
 
     def disp(lines)
-#      lines.each{|line| puts "  +#{line}"} if lines != nil
-      lines.each{|line| puts "*#{line}".blue}
-#      lines.each{|line| puts CodeRay.scan("+#{line}", :Taskpaper).term}
+      lines.each{|line| puts "* #{line}".blue}
     end
 
     def print_separater
