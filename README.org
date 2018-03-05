@@ -1,0 +1,460 @@
+#+OPTIONS: ^:{}
+
+* 概要
+  :PROPERTIES:
+  :CUSTOM_ID: 概要
+  :END:
+
+CUI(CLI)ヘルプのUsage出力を真似て，user独自のhelpを作成・提供するgem.
+
+* (my\_helpで解決しようとする)問題点
+  :PROPERTIES:
+  :CUSTOM_ID: my_helpで解決しようとする問題点
+  :END:
+
+CUIやshell, 何かのプログラミング言語などを習得しようとする初心者は，
+commandや文法を覚えるのに苦労します．少しのkey(とっかかり)があると
+思い出すんですが，うろ覚えでは間違えて路頭に迷います．問題点は， -
+manは基本的に英語 - manualでは重たい - いつもおなじことをwebで検索して -
+同じとこ見ている - memoしても，どこへ置いたか忘れる
+
+などです．
+
+* 特徴
+  :PROPERTIES:
+  :CUSTOM_ID: 特徴
+  :END:
+
+これらをgem環境として提供しようというのが，このgemの目的です．
+仕様としては， - userが自分にあったmanを作成 - 雛形を提供 -
+おなじformat, looks, 操作, 階層構造 - すぐに手が届く -
+それらを追加・修正・削除できる
+
+hikiでやろうとしていることの半分くらいはこのあたりのことなの
+かもしれません．memoソフトでは，検索が必要となりますが，my\_helpは
+key(記憶のとっかかり)を提供することが目的です．
+RPGでレベル上げとかアイテムを貯めるようにして，
+プログラミングでスキルを発展させてください．
+
+物覚えの悪い作者は，人の名前をitem分けして，こそっと使っています．[]
+
+* 使用法
+  :PROPERTIES:
+  :CUSTOM_ID: 使用法
+  :END:
+
+** 簡単な使用法
+   :PROPERTIES:
+   :CUSTOM_ID: 簡単な使用法
+   :END:
+
+#+BEGIN_QUOTE
+  $ gem install my\_help
+#+END_QUOTE
+
+でも installがうまくいくと，defaultでmy\_help, my\_todo,
+emacs\_helpが入ります．
+
+emacs\_helpを動かしてみてください．
+
+#+BEGIN_EXAMPLE
+    emacsのキーバインド
+
+    特殊キー操作
+      c-f, controlキーを押しながら    'f'
+      M-f, escキーを押した後一度離して'f'
+        操作の中断c-g, 操作の取り消し(Undo) c-x u
+         cc by Shigeto R. Nishitani, 2016
+    Usage: e_h [options]
+        -v, --version                    show program Version.
+        -c, --cursor                     Cursor移動
+        -e, --編集                         Edit操作
+        -f, --ファイル                       File操作
+        -q, --終了                         終了操作
+        -p, --ページ                        Page移動
+        -w, --ウィンドウ                      Window操作
+        -b, --バッファ                       Buffer操作
+        -m, --mode                       モード切り替え
+            --edit                       edit help contents
+            --to_hiki                    convert to hikidoc format
+            --all                        display all helps
+            --store [item]               store [item] in back
+            --remove [item]              remove [item] in back
+            --add [item]                 add new [item]
+#+END_EXAMPLE
+
+** インストール
+   :PROPERTIES:
+   :CUSTOM_ID: インストール
+   :END:
+
+インストールですが，gemの標準とは違ったやり方になります．GithubからForkしてcloneします．
+>$ git clone git@github.com:daddygongon/my\_help.git
+
+あとの作業はbundleを使って行います．
+
+これは，最後のrake
+install:localをコマンドから実行する方法がわからんかったからですが．．．
+- helpファイルのpush共有とかも考えるとこれがいいのかも． -
+home以下に置く方法と比較分析してください． -
+lib/daddygongonにあたらしいhelpを置くようにしていましたが，helpに個人情報を入れるとgit
+pushでさらしてしまうので，やめました．
+
+まずは，
+
+#+BEGIN_QUOTE
+  $ bundle update
+#+END_QUOTE
+
+でmy\_help.gemspecに記述されている必要なgemsがbundleされます．
+
+Could not locate
+Gemfileとエラーが出た場合は、Gemfileのある場所を探し、その配下に移動してから再びコマンドを入力する．
+
+用意されているコマンドは，
+
+#+BEGIN_QUOTE
+  $ bundle exec exe/my\_help
+#+END_QUOTE
+
+#+BEGIN_EXAMPLE
+    Usage: my_help [options]
+        -v, --version                    show program Version.
+        -l, --list                       個別(specific)ヘルプのList表示.
+        -e, --edit NAME                  NAME(例：test_help)をEdit編集.
+        -i, --init NAME                  NAME(例：test_help)のtemplateを作成.
+        -m, --make                       make executables for all helps.
+        -c, --clean                      clean up exe dir.
+            --install_local              install local after edit helps
+            --delete NAME                delete NAME help
+#+END_EXAMPLE
+
+です．まず，-lでdefaultで入っているリストを見てください．
+
+#+BEGIN_QUOTE
+  $ bundle exec exe/my\_help -l
+#+END_QUOTE
+
+#+BEGIN_EXAMPLE
+    "/usr/local/lib/ruby/gems/2.2.0/gems/my_help-0.2.1/lib/daddygongon"
+    ["-l"]
+    Specific help file:
+      emacs_help
+#+END_EXAMPLE
+
+これで，CUIでemacs\_help, e\_hが用意されています．
+これをいじって挙動に馴染んでください．
+--addとか--editとかで，要素の追加や編集ができます．
+
+** alpine linuxのためのDockerfile
+   :PROPERTIES:
+   :CUSTOM_ID: alpine-linuxのためのdockerfile
+   :END:
+
+my\_helpをalpine
+linux上で動作させるため、以下のDockerfileを作成しました。
+
+#+BEGIN_EXAMPLE
+    FROM alpine:3.7
+
+    ENV http_proxy <YOUR PROXY HERE>
+    ENV https_proxy <YOUR PROXY HERE>
+
+    RUN apk update && apk upgrade
+    RUN apk --update add \
+      openssh git build-base libffi libffi-dev \
+      ruby ruby-dev ruby-rake ruby-bundler
+
+    RUN git clone https://github.com/daddygongon/my_help.git
+    WORKDIR my_help
+
+    RUN bundle update
+    RUN bundle exec exe/my_help -m && rake install:local
+#+END_EXAMPLE
+
+プロキシは適宜書き換えてください。
+ビルド時のアカウントに関するエラーを除けば大体は問題なく動作しています。
+
+#+BEGIN_SRC sh
+    # build an image named 'my-help'
+    $ docker build -t my-help .
+    ...
+
+    # run a container
+    $ docker run -it --rm my-help:latest emacs_help
+#+END_SRC
+
+** 独自のhelpを作る方法
+   :PROPERTIES:
+   :CUSTOM_ID: 独自のhelpを作る方法
+   :END:
+
+さて，独自のhelpを作る方法です．まずは，
+
+#+BEGIN_QUOTE
+  $ bundle exec exe/my\_help -i new\_help
+#+END_QUOTE
+
+"/Users/bob/.my\_help/new\_help"
+"/Users/bob/Github/my\_help/lib/daddygongon/template\_help"
+
+#+BEGIN_QUOTE
+  $ cp /Users/bob/Github/my\_help/lib/daddygongon/template\_help
+  /Users/bob/.my\_help/new\_help
+#+END_QUOTE
+
+で，new\_helpというtemplateが用意されます．-e
+new\_helpで編集してください． YAML形式で，格納されています．サンプルが，
+
+#+BEGIN_EXAMPLE
+    my_help/lib/daddygongon
+#+END_EXAMPLE
+
+にあります．このあと，-mすると自動でnew\_helpがexeディレクトリーに追加されます．
+
+** 独自helpを使えるように
+   :PROPERTIES:
+   :CUSTOM_ID: 独自helpを使えるように
+   :END:
+
+これは，
+
+#+BEGIN_QUOTE
+  $ bundle exec exe/my\_help -m
+#+END_QUOTE
+
+で自動的に行われるように修正しましたが，gem環境によっては正常にinstallできません．その場合は，以下にしたがって，手動で/usr/local/binなどにinstallする必要があります．my\_helpのdirectoryで
+
+#+BEGIN_QUOTE
+  $ git add -A
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+  $ git commit -m 'add new help'
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+  $ rake install:local
+#+END_QUOTE
+
+してください．さらにlocalへのinstallにはsudoがいるかもしれませ．
+
+これで終わり．new\_helpや短縮形のn\_hでhelpが使えます．
+もし使えないときは，bin
+pathが通ってないので，terminalをnewしてください．
+
+* userの独自helpの達成方法
+  :PROPERTIES:
+  :CUSTOM_ID: userの独自helpの達成方法
+  :END:
+
+-  rake my\_helpでやっていたが，今は，my\_help -mに移行
+-  @target dirをmy\_help/lib/daddygongonからENV['HOME']/.my\_helpに変更
+
+exe中のファイルをrakeで自動生成． @target\_dirにそれらのdataを保存．
+その名前からexe中に実行ファイルを自動生成させている．
+
+#+BEGIN_EXAMPLE
+    lib/daddygongon/
+    └── emacs_help
+
+    exe
+    ├── e_h
+    └── emacs_help
+#+END_EXAMPLE
+
+ということ．これは，
+
+#+BEGIN_QUOTE
+  $ my\_help -m
+#+END_QUOTE
+
+で実行される．これを
+
+#+BEGIN_QUOTE
+  $ rake install:local
+#+END_QUOTE
+
+すれば必要とするhelpがlocalな環境でbin dirに移され，CUI
+commandとして実行可能になる．
+
+たくさんの実行ファイルを/usr/loca/binに置くことになるので，あらたなmy\_helpを作成するときには
+
+#+BEGIN_QUOTE
+  $ gem uninstall my\_help
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+  $ gem uninstall emacs\_help
+#+END_QUOTE
+
+でそのdirをcleanにしておくことが望ましい．下のuninstallの項目を参照．
+
+-mでやっている中身は以下の通り．
+
+#+BEGIN_SRC ruby
+        def make_help
+          Dir.entries(@target_dir)[2..-1].each{|file|
+            next if file[0]=='#' or file[-1]=='~'
+            exe_cont="#!/usr/bin/env ruby\nrequire 'specific_help'\n"
+            exe_cont << "help_file = File.join(ENV['HOME'],'.my_help','#{file}')\n"
+            exe_cont << "SpecificHelp::Command.run(help_file, ARGV)\n"
+            [file, short_name(file)].each{|name|
+              p target=File.join('exe',name)
+              File.open(target,'w'){|file| file.print exe_cont}
+              FileUtils.chmod('a+x', target, :verbose => true)
+            }
+          }
+          install_local
+        end
+
+        def install_local
+          #中略
+          system "git add -A"
+          system "git commit -m 'update exe dirs'"
+          system "Rake install:local"
+        end
+#+END_SRC
+
+実装方法は，emacs\_helpに
+
+1. yaml形式でdataを入れ，command.runの入力ファイルとする
+2. hush形式でdataをいれ，それをrequireして使う
+
+かのどちらかで実装．speedとかdebugを比較・検証する必要あり．
+今の所，No.1の方を実装．No.2のためのhushデータは，
+
+#+BEGIN_SRC ruby
+    # -*- coding: utf-8 -*-
+    require 'yaml'
+    require 'pp'
+    yaml =<<EOF
+    :file:
+      :opts:
+        :short: "-f"
+      :cont:
+      - c-x c-f, Find file, ファイルを開く
+      - c-x c-s, Save file, ファイルを保存
+    EOF
+    pp data=YAML.load(yaml)
+    print YAML.dump(data)
+
+
+    data0={:file=>
+      {:opts=>{:short=>"-f", :long=>"--ファイル", :desc=>"File操作"},
+       :title=>"ファイル操作file",
+       :cont=>
+        ["c-x c-f, Find file, ファイルを開く
+         c-x c-s, Save file, ファイルを保存
+         c-x c-w, Write file NAME, ファイルを別名で書き込む"]}}
+
+    print YAML.dump(data0)
+#+END_SRC
+
+#+BEGIN_EXAMPLE
+    ruby test.rb lib/daddygongon/emacs_help
+#+END_EXAMPLE
+
+で構築できる．実装してみて．
+
+* どちらがいいか
+  :PROPERTIES:
+  :CUSTOM_ID: どちらがいいか
+  :END:
+
+Rubyで日本語が使えるから，optionsを日本語にしてみた．
+
+#+BEGIN_EXAMPLE
+    Usage: eh [options]
+        -v, --version                    show program Version.
+        -c, --カーソル                       Cursor移動
+        -p, --ページ                        Page移動
+        -f, --ファイル                       File操作
+        -e, --編集                         Edit操作
+        -w, --ウィンドウ                      Window操作
+        -b, --バッファ                       Buffer操作
+        -q, --終了                         終了操作
+#+END_EXAMPLE
+
+半角，全角がoptparseでは適切に判断できない様で，表示があまり揃っていない．
+しかし，初心者の振る舞いを見ているとわざわざ日本語に切り替えて打ち込むことは稀であり，
+key wordをhelpで参照してshort optionで入力している．そこで，
+
+#+BEGIN_EXAMPLE
+    Usage: eh [options]
+        -v, --version      show program Version.
+        -c, --cursor       カーソル移動
+        -p, --page         ページ移動
+        -f, --file         ファイル操作
+        -e, --edit         編集操作
+        -w, --window       ウィンドウ操作
+        -b, --buffer       バッファ操作
+        -q, --quit         終了操作
+#+END_EXAMPLE
+
+としたほうがいいと提案する．アンケートを実施してみてほしい．
+
+* uninstall
+  :PROPERTIES:
+  :CUSTOM_ID: uninstall
+  :END:
+
+my\_help -mでinstallするとEXECUTABLE DIRECTORYにhelpのexec
+filesが自動で追加される． ~/.my\_helpを修正したときには，あらかじめ
+
+#+BEGIN_QUOTE
+  $ gem unistall my\_help
+#+END_QUOTE
+
+でそれらをuninstallしておくと良い．
+
+#+BEGIN_QUOTE
+  $ gem uninstall my\_help
+
+Select gem to uninstall: 1. my\_help-0.1.0 2. my\_help-0.2.0 3.
+my\_help-0.2.1 4. my\_help-0.2.2 5. my\_help-0.2.3 6. my\_help-0.3.0 7.
+my\_help-0.3.1 8. my\_help-0.3.2 9. All versions
+
+＞ 9 
+Successfully uninstalled my\_help-0.1.0 Successfully
+uninstalled my\_help-0.2.0 Remove executables: #my\_help#
+
+in addition to the gem? [Yn] Y Removing #my\_help# Successfully
+uninstalled my\_help-0.2.1 Successfully uninstalled my\_help-0.2.2
+Successfully uninstalled my\_help-0.2.3 Successfully uninstalled
+my\_help-0.3.0 Remove executables: test\_help
+
+in addition to the gem? [Yn] Y Removing test\_help Successfully
+uninstalled my\_help-0.3.1 Remove executables: e\_h, emacs\_help, m\_h,
+member\_help, my\_help, n\_h, new\_help, r\_h, ruby\_help, t\_h,
+template\_help
+
+in addition to the gem? [Yn] Y Removing e\_h Removing emacs\_help
+Removing m\_h Removing member\_help Removing my\_help Removing n\_h
+Removing new\_help Removing r\_h Removing ruby\_help Removing t\_h
+Removing template\_help Successfully uninstalled my\_help-0.3.2 ```
+#+END_QUOTE
+
+* Rakefile 幾つかの環境設定用のtoolがRakefileに用意されている．
+
+#+BEGIN_EXAMPLE
+    # add .yml mode on ~/.emacs.d/init.el
+
+  $ rake add\_yml
+
+    # clean up exe dir
+
+  $ rake clean\_exe
+
+    # add .yml on all help files
+
+  $ rake to\_yml
+
+#+END_EXAMPLE
+
+- add\_yml, to\_ymlは3.6から4.0へ移行する時に行ったhelpファイルの拡張子変更，
+- 3.6では拡張子なしで4.0では'.yml'，に対する対応のために用意したツール．
+- add\_ymlは~/.my\_help/*\_helpファイルを全て~/.my\_help/*\_help.ymlに変える．
+- to\_ymlは~/.emacs.d/init.elに'.yml'の設定が書き込まれていない時，ruby-modeでemacsを起動するsciptを埋め込む．
+
+clean\_exeは，githubへuploadする時に，開発者個人のexeファイルをrmして整頓する．
