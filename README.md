@@ -33,9 +33,12 @@ CUI(CLI)ヘルプのUsage出力を真似て，user独自のhelpを作成・提�
 
 CUIやshell, 何かのプログラミング言語などを習得しようとする初心者は，
 commandや文法を覚えるのに苦労します．少しのkey(とっかかり)があると
-思い出すんですが，うろ覚えでは間違えて路頭に迷います．問題点は， -
-manは基本的に英語 - manualでは重たい - いつもおなじことをwebで検索して -
-同じとこ見ている - memoしても，どこへ置いたか忘れる
+思い出すんですが，うろ覚えでは間違えて路頭に迷います．問題点は， 
+-   manは基本的に英語
+-   manualでは重たい
+-   いつもおなじことをwebで検索して
+-   同じとこ見ている
+-   memoしても，どこへ置いたか忘れる
 
 などです．
 
@@ -43,9 +46,12 @@ manは基本的に英語 - manualでは重たい - いつもおなじことをwe
 
 
 これらをgem環境として提供しようというのが，このgemの目的です．
-仕様としては， - userが自分にあったmanを作成 - 雛形を提供 -
-おなじformat, looks, 操作, 階層構造 - すぐに手が届く -
-それらを追加・修正・削除できる
+仕様としては， 
+-   userが自分にあったmanを作成
+-   雛形を提供
+-   おなじformat, looks, 操作, 階層構造
+-   すぐに手が届く
+-   それらを追加・修正・削除できる
 
 hikiでやろうとしていることの半分くらいはこのあたりのことなの
 かもしれません．memoソフトでは，検索が必要となりますが，my\_helpは
@@ -53,7 +59,7 @@ key(記憶のとっかかり)を提供することが目的です．
 RPGでレベル上げとかアイテムを貯めるようにして，
 プログラミングでスキルを発展させてください．
 
-物覚えの悪い作者は，人の名前をitem分けして，こそっと使っています．[]
+物覚えの悪い作者は，人の名前をitem分けして，こそっと使っています．
 
 # 使用法<a id="使用法" name="使用法"></a>
 
@@ -357,25 +363,35 @@ filesが自動で追加される． ~/.my\_helpを修正したときには，あ
 
 > $ gem uninstall my\_help
 > 
-> Select gem to uninstall: 1. my\_help-0.1.0 2. my\_help-0.2.0 3.
-> my\_help-0.2.1 4. my\_help-0.2.2 5. my\_help-0.2.3 6. my\_help-0.3.0 7.
-> my\_help-0.3.1 8. my\_help-0.3.2 9. All versions
+> Select gem to uninstall: 
+> 1.  my\_help-0.1.0
+> 2.  my\_help-0.2.0
+> 3.  my\_help-0.2.1
+> 4.  my\_help-0.2.2
+> 5.  my\_help-0.2.3
+> 6.  my\_help-0.3.0
+> 7.  my\_help-0.3.1
+> 8.  my\_help-0.3.2
+> 9.  All versions
 > 
-> ＞ 9 
+> > 9 
 > Successfully uninstalled my\_help-0.1.0 Successfully
 > uninstalled my\_help-0.2.0 Remove executables: #my\_help#
 > 
-> in addition to the gem? [Yn] Y Removing #my\_help# Successfully
+> in addition to the gem? [Yn] Y 
+> Removing #my\_help# Successfully
 > uninstalled my\_help-0.2.1 Successfully uninstalled my\_help-0.2.2
 > Successfully uninstalled my\_help-0.2.3 Successfully uninstalled
 > my\_help-0.3.0 Remove executables: test\_help
 > 
-> in addition to the gem? [Yn] Y Removing test\_help Successfully
+> in addition to the gem? [Yn] Y 
+> Removing test\_help Successfully
 > uninstalled my\_help-0.3.1 Remove executables: e\_h, emacs\_help, m\_h,
 > member\_help, my\_help, n\_h, new\_help, r\_h, ruby\_help, t\_h,
 > template\_help
 > 
-> in addition to the gem? [Yn] Y Removing e\_h Removing emacs\_help
+> in addition to the gem? [Yn] Y 
+> Removing e\_h Removing emacs\_help
 > Removing m\_h Removing member\_help Removing my\_help Removing n\_h
 > Removing new\_help Removing r\_h Removing ruby\_help Removing t\_h
 > Removing template\_help Successfully uninstalled my\_help-0.3.2 \`\`\`
