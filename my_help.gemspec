@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.description   = %q{Emulating CUI(CLI) help, an user makes and displays his own helps.}
   spec.homepage      = "https://github.com/daddygongon/my_help"
   spec.license       = "MIT"
-
+  spec.metadata["yard.run"] = "yri" # use "yard" to build full HTML docs.
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
   # delete this section to allow pushing this gem to any host.
 #  if spec.respond_to?(:metadata)
@@ -33,9 +33,9 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "yard"
   spec.add_development_dependency "hiki2md"
   spec.add_development_dependency "rspec", "~> 3.0"
-  spec.add_development_dependency "aruba"
+  spec.add_development_dependency "aruba", '~> 1.3.20'
   spec.add_dependency "systemu"
   spec.add_dependency "coderay"
   spec.add_dependency "colorize"
-    spec.add_dependency "thor"
+  spec.add_dependency "thor"
 end

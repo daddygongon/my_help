@@ -5,6 +5,7 @@ require "my_help/version"
 require 'fileutils'
 require "coderay"
 require 'colorize'
+require 'org2yaml'
 
 module SpecificHelp
   class Command
@@ -15,7 +16,14 @@ module SpecificHelp
 
     def initialize(file,argv=[])
       @source_file = file
-      @help_cont = YAML.load(File.read(file))
+      case File.extname(file)
+      when '.yml'
+        @help_cont = YAML.load(File.read(file))
+      when '.org'
+        @help_cont = OrgToYaml(file)
+      else
+        puts "Not apply on #{file}"
+      end
       @help_cont[:head].each{|line| print line.chomp+"\n" } if @help_cont[:head] != nil
       @help_cont[:license].each{|line| print "#{line.chomp}\n" } if @help_cont[:license] != nil
       @argv = argv

@@ -1,0 +1,93 @@
+# -*- coding: utf-8 -*-
+---
+:head:
+- my todo
+:daily:
+  :opts:
+    :short: "-d"
+    :long: "--daily"
+    :desc: daily
+  :title: daily
+  :cont:
+  - 領収書
+  - 研究成果報告書,研究室費，4/30締め切り
+  - macbook移行，done:データ転送，done:設定転送，done:hiki, no:xattr, done:mail, done:microsoft, done:maple
+  - done:boundary cd ~/Github/boundary 論文書くぞ！
+  - "浅野先生送別会(3/14(wed))ふじのぼう予約済み，17:30駐車場max13人，帰りの確認，車4台OK?"
+  - "18時に変更済み，今のとこ22人，max26人，料金の確認10098+飲み代1900，店長藤野さん"
+  - Thermec準備，2/25proceeding, 宿手配
+  - コケん20，けんきゅしつ44万，物理出張10まん．mac 22,10
+  - "python text, 数式処理(100%)，coding(0), 線形代数(0), 数値計算(90)"
+  - org化, org to html, my_helptoorg
+  - ruby??, ruby_learner,
+  - delete github/daddygongon/pseudo_vasp.git some day after tsuji grad
+  - |
+    https://desktopfaq.maplesoft.com/customer/portal/articles/2838880
+    Offline Activation
+    Purchase code: 7WJMGX7PCV95CEFQ
+    mac address: 8c:85:90:9a:4d:e4
+    
+:monthly:
+  :opts:
+    :short: "-m"
+    :long: "--monthly"
+    :desc: monthly
+  :title: monthly
+  :cont:
+  - 井坂，出席，
+  - 森口，出席，バス
+  - 嵯峨，欠席
+  - 土村，出席，電車
+  - 池淵，出席，バス
+  - 福森，出席，電車
+  - 黒澤，出席，バス,帰りを問い合わせるべし
+  - 中後, 欠席
+  - 片寄，出席，バス
+  - 山本，欠席
+  - 岸野，出席，電車！
+  - 岡田，出席，電車
+  - 河野，出席，バス
+  - 長田，出席，車
+  - 井村，出席, バス
+  - 岡留，出席，電車
+  - 加藤, 欠席
+  - 北村，出席，車
+  - 川端, 欠席
+  - 工藤，出席，車
+  - 大崎，出席，バス
+  - 巳波，出席，車
+  - 石浦，出席，バス
+  - 猪口，出席，バス
+  - 角所，出席，バス
+  - 多賀，出席，バス
+  - 高橋，出席，帰りだけバス
+:motto:
+  :opts:
+    :short: "-m"
+    :long: "--motto"
+    :desc: motto
+  :title: motto
+  :cont:
+  - DRY(Don\'t repeat yourself)
+  - TDD(spec, red, green, and refactoring)
+  - "「テストはWhat」「プロダクトはHow」「ドキュメントにはWhy」"
+  - 一人で書いたcodeは消えていくけど，二人で書いたcodeは残る．- 自分の記憶に，二人の記憶に，研究室に，webに，図書に，歴史に
+:code_management:
+  :opts:
+    :short: "-c"
+    :long: "--code_management"
+    :desc: code_management
+  :title: code_management
+  :cont:
+  - 以下のメモがある．でも，完全にipynbへ移行．にもかかわらず役に立ってる(と思っているだけ？)
+  - python animationの世界も少し覗いてみた．．．blenderとか．．．
+  - 2015年はじめ頃のメモで文書管理を考えてた，今ほぼ達成
+  - ベストプラクティス(正しい段取り)を探していて，
+  - " 答えを見つけてみると"
+  - "  初めからそこにいたように振舞いやる"
+  - 道具= ツール，ライブラリ，汎用
+  - やり方=個別対応，ベストプラクティス...
+  - hikiutilsを使うように教えるのではなく，使うシステムを教えている．．．今は．ええこっちゃ
+  - 汎用ライブラリ，個別Rafefileどちらに実装するかの判断基準の明確化
+  - Conventions Over Configurations, きっちり整頓，片付けの問題
+  - 文書が増えて時間が経つと，．．．いやになんな．もっと綺麗な置きかたないんかいな．．．
