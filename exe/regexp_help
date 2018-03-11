@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 require 'specific_help'
 if ENV['LANG'] == "C" then
-  help_file = File.join(ENV['HOME'],'.my_help','regexp_help_e.yml')
+  help_file = File.join(ENV['HOME'],'.my_help','regexp_help.yml_e.yml')
 else
   help_file = File.join(ENV['HOME'],'.my_help','regexp_help.yml')
 end
