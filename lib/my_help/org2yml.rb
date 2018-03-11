@@ -6,7 +6,6 @@ class OrgToYaml
   attr_accessor :help_cont
 
   def initialize(file)
-    p file
     @help_cont = { head: [File.basename(file, '.org')] }
     @head_sym = nil
     @conts = ''
