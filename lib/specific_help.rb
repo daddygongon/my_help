@@ -191,7 +191,6 @@ module SpecificHelp
     end
 
     def disp(lines)
-      p lines.class
       if lines.kind_of?(Array)
         lines.each{|line| puts "* #{line}".blue}
       else

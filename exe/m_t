@@ -3,6 +3,6 @@ require 'specific_help'
 if ENV['LANG'] == "C" then
   help_file = File.join(ENV['HOME'],'.my_help','my_todo.org_e.yml')
 else
-  help_file = File.join(ENV['HOME'],'.my_help','my_todo.org.yml')
+  help_file = File.join(ENV['HOME'],'.my_help','my_todo.org')
 end
 SpecificHelp::Command.run(help_file, ARGV)
