@@ -114,7 +114,7 @@ module MyHelp
 
     def make_help
       local_help_entries.each{|file|
-        head = File.basename(file,'.yml')
+        title = file.split('.')[0]
         exe_cont=<<"EOS"
 #!/usr/bin/env ruby
 require 'specific_help'
@@ -125,7 +125,7 @@ else
 end
 SpecificHelp::Command.run(help_file, ARGV)
 EOS
-        [head, short_name(head)].each{|name|
+        [title, short_name(title)].each{|name|
           p target=File.join('exe',name)
           File.open(target,'w'){|file| file.print exe_cont}
           FileUtils.chmod('a+x', target, :verbose => true)
