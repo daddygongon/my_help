@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 require "optparse"
 require "yaml"
+require 'my_help/org2yml'
 require "fileutils"
 require "my_help/version"
 require "systemu"
@@ -174,20 +175,32 @@ EOS
       return entries
     end
 
+    def auto_load(file_path)
+      case File.extname(file_path)
+      when '.yml'
+        cont = YAML.load(File.read(file_path))
+      when '.org'
+        cont = OrgToYaml.new(file_path).help_cont
+      else
+        puts "Not handling file types of #{file}"
+      end
+      cont
+    end
+
     def list_helps
       print "Specific help file:\n"
       local_help_entries.each{|file|
         file_path=File.join(@local_help_dir,file)
-        file = File.basename(file,'.yml')
+        title = file.split('.')[0]
         begin
-          help = YAML.load(File.read(file_path))
+          help = auto_load(file_path)
         rescue=> eval
           p eval.to_s.red
           print "\n YAML load error in #{file}.".red
-          print "  Revise it by "+"my_help --edit #{file}\n".red
+          print "  Revise it by "+"my_help --edit #{title}\n".red
           exit
         end
-        print "  #{file}\t:#{help[:head][0]}\n".blue
+        print "  #{title}\t: #{help[:head][0]}\n".blue
       }
     end
   end
