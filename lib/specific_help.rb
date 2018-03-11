@@ -5,7 +5,7 @@ require "my_help/version"
 require 'fileutils'
 require "coderay"
 require 'colorize'
-require 'org2yaml'
+require 'my_help/org2yml'
 
 module SpecificHelp
   class Command
@@ -20,7 +20,7 @@ module SpecificHelp
       when '.yml'
         @help_cont = YAML.load(File.read(file))
       when '.org'
-        @help_cont = OrgToYaml(file)
+        @help_cont = OrgToYaml.new(file).help_cont
       else
         puts "Not apply on #{file}"
       end
@@ -191,7 +191,12 @@ module SpecificHelp
     end
 
     def disp(lines)
-      lines.each{|line| puts "* #{line}".blue}
+      p lines.class
+      if lines.kind_of?(Array)
+        lines.each{|line| puts "* #{line}".blue}
+      else
+        print lines
+      end
     end
 
     def print_separater
