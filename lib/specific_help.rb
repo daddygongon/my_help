@@ -19,13 +19,25 @@ module SpecificHelp
       case File.extname(file)
       when '.yml'
         @help_cont = YAML.load(File.read(file))
+        @help_cont[:head].each{|line| print line.chomp+"\n" } if @help_cont[:head] != nil
+        @help_cont[:license].each{|line| print "#{line.chomp}\n" } if @help_cont[:license] != nil
       when '.org'
         @help_cont = OrgToYaml.new(file).help_cont
+        [:head,:license].each do |sym|
+          target = @help_cont[sym]
+          if target != nil
+            if target[:cont].kind_of?(Array)
+              target[:cont].each{|line| print line.chomp+"\n" }
+            else
+              print target[:cont]
+            end
+          else
+            @help_cont[sym] = sym.to_s
+          end
+        end
       else
         puts "Not apply on #{file}"
       end
-      @help_cont[:head].each{|line| print line.chomp+"\n" } if @help_cont[:head] != nil
-      @help_cont[:license].each{|line| print "#{line.chomp}\n" } if @help_cont[:license] != nil
       @argv = argv
     end
 
@@ -164,8 +176,12 @@ module SpecificHelp
     def all_help
       @help_cont.each_pair{|key,val|
         if key==:head or key==:license
-          val[0]+=":"
-          disp(val)
+          if val.kind_of?(Hash)
+            disp(val[:cont][0]+=":")
+          else
+            val[0]+=":"
+            disp(val)
+          end
         else
           disp_help(key)
         end

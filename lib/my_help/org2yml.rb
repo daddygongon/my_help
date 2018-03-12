@@ -6,7 +6,7 @@ class OrgToYaml
   attr_accessor :help_cont
 
   def initialize(file)
-    @help_cont = { head: [File.basename(file, '.org')] }
+    @help_cont = {} #{ head: [File.basename(file, '.org')] }
     @head_sym = nil
     @conts = ''
     org_to_yaml(File.readlines(file))
@@ -20,7 +20,7 @@ class OrgToYaml
 
   def next_cont(head)
     @help_cont[@head_sym][:cont] = @conts if @head_sym
-    return if head == 'dummy'
+    return if head == 'EOF'
     @conts = ''
     @head_sym = head.to_sym
     @help_cont[@head_sym] = {
@@ -36,7 +36,7 @@ class OrgToYaml
         @conts << line
       end
     end
-    next_cont 'dummy'
+    next_cont 'EOF'
   end
 end
 
