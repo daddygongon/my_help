@@ -1,6 +1,14 @@
 #+STARTUP: indent nolineimages
 #+OPTIONS: ^:{}
 
+* development memo
+今は，元データのフォーマットとしてorgとyamlが混ざっている．
+編集に慣れてくると，orgのほうが柔軟性があって良さそう．
+codeはそのためグタグタ．そのうちに治るでしょう．
+yamlのhead, licenseを別扱いにしているのが原因．
+全部，orgにした方が良さそうな気がしてきた．．．
+data, codeが綺麗だし，今後のorgへの移行を考えると正しそう．．．
+
 * 概要
   :PROPERTIES:
   :CUSTOM_ID: 概要
