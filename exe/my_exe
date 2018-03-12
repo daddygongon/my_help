@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 require 'specific_help'
 if ENV['LANG'] == "C" then
-  help_file = File.join(ENV['HOME'],'.my_help','my_exe.yml_e.yml')
+  help_file = File.join(ENV['HOME'],'.my_help','my_exe_e.org')
 else
-  help_file = File.join(ENV['HOME'],'.my_help','my_exe.yml')
+  help_file = File.join(ENV['HOME'],'.my_help','my_exe.org')
 end
 SpecificHelp::Command.run(help_file, ARGV)
