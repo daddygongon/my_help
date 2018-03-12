@@ -1,0 +1,2 @@
+"/Users/bob/.my_help/emacs_help.yml"
+[0;31;49mMay I delete /Users/bob/.my_help/emacs_help.yml? [Yn] [0m
