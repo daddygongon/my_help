@@ -68,8 +68,7 @@ module MyHelp
       cont = YmlToOrg.new(target).contents
       dump = file+'.org'
       File.open(dump, 'w'){|file| file.print cont }
-      print "May I delete #{target}? [Yn] ".red
-      FileUtils.rm(target, verbose: true) if gets.chomp == 'Y'
+      delete_help(file)
     end
 
     def delete_help(file)
