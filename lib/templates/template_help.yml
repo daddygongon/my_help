@@ -7,9 +7,12 @@
 :license:
 - "     cc by Shigeto R. Nishitani, 2016"
 
-# start the first item
-:item:         #change snake word
-  :opts:          #never change
-    :short: -i      #change short option
-    :long: --item   #change long option
-    :desc: 単元(item) #describe what for in help list
+:item_example:
+  :opts:
+    :short: "-i"
+    :long: "--item_example"
+    :desc: item example
+  :title: item example
+  :cont:
+  - itemの例
+
