@@ -11,22 +11,17 @@ class YmlToOrg
   end
 
   def head_and_licence(key, cont)
-    @contents << "* #{key.to_s}\n"
-    cont.each do |line|
-      @contents << "- #{line}\n"
-    end
+    cont.each { |line| @contents << "- #{line}\n" }
   end
 
   def plain_element(key, cont)
-    @contents << "* #{cont[:title]}\n"
-    cont[:cont].each do |line|
-      @contents << "- #{line}\n"
-    end
+    cont[:cont].each { |line| @contents << "- #{line}\n" }
   end
 
   def yml_to_org(help_cont)
     @contents << "#+STARTUP: indent nolineimages\n" # nofold
     help_cont.each_pair do |key, cont|
+      @contents << "* #{key.to_s}\n"
       if key == :head or key == :license
         head_and_licence(key, cont)
       else
@@ -37,5 +32,5 @@ class YmlToOrg
 end
 
 if __FILE__ == $0
-  YmlToOrg.new(ARGV[0]).contents
+  print YmlToOrg.new(ARGV[0]).contents
 end

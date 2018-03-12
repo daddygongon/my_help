@@ -26,7 +26,7 @@ module MyHelp
       return if File::exists?(@local_help_dir)
       FileUtils.mkdir_p(@local_help_dir, :verbose=>true)
       Dir.entries(@template_dir).each{|file|
-        next if file=='template_help.yml'
+        next if file=='template_help.yml' or file=='template_help.org'
         file_path=File.join(@local_help_dir,file)
         next if File::exists?(file_path)
         FileUtils.cp((File.join(@template_dir,file)),@local_help_dir,:verbose=>true)
