@@ -170,8 +170,11 @@ EOS
     end
 
     def edit_help(file)
-      p target_help=File.join(@local_help_dir,file)
-      system "emacs #{target_help}.yml"
+      target_help = File.join(@local_help_dir,file)
+      ['.yml','.org'].each do |ext|
+        p target_help += ext if local_help_entries.member?(file+ext)
+      end
+      system "emacs #{target_help}"
     end
 
     def local_help_entries
@@ -213,5 +216,6 @@ EOS
         print "  #{title}\t: #{help[:head][0]}\n".blue
       }
     end
+
   end
 end
