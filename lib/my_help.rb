@@ -64,8 +64,12 @@ module MyHelp
     end
 
     def yml2org(file)
-      target = File.join(@local_help_dir,file+'.yml')
-      YmlToOrg.new(target)
+      p target = File.join(@local_help_dir,file+'.yml')
+      cont = YmlToOrg.new(target).contents
+      dump = file+'.org'
+      File.open(dump, 'w'){|file| file.print cont }
+      print "May I delete #{target}? [Yn] ".red
+      FileUtils.rm(target, verbose: true) if gets.chomp == 'Y'
     end
 
     def delete_help(file)
