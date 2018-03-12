@@ -1,0 +1,152 @@
+---
+:head:
+- emacsのキーバインド
+- |2-
+
+  特殊キー操作
+- "  C-f, controlキーを押しながら    'f'"
+- "  M-f, escキーを押した後一度離して'f'"
+- "    操作の中断C-g, 操作の取り消し(Undo) C-x u"
+:license:
+- "     cc by Shigeto R. Nishitani, 2016"
+:cursor:
+  :opts:
+    :short: "-c"
+    :long: "--cursor"
+    :desc: Cursor移動
+  :title: カーソル移動cursor
+  :cont:
+  - C-f, move Forwrard,    前or右へ
+  - C-b, move Backwrard,   後or左へ
+  - C-a, go Ahead of line, 行頭へ
+  - C-e, go End of line,   行末へ
+  - C-n, move Next line,   次行へ
+  - C-p, move Previous line, 前行へ
+:edit:
+  :opts:
+    :short: "-e"
+    :long: "--編集"
+    :desc: Edit操作
+  :title: 編集操作edit
+  :cont:
+  - C-d, Delete char, 一字削除
+  - C-k, Kill line,   一行抹消，カット
+  - C-y, Yank,        ペースト
+  - C-w, Kill region, 領域抹消，カット
+  - 領域選択は，先頭or最後尾でC-spaceした後，最後尾or先頭へカーソル移動
+  - C-s, forward incremental Search WORD, 前へWORDを検索
+  - C-r, Reverse incremental search WORD, 後へWORDを検索
+  - M-x query-replace WORD1 <ret> WORD2：対話的置換(y or nで可否選択)
+:short_cut:
+  :opts:
+    :short: "-s"
+    :long: "--short_cut"
+    :desc: 覚えてないshort_cut
+  :title: 覚えてないshort_cut
+  :cont:
+  - M-% WORD1 <ret> WORD2:query-replaceのショートカット
+  - C-x TAB:indent-regionのショートカット
+  - C-c h hs-hide-block
+  - C-c s hs-show-block
+:file:
+  :opts:
+    :short: "-f"
+    :long: "--ファイル"
+    :desc: File操作
+  :title: ファイル操作file
+  :cont:
+  - C-x C-f, Find file, ファイルを開く
+  - C-x C-s, Save file, ファイルを保存
+  - C-x C-w, Write file NAME, ファイルを別名で書き込む
+:quit:
+  :opts:
+    :short: "-q"
+    :long: "--終了"
+    :desc: 終了操作
+  :title: 終了操作quit
+  :cont:
+  - C-x C-c, Quit emacs, ファイルを保存して終了
+  - C-z, suspend emacs,  一時停止，fgで復活
+:page:
+  :opts:
+    :short: "-p"
+    :long: "--ページ"
+    :desc: Page移動
+  :title: ページ移動page
+  :cont:
+  - C-v, move Vertical,          次のページへ
+  - M-v, move reversive Vertical,前のページへ
+  - C-l, centerise Line,       現在行を中心に
+  - M-<, move Top of file,    ファイルの先頭へ
+  - M->, move Bottom of file, ファイルの最後尾へ
+:window:
+  :opts:
+    :short: "-w"
+    :long: "--ウィンドウ"
+    :desc: Window操作
+  :title: ウィンドウ操作window
+  :cont:
+  - C-x 2, 2 windows, 二つに分割
+  - C-x 1, 1 windows, 一つに戻す
+  - C-x 3, 3rd window sep,縦線分割
+  - C-x o, Other windows, 次の画面へ移動
+:buffer:
+  :opts:
+    :short: "-b"
+    :long: "--バッファ"
+    :desc: Buffer操作
+  :title: バッファー操作buffer(すでにopenしてemacsにバッファーされたfile)
+  :cont:
+  - C-x b, show Buffer,   バッファのリスト
+  - C-x C-b, next Buffer, 次のバッファへ移動
+:mode:
+  :opts:
+    :short: "-m"
+    :long: "--mode"
+    :desc: モード切り替え
+  :title: モード切り替え
+  :cont:
+  - M-x ruby-mode, mode to ruby-mode, rubyモードへの切り替え
+  - M-x latex-mode, mode to latex-mode, latexモードへの切り替え
+:query_replace:
+  :opts:
+    :short: "-q"
+    :long: "--query_replace"
+    :desc: query_replace
+  :title: query_replace
+  :cont:
+  - '改行置換M-x Query-replace-regexp \\n with : C-q C-j'
+  - 'タブ置換M-x Query-replace-regexp \\n with : C-q C-i'
+:ruby-mode:
+  :opts:
+    :short: "-r"
+    :long: "--ruby-mode"
+    :desc: ruby-mode
+  :title: ruby-mode
+  :cont:
+  - emacs ~/.emacs.d/init.elを編集
+  - "~/.emacs.d/ruby-mode/以下に関連ファイルをおく"
+  - |
+    ;; ruby code folding followed by https://coderwall.com/p/u-l0ra/ruby-code-folding-in-emacs
+    (add-hook 'ruby-mode-hook
+      (lambda () (hs-minor-mode)))
+
+    (eval-after-load "hideshow"
+      '(add-to-list 'hs-special-modes-alist
+        `(ruby-mode
+          ,(rx (or "def" "class" "module" "do" "{" "[")) ; Block start
+          ,(rx (or "}" "]" "end"))                       ; Block end
+          ,(rx (or "#" "=begin"))                        ; Comment start
+          ruby-forward-sexp nil)))
+
+    (global-set-key (kbd "C-c h") 'hs-hide-block)
+    (global-set-key (kbd "C-c s") 'hs-show-block)
+:dired:
+  :opts:
+    :short: "-d"
+    :long: "--dired"
+    :desc: dirモード
+  :title: dirモード
+  :cont:
+  - c-x d
+  - dir,fileとかに移動してreturnで開く

@@ -2,6 +2,7 @@
 require "optparse"
 require "yaml"
 require 'my_help/org2yml'
+require 'my_help/yml2org'
 require "fileutils"
 require "my_help/version"
 require "systemu"
@@ -50,6 +51,7 @@ module MyHelp
         end
         opt.on('-m', '--make', 'make executables for all helps'){make_help}
         opt.on('-c', '--clean', 'clean up exe dir.'){clean_exe_dir}
+        opt.on('-y', '--yml2org [FILE]', 'convert FILE from yaml to org format'){|file| yml2org(file)}
         opt.on('--install_local','install local after edit helps'){install_local}
         opt.on('--delete NAME','delete NAME help'){|file| delete_help(file)}
       end
@@ -59,6 +61,11 @@ module MyHelp
         p eval
       end
       exit
+    end
+
+    def yml2org(file)
+      target = File.join(@local_help_dir,file+'.yml')
+      YmlToOrg.new(target)
     end
 
     def delete_help(file)
