@@ -80,7 +80,7 @@ module MyHelp
       del_files << File.join(exe_0_dir,file)
       del_files << File.join(exe_dir,short_name(file))
       del_files << File.join(exe_0_dir,short_name(file))
-      del_files.each{|file|
+      del_files.each do |file|
         print "Are you sure to delete "+file.blue+"?[Ynq] ".red
         case gets.chomp
         when 'Y'
@@ -92,7 +92,7 @@ module MyHelp
         when 'n' ; next
         when 'q' ; exit
         end
-      }
+      end
     end
 
     USER_INST_DIR="USER INSTALLATION DIRECTORY:"
@@ -129,7 +129,7 @@ module MyHelp
 #!/usr/bin/env ruby
 require 'specific_help'
 if ENV['LANG'] == "C" then
-  help_file = File.join(ENV['HOME'],'.my_help','#{file}_e.yml')
+  help_file = File.join(ENV['HOME'],'.my_help','#{title}_e.org')
 else
   help_file = File.join(ENV['HOME'],'.my_help','#{file}')
 end
@@ -147,7 +147,7 @@ EOS
     def clean_exe_dir
       local_help_entries.each{|file|
         next if ['emacs_help','e_h','my_help','my_todo'].include?(file)
-        file = File.basename(file,'.yml')
+        file = File.basename(file,'.org')
         [file, short_name(file)].each{|name|
           p target=File.join('exe',name)
         begin
@@ -160,12 +160,12 @@ EOS
     end
 
     def init_help(file)
-      p target_help=File.join(@local_help_dir,file+'.yml')
+      p target_help=File.join(@local_help_dir,file+'.org')
       if File::exists?(target_help)
         puts "File exists. rm it first to initialize it."
         exit
       end
-      p template = File.join(@template_dir,'template_help.yml')
+      p template = File.join(@template_dir,'template_help.org')
       FileUtils::Verbose.cp(template,target_help)
     end
 
@@ -182,7 +182,7 @@ EOS
       Dir.entries(@local_help_dir).each{|file|
         next unless file.include?('_')
         next if file[0]=='#' or file[-1]=='~' or file[0]=='.'
-        next if file.match(/(.+)_e\.yml/) # OK?
+        next if file.match(/(.+)_e\.org/) # OK?
         entries << file
       }
       return entries
@@ -202,7 +202,7 @@ EOS
 
     def list_helps
       print "Specific help file:\n"
-      local_help_entries.each{|file|
+      local_help_entries.each do |file|
         file_path=File.join(@local_help_dir,file)
         title = file.split('.')[0]
         begin
@@ -213,8 +213,9 @@ EOS
           print "  Revise it by "+"my_help --edit #{title}\n".red
           exit
         end
-        print "  #{title}\t: #{help[:head][0]}\n".blue
-      }
+        desc = help[:head][:cont].split("\n")[0]
+        print "  #{title}\t: #{desc}\n".blue
+      end
     end
 
   end
