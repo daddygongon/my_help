@@ -26,7 +26,7 @@ module MyHelp
       return if File::exists?(@local_help_dir)
       FileUtils.mkdir_p(@local_help_dir, :verbose=>true)
       Dir.entries(@template_dir).each{|file|
-        next if file=='template_help.yml' or file=='template_help.org'
+        next if file=='template_help.org'
         file_path=File.join(@local_help_dir,file)
         next if File::exists?(file_path)
         FileUtils.cp((File.join(@template_dir,file)),@local_help_dir,:verbose=>true)
@@ -73,7 +73,7 @@ module MyHelp
 
     def delete_help(file)
       del_files=[]
-      del_files << File.join(@local_help_dir,file+'.yml')
+      del_files << File.join(@local_help_dir,file+'.org')
       exe_dir=File.join(File.expand_path('../..',@template_dir),'exe')
       exe_0_dir='/usr/local/bin'
       del_files << File.join(exe_dir,file)
