@@ -1,8 +1,0 @@
-#!/usr/bin/env ruby
-require 'specific_help'
-if ENV['LANG'] == "C" then
-  help_file = File.join(ENV['HOME'],'.my_help','boundary_help_e.org')
-else
-  help_file = File.join(ENV['HOME'],'.my_help','boundary_help.org')
-end
-SpecificHelp::Command.run(help_file, ARGV)
