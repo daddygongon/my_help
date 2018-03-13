@@ -3,7 +3,6 @@ require "optparse"
 require "yaml"
 require "my_help/version"
 require 'fileutils'
-require "coderay"
 require 'colorize'
 require 'my_help/org2yml'
 
@@ -16,27 +15,10 @@ module SpecificHelp
 
     def initialize(file,argv=[])
       @source_file = file
-      case File.extname(file)
-      when '.yml'
-        @help_cont = YAML.load(File.read(file))
-        @help_cont[:head].each{|line| print line.chomp+"\n" } if @help_cont[:head] != nil
-        @help_cont[:license].each{|line| print "#{line.chomp}\n" } if @help_cont[:license] != nil
-      when '.org'
-        @help_cont = OrgToYaml.new(file).help_cont
-        [:head,:license].each do |sym|
-          target = @help_cont[sym]
-          if target != nil
-            if target[:cont].kind_of?(Array)
-              target[:cont].each{|line| print line.chomp+"\n" }
-            else
-              print target[:cont]
-            end
-          else
-            @help_cont[sym] = sym.to_s
-          end
-        end
-      else
-        puts "Not apply on #{file}"
+      @help_cont = OrgToYaml.new(file).help_cont
+      [:head,:license].each do |sym|
+        target = @help_cont[sym]
+        print target[:cont] if target != nil
       end
       @argv = argv
     end
@@ -60,7 +42,6 @@ module SpecificHelp
           opt.on(opts[:short],opts[:long],opts[:desc]) {disp_help(key)}
         }
         opt.on('--edit','edit help contents'){edit_help}
-        opt.on('--to_hiki','convert to hikidoc format'){to_hiki}
         opt.on('--all','display all helps'){all_help}
         opt.on('--store [item]','store [item] in backfile'){|item| store(item)}
         opt.on('--remove [item]','remove [item] and store in backfile'){|item| remove(item) }
@@ -139,7 +120,7 @@ module SpecificHelp
     end
 
     def edit_help
-      p help_file =@source_file
+       help_file =@source_file
       begin
         p command= "emacs #{help_file}"
         exec command
@@ -147,18 +128,7 @@ module SpecificHelp
         print "\nOption edit is not executable on windows. \n"
         print "Type the following shell command;\n\n"
         print "emacs /home/#{ENV['USER']}/.my_help/#{File.basename(@source_file)}\n\n"
-        print "M-x ruby-mode should be good for edit.\n"
       end
-    end
-
-    def to_hiki
-      @help_cont.each_pair{|key,val|
-        if key==:head or key==:license
-          hiki_disp(val)
-        else
-          hiki_help(key)
-        end
-      }
     end
 
     def all_help
@@ -174,16 +144,6 @@ module SpecificHelp
           disp_help(key)
         end
       }
-    end
-
-    def hiki_help(key_word)
-      items =@help_cont[key_word]
-      puts "\n!!"+items[:title]+"\n"
-      hiki_disp(items[:cont])
-    end
-
-    def hiki_disp(lines)
-      lines.each{|line| puts "* #{line}"}  if lines != nil
     end
 
     def disp_help(key_word)
@@ -205,5 +165,6 @@ module SpecificHelp
     def print_separater
       print "---\n"
     end
+
   end
 end
