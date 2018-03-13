@@ -14,8 +14,9 @@ class OrgToYaml
 
   def make_options(line)
     head, desc = line.split(':')
-    desc ||= head
-    { short: "-#{head[0]}", long: "--#{head}", desc: desc.to_s }
+    desc ||= head.to_s
+    short = "-#{head[0]}"
+    { short: short, long: "--#{head}", desc: desc }
   end
 
   def next_cont(head)
