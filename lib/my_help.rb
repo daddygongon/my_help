@@ -40,15 +40,9 @@ module MyHelp
           opt.version = MyHelp::VERSION
           puts opt.ver
         }
-        if ENV['LANG'] == "C" then
-          opt.on('-l', '--list', 'list specific helps'){list_helps}
-          opt.on('-e NAME', '--edit NAME', 'edit NAME help(eg test_help)'){|file| edit_help(file)}
-          opt.on('-i NAME', '--init NAME', 'initialize NAME help(eq test_help)'){|file| init_help(file)}
-        else
-          opt.on('-l', '--list', '個別(specific)ヘルプのList表示.'){list_helps}
-          opt.on('-e NAME', '--edit NAME', 'NAME(例：test_help)をEdit編集.'){|file| edit_help(file)}
-          opt.on('-i NAME', '--init NAME', 'NAME(例：test_help)のtemplateを作成.'){|file| init_help(file)}
-        end
+        opt.on('-l', '--list', 'list specific helps'){list_helps}
+        opt.on('-e NAME', '--edit NAME', 'edit NAME help(eg test_help)'){|file| edit_help(file)}
+        opt.on('-i NAME', '--init NAME', 'initialize NAME help(eq test_help)'){|file| init_help(file)}
         opt.on('-m', '--make', 'make executables for all helps'){make_help}
         opt.on('-c', '--clean', 'clean up exe dir.'){clean_exe_dir}
         opt.on('-y', '--yml2org [FILE]', 'convert FILE from yaml to org format'){|file| yml2org(file)}
@@ -128,11 +122,7 @@ module MyHelp
         exe_cont=<<"EOS"
 #!/usr/bin/env ruby
 require 'specific_help'
-if ENV['LANG'] == "C" then
-  help_file = File.join(ENV['HOME'],'.my_help','#{title}_e.org')
-else
-  help_file = File.join(ENV['HOME'],'.my_help','#{file}')
-end
+help_file = File.join(ENV['HOME'],'.my_help','#{file}')
 SpecificHelp::Command.run(help_file, ARGV)
 EOS
         [title, short_name(title)].each{|name|
