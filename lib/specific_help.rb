@@ -59,25 +59,13 @@ module SpecificHelp
           opts = val[:opts]
           opt.on(opts[:short],opts[:long],opts[:desc]) {disp_help(key)}
         }
-
-        if ENV['LANG']=='C'
-          opt.on('--edit','edit help contents'){edit_help}
-          opt.on('--to_hiki','convert to hikidoc format'){to_hiki}
-          opt.on('--all','display all helps'){all_help}
-          opt.on('--store [item]','store [item] in backfile'){|item| store(item)}
-          opt.on('--remove [item]','remove [item] and store in backfile'){|item| remove(item) }
-          opt.on('--add [item]','add new [item]'){|item| add(item) }
-          opt.on('--backup_list [val]','show last [val] backup list'){|val| backup_list(val)}
-        else
-          opt.on('--edit','edit help contentsを開く'){edit_help}
-          opt.on('--to_hiki','hikiのformatに変更する'){to_hiki}
-          opt.on('--all','すべてのhelp画面を表示させる'){all_help}
-          opt.on('--store [item]','store [item] でback upをとる'){|item| store(item)}
-          opt.on('--remove [item]','remove [item] back upしてるlistを消去する'){|item| remove(item) }
-          opt.on('--add [item]','add new [item]で新しいhelpを作る'){|item| add(item) }
-          opt.on('--backup_list [val]','back upしているlistを表示させる'){|val| backup_list(val)}
-        end
-
+        opt.on('--edit','edit help contents'){edit_help}
+        opt.on('--to_hiki','convert to hikidoc format'){to_hiki}
+        opt.on('--all','display all helps'){all_help}
+        opt.on('--store [item]','store [item] in backfile'){|item| store(item)}
+        opt.on('--remove [item]','remove [item] and store in backfile'){|item| remove(item) }
+        opt.on('--add [item]','add new [item]'){|item| add(item) }
+        opt.on('--backup_list [val]','show last [val] backup list'){|val| backup_list(val)}
       end
       begin
         command_parser.parse!(@argv)
