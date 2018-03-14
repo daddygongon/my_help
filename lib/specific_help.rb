@@ -108,9 +108,9 @@ module SpecificHelp
     def add(item='new_item')
       print "Trying to add #{item}\n"
       new_item={:opts=>{:short=>'-'+item[0], :long=>'--'+item, :desc=>item},
-          :title=>item, :cont=> [item]}
+          :title=>item, :cont=> item}
       @help_cont[item.to_sym]=new_item
-      File.open(@source_file,'w'){|file| file.print YmlToOrg.new(@help_cont).contents}
+      File.open(@source_file,'w'){|f| f.print YmlToOrg.new(@help_cont).contents}
     end
 
     def remove(item)

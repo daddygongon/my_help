@@ -9,29 +9,22 @@ class YmlToOrg
     cont = ''
     if file.kind_of?(String)
       cont = YAML.load(File.read(file))
-    elsif file.kind_of?(Array)
+    elsif file.kind_of?(Hash)
       cont = file
     end
     yml_to_org(cont)
   end
 
-  def head_and_licence(key, cont)
-    cont.each { |line| @contents << "- #{line}\n" }
-  end
-
   def plain_element(key, cont)
-    cont[:cont].each { |line| @contents << "- #{line}\n" }
+    @contents << cont[:cont].join("\n")+"\n" if cont.include?(:cont)
   end
 
   def yml_to_org(help_cont)
+    pp help_cont
     @contents << "#+STARTUP: indent nolineimages\n" # nofold
     help_cont.each_pair do |key, cont|
       @contents << "* #{key.to_s}\n"
-      if key == :head or key == :license
-        head_and_licence(key, cont)
-      else
-        plain_element(key, cont)
-      end
+      plain_element(key, cont)
     end
   end
 end
