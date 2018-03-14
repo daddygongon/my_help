@@ -7,7 +7,12 @@ class YmlToOrg
 
   def initialize(file)
     @contents = ''
-    yml_to_org(YAML.load(File.read(file)))
+    case file
+    when file.kind_of?(String)
+      contents = YAML.load(File.read(file))
+    when file.kind_of?(Hash)
+      contents = file
+    end
   end
 
   def head_and_licence(key, cont)
