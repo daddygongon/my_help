@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-require "optparse"
 require "yaml"
 
 class YmlToOrg
@@ -7,12 +6,13 @@ class YmlToOrg
 
   def initialize(file)
     @contents = ''
-    case file
-    when file.kind_of?(String)
-      contents = YAML.load(File.read(file))
-    when file.kind_of?(Hash)
-      contents = file
+    cont = ''
+    if file.kind_of?(String)
+      cont = YAML.load(File.read(file))
+    elsif file.kind_of?(Array)
+      cont = file
     end
+    yml_to_org(cont)
   end
 
   def head_and_licence(key, cont)
