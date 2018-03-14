@@ -110,7 +110,7 @@ module SpecificHelp
       new_item={:opts=>{:short=>'-'+item[0], :long=>'--'+item, :desc=>item},
           :title=>item, :cont=> [item]}
       @help_cont[item.to_sym]=new_item
-      File.open(@source_file,'w'){|file| file.print YmlToOrg::yml_to_org(@help_cont)}
+      File.open(@source_file,'w'){|file| file.print YmlToOrg.new(@help_cont).contents}
     end
 
     def remove(item)
