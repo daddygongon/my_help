@@ -1,0 +1,61 @@
+#+STARTUP: indent nolineimages
+* head
+- emacs org-modeのhelp
+- [[http://akisute3.hatenablog.com/entry/2013/12/28/144918][org-mode による論文作成入門]]
+- [[http://d.hatena.ne.jp/tamura70/20100209/org]]
+- org-modeでc-h mでhelpがでる．
+- https://orgmode.org/worg/org-tutorials/orgtutorial_dto.html
+* license
+-      cc by Shigeto R. Nishitani, 2017
+* item
+- m-x org-mode
+- emacs hogehoge.orgで起動
+- - でitem追加
+- * でitem追加
+- #+STARTUP: indent nolineimages nofold
+- #+BEGIN_QUOTE -- #+END_QUOTE
+- #+BEGIN_SRC bash -- #+END_SRC
+- #+TITLE: 格子欠陥について最近の研究から
+- #+AUTHOR: 関西学院大学・理工学部・情報科学科　西谷滋人 2017
+* key_bind
+- tabでtoggle
+- shift-tabで全部に対するtoggle
+- shift-矢印でkeyを切り替え
+- M-shift-<left, right>アウトラインのレベルをツリーごと移動
+- beamer出力はc-c c-eでlbを選択
+* markdown
+- in emacs, M-x org-md-export-as-markdown
+- pandoc -f markdown -t org -o tmp.md sample.org
+- 行の折り返し，M-x toggle-truncate-lines
+* format
+- #+OPTIONS: ^:{}でsub, superを抑制．
+* list
+- 項目- 子項目1
+- 番号付き1. 2.
+- 名前付き   - 名前1 :: 内容1
+* link
+- [[file:./tmp/tmp.txt][Link to file]]
+- to edit, c-c c-l
+- to open, c-c c-o
+* latex
+- latex出力はc-c c-eでllを選択
+- 日本語と数式が混じる時には，$の前後に半角スペースを入れる
+- [[https://www-he.scphys.kyoto-u.ac.jp/member/shotakaha/dokuwiki/doku.php?id=toolbox:emacs:org:export:latex:start~]]
+- https://orgmode.org/worg/org-tutorials/org-latex-export.html
+* todo
+- c-c c-tでno_head->TODO->DONEをloop
+- m-x agenda-modeでschedule操作可能コマンドを表示
+* verbose
+- ': 'を頭に
+- #+BEGIN_EXAMPLE...#+END_EXAMPLE
+* date_and_time
+- c-c .でカレンダーと日付表示<2018-03-14 Wed>
+- +7とか-1を入力してreturnするとその日付が出力
+- c-u c-c . で日付と時間の入力<2018-03-14 Wed 12:38>こんな感じ
+* agenda
+- (setq org-agenda-files (list "~/org/work.org"
+                             "~/org/school.org" 
+                             "~/org/home.org"))
+-  C-c a t to enter the global todo list.
+* move
+- c-c c-u 上位のlevelへ
