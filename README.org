@@ -471,6 +471,9 @@ Removing template_help Successfully uninstalled my_help-0.3.2 ```
 
 clean_exeは，githubへuploadする時に，開発者個人のexeファイルをrmして整頓する．
 * development memo
+** <2018-03-14 Wed>全てをorgへ変更．
+どこにメモを置いたか忘れた．
+
 今は，元データのフォーマットとしてorgとyamlが混ざっている．
 編集に慣れてくると，orgのほうが柔軟性があって良さそう．
 codeはそのためグタグタ．そのうちに治るでしょう．
