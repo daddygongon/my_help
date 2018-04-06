@@ -128,8 +128,8 @@ EOS
 
     def clean_exe_dir
       local_help_entries.each{|file|
-        next if ['emacs_help','e_h','my_help',
-                 'my_todo','org_help'].include?(File.basename(file))
+        next if ['emacs_help.org', 'my_help.org',
+                 'my_todo.org', 'org_help.org'].include?(file)
         file = File.basename(file,'.org')
         [file, short_name(file)].each{|name|
           p target=File.join(@exe_path, name)
