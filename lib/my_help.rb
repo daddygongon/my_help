@@ -18,8 +18,8 @@ module MyHelp
     def initialize(argv=[])
       @argv = argv
       @template_dir = File.expand_path("../../lib/templates", __FILE__)
-      @local_help_dir = File.join(ENV['HOME'],'.my_help')
       @exe_path = File.expand_path("../../exe", __FILE__)
+      @local_help_dir = File.join(ENV['HOME'],'.my_help')
       set_help_dir_if_not_exists
     end
 
@@ -70,7 +70,7 @@ module MyHelp
       del_files=[]
       del_files << File.join(@local_help_dir,file+'.org')
       exe_dir=File.join(File.expand_path('../..',@template_dir),'exe')
-      exe_0_dir='/usr/local/bin'
+      exe_0_dir= @exe_path
       del_files << File.join(exe_dir,file)
       del_files << File.join(exe_0_dir,file)
       del_files << File.join(exe_dir,short_name(file))
@@ -98,7 +98,6 @@ module MyHelp
         [title, short_name(title)].each do |name|
           source = File.join(@exe_path, name)
           target = File.join(system_inst_dir, 'bin', name)
-          #          FileUtils::DryRun.cp(source, target,  verbose: true)
           FileUtils.cp(source, target,  verbose: true)
         end
       end
@@ -129,7 +128,8 @@ EOS
 
     def clean_exe_dir
       local_help_entries.each{|file|
-        next if ['emacs_help','e_h','my_help','my_todo','org_help'].include?(file)
+        next if ['emacs_help','e_h','my_help',
+                 'my_todo','org_help'].include?(File.basename(file))
         file = File.basename(file,'.org')
         [file, short_name(file)].each{|name|
           p target=File.join(@exe_path, name)
@@ -145,7 +145,7 @@ EOS
     def init_help(file)
       p target_help=File.join(@local_help_dir,file+'.org')
       if File::exists?(target_help)
-        puts "File exists. rm it first to initialize it."
+        puts "File exists. --delete it first to initialize it."
         exit
       end
       p template = File.join(@template_dir,'template_help.org')
