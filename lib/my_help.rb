@@ -89,26 +89,18 @@ module MyHelp
       end
     end
 
-    USER_INST_DIR="USER INSTALLATION DIRECTORY:"
-    INST_DIR="INSTALLATION DIRECTORY:"
     def install_local
-      Dir.chdir(File.expand_path('../..',@template_dir))
-      p pwd_dir = Dir.pwd
-      # check that the working dir should not the gem installed dir,
-      # which destroys itself.
-      status, stdout, stderr = systemu "gem env|grep '#{USER_INST_DIR}'"
-      if stdout==""
-        status, stdout, stderr = systemu "gem env|grep '#{INST_DIR}'"
+      status, stdout = systemu 'gem env gemdir'
+      system_inst_dir = stdout.chomp
+      exe_path = File.expand_path("../../exe", __FILE__)
+      local_help_entries.each do |file|
+        title = file.split('.')[0]
+        [title, short_name(title)].each do |name|
+          source = File.join(exe_path, name)
+          target = File.join(system_inst_dir, 'bin', name)
+          FileUtils::DryRun.cp(source, target,  verbose: true)
+        end
       end
-      p system_inst_dir = stdout.split(': ')[1].chomp
-      if pwd_dir == system_inst_dir
-        puts "Download my_help from github, and using bundle for edit helps\n"
-        puts "Read README in detail.\n"
-        exit
-      end
-      system "git add -A"
-      system "git commit -m 'update exe dirs'"
-      system "Rake install:local"
     end
 
     def short_name(file)
@@ -125,18 +117,18 @@ require 'specific_help'
 help_file = File.join(ENV['HOME'],'.my_help','#{file}')
 SpecificHelp::Command.run(help_file, ARGV)
 EOS
-        [title, short_name(title)].each{|name|
+        [title, short_name(title)].each do |name|
           p target=File.join('exe',name)
           File.open(target,'w'){|file| file.print exe_cont}
           FileUtils.chmod('a+x', target, :verbose => true)
-        }
+        end
       }
       install_local
     end
 
     def clean_exe_dir
       local_help_entries.each{|file|
-        next if ['emacs_help','e_h','my_help','my_todo'].include?(file)
+        next if ['emacs_help','e_h','my_help','my_todo','org_help'].include?(file)
         file = File.basename(file,'.org')
         [file, short_name(file)].each{|name|
           p target=File.join('exe',name)
