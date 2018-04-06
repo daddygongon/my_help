@@ -117,8 +117,9 @@ require 'specific_help'
 help_file = File.join(ENV['HOME'],'.my_help','#{file}')
 SpecificHelp::Command.run(help_file, ARGV)
 EOS
+        exe_path = File.expand_path("../../exe", __FILE__)
         [title, short_name(title)].each do |name|
-          p target=File.join('exe',name)
+          p target=File.join(exe_path,name)
           File.open(target,'w'){|file| file.print exe_cont}
           FileUtils.chmod('a+x', target, :verbose => true)
         end
