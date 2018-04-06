@@ -98,7 +98,8 @@ module MyHelp
         [title, short_name(title)].each do |name|
           source = File.join(@exe_path, name)
           target = File.join(system_inst_dir, 'bin', name)
-          FileUtils::DryRun.cp(source, target,  verbose: true)
+          #          FileUtils::DryRun.cp(source, target,  verbose: true)
+          FileUtils.cp(source, target,  verbose: true)
         end
       end
     end
