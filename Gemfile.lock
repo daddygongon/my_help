@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    my_help (0.6.1)
+    my_help (0.6.2)
       colorize
       systemu
 
