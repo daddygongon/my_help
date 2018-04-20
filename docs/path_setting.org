@@ -1,0 +1,47 @@
+#+STARTUP: indent nolineimages nofold
+
+fishで出てくる$PATHがどうやって設定されているか悩んだ．
+
+* fish
+  [[https://fishshell.com/docs/current/index.html#initialization][fish shell initialization]]に記述がある．
+
+#+BEGIN_SRC
+$ emacs /usr/local/Cellar/fish/2.3.1/share/fish/config.fish 
+...
+# OS X-ism: Load the path files out of /etc/paths and /etc/paths.d/*                                                    
+set -g __fish_tmp_path $PATH
+...
+#+END_SRC
+
+ここではもうすでにあるんで，その前やろな．
+* osx
+
+#+BEGIN_SRC
+cat /etc/profile
+# System-wide .profile for sh(1)
+
+if [ -x /usr/libexec/path_helper ]; then
+	eval `/usr/libexec/path_helper -s`
+fi
+
+if [ "${BASH-no}" != "no" ]; then
+	[ -r /etc/bashrc ] && . /etc/bashrc
+#+END_SRC
+そういえば，profileを実行するというのがあったな．．．unixの基本のところに．．．
+$ PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/opt/X11/bin:/Applications/TeXLive/Library/texlive/2013/bin/universal-darwin:/Applications/TeXLive/Library/mactexaddons/bin:.:/Users/bob/.rbenv/shims:/Users/bob/.rbenv/versions/2.4.3/bin:/Users/bob/anaconda3/bin:/Users/bob/bin:/usr/local/opt/tcl-tk/bin"; export PATH;
+となっており，すでにrbenvやanaconda3がどっかで定義されている．．どこやろ．．．
+
+anaconda3とかbrewがどっかを書き換えてるんやろな．．．
+
+* brew
+
+* rbenv
+
+ rbenv init - fish
+export PATH="/Users/bob/.rbenv/shims:${PATH}"
+rbenv rehash 2>/dev/null
+なんで，ここで変えてるのかも．．．
+
+
+
+
