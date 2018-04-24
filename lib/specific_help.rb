@@ -2,6 +2,7 @@
 require "optparse"
 require "yaml"
 require "my_help/version"
+require "my_help/specific_help"
 require 'fileutils'
 require 'colorize'
 require 'my_help/org2yml'

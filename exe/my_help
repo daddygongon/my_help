@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require "my_help"
+require "my_help_new"
 MyHelp::Command.run(ARGV)
 
 #require "my_help_thor"

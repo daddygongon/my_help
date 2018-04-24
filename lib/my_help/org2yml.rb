@@ -41,7 +41,7 @@ class OrgToYaml
   end
 end
 
-if __FILE__ == $1
+if $PROGRAM_NAME == __FILE__ 
   helps = OrgToYaml.new(ARGV[0])
   pp helps.help_cont
 end
