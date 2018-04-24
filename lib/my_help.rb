@@ -18,8 +18,9 @@ module MyHelp
     def initialize(argv=[])
       @argv = argv
       @template_dir = File.expand_path("../../lib/templates", __FILE__)
-      @exe_path = File.expand_path("../../exe", __FILE__)
+      @exe_dir = File.expand_path("../../exe", __FILE__)
       @local_help_dir = File.join(ENV['HOME'],'.my_help')
+      @system_inst_dir = RbConfig::CONFIG['bindir']
       set_help_dir_if_not_exists
     end
 
@@ -70,7 +71,7 @@ module MyHelp
       del_files=[]
       del_files << File.join(@local_help_dir,file+'.org')
       exe_dir=File.join(File.expand_path('../..',@template_dir),'exe')
-      exe_0_dir= @exe_path
+      exe_0_dir= @exe_dir
       del_files << File.join(exe_dir,file)
       del_files << File.join(exe_0_dir,file)
       del_files << File.join(exe_dir,short_name(file))
@@ -91,13 +92,11 @@ module MyHelp
     end
 
     def install_local
-      status, stdout = systemu 'gem env gemdir'
-      system_inst_dir = stdout.chomp
       local_help_entries.each do |file|
         title = file.split('.')[0]
         [title, short_name(title)].each do |name|
-          source = File.join(@exe_path, name)
-          target = File.join(system_inst_dir, 'bin', name)
+          source = File.join(@exe_dir, name)
+          target = File.join(@system_inst_dir, name)
           FileUtils.cp(source, target,  verbose: true)
         end
       end
@@ -118,7 +117,7 @@ help_file = File.join(ENV['HOME'],'.my_help','#{file}')
 SpecificHelp::Command.run(help_file, ARGV)
 EOS
         [title, short_name(title)].each do |name|
-          p target=File.join(@exe_path, name)
+          p target=File.join(@exe_dir, name)
           File.open(target,'w'){|file| file.print exe_cont}
           FileUtils.chmod('a+x', target, :verbose => true)
         end
@@ -132,7 +131,7 @@ EOS
                  'my_todo.org', 'org_help.org'].include?(file)
         file = File.basename(file,'.org')
         [file, short_name(file)].each{|name|
-          p target=File.join(@exe_path, name)
+          p target=File.join(@exe_dir, name)
         begin
           FileUtils::Verbose.rm(target)
         rescue=> eval
