@@ -6,6 +6,6 @@
 /pkg/
 *~
 \#*
-
+/before_gli/
 Dockerfile
 
