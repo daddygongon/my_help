@@ -30,7 +30,6 @@ module MyHelp
     def select_item(help, item)
       o_key = ''
       help.each_pair do |key, cont|
-        p key
         next if key==:license or key==:head
         if cont[:opts][:short] == item or cont[:opts][:long] == item
           o_key = key

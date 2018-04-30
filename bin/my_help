@@ -31,8 +31,7 @@ desc 'edit HELP_NAME help'
 arg_name 'HELP_NAME'
 command :edit do |c|
   c.action do |global_options,options,args|
-    p args
-    $control.edit_help(args[0]) 
+    $control.edit_help(args[0])
   end
 end
 
