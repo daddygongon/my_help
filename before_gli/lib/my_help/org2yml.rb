@@ -9,7 +9,6 @@ class OrgToYaml
     @help_cont = {} #{ head: [File.basename(file, '.org')] }
     @head_sym = nil
     @conts = ''
-    @short_stored = []
     org_to_yaml(File.readlines(file))
   end
 
@@ -17,12 +16,7 @@ class OrgToYaml
     head, desc = line.split(':')
     desc ||= head.to_s
     short = "-#{head[0]}"
-    if @short_stored.include?(short) or head=='license' or head=='head'
-      short = ''
-    else
-      @short_stored << short
-    end
-    { short: short, long: "#{head}", desc: desc }
+    { short: short, long: "--#{head}", desc: desc }
   end
 
   def next_cont(head)

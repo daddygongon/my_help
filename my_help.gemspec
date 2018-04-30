@@ -1,34 +1,24 @@
-# coding: utf-8
-lib = File.expand_path('../lib', __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'my_help/version'
-
-Gem::Specification.new do |spec|
-  spec.name          = "my_help"
-  spec.version       = MyHelp::VERSION
-  spec.authors       = ["Shigeto R. Nishitani"]
-  spec.email         = ["shigeto_nishitani@me.com"]
-
-  spec.summary       = %q{display emacs key bindings in Japanese.}
-  spec.description   = %q{Emulating CUI(CLI) help, an user makes and displays his own helps.}
-  spec.homepage      = "https://github.com/daddygongon/my_help"
-  spec.license       = "MIT"
-  spec.metadata["yard.run"] = "yri" # use "yard" to build full HTML docs.
-  # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
-  # delete this section to allow pushing this gem to any host.
-#  if spec.respond_to?(:metadata)
-#    spec.metadata['allowed_push_host'] = 'http://rubygems.org'
-#  else
-#    raise "RubyGems 2.0 or newer is required to protect against public gem pushes."
-#  end
-
-  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
-  spec.bindir        = "exe"
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
-  spec.require_paths = ["lib"]
-
-  spec.add_development_dependency "bundler", "~> 1.11"
-  spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_dependency "systemu"
-  spec.add_dependency "colorize"
+# Ensure we require the local version and not one we might have installed already
+require File.join([File.dirname(__FILE__),'lib','my_help','version.rb'])
+spec = Gem::Specification.new do |s| 
+  s.name = 'my_help'
+  s.version = MyHelp::VERSION
+  s.author = 'Your Name Here'
+  s.email = 'your@email.address.com'
+  s.homepage = 'http://your.website.com'
+  s.platform = Gem::Platform::RUBY
+  s.summary = 'A description of your project'
+  s.files = `git ls-files`.split("
+")
+  s.require_paths << 'lib'
+  s.has_rdoc = true
+  s.extra_rdoc_files = ['README.rdoc','my_help.rdoc']
+  s.rdoc_options << '--title' << 'my_help' << '--main' << 'README.rdoc' << '-ri'
+  s.bindir = 'bin'
+  s.executables << 'my_help'
+  s.add_development_dependency('rake')
+  s.add_development_dependency('rdoc')
+  s.add_development_dependency('aruba')
+  s.add_runtime_dependency('gli','2.17.1')
+  s.add_runtime_dependency "colorize"
 end
