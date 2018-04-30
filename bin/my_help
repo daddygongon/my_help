@@ -36,9 +36,9 @@ command :edit do |c|
   end
 end
 
-desc 'make HELP_NAME help'
+desc 'make new HELP_NAME help'
 arg_name 'HELP_NAME'
-command :make do |c|
+command :new do |c|
   c.action do |global_options,options,args|
     $control.init_help(args[0])
   end
