@@ -1,0 +1,5 @@
+= my_help
+
+Generate this with
+    my_help rdoc
+After you have described your command line interface

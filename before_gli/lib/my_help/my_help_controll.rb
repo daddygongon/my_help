@@ -1,9 +1,11 @@
 module MyHelp
   class Control
-    def initialize()
+    def initialize(argv)
+      @argv = argv
       @template_dir = File.expand_path("../../templates", __FILE__)
       @exe_dir = File.expand_path("../../exe", __FILE__)
       @local_help_dir = File.join(ENV['HOME'],'.my_help')
+      @system_inst_dir = RbConfig::CONFIG['bindir']
       set_help_dir_if_not_exists
     end
 
@@ -18,26 +20,21 @@ module MyHelp
       }
     end
 
-    def show_item(file, item)
+    def show(file, item)
       file_path=File.join(@local_help_dir,file+'.org')
       help = auto_load(file_path)
-      select = select_item(help, item)
       print help[:head][:cont]
-      puts '-'*5+"\n"+select.to_s.red
-      print help[select][:cont]
+      print '-'*5+"\n"
+      print item.red+"\n"
+      print help[item.to_sym][:cont]
     end
 
-    def select_item(help, item)
-      o_key = ''
-      help.each_pair do |key, cont|
-        p key
-        next if key==:license or key==:head
-        if cont[:opts][:short] == item or cont[:opts][:long] == item
-          o_key = key
-          break
-        end
+    def list_helps(file)
+      if file.nil?
+        list_all
+      else
+        list_help(file)
       end
-      o_key
     end
 
     def list_help(file)
@@ -83,10 +80,6 @@ module MyHelp
     end
 
     def init_help(file)
-      if file.nil?
-        puts "specify NAME".red
-        exit
-      end
       p target_help=File.join(@local_help_dir,file+'.org')
       if File::exists?(target_help)
         puts "File exists. --delete it first to initialize it."
@@ -99,7 +92,7 @@ module MyHelp
     def delete_help(file)
       file = File.join(@local_help_dir,file+'.org')
       print "Are you sure to delete "+file.blue+"?[Ynq] ".red
-      case STDIN.gets.chomp
+      case gets.chomp
       when 'Y'
         begin
           FileUtils.rm(file,:verbose=>true)
@@ -135,5 +128,7 @@ module MyHelp
       end
       cont
     end
+
+
   end
 end
