@@ -11,7 +11,7 @@ module MyHelp
       return if File::exists?(@local_help_dir)
       FileUtils.mkdir_p(@local_help_dir, :verbose=>true)
       Dir.entries(@template_dir).each{|file|
-        next if file=='template_help.org'
+        next if file=='help_template.org'
         file_path=File.join(@local_help_dir,file)
         next if File::exists?(file_path)
         FileUtils.cp((File.join(@template_dir,file)),@local_help_dir,:verbose=>true)
@@ -74,11 +74,13 @@ module MyHelp
     end
 
     def edit_help(file)
-      target_help = File.join(@local_help_dir,file)
-      ['.yml','.org'].each do |ext|
-        p target_help += ext if local_help_entries.member?(file+ext)
+      target_help = File.join(@local_help_dir,file+'.org')
+      if local_help_entries.member?(target_help)
+        system "emacs #{target_help}"
+      else
+        puts "file #{target_help} does not exits in #{@local_help_dir}."
+        puts "init #{file} first."
       end
-      system "emacs #{target_help}"
     end
 
     def init_help(file)
@@ -88,10 +90,10 @@ module MyHelp
       end
       p target_help=File.join(@local_help_dir,file+'.org')
       if File::exists?(target_help)
-        puts "File exists. --delete it first to initialize it."
+        puts "File exists. delete it first to initialize it."
         exit
       end
-      p template = File.join(@template_dir,'template_help.org')
+      p template = File.join(@template_dir,'help_template.org')
       FileUtils::Verbose.cp(template,target_help)
     end
 
@@ -115,7 +117,7 @@ module MyHelp
       Dir.entries(@local_help_dir).each{|file|
         next unless file.include?('_')
         next if file[0]=='#' or file[-1]=='~' or file[0]=='.'
-        next if file.match(/(.+)_e\.org/) # OK?
+#        next if file.match(/(.+)_e\.org/) # OK?
         next if file.match(/(.+)\.html/)
         entries << file
       }
@@ -124,8 +126,8 @@ module MyHelp
 
     def auto_load(file_path)
       case File.extname(file_path)
-      when '.yml'
-        cont = YAML.load(File.read(file_path))
+#      when '.yml'
+#        cont = YAML.load(File.read(file_path))
       when '.org'
         cont = OrgToYaml.new(file_path).help_cont
       else
