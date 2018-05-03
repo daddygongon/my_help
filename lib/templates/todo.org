@@ -3,9 +3,9 @@
 - my todo
 * license
 -      cc by Shigeto R. Nishitani, 2016
-* daily(今日のtodo)
+* daily
 - ご飯を食べる
 - 10時には寝床へ入る
-* weekly(週間todo)
+* weekly
 - 毎日8時間寝る
 - 毎朝ちゃんと食べる

@@ -115,11 +115,13 @@ module MyHelp
     def local_help_entries
       entries= []
       Dir.entries(@local_help_dir).each{|file|
-        next unless file.include?('_')
-        next if file[0]=='#' or file[-1]=='~' or file[0]=='.'
+#        next unless file.include?('_')
+#        next if file[0]=='#' or file[-1]=='~' or file[0]=='.'
 #        next if file.match(/(.+)_e\.org/) # OK?
-        next if file.match(/(.+)\.html/)
-        entries << file
+        #        next if file.match(/(.+)\.html/)
+        if file.match(/(.+)\.org$/) # OK?
+          entries << file
+        end
       }
       return entries
     end

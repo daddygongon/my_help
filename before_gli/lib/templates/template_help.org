@@ -1,8 +1,0 @@
-#+STARTUP: indent nolineimages
-* head
-- ヘルプのサンプル雛形
--   headに常に表示される内容を記述
-* license
--      cc by Shigeto R. Nishitani, 2016
-* item_example
-- itemの例
