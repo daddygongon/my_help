@@ -69,7 +69,8 @@ module MyHelp
         help = auto_load(file_path)
         next if help.nil?
         desc = help[:head][:cont].split("\n")[0]
-        print "  #{title}\t: #{desc}\n".blue
+        print title.rjust(10).blue
+        print ": #{desc}\n".blue
       end
     end
 
