@@ -90,9 +90,9 @@ COMMANDS
 としてください．このlistにargsやitemを加えて行くとわかると思います．
 
 : my_help list
-: my_help list emacs_help
-: my_help list emacs_help -f
-: my_help list emacs_help file
+: my_help list emacs
+: my_help list emacs -f
+: my_help list emacs file
 として動かしてみてください．
 
 
