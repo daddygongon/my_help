@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    my_help (0.0.1)
+    my_help (0.7.1)
       colorize
       gli (= 2.17.1)
 
