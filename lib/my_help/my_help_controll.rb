@@ -75,8 +75,8 @@ module MyHelp
     end
 
     def edit_help(file)
-      target_help = File.join(@local_help_dir,file+'.org')
-      if local_help_entries.member?(target_help)
+      p target_help = File.join(@local_help_dir,file+'.org')
+      if local_help_entries.member?(file+'.org')
         system "emacs #{target_help}"
       else
         puts "file #{target_help} does not exits in #{@local_help_dir}."
