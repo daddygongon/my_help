@@ -1,73 +1,31 @@
-#+OPTIONS: ^:{}
-#+STARTUP: indent nolineimages
-#+TITLE: memoソフトmy_helpの開発
-#+AUTHOR: 山田
-#+EMAIL:     (concat "nishitani@kwansei.ac.jp")
-#+LANGUAGE:  jp
-#+OPTIONS:   H:4 toc:t num:2
-
-#+SETUPFILE: /Users/bob/Github/org-html-themes/setup/theme-readtheorg-local-daddygongon.setup
-
-* README.org
-** 記述
-全ての基本となるREADME.orgの雛形．
-
-拡張によって追加する方がいいのか，あるいはあらかじめ
-記述があって，さらに使い方の基本みたいなのがあるのがいいよね．
-
-** html生成
-   - c-c c-e h(tml) o(ut)
-   で生成してくれる．
-
+b
 * 内容(下書き)
-** my_helpの開発コンセプト
+- コンセプト
 my_help自体は，TODOファイルやmemoである．org-modeを利用しているので，長文やlatex，htmlにも対応している．
 my_helpにemacsのキーバインド(振る舞い)を書くことによってBMSとなる．
 私たちはノートにmemoをするが，無くしてしまうorどこにやったか分からなくなる．->my_helpを使うとそれがなくなる．
 いつもwebで同じことを検索している．jupyternotebookの使い方とか，org-modeの使い方とか．
 
-人間の脳が知識を何かの拍子に思い出す，キーワードが手がかりとなって違う分類，別の階層の記憶，知識を思い出す様に，システム上でも同じことができるシステム．人間の脳において知識が分類され，階層に分けられている(と仮定して)様に，コンピュータの中でも分類化，階層化された知識を直交補空間的に知識を呼び出すことを可能にするtool.
+- 人間の脳が知識を何かの拍子に思い出す，キーワードが手がかりとなって違う分類，別の階層の記憶，知識を思い出す様に，システム上でも同じことができるシステム．人間の脳において知識が分類され，階層に分けられている(と仮定して)様に，コンピュータの中でも分類化，階層化された知識を直交補空間的に知識を呼び出すことを可能にするtool.
 
-my_helpに共有するシステムをのせると強制することができる．
+- my_helpに共有するシステムをのせると強制することができる．
 BMS: 振る舞い管理システム(Behavior Management System)，Githubなど．．．
 
-** my_helpの特徴
-- emacsのMarkdownであるorg-modeを利用．
-- org-modeで作成した文章はemacs以外でも利用できる．
-- 例えば，githubでは.mdと同じ様に.orgに対応している．
-- org-modeのexport機能を利用すればHTMLやLaTexなど様々なフォーマットに変換可能．
-(https://qiita.com/dwarfJP/items/594a8d4b0ac6d248d1e4)
-- my_helpを使うにあたり，emacsとorg-modeの使い方をmasterしなければならない．
-- CUI/CLIのようにterminal上で動かす．
-- commandで呼び出すとすぐに起動する．
+- something...
+emacsのMarkdownであるorg-modeを利用．
+org-modeで作成した文章はemacs以外でも利用できる．例えば，githubでは.mdと同じ様に.orgに対応している．また，org-modeのexport機能を利用すればHTMLやLaTexなど様々なフォーマットに変換可能．(https://qiita.com/dwarfJP/items/594a8d4b0ac6d248d1e4)
+my_helpを使うにあたり，emacsとorg-modeの使い方をmasterしなければならない．
+CUI/CLIのようにterminal上で動かす．
+commandで呼び出すとすぐに起動する．
 
-** my_helpの振る舞い
+
+- 振る舞い
 terminal上でmy_help file名と打つと起動する．
-- delete :: delete HELP_NAME help
-- edit :: edit HELP_NAME help, emacsを使ってorg-modeで編集
-- list :: list all helps, specific HELP, or item
-- new :: make new HELP_NAME help
+new: 作成
+edit: 内容編集
+delete: 削除
 
 TODOとして使うとき，DONEのやつはarchive(書庫)に入れる．いらなくなったから．
-
-** my_help 課題，開発目標
-my_helpを共有することで，知識の効率的な共有を進める．
-
-- my_helpは時々動かない．
-- どういうerror? 
-- versionをあげた．
-#+begin_src ruby
-<       p target_help = File.join(@local_help_dir,file+'.org')
-<       if local_help_entries.member?(file+'.org')
-<         system "emacs #{target_help}"
-<       else
-<         puts "file #{target_help} does not exits in #{@local_help_dir}."
-<         puts "init #{file} first."
----
->       target_help = File.join(@local_help_dir,file)
->       ['.yml','.org'].each do |ext|
->         p target_help += ext if local_help_entries.member?(file+ext)
-#+end_src
 
 ** アクティブラーニング
 - 今の日本の教育ではあまり馴染みがない．
