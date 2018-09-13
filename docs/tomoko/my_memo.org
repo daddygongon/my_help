@@ -10,6 +10,24 @@
 - my_helpの方でrm -rfしてしまったからやばいかも．
 - CoC:設定より既約
 
+* 9/13
+emacsでのUndo方法
+- C-x u
+
+本を渡されたので読む
+
+単語や内容が重複した文章はダメ．
+- はじめに．とは何か
+研究内容．内容にあるwordを詳しく解説する．
+学習管理とは？
+
+起承転結
+
+latexでは"_"が数式と勘違いしてしまうため，普通の表記にするには"\_"を使用する．
+e.g.)my\_help
+
+STARTUP: indent nolineimagesでorg-modeのindentされたやつになる．
+
 * 卒論
 - abst作る．パワポも．
 テンプレがgrad_research/memebers/daddygongon/mid-term先生のとこにある．
@@ -49,9 +67,9 @@ commandで呼び出すとすぐに起動する．
 
 - 振る舞い
 terminal上でmy_help file名と打つと起動する．
-new: 作成
-edit: 内容編集
-delete: 削除
+new :: 作成
+edit :: 内容編集
+delete :: 削除
 
 TODOとして使うとき，DONEのやつはarchive(書庫)に入れる．いらなくなったから．
 
@@ -86,3 +104,53 @@ TODOとして使うとき，DONEのやつはarchive(書庫)に入れる．いら
 
 - 外世界はテキストや論文などの知識      
 
+  
+* 追加
+list :: list all helps, specific HELP, or item
+
+** my_helpの内容
+- 知識
+- 学習
+- 進捗管理(これから) or Thorへの書き換え
+
+** my_helpが使える　とは
+touch typeができる．
+editorのemacsが使える．
+さらにMarkdownのorg-modeが使える．
+
+
+** my_helpnのversionの上げ方
+gem install my_help
+
+** errorの対処法
+my_help edit tomochan_diaryと打つと
+file /Users/yamadatomoko/.my_help/tomochan_diary.org does not exits in /Users/yamadatomoko/.my_help.
+init tomochan_diary first.
+とエラーが出た．
+my_helpのversionをあげたら解決．解決内容はdiffをとる．
+
+my_help list ファイル名でそのファイル内のitemを表示する．
+拡張子をつけると
+error: No such file or directory @ rb_sysopen - /Users/yamadatomoko/.my_help/tomochan_diary.org.org
+となり，.org.orgの様におかしなことが起こる．
+
+ my_help list tomochan_diary でlist表示．
+   -男, 男もすなる日記といふものを，女もしてみむとてするなり．: 男もすなる日記といふものを，女もしてみむとてするなり．
+   -2, 2018/8/31      : 2018/8/31
+     , 2018/9/1       : 2018/9/1
+     , 2018/9/2       : 2018/9/2
+     , 2018/9/4       : 2018/9/4
+     , 2018/9/5       : 2018/9/5
+     , 2018/9/6       : 2018/9/6
+     , 2018/9/13      : 2018/9/13
+itemの表示がされた．
+
+** 今後の課題
+my_helpを共有できる様にする．
+- 進捗管理を行うことにより，学習の強制ができる．
+(もしくはThorへの書き換え.コマンドラインツールを作るためのgem．Rakeより引数受け渡しが簡単．)
+
+
+* はじめに
+アクティブラーニングを実現するシステムを構築するためにmy_helpというmemoソフトを開発する．
+アクティブラーニングとは，共同体に参加することによって知識を得る

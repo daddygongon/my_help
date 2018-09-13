@@ -1,0 +1,8 @@
+#+STARTUP: indent nolineimages
+
+* 質問内容
+
+** pdfの問題
+open README.pdfではadobeで開いてしまうため，
+open . をして，README.texで直接いじっているけど
+実際は良くないんじゃないか．
