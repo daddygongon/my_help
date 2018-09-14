@@ -12,7 +12,43 @@ my_helpは，これを模倣し，コンピュータの中にある分類化，�
 my_helpはemacsのorg-modeを利用したmemoソフトなので，長文やLaTeX,htmlにも対応している．
 
 * my_helpの振る舞い
+my_help list file_name を実行すると，list表示される.
+e.g.)my_help list emacs
+ Emacs key bind
+- 
+special key command
+-   c-f, While pressing the control key, press 'f'
+-   M-f, After pressing Esc key, press 'f'
+-   c-g, Operation interruption 
+-   c-x u, Undo operation(Undo)
+     , head           : head
+     , license        : license
+   -m, move cursor    : move cursor
+     , move page      : move page
+   -f, file operation file: file operation file
+   -e, edit operation : edit operation
+   -w, window operation: window operation
+   -b, buffer operation: buffer operation
+   -q, quit operation : quit operation
+と表示され，
 
+my_help list emacs -w
+を実行すると
+
+- Emacs key bind
+- 
+special key command
+-   c-f, While pressing the control key, press 'f'
+-   M-f, After pressing Esc key, press 'f'
+-   c-g, Operation interruption 
+-   c-x u, Undo operation(Undo)
+-----
+window operation
+- c-x 2, 2 windows, Split into two windows 二つに分割
+- c-x 1, 1 windows, Integrate in a window
+- c-x 3, 3rd window sep, Split vertically
+- c-x o, Other windows, Move to the next window
+となる．
 
 * 今後の課題，開発目標
 my_helpは時々動かなくなることがある．ファイルは作成されているのにも関わらず，ファイルがディレクトリに存在しないというエラーが起こる．
