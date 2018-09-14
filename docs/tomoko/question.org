@@ -6,3 +6,8 @@
 open README.pdfではadobeで開いてしまうため，
 open . をして，README.texで直接いじっているけど
 実際は良くないんじゃないか．
+ 
+- 回答 :: acrobatだったらいいですよ．open README.texでtexshopが起動するんでは？
+apple-iでinformation開いてこのapplicationで開くを設定すると指定したアプリで開くようになります．
+この辺りは，わからんかったら聞けば答えるよ．
+でも，ネットでグーぐればいくらでも出てくるので，自分でこうと思うことをやってみるのも大事．
