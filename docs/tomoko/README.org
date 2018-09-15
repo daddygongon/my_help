@@ -42,7 +42,7 @@ file名の前に以下の命令を書き，実行する．
 - list :: list all helps, specific HELP, or item
 - new :: make new HELP_NAME help
 
-** my_help 課題，開発目標
+* my_help 課題，開発目標
 
 my_helpは時々動かなくなることがある．ファイルは作成されているのにも関わらず，ファイルがディレクトリに存在しないというエラーが起こる．
 
