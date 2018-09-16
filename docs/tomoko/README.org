@@ -8,54 +8,47 @@
 
 #+SETUPFILE: /Users/bob/Github/org-html-themes/setup/theme-readtheorg-local-daddygongon.setup
 
-* README.org
-** 記述
-全ての基本となるREADME.orgの雛形．
+* はじめに
+私たちは，何か知識を得たときには度々メモを取る．しかし，そのメモの場所が思い出せない，あるいはメモを紛失した経験がある．
+あるいは，何度も同じことをwebで検索することもある．
+そこで，探す手間や紛失する可能性を無くすためにmy_helpというmemoソフトを開発した．
 
-拡張によって追加する方がいいのか，あるいはあらかじめ
-記述があって，さらに使い方の基本みたいなのがあるのがいいよね．
-
-** html生成
-   - c-c c-e h(tml) o(ut)
-   で生成してくれる．
-
-* 内容(下書き)
+* 手法
 ** my_helpの開発コンセプト
-my_help自体は，TODOファイルやmemoである．org-modeを利用しているので，長文やlatex，htmlにも対応している．
-my_helpにemacsのキーバインド(振る舞い)を書くことによってBMSとなる．
-私たちはノートにmemoをするが，無くしてしまうorどこにやったか分からなくなる．->my_helpを使うとそれがなくなる．
-いつもwebで同じことを検索している．jupyternotebookの使い方とか，org-modeの使い方とか．
-
-人間の脳が知識を何かの拍子に思い出す，キーワードが手がかりとなって違う分類，別の階層の記憶，知識を思い出す様に，システム上でも同じことができるシステム．人間の脳において知識が分類され，階層に分けられている(と仮定して)様に，コンピュータの中でも分類化，階層化された知識を直交補空間的に知識を呼び出すことを可能にするtool.
-
-my_helpに共有するシステムをのせると強制することができる．
-BMS: 振る舞い管理システム(Behavior Management System)，Githubなど．．．
+ヒトの脳ではキーワードが手がかりとなって，違う分類，別の階層の知識，記憶を思い出す．
+my_helpは，これを模倣し，コンピュータの中にある分類化，階層化された知識を直交補空間として呼び出すことができるシステムである．
 
 ** my_helpの特徴
-- emacsのMarkdownであるorg-modeを利用．
-- org-modeで作成した文章はemacs以外でも利用できる．
-- 例えば，githubでは.mdと同じ様に.orgに対応している．
-- org-modeのexport機能を利用すればHTMLやLaTexなど様々なフォーマットに変換可能．
+my_helpはemacsのMarkdownであるorg-modeを利用したソフトなので，長文やlatex，htmlにも対応している．
+org-modeで作成した文章はemacs以外でも利用できる．
+例えば，githubでは.mdと同じ様に.orgに対応している．
+
+org-modeのexport機能を利用すればHTMLやLaTexなど様々なフォーマットに変換可能である．
 (https://qiita.com/dwarfJP/items/594a8d4b0ac6d248d1e4)
-- my_helpを使うにあたり，emacsとorg-modeの使い方をmasterしなければならない．
-- CUI/CLIのようにterminal上で動かす．
-- commandで呼び出すとすぐに起動する．
+
+my_helpを使うにあたり，emacsとorg-modeの使い方をmasterしなければならない．
+
+
 
 ** my_helpの振る舞い
+CUI/CLIのようにterminal上で動かすことができるので，
+commandで呼び出すとすぐに起動する．
+
 terminal上でmy_help file名と打つと起動する．
+file名の前に以下の命令を書き，実行する．
+
 - delete :: delete HELP_NAME help
 - edit :: edit HELP_NAME help, emacsを使ってorg-modeで編集
 - list :: list all helps, specific HELP, or item
 - new :: make new HELP_NAME help
 
-TODOとして使うとき，DONEのやつはarchive(書庫)に入れる．いらなくなったから．
+* my_help 課題，開発目標
 
-** my_help 課題，開発目標
-my_helpを共有することで，知識の効率的な共有を進める．
+my_helpは時々動かなくなることがある．ファイルは作成されているのにも関わらず，ファイルがディレクトリに存在しないというエラーが起こる．
 
-- my_helpは時々動かない．
-- どういうerror? 
-- versionをあげた．
+コードを上部分から下部分に書き換えて，versionを更新．
+
+
 #+begin_src ruby
 <       p target_help = File.join(@local_help_dir,file+'.org')
 <       if local_help_entries.member?(file+'.org')
@@ -69,9 +62,15 @@ my_helpを共有することで，知識の効率的な共有を進める．
 >         p target_help += ext if local_help_entries.member?(file+ext)
 #+end_src
 
+現在，my_helpは自身の知識だけをmemoとして残すことができる．しかし，より効率的な知識の習得方法として，アクティブラーニングが挙げられる．
+my_help内にある知識を共有できるようなシステムを開発することが今後の目標である．
+
+加えて，共有することのより，他人の進捗状況を把握できるようになる．
+進捗管理することによって学習を強制することができる．
+
 ** アクティブラーニング
-- 今の日本の教育ではあまり馴染みがない．
-テキストや教授者から知識を得るのではなく，自らも参加者になって知識を共有(?)する．
+今の日本の高等学校までの教育ではあまり馴染みがない．
+テキストや教授者から知識を得るのではなく，自らも参加者になって知識を共有する学習方法．
 - AM(acquisition metaphor)
 - PM(participation metaphor): 学習あるいは学習者は参加者．学会活動もこれ．研究者が学会で認められるということは，その分野での用語を使って参加者とコミュニケーションを取れることであり．．．
   論文集を出すことや初心者向けのテキストを書いたりする活動も学習支援のひとつ．
@@ -95,7 +94,3 @@ my_helpを共有することで，知識の効率的な共有を進める．
 |-----------------+------------------------------+---------------------------| 
 
 
-*** 内世界，外世界
-- 内世界は自分の中の知識
-
-- 外世界はテキストや論文などの知識      
