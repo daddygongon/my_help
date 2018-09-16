@@ -34,7 +34,7 @@
 
 \begin{document}
 
-\title{memoソフトmy\_helpの開発}
+\title{memoソフトmy\_helpの改善}
 \author{情報科学科 \hspace{5mm} 27014520 \hspace{5mm}山田智子}
 \date{}
 \maketitle
@@ -42,104 +42,112 @@
 \section{はじめに}
 私たちは，何か知識を得たときには度々メモを取る．しかし，そのメモの場所が思い出せない，あるいはメモを紛失した経験がある．
 あるいは，何度も同じことをwebで検索することもある．
-そこで，探す手間や紛失する可能性を無くすためにmy\_helpというmemoソフトを開発した．
+そこで，探す手間や紛失する可能性を無くすためにmy\_helpという
+memoソフトが開発されている\cite{my_help}．
+しかし，より効率のいい知識習得には，それらの共有が必要と考える．
+本研究では，my\_helpの共有システムの開発を目標とする．
 
 \section{手法}
 \subsection{my\_helpの開発コンセプト}
 \label{sec-2-1}
-ヒトの脳ではキーワードが手がかりとなって，違う分類，別の階層の知識，記憶を思い出す．
-my\_helpは，これを模倣し，コンピュータの中にある分類化，階層化された知識を直交補空間として呼び出すことができるシステムである．
+ヒトの脳ではキーワードが手がかりとなって，違う分類，
+別の階層の知識，記憶を思い出す．
+my\_helpは，これを模倣し，
+コンピュータの中にある分類化，階層化された知識を直交補空間として
+呼び出すことができるシステムである．
 
 \subsection{my\_helpの特徴}
 \label{sec-2-2}
-my\_helpはemacsのMarkdownであるorg-modeを利用したソフトなので，長文やlatex，htmlにも対応している．
+my\_helpはemacsのMarkdownであるorg-modeを利用したソフトなので，
+org-modeのexport機能を利用すればHTMLやLaTexなど様々なフォーマットに
+変換可能である\cite{}．
+
 org-modeで作成した文章はemacs以外でも利用できる．
 例えば，githubでは.mdと同じ様に.orgに対応している．
-
-org-modeのexport機能を利用すればHTMLやLaTexなど様々なフォーマットに変換可能である．
-(\url{https://qiita.com/dwarfJP/items/594a8d4b0ac6d248d1e4})
-
-my\_helpを使うにあたり，emacsとorg-modeの使い方をmasterしなければならない．
-
-
+しかし，my\_helpを使うには，emacsとorg-modeの使い方をmasterしなければならない．
 
 \subsection{my\_helpの振る舞い}
 \label{sec-2-3}
 CUI/CLIのようにterminal上で動かすことができるので，
 commandで呼び出すとすぐに起動する．
-
 terminal上でmy\_help file名と打つと起動する．
 file名の前に以下の命令を書き，実行する．
+以下にemacsに関するmy\_helpの一部を表示している．
+{\small\setlength\baselineskip{10pt}	% 参考文献は小さめの文字で行間を詰めてある
+\begin{verbatim}
+> my_Help list emacs -c
+- emacsのキーバインド
+- 
+特殊キー操作
+-   C-f, controlキーを押しながら    'f'
+-   M-f, escキーを押した後一度離して'f'
+-     操作の中断C-g, 操作の取り消し(Undo) C-x u
+-----
+cursor
+- C-f, move Forwrard,    前or右へ
+- C-b, move Backwrard,   後or左へ
+- C-a, go Ahead of line, 行頭へ
+- C-e, go End of line,   行末へ
+- C-n, move Next line,   次行へ
+- C-p, move Previous line, 前行へ
+\end{verbatim}
+}
+
+my\_helpはshell上のdirectory位置によらずどこからでも
+呼び出せて，applicationを切り替えることなく参照できる．
+また，編集が手軽にできることから
+自分独自のメモを取ることによって，
+記憶の定着を促すツールとしての活用を意図している．
+% 補助脳，
+% 検索ができるようにする
+
+\section{my\_help 課題}
+\label{sec-3}
+現在，my\_helpは自身の知識をmemoとして残すことができるだけの
+システムである．
+しかし，より効率的な知識の習得方法として，
+AM/PMという考え方がある\cite{sfard}．
 
 \begin{description}
-\item[{delete}] delete HELP\_NAME help
-\item[{edit}] edit HELP\_NAME help, 
-emacsを使ってorg-modeで編集
-\item[{list}] list all helps, specific HELP, or item
-\item[{new}] make new HELP\_NAME help
+\item[AM(acquisition metaphor)] 旧来の学習感．
+学習目標は個々を豊かにする, 学習とは何かを獲得する(acquisition)ことであり，
+知るとは持つ，所有することである．
+学習という行為が非常に個人レベルに押し込められた感じがある．
+しかし，現在の社会では個人の能力が測られるという意味で，
+知識を所有することが不可欠である．
+\item[PM(participation metaphor)] 新しい学習感．
+学習あるいは学習者とは参加者であり，
+テキストや教授者から知識を得るのではなく，
+自らも参加者になって知識を共有する．
+学会活動も学習の一部と考える．研究者が学会で認められるということが，
+その分野での用語を使って参加者とコミュニケーションを取れることであり，
+論文集を出すことや初心者向けのテキストを書いたりする活動も学習支援のひとつ．
 \end{description}
 
-\section{my\_help 課題，開発目標}
-\label{sec-3}
-
-my\_helpは時々動かなくなることがある．ファイルは作成されているのにも関わらず，ファイルがディレクトリに存在しないというエラーが起こる．
-
-コードを上部分から下部分に書き換えて，versionを更新．
-
-
-\begin{lstlisting}[caption=hogehoge,label=hoge]
-<       p target_help = File.join(@local_help_dir,file+'.org')
-<       if local_help_entries.member?(file+'.org')
-<         system "emacs #{target_help}"
-<       else
-<         puts "file #{target_help} does not exits in #{@local_help_dir}."
-<         puts "init #{file} first."
----
->       target_help = File.join(@local_help_dir,file)
->       ['.yml','.org'].each do |ext|
->         p target_help += ext if local_help_entries.member?(file+ext)
-\end{lstlisting}
-
-現在，my\_helpは自身の知識だけをmemoとして残すことができる．しかし，より効率的な知識の習得方法として，アクティブラーニングが挙げられる．
-my\_help内にある知識を共有できるようなシステムを開発することが今後の目標である．
-
-加えて，共有することのより，他人の進捗状況を把握できるようになる．
-進捗管理することによって学習を強制することができる．
-
-\subsection{アクティブラーニング}
-\label{sec-3-1}
+自分で作成したmy\_helpを公開することによって，
 \begin{itemize}
-\item 現在の日本の高等学校までの教育ではあまり馴染みがない．
+\item 自分の間違いが修正される．
+\item 人に教えることによって，知識の定着が促進される．
 \end{itemize}
-テキストや教授者から知識を得るのではなく，自らも参加者になって知識を共有する．
-\begin{itemize}
-\item AM(acquisition metaphor)
-\item PM(participation metaphor): 学習あるいは学習者は参加者．学会活動もこれ．研究者が学会で認められるということは，その分野での用語を使って参加者とコミュニケーションを取れることであり．．．
-論文集を出すことや初心者向けのテキストを書いたりする活動も学習支援のひとつ．
-\end{itemize}
+ことが期待される．
 
-\begin{center}
-\begin{tabular}{lll}
- & acquisition metaphor & participation metaphor\\
-\hline
-学習目標 & 個々を豊かにする & 共同体の構築\\
-\hline
-学習とは？ & 何かを獲得する(acquisition)) & 参加者(participant)となる\\
-\hline
-学習者(student) & 受容者(消費者)，再構築者　 & 周辺にいる参加者，徒弟\\
-\hline
-教授者(teacher) & 供給者，まとめ役，媒介者 & 実践や論考の修得者\\
- &  & \\
-\hline
-知識，概念 & 資産，所有物，一般商品 & 実践，論考，活動の一側面\\
- & (個人のあるいは公共の) & \\
-\hline
-知るとは & 持つ，所有すること & 所属する，参加する，\\
- &  & コミュニケートすること\\
-\hline
-\end{tabular}
-\end{center}
+\section{開発目標}
+本研究では，my\_help内にある知識を共有できるようなシステムを
+開発することが今後の目標である．
+具体的には，
+\begin{enumerate}
+\item gitのrepository
+\item webによる表示
+\item hogehoge, fizz, buzz
+\end{enumerate}
+などを取り入れた共有システムを作成する．
 
-
+{\small\setlength\baselineskip{10pt}	% 参考文献は小さめの文字で行間を詰めてある
+\begin{thebibliography}{9}
+\bibitem{my_help} my\_help, Daddygongon, \url{https://github.com/daddygongon/my_help}, (18/09/16 accessed).
+\bibitem{org-mode} org-mode, \url{https://qiita.com/dwarfJP/items/594a8d4b0ac6d248d1e4}, (18/09/16 accessed).
+\bibitem{sfard} sfard論文．
+\end{thebibliography}
+}
 % Emacs 25.3.1 (Org mode 8.2.10)
 \end{document}
