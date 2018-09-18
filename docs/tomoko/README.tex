@@ -1,4 +1,4 @@
-\documentclass[a4j,twocolumn]{jsarticle}
+\documentclass[a4j,twocolumn,uplatex]{jsarticle}
 \usepackage[dvipdfmx]{graphicx}
 \usepackage{url}
 
@@ -59,8 +59,8 @@ my\_helpは，これを模倣し，
 \subsection{my\_helpの特徴}
 \label{sec-2-2}
 my\_helpはemacsのMarkdownであるorg-modeを利用したソフトなので，
-org-modeのexport機能を利用すればHTMLやLaTexなど様々なフォーマットに
-変換可能である\cite{}．
+org-modeのexport機能を利用すればHTMLやLaTeXなど様々なフォーマットに
+変換可能である\cite{org-mode}．
 
 org-modeで作成した文章はemacs以外でも利用できる．
 例えば，githubでは.mdと同じ様に.orgに対応している．
@@ -86,10 +86,7 @@ file名の前に以下の命令を書き，実行する．
 cursor
 - C-f, move Forwrard,    前or右へ
 - C-b, move Backwrard,   後or左へ
-- C-a, go Ahead of line, 行頭へ
-- C-e, go End of line,   行末へ
-- C-n, move Next line,   次行へ
-- C-p, move Previous line, 前行へ
+．．．
 \end{verbatim}
 }
 
@@ -138,15 +135,15 @@ AM/PMという考え方がある\cite{sfard}．
 \begin{enumerate}
 \item gitのrepository
 \item webによる表示
-\item hogehoge, fizz, buzz
+\item point付加によるranking
 \end{enumerate}
 などを取り入れた共有システムを作成する．
 
 {\small\setlength\baselineskip{10pt}	% 参考文献は小さめの文字で行間を詰めてある
 \begin{thebibliography}{9}
-\bibitem{my_help} my\_help, Daddygongon, \url{https://github.com/daddygongon/my_help}, (18/09/16 accessed).
-\bibitem{org-mode} org-mode, \url{https://qiita.com/dwarfJP/items/594a8d4b0ac6d248d1e4}, (18/09/16 accessed).
-\bibitem{sfard} sfard論文．
+\bibitem{my_help}\url{https://github.com/daddygongon/my_help}, Daddygongon, (18/09/16 accessed) .
+\bibitem{org-mode} \url{https://qiita.com/dwarfJP/items/594a8d4b0ac6d248d1e4}, (18/09/16 accessed).
+\bibitem{sfard}“On Two Metaphors for Learning and the Dangers of Choosing Just one”, AnnaSfard, Educational Researcher, 27(1998), 4–13.
 \end{thebibliography}
 }
 % Emacs 25.3.1 (Org mode 8.2.10)
