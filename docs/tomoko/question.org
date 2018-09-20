@@ -100,3 +100,28 @@ wikiの仕組みやコンテンツ量，質は素晴らしいが，記事が中�
 中間発表では，my_helpのmanual的な要素に引っ張られすぎた．本来は，知識を蓄積する場所．
 my_helpの説明ばかりで何がしたいのか伝えられていなかった．自分のすることを明確に記述することを意識！
 個人のメモではあるが，共有するために，他人に伝えようという意思を持ってmy_help内のmemoに工夫が必要．自分だけのmy_helpは自分だけが使いやすい．
+**  作業する
+- 河野君の教科書を借りて，
+- git repository作る．
+- 全員のアカウント作る．
+- my_help upload
+- gitignore
+
+*** my_help upload
+my_help/bin/my_helpのとこに，コマンドに関する記述がある．
+そこにuploadも記述したらいいんじゃないのかな．
+my_help/lib/my_help/my_help_controll.rb
+
+*** miniへの繋ぎ方
+miniの方のシステム環境設定>共有>リモートログインを入にする．
+そこで，sshでログインできる． 
+gradresearch/bin_and_confignのなかの
+cat hostsを自分のsudo emacs etc/hostsにコピーする．
+miniは，C-dで終了
+*** apache
+apacheを立ち上げる．自分のサーバを立ち上げなくても，localhostで確認できるから．
+open .htmlにするのとhttp://localhost/〜
+で開くのは違う．
+
+miniの方でgitのリポジトリ作る．わからんかったら聞く．
+
