@@ -112,6 +112,18 @@ module MyHelp
       end
     end
 
+    def upload_file(file)
+      file = File.join(@local_help_dir,file+'.org')
+      if local_help_entries.member?(file+'.org')
+        system "cp #{target_help} my_help/docs/tomoko"
+      else
+        puts "file #{target_help} does not exits in #{@local_help_dir}."
+        puts "init #{file} first."
+      end
+    end
+
+
+
     private
     def local_help_entries
       entries= []

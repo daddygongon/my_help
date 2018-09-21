@@ -50,6 +50,15 @@ command :delete do |c|
   end
 end
 
+desc 'upload HELP_NAME help'
+arg_name 'HELP_NAME'
+command :upload do |c|
+  c.action do |global_options,options,args|
+    $control.upload_help(args[0])
+  end
+end
+
+
 pre do |global,command,options,args|
   $control = MyHelp::Control.new()
   true
