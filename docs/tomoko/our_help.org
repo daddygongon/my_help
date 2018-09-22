@@ -1,0 +1,15 @@
+#+STARTUP: indent nolineimages
+* our_help manual
+memoソフトmy_helpを利用した，知識の共有，蓄積を行う公開リポジトリ．
+Anna SfordのAM/PMの考え方に乗っ取って，効率よく知識を習得しよう！というのが目標．
+
+** How to use
+`gem install my_help`
+
+でmy_helpのインストールを行う．
+my_helpの詳細はここ(https://github.com/daddygongon/my_help)で確認．
+
+`my_help upload FILE_NAME DIRECTORY_NAME`
+
+でmy_mac:~/.my_helpの指定したファイルが，mini:~/our_help内の自分のディレクトリにuploadされる．
+
