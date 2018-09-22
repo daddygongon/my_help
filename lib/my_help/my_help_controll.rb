@@ -4,6 +4,7 @@ module MyHelp
       @template_dir = File.expand_path("../../templates", __FILE__)
       @exe_dir = File.expand_path("../../exe", __FILE__)
       @local_help_dir = File.join(ENV['HOME'],'.my_help')
+     # @mini_account = File
       set_help_dir_if_not_exists
     end
 
@@ -115,7 +116,7 @@ module MyHelp
     def upload_help(file)
       p target_help = File.join(@local_help_dir,file+'.org')
       if local_help_entries.member?(file+'.org')
-        system "cp #{target_help} /Users/yamadatomoko/my_help/docs/tomoko"
+        system "scp #{target_help} tomoko_y@mini:~/our_help/member/tomoko"
       else
         puts "file #{target_help} does not exits in #{@local_help_dir}."
         puts "init #{file} first."
