@@ -126,8 +126,6 @@ module MyHelp
       end
     end
 
-
-
     private
     def local_help_entries
       entries= []
