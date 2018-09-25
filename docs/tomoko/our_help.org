@@ -9,6 +9,17 @@ Anna SfardのAM/PMの考え方にしたがって，効率よく知識を習得�
 my_helpの詳細はここ(https://github.com/daddygongon/my_help)で確認．
 
 : my_help upload FILE_NAME DIRECTORY_NAME
+を実行すると，以下のcommandがsystemで動く様になる(予定)．
+
+- scpでmy_mac:~/.my_help -> mini:~/our_help/member/tomoko
+上記の動作は要変更．
+
+- ssh tomoko_y@mini
+- cd our_help/member/tomoko
+- git add -A
+- git commit -m 'make memo by my_help'
+- git push origin master
+
 でmy_mac:~/.my_helpの指定したファイルが，mini:~/our_help内の自分のディレクトリにuploadされる．
 
 uploadの振る舞いのdefaultをどちら(all files or a specific file)にするかですが
