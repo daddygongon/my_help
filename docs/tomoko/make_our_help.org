@@ -1,9 +1,18 @@
 #+STARTUP:indent nolineimages
 * sotsuken TODO
 ** my_help upload command
+今あるgithubアカウントにminiの方も繋いだ．
+そこで，公開リポジトリour_helpを作成．(.gitignoreなし)
+our_help/memberというディレクトリの中に各自のディレクトリを作り，そこに.my_help内のmemoを蓄積していく．
+
+下記の動作は無しにする．
 - 共有を行いたい，my_mac:~/.my_help にあるファイルを mini:~/our_help/member/DIRECTORY_NAME にscpする.
+
+y
 mini:~/以降がベタ打ちなので，要修正．
 my_help upload FILE_NAME DIRECTORY_NAME で動く様にしたい．
+
+
 
 - mini:~/our_help内でpushする．
 未完成．
