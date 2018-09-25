@@ -117,9 +117,10 @@ module MyHelp
       p target_help = File.join(@local_help_dir,file+'.org')
       if local_help_entries.member?(file+'.org')
         if target_help.empty?(file+'.org')
-            system "scp #{@local_help_dir} tomoko_y@mini:~/our_help/member/tomoko"
+          system "scp #{@local_help_dir} tomoko_y@mini:~/our_help/member/tomoko"
         else
-            system "scp #{target_help} tomoko_y@mini:~/our_help/member/tomoko"
+          system "scp #{target_help} tomoko_y@mini:~/our_help/member/tomoko"
+        end
       else
         puts "file #{target_help} does not exits in #{@local_help_dir}."
         puts "init #{file} first."
