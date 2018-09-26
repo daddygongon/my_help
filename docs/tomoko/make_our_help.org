@@ -1,26 +1,55 @@
 #+STARTUP:indent nolineimages
 * sotsuken TODO
-** my_help upload command
+** miniとの同期
+*** my_help upload command
 今あるgithubアカウントにminiの方も繋いだ．
 そこで，公開リポジトリour_helpを作成．(.gitignoreなし)
 our_help/memberというディレクトリの中に各自のディレクトリを作り，そこに.my_help内のmemoを蓄積していく．
 
 下記の動作は無しにする．
 - 共有を行いたい，my_mac:~/.my_help にあるファイルを mini:~/our_help/member/DIRECTORY_NAME にscpする.
+- rsync(どういう動きをするのか調べる)
 
-y
 mini:~/以降がベタ打ちなので，要修正．
 my_help upload FILE_NAME DIRECTORY_NAME で動く様にしたい．
 
-
-
 - mini:~/our_help内でpushする．
-未完成．
 
+自分のserver上のGitレポジトリを作ってそこにPushする(https://qiita.com/gymnstcs/items/38d91783d08e2d628fa5)
+これでminiと.my_help上にtest.gitを作ってつなぐ．
 
+’もしも同じマシン上にGitRepoのRemoteを作りたい場合には、以下のようにサーバホストを書かなければよい。
+git remote add origin /path/to/test.git’
 
-** web
-webで見やすく．内容に難易度をつける．まだ．
+** 全部集める，共有
+*** github
+mini:/our_help/members/
+- permissionをどうするか．
 
-** point ranking
+githubにデータを置く問題
+- githubはplain textではなく，変換してある．(git cloneで引き出せる) 
+- めっちゃファイル溜まってきたらどうする？
+
+** 見せる
+全部cuiやと見づらい．lsはしんどい．
+
+*** web
+- ruby on railsでmoc作成する．
+webで見やすく．内容に難易度をつける．
+検索画面．
+
+**** point ranking
 our_helpの更新を促進させるための機能．まだ．
+
+** 選ぶ
+内容で選ぶことができる様にweb表示．
+- 内容のキーワード検索を行える様にしたい．
+
+
+** pull
+githubにデータを置いておいて，欲しいやつだけgit cloneとか．．．．
+
+* etc
+** my_helpの改善
+- my_help search
+を追加する．
