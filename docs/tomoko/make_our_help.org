@@ -14,8 +14,12 @@ mini:~/以降がベタ打ちなので，要修正．
 my_help upload FILE_NAME DIRECTORY_NAME で動く様にしたい．
 
 - mini:~/our_help内でpushする．
-未完成．
 
+自分のserver上のGitレポジトリを作ってそこにPushする(https://qiita.com/gymnstcs/items/38d91783d08e2d628fa5)
+これでminiと.my_help上にtest.gitを作ってつなぐ．
+
+’もしも同じマシン上にGitRepoのRemoteを作りたい場合には、以下のようにサーバホストを書かなければよい。
+git remote add origin /path/to/test.git’
 
 ** 全部集める，共有
 *** github
