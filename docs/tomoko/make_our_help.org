@@ -6,19 +6,15 @@
 #+LANGUAGE:  jp
 #+OPTIONS:   H:4 toc:t num:2
 
-#+SETUPFILE: /Users/bob/Github/org-html-themes/setup/theme-readtheorg-local-daddygongon.setup
+#+SETUPFILE: /Users/yamadatomoko/org-html-themes/setup/theme-readtheorg.setup
 
-* README.org
-** 記述
-全ての基本となるREADME.orgの雛形．
 
-拡張によって追加する方がいいのか，あるいはあらかじめ
-記述があって，さらに使い方の基本みたいなのがあるのがいいよね．
-
-** html生成
-   - c-c c-e h(tml) o(ut)
-   で生成してくれる．
-
+* 再審査
+** 10/4
+handoutを作成してコピーする．pdfを作成する．
+- moc作成する．
+30分くらいで発表．30分質疑応答．
+** 11/1
 
 * sotsuken TODO
 ** miniとの同期
