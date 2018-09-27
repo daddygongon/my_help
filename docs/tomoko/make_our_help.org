@@ -72,3 +72,17 @@ githubにデータを置いておいて，欲しいやつだけgit cloneとか�
 ** my_helpの改善
 - my_help search
 を追加する．
+
+* memo
+** miniでgithubからour_helpにつなぐ時につまづくところ
+- アカウントに権限がない
+Error:is not in the sudoers fileが出た時の対処法
+Qiita(https://qiita.com/pakiln/items/525b0b635b57bf310837)を参照．
+
+- githubのアカウントとssh-key繋いでない
+ssh-keyを繋いでないためにpermission deniedされる．
+昔を思い出して，つなぎ直そう
+Qiita(https://qiita.com/shizuma/items/2b2f873a0034839e47ce)を参照．
+
+ちゃんとupstream作ってね．
+
