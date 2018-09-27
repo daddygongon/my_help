@@ -24,7 +24,7 @@ git remote add origin /path/to/test.git’
 ** 全部集める，共有
 *** github
 mini:/our_help/members/
-- permissionをどうするか．
+- permissionをどうするか．とりあえず研究室memberでmy_helpを溜め込む．
 
 githubにデータを置く問題
 - githubはplain textではなく，変換してある．(git cloneで引き出せる) 
@@ -33,7 +33,9 @@ githubにデータを置く問題
 ** 見せる
 全部cuiやと見づらい．lsはしんどい．
 
+
 *** web
+orgでmocを書く．
 - ruby on railsでmoc作成する．
 webで見やすく．内容に難易度をつける．
 検索画面．
