@@ -1,4 +1,3 @@
-b
 * 内容(下書き)
 - コンセプト
 my_help自体は，TODOファイルやmemoである．org-modeを利用しているので，長文やlatex，htmlにも対応している．
