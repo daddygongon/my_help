@@ -1,4 +1,25 @@
-#+STARTUP:indent nolineimages
+#+OPTIONS: ^:{}
+#+STARTUP: indent nolineimages
+#+TITLE: hogehoge
+#+AUTHOR: name
+#+EMAIL:     (concat "nishitani@kwansei.ac.jp")
+#+LANGUAGE:  jp
+#+OPTIONS:   H:4 toc:t num:2
+
+#+SETUPFILE: /Users/bob/Github/org-html-themes/setup/theme-readtheorg-local-daddygongon.setup
+
+* README.org
+** 記述
+全ての基本となるREADME.orgの雛形．
+
+拡張によって追加する方がいいのか，あるいはあらかじめ
+記述があって，さらに使い方の基本みたいなのがあるのがいいよね．
+
+** html生成
+   - c-c c-e h(tml) o(ut)
+   で生成してくれる．
+
+
 * sotsuken TODO
 ** miniとの同期
 *** my_help upload command
