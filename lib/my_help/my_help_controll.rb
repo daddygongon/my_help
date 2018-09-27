@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 module MyHelp
   class Control
     def initialize()
@@ -116,11 +117,12 @@ module MyHelp
     def upload_help(file)
       p target_help = File.join(@local_help_dir,file+'.org')
       if local_help_entries.member?(file+'.org')
-        if target_help.empty?(file+'.org')
-          system "scp #{@local_help_dir} tomoko_y@mini:~/our_help/member/tomoko"
-        else
+#        if target_help.empty?(file+'.org')
+#          system "scp #{@local_help_dir} tomoko_y@mini:~/our_help/member/tomoko"
+#        else
           system "scp #{target_help} tomoko_y@mini:~/our_help/member/tomoko"
-        end
+      puts "後は，miniでgitからpushしてください．"
+#      end
       else
         puts "file #{target_help} does not exits in #{@local_help_dir}."
         puts "init #{file} first."
