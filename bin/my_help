@@ -58,6 +58,14 @@ command :upload do |c|
   end
 end
 
+desc 'search FIND_CHAR'
+arg_name = 'FIND_CHAR'
+command :search do |c|
+  c.action do |global_options,options,args|
+    $control.search_help(args[0])
+  end
+end
+
 
 pre do |global,command,options,args|
   $control = MyHelp::Control.new()

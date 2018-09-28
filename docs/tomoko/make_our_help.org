@@ -99,3 +99,10 @@ git hookはじめの一歩(https://qiita.com/mhimuro/items/adfc4e5a168d2d9295ae)
 これも参照．
 ** miniでorg-modeにならない
 emacsをupdateする必要がある．
+** directoryごとcpしたい
+cp(or scp) -r [コピーしたいディレクトリ] [コピーする場所]
+-r がなければファイルのみしかcpできない
+
+
+** githubからファイル単体をcloneする方法
+これを参照(https://teratail.com/questions/14124)
