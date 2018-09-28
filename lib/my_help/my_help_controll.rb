@@ -115,7 +115,6 @@ module MyHelp
     end
 
     def upload_help(file)
-      p file
       p target_help = File.join(@local_help_dir,file+'.org')
       puts "miniのuser_nameを入力してください．"
       p user_name = STDIN.gets.chomp
@@ -133,6 +132,13 @@ module MyHelp
         puts "init #{file} first."
       end
     end
+
+=begin
+    def search_help(file)
+      p find_char = STDIN.gets.chomp
+      system "ls #{@local_help_dir} | grep #{find_char}"
+    end
+=end
 
     private
     def local_help_entries
