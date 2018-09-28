@@ -1,0 +1,22 @@
+#+OPTIONS: ^:{}
+#+STARTUP: indent nolineimages
+#+TITLE: A contents of memo
+#+AUTHOR: 山田　智子
+#+EMAIL:     (concat "")
+#+LANGUAGE:  jp
+#+OPTIONS:   H:4 toc:t num:2
+
+#+links: file file+sys:/Users/yamadatomoko/my_help/docs/tomoko/
+#+SETUPFILE: /Users/yamadatomoko/org-html-themes/setup/theme-readtheorg.setup
+
+* 内容表示
+
+|-----------------------+--------|
+| 内容                  | 難易度 |
+|-----------------------+--------|
+| emacsのcommand([[file:~/my_help/docs/tomoko/emacs.org][emacs.org]]) | ^^^    |
+|-----------------------+--------|
+| tmp([[~/my_help/docs/tomoko/aaa.org][aaa.org]])          | ^^^^^  |
+|-----------------------+--------|
+| tmp([[~/my_help/docs/tomoko/new_memo.org][new_memo.org]])     | ^      |
+|-----------------------+--------|

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 module MyHelp
   class Control
     def initialize()
@@ -114,13 +115,19 @@ module MyHelp
     end
 
     def upload_help(file)
+      p file
       p target_help = File.join(@local_help_dir,file+'.org')
+      puts "miniのuser_nameを入力してください．"
+      p user_name = STDIN.gets.chomp
+      puts "保存するディレクトリ名を入力してください．"
+      p directory_name = STDIN.gets.chomp
       if local_help_entries.member?(file+'.org')
-        if target_help.empty?(file+'.org')
-          system "scp #{@local_help_dir} tomoko_y@mini:~/our_help/member/tomoko"
-        else
-          system "scp #{target_help} tomoko_y@mini:~/our_help/member/tomoko"
-        end
+        #        if target_help.empty?(file+'.org')
+#          system "scp #{@local_help_dir} tomoko_y@mini:~/our_help/member/tomoko"
+#        else
+        system "scp #{target_help} #{user_name}@mini:~/our_help/member/#{directory_name}"
+      puts "後は，miniでgitにpushしてください．"
+#      end
       else
         puts "file #{target_help} does not exits in #{@local_help_dir}."
         puts "init #{file} first."
