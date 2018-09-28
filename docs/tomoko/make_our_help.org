@@ -97,3 +97,5 @@ e.g.)mv update.sample update
 
 git hookはじめの一歩(https://qiita.com/mhimuro/items/adfc4e5a168d2d9295ae)
 これも参照．
+** miniでorg-modeにならない
+emacsをupdateする必要がある．
