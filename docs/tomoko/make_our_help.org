@@ -86,3 +86,23 @@ Qiita(https://qiita.com/shizuma/items/2b2f873a0034839e47ce)を参照．
 
 ちゃんとupstream作ってね．
 
+** our_helpへのpushをユーザ制限
+
+特定のユーザのみgit pushできるようにする(http://maku77.github.io/git/limit-push-users.html)
+
+- git init
+で.gitを作成．.git/hooksの中の.sampleをrename
+
+e.g.)mv update.sample update
+
+git hookはじめの一歩(https://qiita.com/mhimuro/items/adfc4e5a168d2d9295ae)
+これも参照．
+** miniでorg-modeにならない
+emacsをupdateする必要がある．
+** directoryごとcpしたい
+cp(or scp) -r [コピーしたいディレクトリ] [コピーする場所]
+-r がなければファイルのみしかcpできない
+
+
+** githubからファイル単体をcloneする方法
+これを参照(https://teratail.com/questions/14124)

@@ -46,11 +46,15 @@ my_help upload FILE_NAME
 
 
 ** memoを集めて共有する
-公開リポジトリに
+our_help/member/USER_NAME にpushされた.orgのリンクをour_help/savings/web.orgに記述する．
+HTMLでも閲覧できる．
+
 
 
 ** 見せる
+内容とファイルへのリンク，難易度が表示される．
 
 ** 欲しいファイルを選ぶ
-
+web.orgにある欲しいファイルを選択する．
 ** pull
+選択したファイルをgit cloneする．
