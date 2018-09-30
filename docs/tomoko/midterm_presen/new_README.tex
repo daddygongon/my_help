@@ -77,6 +77,8 @@ my\_helpというmemoソフトが開発されている．\cite{my_help}．
 \end{itemize}
 ことが期待される．
 
+よって，本研究ではmy\_helpの追加機能として共有機能を作成する．
+
 \section{my\_helpについて}
 my\_helpはemacsのMarkdownであるorg-modeを利用したソフトなので，
 org-modeのexport機能を利用すればHTMLやLaTeXなど様々なフォーマットに
@@ -86,32 +88,47 @@ org-modeで作成した文章はemacs以外でも利用できる．
 例えば，githubでは.mdと同じ様に.orgに対応している．
 
 \section{手法}
-my\_helpで作成されたmemoの共有方法を示す．
+西谷研究室では，研究内容をGithubで管理，バックアップを行なっている．
+現在，学生同士の知識の共有もGithubで行っているが，
+各自のフォルダの中にあり，他の学生から見てどのディレクトリのどのファイルに
+欲しい知識があるのか探す手間がかかる．
+
+そこで，公開リポジトリour\_helpを作成し，
+その中で知識の蓄積，共有を行う．
+知識を共有する場所を制限することによって，
+自他ともに必要な知識の検索する手間の削減が期待される．
+
+以下，my\_helpで作成されたmemoの共有方法を示す．
 \subsection{リモートコンピュータと同期}
 \label{sec-2-1}
 リモートコンピュータに各自アカウントを作成する．
-公開リポジトリour\_helpをgit cloneして，
-その中のmembersに各自のディレクトリを作成する．                                                                  
 
-その各自のディレクトリ内にmy\_helpで作成したmemoを蓄積する．                                          
+次に，our\_helpをgit cloneして，
+その中のmemberに各自のディレクトリを作成する．
+
+各自のディレクトリ内にmy\_helpで作成したmemoを
+新たに作成したupload commandを利用し，蓄積する．
 
 \subsection{my\_helpのmemoを集める}
 \label{sec-2-2}
-our\_help/member/USER\_NAMEにpushされたorgファイルのリンクを
-our\_help/savings/web.orgに記述する．
-HTMLでも閲覧できる．
+Githubのour\_help/member/USER\_NAMEにpushされたorgファイルを
+そのままでは欲しい知識の内容を把握するのに手間と時間がかかる上に
+見にくいため，
+memoの概要，リンク，著者をour\_help/savings/web.org上に掲載する．
+
 
 \subsection{memoを見る}
 \label{sec-2-3}
-web.org上にあるファイルを閲覧する．
+our\_help/savings/web.org上の知識を見る．
+HTMLに変換し，web上でも確認できる．
 
 \subsection{欲しいファイルを選択する}
 \label{sec-2-4}
 web.org上にある欲しいファイルを選択する．
 
 \subsection{選択したファイルをpullする}
-\label{sec-2-3}
-選択したファイルをGithub からpullする．
+\label{sec-2-5}
+選択したファイルをGithubからpullする．
 
 
 \begin{comment}
@@ -145,13 +162,15 @@ my\_helpはshell上のdirectory位置によらずどこからでも
 \section{開発目標}
 本研究では，my\_helpを改善し，
 発展させて行くことが今後の目標である．
-具体的には，
-\begin{enumerate}
-\item my\_helpのsearch機能追加
-\item スキルレベルによる難易度表示
-\item point付加によるranking
-\end{enumerate}
-などを取り入れた共有システムを作成する．
+そのため，次のような機能を実装する．
+
+現在のmy\_helpは，欲しい内容のファイル名がわからない場合に対応しておらず，
+ファイル内の検索機能を追加する．
+
+また，web上で表示する際にLike機能や投稿に応じてポイントを付加し，
+ranking表示を行うことによって，memoの共有を促進させる．
+
+
 
 {\small\setlength\baselineskip{10pt}	% 参考文献は小さめの文字で行間を詰めてある
 \begin{thebibliography}{9}
