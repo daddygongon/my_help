@@ -1,6 +1,7 @@
 \documentclass[a4j,twocolumn,uplatex]{jsarticle}
 \usepackage[dvipdfmx]{graphicx}
 \usepackage{url}
+\usepackage{comment}
 
 \setlength{\textheight}{275mm}
 \headheight 5mm
@@ -76,7 +77,16 @@ my\_helpというmemoソフトが開発されている．\cite{my_help}．
 \end{itemize}
 ことが期待される．
 
+\section{my\_helpについて}
+my\_helpはemacsのMarkdownであるorg-modeを利用したソフトなので，
+org-modeのexport機能を利用すればHTMLやLaTeXなど様々なフォーマットに
+変換可能である\cite{org-mode}．
+
+org-modeで作成した文章はemacs以外でも利用できる．
+例えば，githubでは.mdと同じ様に.orgに対応している．
+
 \section{手法}
+my\_helpで作成されたmemoの共有方法を示す．
 \subsection{リモートコンピュータと同期}
 \label{sec-2-1}
 リモートコンピュータに各自アカウントを作成する．
@@ -84,26 +94,28 @@ my\_helpというmemoソフトが開発されている．\cite{my_help}．
 その中のmembersに各自のディレクトリを作成する．                                                                  
 
 その各自のディレクトリ内にmy\_helpで作成したmemoを蓄積する．                                          
-この動作をCUIで実現するために，新たにcommandを追加した．
 
 \subsection{my\_helpのmemoを集める}
 \label{sec-2-2}
-my\_helpはemacsのMarkdownであるorg-modeを利用したソフトなので，
-org-modeのexport機能を利用すればHTMLやLaTeXなど様々なフォーマットに
-変換可能である\cite{org-mode}．
+our\_help/member/USER\_NAMEにpushされたorgファイルのリンクを
+our\_help/savings/web.orgに記述する．
+HTMLでも閲覧できる．
 
-org-modeで作成した文章はemacs以外でも利用できる．
-例えば，githubでは.mdと同じ様に.orgに対応している．
-しかし，my\_helpを使うには，emacsとorg-modeの使い方をmasterしなければならない．
-
-\subsection{my\_helpの振る舞い}
+\subsection{memoを見る}
 \label{sec-2-3}
-CUI/CLIのようにterminal上で動かすことができるので，
-commandで呼び出すとすぐに起動する．
-terminal上でmy\_help file名と打つと起動する．
-file名の前に以下の命令を書き，実行する．
-以下にemacsに関するmy\_helpの一部を表示している．
-{\small\setlength\baselineskip{10pt}	% 参考文献は小さめの文字で行間を詰めてある
+web.org上にあるファイルを閲覧する．
+
+\subsection{欲しいファイルを選択する}
+\label{sec-2-4}
+web.org上にある欲しいファイルを選択する．
+
+\subsection{選択したファイルをpullする}
+\label{sec-2-3}
+選択したファイルをGithub からpullする．
+
+
+\begin{comment}
+%{\small\setlength\baselineskip{10pt}	% 参考文献は小さめの文字で行間を詰めてある
 \begin{verbatim}
 > my_Help list emacs -c
 - emacsのキーバインド
@@ -118,7 +130,7 @@ cursor
 - C-b, move Backwrard,   後or左へ
 ．．．
 \end{verbatim}
-}
+
 
 my\_helpはshell上のdirectory位置によらずどこからでも
 呼び出せて，applicationを切り替えることなく参照できる．
@@ -127,16 +139,16 @@ my\_helpはshell上のdirectory位置によらずどこからでも
 記憶の定着を促すツールとしての活用を意図している．
 % 補助脳，
 % 検索ができるようにする
-
+\end{comment}
 
 
 \section{開発目標}
-本研究では，my\_help内にある知識を共有できるようなシステムを
-開発することが今後の目標である．
+本研究では，my\_helpを改善し，
+発展させて行くことが今後の目標である．
 具体的には，
 \begin{enumerate}
-\item webによる表示
-\item 
+\item my\_helpのsearch機能追加
+\item スキルレベルによる難易度表示
 \item point付加によるranking
 \end{enumerate}
 などを取り入れた共有システムを作成する．
