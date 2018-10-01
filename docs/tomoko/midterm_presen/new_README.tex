@@ -11,6 +11,7 @@
 \evensidemargin -15mm
 \pagestyle{empty}
 
+
 \usepackage{listings,jlisting}
 \lstset{%
   language={Ruby},%
@@ -54,8 +55,9 @@ my\_helpというmemoソフトが開発されている．\cite{my_help}．
 そこで，より効率的な知識の習得方法として，AM/PMという考え方がある．\cite{sfard}
 
 \begin{description}
+\vspace{-1mm}
 \item[AM(acquisition metaphor)] 旧来の学習感．                                       
-学習目標は個々を豊かにする, 学習とは何かを獲得する(acquisition)ことであり，
+学習とは何かを獲得する(acquisition)ことであり，
 知るとは持つ，所有することである．
 学習という行為が非常に個人レベルに押し込められた感じがある．
 しかし，現在の社会では個人の能力が測られるという意味で， 
@@ -65,26 +67,25 @@ my\_helpというmemoソフトが開発されている．\cite{my_help}．
 学習あるいは学習者とは参加者であり，
 テキストや教授者から知識を得るのではなく，
 自らも参加者になって知識を共有する．
-学会活動も学習の一部と考える．
  \end{description}
-
  
  このAM/PMの両方を行うことが知識の習得に欠かせないと考えた．
 
-自分で作成したmy\_helpを公開することによって，
+また，自分で作成したmy\_helpを公開することによって，
+以下のことが期待される．
 \begin{itemize}
 \item 自分の間違いが修正される．
+\vspace{-1mm}
 \item 人に教えることによって，知識の定着が促進される．
+\vspace{-1mm}
 \end{itemize}
-ことが期待される．
 
 よって，本研究ではmy\_helpの追加機能として共有機能を作成する．
 
 \section{my\_helpについて}
 my\_helpはemacsのMarkdownであるorg-modeを利用したソフトなので，
-org-modeのexport機能を利用すればHTMLやLaTeXなど様々なフォーマットに
+そのexport機能を利用すればHTMLやLaTeXなど様々なフォーマットに
 変換可能である\cite{org-mode}．
-
 org-modeで作成した文章はemacs以外でも利用できる．
 例えば，githubでは.mdと同じ様に.orgに対応している．
 
@@ -97,7 +98,7 @@ org-modeで作成した文章はemacs以外でも利用できる．
 
 そこで，公開リポジトリour\_helpを作成し，
 その中で知識の蓄積，共有を行う．
-知識を共有する場所を制限することによって，
+知識を共有する場所を制限することで，
 自他ともに必要な知識の検索する手間の削減が期待される．
 
 以下，my\_helpで作成されたmemoの共有方法を示す．
@@ -107,7 +108,6 @@ org-modeで作成した文章はemacs以外でも利用できる．
 
 次に，our\_helpをgit cloneして，
 その中のmemberに各自のディレクトリを作成する．
-
 各自のディレクトリ内にmy\_helpで作成したmemoを
 新たに作成したupload commandを利用し，蓄積する．
 
@@ -124,14 +124,9 @@ memoの概要，リンク，著者をour\_help/savings/web.org上に掲載する
 our\_help/savings/web.org上の知識を見る．
 HTMLに変換し，web上でも確認できる．
 
-\subsection{欲しいファイルを選択する}
+\subsection{欲しいファイルを選択し，pullする}
 \label{sec-2-4}
-web.org上にある欲しいファイルを選択する．
-
-\subsection{選択したファイルをpullする}
-\label{sec-2-5}
-選択したファイルをGithubからpullする．
-
+web.org上にある欲しいファイルを選択し，Githubからpullする．
 
 \begin{comment}
 %{\small\setlength\baselineskip{10pt}	% 参考文献は小さめの文字で行間を詰めてある
@@ -174,12 +169,12 @@ ranking表示を行うことによって，memoの共有を促進させる．
 
 
 
-{\small\setlength\baselineskip{10pt}	% 参考文献は小さめの文字で行間を詰めてある
+{\small\setlength\baselineskip{9pt}	% 参考文献は小さめの文字で行間を詰めてある
 \begin{thebibliography}{9}
 \bibitem{my_help}\url{https://github.com/daddygongon/my_help}, Daddygongon, (18/09/16 accessed) .
-\bibitem{org-mode} \url{https://qiita.com/dwarfJP/items/594a8d4b0ac6d248d1e4}, (18/09/16 accessed).
 \bibitem{sfard}“On Two Metaphors for Learning and the Dangers of Choosing Just one”, Anna
 Sfard, Educational Researcher, 27(1998), 4–13.
+\bibitem{org-mode} \url{https://qiita.com/dwarfJP/items/594a8d4b0ac6d248d1e4}, (18/09/16 accessed).
 \end{thebibliography}
 }
 % Emacs 25.3.1 (Org mode 8.2.10)
