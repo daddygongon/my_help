@@ -1,0 +1,17 @@
+#+OPTIONS: ^:{}
+#+STARTUP: indent nolineimages
+#+TITLE: A contents of memo
+#+AUTHOR: 山田　智子
+#+EMAIL:     (concat "")
+#+LANGUAGE:  jp
+#+OPTIONS:   H:4 toc:t num:2
+#+SETUPFILE: /Users/yamadatomoko/org-html-themes/setup/theme-readtheorg.setup
+
+* ホスティングサービスとは
+ホスティングサーバ(レンタルサーバ，共用サーバとも)とは，複数のユーザが利用するサーバのことで，webサイトやweb applicationをインターネットで公開するために使われる．ホスティングサービスとは利用者自身でサーバの運営，管理をしなくても良いように，有料または無料でサーバ機のHDDの記憶スペースや情報処理機能などを利用させるサービスを言う．
+weblio(https://www.weblio.jp/content/ホスティングサービス)
+
+* Gitクライアント
+ソースコードの履歴，共有の管理サービス"Git"では，通常コマンドでの操作が必要です．
+"Git"をGUIで視覚的に操作を行うことができるアプリケーションです．
+プログラミング初心者はコマンド操作でつまづきやすいので，GUIアプリケーションを使うのがオススメです．
