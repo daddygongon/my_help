@@ -120,3 +120,31 @@ open .htmlにするのとhttp://localhost/〜
 
 miniの方でgitのリポジトリ作る．わからんかったら聞く．
 
+
+* DRY原則
+cpは基本使わない．mvを使う．
+ファイル名は忘れないように番号では行わない．
+
+* ゼミ 10/4
+新しくgrad_reseach_18fというリポジトリに自分のディレクトリを作成．
+できないことをするのはどうなのか．
+yaml
+githubをこれからは分散型にしていこうかな．
+直交性を保つ．
+- forkしてしまったのを一旦削除
+
+- git remote -vで確認
+
+- git remote rm originで
+origin	git@github.com:tomoko-y/grad_research_18f.git (fetch)
+origin	git@github.com:tomoko-y/grad_research_18f.git (push)
+を削除する．
+
+- git remote add origin git@github.com:TeamNishitani/grad_research_18f.git
+
+- git remote -vで確認
+origin	git@github.com:TeamNishitani/grad_research_18f.git (fetch)
+origin	git@github.com:TeamNishitani/grad_research_18f.git (push)
+となっていたら正解．
+
+tebleを使って，見やすくする．比較する．(5w1h)

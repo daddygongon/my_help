@@ -37,20 +37,15 @@ my_helpというmemoソフトが開発されている．)
 その後，公開リポジトリour_helpを用意したので，その中のmembersに各自のディレクトリを作成する．
 各自のディレクトリ内にmemoを蓄積する．
 その動作をCUIで実現するために，新たにcommandを追加した．
-
 *** my_help upload commandの作成
 my_help upload FILE_NAME
 を実行すると，リモートコンピュータの~/our_help/member/tomoko_y
 の中にファイルがコピーされる．
 そこから，githubでpushし，リポジトリに作成したメモがあげられる．
 
-
 ** memoを集めて共有する
 our_help/member/USER_NAME にpushされた.orgのリンクをour_help/savings/web.orgに記述する．
 HTMLでも閲覧できる．
-
-
-
 ** 見せる
 内容とファイルへのリンク，難易度が表示される．
 
