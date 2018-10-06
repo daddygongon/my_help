@@ -15,3 +15,14 @@ weblio(https://www.weblio.jp/content/ホスティングサービス)
 ソースコードの履歴，共有の管理サービス"Git"では，通常コマンドでの操作が必要です．
 "Git"をGUIで視覚的に操作を行うことができるアプリケーションです．
 プログラミング初心者はコマンド操作でつまづきやすいので，GUIアプリケーションを使うのがオススメです．
+* git log
+git logを分析(?)するrubyプログラムを作成．
+先生の使ってたgrabってrubyじゃない．．？
+
+文字列をFileから読み込んで，抽出．
+改行させたい->each_line(https://ref.xaio.jp/ruby/classes/string/each_line)
+
+** git_log.rbでgit_log_authorをとってきた
+なぜか高橋さんはauthorが2種類ある．(shun920とtakahashi shun)
+できれば一つにしてほしいな．それか個別に書き換えを行うか．．．．
+なぜか先生の名前は同じなのにuniqで消えない．意味がわからん．
