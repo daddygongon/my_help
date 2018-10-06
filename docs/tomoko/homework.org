@@ -22,7 +22,16 @@ git logを分析(?)するrubyプログラムを作成．
 文字列をFileから読み込んで，抽出．
 改行させたい->each_line(https://ref.xaio.jp/ruby/classes/string/each_line)
 
+git logのフォーマット指定 Qiita(https://qiita.com/harukasan/items/9149542584385e8dea75)
+
 ** git_log.rbでgit_log_authorをとってきた
 なぜか高橋さんはauthorが2種類ある．(shun920とtakahashi shun)
 できれば一つにしてほしいな．それか個別に書き換えを行うか．．．．
 なぜか先生の名前は同じなのにuniqで消えない．意味がわからん．
+
+** git_log.rbでfilenameをとってきたい
+File.basenameやpathnameを試してみた．
+多分basenameは，拡張子がないものも通ってしまう．すーぱーすごい機能あると勘違いしてた．
+おかしいなと思っていたけど，プログラム自体は通っているので．．．．先に，拡張子ついていない文字列を排除する必要がある．
+まずhtml,org,tex,txtくらいを残す．tidyで消えるものは含めない方針．
+- chompは改行文字を削除してくれる．
