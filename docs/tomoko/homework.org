@@ -17,17 +17,19 @@ weblio(https://www.weblio.jp/content/ホスティングサービス)
 プログラミング初心者はコマンド操作でつまづきやすいので，GUIアプリケーションを使うのがオススメです．
 * git log
 git logを分析(?)するrubyプログラムを作成．
-先生の使ってたgrabってrubyじゃない．．？
+先生の使ってたgrabってrubyじゃない．．？->grobぽい？
 
 文字列をFileから読み込んで，抽出．
-改行させたい->each_line(https://ref.xaio.jp/ruby/classes/string/each_line)
+- 改行させたい->each_line(https://ref.xaio.jp/ruby/classes/string/each_line)
 
-git logのフォーマット指定 Qiita(https://qiita.com/harukasan/items/9149542584385e8dea75)
+- git logのフォーマット指定 Qiita(https://qiita.com/harukasan/items/9149542584385e8dea75)
 
 ** git_log.rbでgit_log_authorをとってきた
 なぜか高橋さんはauthorが2種類ある．(shun920とtakahashi shun)
 できれば一つにしてほしいな．それか個別に書き換えを行うか．．．．
-なぜか先生の名前は同じなのにuniqで消えない．意味がわからん．
+なぜか先生の名前は同じなのにuniqで消えない．多分Rが日本語ローマ字を英字の大文字との違いやな．
+- 文字列を配列にする(https://ref.xaio.jp/ruby/classes/array/push)
+- よく使うFileクラスを使ったファイル読み込み処理(https://qiita.com/mogulla3/items/fbc2a46478872bebbc47)
 
 ** git_log.rbでfilenameをとってきたい
 File.basenameやpathnameを試してみた．
@@ -35,3 +37,10 @@ File.basenameやpathnameを試してみた．
 おかしいなと思っていたけど，プログラム自体は通っているので．．．．先に，拡張子ついていない文字列を排除する必要がある．
 まずhtml,org,tex,txtくらいを残す．tidyで消えるものは含めない方針．
 - chompは改行文字を削除してくれる．
+- File.basename(https://chulip.org/entry/20090524/1243180495)
+- Rubyで条件に合う要素を抽出する方法：select,select!(https://uxmilk.jp/24791)
+
+空白文字を消す．gsubやstrip(空白を消した結果を新しい文字列として返す)じゃ消えなかった．
+strip!で元の文字列を書き換えるといける．
+
+
