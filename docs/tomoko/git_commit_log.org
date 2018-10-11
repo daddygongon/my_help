@@ -1,0 +1,13 @@
+Author: tomoko-y <drw41925@kwansei.ac.jp>
+
++        x.include?("Author")
+
+Author: tomoko-y <drw41925@kwansei.ac.jp>
+
+git_commit_log.org
+homework.org
+my_help_windows.org
+
+削除した行数：3
+追加した行数：77
+変更した行数：80
