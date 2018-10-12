@@ -47,7 +47,9 @@ strip!で元の文字列を書き換えるといける．
 
 
 * homework
+** 10/11
 - .my_help内のgit log -p -2とかを取ってくる．
+git log -pやと文字化け情報が多すぎたのか，文字化けが発生．
 git_log.rbをこっちに移す．
 
 - windowsの環境にmy_helpが対応するように改良する．
