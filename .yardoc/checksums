@@ -1,0 +1,5 @@
+lib/my_help.rb ced6dd68eb7342dc65e8c8506359cb9a18f37fde
+lib/my_help/org2yml.rb 4be5461e87290a6c8fa4ef802df8b64e8c63ca9a
+lib/my_help/version.rb 0c71ad78597c647364908e595140b5fb9af9e6a3
+lib/my_help/my_help_controll.rb fba5c56e7e7c716d4d34b6851a808e959ecdb773
+lib/my_help/tomo_help_controll.rb da39a3ee5e6b4b0d3255bfef95601890afd80709
