@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  File: README
+  
+    &mdash; Documentation by YARD 0.9.19
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "README";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><div id='filecontents'><?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="jp" xml:lang="jp">
+<head>
+<!-- 2019-04-26 金 12:47 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>my_help README</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Shigeto R. Nishitani" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/styles/readtheorg/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/styles/readtheorg/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/readtheorg/js/readtheorg.js"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">my_help README</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#概要">1. 概要</a></li>
+<li><a href="#my_helpで解決しようとする問題点">2. (my_helpで解決しようとする)問題点</a></li>
+<li><a href="#特徴">3. 特徴</a></li>
+<li><a href="#使用法">4. 使用法</a>
+<ul>
+<li><a href="#org3ddc9ea">4.1. インストール</a></li>
+<li><a href="#簡単な使用法">4.2. 簡単な使用法</a></li>
+<li><a href="#独自のhelpを作る方法">4.3. 独自のhelpを作る方法</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga76e8f5" class="outline-2">
+<h2 id="概要"><a id="orga76e8f5"></a><span class="section-number-2">1</span> 概要</h2>
+<div class="outline-text-2" id="text-概要">
+<p>
+CUI(CLA)ヘルプのUsage出力を真似て，user独自のhelpを作成・提供するgem.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org230661d" class="outline-2">
+<h2 id="my_helpで解決しようとする問題点"><a id="org230661d"></a><span class="section-number-2">2</span> (my_helpで解決しようとする)問題点</h2>
+<div class="outline-text-2" id="text-my_helpで解決しようとする問題点">
+<p>
+CUIやshell, 何かのプログラミング言語などを習得しようとする初心者は，
+commandや文法を覚えるのに苦労します．少しのkey(とっかかり)があると
+思い出すんですが，うろ覚えでは間違えて路頭に迷います．問題点は， 
+</p>
+<ul class="org-ul">
+<li>manは基本的に英語</li>
+<li>manualでは重たい</li>
+<li>いつもおなじことをwebで検索して</li>
+<li>同じとこ見ている</li>
+<li>memoしても，どこへ置いたか忘れる</li>
+</ul>
+<p>
+などです．
+</p>
+</div>
+</div>
+
+<div id="outline-container-org63e30d5" class="outline-2">
+<h2 id="特徴"><a id="org63e30d5"></a><span class="section-number-2">3</span> 特徴</h2>
+<div class="outline-text-2" id="text-特徴">
+<p>
+これらをCLA環境として提供しようというのが，このgemの目的です．
+仕様としては， 
+</p>
+<ul class="org-ul">
+<li>userが自分にあったmanを作成</li>
+<li>雛形を提供</li>
+<li>おなじformat, looks, 操作, 階層構造</li>
+<li>すぐに手が届く</li>
+<li>それらを追加・修正・削除できる</li>
+</ul>
+
+<p>
+memoソフトでは，検索が必要となりますが，my_helpは
+key(記憶のとっかかり)を提供することが目的です．
+RPGでレベル上げとかアイテムを貯めるようにして，
+プログラミングでスキルを発展させてください．
+</p>
+
+<p>
+物覚えの悪い作者は，人の名前をitem分けして，こそっと使っています．
+</p>
+</div>
+</div>
+
+<div id="outline-container-org03968c9" class="outline-2">
+<h2 id="使用法"><a id="org03968c9"></a><span class="section-number-2">4</span> 使用法</h2>
+<div class="outline-text-2" id="text-使用法">
+</div>
+<div id="outline-container-org3ddc9ea" class="outline-3">
+<h3 id="org3ddc9ea"><span class="section-number-3">4.1</span> インストール</h3>
+<div class="outline-text-3" id="text-4-1">
+<pre class="example">
+$ gem install my_help
+
+</pre>
+<p>
+です．
+</p>
+</div>
+</div>
+
+<div id="outline-container-org157ee1b" class="outline-3">
+<h3 id="簡単な使用法"><a id="org157ee1b"></a><span class="section-number-3">4.2</span> 簡単な使用法</h3>
+<div class="outline-text-3" id="text-簡単な使用法">
+<p>
+まずは，
+</p>
+<pre class="example">
+&gt; my_help
+NAME
+    my_help - make own help and list.
+
+SYNOPSIS
+    my_help [global options] command [command options] [arguments...]
+
+VERSION
+    0.7.0
+
+GLOBAL OPTIONS
+    --help    - Show this message
+    --version - Display the program version
+
+COMMANDS
+    delete - delete HELP_NAME help
+    edit   - edit HELP_NAME help
+    help   - Shows a list of commands or help for one command
+    list   - list all helps, specific HELP, or item
+     new   - make new HELP_NAME
+</pre>
+<p>
+としてください．このlistにargsやitemを加えて行くとわかると思います．
+</p>
+
+<pre class="example">
+my_help list
+my_help list emacs
+my_help list emacs -f
+my_help list emacs file
+
+</pre>
+<p>
+として動かしてみてください．
+</p>
+
+
+<pre class="example">
+- emacsのキーバインド
+- 
+特殊キー操作
+-   C-f, controlキーを押しながら    'f'
+-   M-f, escキーを押した後一度離して'f'
+-     操作の中断C-g, 操作の取り消し(Undo) C-x u
+     , head           : head
+     , license        : license
+   -c, cursor         : cursor
+   -e, edit           : edit
+   -s, short_cut      : short_cut
+   -f, file           : file
+   -q, quit           : quit
+   -p, page           : page
+   -w, window         : window
+   -b, buffer         : buffer
+   -m, mode           : mode
+     , query_replace  : query_replace
+   -r, ruby-mode      : ruby-mode
+   -d, dired          : ファイラとして使う
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgc3249b5" class="outline-3">
+<h3 id="独自のhelpを作る方法"><a id="orgc3249b5"></a><span class="section-number-3">4.3</span> 独自のhelpを作る方法</h3>
+<div class="outline-text-3" id="text-独自のhelpを作る方法">
+<p>
+さて，独自のhelpを作る方法です．まずは，
+</p>
+
+<pre class="example">
+my_help new new_help
+
+</pre>
+
+<p>
+で，new_helpというtemplateが用意されます．
+</p>
+<pre class="example">
+my_help edit new_help
+
+</pre>
+<p>
+で編集してください． emacs org形式で，格納されています．
+</p>
+
+<pre class="example">
+my_help delete new_help
+
+</pre>
+
+<p>
+すると消されます．
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Shigeto R. Nishitani</p>
+<p class="date">Created: 2019-04-26 金 12:47</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html></div></div>
+
+      <div id="footer">
+  Generated on Fri Apr 26 13:03:28 2019 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.19 (ruby-2.4.3).
+</div>
+
+    </div>
+  </body>
+</html>
