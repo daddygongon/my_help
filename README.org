@@ -3,7 +3,7 @@
 #+EMAIL:     (concat "nishitani@kwansei.ac.jp")
 #+LANGUAGE:  jp
 #+OPTIONS:   H:4 toc:t num:2
-#+SETUPFILE: /Users/bob/Github/org-html-themes/setup/theme-readtheorg.setup
+#+SETUPFILE: /Users/bob/.emacs.d/org-mode/theme-readtheorg.setup
 #+STARTUP: indent nolineimages
 #+OPTIONS: ^:{}
 

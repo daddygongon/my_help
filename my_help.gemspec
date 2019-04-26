@@ -3,9 +3,9 @@ require File.join([File.dirname(__FILE__),'lib','my_help','version.rb'])
 spec = Gem::Specification.new do |s| 
   s.name = 'my_help'
   s.version = MyHelp::VERSION
-  s.author = 'Your Name Here'
-  s.email = 'your@email.address.com'
-  s.homepage = 'http://your.website.com'
+  s.author = 'Shigeot R. Nishitani'
+  s.email = ''
+  s.homepage = ''
   s.platform = Gem::Platform::RUBY
   s.summary = 'A description of your project'
   s.files = `git ls-files`.split("
