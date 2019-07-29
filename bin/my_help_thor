@@ -35,6 +35,7 @@ class MyCLI < Thor
     $control.delete_help(help_name)
   end
 
+  
   desc "tomo_upload {help_name}", "tomo_upload HELP_NAME"
   def tomo_upload(help_name)
     $control = MyHelp::Control.new()
