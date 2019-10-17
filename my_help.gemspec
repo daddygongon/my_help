@@ -15,7 +15,7 @@ spec = Gem::Specification.new do |s|
   end
   s.require_paths = ["lib"]
   s.bindir        = "exe"
-  s.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  s.executables   = s.files.grep(%r{^exe/}) { |f| File.basename(f) }
   s.add_development_dependency('rake')
   s.add_development_dependency('rdoc')
   s.add_development_dependency('thor')

@@ -1,0 +1,82 @@
+#!/usr/bin/env ruby
+require 'gli'
+require 'my_help'
+
+include GLI::App
+
+program_desc 'make own help and list.'
+
+version MyHelp::VERSION
+
+subcommand_option_handling :normal
+arguments :strict
+
+desc 'list all helps, specific HELP, or item'
+arg_name 'HELP_NAME, ITEM'
+command :list do |c|
+  c.action do |global_options,options,args|
+    file, item = args
+    if file.nil?
+      $control.list_all
+    elsif item.nil?
+      $control.list_help(file)
+    else
+      $control.show_item(file, item)
+    end
+  end
+end
+
+desc 'edit HELP_NAME help'
+arg_name 'HELP_NAME'
+command :edit do |c|
+  c.action do |global_options,options,args|
+    $control.edit_help(args[0])
+  end
+end
+
+desc 'make new HELP_NAME help'
+arg_name 'HELP_NAME'
+command :new do |c|
+  c.action do |global_options,options,args|
+    $control.init_help(args[0])
+  end
+end
+
+desc 'delete HELP_NAME help'
+arg_name 'HELP_NAME'
+command :delete do |c|
+  c.action do |global_options,options,args|
+    $control.delete_help(args[0])
+  end
+end
+
+desc 'tomo_upload HELP_NAME help'
+arg_name 'HELP_NAME'
+command :tomo_upload do |c|
+  c.action do |global_options,options,args|
+    $control.upload_help(args[0])
+  end
+end
+
+desc 'search FIND_CHAR'
+arg_name = 'FIND_CHAR'
+command :search do |c|
+  c.action do |global_options,options,args|
+    $control.search_help(args[0])
+  end
+end
+
+
+pre do |global,command,options,args|
+  $control = MyHelp::Control.new()
+  true
+end
+
+post do |global,command,options,args|
+end
+
+on_error do |exception|
+  true
+end
+
+exit run(ARGV)
