@@ -3,9 +3,15 @@ require 'thor'
 require 'my_help'
 
 class MyCLI < Thor
+  desc('setup', 'set up the test database')
+  def setup(*args)
+    # some setup tasks here
+    $control = MyHelp::Control.new()
+  end
+
   desc "list", "list all helps, specific HELP, or item"
   def list(*args)
-    $control = MyHelp::Control.new()
+    invoke :setup
     file = args[0]
     item = args[1]
     if file.nil?
@@ -19,31 +25,31 @@ class MyCLI < Thor
 
   desc "edit {help_name}", "edit HELP_NAME"
   def edit(help_name)
-    $control = MyHelp::Control.new()
+    invoke :setup
     $control.edit_help(help_name)
   end
 
   desc "new {help_name}", "make new HELP_NAME"
   def new(help_name)
-    $control = MyHelp::Control.new()
+    invoke :setup
     $control.init_help(help_name)
   end
 
   desc "delete {help_name}", "delete HELP_NAME"
   def delete(help_name)
-    $control = MyHelp::Control.new()
+    invoke :setup
     $control.delete_help(help_name)
   end
 
   desc "tomo_upload {help_name}", "tomo_upload HELP_NAME"
   def tomo_upload(help_name)
-    $control = MyHelp::Control.new()
+    invoke :setup
     $control.upload_help(help_name)
   end
 
   desc "search {find_char}", "search FIND_CHAR"
   def search(find_char)
-    $control = MyHelp::Control.new()
+    invoke :setup
     $control.search_help(find_char)
   end
 end
