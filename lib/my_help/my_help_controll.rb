@@ -2,6 +2,8 @@
 module MyHelp
   class Control
     def initialize()
+      # https://stackoverflow.com/questions/6233124/where-to-place-access-config-file-in-gem
+      
       @template_dir = File.expand_path("../../templates", __FILE__)
       @exe_dir = File.expand_path("../../exe", __FILE__)
       @local_help_dir = File.join(ENV['HOME'],'.my_help')
@@ -25,16 +27,13 @@ module MyHelp
       help = auto_load(file_path)
       select = select_item(help, item)
       print help[:head][:cont]
-      if select == ""
-        print "No entry: #{item}".red
-        exit
-      end
+      unless select then print "No entry: #{item}".red ; exit end
       puts '-'*5+"\n"+select.to_s.green
       print help[select][:cont]
     end
 
     def select_item(help, item)
-      o_key = ''
+      o_key = nil
       help.each_pair do |key, cont|
         next if key==:license or key==:head
         if cont[:opts][:short] == item or cont[:opts][:long] == item
@@ -74,7 +73,13 @@ module MyHelp
         title = file.split('.')[0]
         help = auto_load(file_path)
         next if help.nil?
-        desc = help[:head][:cont].split("\n")[0]
+        begin
+          desc = help[:head][:cont].split("\n")[0]
+        rescue => e
+          puts e
+          puts "No head in #{file_path}".red
+          next
+        end
         print title.rjust(10).blue
         print ": #{desc}\n".blue
       end
