@@ -2,8 +2,9 @@
 module MyHelp
   class Control
     def initialize()
-      # https://stackoverflow.com/questions/6233124/where-to-place-access-config-file-in-gem
-      
+      # for configuration setups
+      # see https://stackoverflow.com/questions/6233124/where-to-place-access-config-file-in-gem
+
       @template_dir = File.expand_path("../../templates", __FILE__)
       @exe_dir = File.expand_path("../../exe", __FILE__)
       @local_help_dir = File.join(ENV['HOME'],'.my_help')
