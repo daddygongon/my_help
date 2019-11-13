@@ -23,13 +23,13 @@ module MyHelp
     def show_item(file, item)
       file_path=File.join(@local_help_dir,file+'.org')
       help = auto_load(file_path)
-      unless help
-        print "No entry: "+item
-        exit
-      end
       select = select_item(help, item)
       print help[:head][:cont]
-      puts '-'*5+"\n"+select.to_s.red
+      if select == ""
+        print "No entry: #{item}".red
+        exit
+      end
+      puts '-'*5+"\n"+select.to_s.green
       print help[select][:cont]
     end
 
