@@ -1,4 +1,6 @@
-# -*- coding: utf-8 -*-
+# coding: utf-8
+require 'fileutils'
+
 module MyHelp
   class Control
     def initialize()
@@ -8,6 +10,7 @@ module MyHelp
       @template_dir = File.expand_path("../../templates", __FILE__)
       @exe_dir = File.expand_path("../../exe", __FILE__)
       @local_help_dir = File.join(ENV['HOME'],'.my_help')
+      @editor = 'emacs' #'vim'
      # @mini_account = File
       set_help_dir_if_not_exists
     end
@@ -89,7 +92,7 @@ module MyHelp
     def edit_help(file)
       p target_help = File.join(@local_help_dir,file+'.org')
       if local_help_entries.member?(file+'.org')
-        system "emacs #{target_help}"
+        system "#{@editor} #{target_help}"
       else
         puts "file #{target_help} does not exits in #{@local_help_dir}."
         puts "init #{file} first."
