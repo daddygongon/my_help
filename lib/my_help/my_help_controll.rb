@@ -1,4 +1,6 @@
-# -*- coding: utf-8 -*-
+# coding: utf-8
+require 'fileutils'
+
 module MyHelp
   class Control
     def initialize()
@@ -8,7 +10,7 @@ module MyHelp
       @template_dir = File.expand_path("../../templates", __FILE__)
       @exe_dir = File.expand_path("../../exe", __FILE__)
       @local_help_dir = File.join(ENV['HOME'],'.my_help')
-      @editor = 'emacs'
+      @editor = 'emacs' #'vim'
      # @mini_account = File
       set_help_dir_if_not_exists
     end
