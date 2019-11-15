@@ -3,6 +3,7 @@ require 'fileutils'
 
 module MyHelp
   class Control
+    attr_accessor :local_help_dir, :editor
     def initialize()
       # for configuration setups
       # see https://stackoverflow.com/questions/6233124/where-to-place-access-config-file-in-gem
@@ -71,7 +72,7 @@ module MyHelp
     end
 
     def list_all
-      print "List all helps\n"
+      output = "List all helps\n".blue
       local_help_entries.each do |file|
         file_path=File.join(@local_help_dir,file)
         title = file.split('.')[0]
@@ -84,9 +85,10 @@ module MyHelp
           puts "No head in #{file_path}".red
           next
         end
-        print title.rjust(10).blue
-        print ": #{desc}\n".blue
+        output << title.rjust(10).blue
+        output << ": #{desc}\n".blue
       end
+      output
     end
 
     def edit_help(file)
