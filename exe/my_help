@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 require 'thor'
 require 'my_help'
-
+require 'colorize'
 class MyCLI < Thor
   desc('setup', 'set up the test database')
   def setup(*args)
@@ -20,7 +20,7 @@ class MyCLI < Thor
       begin
         $control.list_help(file)
       rescue => e
-        puts e.red
+        puts e.to_s.red
       end
     else
       $control.show_item(file, item)
