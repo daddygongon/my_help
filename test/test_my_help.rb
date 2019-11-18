@@ -9,7 +9,6 @@ class TestMyHelp <  Test::Unit::TestCase
     @control.local_help_dir  = './my_help_sample_dir'
   end
   def test_local_help_dir
-    p @control
     assert_equal('./my_help_sample_dir',@control.local_help_dir)
   end
   def test_list_no_args
@@ -23,7 +22,7 @@ class TestMyHelp <  Test::Unit::TestCase
     e = assert_raises RuntimeError do
       @control.list_help('wrong_file')
     end
-    p e
+    puts e
   end
 end
 
