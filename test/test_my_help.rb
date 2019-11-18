@@ -18,5 +18,12 @@ class TestMyHelp <  Test::Unit::TestCase
 "\e[0m"
     assert_equal(expected, @control.list_all)
   end
+
+  def test_list_wrong_name
+    e = assert_raises RuntimeError do
+      @control.list_help('wrong_file')
+    end
+    p e
+  end
 end
 
