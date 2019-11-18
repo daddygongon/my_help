@@ -51,7 +51,12 @@ module MyHelp
 
     def list_help(file)
       file_path=File.join(@local_help_dir,file+'.org')
-      help = auto_load(file_path)
+      begin
+        help = auto_load(file_path)
+      rescue => e
+        p e
+        raise 'RuntimeError'
+      end
       help.each_pair do |key, conts|
         print conts[:cont] if key==:head
         disp_opts( conts[:opts] )
