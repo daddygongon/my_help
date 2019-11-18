@@ -54,7 +54,7 @@ module MyHelp
       begin
         help = auto_load(file_path)
       rescue => e
-        puts e
+        puts e.to_s.red
         raise RuntimeError
       end
       help.each_pair do |key, conts|
