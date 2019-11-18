@@ -54,8 +54,8 @@ module MyHelp
       begin
         help = auto_load(file_path)
       rescue => e
-        p e
-        raise 'RuntimeError'
+        puts e
+        raise RuntimeError
       end
       help.each_pair do |key, conts|
         print conts[:cont] if key==:head
