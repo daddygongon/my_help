@@ -17,7 +17,11 @@ class MyCLI < Thor
     if file.nil?
       $control.list_all
     elsif item.nil?
-      $control.list_help(file)
+      begin
+        $control.list_help(file)
+      rescue => e
+        puts e.red
+      end
     else
       $control.show_item(file, item)
     end
