@@ -17,7 +17,7 @@ module MyHelp
     end
 
     def set_help_dir_if_not_exists
-      return if File::exists?(@local_help_dir)
+      return if File::exist?(@local_help_dir)
       FileUtils.mkdir_p(@local_help_dir, :verbose=>true)
       Dir.entries(@template_dir).each{|file|
         next if file=='help_template.org'
@@ -55,6 +55,8 @@ module MyHelp
         help = auto_load(file_path)
       rescue => e
         puts e.to_s.red
+        puts "help名(#{file})は参照directory(#{local_help_dir})にありません．".green
+        puts "#{file}は，打ち間違いではありませんか？".green
         raise RuntimeError
       end
       help.each_pair do |key, conts|
