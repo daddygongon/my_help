@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
+$LOAD_PATH.unshift(File.expand_path('../../lib', __FILE__))
 require 'test/unit'
-$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
+
 require 'my_help'
 
 class TestMyHelp <  Test::Unit::TestCase
   def setup
     @control = MyHelp::Control.new()
     @control.local_help_dir  = './my_help_sample_dir'
+  end
+  def test_assert
+    assert { @control.is_a?(MyHelp::Control) }
   end
   def test_local_help_dir
     assert_equal('./my_help_sample_dir',@control.local_help_dir)
@@ -25,4 +29,5 @@ class TestMyHelp <  Test::Unit::TestCase
     puts e
   end
 end
+
 
