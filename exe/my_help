@@ -15,7 +15,7 @@ class MyCLI < Thor
     file = args[0]
     item = args[1]
     if file.nil?
-      $control.list_all
+      puts $control.list_all
     elsif item.nil?
       begin
         $control.list_help(file)
