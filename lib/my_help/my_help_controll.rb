@@ -80,6 +80,7 @@ module MyHelp
 
     def list_all
       output = "List all helps\n".blue
+      p local_help_entries
       local_help_entries.each do |file|
         file_path=File.join(@local_help_dir,file)
         title = file.split('.')[0]
