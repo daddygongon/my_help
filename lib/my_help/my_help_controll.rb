@@ -1,5 +1,6 @@
 # coding: utf-8
 require 'fileutils'
+require 'yaml'
 
 module MyHelp
   class Control
@@ -12,8 +13,26 @@ module MyHelp
       @exe_dir = File.expand_path("../../exe", __FILE__)
       @local_help_dir = File.join(ENV['HOME'],'.my_help')
       @editor = 'emacs' #'vim'
-     # @mini_account = File
+      # @mini_account = File
+      load_conf
       set_help_dir_if_not_exists
+    end
+
+    def set_conf(editor)
+      @editor = editor
+      file_name = '.my_help_conf.yml'
+#      @conf_file = File.join(Dir.pwd, file_name)
+      @conf_file = File.join(@local_help_dir, file_name)
+      conf = {editor: editor}
+      File.open(@conf_file, 'w'){|f| YAML.dump(conf, f)}
+    end
+
+    def load_conf
+      file_name = '.my_help_conf.yml'
+#      @conf_file = File.join(Dir.pwd, file_name)
+      @conf_file = File.join(@local_help_dir, file_name)
+      conf = YAML.load_file(@conf_file)
+      @editor = conf[:editor]
     end
 
     def set_help_dir_if_not_exists
