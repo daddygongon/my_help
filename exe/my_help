@@ -22,7 +22,11 @@ class MyCLI < Thor
         puts e.to_s.red
       end
     else
-      puts $control.show_item(file, item) # list [file] [item]
+      begin 
+        puts $control.show_item(file, item) # list [file] [item]
+      rescue => e
+        puts e.to_s.red
+      end
     end
   end
 

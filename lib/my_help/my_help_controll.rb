@@ -46,17 +46,36 @@ module MyHelp
       }
     end
 
+    WrongFileName = Class.new(RuntimeError)
+    def list_help(file)
+      output = ''
+      file_path=File.join(@local_help_dir,file+'.org')
+      begin
+        help = auto_load(file_path)
+      rescue => e
+        output << e.to_s+"\n"
+        output << "help名(#{file})は参照directory(#{local_help_dir})にありません．\n"
+        output << "#{file}は，打ち間違い？\n"
+        raise WrongFileName, output
+      end
+      help.each_pair do |key, conts|
+        output << conts[:cont] if key==:head
+        output << disp_opts( conts[:opts] )
+      end
+      output
+    end
+
     WrongItemName = Class.new(RuntimeError)
     def show_item(file, item)
       output = ''
       file_path=File.join(@local_help_dir,file+'.org')
       help = auto_load(file_path)
       select = select_item(help, item)
-      unless select then
-        print "No entry: #{item}\n".red
-        raise WrongItemName
-      end
       output << help[:head][:cont]
+      unless select then
+        output << "No item entry: #{item}"
+        raise WrongItemName, output
+      end
       output << '-'*5+"\n"+select.to_s.green+"\n"
       output << help[select][:cont]
     end
@@ -71,26 +90,6 @@ module MyHelp
         end
       end
       o_key
-    end
-
-    WrongFileName = Class.new(RuntimeError)
-
-    def list_help(file)
-      file_path=File.join(@local_help_dir,file+'.org')
-      begin
-        help = auto_load(file_path)
-      rescue => e
-        puts e.to_s.red
-        puts "help名(#{file})は参照directory(#{local_help_dir})にありません．".green
-        puts "#{file}は，打ち間違いではありませんか？".green
-        raise WrongFileName
-      end
-      output = ''
-      help.each_pair do |key, conts|
-        output << conts[:cont] if key==:head
-        output << disp_opts( conts[:opts] )
-      end
-      output
     end
 
     def disp_opts( conts )
