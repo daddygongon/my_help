@@ -51,9 +51,20 @@ class TestMyHelpControl <  Test::Unit::TestCase
       @control.list_help('help_template')
     end
   end
-  def test_list_correct_item
+  def test_list_wrong_item
+    e = assert_raises MyHelp::Control::WrongItemName do
+      @control.show_item('help_template', 'wrong_item')
+    end
+    puts e
+  end
+  def test_list_correct_long_item
     assert_nothing_raised do
       @control.show_item('help_template', 'item_example')
+    end
+  end
+  def test_list_correct_short_item_short
+    assert_nothing_raised do
+      @control.show_item('help_template', '-i')
     end
   end
   def test_change_editor
