@@ -5,7 +5,6 @@ require 'colorize'
 class MyCLI < Thor
   desc('setup', 'set up the test database')
   def setup(*args)
-    # some setup tasks here
     $control = MyHelp::Control.new()
   end
 
@@ -15,15 +14,15 @@ class MyCLI < Thor
     file = args[0]
     item = args[1]
     if file.nil?
-      puts $control.list_all
+      puts $control.list_all # list []
     elsif item.nil?
       begin
-        $control.list_help(file)
+        puts $control.list_help(file) # list [file]
       rescue => e
         puts e.to_s.red
       end
     else
-      $control.show_item(file, item)
+      puts $control.show_item(file, item) # list [file] [item]
     end
   end
 

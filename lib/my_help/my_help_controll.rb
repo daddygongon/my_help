@@ -47,13 +47,14 @@ module MyHelp
     end
 
     def show_item(file, item)
+      output = ''
       file_path=File.join(@local_help_dir,file+'.org')
       help = auto_load(file_path)
       select = select_item(help, item)
-      print help[:head][:cont]
-      unless select then print "No entry: #{item}".red ; exit end
-      puts '-'*5+"\n"+select.to_s.green
-      print help[select][:cont]
+      output << help[:head][:cont]
+      unless select then output << "No entry: #{item}".red ; exit end
+      output << '-'*5+"\n"+select.to_s.green
+      output << help[select][:cont]
     end
 
     def select_item(help, item)
@@ -68,6 +69,8 @@ module MyHelp
       o_key
     end
 
+    WrongFileName = Class.new(RuntimeError)
+
     def list_help(file)
       file_path=File.join(@local_help_dir,file+'.org')
       begin
@@ -76,25 +79,28 @@ module MyHelp
         puts e.to_s.red
         puts "help名(#{file})は参照directory(#{local_help_dir})にありません．".green
         puts "#{file}は，打ち間違いではありませんか？".green
-        raise RuntimeError
+        raise WrongFileName
       end
+      output = ''
       help.each_pair do |key, conts|
-        print conts[:cont] if key==:head
-        disp_opts( conts[:opts] )
+        output << conts[:cont] if key==:head
+        output << disp_opts( conts[:opts] )
       end
+      output
     end
 
     def disp_opts( conts )
+      output = ''
       col = 0
       conts.each_pair do |key, item|
         col_length = case col
-                     when 0; print item.rjust(5)+", "
-                     when 1; print item.ljust(15)+": "
-                     else; print item
+                     when 0; output << item.rjust(5)+", "
+                     when 1; output << item.ljust(15)+": "
+                     else; output << item
                      end
         col += 1
       end
-      print("\n")
+      output << "\n"
     end
 
     def list_all
