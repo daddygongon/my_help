@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
-$LOAD_PATH.unshift(File.expand_path('../../lib', __FILE__))
-require 'test/unit'
-
+require './test_helper'
 require 'my_help'
 
 class TestMyHelpControl <  Test::Unit::TestCase
@@ -29,7 +27,8 @@ class TestMyHelpControl <  Test::Unit::TestCase
     assert_equal('vim', @control.editor)
   end
 =end
-  def test_assert
+#  def test_assert
+  must "be assert" do
     assert { @control.is_a?(MyHelp::Control) }
   end
   def test_local_help_dir
