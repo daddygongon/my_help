@@ -46,13 +46,17 @@ module MyHelp
       }
     end
 
+    WrongItemName = Class.new(RuntimeError)
     def show_item(file, item)
       output = ''
       file_path=File.join(@local_help_dir,file+'.org')
       help = auto_load(file_path)
       select = select_item(help, item)
+      unless select then
+        print "No entry: #{item}\n".red
+        raise WrongItemName
+      end
       output << help[:head][:cont]
-      unless select then output << "No entry: #{item}".red ; exit end
       output << '-'*5+"\n"+select.to_s.green+"\n"
       output << help[select][:cont]
     end
