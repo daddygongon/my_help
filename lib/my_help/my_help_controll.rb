@@ -80,32 +80,6 @@ module MyHelp
       output << help[select][:cont]
     end
 
-    def select_item(help, item)
-      o_key = nil
-      help.each_pair do |key, cont|
-        next if key==:license or key==:head
-        if cont[:opts][:short] == item or cont[:opts][:long] == item
-          o_key = key
-          break
-        end
-      end
-      o_key
-    end
-
-    def disp_opts( conts )
-      output = ''
-      col = 0
-      conts.each_pair do |key, item|
-        col_length = case col
-                     when 0; output << item.rjust(5)+", "
-                     when 1; output << item.ljust(15)+": "
-                     else; output << item
-                     end
-        col += 1
-      end
-      output << "\n"
-    end
-
     def list_all
       output = "List all helps\n".blue
       p local_help_entries
@@ -192,6 +166,32 @@ module MyHelp
 =end
 
     private
+    def select_item(help, item)
+      o_key = nil
+      help.each_pair do |key, cont|
+        next if key==:license or key==:head
+        if cont[:opts][:short] == item or cont[:opts][:long] == item
+          o_key = key
+          break
+        end
+      end
+      o_key
+    end
+
+    def disp_opts( conts )
+      output = ''
+      col = 0
+      conts.each_pair do |key, item|
+        col_length = case col
+                     when 0; output << item.rjust(5)+", "
+                     when 1; output << item.ljust(15)+": "
+                     else; output << item
+                     end
+        col += 1
+      end
+      output << "\n"
+    end
+
     def local_help_entries
       entries= []
       Dir.entries(@local_help_dir).each{|file|

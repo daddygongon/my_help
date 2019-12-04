@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 require './test_helper'
 require 'my_help'
-
+require 'colorize'
 class TestMyHelpControl <  Test::Unit::TestCase
   def setup
     @control = MyHelp::Control.new()
@@ -44,7 +44,7 @@ class TestMyHelpControl <  Test::Unit::TestCase
     e = assert_raises MyHelp::Control::WrongFileName do
       @control.list_help('wrong_file')
     end
-    puts e
+    puts e.to_s.red
   end
   def test_list_correct_file
     assert_nothing_raised do
@@ -55,7 +55,7 @@ class TestMyHelpControl <  Test::Unit::TestCase
     e = assert_raises MyHelp::Control::WrongItemName do
       @control.show_item('help_template', 'wrong_item')
     end
-    puts e
+    puts e.to_s.red
   end
   def test_list_correct_long_item
     assert_nothing_raised do
