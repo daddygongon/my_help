@@ -135,3 +135,10 @@ COMMANDS
 : my_help delete new_help
 
 すると消されます．
+* test
+testは[[/Users/bob/github/ruby_docs/testing_frameworks/test_unit/README.org]]
+にあるのに従って書いている．
+
+「Rubyベストプラクティス」にあるmustを使ったextension
+を組み込んで，DSLにしている．
+[[https://github.com/practicingruby/rbp/blob/master/testing/test_unit_extensions.rb]]
