@@ -40,13 +40,22 @@ class TestMyHelpControl <  Test::Unit::TestCase
 "\e[0m"
     assert_equal(expected, @control.list_all)
   end
-  def test_list_wrong_name
-    e = assert_raises RuntimeError do
+  def test_list_wrong_file
+    e = assert_raises MyHelp::Control::WrongFileName do
       @control.list_help('wrong_file')
     end
     puts e
   end
-
+  def test_list_correct_file
+    assert_nothing_raised do
+      @control.list_help('help_template')
+    end
+  end
+  def test_list_correct_item
+    assert_nothing_raised do
+      @control.show_item('help_template', 'item_example')
+    end
+  end
   def test_change_editor
     @control.editor = 'vim'
     assert_equal('vim', @control.editor)
