@@ -31,7 +31,7 @@ class TestMyHelpControl <  Test::Unit::TestCase
   must "be assert" do
     assert { @control.is_a?(MyHelp::Control) }
   end
-  def test_local_help_dir
+  must "test local help dir" do
     assert_equal('./my_help_sample_dir',@control.local_help_dir)
   end
   def test_list_no_args
