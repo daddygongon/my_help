@@ -21,7 +21,7 @@ module MyHelp
     def set_conf(editor)
       @editor = editor
       file_name = '.my_help_conf.yml'
-#      @conf_file = File.join(Dir.pwd, file_name)
+      # @conf_file = File.join(Dir.pwd, file_name)
       @conf_file = File.join(@local_help_dir, file_name)
       conf = {editor: editor}
       File.open(@conf_file, 'w'){|f| YAML.dump(conf, f)}
@@ -29,7 +29,7 @@ module MyHelp
 
     def load_conf
       file_name = '.my_help_conf.yml'
-#      @conf_file = File.join(Dir.pwd, file_name)
+      # @conf_file = File.join(Dir.pwd, file_name)
       @conf_file = File.join(@local_help_dir, file_name)
       conf = YAML.load_file(@conf_file)
       @editor = conf[:editor]
