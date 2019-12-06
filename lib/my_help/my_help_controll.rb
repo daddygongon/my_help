@@ -73,8 +73,7 @@ module MyHelp
       select = select_item(help, item)
       output << help[:head][:cont]
       unless select then
-        output << "No item entry: #{item}"
-        raise WrongItemName, output
+        raise WrongItemName, "No item entry: #{item}"
       end
       output << '-'*5+"\n"+select.to_s.green+"\n"
       output << help[select][:cont]

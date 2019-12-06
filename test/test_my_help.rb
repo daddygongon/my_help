@@ -9,8 +9,8 @@ class TestMyHelpControl <  Test::Unit::TestCase
     @conf_file = File.join(Dir.pwd,'.my_help_conf.yml')
   end
 
-  require 'yaml'
 =begin
+  require 'yaml'
   def test_set_conf
     @control.set_conf('emacs')
     assert_equal('emacs', @control.editor)
@@ -55,7 +55,7 @@ class TestMyHelpControl <  Test::Unit::TestCase
     e = assert_raises MyHelp::Control::WrongItemName do
       @control.show_item('help_template', 'wrong_item')
     end
-    puts e.to_s.red
+    assert_equal("No item entry: wrong_item",  e.to_s)
   end
   def test_list_correct_long_item
     assert_nothing_raised do
