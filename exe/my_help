@@ -8,13 +8,13 @@ class MyCLI < Thor
     $control = MyHelp::Control.new()
   end
 
-  desc "list", "list all helps, specific HELP, or item"
+  desc "list", "list helps, specific HELP, or item"
   def list(*args)
     invoke :setup
     file = args[0]
     item = args[1]
     if file.nil?
-      puts $control.list_all # list []
+      puts $control.list_all.blue # list []
     elsif item.nil?
       begin
         puts $control.list_help(file) # list [file]
@@ -46,12 +46,6 @@ class MyCLI < Thor
   def delete(help_name)
     invoke :setup
     $control.delete_help(help_name)
-  end
-
-  desc "tomo_upload {help_name}", "tomo_upload HELP_NAME"
-  def tomo_upload(help_name)
-    invoke :setup
-    $control.upload_help(help_name)
   end
 
   desc "search {find_char}", "search FIND_CHAR"

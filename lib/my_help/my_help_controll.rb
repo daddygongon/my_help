@@ -3,7 +3,7 @@ require 'fileutils'
 require 'yaml'
 
 module MyHelp
-  class Control
+  class Control  
     attr_accessor :local_help_dir, :editor
     def initialize()
       # for configuration setups
@@ -12,7 +12,7 @@ module MyHelp
       @template_dir = File.expand_path("../../templates", __FILE__)
       @exe_dir = File.expand_path("../../exe", __FILE__)
       @local_help_dir = File.join(ENV['HOME'],'.my_help')
-      @editor = 'emacs' #'vim'
+      @editor = 'code' #'emacs' #'vim'
       # @mini_account = File
       load_conf
       set_help_dir_if_not_exists
@@ -46,6 +46,26 @@ module MyHelp
       }
     end
 
+    def list_all
+      output = "\nList all helps\n"
+        local_help_entries.each do |file|
+        file_path=File.join(@local_help_dir,file)
+        title = file.split('.')[0]
+        help = auto_load(file_path)
+        next if help.nil?
+        begin
+          desc = help[:head][:cont].split("\n")[0]
+        rescue => e
+          puts e
+          puts "No head in #{file_path}".red
+          next
+        end
+        output << title.rjust(10)
+        output << ": #{desc}\n"
+      end
+      output
+    end
+
     WrongFileName = Class.new(RuntimeError)
     def list_help(file)
       output = ''
@@ -53,10 +73,7 @@ module MyHelp
       begin
         help = auto_load(file_path)
       rescue => e
-        output << e.to_s+"\n"
-        output << "help名(#{file})は参照directory(#{local_help_dir})にありません．\n"
-        output << "#{file}は，打ち間違い？\n"
-        raise WrongFileName, output
+        raise WrongFileName, "No help named '#{file}' in the directory '#{local_help_dir}'."
       end
       help.each_pair do |key, conts|
         output << conts[:cont] if key==:head
@@ -77,27 +94,6 @@ module MyHelp
       end
       output << '-'*5+"\n"+select.to_s.green+"\n"
       output << help[select][:cont]
-    end
-
-    def list_all
-      output = "List all helps\n".blue
-      p local_help_entries
-      local_help_entries.each do |file|
-        file_path=File.join(@local_help_dir,file)
-        title = file.split('.')[0]
-        help = auto_load(file_path)
-        next if help.nil?
-        begin
-          desc = help[:head][:cont].split("\n")[0]
-        rescue => e
-          puts e
-          puts "No head in #{file_path}".red
-          next
-        end
-        output << title.rjust(10).blue
-        output << ": #{desc}\n".blue
-      end
-      output
     end
 
     def edit_help(file)
@@ -138,31 +134,10 @@ module MyHelp
       end
     end
 
-    def upload_help(file)
-      p target_help = File.join(@local_help_dir,file+'.org')
-      puts "miniのuser_nameを入力してください．"
-      p user_name = STDIN.gets.chomp
-      puts "保存するディレクトリ名を入力してください．"
-      p directory_name = STDIN.gets.chomp
-      if local_help_entries.member?(file+'.org')
-        #        if target_help.empty?(file+'.org')
-#          system "scp #{@local_help_dir} tomoko_y@mini:~/our_help/member/tomoko"
-#        else
-        system "scp #{target_help} #{user_name}@mini:~/our_help/member/#{directory_name}"
-      puts "後は，miniでgitにpushしてください．"
-#      end
-      else
-        puts "file #{target_help} does not exits in #{@local_help_dir}."
-        puts "init #{file} first."
-      end
-    end
-
-=begin
-    def search_help(file)
-      p find_char = STDIN.gets.chomp
+    def search_help(word)
+      p find_char = word
       system "ls #{@local_help_dir} | grep #{find_char}"
     end
-=end
 
     private
     def select_item(help, item)
@@ -194,9 +169,9 @@ module MyHelp
     def local_help_entries
       entries= []
       Dir.entries(@local_help_dir).each{|file|
-#        next unless file.include?('_')
+        #        next unless file.include?('_')
         next if file[0]=='#' or file[-1]=='~' or file[0]=='.'
-#        next if file.match(/(.+)_e\.org/) # OK?
+        #        next if file.match(/(.+)_e\.org/) # OK?
         #        next if file.match(/(.+)\.html/)
         if file.match(/(.+)\.org$/) # OK?
           entries << file
@@ -207,8 +182,8 @@ module MyHelp
 
     def auto_load(file_path)
       case File.extname(file_path)
-#      when '.yml'
-#        cont = YAML.load(File.read(file_path))
+      #      when '.yml'
+      #        cont = YAML.load(File.read(file_path))
       when '.org'
         cont = OrgToYaml.new(file_path).help_cont
       else
