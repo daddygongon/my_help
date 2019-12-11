@@ -14,8 +14,8 @@ module MyHelp
       @local_help_dir = File.join(ENV['HOME'],'.my_help')
       @editor = 'code' #'emacs' #'vim'
       # @mini_account = File
-      load_conf
       set_help_dir_if_not_exists
+      load_conf
     end
 
     def set_editor(editor)
