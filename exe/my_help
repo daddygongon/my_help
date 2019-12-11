@@ -30,6 +30,12 @@ class MyCLI < Thor
     end
   end
 
+  desc "editor {editor_name}", "set editor"
+  def editor(editor_name)
+    invoke :setup
+    $control.set_editor(editor_name)
+  end
+
   desc "edit {help_name}", "edit HELP_NAME"
   def edit(help_name)
     invoke :setup

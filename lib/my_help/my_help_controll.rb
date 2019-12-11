@@ -18,7 +18,7 @@ module MyHelp
       set_help_dir_if_not_exists
     end
 
-    def set_conf(editor)
+    def set_editor(editor)
       @editor = editor
       file_name = '.my_help_conf.yml'
       # @conf_file = File.join(Dir.pwd, file_name)
