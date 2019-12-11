@@ -18,8 +18,8 @@ spec = Gem::Specification.new do |s|
   s.executables   = s.files.grep(%r{^exe/}) { |f| File.basename(f) }
   s.add_development_dependency('rake')
   s.add_development_dependency('rdoc')
-  s.add_development_dependency('thor')
   s.add_development_dependency('rspec')
-  s.add_runtime_dependency('gli','2.17.1')
+  s.add_runtime_dependency('thor')
+#  s.add_runtime_dependency('gli','2.17.1')
   s.add_runtime_dependency "colorize"
 end
