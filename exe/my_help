@@ -8,7 +8,7 @@ class MyCLI < Thor
     $control = MyHelp::Control.new()
   end
 
-  desc "list", "list helps, specific HELP, or item"
+  desc "list [HELP] [ITEM]", "list all helps, specific HELP, or ITEM"
   def list(*args)
     invoke :setup
     file = args[0]
@@ -36,35 +36,35 @@ class MyCLI < Thor
     puts MyHelp::VERSION
   end
 
-  desc "editor {editor_name}", "set editor"
-  def editor(editor_name)
+  desc "set_editor EDITOR_NAME", "set editor to EDITOR_NAME"
+  def set_editor(editor_name)
     invoke :setup
     $control.set_editor(editor_name)
   end
 
-  desc "edit {help_name}", "edit HELP_NAME"
+  desc "edit HELP", "edit HELP"
   def edit(help_name)
     invoke :setup
     $control.edit_help(help_name)
   end
 
-  desc "new {help_name}", "make new HELP_NAME"
+  desc "new HELP", "make new HELP"
   def new(help_name)
     invoke :setup
     $control.init_help(help_name)
   end
 
-  desc "delete {help_name}", "delete HELP_NAME"
+  desc "delete HELP", "delete HELP"
   def delete(help_name)
     invoke :setup
     $control.delete_help(help_name)
   end
 
-  desc "search {find_char}", "search FIND_CHAR"
-  def search(find_char)
-    invoke :setup
-    $control.search_help(find_char)
-  end
+#  desc "search {find_char}", "search FIND_CHAR"
+#  def search(find_char)
+#    invoke :setup
+#    $control.search_help(find_char)
+#  end
 end
 
 MyCLI.start(ARGV)
