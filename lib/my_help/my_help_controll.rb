@@ -31,8 +31,13 @@ module MyHelp
       file_name = '.my_help_conf.yml'
       # @conf_file = File.join(Dir.pwd, file_name)
       @conf_file = File.join(@local_help_dir, file_name)
-      conf = YAML.load_file(@conf_file)
-      @editor = conf[:editor]
+      begin
+        conf = YAML.load_file(@conf_file)
+        @editor = conf[:editor]
+      rescue => e
+        p e
+        set_editor('code')
+      end
     end
 
     def set_help_dir_if_not_exists
