@@ -30,6 +30,12 @@ class MyCLI < Thor
     end
   end
 
+  desc "version", "show version"
+  def version
+    invoke :setup
+    puts MyHelp::VERSION
+  end
+
   desc "editor {editor_name}", "set editor"
   def editor(editor_name)
     invoke :setup
