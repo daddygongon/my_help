@@ -100,6 +100,7 @@ module MyHelp
       FileUtils::Verbose.cp(template,target_help)
     end
 
+=begin
     def delete_help(file)
       file = File.join(@local_help_dir,file+'.org')
       print "Are you sure to delete "+file.blue+"?[Ynq] ".red
@@ -107,10 +108,27 @@ module MyHelp
       when 'Y'
         begin
           FileUtils.rm(file,:verbose=>true)
+         rescue => error
+          puts error.to_s.red
+         end
+      when 'n', 'q' ; exit
+      end
+    end
+=end
+
+    def delete_help(file)
+      file = File.join(@local_help_dir,file+'.org')
+      print "Are you sure to delete "+file.blue+"?[Yn] ".red
+      case STDIN.gets.chomp
+      when 'Y'
+        begin
+          FileUtils.rm(file,:verbose=>true)
+          return 0
         rescue => error
           puts error.to_s.red
+          return 1
         end
-      when 'n', 'q' ; exit
+      when 'n', 'q' ; return 0
       end
     end
 
