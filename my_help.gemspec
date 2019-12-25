@@ -22,6 +22,5 @@ spec = Gem::Specification.new do |s|
   s.add_runtime_dependency('thor')
 #  s.add_runtime_dependency('gli','2.17.1')
   s.add_runtime_dependency "colorize"
-
-  s.add_runtime_dependency 'thor'
+  s.add_runtime_dependency "command_line"
 end
