@@ -2,6 +2,8 @@
 require 'thor'
 require 'my_help'
 require 'colorize'
+require 'command_line/global'
+
 class MyCLI < Thor
   desc('setup', 'set up the test database')
   def setup(*args)
@@ -58,6 +60,28 @@ class MyCLI < Thor
   def delete(help_name)
     invoke :setup
     $control.delete_help(help_name)
+  end
+  desc "git [push|pull]", "git push or pull"
+  def git(push_or_pull)
+    p push_or_pull
+    invoke :setup
+    dir = $control.local_help_dir
+    Dir.chdir(dir) do
+      case push_or_pull
+      when 'push'
+        comms = ['git add -A',
+                 "git commit -m 'git push from my_help'",
+                 "git push origin master"]
+      when 'pull'
+        comms = ['git pull origin master']
+      else
+        raise "my_help git was called by the other than 'push or pull'"
+      end
+      comms.each do |comm|
+        c = command_line(comm)
+        puts c.stdout
+      end
+    end
   end
 
 #  desc "search {find_char}", "search FIND_CHAR"
