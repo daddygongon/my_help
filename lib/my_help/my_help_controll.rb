@@ -12,7 +12,7 @@ module MyHelp
       @template_dir = File.expand_path("../../templates", __FILE__)
       @exe_dir = File.expand_path("../../exe", __FILE__)
       @local_help_dir = File.join(ENV['HOME'],'.my_help')
-      @editor = 'code' #'emacs' #'vim'
+      @editor = 'code' #'emacs' #'vim' #default editor
       # @mini_account = File
       set_help_dir_if_not_exists
       load_conf
@@ -21,10 +21,10 @@ module MyHelp
     def set_editor(editor)
       @editor = editor
       file_name = '.my_help_conf.yml'
-      # @conf_file = File.join(Dir.pwd, file_name)
       @conf_file = File.join(@local_help_dir, file_name)
       conf = {editor: editor}
       File.open(@conf_file, 'w'){|f| YAML.dump(conf, f)}
+      puts "set editor '#{@editor}'"
     end
 
     def load_conf
@@ -35,8 +35,9 @@ module MyHelp
         conf = YAML.load_file(@conf_file)
         @editor = conf[:editor]
       rescue => e
-        p e
-        set_editor('code')
+        puts e.to_s.red
+        puts 'make .my_help_conf.yml'.green
+        set_editor(@editor)
       end
     end
 

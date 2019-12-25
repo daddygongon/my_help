@@ -9,10 +9,9 @@ class TestMyHelpControl <  Test::Unit::TestCase
     @conf_file = File.join(Dir.pwd,'.my_help_conf.yml')
   end
 
-=begin
   require 'yaml'
   def test_set_conf
-    @control.set_conf('emacs')
+    @control.set_editor('emacs')
     assert_equal('emacs', @control.editor)
   end
 
@@ -26,7 +25,7 @@ class TestMyHelpControl <  Test::Unit::TestCase
     @control.load_conf # yaml
     assert_equal('vim', @control.editor)
   end
-=end
+
   #  def test_assert
   must "be assert" do
     assert { @control.is_a?(MyHelp::Control) }
