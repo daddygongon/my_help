@@ -79,7 +79,8 @@ class MyCLI < Thor
       end
       comms.each do |comm|
         c = command_line(comm)
-        puts c.stdout
+        puts c.stdout.blue
+        puts c.stderr.red
       end
     end
   end
