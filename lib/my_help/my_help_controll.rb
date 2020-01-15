@@ -3,7 +3,7 @@ require 'fileutils'
 require 'yaml'
 
 module MyHelp
-  class Control  
+  class Control
     attr_accessor :local_help_dir, :editor
     def initialize()
       # for configuration setups
@@ -54,7 +54,7 @@ module MyHelp
 
     def list_all
       output = "\nList all helps\n"
-        local_help_entries.each do |file|
+      local_help_entries.each do |file|
         file_path=File.join(@local_help_dir,file)
         title = file.split('.')[0]
         help = auto_load(file_path)
@@ -126,95 +126,97 @@ module MyHelp
       FileUtils::Verbose.cp(template,target_help)
     end
 
-=begin
-    def delete_help(file)
-      file = File.join(@local_help_dir,file+'.org')
-      print "Are you sure to delete "+file.blue+"?[Ynq] ".red
-      case STDIN.gets.chomp
-      when 'Y'
-        begin
-          FileUtils.rm(file,:verbose=>true)
-         rescue => error
-          puts error.to_s.red
+    =begin
+       def delete_help(file)
+         file = File.join(@local_help_dir,file+'.org')
+         print "Are you sure to delete "+file.blue+"?[Ynq] ".red
+         case STDIN.gets.chomp
+         when 'Y'
+           begin
+             FileUtils.rm(file,:verbose=>true)
+           rescue => error
+             puts error.to_s.red
+           end
+         when 'n', 'q' ; exit
          end
-      when 'n', 'q' ; exit
-      end
-    end
-=end
+       end
+       =end
+     def delete_help(file)
+       file = File.join(@local_help_dir,file+'.org')
+       if File.exist?(file) == true
+         print "Are you sure to delete "+file.blue+"?[Yn] ".red
+         case STDIN.gets.chomp
+         when 'Y'
+           begin
+             FileUtils.rm(file,:verbose=>true)
+             return 0
+           rescue => error
+             puts error.to_s.red
+             return 1
+           end
+         when 'n', 'q' ; return 0
+         end
+       else
+         print file + " is a non-existent file"
+       end
+     end
 
-    def delete_help(file)
-      file = File.join(@local_help_dir,file+'.org')
-      print "Are you sure to delete "+file.blue+"?[Yn] ".red
-      case STDIN.gets.chomp
-      when 'Y'
-        begin
-          FileUtils.rm(file,:verbose=>true)
-          return 0
-        rescue => error
-          puts error.to_s.red
-          return 1
-        end
-      when 'n', 'q' ; return 0
-      end
-    end
+     def search_help(word)
+       p find_char = word
+       system "ls #{@local_help_dir} | grep #{find_char}"
+     end
 
-    def search_help(word)
-      p find_char = word
-      system "ls #{@local_help_dir} | grep #{find_char}"
-    end
+     private
+     def select_item(help, item)
+       o_key = nil
+       help.each_pair do |key, cont|
+         next if key==:license or key==:head
+         if cont[:opts][:short] == item or cont[:opts][:long] == item
+           o_key = key
+           break
+         end
+       end
+       o_key
+     end
 
-    private
-    def select_item(help, item)
-      o_key = nil
-      help.each_pair do |key, cont|
-        next if key==:license or key==:head
-        if cont[:opts][:short] == item or cont[:opts][:long] == item
-          o_key = key
-          break
-        end
-      end
-      o_key
-    end
+     def disp_opts( conts )
+       output = ''
+       col = 0
+       conts.each_pair do |key, item|
+         col_length = case col
+                      when 0; output << item.rjust(5)+", "
+                      when 1; output << item.ljust(15)+": "
+                      else; output << item
+                      end
+         col += 1
+       end
+       output << "\n"
+     end
+     def local_help_entries
+       entries= []
+       Dir.entries(@local_help_dir).each{|file|
+         #        next unless file.include?('_')
+         next if file[0]=='#' or file[-1]=='~' or file[0]=='.'
+         #        next if file.match(/(.+)_e\.org/) # OK?
+         #        next if file.match(/(.+)\.html/)
+         if file.match(/(.+)\.org$/) # OK?
+           entries << file
+         end
+       }
+       return entries
+     end
 
-    def disp_opts( conts )
-      output = ''
-      col = 0
-      conts.each_pair do |key, item|
-        col_length = case col
-                     when 0; output << item.rjust(5)+", "
-                     when 1; output << item.ljust(15)+": "
-                     else; output << item
-                     end
-        col += 1
-      end
-      output << "\n"
-    end
-
-    def local_help_entries
-      entries= []
-      Dir.entries(@local_help_dir).each{|file|
-        #        next unless file.include?('_')
-        next if file[0]=='#' or file[-1]=='~' or file[0]=='.'
-        #        next if file.match(/(.+)_e\.org/) # OK?
-        #        next if file.match(/(.+)\.html/)
-        if file.match(/(.+)\.org$/) # OK?
-          entries << file
-        end
-      }
-      return entries
-    end
-
-    def auto_load(file_path)
-      case File.extname(file_path)
-      #      when '.yml'
-      #        cont = YAML.load(File.read(file_path))
-      when '.org'
-        cont = OrgToYaml.new(file_path).help_cont
-      else
-        puts "Not handling file types of #{file_path}"
-        cont = nil
-      end
-      cont
-    end
-  end
-end
+     def auto_load(file_path)
+       case File.extname(file_path)
+         #      when '.yml'
+         #        cont = YAML.load(File.read(file_path))
+       when '.org'
+         cont = OrgToYaml.new(file_path).help_cont
+       else
+         puts "Not handling file types of #{file_path}"
+         cont = nil
+       end
+       cont
+     end
+   end
+ end
