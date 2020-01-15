@@ -1,13 +1,21 @@
-# -*- coding: utf-8 -*-
 require "bundler/gem_tasks"
-#require "rspec/core/rake_task"
-require 'fileutils'
-require 'open3'
+require "rake/testtask"
+require 'yard'
 
-p base_path = File.expand_path('..', __FILE__)
-p basename = File.basename(base_path)
-
-task :default do
-  system 'rake -T'
+Rake::TestTask.new(:test) do |t|
+  t.libs << "test"
+  t.libs << "lib"
+  t.test_files = FileList["test/**/*_test.rb"]
 end
 
+task :default => :test
+
+desc "make documents by yard"
+task :yard do
+  YARD::Rake::YardocTask.new {|t|
+#    t.files=['**/*.md']
+#    t.options=['-t','mathjax']
+#    t.options=['--exclude','lib.rb','--files','**/*.org']
+  }
+
+end

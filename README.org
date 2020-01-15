@@ -66,28 +66,18 @@ RPGでレベル上げとかアイテムを貯めるようにして，
 
 まずは，
 #+begin_example
-> my_help
-NAME
-    my_help - make own help and list.
-
-SYNOPSIS
-    my_help [global options] command [command options] [arguments...]
-
-VERSION
-    0.7.0
-
-GLOBAL OPTIONS
-    --help    - Show this message
-    --version - Display the program version
-
-COMMANDS
-    delete - delete HELP_NAME help
-    edit   - edit HELP_NAME help
-    help   - Shows a list of commands or help for one command
-    list   - list all helps, specific HELP, or item
-     new   - make new HELP_NAME
+my_help                                                                          1559ms
+Commands:
+  my_help delete HELP             # delete HELP
+  my_help edit HELP               # edit HELP
+  my_help help [COMMAND]          # Describe available commands or one specific command
+  my_help list [HELP] [ITEM]      # list all helps, specific HELP, or ITEM
+  my_help new HELP                # make new HELP
+  my_help set_editor EDITOR_NAME  # set editor to EDITOR_NAME
+  my_help setup                   # set up the test database
+  my_help version                 # show version
 #+end_example
-としてください．このlistにargsやitemを加えて行くとわかると思います．
+としてください．このlistにNAMEやITEMを加えて行くとわかると思います．
 
 : my_help list
 : my_help list emacs
@@ -120,11 +110,7 @@ COMMANDS
 #+END_EXAMPLE
 
 ** 独自のhelpを作る方法
-   :PROPERTIES:
-   :CUSTOM_ID: 独自のhelpを作る方法
-   :END:
-
-さて，独自のhelpを作る方法です．まずは，
+独自のhelpを作る方法です．まずは，
 
 : my_help new new_help
 
@@ -135,3 +121,17 @@ COMMANDS
 : my_help delete new_help
 
 すると消されます．
+** editorの変更
+: my_help set_editor vim
+でeditorを変更できます．codeとかは確認していますが，
+それ以外で動いたり，動かなかったりを報告してください．
+
+* test
+
+以下は，開発者メモです．
+testは[[/Users/bob/github/ruby_docs/testing_frameworks/test_unit/README.org]]
+にあるのに従って書いています．
+
+「Rubyベストプラクティス」にあるmustを使ったextension
+を組み込んで，DSLにしている．
+[[https://github.com/practicingruby/rbp/blob/master/testing/test_unit_extensions.rb]]
