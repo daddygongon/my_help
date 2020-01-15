@@ -126,7 +126,7 @@ module MyHelp
       FileUtils::Verbose.cp(template,target_help)
     end
 
-    =begin
+=begin
        def delete_help(file)
          file = File.join(@local_help_dir,file+'.org')
          print "Are you sure to delete "+file.blue+"?[Ynq] ".red
@@ -140,7 +140,7 @@ module MyHelp
          when 'n', 'q' ; exit
          end
        end
-       =end
+=end
      def delete_help(file)
        file = File.join(@local_help_dir,file+'.org')
        if File.exist?(file) == true
