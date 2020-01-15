@@ -1,16 +1,47 @@
-# -*- coding: utf-8 -*-
+require 'fileutils'
+require 'yaml'
+
 module MyHelp
   class Control
+    attr_accessor :local_help_dir, :editor
     def initialize()
+      # for configuration setups
+      # see https://stackoverflow.com/questions/6233124/where-to-place-access-config-file-in-gem
+
       @template_dir = File.expand_path("../../templates", __FILE__)
       @exe_dir = File.expand_path("../../exe", __FILE__)
       @local_help_dir = File.join(ENV['HOME'],'.my_help')
-     # @mini_account = File
+      @editor = 'code' #'emacs' #'vim' #default editor
+      # @mini_account = File
       set_help_dir_if_not_exists
+      load_conf
+    end
+
+    def set_editor(editor)
+      @editor = editor
+      file_name = '.my_help_conf.yml'
+      @conf_file = File.join(@local_help_dir, file_name)
+      conf = {editor: editor}
+      File.open(@conf_file, 'w'){|f| YAML.dump(conf, f)}
+      puts "set editor '#{@editor}'"
+    end
+
+    def load_conf
+      file_name = '.my_help_conf.yml'
+      # @conf_file = File.join(Dir.pwd, file_name)
+      @conf_file = File.join(@local_help_dir, file_name)
+      begin
+        conf = YAML.load_file(@conf_file)
+        @editor = conf[:editor]
+      rescue => e
+        puts e.to_s.red
+        puts 'make .my_help_conf.yml'.green
+        set_editor(@editor)
+      end
     end
 
     def set_help_dir_if_not_exists
-      return if File::exists?(@local_help_dir)
+      return if File::exist?(@local_help_dir)
       FileUtils.mkdir_p(@local_help_dir, :verbose=>true)
       Dir.entries(@template_dir).each{|file|
         next if file=='help_template.org'
@@ -20,66 +51,60 @@ module MyHelp
       }
     end
 
-    def show_item(file, item)
-      file_path=File.join(@local_help_dir,file+'.org')
-      help = auto_load(file_path)
-      select = select_item(help, item)
-      print help[:head][:cont]
-      puts '-'*5+"\n"+select.to_s.red
-      print help[select][:cont]
-    end
-
-    def select_item(help, item)
-      o_key = ''
-      help.each_pair do |key, cont|
-        next if key==:license or key==:head
-        if cont[:opts][:short] == item or cont[:opts][:long] == item
-          o_key = key
-          break
-        end
-      end
-      o_key
-    end
-
-    def list_help(file)
-      file_path=File.join(@local_help_dir,file+'.org')
-      help = auto_load(file_path)
-      help.each_pair do |key, conts|
-        print conts[:cont] if key==:head
-        disp_opts( conts[:opts] )
-      end
-    end
-
-    def disp_opts( conts )
-      col = 0
-      conts.each_pair do |key, item|
-        col_length = case col
-                     when 0; print item.rjust(5)+", "
-                     when 1; print item.ljust(15)+": "
-                     else; print item
-                     end
-        col += 1
-      end
-      print("\n")
-    end
-
     def list_all
-      print "List all helps\n"
-      local_help_entries.each do |file|
+      output = "\nList all helps\n"
+        local_help_entries.each do |file|
         file_path=File.join(@local_help_dir,file)
         title = file.split('.')[0]
         help = auto_load(file_path)
         next if help.nil?
-        desc = help[:head][:cont].split("\n")[0]
-        print title.rjust(10).blue
-        print ": #{desc}\n".blue
+        begin
+          desc = help[:head][:cont].split("\n")[0]
+        rescue => e
+          puts e
+          puts "No head in #{file_path}".red
+          next
+        end
+        output << title.rjust(10)
+        output << ": #{desc}\n"
       end
+      output
+    end
+
+    WrongFileName = Class.new(RuntimeError)
+    def list_help(file)
+      output = ''
+      file_path=File.join(@local_help_dir,file+'.org')
+      begin
+        help = auto_load(file_path)
+      rescue => e
+        raise WrongFileName, "No help named '#{file}' in the directory '#{local_help_dir}'."
+      end
+      help.each_pair do |key, conts|
+        output << conts[:cont] if key==:head
+        output << disp_opts( conts[:opts] )
+      end
+      output
+    end
+
+    WrongItemName = Class.new(RuntimeError)
+    def show_item(file, item)
+      output = ''
+      file_path=File.join(@local_help_dir,file+'.org')
+      help = auto_load(file_path)
+      select = select_item(help, item)
+      output << help[:head][:cont]
+      unless select then
+        raise WrongItemName, "No item entry: #{item}"
+      end
+      output << '-'*5+"\n"+select.to_s.green+"\n"
+      output << help[select][:cont]
     end
 
     def edit_help(file)
       p target_help = File.join(@local_help_dir,file+'.org')
       if local_help_entries.member?(file+'.org')
-        system "emacs #{target_help}"
+        system "#{@editor} #{target_help}"
       else
         puts "file #{target_help} does not exits in #{@local_help_dir}."
         puts "init #{file} first."
@@ -115,9 +140,9 @@ module MyHelp
       end
     end
 =end
-
-    def delete_help(file)
+ def delete_help(file)
       file = File.join(@local_help_dir,file+'.org')
+      if File.exist?(file) == true
       print "Are you sure to delete "+file.blue+"?[Yn] ".red
       case STDIN.gets.chomp
       when 'Y'
@@ -130,41 +155,49 @@ module MyHelp
         end
       when 'n', 'q' ; return 0
       end
-    end
-
-    def upload_help(file)
-      p target_help = File.join(@local_help_dir,file+'.org')
-      puts "miniのuser_nameを入力してください．"
-      p user_name = STDIN.gets.chomp
-      puts "保存するディレクトリ名を入力してください．"
-      p directory_name = STDIN.gets.chomp
-      if local_help_entries.member?(file+'.org')
-        #        if target_help.empty?(file+'.org')
-#          system "scp #{@local_help_dir} tomoko_y@mini:~/our_help/member/tomoko"
-#        else
-        system "scp #{target_help} #{user_name}@mini:~/our_help/member/#{directory_name}"
-      puts "後は，miniでgitにpushしてください．"
-#      end
       else
-        puts "file #{target_help} does not exits in #{@local_help_dir}."
-        puts "init #{file} first."
+        print file + " is a non-existent file"
       end
     end
 
-=begin
-    def search_help(file)
-      p find_char = STDIN.gets.chomp
+    def search_help(word)
+      p find_char = word
       system "ls #{@local_help_dir} | grep #{find_char}"
     end
-=end
 
     private
+    def select_item(help, item)
+      o_key = nil
+      help.each_pair do |key, cont|
+        next if key==:license or key==:head
+        if cont[:opts][:short] == item or cont[:opts][:long] == item
+          o_key = key
+          break
+        end
+      end
+      o_key
+    end
+
+    def disp_opts( conts )
+      output = ''
+      col = 0
+      conts.each_pair do |key, item|
+        col_length = case col
+                     when 0; output << item.rjust(5)+", "
+                     when 1; output << item.ljust(15)+": "
+                     else; output << item
+                     end
+        col += 1
+      end
+      output << "\n"
+    end
+
     def local_help_entries
       entries= []
       Dir.entries(@local_help_dir).each{|file|
-#        next unless file.include?('_')
+        #        next unless file.include?('_')
         next if file[0]=='#' or file[-1]=='~' or file[0]=='.'
-#        next if file.match(/(.+)_e\.org/) # OK?
+        #        next if file.match(/(.+)_e\.org/) # OK?
         #        next if file.match(/(.+)\.html/)
         if file.match(/(.+)\.org$/) # OK?
           entries << file
@@ -175,8 +208,8 @@ module MyHelp
 
     def auto_load(file_path)
       case File.extname(file_path)
-#      when '.yml'
-#        cont = YAML.load(File.read(file_path))
+      #      when '.yml'
+      #        cont = YAML.load(File.read(file_path))
       when '.org'
         cont = OrgToYaml.new(file_path).help_cont
       else
