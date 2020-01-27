@@ -62,6 +62,7 @@ class MyCLI < Thor
     $control.delete_help(help_name)
   end
 
+=begin
   desc "git [push|pull]", "git push or pull"
   def git(push_or_pull)
     p push_or_pull
@@ -85,12 +86,22 @@ class MyCLI < Thor
       end
     end
   end
+=end
 
-desc "git [push]", "git push"
+=begin
+  desc "git [push]", "git push"
   def git_push(*args)
     invoke :setup
-    filename = args[0]
-    if filename.nil?
+    filename = []
+    100.times do |i|
+      filename[i] = args[i]
+      if filename[i] == nil
+        break
+      end
+    end
+    argument_size =  filename.size - 1
+
+    if argument_size == 0
       dir = $control.local_help_dir
       Dir.chdir(dir) do
         comms = ['git add -A',
@@ -102,23 +113,28 @@ desc "git [push]", "git push"
           puts c.stderr.red
         end
       end
-
     else
-      file = File.join($control.local_help_dir,filename+'.org')
-      if File.exist?(file) == false
-        puts file + " does not existed"
-
-      elsif
-        dir = $control.local_help_dir
-        Dir.chdir(dir) do
-          comms = ['git add ' + file,
-                   "git commit -m 'git push from my_help'",
-                   "git push origin master"]
-          comms.each do |comm|
+      argument_size.times do |i|
+        file = File.join($control.local_help_dir,filename[i]+'.org')
+        if File.exist?(file) == true
+          dir = $control.local_help_dir
+          Dir.chdir(dir) do
+            comm = 'git add ' + file
             c = command_line(comm)
             puts c.stdout.blue
             puts c.stderr.red
           end
+        else
+          puts file + " does not existed"
+        end
+      end
+      Dir.chdir(dir) do
+        comms = ["git commit -m 'git push from my_help'",
+                 "git push origin master"]
+        comms.each do |comm|
+          c = command_line(comm)
+          puts c.stdout.blue
+          puts c.stderr.red
         end
       end
     end
@@ -126,7 +142,6 @@ desc "git [push]", "git push"
 
 desc "git [pull]", "git pull"
   def git_pull
-
     invoke :setup
     dir = $control.local_help_dir
     Dir.chdir(dir) do
@@ -138,12 +153,64 @@ desc "git [pull]", "git pull"
       end
     end
   end
+=end
 
-#  desc "search {find_char}", "search FIND_CHAR"
-#  def search(find_char)
-#    invoke :setup
-#    $control.search_help(find_char)
-#  end
+  desc "git [push|pull]", "git push or pull"
+  def git(push_or_pull,*args)
+    p push_or_pull
+    invoke :setup
+    filename = []
+    100.times do |i|
+      filename[i] = args[i]
+      if filename[i] == nil
+        break
+      end
+    end
+    p argument_size =  filename.size - 1
+
+    dir = $control.local_help_dir
+    Dir.chdir(dir) do
+      case push_or_pull
+      when 'push'
+        if argument_size == 0
+          comms = ['git add -A',
+                   "git commit -m 'git push from my_help'",
+                   "git push origin master"]
+        else
+          argument_size.times do |i|
+            file = File.join($control.local_help_dir,filename[i]+'.org')
+            if File.exist?(file) == true
+              dir = $control.local_help_dir
+              Dir.chdir(dir) do
+                comm = 'git add ' + file
+                c = command_line(comm)
+                puts c.stdout.blue
+                puts c.stderr.red
+              end
+            else
+              puts (file + " does not existed").red
+            end
+          end
+        comms = ["git commit -m 'git push from my_help'",
+                 "git push origin master"]
+        end
+      when 'pull'
+      comms = ['git pull origin master']
+      else
+        raise "my_help git was called by the other than 'push or pull'"
+      end
+      comms.each do |comm|
+        c = command_line(comm)
+        puts c.stdout.blue
+        puts c.stderr.red
+      end
+    end
+  end
+    #  desc "search {find_char}", "search FIND_CHAR"
+    #  def search(find_char)
+    #    invoke :setup
+    #    $control.search_help(find_char)
+    #  end
 end
 
 MyCLI.start(ARGV)
