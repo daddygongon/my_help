@@ -88,75 +88,8 @@ class MyCLI < Thor
   end
 =end
 
-=begin
-  desc "git [push]", "git push"
-  def git_push(*args)
-    invoke :setup
-    filename = []
-    100.times do |i|
-      filename[i] = args[i]
-      if filename[i] == nil
-        break
-      end
-    end
-    argument_size =  filename.size - 1
-
-    if argument_size == 0
-      dir = $control.local_help_dir
-      Dir.chdir(dir) do
-        comms = ['git add -A',
-                 "git commit -m 'git push from my_help'",
-                 "git push origin master"]
-        comms.each do |comm|
-          c = command_line(comm)
-          puts c.stdout.blue
-          puts c.stderr.red
-        end
-      end
-    else
-      argument_size.times do |i|
-        file = File.join($control.local_help_dir,filename[i]+'.org')
-        if File.exist?(file) == true
-          dir = $control.local_help_dir
-          Dir.chdir(dir) do
-            comm = 'git add ' + file
-            c = command_line(comm)
-            puts c.stdout.blue
-            puts c.stderr.red
-          end
-        else
-          puts file + " does not existed"
-        end
-      end
-      Dir.chdir(dir) do
-        comms = ["git commit -m 'git push from my_help'",
-                 "git push origin master"]
-        comms.each do |comm|
-          c = command_line(comm)
-          puts c.stdout.blue
-          puts c.stderr.red
-        end
-      end
-    end
-  end
-
-desc "git [pull]", "git pull"
-  def git_pull
-    invoke :setup
-    dir = $control.local_help_dir
-    Dir.chdir(dir) do
-        comms = ['git pull origin master']
-      comms.each do |comm|
-        c = command_line(comm)
-        puts c.stdout.blue
-        puts c.stderr.red
-      end
-    end
-  end
-=end
-
   desc "git [push|pull]", "git push or pull"
-  def git(push_or_pull,*args)
+   def git(push_or_pull,*args)
     p push_or_pull
     invoke :setup
     filename = []
@@ -166,7 +99,7 @@ desc "git [pull]", "git pull"
         break
       end
     end
-    p argument_size =  filename.size - 1
+    argument_size =  filename.size - 1
 
     dir = $control.local_help_dir
     Dir.chdir(dir) do
@@ -178,8 +111,10 @@ desc "git [pull]", "git pull"
                    "git push origin master"]
         else
           argument_size.times do |i|
-            file = File.join($control.local_help_dir,filename[i]+'.org')
-            if File.exist?(file) == true
+            orgfile = filename[i] + '.org'
+            file = File.join($control.local_help_dir,orgfile)
+             if File.exist?(file) == true
+               puts orgfile.green
               dir = $control.local_help_dir
               Dir.chdir(dir) do
                 comm = 'git add ' + file
@@ -188,7 +123,7 @@ desc "git [pull]", "git pull"
                 puts c.stderr.red
               end
             else
-              puts (file + " does not existed").red
+              puts (orgfile + " does not existed").red
             end
           end
         comms = ["git commit -m 'git push from my_help'",
