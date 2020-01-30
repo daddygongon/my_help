@@ -62,33 +62,33 @@ class MyCLI < Thor
     $control.delete_help(help_name)
   end
 
-=begin
-  desc "git [push|pull]", "git push or pull"
-  def git(push_or_pull)
-    p push_or_pull
-    invoke :setup
-    dir = $control.local_help_dir
-    Dir.chdir(dir) do
-      case push_or_pull
-      when 'push'
-        comms = ['git add -A',
-                 "git commit -m 'git push from my_help'",
-                 "git push origin master"]
-      when 'pull'
-        comms = ['git pull origin master']
-      else
-        raise "my_help git was called by the other than 'push or pull'"
-      end
-      comms.each do |comm|
-        c = command_line(comm)
-        puts c.stdout.blue
-        puts c.stderr.red
-      end
-    end
-  end
-=end
+  =begin
+     desc "git [push|pull]", "git push or pull"
+     def git(push_or_pull)
+       p push_or_pull
+       invoke :setup
+       dir = $control.local_help_dir
+       Dir.chdir(dir) do
+         case push_or_pull
+         when 'push'
+           comms = ['git add -A',
+                    "git commit -m 'git push from my_help'",
+                    "git push origin master"]
+         when 'pull'
+           comms = ['git pull origin master']
+         else
+           raise "my_help git was called by the other than 'push or pull'"
+         end
+         comms.each do |comm|
+           c = command_line(comm)
+           puts c.stdout.blue
+           puts c.stderr.red
+         end
+       end
+     end
+     =end
 
-  desc "git [push|pull]", "git push or pull"
+   desc "git [push|pull]", "git push or pull"
    def git(push_or_pull,*args)
      p push_or_pull
      invoke :setup
@@ -110,35 +110,35 @@ class MyCLI < Thor
                puts orgfile.green
                dir = $control.local_help_dir
                Dir.chdir(dir) do
-                comm = 'git add ' + file
+                 comm = 'git add ' + file
                  c = command_line(comm)
                  puts c.stdout.blue
                  puts c.stderr.red
-              end
+               end
              else
-              puts (orgfile + " does not existed").red
+               puts (orgfile + " does not existed").red
              end
            end
-        comms = ["git commit -m 'git push from my_help'",
-                 "git push origin master"]
-        end
+           comms = ["git commit -m 'git push from my_help'",
+                    "git push origin master"]
+         end
        when 'pull'
          comms = ['git pull origin master']
-      else
+       else
          raise "my_help git was called by the other than 'push or pull'"
        end
        comms.each do |comm|
          c = command_line(comm)
          puts c.stdout.blue
          puts c.stderr.red
-      end
+       end
      end
-  end
+   end
    #  desc "search {find_char}", "search FIND_CHAR"
    #  def search(find_char)
    #    invoke :setup
    #    $control.search_help(find_char)
    #  end
-end
+ end
 
  MyCLI.start(ARGV)
