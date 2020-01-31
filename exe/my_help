@@ -62,7 +62,7 @@ class MyCLI < Thor
     $control.delete_help(help_name)
   end
 
-  =begin
+=begin
      desc "git [push|pull]", "git push or pull"
      def git(push_or_pull)
        p push_or_pull
@@ -86,15 +86,14 @@ class MyCLI < Thor
          end
        end
      end
-     =end
+=end
 
    desc "git [push|pull]", "git push or pull"
    def git(push_or_pull,*args)
      p push_or_pull
      invoke :setup
      argument_size =  args.size
-     dir = $control.local_help_dir
-     Dir.chdir(dir) do
+     Dir.chdir($control.local_help_dir) do
        case push_or_pull
        when 'push'
          if argument_size == 0
@@ -111,6 +110,7 @@ class MyCLI < Thor
                dir = $control.local_help_dir
                Dir.chdir(dir) do
                  comm = 'git add ' + file
+                 puts c
                  c = command_line(comm)
                  puts c.stdout.blue
                  puts c.stderr.red
@@ -128,6 +128,7 @@ class MyCLI < Thor
          raise "my_help git was called by the other than 'push or pull'"
        end
        comms.each do |comm|
+         puts comm
          c = command_line(comm)
          puts c.stdout.blue
          puts c.stderr.red
