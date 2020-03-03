@@ -1,6 +1,6 @@
 # Ensure we require the local version and not one we might have installed already
 require File.join([File.dirname(__FILE__),'lib','my_help','version.rb'])
-spec = Gem::Specification.new do |s| 
+spec = Gem::Specification.new do |s|
   s.name = 'my_help'
   s.version = MyHelp::VERSION
   s.author = 'Shigeot R. Nishitani'
@@ -17,10 +17,8 @@ spec = Gem::Specification.new do |s|
   s.bindir        = "exe"
   s.executables   = s.files.grep(%r{^exe/}) { |f| File.basename(f) }
   s.add_development_dependency('rake')
-#  s.add_development_dependency('rdoc')
   s.add_development_dependency('rspec')
   s.add_runtime_dependency('thor')
-#  s.add_runtime_dependency('gli','2.17.1')
   s.add_runtime_dependency "colorize"
   s.add_runtime_dependency "command_line"
 end
