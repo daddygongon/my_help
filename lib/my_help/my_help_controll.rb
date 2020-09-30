@@ -12,7 +12,7 @@ module MyHelp
       @template_dir = File.expand_path("../../templates", __FILE__)
       @exe_dir = File.expand_path("../../exe", __FILE__)
       @local_help_dir = File.join(ENV['HOME'],'.my_help')
-      @editor = 'code' #'emacs' #'vim' #default editor
+      @editor = ENV['EDITOR'] || 'emacs' #'code', 'emacs' #'vim' #default editor
       # @mini_account = File
       set_help_dir_if_not_exists
       load_conf
