@@ -135,3 +135,21 @@ testは[[/Users/bob/github/ruby_docs/testing_frameworks/test_unit/README.org]]
 「Rubyベストプラクティス」にあるmustを使ったextension
 を組み込んで，DSLにしている．
 [[https://github.com/practicingruby/rbp/blob/master/testing/test_unit_extensions.rb]]
+
+* rspec <2020-09-30 水>
+shuheiがrspecを組み込んでくれていたはずだが，うまく動いていないみたい．
+: gem install ffi -v "1.12.1"
+でerrorが出る．
+
+#+begin_example
+brew reinstall libffi
+set -gx PKG_CONFIG_PATH "/usr/local/opt/libffi/lib/pkgconfig"
+set -gx CPPFLAGS "-I/usr/local/opt/libffi/include"
+set -gx LDFLAGS "-L/usr/local/opt/libffi/lib"
+gem install ffi
+#+end_example
+で解消．
+: bundle update
+: bundle exec rspec
+で試したが，相対パスでなく絶対パス的な設定がされているようでダメ．
+
