@@ -1,8 +1,6 @@
-Feature: helpの削除
+Feature: my_help で作成された file を削除する
 
-  Scenario: help を1つ削除する.
-    Given `$ bundle exec bin/my_help_thor list`でnew_helpが存在する.
-    AND `$ bundle exec bin/my_help_thor new new_help`によってnew_helpを作成する.
-    When `$ bundle exec bin/my_help_thor delete new_help`を実行する.
-    AND `$ bundle exec bin/my_help_thor list`を実行する.
-    Then new_helpが存在しない.
+  Scenario: コマンドを入力してsample_new.yml fileを削除する
+    Given sample_new.yml file を削除したい
+    When "bundle exec bin/my_help_thor delete sample_new" と入力
+    Then file を削除する
