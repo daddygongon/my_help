@@ -1,6 +1,7 @@
-Feature: my_helpで新しいfileを作成する
+Feature: helpの作成
 
-  Scenario: コマンドを入力してsample_new.yml fileを作成する
-    Given sample_new.yml file を作成したい
-    When "bundle exec bin/my_help_thor new sample_new " と入力する
-    Then sample_new file が作成される       
+  Scenario: help を1つ作成する.
+    Given `$ bundle exec bin/my_help_thor list`でnew_helpが存在しない.
+    When `$ bundle exec bin/my_help_thor new new_help`を実行する.
+    And `$ bundle exec bin/my_help_thor list`を実行する.
+    Then new_helpが存在する.

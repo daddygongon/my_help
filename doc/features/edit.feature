@@ -1,11 +1,7 @@
-Feature: ファイルを編集する
-  
+Feature: helpの編集
 
-  Scenario: コマンドを入力してファイルを編集する
-    Given sampleファイルを編集したい
-    When  "bundle exec bin/my_help_thor edit sample"  と入力する
-    Then  sampleファイルが開く
-    And   sampleファイルを書き換える
-
-
-
+  Scenario: help を編集する.
+    Given `$ bundle exec bin/my_help_thor list`でnew_helpが存在しない.
+    When `$ bundle exec bin/my_help_thor new new_help`を実行する.
+    And `$ bundle exec bin/my_help_thor edit new_help`実行して、全ての記述を削除する.
+    Then ~/.my_help/new_help.orgが空ファイルである.
