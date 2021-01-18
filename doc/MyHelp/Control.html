@@ -6,15 +6,15 @@
 <title>
   Class: MyHelp::Control
   
-    &mdash; Documentation by YARD 0.9.19
+    &mdash; Documentation by YARD 0.9.25
   
 </title>
 
-  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "MyHelp::Control";
   relpath = '../';
 </script>
@@ -100,8 +100,88 @@
 </div>
 
 
+  
+    <h2>
+      Constant Summary
+      <small><a href="#" class="constants_summary_toggle">collapse</a></small>
+    </h2>
+
+    <dl class="constants">
+      
+        <dt id="WrongFileName-constant" class="">WrongFileName =
+          
+        </dt>
+        <dd><pre class="code"><span class='const'>Class</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='const'>RuntimeError</span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="WrongItemName-constant" class="">WrongItemName =
+          
+        </dt>
+        <dd><pre class="code"><span class='const'>Class</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='const'>RuntimeError</span><span class='rparen'>)</span></pre></dd>
+      
+    </dl>
+  
 
 
+
+
+  <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#editor-instance_method" title="#editor (instance method)">#<strong>editor</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute editor.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#local_help_dir-instance_method" title="#local_help_dir (instance method)">#<strong>local_help_dir</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute local_help_dir.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
 
 
 
@@ -131,29 +211,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#disp_opts-instance_method" title="#disp_opts (instance method)">#<strong>disp_opts</strong>(conts)  &#x21d2; Object </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>def delete_help(file)          file = File.join(@local_help_dir,file+&#39;.org&#39;)          print “Are you sure to delete ”<code>file.blue"?[Ynq]</code> “.red          case STDIN.gets.chomp          when &#39;Y&#39;            begin              FileUtils.rm(file,:verbose=&gt;true)            rescue =&gt; error              puts error.to_s.red            end          when &#39;n&#39;, &#39;q&#39; ; exit          end        end.</p>
+</div></span>
   
 </li>
 
@@ -275,7 +335,51 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#select_item-instance_method" title="#select_item (instance method)">#<strong>select_item</strong>(help, item)  &#x21d2; Object </a>
+      <a href="#load_conf-instance_method" title="#load_conf (instance method)">#<strong>load_conf</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#search_help-instance_method" title="#search_help (instance method)">#<strong>search_help</strong>(word)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#set_editor-instance_method" title="#set_editor (instance method)">#<strong>set_editor</strong>(editor)  &#x21d2; Object </a>
     
 
     
@@ -338,28 +442,6 @@
 </li>
 
       
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#upload_help-instance_method" title="#upload_help (instance method)">#<strong>upload_help</strong>(file)  &#x21d2; Object </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
     </ul>
   
 
@@ -378,7 +460,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns a new instance of Control</p>
+<p>Returns a new instance of Control.</p>
 
 
   </div>
@@ -392,23 +474,33 @@
       <pre class="lines">
 
 
-4
-5
-6
-7
 8
 9
-10</pre>
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/my_help/my_help_controll.rb', line 4</span>
+      <pre class="code"><span class="info file"># File 'lib/my_help/my_help_controll.rb', line 8</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='comment'># for configuration setups
+</span>  <span class='comment'># see https://stackoverflow.com/questions/6233124/where-to-place-access-config-file-in-gem
+</span>
   <span class='ivar'>@template_dir</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_expand_path'>expand_path</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>../../templates</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='kw'>__FILE__</span><span class='rparen'>)</span>
   <span class='ivar'>@exe_dir</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_expand_path'>expand_path</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>../../exe</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='kw'>__FILE__</span><span class='rparen'>)</span>
   <span class='ivar'>@local_help_dir</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>HOME</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.my_help</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
- <span class='comment'># @mini_account = File
+  <span class='ivar'>@editor</span> <span class='op'>=</span> <span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>EDITOR</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>emacs</span><span class='tstring_end'>&#39;</span></span> <span class='comment'>#&#39;code&#39;, &#39;emacs&#39; #&#39;vim&#39; #default editor
+</span>  <span class='comment'># @mini_account = File
 </span>  <span class='id identifier rubyid_set_help_dir_if_not_exists'>set_help_dir_if_not_exists</span>
+  <span class='id identifier rubyid_load_conf'>load_conf</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -416,6 +508,97 @@
 </div>
   
 </div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id="editor=-instance_method"></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="editor-instance_method">
+  
+    #<strong>editor</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute editor.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+7
+8
+9</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/my_help/my_help_controll.rb', line 7</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_editor'>editor</span>
+  <span class='ivar'>@editor</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="local_help_dir=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="local_help_dir-instance_method">
+  
+    #<strong>local_help_dir</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute local_help_dir.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+7
+8
+9</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/my_help/my_help_controll.rb', line 7</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_local_help_dir'>local_help_dir</span>
+  <span class='ivar'>@local_help_dir</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
 
 
   <div id="instance_method_details" class="method_details_list">
@@ -431,89 +614,78 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>def delete_help(file)</p>
+
+<pre class="code ruby"><code class="ruby">  file = File.join(@local_help_dir,file+&#39;.org&#39;)
+  print &quot;Are you sure to delete &quot;+file.blue+&quot;?[Ynq] &quot;.red
+  case STDIN.gets.chomp
+  when &#39;Y&#39;
+    begin
+      FileUtils.rm(file,:verbose=&gt;true)
+    rescue =&gt; error
+      puts error.to_s.red
+    end
+  when &#39;n&#39;, &#39;q&#39; ; exit
+  end
+end
+</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-103
-104
-105
-106
-107
-108
-109
-110
-111
-112
-113
-114
-115</pre>
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/my_help/my_help_controll.rb', line 103</span>
+      <pre class="code"><span class="info file"># File 'lib/my_help/my_help_controll.rb', line 144</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete_help'>delete_help</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_file'>file</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='ivar'>@local_help_dir</span><span class='comma'>,</span><span class='id identifier rubyid_file'>file</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.org</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_print'>print</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Are you sure to delete </span><span class='tstring_end'>&quot;</span></span><span class='op'>+</span><span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_blue'>blue</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>?[Ynq] </span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_red'>red</span>
-  <span class='kw'>case</span> <span class='const'>STDIN</span><span class='period'>.</span><span class='id identifier rubyid_gets'>gets</span><span class='period'>.</span><span class='id identifier rubyid_chomp'>chomp</span>
-  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Y</span><span class='tstring_end'>&#39;</span></span>
-    <span class='kw'>begin</span>
-      <span class='const'>FileUtils</span><span class='period'>.</span><span class='id identifier rubyid_rm'>rm</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='comma'>,</span><span class='symbol'>:verbose</span><span class='op'>=&gt;</span><span class='kw'>true</span><span class='rparen'>)</span>
-    <span class='kw'>rescue</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_error'>error</span>
-      <span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_error'>error</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_red'>red</span>
+  <span class='kw'>if</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_exist?'>exist?</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='kw'>true</span>
+    <span class='id identifier rubyid_print'>print</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Are you sure to delete </span><span class='tstring_end'>&quot;</span></span><span class='op'>+</span><span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_blue'>blue</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>?[Yn] </span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_red'>red</span>
+    <span class='kw'>case</span> <span class='const'>STDIN</span><span class='period'>.</span><span class='id identifier rubyid_gets'>gets</span><span class='period'>.</span><span class='id identifier rubyid_chomp'>chomp</span>
+    <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Y</span><span class='tstring_end'>&#39;</span></span>
+      <span class='kw'>begin</span>
+        <span class='const'>FileUtils</span><span class='period'>.</span><span class='id identifier rubyid_rm'>rm</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='comma'>,</span><span class='symbol'>:verbose</span><span class='op'>=&gt;</span><span class='kw'>true</span><span class='rparen'>)</span>
+        <span class='kw'>return</span> <span class='int'>0</span>
+      <span class='kw'>rescue</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_error'>error</span>
+        <span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_error'>error</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_red'>red</span>
+        <span class='kw'>return</span> <span class='int'>1</span>
+      <span class='kw'>end</span>
+    <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>n</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>q</span><span class='tstring_end'>&#39;</span></span> <span class='semicolon'>;</span> <span class='kw'>return</span> <span class='int'>0</span>
     <span class='kw'>end</span>
-  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>n</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>q</span><span class='tstring_end'>&#39;</span></span> <span class='semicolon'>;</span> <span class='id identifier rubyid_exit'>exit</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_print'>print</span> <span class='id identifier rubyid_file'>file</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'> is a non-existent file</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="disp_opts-instance_method">
-  
-    #<strong>disp_opts</strong>(conts)  &#x21d2; <tt>Object</tt> 
-  
-
-  
-
-  
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/my_help/my_help_controll.rb', line 53</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_disp_opts'>disp_opts</span><span class='lparen'>(</span> <span class='id identifier rubyid_conts'>conts</span> <span class='rparen'>)</span>
-  <span class='id identifier rubyid_col'>col</span> <span class='op'>=</span> <span class='int'>0</span>
-  <span class='id identifier rubyid_conts'>conts</span><span class='period'>.</span><span class='id identifier rubyid_each_pair'>each_pair</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_item'>item</span><span class='op'>|</span>
-    <span class='id identifier rubyid_col_length'>col_length</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_col'>col</span>
-                 <span class='kw'>when</span> <span class='int'>0</span><span class='semicolon'>;</span> <span class='id identifier rubyid_print'>print</span> <span class='id identifier rubyid_item'>item</span><span class='period'>.</span><span class='id identifier rubyid_rjust'>rjust</span><span class='lparen'>(</span><span class='int'>5</span><span class='rparen'>)</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>, </span><span class='tstring_end'>&quot;</span></span>
-                 <span class='kw'>when</span> <span class='int'>1</span><span class='semicolon'>;</span> <span class='id identifier rubyid_print'>print</span> <span class='id identifier rubyid_item'>item</span><span class='period'>.</span><span class='id identifier rubyid_ljust'>ljust</span><span class='lparen'>(</span><span class='int'>15</span><span class='rparen'>)</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>: </span><span class='tstring_end'>&quot;</span></span>
-                 <span class='kw'>else</span><span class='semicolon'>;</span> <span class='id identifier rubyid_print'>print</span> <span class='id identifier rubyid_item'>item</span>
-                 <span class='kw'>end</span>
-    <span class='id identifier rubyid_col'>col</span> <span class='op'>+=</span> <span class='int'>1</span>
-  <span class='kw'>end</span>
-  <span class='id identifier rubyid_print'>print</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -535,23 +707,23 @@
       <pre class="lines">
 
 
-79
-80
-81
-82
-83
-84
-85
-86
-87</pre>
+105
+106
+107
+108
+109
+110
+111
+112
+113</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/my_help/my_help_controll.rb', line 79</span>
+      <pre class="code"><span class="info file"># File 'lib/my_help/my_help_controll.rb', line 105</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_edit_help'>edit_help</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_p'>p</span> <span class='id identifier rubyid_target_help'>target_help</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='ivar'>@local_help_dir</span><span class='comma'>,</span><span class='id identifier rubyid_file'>file</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.org</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_local_help_entries'>local_help_entries</span><span class='period'>.</span><span class='id identifier rubyid_member?'>member?</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.org</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_system'>system</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>emacs </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_target_help'>target_help</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_system'>system</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='ivar'>@editor</span><span class='embexpr_end'>}</span><span class='tstring_content'> </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_target_help'>target_help</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>else</span>
     <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>file </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_target_help'>target_help</span><span class='embexpr_end'>}</span><span class='tstring_content'> does not exits in </span><span class='embexpr_beg'>#{</span><span class='ivar'>@local_help_dir</span><span class='embexpr_end'>}</span><span class='tstring_content'>.</span><span class='tstring_end'>&quot;</span></span>
     <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>init </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_file'>file</span><span class='embexpr_end'>}</span><span class='tstring_content'> first.</span><span class='tstring_end'>&quot;</span></span>
@@ -577,22 +749,22 @@
       <pre class="lines">
 
 
-89
-90
-91
-92
-93
-94
-95
-96
-97
-98
-99
-100
-101</pre>
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/my_help/my_help_controll.rb', line 89</span>
+      <pre class="code"><span class="info file"># File 'lib/my_help/my_help_controll.rb', line 115</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_init_help'>init_help</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
@@ -627,6 +799,17 @@
       <pre class="lines">
 
 
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
 66
 67
 68
@@ -634,26 +817,29 @@
 70
 71
 72
-73
-74
-75
-76
-77</pre>
+73</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/my_help/my_help_controll.rb', line 66</span>
+      <pre class="code"><span class="info file"># File 'lib/my_help/my_help_controll.rb', line 55</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_list_all'>list_all</span>
-  <span class='id identifier rubyid_print'>print</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>List all helps\n</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_output'>output</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\nList all helps\n</span><span class='tstring_end'>&quot;</span></span>
   <span class='id identifier rubyid_local_help_entries'>local_help_entries</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_file'>file</span><span class='op'>|</span>
     <span class='id identifier rubyid_file_path'>file_path</span><span class='op'>=</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='ivar'>@local_help_dir</span><span class='comma'>,</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_title'>title</span> <span class='op'>=</span> <span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span>
     <span class='id identifier rubyid_help'>help</span> <span class='op'>=</span> <span class='id identifier rubyid_auto_load'>auto_load</span><span class='lparen'>(</span><span class='id identifier rubyid_file_path'>file_path</span><span class='rparen'>)</span>
     <span class='kw'>next</span> <span class='kw'>if</span> <span class='id identifier rubyid_help'>help</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
-    <span class='id identifier rubyid_desc'>desc</span> <span class='op'>=</span> <span class='id identifier rubyid_help'>help</span><span class='lbracket'>[</span><span class='symbol'>:head</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:cont</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span>
-    <span class='id identifier rubyid_print'>print</span> <span class='id identifier rubyid_title'>title</span><span class='period'>.</span><span class='id identifier rubyid_rjust'>rjust</span><span class='lparen'>(</span><span class='int'>10</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_blue'>blue</span>
-    <span class='id identifier rubyid_print'>print</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_desc'>desc</span><span class='embexpr_end'>}</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_blue'>blue</span>
+    <span class='kw'>begin</span>
+      <span class='id identifier rubyid_desc'>desc</span> <span class='op'>=</span> <span class='id identifier rubyid_help'>help</span><span class='lbracket'>[</span><span class='symbol'>:head</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:cont</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span>
+    <span class='kw'>rescue</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>
+      <span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_e'>e</span>
+      <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>No head in </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_file_path'>file_path</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_red'>red</span>
+      <span class='kw'>next</span>
+    <span class='kw'>end</span>
+    <span class='id identifier rubyid_output'>output</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_title'>title</span><span class='period'>.</span><span class='id identifier rubyid_rjust'>rjust</span><span class='lparen'>(</span><span class='int'>10</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_output'>output</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_desc'>desc</span><span class='embexpr_end'>}</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>end</span>
+  <span class='id identifier rubyid_output'>output</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -675,25 +861,37 @@
       <pre class="lines">
 
 
-44
-45
-46
-47
-48
-49
-50
-51</pre>
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/my_help/my_help_controll.rb', line 44</span>
+      <pre class="code"><span class="info file"># File 'lib/my_help/my_help_controll.rb', line 76</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_list_help'>list_help</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_output'>output</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span>
   <span class='id identifier rubyid_file_path'>file_path</span><span class='op'>=</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='ivar'>@local_help_dir</span><span class='comma'>,</span><span class='id identifier rubyid_file'>file</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.org</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_help'>help</span> <span class='op'>=</span> <span class='id identifier rubyid_auto_load'>auto_load</span><span class='lparen'>(</span><span class='id identifier rubyid_file_path'>file_path</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_help'>help</span><span class='period'>.</span><span class='id identifier rubyid_each_pair'>each_pair</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_conts'>conts</span><span class='op'>|</span>
-    <span class='id identifier rubyid_print'>print</span> <span class='id identifier rubyid_conts'>conts</span><span class='lbracket'>[</span><span class='symbol'>:cont</span><span class='rbracket'>]</span> <span class='kw'>if</span> <span class='id identifier rubyid_key'>key</span><span class='op'>==</span><span class='symbol'>:head</span>
-    <span class='id identifier rubyid_disp_opts'>disp_opts</span><span class='lparen'>(</span> <span class='id identifier rubyid_conts'>conts</span><span class='lbracket'>[</span><span class='symbol'>:opts</span><span class='rbracket'>]</span> <span class='rparen'>)</span>
+  <span class='kw'>begin</span>
+    <span class='id identifier rubyid_help'>help</span> <span class='op'>=</span> <span class='id identifier rubyid_auto_load'>auto_load</span><span class='lparen'>(</span><span class='id identifier rubyid_file_path'>file_path</span><span class='rparen'>)</span>
+  <span class='kw'>rescue</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="#WrongFileName-constant" title="MyHelp::Control::WrongFileName (constant)">WrongFileName</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>No help named &#39;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_file'>file</span><span class='embexpr_end'>}</span><span class='tstring_content'>&#39; in the directory &#39;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_local_help_dir'>local_help_dir</span><span class='embexpr_end'>}</span><span class='tstring_content'>&#39;.</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>end</span>
+  <span class='id identifier rubyid_help'>help</span><span class='period'>.</span><span class='id identifier rubyid_each_pair'>each_pair</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_conts'>conts</span><span class='op'>|</span>
+    <span class='id identifier rubyid_output'>output</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_conts'>conts</span><span class='lbracket'>[</span><span class='symbol'>:cont</span><span class='rbracket'>]</span> <span class='kw'>if</span> <span class='id identifier rubyid_key'>key</span><span class='op'>==</span><span class='symbol'>:head</span>
+    <span class='id identifier rubyid_output'>output</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_disp_opts'>disp_opts</span><span class='lparen'>(</span> <span class='id identifier rubyid_conts'>conts</span><span class='lbracket'>[</span><span class='symbol'>:opts</span><span class='rbracket'>]</span> <span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_output'>output</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -701,9 +899,9 @@
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="select_item-instance_method">
+  <h3 class="signature " id="load_conf-instance_method">
   
-    #<strong>select_item</strong>(help, item)  &#x21d2; <tt>Object</tt> 
+    #<strong>load_conf</strong>  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -715,6 +913,8 @@
       <pre class="lines">
 
 
+30
+31
 32
 33
 34
@@ -728,18 +928,92 @@
 42</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/my_help/my_help_controll.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'lib/my_help/my_help_controll.rb', line 30</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_select_item'>select_item</span><span class='lparen'>(</span><span class='id identifier rubyid_help'>help</span><span class='comma'>,</span> <span class='id identifier rubyid_item'>item</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_o_key'>o_key</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span>
-  <span class='id identifier rubyid_help'>help</span><span class='period'>.</span><span class='id identifier rubyid_each_pair'>each_pair</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_cont'>cont</span><span class='op'>|</span>
-    <span class='kw'>next</span> <span class='kw'>if</span> <span class='id identifier rubyid_key'>key</span><span class='op'>==</span><span class='symbol'>:license</span> <span class='kw'>or</span> <span class='id identifier rubyid_key'>key</span><span class='op'>==</span><span class='symbol'>:head</span>
-    <span class='kw'>if</span> <span class='id identifier rubyid_cont'>cont</span><span class='lbracket'>[</span><span class='symbol'>:opts</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:short</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='id identifier rubyid_item'>item</span> <span class='kw'>or</span> <span class='id identifier rubyid_cont'>cont</span><span class='lbracket'>[</span><span class='symbol'>:opts</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:long</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='id identifier rubyid_item'>item</span>
-      <span class='id identifier rubyid_o_key'>o_key</span> <span class='op'>=</span> <span class='id identifier rubyid_key'>key</span>
-      <span class='kw'>break</span>
-    <span class='kw'>end</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_load_conf'>load_conf</span>
+  <span class='id identifier rubyid_file_name'>file_name</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.my_help_conf.yml</span><span class='tstring_end'>&#39;</span></span>
+  <span class='comment'># @conf_file = File.join(Dir.pwd, file_name)
+</span>  <span class='ivar'>@conf_file</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='ivar'>@local_help_dir</span><span class='comma'>,</span> <span class='id identifier rubyid_file_name'>file_name</span><span class='rparen'>)</span>
+  <span class='kw'>begin</span>
+    <span class='id identifier rubyid_conf'>conf</span> <span class='op'>=</span> <span class='const'>YAML</span><span class='period'>.</span><span class='id identifier rubyid_load_file'>load_file</span><span class='lparen'>(</span><span class='ivar'>@conf_file</span><span class='rparen'>)</span>
+    <span class='ivar'>@editor</span> <span class='op'>=</span> <span class='id identifier rubyid_conf'>conf</span><span class='lbracket'>[</span><span class='symbol'>:editor</span><span class='rbracket'>]</span>
+  <span class='kw'>rescue</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_red'>red</span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>make .my_help_conf.yml</span><span class='tstring_end'>&#39;</span></span><span class='period'>.</span><span class='id identifier rubyid_green'>green</span>
+    <span class='id identifier rubyid_set_editor'>set_editor</span><span class='lparen'>(</span><span class='ivar'>@editor</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
-  <span class='id identifier rubyid_o_key'>o_key</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="search_help-instance_method">
+  
+    #<strong>search_help</strong>(word)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+164
+165
+166
+167</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/my_help/my_help_controll.rb', line 164</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_search_help'>search_help</span><span class='lparen'>(</span><span class='id identifier rubyid_word'>word</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_p'>p</span> <span class='id identifier rubyid_find_char'>find_char</span> <span class='op'>=</span> <span class='id identifier rubyid_word'>word</span>
+  <span class='id identifier rubyid_system'>system</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ls </span><span class='embexpr_beg'>#{</span><span class='ivar'>@local_help_dir</span><span class='embexpr_end'>}</span><span class='tstring_content'> | grep </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_find_char'>find_char</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="set_editor-instance_method">
+  
+    #<strong>set_editor</strong>(editor)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+21
+22
+23
+24
+25
+26
+27
+28</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/my_help/my_help_controll.rb', line 21</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_set_editor'>set_editor</span><span class='lparen'>(</span><span class='id identifier rubyid_editor'>editor</span><span class='rparen'>)</span>
+  <span class='ivar'>@editor</span> <span class='op'>=</span> <span class='id identifier rubyid_editor'>editor</span>
+  <span class='id identifier rubyid_file_name'>file_name</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.my_help_conf.yml</span><span class='tstring_end'>&#39;</span></span>
+  <span class='ivar'>@conf_file</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='ivar'>@local_help_dir</span><span class='comma'>,</span> <span class='id identifier rubyid_file_name'>file_name</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_conf'>conf</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='label'>editor:</span> <span class='id identifier rubyid_editor'>editor</span><span class='rbrace'>}</span>
+  <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='ivar'>@conf_file</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>w</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_f'>f</span><span class='op'>|</span> <span class='const'>YAML</span><span class='period'>.</span><span class='id identifier rubyid_dump'>dump</span><span class='lparen'>(</span><span class='id identifier rubyid_conf'>conf</span><span class='comma'>,</span> <span class='id identifier rubyid_f'>f</span><span class='rparen'>)</span><span class='rbrace'>}</span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>set editor &#39;</span><span class='embexpr_beg'>#{</span><span class='ivar'>@editor</span><span class='embexpr_end'>}</span><span class='tstring_content'>&#39;</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -761,22 +1035,22 @@
       <pre class="lines">
 
 
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21</pre>
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/my_help/my_help_controll.rb', line 12</span>
+      <pre class="code"><span class="info file"># File 'lib/my_help/my_help_controll.rb', line 44</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set_help_dir_if_not_exists'>set_help_dir_if_not_exists</span>
-  <span class='kw'>return</span> <span class='kw'>if</span> <span class='const'>File</span><span class='op'>::</span><span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='ivar'>@local_help_dir</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>if</span> <span class='const'>File</span><span class='op'>::</span><span class='id identifier rubyid_exist?'>exist?</span><span class='lparen'>(</span><span class='ivar'>@local_help_dir</span><span class='rparen'>)</span>
   <span class='const'>FileUtils</span><span class='period'>.</span><span class='id identifier rubyid_mkdir_p'>mkdir_p</span><span class='lparen'>(</span><span class='ivar'>@local_help_dir</span><span class='comma'>,</span> <span class='symbol'>:verbose</span><span class='op'>=&gt;</span><span class='kw'>true</span><span class='rparen'>)</span>
   <span class='const'>Dir</span><span class='period'>.</span><span class='id identifier rubyid_entries'>entries</span><span class='lparen'>(</span><span class='ivar'>@template_dir</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_file'>file</span><span class='op'>|</span>
     <span class='kw'>next</span> <span class='kw'>if</span> <span class='id identifier rubyid_file'>file</span><span class='op'>==</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>help_template.org</span><span class='tstring_end'>&#39;</span></span>
@@ -805,85 +1079,33 @@
       <pre class="lines">
 
 
-23
-24
-25
-26
-27
-28
-29
-30</pre>
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/my_help/my_help_controll.rb', line 23</span>
+      <pre class="code"><span class="info file"># File 'lib/my_help/my_help_controll.rb', line 92</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_show_item'>show_item</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='comma'>,</span> <span class='id identifier rubyid_item'>item</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_output'>output</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span>
   <span class='id identifier rubyid_file_path'>file_path</span><span class='op'>=</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='ivar'>@local_help_dir</span><span class='comma'>,</span><span class='id identifier rubyid_file'>file</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.org</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
   <span class='id identifier rubyid_help'>help</span> <span class='op'>=</span> <span class='id identifier rubyid_auto_load'>auto_load</span><span class='lparen'>(</span><span class='id identifier rubyid_file_path'>file_path</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_select'>select</span> <span class='op'>=</span> <span class='id identifier rubyid_select_item'>select_item</span><span class='lparen'>(</span><span class='id identifier rubyid_help'>help</span><span class='comma'>,</span> <span class='id identifier rubyid_item'>item</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_print'>print</span> <span class='id identifier rubyid_help'>help</span><span class='lbracket'>[</span><span class='symbol'>:head</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:cont</span><span class='rbracket'>]</span>
-  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>-</span><span class='tstring_end'>&#39;</span></span><span class='op'>*</span><span class='int'>5</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span><span class='op'>+</span><span class='id identifier rubyid_select'>select</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_red'>red</span>
-  <span class='id identifier rubyid_print'>print</span> <span class='id identifier rubyid_help'>help</span><span class='lbracket'>[</span><span class='id identifier rubyid_select'>select</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:cont</span><span class='rbracket'>]</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="upload_help-instance_method">
-  
-    #<strong>upload_help</strong>(file)  &#x21d2; <tt>Object</tt> 
-  
-
-  
-
-  
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-117
-118
-119
-120
-121
-122
-123
-124
-125
-126
-127
-128
-129
-130
-131
-132
-133
-134</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/my_help/my_help_controll.rb', line 117</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_upload_help'>upload_help</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_p'>p</span> <span class='id identifier rubyid_target_help'>target_help</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='ivar'>@local_help_dir</span><span class='comma'>,</span><span class='id identifier rubyid_file'>file</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.org</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>miniのuser_nameを入力してください．</span><span class='tstring_end'>&quot;</span></span>
-  <span class='id identifier rubyid_p'>p</span> <span class='id identifier rubyid_user_name'>user_name</span> <span class='op'>=</span> <span class='const'>STDIN</span><span class='period'>.</span><span class='id identifier rubyid_gets'>gets</span><span class='period'>.</span><span class='id identifier rubyid_chomp'>chomp</span>
-  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>保存するディレクトリ名を入力してください．</span><span class='tstring_end'>&quot;</span></span>
-  <span class='id identifier rubyid_p'>p</span> <span class='id identifier rubyid_directory_name'>directory_name</span> <span class='op'>=</span> <span class='const'>STDIN</span><span class='period'>.</span><span class='id identifier rubyid_gets'>gets</span><span class='period'>.</span><span class='id identifier rubyid_chomp'>chomp</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_local_help_entries'>local_help_entries</span><span class='period'>.</span><span class='id identifier rubyid_member?'>member?</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.org</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-    <span class='comment'>#        if target_help.empty?(file+&#39;.org&#39;)
-</span><span class='comment'>#          system &quot;scp #{@local_help_dir} tomoko_y@mini:~/our_help/member/tomoko&quot;
-</span><span class='comment'>#        else
-</span>    <span class='id identifier rubyid_system'>system</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>scp </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_target_help'>target_help</span><span class='embexpr_end'>}</span><span class='tstring_content'> </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_user_name'>user_name</span><span class='embexpr_end'>}</span><span class='tstring_content'>@mini:~/our_help/member/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_directory_name'>directory_name</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
-  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>後は，miniでgitにpushしてください．</span><span class='tstring_end'>&quot;</span></span>
-<span class='comment'>#      end
-</span>  <span class='kw'>else</span>
-    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>file </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_target_help'>target_help</span><span class='embexpr_end'>}</span><span class='tstring_content'> does not exits in </span><span class='embexpr_beg'>#{</span><span class='ivar'>@local_help_dir</span><span class='embexpr_end'>}</span><span class='tstring_content'>.</span><span class='tstring_end'>&quot;</span></span>
-    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>init </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_file'>file</span><span class='embexpr_end'>}</span><span class='tstring_content'> first.</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_output'>output</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_help'>help</span><span class='lbracket'>[</span><span class='symbol'>:head</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:cont</span><span class='rbracket'>]</span>
+  <span class='kw'>unless</span> <span class='id identifier rubyid_select'>select</span> <span class='kw'>then</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="#WrongItemName-constant" title="MyHelp::Control::WrongItemName (constant)">WrongItemName</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>No item entry: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_item'>item</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>end</span>
+  <span class='id identifier rubyid_output'>output</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>-</span><span class='tstring_end'>&#39;</span></span><span class='op'>*</span><span class='int'>5</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span><span class='op'>+</span><span class='id identifier rubyid_select'>select</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_green'>green</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_output'>output</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_help'>help</span><span class='lbracket'>[</span><span class='id identifier rubyid_select'>select</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:cont</span><span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -895,9 +1117,9 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Apr 26 13:03:28 2019 by
+  Generated on Tue Nov 17 13:08:50 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.19 (ruby-2.4.3).
+  0.9.25 (ruby-2.7.1).
 </div>
 
     </div>
