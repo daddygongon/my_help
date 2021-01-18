@@ -6,15 +6,15 @@
 <title>
   File: README
   
-    &mdash; Documentation by YARD 0.9.19
+    &mdash; Documentation by YARD 0.9.25
   
 </title>
 
-  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "README";
   relpath = '';
 </script>
@@ -379,10 +379,10 @@ RPGでレベル上げとかアイテムを貯めるようにして，
 <div id="outline-container-org3ddc9ea" class="outline-3">
 <h3 id="org3ddc9ea"><span class="section-number-3">4.1</span> インストール</h3>
 <div class="outline-text-3" id="text-4-1">
-<pre class="example">
+<pre class="code ruby"><code class="ruby">
 $ gem install my_help
 
-</pre>
+</code></pre>
 <p>
 です．
 </p>
@@ -395,7 +395,7 @@ $ gem install my_help
 <p>
 まずは，
 </p>
-<pre class="example">
+<pre class="code ruby"><code class="ruby">
 &gt; my_help
 NAME
     my_help - make own help and list.
@@ -416,29 +416,29 @@ COMMANDS
     help   - Shows a list of commands or help for one command
     list   - list all helps, specific HELP, or item
      new   - make new HELP_NAME
-</pre>
+</code></pre>
 <p>
 としてください．このlistにargsやitemを加えて行くとわかると思います．
 </p>
 
-<pre class="example">
-my_help list
-my_help list emacs
-my_help list emacs -f
-my_help list emacs file
+<pre class="code ruby"><code class="ruby">
+<span class='id identifier rubyid_my_help'>my_help</span> <span class='id identifier rubyid_list'>list</span>
+<span class='id identifier rubyid_my_help'>my_help</span> <span class='id identifier rubyid_list'>list</span> <span class='id identifier rubyid_emacs'>emacs</span>
+<span class='id identifier rubyid_my_help'>my_help</span> <span class='id identifier rubyid_list'>list</span> <span class='id identifier rubyid_emacs'>emacs</span> <span class='op'>-</span><span class='id identifier rubyid_f'>f</span>
+<span class='id identifier rubyid_my_help'>my_help</span> <span class='id identifier rubyid_list'>list</span> <span class='id identifier rubyid_emacs'>emacs</span> <span class='id identifier rubyid_file'>file</span>
 
-</pre>
+</code></pre>
 <p>
 として動かしてみてください．
 </p>
 
 
-<pre class="example">
+<pre class="code ruby"><code class="ruby">
 - emacsのキーバインド
 - 
 特殊キー操作
--   C-f, controlキーを押しながら    'f'
--   M-f, escキーを押した後一度離して'f'
+-   C-f, controlキーを押しながら    &#39;f&#39;
+-   M-f, escキーを押した後一度離して&#39;f&#39;
 -     操作の中断C-g, 操作の取り消し(Undo) C-x u
      , head           : head
      , license        : license
@@ -454,7 +454,7 @@ my_help list emacs file
      , query_replace  : query_replace
    -r, ruby-mode      : ruby-mode
    -d, dired          : ファイラとして使う
-</pre>
+</code></pre>
 </div>
 </div>
 
@@ -465,26 +465,26 @@ my_help list emacs file
 さて，独自のhelpを作る方法です．まずは，
 </p>
 
-<pre class="example">
-my_help new new_help
+<pre class="code ruby"><code class="ruby">
+<span class='id identifier rubyid_my_help'>my_help</span> <span class='id identifier rubyid_new'>new</span> <span class='id identifier rubyid_new_help'>new_help</span>
 
-</pre>
+</code></pre>
 
 <p>
 で，new_helpというtemplateが用意されます．
 </p>
-<pre class="example">
-my_help edit new_help
+<pre class="code ruby"><code class="ruby">
+<span class='id identifier rubyid_my_help'>my_help</span> <span class='id identifier rubyid_edit'>edit</span> <span class='id identifier rubyid_new_help'>new_help</span>
 
-</pre>
+</code></pre>
 <p>
 で編集してください． emacs org形式で，格納されています．
 </p>
 
-<pre class="example">
-my_help delete new_help
+<pre class="code ruby"><code class="ruby">
+<span class='id identifier rubyid_my_help'>my_help</span> <span class='id identifier rubyid_delete'>delete</span> <span class='id identifier rubyid_new_help'>new_help</span>
 
-</pre>
+</code></pre>
 
 <p>
 すると消されます．
@@ -502,9 +502,9 @@ my_help delete new_help
 </html></div></div>
 
       <div id="footer">
-  Generated on Fri Apr 26 13:03:28 2019 by
+  Generated on Tue Nov 17 13:08:49 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.19 (ruby-2.4.3).
+  0.9.25 (ruby-2.7.1).
 </div>
 
     </div>

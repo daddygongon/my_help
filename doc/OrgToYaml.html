@@ -6,15 +6,15 @@
 <title>
   Class: OrgToYaml
   
-    &mdash; Documentation by YARD 0.9.19
+    &mdash; Documentation by YARD 0.9.25
   
 </title>
 
-  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "OrgToYaml";
   relpath = '';
 </script>
@@ -256,7 +256,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns a new instance of OrgToYaml</p>
+<p>Returns a new instance of OrgToYaml.</p>
 
 
   </div>
@@ -312,7 +312,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns the value of attribute help_cont</p>
+<p>Returns the value of attribute help_cont.</p>
 
 
   </div>
@@ -460,14 +460,16 @@
 44
 45
 46
-47</pre>
+47
+48</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/my_help/org2yml.rb', line 38</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_org_to_yaml'>org_to_yaml</span><span class='lparen'>(</span><span class='id identifier rubyid_lines'>lines</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_lines'>lines</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_line'>line</span><span class='op'>|</span>
-    <span class='kw'>if</span> <span class='id identifier rubyid_m'>m</span> <span class='op'>=</span> <span class='id identifier rubyid_line'>line</span><span class='period'>.</span><span class='id identifier rubyid_match'>match</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^\* (.+)</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_m'>m</span> <span class='op'>=</span> <span class='id identifier rubyid_line'>line</span><span class='period'>.</span><span class='id identifier rubyid_force_encoding'>force_encoding</span><span class='lparen'>(</span><span class='const'>Encoding</span><span class='op'>::</span><span class='const'>UTF_8</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_match'>match</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^\* (.+)</span><span class='regexp_end'>/u</span></span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_m'>m</span>
       <span class='id identifier rubyid_next_cont'>next_cont</span> <span class='id identifier rubyid_m'>m</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span>
     <span class='kw'>else</span>
       <span class='ivar'>@conts</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_line'>line</span>
@@ -485,9 +487,9 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Apr 26 13:03:28 2019 by
+  Generated on Tue Nov 17 13:08:49 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.19 (ruby-2.4.3).
+  0.9.25 (ruby-2.7.1).
 </div>
 
     </div>
