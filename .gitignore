@@ -5,7 +5,7 @@
 /coverage/
 /pkg/
 /vendor/
-/tags
+/.tags
 *~
 \#*
 
