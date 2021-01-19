@@ -4,6 +4,8 @@
 /_yardoc/
 /coverage/
 /pkg/
+/vendor/
+/.tags
 *~
 \#*
 
