@@ -12,9 +12,9 @@ task :default => :test
 
 desc "make documents by yard"
 task :yard do
-  api_output_dir = 'public'
+  # api_output_dir = 'doc'
   YARD::Rake::YardocTask.new {|t|
-    t.options << "-o#{api_output_dir}" # output dir = doc_api
+    # t.options << "-o#{api_output_dir}" # output dir = doc_api
     # t.files=['**/*.md']
     t.options += ['--title','my_help']
     # t.options=['--exclude','lib.rb','--files','**/*.org']
