@@ -62,84 +62,58 @@ class MyCLI < Thor
     $control.delete_help(help_name)
   end
 
-=begin
-     desc "git [push|pull]", "git push or pull"
-     def git(push_or_pull)
-       p push_or_pull
-       invoke :setup
-       dir = $control.local_help_dir
-       Dir.chdir(dir) do
-         case push_or_pull
-         when 'push'
-           comms = ['git add -A',
-                    "git commit -m 'git push from my_help'",
-                    "git push origin master"]
-         when 'pull'
-           comms = ['git pull origin master']
-         else
-           raise "my_help git was called by the other than 'push or pull'"
-         end
-         comms.each do |comm|
-           c = command_line(comm)
-           puts c.stdout.blue
-           puts c.stderr.red
-         end
-       end
-     end
-=end
-
-   desc "git [push|pull]", "git push or pull"
-   def git(push_or_pull,*args)
-     p push_or_pull
-     invoke :setup
-     argument_size =  args.size
-     Dir.chdir($control.local_help_dir) do
-       case push_or_pull
-       when 'push'
-         if argument_size == 0
-           comms = ['git add -A',
-                    "git commit -m 'git push from my_help'",
-                    "git push origin master"]
-         else
-           p args
-           argument_size.times do |i|
-             orgfile = args[i] + '.org'
-             file = File.join($control.local_help_dir,orgfile)
-             if File.exist?(file) == true
-               puts orgfile.green
-               dir = $control.local_help_dir
-               Dir.chdir(dir) do
-                 comm = 'git add ' + file
-                 puts c
-                 c = command_line(comm)
-                 puts c.stdout.blue
-                 puts c.stderr.red
-               end
-             else
-               puts (orgfile + " does not existed").red
-             end
-           end
-           comms = ["git commit -m 'git push from my_help'",
-                    "git push origin master"]
-         end
-       when 'pull'
-         comms = ['git pull origin master']
-       else
-         raise "my_help git was called by the other than 'push or pull'"
-       end
-       comms.each do |comm|
-         puts comm
-         c = command_line(comm)
-         puts c.stdout.blue
-         puts c.stderr.red
-       end
-     end
-   end
-   #  desc "search {find_char}", "search FIND_CHAR"
-   #  def search(find_char)
-   #    invoke :setup
-   #    $control.search_help(find_char)
-   #  end
- end
+  desc "git [push|pull]", "git push or pull"
+  def git(push_or_pull,*args)
+    p push_or_pull
+    invoke :setup
+    argument_size =  args.size
+    Dir.chdir($control.local_help_dir) do
+      case push_or_pull
+      when 'push'
+        if argument_size == 0
+          comms = ['git add -A',
+                   "git commit -m 'git push from my_help'",
+                   "git push origin main"]
+        else
+          p args
+          argument_size.times do |i|
+            orgfile = args[i] + '.org'
+            file = File.join($control.local_help_dir,orgfile)
+            if File.exist?(file) == true
+              puts orgfile.green
+              dir = $control.local_help_dir
+              Dir.chdir(dir) do
+                comm = 'git add ' + file
+                puts c
+                c = command_line(comm)
+                puts c.stdout.blue
+                puts c.stderr.red
+              end
+            else
+              puts (orgfile + " does not existed").red
+            end
+          end
+          comms = ["git commit -m 'git push from my_help'",
+                   "git push origin main"]
+        end
+      when 'pull'
+        comms = ['git pull']
+      else
+        raise "my_help git was called by the other than 'push or pull'"
+      end
+      comms.each do |comm|
+        puts comm
+        c = command_line(comm)
+        puts c.stdout.blue
+        puts c.stderr.red
+      end
+    end
+  end
+  #  desc "search {find_char}", "search FIND_CHAR"
+  #  def search(find_char)
+  #    invoke :setup
+  #    $control.search_help(find_char)
+  #  end
+end
 
  MyCLI.start(ARGV)
