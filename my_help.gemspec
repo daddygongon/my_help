@@ -18,6 +18,7 @@ spec = Gem::Specification.new do |s|
   s.executables   = s.files.grep(%r{^exe/}) { |f| File.basename(f) }
   s.add_development_dependency('rake')
   s.add_development_dependency('rspec')
+  s.add_development_dependency('yard')
   s.add_runtime_dependency('thor')
   s.add_runtime_dependency "colorize"
   s.add_runtime_dependency "command_line"
