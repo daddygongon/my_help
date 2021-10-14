@@ -1,4 +1,3 @@
-# Ensure we require the local version and not one we might have installed already
 require File.join([File.dirname(__FILE__),'lib','my_help','version.rb'])
 spec = Gem::Specification.new do |s|
   s.name = 'my_help'
@@ -17,6 +16,7 @@ spec = Gem::Specification.new do |s|
   s.bindir        = "exe"
   s.executables   = s.files.grep(%r{^exe/}) { |f| File.basename(f) }
   s.add_development_dependency('rake')
+  s.add_development_dependency('rubocop')
   s.add_development_dependency('rspec')
   s.add_development_dependency('yard')
   s.add_runtime_dependency('thor')
