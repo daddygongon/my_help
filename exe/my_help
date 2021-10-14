@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 require 'my_help'
 
-MyCLI.start(ARGV)
+MyHelp::CLI.start(ARGV)
