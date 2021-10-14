@@ -6,7 +6,7 @@ require "tmpdir"
 require "fileutils"
 
 class MyHelpTest < Test::Unit::TestCase
-  include MyHelp
+#  include MyHelp
 
   test "VERSION" do
     assert do
