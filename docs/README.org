@@ -1,3 +1,4 @@
+#+qiita_teams: 5e172c4b5167abe35a3e
 #+qiita_private: 6487b0b54e4eda26e9f6
 #+OPTIONS: ^:{}
 #+STARTUP: indent nolineimages
@@ -7,7 +8,7 @@
 #+LANGUAGE:  jp
 # +OPTIONS:   H:4 toc:t num:2
 #+OPTIONS:   toc:nil
-#+TAG: Ruby, test, my_help
+#+TAG: ruby, test, my_help
 #+TWITTER: off
 # +SETUPFILE: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
 
