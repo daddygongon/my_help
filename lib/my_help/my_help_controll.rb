@@ -10,7 +10,6 @@ module MyHelp
       # see https://stackoverflow.com/questions/6233124/where-to-place-access-config-file-in-gem
       @conf_path = conf_path || ENV['HOME']
       @template_dir = File.expand_path("../../templates", __FILE__)
-      @exe_dir = File.expand_path("../../exe", __FILE__)
       @local_help_dir = File.join(@conf_path, '.my_help')
       @conf_file = File.join(@local_help_dir, '.my_help_conf.yml')
       @editor = ENV['EDITOR'] || 'emacs' #'code', 'emacs' #'vim' #default editor

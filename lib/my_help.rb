@@ -13,7 +13,7 @@ module MyHelp
   class CLI < Thor
     desc('setup', 'set up the test database')
     def setup(*_args)
-      $control = MyHelp::Control.new
+      $control = Control.new
     end
 
     desc 'list [HELP] [ITEM]', 'list all helps, specific HELP, or ITEM'
