@@ -1,0 +1,61 @@
+#+qiita_private: 6487b0b54e4eda26e9f6
+#+OPTIONS: ^:{}
+#+STARTUP: indent nolineimages
+#+TITLE: my_help new version
+#+AUTHOR: Shigeto R. Nishitani
+#+EMAIL:     (concat "shigeto_nishitani@mac.com")
+#+LANGUAGE:  jp
+# +OPTIONS:   H:4 toc:t num:2
+#+OPTIONS:   toc:nil
+#+TAG: Ruby, test, my_help
+#+TWITTER: off
+# +SETUPFILE: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
+
+* <2021-10-18 月> conf_pathの追加
+my_help.confの場所を指定するconf_pathをnewで指定できるようにする．
+
+#+begin_src diff_ruby -n -i
+> git diff
+--- a/lib/my_help/my_help_controll.rb
++++ b/lib/my_help/my_help_controll.rb
+@@ -5,13 +5,14 @@ require 'yaml'
+ module MyHelp
+   class Control
+     attr_accessor :local_help_dir, :editor
+-    def initialize()
++    def initialize(conf_path=nil)
+       # for configuration setups
+       # see https://stackoverflow.com/questions/6233124/where-to-place-access-config-file-in-gem
+-
++      @conf_path = conf_path || ENV['HOME']
+       @template_dir = File.expand_path("../../templates", __FILE__)
+       @exe_dir = File.expand_path("../../exe", __FILE__)
+-      @local_help_dir = File.join(ENV['HOME'],'.my_help')
++      @local_help_dir = File.join(@conf_path, '.my_help')
++      @conf_file = File.join(@local_help_dir, '.my_help_conf.yml')
+       @editor = ENV['EDITOR'] || 'emacs' #'code', 'emacs' #'vim' #default editor
+       # @mini_account = File
+       set_help_dir_if_not_exists
+@@ -28,9 +29,6 @@ module MyHelp
+     end
+ 
+     def load_conf
+-      file_name = '.my_help_conf.yml'
+-      # @conf_file = File.join(Dir.pwd, file_name)
+-      @conf_file = File.join(@local_help_dir, file_name)
+       begin
+         conf = YAML.load_file(@conf_file)
+         @editor = conf[:editor]
+#+end_src
+
+変更箇所は次の通り．
+- initializeはconf_pathを受け取るが，指定されてない時はnil
+- これを@conf_pathに受け渡すが，defaultをENV['HOME']に指定
+- これでデフォルトのconfigurationを変更していく
+  やり方は，
+  [[https://stackoverflow.com/questions/6233124/where-to-place-access-config-file-in-gem][Where to place/access config file in gem?]]
+  を参照する．
+
+これによってTest::unitでのtest環境独自のmy_help環境を構築することが
+できる．
+
