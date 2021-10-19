@@ -14,7 +14,6 @@ module MyHelp
       }
       @valid_config_keys = @config.keys
       configure_with(@config[:conf_file])
-      p @config
       return @config
     end
 
