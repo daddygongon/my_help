@@ -18,7 +18,7 @@ class MyHelpTest < Test::Unit::TestCase
   sub_test_case "Config" do
     test "initialize" do
       assert do
-        p Config.new(Dir.pwd).config
+        p Config.new(File.join(Dir.pwd,'test')).config
       end
     end
   end
