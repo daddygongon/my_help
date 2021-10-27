@@ -14,6 +14,11 @@ class MyHelpTest < Test::Unit::TestCase
     end
   end
 
+  sub_test_case "List" do
+    test "pwdはexample_dirへのpathを返す" do
+      assert_block do
+        p List.new.pwd
+      end
+    end
+  end
 end
-
-
