@@ -1,17 +1,19 @@
 # -*- coding: utf-8 -*-
 require 'fileutils'
 require 'yaml'
+require_relative './config'
 
 module MyHelp
   class Control
     attr_accessor :local_help_dir, :editor
-    def initialize()
+    def initialize(conf_path=nil)
       # for configuration setups
       # see https://stackoverflow.com/questions/6233124/where-to-place-access-config-file-in-gem
-
+      @conf_path = conf_path || ENV['HOME']
+#      p @conf = Config.new(@conf_path)
       @template_dir = File.expand_path("../../templates", __FILE__)
-      @exe_dir = File.expand_path("../../exe", __FILE__)
-      @local_help_dir = File.join(ENV['HOME'],'.my_help')
+      @local_help_dir = File.join(@conf_path, '.my_help')
+      @conf_file = File.join(@local_help_dir, '.my_help_conf.yml')
       @editor = ENV['EDITOR'] || 'emacs' #'code', 'emacs' #'vim' #default editor
       # @mini_account = File
       set_help_dir_if_not_exists
@@ -28,9 +30,6 @@ module MyHelp
     end
 
     def load_conf
-      file_name = '.my_help_conf.yml'
-      # @conf_file = File.join(Dir.pwd, file_name)
-      @conf_file = File.join(@local_help_dir, file_name)
       begin
         conf = YAML.load_file(@conf_file)
         @editor = conf[:editor]
