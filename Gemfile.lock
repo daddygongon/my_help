@@ -63,6 +63,7 @@ GEM
     parallel (1.21.0)
     parser (3.0.2.0)
       ast (~> 2.4.1)
+    power_assert (2.0.1)
     rainbow (3.0.0)
     rake (13.0.6)
     regexp_parser (2.1.1)
@@ -94,6 +95,8 @@ GEM
     ruby-progressbar (1.11.0)
     sys-uname (1.2.2)
       ffi (~> 1.1)
+    test-unit (3.5.1)
+      power_assert
     thor (1.1.0)
     unicode-display_width (2.1.0)
     yard (0.9.26)
@@ -110,6 +113,7 @@ DEPENDENCIES
   rake
   rspec
   rubocop
+  test-unit
   yard
 
 BUNDLED WITH

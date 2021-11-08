@@ -3,7 +3,7 @@ require 'colorize'
 
 module MyHelp
   class Config
-  # Configuration defaults
+    # Configuration defaults
     def initialize(conf_path=nil)
       @conf_path = conf_path || ENV['HOME']
       @config = {
@@ -17,8 +17,6 @@ module MyHelp
     end
 
 
-    #
-    #
     # Configure through hash
     def configure(opts = {})
       opts.each do |k,v|

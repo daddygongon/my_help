@@ -19,6 +19,7 @@ spec = Gem::Specification.new do |s|
   s.add_development_dependency('rubocop')
   s.add_development_dependency('rspec')
   s.add_development_dependency('yard')
+  s.add_development_dependency('test-unit')
   s.add_runtime_dependency('thor')
   s.add_runtime_dependency "colorize"
   s.add_runtime_dependency "command_line"
