@@ -38,8 +38,9 @@ my_help_test: - my_help_test
   EXPECTED
   #assert_block do
        assert_equal expected, Control.new.list_all
-      #end
+    end
 
+    test "List 'ruby'" do
     expected = <<~EXPECTED
  - ruby
       , head           : head
