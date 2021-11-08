@@ -16,6 +16,14 @@ class MyHelpTest < Test::Unit::TestCase
     end
   end
 
+  sub_test_case "Config" do
+    test "initialize" do
+      assert do
+        p Config.new(File.join(Dir.pwd,'test')).config
+      end
+    end
+  end
+
   sub_test_case "List" do
     test "List all" do
       expected = <<~EXPECTED
@@ -30,9 +38,10 @@ my_help_test: - my_help_test
   EXPECTED
   #assert_block do
        assert_equal expected, Control.new.list_all
-      #end
+    end
 
-    expected = <<~EXPECTED  
+    test "List 'ruby'" do
+    expected = <<~EXPECTED
  - ruby
       , head           : head
       , license        : license
