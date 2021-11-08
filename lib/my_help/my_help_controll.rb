@@ -10,7 +10,7 @@ module MyHelp
       # for configuration setups
       # see https://stackoverflow.com/questions/6233124/where-to-place-access-config-file-in-gem
       @conf_path = conf_path || ENV['HOME']
-      p @conf = Config.new(@conf_path)
+      @conf = Config.new(@conf_path)
       @template_dir = File.expand_path("../../templates", __FILE__)
       @local_help_dir = File.join(@conf_path, '.my_help')
       @conf_file = File.join(@local_help_dir, '.my_help_conf.yml')
