@@ -37,7 +37,9 @@ my_help_test: - my_help_test
   new_help: - ヘルプのサンプル雛形
   EXPECTED
   #assert_block do
-       assert_equal expected, Control.new.list_all
+      conf_path = File.join(Dir.pwd,'test')
+      assert_equal expected, Control.new(conf_path).list_all
+
     end
 
     test "List 'ruby'" do
@@ -47,17 +49,8 @@ my_help_test: - my_help_test
       , license        : license
     -p, puts_%         : puts_%
    EXPECTED
-    assert_equal expected, Control.new.list_help('ruby')
-
-    expected = <<~EXPECTED
-- my todo
------
-
-- ご飯を食べる
-- 10時には寝床へ入る
-EXPECTED
-
-    assert_equal expected, Control.new.show_item('todo','-d')
+      conf_path = File.join(Dir.pwd,'test')
+      assert_equal expected, Control.new(conf_path).list_help('ruby')
     end
   end
 end
