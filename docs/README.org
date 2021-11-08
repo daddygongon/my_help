@@ -75,6 +75,7 @@ config:
   :editor: emacs
 #+end_src
 
+
 * <2021-11-08 月> bundle exec exe/my_help editでエラー
 #+begin_src shell
 Could not find ffi-1.15.4 in any of the sources
