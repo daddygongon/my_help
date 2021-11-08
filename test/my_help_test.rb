@@ -18,7 +18,7 @@ class MyHelpTest < Test::Unit::TestCase
 
   sub_test_case "Config" do
     test "initialize" do
-      puts conf_path = File.join(Dir.pwd,'test')
+      conf_path = File.join(Dir.pwd,'test')
       expected = {:template_dir=>File.expand_path("../lib/templates", conf_path),
         local_help_dir: File.join(conf_path, ".my_help"),
         conf_file: File.join(conf_path, ".my_help/.my_help_conf.yml"),
@@ -32,12 +32,9 @@ class MyHelpTest < Test::Unit::TestCase
       expected = <<~EXPECTED
 
 List all helps
-      ruby: - ruby
        org: - emacs org-modeのhelp
       todo: - my todo
-my_help_test: - my_help_test
      emacs: - Emacs key bind
-  new_help: - ヘルプのサンプル雛形
   EXPECTED
   #assert_block do
       conf_path = File.join(Dir.pwd,'test')
@@ -53,7 +50,7 @@ my_help_test: - my_help_test
     -p, puts_%         : puts_%
    EXPECTED
       conf_path = File.join(Dir.pwd,'test')
-      assert_equal expected, Control.new(conf_path).list_help('ruby')
+      assert_equal expected, Control.new(conf_path).list_help('help_template')
     end
   end
 end

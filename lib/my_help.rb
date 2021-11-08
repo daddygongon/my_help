@@ -14,6 +14,7 @@ module MyHelp
   class CLI < Thor
     desc('setup', 'set up the test database')
     def setup(*_args)
+      puts args
       $control = Control.new
     end
 
