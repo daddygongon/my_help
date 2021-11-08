@@ -68,17 +68,23 @@ testが進んできたので，conf_pathをactivateした．
 1. pwdで何もない時のoptionsがどうなっている？
 
 #+begin_src yaml
-   --- !ruby/object:MyHelp::Config
-conf_path: "/Users/bob/git_hub/my_help/test"
 config:
   :template_dir: "/Users/bob/git_hub/my_help/lib/templates"
   :local_help_dir: "/Users/bob/git_hub/my_help/test/.my_help"
   :conf_file: "/Users/bob/git_hub/my_help/test/.my_help/.my_help_conf.yml"
   :editor: emacs
-valid_config_keys:
-- :template_dir
-- :local_help_dir
-- :conf_file
-- :editor
 #+end_src
+
+* <2021-11-08 月> bundle exec exe/my_help editでエラー
+#+begin_src shell
+Could not find ffi-1.15.4 in any of the sources
+Run `bundle install` to install missing gems.
+#+end_src
+とのエラー．
+なんだろう．
+
+さらに，command_lineで呼ぶと，
+: emacs: standard input is not a tty
+というエラーが出る．これまたなんだろう？？？
+
 
