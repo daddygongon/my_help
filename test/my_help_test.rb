@@ -18,9 +18,12 @@ class MyHelpTest < Test::Unit::TestCase
 
   sub_test_case "Config" do
     test "initialize" do
-      assert do
-        p Config.new(File.join(Dir.pwd,'test')).config
-      end
+      puts conf_path = File.join(Dir.pwd,'test')
+      expected = {:template_dir=>File.expand_path("../lib/templates", conf_path),
+        local_help_dir: File.join(conf_path, ".my_help"),
+        conf_file: File.join(conf_path, ".my_help/.my_help_conf.yml"),
+        :editor=>"emacs"}
+      assert_equal expected, Config.new(conf_path).config
     end
   end
 
