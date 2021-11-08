@@ -1,0 +1,757 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-11-08 月 13:34 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Shigeto R. Nishitani" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org38e3cd3">1. head</a></li>
+<li><a href="#org8497872">2. license</a></li>
+<li><a href="#orgfcb9fac">3. my_help.rb:thor</a></li>
+<li><a href="#org2e1a66c">4. my_help_test</a></li>
+<li><a href="#org48b93cd">5. my_helpの使い方</a></li>
+<li><a href="#org0b61e49">6. git pull vs git merge</a></li>
+<li><a href="#org65717c5">7. init</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org38e3cd3" class="outline-2">
+<h2 id="org38e3cd3"><span class="section-number-2">1</span> head</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>my_help_test</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8497872" class="outline-2">
+<h2 id="org8497872"><span class="section-number-2">2</span> license</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>cc by Haya Ohtera, 2021</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgfcb9fac" class="outline-2">
+<h2 id="orgfcb9fac"><span class="section-number-2">3</span> my_help.rb:thor</h2>
+<div class="outline-text-2" id="text-3">
+<div class="org-src-container">
+<pre class="src src-ruby" id="org9be8b46"><span class="linenr">  1: </span>require <span style="color: #8b2252;">'thor'</span>
+<span class="linenr">  2: </span>require <span style="color: #8b2252;">'command_line/global'</span>
+<span class="linenr">  3: </span>require <span style="color: #8b2252;">'colorize'</span>
+<span class="linenr">  4: </span>
+<span class="linenr">  5: </span>require <span style="color: #8b2252;">'my_help/version'</span>
+<span class="linenr">  6: </span>require <span style="color: #8b2252;">'my_help/my_help_controll'</span>
+<span class="linenr">  7: </span>require <span style="color: #8b2252;">'my_help/tomo_help_controll'</span>
+<span class="linenr">  8: </span>require <span style="color: #8b2252;">'my_help/org2yml'</span>
+<span class="linenr">  9: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">Add requires for other files you add to your project here, so</span>
+<span class="linenr"> 10: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">you just need to require this one file in your bin file</span>
+<span class="linenr"> 11: </span>
+<span class="linenr"> 12: </span><span style="color: #a020f0;">module</span> <span style="color: #228b22;">MyHelp</span>
+<span class="linenr"> 13: </span>  <span style="color: #a020f0;">class</span> <span style="color: #228b22;">CLI</span> &lt; <span style="color: #228b22;">Thor</span>
+<span class="linenr"> 14: </span>    desc(<span style="color: #8b2252;">'setup'</span>, <span style="color: #8b2252;">'set up the test database'</span>)
+<span class="linenr"> 15: </span>    <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">setup</span>(*_args)
+<span class="linenr"> 16: </span>      <span style="color: #a0522d;">$control</span> = <span style="color: #228b22;">Control</span>.new
+<span class="linenr"> 17: </span>    <span style="color: #a020f0;">end</span>
+<span class="linenr"> 18: </span>
+<span class="linenr"> 19: </span>    desc <span style="color: #8b2252;">'list [HELP] [ITEM]'</span>, <span style="color: #8b2252;">'list all helps, specific HELP, or ITEM'</span>
+<span class="linenr"> 20: </span>    <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">list</span>(*args)
+<span class="linenr"> 21: </span>      invoke <span style="color: #008b8b;">:setup</span>
+<span class="linenr"> 22: </span>      file = args[0]
+<span class="linenr"> 23: </span>      item = args[1]
+<span class="linenr"> 24: </span>      <span style="color: #a020f0;">if</span> file.nil?
+<span class="linenr"> 25: </span>        puts <span style="color: #a0522d;">$control</span>.list_all.blue <span style="color: #b22222;"># </span><span style="color: #b22222;">list []</span>
+<span class="linenr"> 26: </span>      <span style="color: #a020f0;">elsif</span> item.nil?
+<span class="linenr"> 27: </span>        <span style="color: #a020f0;">begin</span>
+<span class="linenr"> 28: </span>          puts <span style="color: #a0522d;">$control</span>.list_help(file) <span style="color: #b22222;"># </span><span style="color: #b22222;">list [file]</span>
+<span class="linenr"> 29: </span>        <span style="color: #a020f0;">rescue</span> <span style="color: #228b22;">StandardError</span> =&gt; e
+<span class="linenr"> 30: </span>          puts e.to_s.red
+<span class="linenr"> 31: </span>        <span style="color: #a020f0;">end</span>
+<span class="linenr"> 32: </span>      <span style="color: #a020f0;">else</span>
+<span class="linenr"> 33: </span>        <span style="color: #a020f0;">begin</span>
+<span class="linenr"> 34: </span>          puts <span style="color: #a0522d;">$control</span>.show_item(file, item) <span style="color: #b22222;"># </span><span style="color: #b22222;">list [file] [item]</span>
+<span class="linenr"> 35: </span>        <span style="color: #a020f0;">rescue</span> <span style="color: #228b22;">StandardError</span> =&gt; e
+<span class="linenr"> 36: </span>          puts e.to_s.red
+<span class="linenr"> 37: </span>        <span style="color: #a020f0;">end</span>
+<span class="linenr"> 38: </span>      <span style="color: #a020f0;">end</span>
+<span class="linenr"> 39: </span>    <span style="color: #a020f0;">end</span>
+<span class="linenr"> 40: </span>
+<span class="linenr"> 41: </span>    desc <span style="color: #8b2252;">'version'</span>, <span style="color: #8b2252;">'show version'</span>
+<span class="linenr"> 42: </span>    <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">version</span>
+<span class="linenr"> 43: </span>      invoke <span style="color: #008b8b;">:setup</span>
+<span class="linenr"> 44: </span>      puts <span style="color: #228b22;">VERSION</span>
+<span class="linenr"> 45: </span>    <span style="color: #a020f0;">end</span>
+<span class="linenr"> 46: </span>
+<span class="linenr"> 47: </span>    desc <span style="color: #8b2252;">'set_editor EDITOR_NAME'</span>, <span style="color: #8b2252;">'set editor to EDITOR_NAME'</span>
+<span class="linenr"> 48: </span>    <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">set_editor</span>(editor_name)
+<span class="linenr"> 49: </span>      invoke <span style="color: #008b8b;">:setup</span>
+<span class="linenr"> 50: </span>      <span style="color: #a0522d;">$control</span>.set_editor(editor_name)
+<span class="linenr"> 51: </span>    <span style="color: #a020f0;">end</span>
+<span class="linenr"> 52: </span>
+<span class="linenr"> 53: </span>    desc <span style="color: #8b2252;">'edit HELP'</span>, <span style="color: #8b2252;">'edit HELP'</span>
+<span class="linenr"> 54: </span>    <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">edit</span>(help_name)
+<span class="linenr"> 55: </span>      invoke <span style="color: #008b8b;">:setup</span>
+<span class="linenr"> 56: </span>      <span style="color: #a0522d;">$control</span>.edit_help(help_name)
+<span class="linenr"> 57: </span>    <span style="color: #a020f0;">end</span>
+<span class="linenr"> 58: </span>
+<span class="linenr"> 59: </span>    desc <span style="color: #8b2252;">'new HELP'</span>, <span style="color: #8b2252;">'make new HELP'</span>
+<span class="linenr"> 60: </span>    <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">new</span>(help_name)
+<span class="linenr"> 61: </span>      invoke <span style="color: #008b8b;">:setup</span>
+<span class="linenr"> 62: </span>      <span style="color: #a0522d;">$control</span>.init_help(help_name)
+<span class="linenr"> 63: </span>    <span style="color: #a020f0;">end</span>
+<span class="linenr"> 64: </span>
+<span class="linenr"> 65: </span>    desc <span style="color: #8b2252;">'delete HELP'</span>, <span style="color: #8b2252;">'delete HELP'</span>
+<span class="linenr"> 66: </span>    <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">delete</span>(help_name)
+<span class="linenr"> 67: </span>      invoke <span style="color: #008b8b;">:setup</span>
+<span class="linenr"> 68: </span>      <span style="color: #a0522d;">$control</span>.delete_help(help_name)
+<span class="linenr"> 69: </span>    <span style="color: #a020f0;">end</span>
+<span class="linenr"> 70: </span>
+<span class="linenr"> 71: </span>    desc <span style="color: #8b2252;">'git [push|pull]'</span>, <span style="color: #8b2252;">'git push or pull'</span>
+<span class="linenr"> 72: </span>    <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">git</span>(push_or_pull, *args)
+<span class="linenr"> 73: </span>      p push_or_pull
+<span class="linenr"> 74: </span>      invoke <span style="color: #008b8b;">:setup</span>
+<span class="linenr"> 75: </span>      argument_size = args.size
+<span class="linenr"> 76: </span>      <span style="color: #228b22;">Dir</span>.chdir(<span style="color: #a0522d;">$control</span>.local_help_dir) <span style="color: #a020f0;">do</span>
+<span class="linenr"> 77: </span>        <span style="color: #a020f0;">case</span> push_or_pull
+<span class="linenr"> 78: </span>        <span style="color: #a020f0;">when</span> <span style="color: #8b2252;">'push'</span>
+<span class="linenr"> 79: </span>          <span style="color: #a020f0;">if</span> argument_size == 0
+<span class="linenr"> 80: </span>            comms = [<span style="color: #8b2252;">'git add -A'</span>,
+<span class="linenr"> 81: </span>                     <span style="color: #8b2252;">"git commit -m 'git push from my_help'"</span>,
+<span class="linenr"> 82: </span>                     <span style="color: #8b2252;">'git push origin main'</span>]
+<span class="linenr"> 83: </span>          <span style="color: #a020f0;">else</span>
+<span class="linenr"> 84: </span>            p args
+<span class="linenr"> 85: </span>            argument_size.times <span style="color: #a020f0;">do</span> |i|
+<span class="linenr"> 86: </span>              orgfile = args[i] + <span style="color: #8b2252;">'.org'</span>
+<span class="linenr"> 87: </span>              file = <span style="color: #228b22;">File</span>.join(<span style="color: #a0522d;">$control</span>.local_help_dir, orgfile)
+<span class="linenr"> 88: </span>              <span style="color: #a020f0;">if</span> <span style="color: #228b22;">File</span>.exist?(file) == <span style="color: #a0522d;">true</span>
+<span class="linenr"> 89: </span>                puts orgfile.green
+<span class="linenr"> 90: </span>                dir = <span style="color: #a0522d;">$control</span>.local_help_dir
+<span class="linenr"> 91: </span>                <span style="color: #228b22;">Dir</span>.chdir(dir) <span style="color: #a020f0;">do</span>
+<span class="linenr"> 92: </span>                  comm = <span style="color: #8b2252;">'git add '</span> + file
+<span class="linenr"> 93: </span>                  puts c
+<span class="linenr"> 94: </span>                  c = command_line(comm)
+<span class="linenr"> 95: </span>                  puts c.stdout.blue
+<span class="linenr"> 96: </span>                  puts c.stderr.red
+<span class="linenr"> 97: </span>                <span style="color: #a020f0;">end</span>
+<span class="linenr"> 98: </span>              <span style="color: #a020f0;">else</span>
+<span class="linenr"> 99: </span>                puts (orgfile + <span style="color: #8b2252;">' does not existed'</span>).red
+<span class="linenr">100: </span>              <span style="color: #a020f0;">end</span>
+<span class="linenr">101: </span>            <span style="color: #a020f0;">end</span>
+<span class="linenr">102: </span>            comms = [<span style="color: #8b2252;">"git commit -m 'git push from my_help'"</span>,
+<span class="linenr">103: </span>                     <span style="color: #8b2252;">'git push origin main'</span>]
+<span class="linenr">104: </span>          <span style="color: #a020f0;">end</span>
+<span class="linenr">105: </span>        <span style="color: #a020f0;">when</span> <span style="color: #8b2252;">'pull'</span>
+<span class="linenr">106: </span>          comms = [<span style="color: #8b2252;">'git pull'</span>]
+<span class="linenr">107: </span>        <span style="color: #a020f0;">else</span>
+<span class="linenr">108: </span>          <span style="color: #a020f0;">raise</span> <span style="color: #8b2252;">"my_help git was called by the other than 'push or pull'"</span>
+<span class="linenr">109: </span>        <span style="color: #a020f0;">end</span>
+<span class="linenr">110: </span>        comms.each <span style="color: #a020f0;">do</span> |comm|
+<span class="linenr">111: </span>          puts comm
+<span class="linenr">112: </span>          c = command_line(comm)
+<span class="linenr">113: </span>          puts c.stdout.blue
+<span class="linenr">114: </span>          puts c.stderr.red
+<span class="linenr">115: </span>        <span style="color: #a020f0;">end</span>
+<span class="linenr">116: </span>      <span style="color: #a020f0;">end</span>
+<span class="linenr">117: </span>    <span style="color: #a020f0;">end</span>
+<span class="linenr">118: </span>    <span style="color: #b22222;">#  </span><span style="color: #b22222;">desc "search {find_char}", "search FIND_CHAR"</span>
+<span class="linenr">119: </span>    <span style="color: #b22222;">#  </span><span style="color: #b22222;">def search(find_char)</span>
+<span class="linenr">120: </span>    <span style="color: #b22222;">#    </span><span style="color: #b22222;">invoke :setup</span>
+<span class="linenr">121: </span>    <span style="color: #b22222;">#    </span><span style="color: #b22222;">$control.search_help(find_char)</span>
+<span class="linenr">122: </span>    <span style="color: #b22222;">#  </span><span style="color: #b22222;">end</span>
+<span class="linenr">123: </span>  <span style="color: #a020f0;">end</span>
+<span class="linenr">124: </span><span style="color: #a020f0;">end</span>
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>my_help.rbのdef listの中身説明
+<ul class="org-ul">
+<li>my_help list (file) (item)
+<ul class="org-ul">
+<li>1:もしfileがnilだった場合
+my_help list (nil) (nil)
+(出力結果)
+List all helps
+ ruby: - ruby
+  org: - emacs org-modeのhelp
+ todo: - my todo</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>
+my_help_test: - my_help_test
+     emacs: - Emacs key bind
+  new_help: - ヘルプのサンプル雛形
+</p>
+
+<ul class="org-ul">
+<li><p>
+2:もしitemがnilだった場合
+my_help list ((例)ruby) (nil)
+(出力結果)
+</p>
+<ul class="org-ul">
+<li>ruby</li>
+</ul>
+<p>
+, head           : head
+, license        : license
+</p></li>
+</ul>
+<p>
+-p, puts_%         : puts_%
+</p>
+
+
+<p>
+(例)の所は6通りのうちどれか一つだけを入力すれば動く
+(注意)この時1のassert_equal expected, Control.new.list_all
+      をそのまま用いてしまった為，testが通らなかった
+(改善)assert_equal expected, Control.new.list_help('ruby')
+      my_help.rbのelseifのbegin putsを見るとlist_allではなく
+      list_help(file)であった
+      この時のfileは(例)で使われているruby
+      fileは文字列である為rubyを'ruby'としなければならない
+</p>
+</div>
+</div>
+<div id="outline-container-org2e1a66c" class="outline-2">
+<h2 id="org2e1a66c"><span class="section-number-2">4</span> my_help_test</h2>
+<div class="outline-text-2" id="text-4">
+<div class="org-src-container">
+<pre class="src src-ruby" id="org9afc15f"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">coding: utf-8</span>
+<span class="linenr"> 2: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">frozen_string_literal: true</span>
+<span class="linenr"> 3: </span>
+<span class="linenr"> 4: </span>require <span style="color: #8b2252;">"test_helper"</span>
+<span class="linenr"> 5: </span>require <span style="color: #8b2252;">"tmpdir"</span>
+<span class="linenr"> 6: </span>require <span style="color: #8b2252;">"fileutils"</span>
+<span class="linenr"> 7: </span>
+<span class="linenr"> 8: </span><span style="color: #a020f0;">class</span> <span style="color: #228b22;">MyHelpTest</span> &lt; <span style="color: #228b22;">Test</span>::<span style="color: #228b22;">Unit</span>::<span style="color: #228b22;">TestCase</span>
+<span class="linenr"> 9: </span>  include <span style="color: #228b22;">MyHelp</span>
+<span class="linenr">10: </span>
+<span class="linenr">11: </span>  sub_test_case <span style="color: #8b2252;">"Misc"</span> <span style="color: #a020f0;">do</span>
+<span class="linenr">12: </span>    test <span style="color: #8b2252;">"VERSION"</span> <span style="color: #a020f0;">do</span>
+<span class="linenr">13: </span>      assert <span style="color: #a020f0;">do</span>
+<span class="linenr">14: </span>        <span style="color: #228b22;">MyHelp</span>.const_defined?(:<span style="color: #228b22;">VERSION</span>)
+<span class="linenr">15: </span>      <span style="color: #a020f0;">end</span>
+<span class="linenr">16: </span>    <span style="color: #a020f0;">end</span>
+<span class="linenr">17: </span>  <span style="color: #a020f0;">end</span>
+<span class="linenr">18: </span>
+<span class="linenr">19: </span>  sub_test_case <span style="color: #8b2252;">"List"</span> <span style="color: #a020f0;">do</span>
+<span class="linenr">20: </span>    test <span style="color: #8b2252;">"List all"</span> <span style="color: #a020f0;">do</span>
+<span class="linenr">21: </span>      expected = &lt;&lt;~<span style="color: #228b22;">EXPECTED</span>
+<span class="linenr">22: </span>
+<span class="linenr">23: </span><span style="color: #228b22;">List</span> all helps
+<span class="linenr">24: </span>      <span style="color: #008b8b;">ruby</span>: - ruby
+<span class="linenr">25: </span>       <span style="color: #008b8b;">org</span>: - emacs org-mode&#12398;help
+<span class="linenr">26: </span>      <span style="color: #008b8b;">todo</span>: - my todo
+<span class="linenr">27: </span><span style="color: #008b8b;">my_help_test</span>: - my_help_test
+<span class="linenr">28: </span>     <span style="color: #008b8b;">emacs</span>: - <span style="color: #228b22;">Emacs</span> key bind
+<span class="linenr">29: </span>  <span style="color: #008b8b;">new_help</span>: - &#12504;&#12523;&#12503;&#12398;&#12469;&#12531;&#12503;&#12523;&#38619;&#24418;
+<span class="linenr">30: </span>  <span style="color: #228b22;">EXPECTED</span>
+<span class="linenr">31: </span>  <span style="color: #b22222;">#</span><span style="color: #b22222;">assert_block do</span>
+<span class="linenr">32: </span>       assert_equal expected, <span style="color: #228b22;">Control</span>.new.list_all
+<span class="linenr">33: </span>      <span style="color: #b22222;">#</span><span style="color: #b22222;">end</span>
+<span class="linenr">34: </span>
+<span class="linenr">35: </span>    expected = &lt;&lt;~<span style="color: #228b22;">EXPECTED</span>  
+<span class="linenr">36: </span> - ruby
+<span class="linenr">37: </span>      , head           : head
+<span class="linenr">38: </span>      , license        : license
+<span class="linenr">39: </span>    -p, puts_%         : puts_%
+<span class="linenr">40: </span>   <span style="color: #228b22;">EXPECTED</span>
+<span class="linenr">41: </span>    assert_equal expected, <span style="color: #228b22;">Control</span>.new.list_help(<span style="color: #8b2252;">'ruby'</span>)
+<span class="linenr">42: </span>
+<span class="linenr">43: </span>    expected = &lt;&lt;~<span style="color: #228b22;">EXPECTED</span>
+<span class="linenr">44: </span>- my todo
+<span class="linenr">45: </span>-----
+<span class="linenr">46: </span>
+<span class="linenr">47: </span>- &#12372;&#39151;&#12434;&#39135;&#12409;&#12427;
+<span class="linenr">48: </span>- 10&#26178;&#12395;&#12399;&#23517;&#24202;&#12408;&#20837;&#12427;
+<span class="linenr">49: </span><span style="color: #228b22;">EXPECTED</span>
+<span class="linenr">50: </span>
+<span class="linenr">51: </span>    assert_equal expected, <span style="color: #228b22;">Control</span>.new.show_item(<span style="color: #8b2252;">'todo'</span>,<span style="color: #8b2252;">'-d'</span>)
+<span class="linenr">52: </span>    <span style="color: #a020f0;">end</span>
+<span class="linenr">53: </span>  <span style="color: #a020f0;">end</span>
+<span class="linenr">54: </span><span style="color: #a020f0;">end</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org48b93cd" class="outline-2">
+<h2 id="org48b93cd"><span class="section-number-2">5</span> my_helpの使い方</h2>
+<div class="outline-text-2" id="text-5">
+<div class="org-src-container">
+<pre class="src src-bash">- my_help
+ - my_help&#12398;&#27231;&#33021;&#12434;&#34920;&#31034;
+Commands:
+  my_help delete HELP             <span style="color: #b22222;"># </span><span style="color: #b22222;">delete HELP</span>
+  my_help edit HELP               <span style="color: #b22222;"># </span><span style="color: #b22222;">edit HELP</span>
+  my_help git [push|pull]         <span style="color: #b22222;"># </span><span style="color: #b22222;">git push or pull</span>
+  my_help help [COMMAND]          <span style="color: #b22222;"># </span><span style="color: #b22222;">Describe available comman...</span>
+  my_help list [HELP] [ITEM]      <span style="color: #b22222;"># </span><span style="color: #b22222;">list all helps, specific ...</span>
+  my_help new HELP                <span style="color: #b22222;"># </span><span style="color: #b22222;">make new HELP</span>
+  my_help set_editor EDITOR_NAME  <span style="color: #b22222;"># </span><span style="color: #b22222;">set editor to EDITOR_NAME</span>
+  my_help setup                   <span style="color: #b22222;"># </span><span style="color: #b22222;">set up the test database</span>
+  my_help version                 <span style="color: #b22222;"># </span><span style="color: #b22222;">show version</span>
+
+- my_help list
+ - &#32080;&#26524;
+   List all helps
+      ruby: - ruby
+       org: - emacs org-mode&#12398;help
+      todo: - my todo
+my_help_test: - my_help_test
+     emacs: - Emacs key bind
+  new_help: - &#12504;&#12523;&#12503;&#12398;&#12469;&#12531;&#12503;&#12523;&#38619;&#24418;
+  - &#25391;&#12427;&#33310;&#12356;
+   - my_help&#12391;&#20351;&#12360;&#12427;help&#12398;&#12522;&#12473;&#12488;
+
+- my_help edit [(&#20363;)org]
+ - org:org&#12395;&#26360;&#12365;&#36796;&#12417;&#12427;
+ - my_help_test:my_help_test&#12395;&#26360;&#12365;&#36796;&#12417;&#12427;
+
+- my_help list org
+ - org&#12398;&#20013;&#12395;&#26360;&#12363;&#12428;&#12390;&#12354;&#12427;&#12418;&#12398;&#12434;&#34920;&#31034;
+
+- my_help list org -k
+ - key_bind&#12398;&#20013;&#36523;&#12384;&#12369;&#12434;&#34920;&#31034;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org0b61e49" class="outline-2">
+<h2 id="org0b61e49"><span class="section-number-2">6</span> git pull vs git merge</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+<a href="https://qiita.com/wann/items/688bc17460a457104d7d">https://qiita.com/wann/items/688bc17460a457104d7d</a>
+</p>
+
+<p>
+pull=fetch+merge
+</p>
+
+<p>
+git pull:リモートの『master』ブランチ→（ローカルの『origin/master』ブランチ→）ローカルの『master』ブランチ
+git merge:ローカルの『origin/master』ブランチ→ローカルの『master』ブランチ
+</p>
+</div>
+</div>
+<div id="outline-container-org65717c5" class="outline-2">
+<h2 id="org65717c5"><span class="section-number-2">7</span> init</h2>
+<div class="outline-text-2" id="text-7">
+<ul class="org-ul">
+<li>forkして自分の所へ持ってくる．Github</li>
+<li>Gitの仕組み:縦につながりと横のつながりの2種類から構成されている
+<ul class="org-ul">
+<li>縦のつながり編
+<ul class="org-ul">
+<li>リモートリポジトリ(リポジトリ:ファイルやデータの貯蔵庫)
+<ul class="org-ul">
+<li>複数人で共有するためのリポジトリ.</li>
+<li>通常Githubなどのサイトに配置する.</li>
+<li>リモートリポジトリはローカルリポジトリと繋がっており,そこから変更情報のやりとりをする.</li>
+</ul></li>
+<li>ローカルリポジトリ
+<ul class="org-ul">
+<li>個人で利用するためのリポジトリ.</li>
+<li>手元のマシンに配置する.</li>
+<li>個人の開発環境内で変更履歴を管理する場合や,変更履歴を他の人に共有したい場合に利用する.</li>
+</ul></li>
+<li>インデックス/ステージングエリア
+<ul class="org-ul">
+<li>ローカルリポジトリとワーキングツリーの間に位置する部分.</li>
+<li>変更したファイルをこの場所に追加することで変更内容を集約し,コミットするための準備を行う.</li>
+</ul></li>
+<li>ワーキングツリー
+<ul class="org-ul">
+<li>実際にファイルの編集作業を行う場所.</li>
+<li>コードエディタなどで開くファイルはこの場所に位置する.</li>
+</ul></li>
+</ul></li>
+<li>以上の場所を行き来することで,リポジトリに「コミット」と呼ばれる変更情報の記録が作成される.</li>
+
+<li>横のつながり編
+<ul class="org-ul">
+<li>ブランチ
+<ul class="org-ul">
+<li>作業履歴を分岐して記録するためのもので,一連のコミットを指す言葉.</li>
+<li>他のブランチの影響を受けないため,同時平行で複数の変更を進める事ができる.</li>
+<li>ブランチとは暗黙的に一連の流れにある最新コミットを指す.</li>
+</ul></li>
+<li>コミット
+<ul class="org-ul">
+<li>git commitコマンドで作成される変更情報の記録のこと.</li>
+<li>コミットは親コミットと呼ばれる前回のコミットにつながる形でブランチの最新情報を更新する.</li>
+<li>コミットにはインデックスで集約された変更点の他,親コミットの情報,コミットの作成者,コミットメッセージなどの情報を含む.</li>
+</ul></li>
+<li>HEAD
+<ul class="org-ul">
+<li>自分が作業しているブランチの最新コミットを指す言葉.</li>
+<li>もしも最後にコミットした後にワーキングツリーで作業を進めているのであれば,それはワーキングツリーがHEADよりも進んでいる状態と言える.</li>
+</ul></li>
+</ul></li>
+</ul></li>
+
+<li>おすすめコマンド
+<ul class="org-ul">
+<li>縦のつながり編
+<ul class="org-ul">
+<li>git clone [リモートリポジトリのURL]
+<ul class="org-ul">
+<li>リモートリポジトリ全体をローカルに複製するコマンド.</li>
+</ul></li>
+<li>git fetch
+<ul class="org-ul">
+<li>リモートリポジトリも最新状態を,ローカルリポジトリの「リモート追跡ブランチ」にダウンロードするためのコマンド.
+<ul class="org-ul">
+<li>リモート追跡ブランチ:他のリポジトリのブランチを追跡するブランチのことで,ローカルリポジトリ内に存在する.</li>
+</ul></li>
+</ul></li>
+<li>git pull origin[リモートブランチ名]
+<ul class="org-ul">
+<li>リモートリポジトリの最新状態をローカルブランチに反映するためのコマンド.</li>
+<li>git pullはgit fetchとgit mergeが組み合わさってできている.</li>
+</ul></li>
+<li>git add[ファイル名]
+<ul class="org-ul">
+<li>変更したファイルをインデックスに追加するためのコマンド.</li>
+</ul></li>
+<li>git commit -m "[コミットメッセージ]"
+<ul class="org-ul">
+<li>ローカルリポジトリにコミットを作成するためのコマンド.</li>
+</ul></li>
+<li>git push origin [リモートブランチ名]
+<ul class="org-ul">
+<li>ローカルリポジトリに作成したコミットをリモートリポジトリにアップロードするコマンド.</li>
+</ul></li>
+</ul></li>
+<li>縦のつながり番外編
+<ul class="org-ul">
+<li>git diff
+<ul class="org-ul">
+<li>インデックスに追加していない,ワーキングツリーでの変更箇所を確認するためのコマンド.</li>
+<li>ワーキングツリーをインデックスと比較する.</li>
+<li>git add前に変更箇所を確認したい場合におすすめ</li>
+</ul></li>
+<li>git diff &#x2013;cached
+<ul class="org-ul">
+<li>インデックスに追加済みで,次のコミットに入る予定の変更箇所を確認するためのコマンド.</li>
+</ul></li>
+<li>git status
+<ul class="org-ul">
+<li>前回のコミットから変更のあるパスを表示するコマンド.</li>
+</ul></li>
+</ul></li>
+<li>横のつながり編
+<ul class="org-ul">
+<li>git branch
+<ul class="org-ul">
+<li>ローカルブランチを確認するコマンド.</li>
+</ul></li>
+<li>git branch -a
+<ul class="org-ul">
+<li>ローカルリポジトリ内にある全てのブランチを確認できる.</li>
+</ul></li>
+<li>git checkout[移動先のブランチ名]
+<ul class="org-ul">
+<li>指定したローカルブランチに移動づるためのコマンド.</li>
+</ul></li>
+<li>git checkout .
+<ul class="org-ul">
+<li>ワーキングツリー内の変更をインデックスの状態に戻すためのコマンド.</li>
+</ul></li>
+<li>git checkout -b[作成したいブランチ名]
+<ul class="org-ul">
+<li>ローカルに新しいブランチを作成し,作成したブランチに移動するためのコマンド.</li>
+</ul></li>
+<li>git merge
+<ul class="org-ul">
+<li>複数のブランチを一つにまとめるためのコマンド.</li>
+<li>このコマンドを実行するブランチに,指定したブランチの変更が取り込まれる.</li>
+<li>二つの取り込み方がある
+<ul class="org-ul">
+<li>Fast-forwardのマージ
+<ul class="org-ul">
+<li>派生元のブランチが,指定したブランチを作成したときと比べて進んでいない場合の統合方法.</li>
+</ul></li>
+<li>recursive strategyのマージ
+<ul class="org-ul">
+<li>派生元のブランチが,指定したブランチを作成した時よりも進んでいる場合の統合方法.</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>git log
+<ul class="org-ul">
+<li>コミットの履歴を表示するためのコマンド.</li>
+<li>最新のコミット履歴が一番上に表示される.</li>
+</ul></li>
+</ul></li>
+<li>その他のコマンド
+<ul class="org-ul">
+<li>git stash
+<ul class="org-ul">
+<li>ワーキングツリーの変更を一時退避するためのコマンド.</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>upstream pullreq merge branch
+<ul class="org-ul">
+<li>upstream
+<ul class="org-ul">
+<li>元締めに向かう方向.</li>
+<li>自分が元締めの側にいるのか元締めではない側にいるのかで「出ていく」「入ってくる」は変わる.</li>
+</ul></li>
+<li>pullreq
+<ul class="org-ul">
+<li>開発者のローカルリポジトリでの変更を他の開発者に通知する機能.</li>
+<li>次のような機能を提供
+<ul class="org-ul">
+<li>機能追加や改修など,作業内容をレビュー・マージ担当者やその他関係者に通知する.</li>
+<li>ソースコードの変更箇所を分かりやすく表示する.</li>
+<li>ソースコードに関するコミュニケーションの場を提供する.</li>
+</ul></li>
+</ul></li>
+<li>merge 
+<ul class="org-ul">
+<li>何かと何かを「結合する」とか「統合する」とか「合体する」とかの意味.</li>
+</ul></li>
+<li>branch
+<ul class="org-ul">
+<li>履歴の流れを分岐して記録していくためのもの.</li>
+<li>分岐したブランチは他のブランチの影響を受けないため,同じリポジトリ中で複数の変更を同時に進めていく事ができる.</li>
+<li>分岐したブランチは他のブランチとマージする事で,一つのブランチにまとめ直す事ができる.</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Shigeto R. Nishitani</p>
+<p class="date">Created: 2021-11-08 月 13:34</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -2,6 +2,7 @@ require 'thor'
 require 'command_line/global'
 require 'colorize'
 
+require 'my_help_list'
 require 'my_help/version'
 require 'my_help/my_help_controll'
 require 'my_help/tomo_help_controll'
@@ -15,7 +16,7 @@ module MyHelp
     def setup(*_args)
       $control = Control.new
     end
-
+=begin
     desc 'list [HELP] [ITEM]', 'list all helps, specific HELP, or ITEM'
     def list(*args)
       invoke :setup
@@ -37,7 +38,7 @@ module MyHelp
         end
       end
     end
-
+=end
     desc 'version', 'show version'
     def version
       invoke :setup
