@@ -1,9 +1,49 @@
 #+STARTUP: indent nolineimages
+#+OPTIONS: ^:{}
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
 * head
 - my_help_test
 * license
 -      cc by Haya Ohtera, 2021
-* 使い方
+* my_help.rb:thor
+#+name: ../lib/my_help_list.rb
+#+include: ../lib/my_help_list.rb src ruby -n -i
+
+ - my_help.rbのdef listの中身説明
+  - my_help list (file) (item)
+   - 1:もしfileがnilだった場合
+     my_help list (nil) (nil)
+     (出力結果)
+     List all helps
+      ruby: - ruby
+       org: - emacs org-modeのhelp
+      todo: - my todo
+my_help_test: - my_help_test
+     emacs: - Emacs key bind
+  new_help: - ヘルプのサンプル雛形
+  
+   - 2:もしitemがnilだった場合
+     my_help list ((例)ruby) (nil)
+     (出力結果)
+     - ruby
+     , head           : head
+     , license        : license
+   -p, puts_%         : puts_%
+
+
+     (例)の所は6通りのうちどれか一つだけを入力すれば動く
+     (注意)この時1のassert_equal expected, Control.new.list_all
+           をそのまま用いてしまった為，testが通らなかった
+     (改善)assert_equal expected, Control.new.list_help('ruby')
+           my_help.rbのelseifのbegin putsを見るとlist_allではなく
+           list_help(file)であった
+           この時のfileは(例)で使われているruby
+           fileは文字列である為rubyを'ruby'としなければならない
+* my_help_test
+#+name: ../test/my_help_test.rb
+#+include: ../test/my_help_test.rb src ruby -n -i
+* my_helpの使い方
+#+begin_src bash
 - my_help
  - my_helpの機能を表示
 Commands:
@@ -38,7 +78,7 @@ my_help_test: - my_help_test
 
 - my_help list org -k
  - key_bindの中身だけを表示
-
+#+end_src
 * git pull vs git merge
 https://qiita.com/wann/items/688bc17460a457104d7d
 
@@ -145,34 +185,3 @@ git merge:ローカルの『origin/master』ブランチ→ローカルの『mas
   - 履歴の流れを分岐して記録していくためのもの.
   - 分岐したブランチは他のブランチの影響を受けないため,同じリポジトリ中で複数の変更を同時に進めていく事ができる.
   - 分岐したブランチは他のブランチとマージする事で,一つのブランチにまとめ直す事ができる.
-* my_help_test
- - my_help.rbのdef listの中身説明
-  - my_help list (file) (item)
-   - ①もしfileがnilだった場合
-     my_help list (nil) (nil)
-     (出力結果)
-     List all helps
-      ruby: - ruby
-       org: - emacs org-modeのhelp
-      todo: - my todo
-my_help_test: - my_help_test
-     emacs: - Emacs key bind
-  new_help: - ヘルプのサンプル雛形
-  
-   - ②もしitemがnilだった場合
-     my_help list ((例)ruby) (nil)
-     (出力結果)
-     - ruby
-     , head           : head
-     , license        : license
-   -p, puts_%         : puts_%
-
-
-     (例)の所は6通りのうちどれか一つだけを入力すれば動く
-     (注意)この時①のassert_equal expected, Control.new.list_all
-           をそのまま用いてしまった為，testが通らなかった
-     (改善)assert_equal expected, Control.new.list_help('ruby')
-           my_help.rbのelseifのbegin putsを見るとlist_allではなく
-           list_help(file)であった
-           この時のfileは(例)で使われているruby
-           fileは文字列である為rubyを'ruby'としなければならない
