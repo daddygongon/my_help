@@ -10,23 +10,15 @@ module MyHelp
       # for configuration setups
       # see https://stackoverflow.com/questions/6233124/where-to-place-access-config-file-in-gem
       @conf_path = conf_path || ENV['HOME']
-      @conf = Config.new(@conf_path)
-      @template_dir = File.expand_path("../../templates", __FILE__)
-      @local_help_dir = File.join(@conf_path, '.my_help')
-      @conf_file = File.join(@local_help_dir, '.my_help_conf.yml')
-      @editor = ENV['EDITOR'] || 'emacs' #'code', 'emacs' #'vim' #default editor
+      @conf = Config.new(@conf_path).config
+      puts YAML.dump(@conf)
+      @template_dir = @conf[:template_dir] #File.expand_path("../../templates", __FILE__)
+      @local_help_dir = @conf[:local_help_dir] #File.join(@conf_path, '.my_help')
+      @conf_file = @conf[:conf_file] # File.join(@local_help_dir, '.my_help_conf.yml')
+      @editor = @conf[:editor] #ENV['EDITOR'] || 'emacs' #'code', 'emacs' #'vim' #default editor
       # @mini_account = File
       set_help_dir_if_not_exists
       load_conf
-    end
-
-    def set_editor(editor)
-      @editor = editor
-      file_name = '.my_help_conf.yml'
-      @conf_file = File.join(@local_help_dir, file_name)
-      conf = {editor: editor}
-      File.open(@conf_file, 'w'){|f| YAML.dump(conf, f)}
-      puts "set editor '#{@editor}'"
     end
 
     def load_conf
@@ -38,6 +30,15 @@ module MyHelp
         puts 'make .my_help_conf.yml'.green
         set_editor(@editor)
       end
+    end
+
+    def set_editor(editor)
+      @editor = editor
+#      file_name = '.my_help_conf.yml'
+#      @conf_file = File.join(@local_help_dir, file_name)
+      conf = {editor: editor}
+      File.open(@conf_file, 'w'){|f| YAML.dump(conf, f)}
+      puts "set editor '#{@editor}'"
     end
 
     def set_help_dir_if_not_exists
