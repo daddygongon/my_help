@@ -9,10 +9,18 @@
 #+name: ../lib/my_help_list.rb
 #+include: ../lib/my_help_list.rb src ruby -n -i
 
- - my_help.rbのdef listの中身説明
-  - my_help list (file) (item)
-   - 1:もしfileがnilだった場合
-     my_help list (nil) (nil)
+MyHelpに記述されているlistはThorでの動作を記述している．
+# my_help.rbのdef listの中身説明
+fileとitemにmy_help起動時の引数(args)が入っている．
+#  - my_help list (file) (item)
+L:8で，もしfileがnilだった場合
+:     my_help list (nil) (nil)
+を意味しており，そのときには，
+: Control.new.list_all
+がよばれる．my_helpでの出力ではさらにcolorizeのblueが
+付加されているが，テストではcolorコードが邪魔なので，
+それをつけずに出力すると
+#+begin_src shell
      (出力結果)
      List all helps
       ruby: - ruby
@@ -21,7 +29,10 @@
 my_help_test: - my_help_test
      emacs: - Emacs key bind
   new_help: - ヘルプのサンプル雛形
-  
+#+end_src
+が私の環境では返ってくる．
+
+
    - 2:もしitemがnilだった場合
      my_help list ((例)ruby) (nil)
      (出力結果)
