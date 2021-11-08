@@ -43,7 +43,7 @@ my_help_test: - my_help_test
     expected = <<~EXPECTED
 - my todo
 -----
-
+\e[0;32;49mdaily\e[0m
 - ご飯を食べる
 - 10時には寝床へ入る
 EXPECTED
