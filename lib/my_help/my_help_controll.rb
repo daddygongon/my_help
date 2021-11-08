@@ -11,18 +11,6 @@ module MyHelp
       @conf = Config.new(@conf_path).config
       # puts YAML::dump(@conf)
       set_help_dir_if_not_exists
-      load_conf
-    end
-
-    def load_conf
-      begin
-        conf = YAML.load_file(@conf[:conf_file])
-        @editor = conf[:editor]
-      rescue => e
-        puts e.to_s.red
-        puts 'make .my_help_conf.yml'.green
-        set_editor(@conf[:editor])
-      end
     end
 
     def set_editor(editor)
@@ -99,7 +87,7 @@ module MyHelp
         system "#{@conf[:editor]} #{target_help}"
       else
         puts "file #{target_help} does not exits in #{@conf[:local_help_dir]}."
-        puts "init #{file} first."
+        puts "make #{file} first by 'new' command."
       end
     end
 
