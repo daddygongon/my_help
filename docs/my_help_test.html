@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-11-08 月 13:34 -->
+<!-- 2021-11-08 月 14:55 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -228,160 +228,61 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org38e3cd3">1. head</a></li>
-<li><a href="#org8497872">2. license</a></li>
-<li><a href="#orgfcb9fac">3. my_help.rb:thor</a></li>
-<li><a href="#org2e1a66c">4. my_help_test</a></li>
-<li><a href="#org48b93cd">5. my_helpの使い方</a></li>
-<li><a href="#org0b61e49">6. git pull vs git merge</a></li>
-<li><a href="#org65717c5">7. init</a></li>
+<li><a href="#orgc44ff03">1. head</a></li>
+<li><a href="#org290254b">2. license</a></li>
+<li><a href="#org71cfd85">3. my_help.rb:thor</a></li>
+<li><a href="#org2ec8d70">4. my_help_test</a></li>
+<li><a href="#orgf95d442">5. my_helpの使い方</a></li>
+<li><a href="#orga3fdbf3">6. git pull vs git merge</a></li>
+<li><a href="#org8099fd0">7. init</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org38e3cd3" class="outline-2">
-<h2 id="org38e3cd3"><span class="section-number-2">1</span> head</h2>
+<div id="outline-container-orgc44ff03" class="outline-2">
+<h2 id="orgc44ff03"><span class="section-number-2">1</span> head</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>my_help_test</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org8497872" class="outline-2">
-<h2 id="org8497872"><span class="section-number-2">2</span> license</h2>
+<div id="outline-container-org290254b" class="outline-2">
+<h2 id="org290254b"><span class="section-number-2">2</span> license</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>cc by Haya Ohtera, 2021</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgfcb9fac" class="outline-2">
-<h2 id="orgfcb9fac"><span class="section-number-2">3</span> my_help.rb:thor</h2>
+<div id="outline-container-org71cfd85" class="outline-2">
+<h2 id="org71cfd85"><span class="section-number-2">3</span> my_help.rb:thor</h2>
 <div class="outline-text-2" id="text-3">
 <div class="org-src-container">
-<pre class="src src-ruby" id="org9be8b46"><span class="linenr">  1: </span>require <span style="color: #8b2252;">'thor'</span>
-<span class="linenr">  2: </span>require <span style="color: #8b2252;">'command_line/global'</span>
-<span class="linenr">  3: </span>require <span style="color: #8b2252;">'colorize'</span>
-<span class="linenr">  4: </span>
-<span class="linenr">  5: </span>require <span style="color: #8b2252;">'my_help/version'</span>
-<span class="linenr">  6: </span>require <span style="color: #8b2252;">'my_help/my_help_controll'</span>
-<span class="linenr">  7: </span>require <span style="color: #8b2252;">'my_help/tomo_help_controll'</span>
-<span class="linenr">  8: </span>require <span style="color: #8b2252;">'my_help/org2yml'</span>
-<span class="linenr">  9: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">Add requires for other files you add to your project here, so</span>
-<span class="linenr"> 10: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">you just need to require this one file in your bin file</span>
-<span class="linenr"> 11: </span>
-<span class="linenr"> 12: </span><span style="color: #a020f0;">module</span> <span style="color: #228b22;">MyHelp</span>
-<span class="linenr"> 13: </span>  <span style="color: #a020f0;">class</span> <span style="color: #228b22;">CLI</span> &lt; <span style="color: #228b22;">Thor</span>
-<span class="linenr"> 14: </span>    desc(<span style="color: #8b2252;">'setup'</span>, <span style="color: #8b2252;">'set up the test database'</span>)
-<span class="linenr"> 15: </span>    <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">setup</span>(*_args)
-<span class="linenr"> 16: </span>      <span style="color: #a0522d;">$control</span> = <span style="color: #228b22;">Control</span>.new
-<span class="linenr"> 17: </span>    <span style="color: #a020f0;">end</span>
-<span class="linenr"> 18: </span>
-<span class="linenr"> 19: </span>    desc <span style="color: #8b2252;">'list [HELP] [ITEM]'</span>, <span style="color: #8b2252;">'list all helps, specific HELP, or ITEM'</span>
-<span class="linenr"> 20: </span>    <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">list</span>(*args)
-<span class="linenr"> 21: </span>      invoke <span style="color: #008b8b;">:setup</span>
-<span class="linenr"> 22: </span>      file = args[0]
-<span class="linenr"> 23: </span>      item = args[1]
-<span class="linenr"> 24: </span>      <span style="color: #a020f0;">if</span> file.nil?
-<span class="linenr"> 25: </span>        puts <span style="color: #a0522d;">$control</span>.list_all.blue <span style="color: #b22222;"># </span><span style="color: #b22222;">list []</span>
-<span class="linenr"> 26: </span>      <span style="color: #a020f0;">elsif</span> item.nil?
-<span class="linenr"> 27: </span>        <span style="color: #a020f0;">begin</span>
-<span class="linenr"> 28: </span>          puts <span style="color: #a0522d;">$control</span>.list_help(file) <span style="color: #b22222;"># </span><span style="color: #b22222;">list [file]</span>
-<span class="linenr"> 29: </span>        <span style="color: #a020f0;">rescue</span> <span style="color: #228b22;">StandardError</span> =&gt; e
-<span class="linenr"> 30: </span>          puts e.to_s.red
-<span class="linenr"> 31: </span>        <span style="color: #a020f0;">end</span>
-<span class="linenr"> 32: </span>      <span style="color: #a020f0;">else</span>
-<span class="linenr"> 33: </span>        <span style="color: #a020f0;">begin</span>
-<span class="linenr"> 34: </span>          puts <span style="color: #a0522d;">$control</span>.show_item(file, item) <span style="color: #b22222;"># </span><span style="color: #b22222;">list [file] [item]</span>
-<span class="linenr"> 35: </span>        <span style="color: #a020f0;">rescue</span> <span style="color: #228b22;">StandardError</span> =&gt; e
-<span class="linenr"> 36: </span>          puts e.to_s.red
-<span class="linenr"> 37: </span>        <span style="color: #a020f0;">end</span>
-<span class="linenr"> 38: </span>      <span style="color: #a020f0;">end</span>
-<span class="linenr"> 39: </span>    <span style="color: #a020f0;">end</span>
-<span class="linenr"> 40: </span>
-<span class="linenr"> 41: </span>    desc <span style="color: #8b2252;">'version'</span>, <span style="color: #8b2252;">'show version'</span>
-<span class="linenr"> 42: </span>    <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">version</span>
-<span class="linenr"> 43: </span>      invoke <span style="color: #008b8b;">:setup</span>
-<span class="linenr"> 44: </span>      puts <span style="color: #228b22;">VERSION</span>
-<span class="linenr"> 45: </span>    <span style="color: #a020f0;">end</span>
-<span class="linenr"> 46: </span>
-<span class="linenr"> 47: </span>    desc <span style="color: #8b2252;">'set_editor EDITOR_NAME'</span>, <span style="color: #8b2252;">'set editor to EDITOR_NAME'</span>
-<span class="linenr"> 48: </span>    <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">set_editor</span>(editor_name)
-<span class="linenr"> 49: </span>      invoke <span style="color: #008b8b;">:setup</span>
-<span class="linenr"> 50: </span>      <span style="color: #a0522d;">$control</span>.set_editor(editor_name)
-<span class="linenr"> 51: </span>    <span style="color: #a020f0;">end</span>
-<span class="linenr"> 52: </span>
-<span class="linenr"> 53: </span>    desc <span style="color: #8b2252;">'edit HELP'</span>, <span style="color: #8b2252;">'edit HELP'</span>
-<span class="linenr"> 54: </span>    <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">edit</span>(help_name)
-<span class="linenr"> 55: </span>      invoke <span style="color: #008b8b;">:setup</span>
-<span class="linenr"> 56: </span>      <span style="color: #a0522d;">$control</span>.edit_help(help_name)
-<span class="linenr"> 57: </span>    <span style="color: #a020f0;">end</span>
-<span class="linenr"> 58: </span>
-<span class="linenr"> 59: </span>    desc <span style="color: #8b2252;">'new HELP'</span>, <span style="color: #8b2252;">'make new HELP'</span>
-<span class="linenr"> 60: </span>    <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">new</span>(help_name)
-<span class="linenr"> 61: </span>      invoke <span style="color: #008b8b;">:setup</span>
-<span class="linenr"> 62: </span>      <span style="color: #a0522d;">$control</span>.init_help(help_name)
-<span class="linenr"> 63: </span>    <span style="color: #a020f0;">end</span>
-<span class="linenr"> 64: </span>
-<span class="linenr"> 65: </span>    desc <span style="color: #8b2252;">'delete HELP'</span>, <span style="color: #8b2252;">'delete HELP'</span>
-<span class="linenr"> 66: </span>    <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">delete</span>(help_name)
-<span class="linenr"> 67: </span>      invoke <span style="color: #008b8b;">:setup</span>
-<span class="linenr"> 68: </span>      <span style="color: #a0522d;">$control</span>.delete_help(help_name)
-<span class="linenr"> 69: </span>    <span style="color: #a020f0;">end</span>
-<span class="linenr"> 70: </span>
-<span class="linenr"> 71: </span>    desc <span style="color: #8b2252;">'git [push|pull]'</span>, <span style="color: #8b2252;">'git push or pull'</span>
-<span class="linenr"> 72: </span>    <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">git</span>(push_or_pull, *args)
-<span class="linenr"> 73: </span>      p push_or_pull
-<span class="linenr"> 74: </span>      invoke <span style="color: #008b8b;">:setup</span>
-<span class="linenr"> 75: </span>      argument_size = args.size
-<span class="linenr"> 76: </span>      <span style="color: #228b22;">Dir</span>.chdir(<span style="color: #a0522d;">$control</span>.local_help_dir) <span style="color: #a020f0;">do</span>
-<span class="linenr"> 77: </span>        <span style="color: #a020f0;">case</span> push_or_pull
-<span class="linenr"> 78: </span>        <span style="color: #a020f0;">when</span> <span style="color: #8b2252;">'push'</span>
-<span class="linenr"> 79: </span>          <span style="color: #a020f0;">if</span> argument_size == 0
-<span class="linenr"> 80: </span>            comms = [<span style="color: #8b2252;">'git add -A'</span>,
-<span class="linenr"> 81: </span>                     <span style="color: #8b2252;">"git commit -m 'git push from my_help'"</span>,
-<span class="linenr"> 82: </span>                     <span style="color: #8b2252;">'git push origin main'</span>]
-<span class="linenr"> 83: </span>          <span style="color: #a020f0;">else</span>
-<span class="linenr"> 84: </span>            p args
-<span class="linenr"> 85: </span>            argument_size.times <span style="color: #a020f0;">do</span> |i|
-<span class="linenr"> 86: </span>              orgfile = args[i] + <span style="color: #8b2252;">'.org'</span>
-<span class="linenr"> 87: </span>              file = <span style="color: #228b22;">File</span>.join(<span style="color: #a0522d;">$control</span>.local_help_dir, orgfile)
-<span class="linenr"> 88: </span>              <span style="color: #a020f0;">if</span> <span style="color: #228b22;">File</span>.exist?(file) == <span style="color: #a0522d;">true</span>
-<span class="linenr"> 89: </span>                puts orgfile.green
-<span class="linenr"> 90: </span>                dir = <span style="color: #a0522d;">$control</span>.local_help_dir
-<span class="linenr"> 91: </span>                <span style="color: #228b22;">Dir</span>.chdir(dir) <span style="color: #a020f0;">do</span>
-<span class="linenr"> 92: </span>                  comm = <span style="color: #8b2252;">'git add '</span> + file
-<span class="linenr"> 93: </span>                  puts c
-<span class="linenr"> 94: </span>                  c = command_line(comm)
-<span class="linenr"> 95: </span>                  puts c.stdout.blue
-<span class="linenr"> 96: </span>                  puts c.stderr.red
-<span class="linenr"> 97: </span>                <span style="color: #a020f0;">end</span>
-<span class="linenr"> 98: </span>              <span style="color: #a020f0;">else</span>
-<span class="linenr"> 99: </span>                puts (orgfile + <span style="color: #8b2252;">' does not existed'</span>).red
-<span class="linenr">100: </span>              <span style="color: #a020f0;">end</span>
-<span class="linenr">101: </span>            <span style="color: #a020f0;">end</span>
-<span class="linenr">102: </span>            comms = [<span style="color: #8b2252;">"git commit -m 'git push from my_help'"</span>,
-<span class="linenr">103: </span>                     <span style="color: #8b2252;">'git push origin main'</span>]
-<span class="linenr">104: </span>          <span style="color: #a020f0;">end</span>
-<span class="linenr">105: </span>        <span style="color: #a020f0;">when</span> <span style="color: #8b2252;">'pull'</span>
-<span class="linenr">106: </span>          comms = [<span style="color: #8b2252;">'git pull'</span>]
-<span class="linenr">107: </span>        <span style="color: #a020f0;">else</span>
-<span class="linenr">108: </span>          <span style="color: #a020f0;">raise</span> <span style="color: #8b2252;">"my_help git was called by the other than 'push or pull'"</span>
-<span class="linenr">109: </span>        <span style="color: #a020f0;">end</span>
-<span class="linenr">110: </span>        comms.each <span style="color: #a020f0;">do</span> |comm|
-<span class="linenr">111: </span>          puts comm
-<span class="linenr">112: </span>          c = command_line(comm)
-<span class="linenr">113: </span>          puts c.stdout.blue
-<span class="linenr">114: </span>          puts c.stderr.red
-<span class="linenr">115: </span>        <span style="color: #a020f0;">end</span>
-<span class="linenr">116: </span>      <span style="color: #a020f0;">end</span>
-<span class="linenr">117: </span>    <span style="color: #a020f0;">end</span>
-<span class="linenr">118: </span>    <span style="color: #b22222;">#  </span><span style="color: #b22222;">desc "search {find_char}", "search FIND_CHAR"</span>
-<span class="linenr">119: </span>    <span style="color: #b22222;">#  </span><span style="color: #b22222;">def search(find_char)</span>
-<span class="linenr">120: </span>    <span style="color: #b22222;">#    </span><span style="color: #b22222;">invoke :setup</span>
-<span class="linenr">121: </span>    <span style="color: #b22222;">#    </span><span style="color: #b22222;">$control.search_help(find_char)</span>
-<span class="linenr">122: </span>    <span style="color: #b22222;">#  </span><span style="color: #b22222;">end</span>
-<span class="linenr">123: </span>  <span style="color: #a020f0;">end</span>
-<span class="linenr">124: </span><span style="color: #a020f0;">end</span>
+<pre class="src src-ruby" id="org66cb61e"><span class="linenr"> 1: </span><span style="color: #a020f0;">module</span> <span style="color: #228b22;">MyHelp</span>
+<span class="linenr"> 2: </span>  <span style="color: #a020f0;">class</span> <span style="color: #228b22;">CLI</span> &lt; <span style="color: #228b22;">Thor</span>
+<span class="linenr"> 3: </span>    desc <span style="color: #8b2252;">'list [HELP] [ITEM]'</span>, <span style="color: #8b2252;">'list all helps, specific HELP, or ITEM'</span>
+<span class="linenr"> 4: </span>    <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">list</span>(*args)
+<span class="linenr"> 5: </span>      invoke <span style="color: #008b8b;">:setup</span>
+<span class="linenr"> 6: </span>      file = args[0]
+<span class="linenr"> 7: </span>      item = args[1]
+<span class="linenr"> 8: </span>      <span style="color: #a020f0;">if</span> file.nil?
+<span class="linenr"> 9: </span>        puts <span style="color: #a0522d;">$control</span>.list_all.blue <span style="color: #b22222;"># </span><span style="color: #b22222;">list []</span>
+<span class="linenr">10: </span>      <span style="color: #a020f0;">elsif</span> item.nil?
+<span class="linenr">11: </span>        <span style="color: #a020f0;">begin</span>
+<span class="linenr">12: </span>          puts <span style="color: #a0522d;">$control</span>.list_help(file) <span style="color: #b22222;"># </span><span style="color: #b22222;">list [file]</span>
+<span class="linenr">13: </span>        <span style="color: #a020f0;">rescue</span> <span style="color: #228b22;">StandardError</span> =&gt; e
+<span class="linenr">14: </span>          puts e.to_s.red
+<span class="linenr">15: </span>        <span style="color: #a020f0;">end</span>
+<span class="linenr">16: </span>      <span style="color: #a020f0;">else</span>
+<span class="linenr">17: </span>        <span style="color: #a020f0;">begin</span>
+<span class="linenr">18: </span>          puts <span style="color: #a0522d;">$control</span>.show_item(file, item) <span style="color: #b22222;"># </span><span style="color: #b22222;">list [file] [item]</span>
+<span class="linenr">19: </span>        <span style="color: #a020f0;">rescue</span> <span style="color: #228b22;">StandardError</span> =&gt; e
+<span class="linenr">20: </span>          puts e.to_s.red
+<span class="linenr">21: </span>        <span style="color: #a020f0;">end</span>
+<span class="linenr">22: </span>      <span style="color: #a020f0;">end</span>
+<span class="linenr">23: </span>    <span style="color: #a020f0;">end</span>
+<span class="linenr">24: </span>  <span style="color: #a020f0;">end</span>
+<span class="linenr">25: </span><span style="color: #a020f0;">end</span>
 </pre>
 </div>
 
@@ -437,11 +338,11 @@ my_help list ((例)ruby) (nil)
 </p>
 </div>
 </div>
-<div id="outline-container-org2e1a66c" class="outline-2">
-<h2 id="org2e1a66c"><span class="section-number-2">4</span> my_help_test</h2>
+<div id="outline-container-org2ec8d70" class="outline-2">
+<h2 id="org2ec8d70"><span class="section-number-2">4</span> my_help_test</h2>
 <div class="outline-text-2" id="text-4">
 <div class="org-src-container">
-<pre class="src src-ruby" id="org9afc15f"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">coding: utf-8</span>
+<pre class="src src-ruby" id="orge517dc4"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">coding: utf-8</span>
 <span class="linenr"> 2: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">frozen_string_literal: true</span>
 <span class="linenr"> 3: </span>
 <span class="linenr"> 4: </span>require <span style="color: #8b2252;">"test_helper"</span>
@@ -499,8 +400,8 @@ my_help list ((例)ruby) (nil)
 </div>
 </div>
 </div>
-<div id="outline-container-org48b93cd" class="outline-2">
-<h2 id="org48b93cd"><span class="section-number-2">5</span> my_helpの使い方</h2>
+<div id="outline-container-orgf95d442" class="outline-2">
+<h2 id="orgf95d442"><span class="section-number-2">5</span> my_helpの使い方</h2>
 <div class="outline-text-2" id="text-5">
 <div class="org-src-container">
 <pre class="src src-bash">- my_help
@@ -541,8 +442,8 @@ my_help_test: - my_help_test
 </div>
 </div>
 </div>
-<div id="outline-container-org0b61e49" class="outline-2">
-<h2 id="org0b61e49"><span class="section-number-2">6</span> git pull vs git merge</h2>
+<div id="outline-container-orga3fdbf3" class="outline-2">
+<h2 id="orga3fdbf3"><span class="section-number-2">6</span> git pull vs git merge</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 <a href="https://qiita.com/wann/items/688bc17460a457104d7d">https://qiita.com/wann/items/688bc17460a457104d7d</a>
@@ -558,8 +459,8 @@ git merge:ローカルの『origin/master』ブランチ→ローカルの『mas
 </p>
 </div>
 </div>
-<div id="outline-container-org65717c5" class="outline-2">
-<h2 id="org65717c5"><span class="section-number-2">7</span> init</h2>
+<div id="outline-container-org8099fd0" class="outline-2">
+<h2 id="org8099fd0"><span class="section-number-2">7</span> init</h2>
 <div class="outline-text-2" id="text-7">
 <ul class="org-ul">
 <li>forkして自分の所へ持ってくる．Github</li>
@@ -750,7 +651,7 @@ git merge:ローカルの『origin/master』ブランチ→ローカルの『mas
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Shigeto R. Nishitani</p>
-<p class="date">Created: 2021-11-08 月 13:34</p>
+<p class="date">Created: 2021-11-08 月 14:55</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
