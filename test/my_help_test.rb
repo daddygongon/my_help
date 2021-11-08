@@ -48,7 +48,9 @@ my_help_test: - my_help_test
     -p, puts_%         : puts_%
    EXPECTED
     assert_equal expected, Control.new.list_help('ruby')
+    end
 
+    test "List 'todo','-d'" do
     expected = <<~EXPECTED
 - my todo
 -----
