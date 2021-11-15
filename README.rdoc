@@ -1,6 +1,0 @@
-= my_help
-
-Describe your project here
-
-:include:my_help.rdoc
-
