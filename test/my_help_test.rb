@@ -41,10 +41,10 @@ class MyHelpTest < Test::Unit::TestCase
       assert_equal expected, Control.new(conf_path).list_all
     end
 
-    test "List 'ruby'" do
+    test "List 'ruby' returns RuntimeError" do
       conf_path = File.join(Dir.pwd, "test")
-      assert_raise NameError do
-        Control.new(conf_path).list_help("ruby")
+      assert_raise WrongFileName do
+        puts Control.new(conf_path).list_help("ruby")
       end
     end
 
@@ -56,8 +56,8 @@ class MyHelpTest < Test::Unit::TestCase
         - ご飯を食べる
         - 10時には寝床へ入る
       EXPECTED
-
-      assert_equal expected, Control.new.show_item("todo", "-d")
+      conf_path = File.join(Dir.pwd, "test")
+      assert_equal expected, Control.new(conf_path).show_item("todo", "-d")
     end
   end
 end

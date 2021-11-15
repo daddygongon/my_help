@@ -4,6 +4,8 @@ require 'yaml'
 require_relative './config'
 
 module MyHelp
+  WrongFileName = Class.new(RuntimeError)
+
   class Control
     attr_accessor :local_help_dir, :editor
     def initialize(conf_path=nil)
@@ -51,7 +53,6 @@ module MyHelp
       output
     end
 
-    WrongFileName = Class.new(RuntimeError)
     def list_help(file)
       output = ''
       file_path=File.join(@conf[:local_help_dir],file+'.org')
