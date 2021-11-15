@@ -1,4 +1,4 @@
-#+TITLE:  my_help README
+# my_help
 #+AUTHOR:  Shigeto R. Nishitani
 #+EMAIL:     (concat "nishitani@kwansei.ac.jp")
 #+LANGUAGE:  jp
