@@ -18,9 +18,12 @@ class MyHelpTest < Test::Unit::TestCase
 
   sub_test_case "Config" do
     test "initialize" do
-      assert do
-        p Config.new(File.join(Dir.pwd,'test')).config
-      end
+      conf_path = File.join(Dir.pwd, "test")
+      expected = { :template_dir => File.expand_path("../lib/templates", conf_path),
+                   local_help_dir: File.join(conf_path, ".my_help"),
+                   conf_file: File.join(conf_path, ".my_help/.my_help_conf.yml"),
+                   :editor => "emacs" }
+      assert_equal expected, Config.new(conf_path).config
     end
   end
 
@@ -28,38 +31,33 @@ class MyHelpTest < Test::Unit::TestCase
     test "List all" do
       expected = <<~EXPECTED
 
-List all helps
-      ruby: - ruby
-       org: - emacs org-modeのhelp
-      todo: - my todo
-my_help_test: - my_help_test
-     emacs: - Emacs key bind
-  new_help: - ヘルプのサンプル雛形
-  EXPECTED
-  #assert_block do
-       assert_equal expected, Control.new.list_all
+        List all helps
+               org: - emacs org-modeのhelp
+              todo: - my todo
+             emacs: - Emacs key bind
+      EXPECTED
+      #assert_block do
+      conf_path = File.join(Dir.pwd, "test")
+      assert_equal expected, Control.new(conf_path).list_all
     end
 
     test "List 'ruby'" do
-    expected = <<~EXPECTED
- - ruby
-      , head           : head
-      , license        : license
-    -p, puts_%         : puts_%
-   EXPECTED
-    assert_equal expected, Control.new.list_help('ruby')
+      conf_path = File.join(Dir.pwd, "test")
+      assert_raise NameError do
+        Control.new(conf_path).list_help("ruby")
+      end
     end
 
     test "List 'todo','-d'" do
-    expected = <<~EXPECTED
-- my todo
------
-\e[0;32;49mdaily\e[0m
-- ご飯を食べる
-- 10時には寝床へ入る
-EXPECTED
+      expected = <<~EXPECTED
+        - my todo
+        -----
+        \e[0;32;49mdaily\e[0m
+        - ご飯を食べる
+        - 10時には寝床へ入る
+      EXPECTED
 
-    assert_equal expected, Control.new.show_item('todo','-d')
+      assert_equal expected, Control.new.show_item("todo", "-d")
     end
   end
 end
