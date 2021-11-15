@@ -108,7 +108,7 @@ Commands:
      , query_replace  : query_replace
    -r, ruby-mode      : ruby-mode
    -d, dired          : ファイラとして使う
-#+end_example
+#+end_src
 
 ** my_helpがやっていること
 my_helpの個々のヘルプファイルは'~/.my_help'に置かれています．
