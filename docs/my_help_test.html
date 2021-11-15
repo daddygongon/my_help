@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-11-08 月 14:55 -->
+<!-- 2021-11-15 月 13:47 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="Shigeto R. Nishitani" />
+<meta name="author" content="大寺華椰" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -40,7 +40,7 @@
   }
   pre.src {
     position: relative;
-    overflow: auto;
+    overflow: visible;
     padding-top: 1.2em;
   }
   pre.src:before {
@@ -52,7 +52,7 @@
     padding: 3px;
     border: 1px solid black;
   }
-  pre.src:hover:before { display: inline; margin-top: 14px;}
+  pre.src:hover:before { display: inline;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
@@ -200,26 +200,50 @@
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <script type="text/javascript">
-// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
 <!--/*--><![CDATA[/*><!--*/
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.add("code-highlighted");
-         target.classList.add("code-highlighted");
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.remove("code-highlighted");
-         target.classList.remove("code-highlighted");
-       }
-     }
-    /*]]>*///-->
-// @license-end
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
 </script>
 </head>
 <body>
@@ -228,37 +252,35 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgc44ff03">1. head</a></li>
-<li><a href="#org290254b">2. license</a></li>
-<li><a href="#org71cfd85">3. my_help.rb:thor</a></li>
-<li><a href="#org2ec8d70">4. my_help_test</a></li>
-<li><a href="#orgf95d442">5. my_helpの使い方</a></li>
-<li><a href="#orga3fdbf3">6. git pull vs git merge</a></li>
-<li><a href="#org8099fd0">7. init</a></li>
+<li><a href="#org9e37240">1. head</a></li>
+<li><a href="#org17e56ed">2. license</a></li>
+<li><a href="#org137e929">3. my_help_test</a></li>
+<li><a href="#org003c204">4. my_helpの使い方</a></li>
+<li><a href="#orgc68be46">5. git pull vs git merge</a></li>
+<li><a href="#org5b06775">6. init</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc44ff03" class="outline-2">
-<h2 id="orgc44ff03"><span class="section-number-2">1</span> head</h2>
+<div id="outline-container-org9e37240" class="outline-2">
+<h2 id="org9e37240"><span class="section-number-2">1</span> head</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>my_help_test</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org290254b" class="outline-2">
-<h2 id="org290254b"><span class="section-number-2">2</span> license</h2>
+<div id="outline-container-org17e56ed" class="outline-2">
+<h2 id="org17e56ed"><span class="section-number-2">2</span> license</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>cc by Haya Ohtera, 2021</li>
 </ul>
-</div>
-</div>
-<div id="outline-container-org71cfd85" class="outline-2">
-<h2 id="org71cfd85"><span class="section-number-2">3</span> my_help.rb:thor</h2>
-<div class="outline-text-2" id="text-3">
+<p>
+git@github.com:hniksic/emacs-htmlize.git* my_help.rb:thor
+</p>
+
 <div class="org-src-container">
-<pre class="src src-ruby" id="org66cb61e"><span class="linenr"> 1: </span><span style="color: #a020f0;">module</span> <span style="color: #228b22;">MyHelp</span>
+<pre class="src src-ruby"><span class="linenr"> 1: </span><span style="color: #a020f0;">module</span> <span style="color: #228b22;">MyHelp</span>
 <span class="linenr"> 2: </span>  <span style="color: #a020f0;">class</span> <span style="color: #228b22;">CLI</span> &lt; <span style="color: #228b22;">Thor</span>
 <span class="linenr"> 3: </span>    desc <span style="color: #8b2252;">'list [HELP] [ITEM]'</span>, <span style="color: #8b2252;">'list all helps, specific HELP, or ITEM'</span>
 <span class="linenr"> 4: </span>    <span style="color: #a020f0;">def</span> <span style="color: #0000ff;">list</span>(*args)
@@ -266,18 +288,18 @@
 <span class="linenr"> 6: </span>      file = args[0]
 <span class="linenr"> 7: </span>      item = args[1]
 <span class="linenr"> 8: </span>      <span style="color: #a020f0;">if</span> file.nil?
-<span class="linenr"> 9: </span>        puts <span style="color: #a0522d;">$control</span>.list_all.blue <span style="color: #b22222;"># </span><span style="color: #b22222;">list []</span>
+<span class="linenr"> 9: </span>        <span style="color: #483d8b;">puts</span> <span style="color: #a0522d;">$control</span>.list_all.blue <span style="color: #b22222;"># </span><span style="color: #b22222;">list []</span>
 <span class="linenr">10: </span>      <span style="color: #a020f0;">elsif</span> item.nil?
 <span class="linenr">11: </span>        <span style="color: #a020f0;">begin</span>
-<span class="linenr">12: </span>          puts <span style="color: #a0522d;">$control</span>.list_help(file) <span style="color: #b22222;"># </span><span style="color: #b22222;">list [file]</span>
+<span class="linenr">12: </span>          <span style="color: #483d8b;">puts</span> <span style="color: #a0522d;">$control</span>.list_help(file) <span style="color: #b22222;"># </span><span style="color: #b22222;">list [file]</span>
 <span class="linenr">13: </span>        <span style="color: #a020f0;">rescue</span> <span style="color: #228b22;">StandardError</span> =&gt; e
-<span class="linenr">14: </span>          puts e.to_s.red
+<span class="linenr">14: </span>          <span style="color: #483d8b;">puts</span> e.to_s.red
 <span class="linenr">15: </span>        <span style="color: #a020f0;">end</span>
 <span class="linenr">16: </span>      <span style="color: #a020f0;">else</span>
 <span class="linenr">17: </span>        <span style="color: #a020f0;">begin</span>
-<span class="linenr">18: </span>          puts <span style="color: #a0522d;">$control</span>.show_item(file, item) <span style="color: #b22222;"># </span><span style="color: #b22222;">list [file] [item]</span>
+<span class="linenr">18: </span>          <span style="color: #483d8b;">puts</span> <span style="color: #a0522d;">$control</span>.show_item(file, item) <span style="color: #b22222;"># </span><span style="color: #b22222;">list [file] [item]</span>
 <span class="linenr">19: </span>        <span style="color: #a020f0;">rescue</span> <span style="color: #228b22;">StandardError</span> =&gt; e
-<span class="linenr">20: </span>          puts e.to_s.red
+<span class="linenr">20: </span>          <span style="color: #483d8b;">puts</span> e.to_s.red
 <span class="linenr">21: </span>        <span style="color: #a020f0;">end</span>
 <span class="linenr">22: </span>      <span style="color: #a020f0;">end</span>
 <span class="linenr">23: </span>    <span style="color: #a020f0;">end</span>
@@ -286,123 +308,190 @@
 </pre>
 </div>
 
-<ul class="org-ul">
-<li>my_help.rbのdef listの中身説明
-<ul class="org-ul">
-<li>my_help list (file) (item)
-<ul class="org-ul">
-<li>1:もしfileがnilだった場合
-my_help list (nil) (nil)
-(出力結果)
-List all helps
- ruby: - ruby
-  org: - emacs org-modeのhelp
- todo: - my todo</li>
-</ul></li>
-</ul></li>
-</ul>
 <p>
+MyHelpに記述されているlistはThorでの動作を記述している．
+</p>
+
+<p>
+fileとitemにmy_help起動時の引数(args)が入っている．
+</p>
+
+<p>
+L:8で，もしfileがnilだった場合
+</p>
+<pre class="example">
+my_help list (nil) (nil)
+</pre>
+
+<p>
+を意味しており，そのときには，
+</p>
+<pre class="example">
+Control.new.list_all
+</pre>
+
+<p>
+がよばれる．my_helpでの出力ではさらにcolorizeのblueが
+付加されているが，テストではcolorコードが邪魔なので，
+それをつけずに出力すると
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">     (&#20986;&#21147;&#32080;&#26524;)
+     List all helps
+      ruby: - ruby
+       org: - emacs org-mode&#12398;help
+      todo: - my todo
 my_help_test: - my_help_test
      emacs: - Emacs key bind
-  new_help: - ヘルプのサンプル雛形
+  new_help: - &#12504;&#12523;&#12503;&#12398;&#12469;&#12531;&#12503;&#12523;&#38619;&#24418;
+</pre>
+</div>
+<p>
+が私の環境では返ってくる．
 </p>
 
-<ul class="org-ul">
-<li><p>
-2:もしitemがnilだった場合
+
+<p>
+L:10で，もしitemがnilだった場合
+</p>
+<pre class="example">
 my_help list ((例)ruby) (nil)
-(出力結果)
-</p>
-<ul class="org-ul">
-<li>ruby</li>
-</ul>
-<p>
-, head           : head
-, license        : license
-</p></li>
-</ul>
-<p>
--p, puts_%         : puts_%
-</p>
-
+</pre>
 
 <p>
-(例)の所は6通りのうちどれか一つだけを入力すれば動く
-(注意)この時1のassert_equal expected, Control.new.list_all
-      をそのまま用いてしまった為，testが通らなかった
-(改善)assert_equal expected, Control.new.list_help('ruby')
-      my_help.rbのelseifのbegin putsを見るとlist_allではなく
-      list_help(file)であった
-      この時のfileは(例)で使われているruby
-      fileは文字列である為rubyを'ruby'としなければならない
+を意味しており，そのときには，
 </p>
-</div>
-</div>
-<div id="outline-container-org2ec8d70" class="outline-2">
-<h2 id="org2ec8d70"><span class="section-number-2">4</span> my_help_test</h2>
-<div class="outline-text-2" id="text-4">
+<pre class="example">
+Control.new.list_help('(例)ruby')
+</pre>
+
+<p>
+がよばれる．私の環境での出力結果は以下だ．
+</p>
 <div class="org-src-container">
-<pre class="src src-ruby" id="orge517dc4"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">coding: utf-8</span>
+<pre class="src src-shell">  (&#20986;&#21147;&#32080;&#26524;)
+  - ruby
+  , head           : head
+  , license        : license
+-p, puts_%         : puts_%
+</pre>
+</div>
+
+<p>
+注意として，(例)ではrubyを用いているが，
+my_help listと入力すると，私の環境では，
+6通り(ruby,org,todo,my_help_test,emacs,new_help)
+出力される．
+これらのうち1つだけを入力すれば動く．
+my_help_test.rbはテストである為，1つが通れば，後の5つは通る．
+</p>
+
+<p>
+この時，L:32をL:41にそのまま用いてしまった為，
+testが通らなかった．
+</p>
+
+<p>
+my_help.rbのL:9とL:12を比較すると，list_allではなく，
+list_help(file)であった．
+この時のfileは(例)で用いたfile名と同様にしなければならない．
+かつ，fileはL:6で示されたように文字列である為，file名を
+''で囲う事が必要である．
+</p>
+
+<p>
+これらを用いて
+</p>
+<pre class="example">
+assert_equal expected, Control.new.list_help('ruby')
+</pre>
+
+<p>
+と改善するとテストが通った．
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org137e929" class="outline-2">
+<h2 id="org137e929"><span class="section-number-2">3</span> my_help_test</h2>
+<div class="outline-text-2" id="text-3">
+<div class="org-src-container">
+<pre class="src src-ruby" id="org7bf6fe2"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">coding: utf-8</span>
 <span class="linenr"> 2: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">frozen_string_literal: true</span>
 <span class="linenr"> 3: </span>
-<span class="linenr"> 4: </span>require <span style="color: #8b2252;">"test_helper"</span>
-<span class="linenr"> 5: </span>require <span style="color: #8b2252;">"tmpdir"</span>
-<span class="linenr"> 6: </span>require <span style="color: #8b2252;">"fileutils"</span>
+<span class="linenr"> 4: </span><span style="color: #483d8b;">require</span> <span style="color: #8b2252;">"test_helper"</span>
+<span class="linenr"> 5: </span><span style="color: #483d8b;">require</span> <span style="color: #8b2252;">"tmpdir"</span>
+<span class="linenr"> 6: </span><span style="color: #483d8b;">require</span> <span style="color: #8b2252;">"fileutils"</span>
 <span class="linenr"> 7: </span>
 <span class="linenr"> 8: </span><span style="color: #a020f0;">class</span> <span style="color: #228b22;">MyHelpTest</span> &lt; <span style="color: #228b22;">Test</span>::<span style="color: #228b22;">Unit</span>::<span style="color: #228b22;">TestCase</span>
-<span class="linenr"> 9: </span>  include <span style="color: #228b22;">MyHelp</span>
+<span class="linenr"> 9: </span>  <span style="color: #483d8b;">include</span> <span style="color: #228b22;">MyHelp</span>
 <span class="linenr">10: </span>
 <span class="linenr">11: </span>  sub_test_case <span style="color: #8b2252;">"Misc"</span> <span style="color: #a020f0;">do</span>
 <span class="linenr">12: </span>    test <span style="color: #8b2252;">"VERSION"</span> <span style="color: #a020f0;">do</span>
 <span class="linenr">13: </span>      assert <span style="color: #a020f0;">do</span>
-<span class="linenr">14: </span>        <span style="color: #228b22;">MyHelp</span>.const_defined?(:<span style="color: #228b22;">VERSION</span>)
+<span class="linenr">14: </span>        <span style="color: #228b22;">MyHelp</span>.const_defined?(<span style="color: #008b8b;">:VERSION</span>)
 <span class="linenr">15: </span>      <span style="color: #a020f0;">end</span>
 <span class="linenr">16: </span>    <span style="color: #a020f0;">end</span>
 <span class="linenr">17: </span>  <span style="color: #a020f0;">end</span>
 <span class="linenr">18: </span>
-<span class="linenr">19: </span>  sub_test_case <span style="color: #8b2252;">"List"</span> <span style="color: #a020f0;">do</span>
-<span class="linenr">20: </span>    test <span style="color: #8b2252;">"List all"</span> <span style="color: #a020f0;">do</span>
-<span class="linenr">21: </span>      expected = &lt;&lt;~<span style="color: #228b22;">EXPECTED</span>
-<span class="linenr">22: </span>
-<span class="linenr">23: </span><span style="color: #228b22;">List</span> all helps
-<span class="linenr">24: </span>      <span style="color: #008b8b;">ruby</span>: - ruby
-<span class="linenr">25: </span>       <span style="color: #008b8b;">org</span>: - emacs org-mode&#12398;help
-<span class="linenr">26: </span>      <span style="color: #008b8b;">todo</span>: - my todo
-<span class="linenr">27: </span><span style="color: #008b8b;">my_help_test</span>: - my_help_test
-<span class="linenr">28: </span>     <span style="color: #008b8b;">emacs</span>: - <span style="color: #228b22;">Emacs</span> key bind
-<span class="linenr">29: </span>  <span style="color: #008b8b;">new_help</span>: - &#12504;&#12523;&#12503;&#12398;&#12469;&#12531;&#12503;&#12523;&#38619;&#24418;
-<span class="linenr">30: </span>  <span style="color: #228b22;">EXPECTED</span>
-<span class="linenr">31: </span>  <span style="color: #b22222;">#</span><span style="color: #b22222;">assert_block do</span>
-<span class="linenr">32: </span>       assert_equal expected, <span style="color: #228b22;">Control</span>.new.list_all
-<span class="linenr">33: </span>      <span style="color: #b22222;">#</span><span style="color: #b22222;">end</span>
-<span class="linenr">34: </span>
-<span class="linenr">35: </span>    expected = &lt;&lt;~<span style="color: #228b22;">EXPECTED</span>  
-<span class="linenr">36: </span> - ruby
-<span class="linenr">37: </span>      , head           : head
-<span class="linenr">38: </span>      , license        : license
-<span class="linenr">39: </span>    -p, puts_%         : puts_%
-<span class="linenr">40: </span>   <span style="color: #228b22;">EXPECTED</span>
-<span class="linenr">41: </span>    assert_equal expected, <span style="color: #228b22;">Control</span>.new.list_help(<span style="color: #8b2252;">'ruby'</span>)
-<span class="linenr">42: </span>
-<span class="linenr">43: </span>    expected = &lt;&lt;~<span style="color: #228b22;">EXPECTED</span>
-<span class="linenr">44: </span>- my todo
-<span class="linenr">45: </span>-----
-<span class="linenr">46: </span>
-<span class="linenr">47: </span>- &#12372;&#39151;&#12434;&#39135;&#12409;&#12427;
-<span class="linenr">48: </span>- 10&#26178;&#12395;&#12399;&#23517;&#24202;&#12408;&#20837;&#12427;
-<span class="linenr">49: </span><span style="color: #228b22;">EXPECTED</span>
-<span class="linenr">50: </span>
-<span class="linenr">51: </span>    assert_equal expected, <span style="color: #228b22;">Control</span>.new.show_item(<span style="color: #8b2252;">'todo'</span>,<span style="color: #8b2252;">'-d'</span>)
-<span class="linenr">52: </span>    <span style="color: #a020f0;">end</span>
-<span class="linenr">53: </span>  <span style="color: #a020f0;">end</span>
-<span class="linenr">54: </span><span style="color: #a020f0;">end</span>
+<span class="linenr">19: </span>  sub_test_case <span style="color: #8b2252;">"Config"</span> <span style="color: #a020f0;">do</span>
+<span class="linenr">20: </span>    test <span style="color: #8b2252;">"initialize"</span> <span style="color: #a020f0;">do</span>
+<span class="linenr">21: </span>      conf_path = <span style="color: #228b22;">File</span>.join(<span style="color: #228b22;">Dir</span>.pwd, <span style="color: #8b2252;">"test"</span>)
+<span class="linenr">22: </span>      expected = { <span style="color: #008b8b;">:template_dir</span> =&gt; <span style="color: #228b22;">File</span>.expand_path(<span style="color: #8b2252;">"../lib/templates"</span>, conf_path),
+<span class="linenr">23: </span>                   <span style="color: #008b8b;">local_help_dir:</span> <span style="color: #228b22;">File</span>.join(conf_path, <span style="color: #8b2252;">".my_help"</span>),
+<span class="linenr">24: </span>                   <span style="color: #008b8b;">conf_file:</span> <span style="color: #228b22;">File</span>.join(conf_path, <span style="color: #8b2252;">".my_help/.my_help_conf.yml"</span>),
+<span class="linenr">25: </span>                   <span style="color: #008b8b;">:editor</span> =&gt; <span style="color: #8b2252;">"emacs"</span> }
+<span class="linenr">26: </span>      assert_equal expected, <span style="color: #228b22;">Config</span>.new(conf_path).config
+<span class="linenr">27: </span>    <span style="color: #a020f0;">end</span>
+<span class="linenr">28: </span>  <span style="color: #a020f0;">end</span>
+<span class="linenr">29: </span>
+<span class="linenr">30: </span>  sub_test_case <span style="color: #8b2252;">"List"</span> <span style="color: #a020f0;">do</span>
+<span class="linenr">31: </span>    test <span style="color: #8b2252;">"List all"</span> <span style="color: #a020f0;">do</span>
+<span class="linenr">32: </span>      expected = <span style="color: #8b2252;">&lt;&lt;~EXPECTED</span>
+<span class="linenr">33: </span>
+<span class="linenr">34: </span><span style="color: #8b2252;">        List all helps</span>
+<span class="linenr">35: </span><span style="color: #8b2252;">               org: - emacs org-mode&#12398;help</span>
+<span class="linenr">36: </span><span style="color: #8b2252;">              todo: - my todo</span>
+<span class="linenr">37: </span><span style="color: #8b2252;">             emacs: - Emacs key bind</span>
+<span class="linenr">38: </span><span style="color: #8b2252;">      EXPECTED</span>
+<span class="linenr">39: </span>      <span style="color: #b22222;">#</span><span style="color: #b22222;">assert_block do</span>
+<span class="linenr">40: </span>      conf_path = <span style="color: #228b22;">File</span>.join(<span style="color: #228b22;">Dir</span>.pwd, <span style="color: #8b2252;">"test"</span>)
+<span class="linenr">41: </span>      assert_equal expected, <span style="color: #228b22;">Control</span>.new(conf_path).list_all
+<span class="linenr">42: </span>    <span style="color: #a020f0;">end</span>
+<span class="linenr">43: </span>
+<span class="linenr">44: </span>    test <span style="color: #8b2252;">"List 'ruby'"</span> <span style="color: #a020f0;">do</span>
+<span class="linenr">45: </span>      expected = <span style="color: #8b2252;">&lt;&lt;~EXPECTED</span>
+<span class="linenr">46: </span><span style="color: #8b2252;">        - ruby</span>
+<span class="linenr">47: </span><span style="color: #8b2252;">             , head           : head</span>
+<span class="linenr">48: </span><span style="color: #8b2252;">             , license        : license</span>
+<span class="linenr">49: </span><span style="color: #8b2252;">           -p, puts_%         : puts_%</span>
+<span class="linenr">50: </span><span style="color: #8b2252;">      EXPECTED</span>
+<span class="linenr">51: </span>
+<span class="linenr">52: </span>      conf_path = <span style="color: #228b22;">File</span>.join(<span style="color: #228b22;">Dir</span>.pwd, <span style="color: #8b2252;">"test"</span>)
+<span class="linenr">53: </span>      assert_equal expected, <span style="color: #228b22;">Control</span>.new(conf_path).list_help(<span style="color: #8b2252;">"ruby"</span>)
+<span class="linenr">54: </span>    <span style="color: #a020f0;">end</span>
+<span class="linenr">55: </span>
+<span class="linenr">56: </span>    test <span style="color: #8b2252;">"List 'todo','-d'"</span> <span style="color: #a020f0;">do</span>
+<span class="linenr">57: </span>      expected = <span style="color: #8b2252;">&lt;&lt;~EXPECTED</span>
+<span class="linenr">58: </span><span style="color: #8b2252;">        - my todo</span>
+<span class="linenr">59: </span><span style="color: #8b2252;">        -----</span>
+<span class="linenr">60: </span><span style="color: #8b2252;">        \e[0;32;49mdaily\e[0m</span>
+<span class="linenr">61: </span><span style="color: #8b2252;">        - &#12372;&#39151;&#12434;&#39135;&#12409;&#12427;</span>
+<span class="linenr">62: </span><span style="color: #8b2252;">        - 10&#26178;&#12395;&#12399;&#23517;&#24202;&#12408;&#20837;&#12427;</span>
+<span class="linenr">63: </span><span style="color: #8b2252;">      EXPECTED</span>
+<span class="linenr">64: </span>
+<span class="linenr">65: </span>      assert_equal expected, <span style="color: #228b22;">Control</span>.new.show_item(<span style="color: #8b2252;">"todo"</span>, <span style="color: #8b2252;">"-d"</span>)
+<span class="linenr">66: </span>    <span style="color: #a020f0;">end</span>
+<span class="linenr">67: </span>  <span style="color: #a020f0;">end</span>
+<span class="linenr">68: </span><span style="color: #a020f0;">end</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgf95d442" class="outline-2">
-<h2 id="orgf95d442"><span class="section-number-2">5</span> my_helpの使い方</h2>
-<div class="outline-text-2" id="text-5">
+<div id="outline-container-org003c204" class="outline-2">
+<h2 id="org003c204"><span class="section-number-2">4</span> my_helpの使い方</h2>
+<div class="outline-text-2" id="text-4">
 <div class="org-src-container">
 <pre class="src src-bash">- my_help
  - my_help&#12398;&#27231;&#33021;&#12434;&#34920;&#31034;
@@ -442,9 +531,9 @@ my_help_test: - my_help_test
 </div>
 </div>
 </div>
-<div id="outline-container-orga3fdbf3" class="outline-2">
-<h2 id="orga3fdbf3"><span class="section-number-2">6</span> git pull vs git merge</h2>
-<div class="outline-text-2" id="text-6">
+<div id="outline-container-orgc68be46" class="outline-2">
+<h2 id="orgc68be46"><span class="section-number-2">5</span> git pull vs git merge</h2>
+<div class="outline-text-2" id="text-5">
 <p>
 <a href="https://qiita.com/wann/items/688bc17460a457104d7d">https://qiita.com/wann/items/688bc17460a457104d7d</a>
 </p>
@@ -459,9 +548,9 @@ git merge:ローカルの『origin/master』ブランチ→ローカルの『mas
 </p>
 </div>
 </div>
-<div id="outline-container-org8099fd0" class="outline-2">
-<h2 id="org8099fd0"><span class="section-number-2">7</span> init</h2>
-<div class="outline-text-2" id="text-7">
+<div id="outline-container-org5b06775" class="outline-2">
+<h2 id="org5b06775"><span class="section-number-2">6</span> init</h2>
+<div class="outline-text-2" id="text-6">
 <ul class="org-ul">
 <li>forkして自分の所へ持ってくる．Github</li>
 <li>Gitの仕組み:縦につながりと横のつながりの2種類から構成されている
@@ -650,9 +739,9 @@ git merge:ローカルの『origin/master』ブランチ→ローカルの『mas
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Shigeto R. Nishitani</p>
-<p class="date">Created: 2021-11-08 月 14:55</p>
-<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+<p class="author">Author: 大寺華椰</p>
+<p class="date">Created: 2021-11-15 月 13:47</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
 </html>
