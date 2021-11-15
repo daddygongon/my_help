@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 require 'thor'
 require 'command_line/global'
 require 'colorize'
@@ -13,8 +14,8 @@ require 'my_help/org2yml'
 module MyHelp
   class CLI < Thor
     desc('setup', 'set up the test database')
-    def setup(*_args)
-      puts args
+    def setup(*args)
+      puts "my_help called with '%s'" % args.join(' ')
       $control = Control.new
     end
 

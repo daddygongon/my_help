@@ -54,16 +54,17 @@ module MyHelp
     end
 
     def list_help(file)
-      output = ''
       file_path=File.join(@conf[:local_help_dir],file+'.org')
+      output = ''
       begin
         help = auto_load(file_path)
+        help.each_pair do |key, conts|
+          output << conts[:cont] if key==:head
+          output << disp_opts( conts[:opts] )
+        end
       rescue
-        raise WrongFileName, "No help named '#{file}' in the directory '#{local_help_dir}'."
-      end
-      help.each_pair do |key, conts|
-        output << conts[:cont] if key==:head
-        output << disp_opts( conts[:opts] )
+        raise WrongFileName,
+        "No help named '#{file}' in '#{@conf[:local_help_dir]}'."
       end
       output
     end

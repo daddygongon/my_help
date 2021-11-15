@@ -44,7 +44,7 @@ class MyHelpTest < Test::Unit::TestCase
     test "List 'ruby' returns RuntimeError" do
       conf_path = File.join(Dir.pwd, "test")
       assert_raise WrongFileName do
-        puts Control.new(conf_path).list_help("ruby")
+        Control.new(conf_path).list_help("ruby")
       end
     end
 
