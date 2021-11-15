@@ -60,3 +60,32 @@ my_help.confの場所を指定するconf_pathをnewで指定できるように�
 これによってTest::unitでのtest環境独自のmy_help環境を構築することが
 できる．
 
+* <2021-11-08 月> conf_pathをactivate
+testが進んできたので，conf_pathをactivateした．
+そのためのテストが必要かも．
+
+1. ENV['HOME']で指定した時と．．．
+1. pwdで何もない時のoptionsがどうなっている？
+
+#+begin_src yaml
+config:
+  :template_dir: "/Users/bob/git_hub/my_help/lib/templates"
+  :local_help_dir: "/Users/bob/git_hub/my_help/test/.my_help"
+  :conf_file: "/Users/bob/git_hub/my_help/test/.my_help/.my_help_conf.yml"
+  :editor: emacs
+#+end_src
+
+
+* <2021-11-08 月> bundle exec exe/my_help editでエラー
+#+begin_src shell
+Could not find ffi-1.15.4 in any of the sources
+Run `bundle install` to install missing gems.
+#+end_src
+とのエラー．
+なんだろう．
+
+さらに，command_lineで呼ぶと，
+: emacs: standard input is not a tty
+というエラーが出る．これまたなんだろう？？？
+
+

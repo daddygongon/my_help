@@ -5,14 +5,15 @@
 - my_help_test
 * license
 -      cc by Haya Ohtera, 2021
-* my_help.rb:thor
+git@github.com:hniksic/emacs-htmlize.git* my_help.rb:thor
 #+name: ../lib/my_help_list.rb
+#           /Users/ooterahana/.my_help/../my_help
 #+include: ../lib/my_help_list.rb src ruby -n -i
 
 MyHelpに記述されているlistはThorでの動作を記述している．
 # my_help.rbのdef listの中身説明
 fileとitemにmy_help起動時の引数(args)が入っている．
-#  - my_help list (file) (item)
+#  my_help list (file) (item)
 L:8で，もしfileがnilだった場合
 :     my_help list (nil) (nil)
 を意味しており，そのときには，
@@ -33,23 +34,44 @@ my_help_test: - my_help_test
 が私の環境では返ってくる．
 
 
-   - 2:もしitemがnilだった場合
-     my_help list ((例)ruby) (nil)
+L:10で，もしitemがnilだった場合
+:     my_help list ((例)ruby) (nil)
+を意味しており，そのときには，
+: Control.new.list_help('(例)ruby')
+がよばれる．私の環境での出力結果は以下だ．
+#+begin_src shell
      (出力結果)
      - ruby
      , head           : head
      , license        : license
    -p, puts_%         : puts_%
+#+end_src
+
+注意として，(例)ではrubyを用いているが，
+my_help listと入力すると，私の環境では，
+6通り(ruby,org,todo,my_help_test,emacs,new_help)
+出力される．
+これらのうち1つだけを入力すれば動く．
+my_help_test.rbはテストである為，1つが通れば，後の5つは通る．
+
+この時，L:32をL:41にそのまま用いてしまった為，
+testが通らなかった．
+
+my_help.rbのL:9とL:12を比較すると，list_allではなく，
+list_help(file)であった．
+この時のfileは(例)で用いたfile名と同様にしなければならない．
+かつ，fileはL:6で示されたように文字列である為，file名を
+''で囲う事が必要である．
+
+これらを用いて
+: assert_equal expected, Control.new.list_help('ruby')
+と改善するとテストが通った．
+# my_help.rbのelseifのbegin putsを見るとlist_allではなく
+# list_help(file)であった
+# この時のfileは(例)で使われているruby
+# fileは文字列である為rubyを'ruby'としなければならない
 
 
-     (例)の所は6通りのうちどれか一つだけを入力すれば動く
-     (注意)この時1のassert_equal expected, Control.new.list_all
-           をそのまま用いてしまった為，testが通らなかった
-     (改善)assert_equal expected, Control.new.list_help('ruby')
-           my_help.rbのelseifのbegin putsを見るとlist_allではなく
-           list_help(file)であった
-           この時のfileは(例)で使われているruby
-           fileは文字列である為rubyを'ruby'としなければならない
 * my_help_test
 #+name: ../test/my_help_test.rb
 #+include: ../test/my_help_test.rb src ruby -n -i
