@@ -56,7 +56,7 @@ RPGでレベル上げとかアイテムを貯めるようにして，
   :END:
 ** インストール
 
-: $ gem install my_help
+: > gem install my_help
 です．
 
 ** 簡単な使用法
@@ -65,8 +65,8 @@ RPGでレベル上げとかアイテムを貯めるようにして，
    :END:
 
 まずは，
-#+begin_example
-my_help                                                                          1559ms
+#+begin_src bash
+> my_help
 Commands:
   my_help delete HELP             # delete HELP
   my_help edit HELP               # edit HELP
@@ -76,17 +76,18 @@ Commands:
   my_help set_editor EDITOR_NAME  # set editor to EDITOR_NAME
   my_help setup                   # set up the test database
   my_help version                 # show version
-#+end_example
+#+end_src
 としてください．このlistにNAMEやITEMを加えて行くとわかると思います．
 
-: my_help list
-: my_help list emacs
-: my_help list emacs -f
-: my_help list emacs file
+#+begin_src bash
+> my_help list
+> my_help list emacs
+> my_help list emacs -f
+> my_help list emacs file
+#+end_src
 として動かしてみてください．
 
-
-#+BEGIN_EXAMPLE
+#+begin_src bash
 - emacsのキーバインド
 - 
 特殊キー操作
@@ -107,22 +108,31 @@ Commands:
      , query_replace  : query_replace
    -r, ruby-mode      : ruby-mode
    -d, dired          : ファイラとして使う
-#+END_EXAMPLE
+#+end_example
+
+** my_helpがやっていること
+my_helpの個々のヘルプファイルは'~/.my_help'に置かれています．
+ヘルプファイルのフォーマットはEmacsのorg-modeです．
+これをEditorで叩いて編集したり，
+そこから情報を取り出したりしています．
+単にファイル操作を集約しているだけなのですが，
+これが面倒で．．．
+
 
 ** 独自のhelpを作る方法
 独自のhelpを作る方法です．まずは，
 
-: my_help new new_help
+: $ my_help new new_help
 
 で，new_helpというtemplateが用意されます．
-: my_help edit new_help
-で編集してください． emacs org形式で，格納されています．
+: $ my_help edit new_help
+で編集してください． Emacs org形式で，格納されています．
 
-: my_help delete new_help
+: $ my_help delete new_help
 
 すると消されます．
 ** editorの変更
-: my_help set_editor vim
+: $ my_help set_editor vim
 でeditorを変更できます．codeとかは確認していますが，
 それ以外で動いたり，動かなかったりを報告してください．
 
