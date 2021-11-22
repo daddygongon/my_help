@@ -60,4 +60,11 @@ class MyHelpTest < Test::Unit::TestCase
       assert_equal expected, Control.new(conf_path).show_item("todo", "-d")
     end
   end
+
+  sub_test_case "Version" do
+    test "show version" do
+      expected = "0.9.0"
+      assert_equal expected, VERSION
+    end
+  end
 end
