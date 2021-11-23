@@ -2,11 +2,14 @@
 require 'fileutils'
 require 'yaml'
 require_relative './config'
+require_relative './my_help_list'
 
 module MyHelp
   WrongFileName = Class.new(RuntimeError)
 
   class Control
+    include MyHelpList
+    
     attr_accessor :local_help_dir, :editor
     def initialize(conf_path=nil)
       @conf_path = conf_path || ENV['HOME']
@@ -55,13 +58,8 @@ module MyHelp
 
     def list_help(file)
       file_path=File.join(@conf[:local_help_dir],file+'.org')
-      output = ''
       begin
-        help = auto_load(file_path)
-        help.each_pair do |key, conts|
-          output << conts[:cont] if key==:head
-          output << disp_opts( conts[:opts] )
-        end
+        output = help_list(file_path)
       rescue
         raise WrongFileName,
         "No help named '#{file}' in '#{@conf[:local_help_dir]}'."
@@ -173,18 +171,6 @@ module MyHelp
       return entries
     end
 
-    def auto_load(file_path)
-      case File.extname(file_path)
-        #      when '.yml'
-        #        cont = YAML.load(File.read(file_path))
-      when '.org'
-        cont = OrgToYaml.new(file_path).help_cont
-      else
-        puts "Not handling file types of #{file_path}"
-        cont = nil
-      end
-      cont
-    end
   end
 end
 
