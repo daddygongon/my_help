@@ -1,10 +1,16 @@
+
+
 module MyHelp
   class CLI < Thor
     desc 'list [HELP] [ITEM]', 'list all helps, specific HELP, or ITEM'
     def list(*args)
-      invoke :setup
       file = args[0]
       item = args[1]
+      if file =~ /^\./
+        puts MyHelpList.help_list(file)
+        exit
+      end
+      invoke :setup
       if file.nil?
         puts $control.list_all.blue # list []
       elsif item.nil?
