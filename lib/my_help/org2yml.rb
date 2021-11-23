@@ -37,9 +37,9 @@ class OrgToYaml
 
   def org_to_yaml(lines)
     lines.each do |line|
-      m = line.force_encoding(Encoding::UTF_8).match(/^\* (.+)/u)
+      m = line.force_encoding(Encoding::UTF_8).match(/^(\*+) (.+)/u)
       if m
-        next_cont m[1]
+        next_cont m[2]
       else
         @conts << line
       end

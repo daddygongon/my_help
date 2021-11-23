@@ -2,14 +2,13 @@
 require 'fileutils'
 require 'yaml'
 require_relative './config'
-require_relative './my_help_list'
 
 module MyHelp
   WrongFileName = Class.new(RuntimeError)
 
   class Control
     include MyHelpList
-    
+
     attr_accessor :local_help_dir, :editor
     def initialize(conf_path=nil)
       @conf_path = conf_path || ENV['HOME']
@@ -69,16 +68,8 @@ module MyHelp
 
     WrongItemName = Class.new(RuntimeError)
     def show_item(file, item)
-      output = ''
       file_path=File.join(@conf[:local_help_dir],file+'.org')
-      help = auto_load(file_path)
-      select = select_item(help, item)
-      output << help[:head][:cont]
-      unless select then
-        raise WrongItemName, "No item entry: #{item}"
-      end
-      output << '-'*5+"\n"+select.to_s.green+"\n"
-      output << help[select][:cont]
+      item_list(file_path, item)
     end
 
     def edit_help(file)
@@ -131,31 +122,6 @@ module MyHelp
     end
 
     private
-    def select_item(help, item)
-      o_key = nil
-      help.each_pair do |key, cont|
-        next if key==:license or key==:head
-        if cont[:opts][:short] == item or cont[:opts][:long] == item
-          o_key = key
-          break
-        end
-      end
-      o_key
-    end
-
-    def disp_opts( conts )
-      output = ''
-      col = 0
-      conts.each_pair do |key, item|
-        case col
-        when 0 ; output << item.rjust(5)+", "
-        when 1 ; output << item.ljust(15)+": "
-        else   ; output << item
-        end
-        col += 1
-      end
-      output << "\n"
-    end
 
     def local_help_entries
       entries= []
