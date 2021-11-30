@@ -12,5 +12,6 @@
 /.tags
 *~
 \#*
+.\#*
 
 .ruby-version
