@@ -1,4 +1,7 @@
 require 'pp'
+
+# List related module functions
+# used in Control and Thor::list
 module MyHelpList
   module_function
 
@@ -14,20 +17,20 @@ module MyHelpList
 
   def item_list(file_path, item)
     help = auto_load(file_path)
-    select = begin
-               select_item(help, item)
-             rescue
-               raise WrongItemName, "No item entry: #{item}"
-             end
+    select = select_item(help, item) # or nil
     output = begin
                help[:head][:cont] 
              rescue
                ''
              end
     output << '-'*5+"\n"+select.to_s.green+"\n"
-    output << help[select][:cont]
+    output << begin
+                help[select][:cont]
+              rescue
+                raise WrongItemName, "No item entry: #{item}"
+              end
   end
-  
+
   def auto_load(file_path)
     if File.extname(file_path) == '.org'
       cont = OrgToYaml.new(file_path).help_cont
