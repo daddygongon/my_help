@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'yaml'
-require 'colorize'
+require "yaml"
+require "colorize"
 
 module MyHelp
   # make @config from default and load yaml
@@ -9,12 +9,12 @@ module MyHelp
   class Config
     # Configuration defaults
     def initialize(conf_path = nil)
-      @conf_path = conf_path || ENV['HOME']
+      @conf_path = conf_path || ENV["HOME"]
       @config = {
-        template_dir: File.expand_path('../templates', __dir__),
-        local_help_dir: File.join(@conf_path, '.my_help'),
-        conf_file: File.join(@conf_path, '.my_help', '.my_help_conf.yml'),
-        editor: ENV['EDITOR'] || 'emacs'
+        template_dir: File.expand_path("../templates", __dir__),
+        local_help_dir: File.join(@conf_path, ".my_help"),
+        conf_file: File.join(@conf_path, ".my_help", ".my_help_conf.yml"),
+        editor: ENV["EDITOR"] || "emacs",
       }
       @valid_config_keys = @config.keys
       configure_with(@config[:conf_file])
@@ -38,7 +38,7 @@ module MyHelp
         return
       rescue Psych::SyntaxError
         # log(:warning, "YAML configuration file contains invalid syntax. Using defaults.")
-        puts 'YAML configuration file contains invalid syntax. Using defaults.'.red
+        puts "YAML configuration file contains invalid syntax. Using defaults.".red
         return
       end
 
