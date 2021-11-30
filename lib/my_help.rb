@@ -31,7 +31,7 @@ module MyHelp
 
     def set_editor(editor_name)
       invoke :setup
-      $control.set_editor(editor_name)
+      puts $control.set_editor(editor_name)
     end
 
     desc "edit HELP", "edit HELP"
