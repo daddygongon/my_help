@@ -67,4 +67,20 @@ class MyHelpTest < Test::Unit::TestCase
       assert_equal expected, VERSION
     end
   end
+
+  sub_test_case "Set Editor" do
+    test "set_editor" do
+      expected = "set editor 'emacs'"
+      conf_path = File.join(Dir.pwd, "test")
+      assert_equal expected, Control.new(conf_path).set_editor("emacs")
+    end
+  end
+
+  sub_test_case "Edit Help" do
+    test "edit_help" do
+      expected = 
+      conf_path = File.join(Dir.pwd, "test")
+      assert_equal expected, Control.new(conf_path).edit_help("my_help_test")
+    end
+  end
 end
