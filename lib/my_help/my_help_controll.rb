@@ -1,21 +1,15 @@
 # -*- coding: utf-8 -*-
-<<<<<<< HEAD
 require "fileutils"
 require "yaml"
 require_relative "./config"
-=======
-require 'fileutils'
-require 'yaml'
-require_relative './config'
-require_relative './my_help_list'
->>>>>>> ab1dd5fac33b3b947504ddda5616e37ebf849be2
+require_relative "./my_help_list"
 
 module MyHelp
   WrongFileName = Class.new(RuntimeError)
 
   class Control
     include MyHelpList
-    
+
     attr_accessor :local_help_dir, :editor
 
     def initialize(conf_path = nil)
@@ -64,20 +58,9 @@ module MyHelp
     end
 
     def list_help(file)
-<<<<<<< HEAD
       file_path = File.join(@conf[:local_help_dir], file + ".org")
-      output = ""
-      begin
-        help = auto_load(file_path)
-        help.each_pair do |key, conts|
-          output << conts[:cont] if key == :head
-          output << disp_opts(conts[:opts])
-        end
-=======
-      file_path=File.join(@conf[:local_help_dir],file+'.org')
       begin
         output = help_list(file_path)
->>>>>>> ab1dd5fac33b3b947504ddda5616e37ebf849be2
       rescue
         raise WrongFileName,
               "No help named '#{file}' in '#{@conf[:local_help_dir]}'."
@@ -110,15 +93,17 @@ module MyHelp
       end
     end
 
-    def init_help(file)
+    def init_help(file = nil)
       if file.nil?
         puts "specify NAME".red
-        exit
+        #exit
+        return
       end
       p target_help = File.join(@conf[:local_help_dir], file + ".org")
       if File::exists?(target_help)
         puts "File exists. delete it first to initialize it."
-        exit
+        #exit
+        return
       end
       p template = File.join(@conf[:template_dir], "help_template.org")
       FileUtils::Verbose.cp(template, target_help)
@@ -189,21 +174,5 @@ module MyHelp
       }
       return entries
     end
-
-<<<<<<< HEAD
-    def auto_load(file_path)
-      case File.extname(file_path)
-      #      when '.yml'
-      #        cont = YAML.load(File.read(file_path))
-      when ".org"
-        cont = OrgToYaml.new(file_path).help_cont
-      else
-        puts "Not handling file types of #{file_path}"
-        cont = nil
-      end
-      cont
-    end
-=======
->>>>>>> ab1dd5fac33b3b947504ddda5616e37ebf849be2
   end
 end
