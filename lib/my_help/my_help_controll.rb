@@ -1,8 +1,15 @@
 # -*- coding: utf-8 -*-
+<<<<<<< HEAD
+require "fileutils"
+require "yaml"
+require_relative "./config"
+require_relative "./my_help_list"
+=======
 require 'fileutils'
 require 'yaml'
 require_relative './config'
 require_relative './my_help_list'
+>>>>>>> 170128f31e24b5c8547edc4d48653a5648261ddd
 
 module MyHelp
   WrongFileName = Class.new(RuntimeError)
@@ -58,7 +65,11 @@ module MyHelp
     end
 
     def list_help(file)
+<<<<<<< HEAD
+      file_path = File.join(@conf[:local_help_dir], file + ".org")
+=======
       file_path=File.join(@conf[:local_help_dir],file+'.org')
+>>>>>>> 170128f31e24b5c8547edc4d48653a5648261ddd
       begin
         output = help_list(file_path)
       rescue
@@ -85,15 +96,17 @@ module MyHelp
       end
     end
 
-    def init_help(file)
+    def init_help(file = nil)
       if file.nil?
         puts "specify NAME".red
-        exit
+        #exit
+        return
       end
       p target_help = File.join(@conf[:local_help_dir], file + ".org")
       if File::exists?(target_help)
         puts "File exists. delete it first to initialize it."
-        exit
+        #exit
+        return
       end
       p template = File.join(@conf[:template_dir], "help_template.org")
       FileUtils::Verbose.cp(template, target_help)
