@@ -1,8 +1,15 @@
 # -*- coding: utf-8 -*-
+<<<<<<< HEAD
 require "fileutils"
 require "yaml"
 require_relative "./config"
 require_relative "./my_help_list"
+=======
+require 'fileutils'
+require 'yaml'
+require_relative './config'
+require_relative './my_help_list'
+>>>>>>> 170128f31e24b5c8547edc4d48653a5648261ddd
 
 module MyHelp
   WrongFileName = Class.new(RuntimeError)
@@ -58,7 +65,11 @@ module MyHelp
     end
 
     def list_help(file)
+<<<<<<< HEAD
       file_path = File.join(@conf[:local_help_dir], file + ".org")
+=======
+      file_path=File.join(@conf[:local_help_dir],file+'.org')
+>>>>>>> 170128f31e24b5c8547edc4d48653a5648261ddd
       begin
         output = help_list(file_path)
       rescue
@@ -71,16 +82,8 @@ module MyHelp
     WrongItemName = Class.new(RuntimeError)
 
     def show_item(file, item)
-      output = ""
-      file_path = File.join(@conf[:local_help_dir], file + ".org")
-      help = auto_load(file_path)
-      select = select_item(help, item)
-      output << help[:head][:cont]
-      unless select
-        raise WrongItemName, "No item entry: #{item}"
-      end
-      output << "-" * 5 + "\n" + select.to_s.green + "\n"
-      output << help[select][:cont]
+      file_path=File.join(@conf[:local_help_dir],file+'.org')
+      item_list(file_path, item)
     end
 
     def edit_help(file)
@@ -136,39 +139,11 @@ module MyHelp
 
     private
 
-    def select_item(help, item)
-      o_key = nil
-      help.each_pair do |key, cont|
-        next if key == :license or key == :head
-        if cont[:opts][:short] == item or cont[:opts][:long] == item
-          o_key = key
-          break
-        end
-      end
-      o_key
-    end
-
-    def disp_opts(conts)
-      output = ""
-      col = 0
-      conts.each_pair do |key, item|
-        case col
-        when 0; output << item.rjust(5) + ", "
-        when 1; output << item.ljust(15) + ": "
-        else; output << item         end
-        col += 1
-      end
-      output << "\n"
-    end
-
     def local_help_entries
       entries = []
       Dir.entries(@conf[:local_help_dir]).each { |file|
-        #        next unless file.include?('_')
-        next if file[0] == "#" or file[-1] == "~" or file[0] == "."
-        #        next if file.match(/(.+)_e\.org/) # OK?
-        #        next if file.match(/(.+)\.html/)
-        if file.match(/(.+)\.org$/) # OK?
+        next if file[0] == "#" or file[0] == "."
+        if File.extname(file) == '.org' # OK?
           entries << file
         end
       }

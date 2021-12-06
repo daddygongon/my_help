@@ -7,7 +7,11 @@ module MyHelp
       file = args[0]
       item = args[1]
       if file =~ /^\./
-        puts MyHelpList.help_list(file)
+        if item.nil?
+          puts MyHelpList.help_list(file)
+        else
+          puts MyHelpList.item_list(file, item)
+        end
         exit
       end
       invoke :setup
