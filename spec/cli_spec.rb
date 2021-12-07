@@ -1,14 +1,26 @@
 require 'spec_helper'
 
 RSpec.describe 'my_help', type: :aruba do
-    context 'version option' do
-        before(:each){run_command('my_help version')}
-        it { expect(last_command_started).to be_successfully_executed}
-        it { expect(last_command_started).to have_output("0.9.0") }
-    end
+  context 'set editor' do
+    expected = <<~EXPECTED
+    my_help called with 'emacs'
+    set editor 'emacs'
+    EXPECTED
 
-    context "# default help" do
-      expected = <<~EXPECTED
+    before(:each){run_command('my_help set_editor emacs')}
+    it { expect(last_command_started).to be_successfully_executed}
+    it { expect(last_command_started).to have_output(expected) }
+  end
+
+  context 'version option' do
+    before(:each){run_command('my_help version')}
+    it { expect(last_command_started).to be_successfully_executed}
+    it { expect(last_command_started).to have_output("0.9.0") }
+  end
+
+
+  context "# default help" do
+    expected = <<~EXPECTED
        Commands:
          my_help delete HELP             # delete HELP
          my_help edit HELP               # edit HELP
@@ -20,11 +32,13 @@ RSpec.describe 'my_help', type: :aruba do
          my_help setup                   # set up the test database
          my_help version                 # show version
        EXPECTED
-       
-       before(:each) { run_command("my_help") }
-       it { expect(last_command_started).to be_successfully_executed }
-       it { expect(last_command_started).to have_output(expected) }
-    end
+    
+    before(:each) { run_command("my_help") }
+    it { expect(last_command_started).to be_successfully_executed }
+    it { expect(last_command_started).to have_output(expected) }
   end
+
+
 end
+
 

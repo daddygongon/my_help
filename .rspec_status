@@ -1,20 +1,10 @@
-<<<<<<< HEAD
 example_id                      | status | run_time        |
 ------------------------------- | ------ | --------------- |
-./spec/cli_spec.rb[1:1:1]       | passed | 0.21335 seconds |
-./spec/cli_spec.rb[1:1:2]       | passed | 0.21759 seconds |
-./spec/cli_spec.rb[1:2:1]       | passed | 0.21759 seconds |
-./spec/cli_spec.rb[1:2:2]       | passed | 0.21718 seconds |
-./spec/my_help_spec.rb[1:1]     | passed | 0.001 seconds   |
-./spec/my_help_spec.rb[1:2:1:1] | failed | 0.00006 seconds |
-=======
-example_id                  | status | run_time        |
---------------------------- | ------ | --------------- |
-./spec/cli_spec.rb[1:1:1]   | passed | 0.20778 seconds |
-./spec/cli_spec.rb[1:1:2]   | passed | 0.21034 seconds |
-./spec/cli_spec.rb[1:2:1]   | passed | 0.20902 seconds |
-./spec/cli_spec.rb[1:2:2]   | failed | 0.21656 seconds |
-./spec/cli_spec.rb[1:3:1]   | passed | 0.2152 seconds  |
-./spec/cli_spec.rb[1:3:2]   | failed | 0.2102 seconds  |
-./spec/my_help_spec.rb[1:1] | passed | 0.00035 seconds |
->>>>>>> b1a84f9476e0d0d6c7f67690d0145f2a4f57deb2
+./spec/cli_spec.rb[1:1:1]       | passed | 0.21482 seconds |
+./spec/cli_spec.rb[1:1:2]       | failed | 0.2259 seconds  |
+./spec/cli_spec.rb[1:2:1]       | passed | 0.21786 seconds |
+./spec/cli_spec.rb[1:2:2]       | passed | 0.22005 seconds |
+./spec/cli_spec.rb[1:3:1]       | passed | 0.21335 seconds |
+./spec/cli_spec.rb[1:3:2]       | failed | 0.21783 seconds |
+./spec/my_help_spec.rb[1:1]     | passed | 0.0013 seconds  |
+./spec/my_help_spec.rb[1:2:1:1] | failed | 0.00009 seconds |
