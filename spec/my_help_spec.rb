@@ -7,13 +7,4 @@ RSpec.describe MyHelp do
   it "has a version number" do
     expect(MyHelp::VERSION).not_to be nil
   end
-
-  describe "MyHelp::SetEditor" do
-    subject(:set_editor) {MyHelp::SetEditor.new}
-
-    describe "run with an arg 'moeko'" do
-      it {expect(set_editor.start('moeko')).to eq('my_help called with moeko
-        set editor moeko')}
-    end
-  end
 end
