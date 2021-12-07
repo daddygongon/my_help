@@ -34,6 +34,7 @@ class MyHelpTest < Test::Unit::TestCase
         List all helps
                org: - emacs org-modeのhelp
               todo: - my todo
+        my_help_test: - ヘルプのサンプル雛形
              emacs: - Emacs key bind
       EXPECTED
       #assert_block do
@@ -78,7 +79,6 @@ class MyHelpTest < Test::Unit::TestCase
 
   sub_test_case "Edit Help" do
     test "edit_help" do
-
       puts "
             システムコールが呼ばれているのでテストできません．
             edit_helpでは，thorでmy_help_test.orgなどが呼ばれたときに，呼ばれるものである．
@@ -86,13 +86,12 @@ class MyHelpTest < Test::Unit::TestCase
             memberの時にはシステムコールがされる．
             ところがこれをtestすることはできない為，今は先送りしています．
             "
-     # expected = target_help
-     # conf_path = File.join(Dir.pwd, "test")
-     # assert_equal expected, Control.new(conf_path).edit_help("my_help_test")
+      # expected = target_help
+      # conf_path = File.join(Dir.pwd, "test")
+      # assert_equal expected, Control.new(conf_path).edit_help("my_help_test")
     end
   end
 
- 
   sub_test_case "Local Help Entries" do
     test "init_help" do
       conf_path = File.join(Dir.pwd, "test")
@@ -104,8 +103,7 @@ class MyHelpTest < Test::Unit::TestCase
     end
     test "edit_help" do
       conf_path = File.join(Dir.pwd, "test")
-#      puts Control.new(conf_path).edit_help("my_help_test")
+      #      puts Control.new(conf_path).edit_help("my_help_test")
     end
-    
   end
 end
