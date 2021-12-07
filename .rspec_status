@@ -1,9 +1,9 @@
 example_id                  | status | run_time        |
 --------------------------- | ------ | --------------- |
-./spec/cli_spec.rb[1:1:1]   | passed | 0.20778 seconds |
-./spec/cli_spec.rb[1:1:2]   | passed | 0.21034 seconds |
-./spec/cli_spec.rb[1:2:1]   | passed | 0.20902 seconds |
-./spec/cli_spec.rb[1:2:2]   | failed | 0.21656 seconds |
-./spec/cli_spec.rb[1:3:1]   | passed | 0.2152 seconds  |
-./spec/cli_spec.rb[1:3:2]   | failed | 0.2102 seconds  |
+./spec/cli_spec.rb[1:1:1]   | passed | 0.2093 seconds  |
+./spec/cli_spec.rb[1:1:2]   | passed | 0.20958 seconds |
+./spec/cli_spec.rb[1:2:1]   | passed | 0.2087 seconds  |
+./spec/cli_spec.rb[1:2:2]   | failed | 0.21468 seconds |
+./spec/cli_spec.rb[1:3:1]   | passed | 0.21085 seconds |
+./spec/cli_spec.rb[1:3:2]   | failed | 0.21007 seconds |
 ./spec/my_help_spec.rb[1:1] | passed | 0.00035 seconds |
