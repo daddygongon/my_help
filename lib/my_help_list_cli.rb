@@ -1,5 +1,3 @@
-
-
 module MyHelp
   class CLI < Thor
     desc "list [HELP] [ITEM]",
@@ -7,8 +5,7 @@ module MyHelp
     def list(*args)
       invoke :setup
 
-      file = args[0]
-      item = args[1]
+      file, item = args
       if file =~ /^\./ # if file='./README.org', output it
         if item.nil?
           puts MyHelpList.help_list(file)

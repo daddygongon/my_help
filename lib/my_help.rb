@@ -51,7 +51,11 @@ module MyHelp
       invoke :setup
       $control = Control.new(options[:dir]) # my_help called with target_dir
 
-      puts $control.init_help(help_name)
+      begin
+        $control.init_help(help_name)
+      rescue Error => e
+        puts e
+      end
     end
 
     desc "delete HELP", "delete HELP"
