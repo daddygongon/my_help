@@ -2,8 +2,8 @@
 
 module MyHelp
   class CLI < Thor
-    desc "list [HELP] [ITEM] -d=\'./test\'",
-    'list all helps, specific HELP, or ITEM with target dir'
+    desc "list [HELP] [ITEM]",
+    'list all helps, specific HELP, or ITEM'
     def list(*args)
       invoke :setup
 
