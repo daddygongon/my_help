@@ -1,18 +1,13 @@
 # -*- coding: utf-8 -*-
-<<<<<<< HEAD
 require "fileutils"
 require "yaml"
 require_relative "./config"
 require_relative "./my_help_list"
-=======
-require 'fileutils'
-require 'yaml'
-require_relative './config'
-require_relative './my_help_list'
->>>>>>> 170128f31e24b5c8547edc4d48653a5648261ddd
 
 module MyHelp
   WrongFileName = Class.new(RuntimeError)
+  class Error < StandardError
+  end
 
   class Control
     include MyHelpList
@@ -65,11 +60,7 @@ module MyHelp
     end
 
     def list_help(file)
-<<<<<<< HEAD
       file_path = File.join(@conf[:local_help_dir], file + ".org")
-=======
-      file_path=File.join(@conf[:local_help_dir],file+'.org')
->>>>>>> 170128f31e24b5c8547edc4d48653a5648261ddd
       begin
         output = help_list(file_path)
       rescue
@@ -82,7 +73,7 @@ module MyHelp
     WrongItemName = Class.new(RuntimeError)
 
     def show_item(file, item)
-      file_path=File.join(@conf[:local_help_dir],file+'.org')
+      file_path = File.join(@conf[:local_help_dir], file + ".org")
       item_list(file_path, item)
     end
 
@@ -97,18 +88,10 @@ module MyHelp
     end
 
     def init_help(file = nil)
-      if file.nil?
-        puts "specify NAME".red
-        #exit
-        return
-      end
-      p target_help = File.join(@conf[:local_help_dir], file + ".org")
-      if File::exists?(target_help)
-        puts "File exists. delete it first to initialize it."
-        #exit
-        return
-      end
-      p template = File.join(@conf[:template_dir], "help_template.org")
+      raise Error, "Specify NAME" if file.nil?
+      target_help = File.join(@conf[:local_help_dir], file + ".org")
+      raise Error, "File exists. Delete it first to initialize it." if File::exist?(target_help)
+      template = File.join(@conf[:template_dir], "help_template.org")
       FileUtils::Verbose.cp(template, target_help)
     end
 
@@ -143,7 +126,7 @@ module MyHelp
       entries = []
       Dir.entries(@conf[:local_help_dir]).each { |file|
         next if file[0] == "#" or file[0] == "."
-        if File.extname(file) == '.org' # OK?
+        if File.extname(file) == ".org" # OK?
           entries << file
         end
       }

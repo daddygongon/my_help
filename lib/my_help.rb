@@ -14,22 +14,25 @@ require "my_help/org2yml"
 
 module MyHelp
   class CLI < Thor
-    desc("setup", "set up the test database")
+    class_option :dir, type: :string, aliases: :d
+
+
+    desc "setup", "set up the test database"
 
     def setup(*args)
       puts "my_help called with '%s'" % args.join(" ")
-      $control = Control.new
+      puts "> default target dir : #{options[:dir]}" if options[:dir]
+      $control = Control.new(options[:dir]) # my_help called with target_dir
+      # if nil it will be handled in Control::initialize
     end
 
     desc "version", "show version"
-
     def version
       #invoke :setup
       puts VERSION
     end
 
     desc "set_editor EDITOR_NAME", "set editor to EDITOR_NAME"
-
     def set_editor(editor_name)
       invoke :setup
       puts $control.set_editor(editor_name)
@@ -46,7 +49,9 @@ module MyHelp
 
     def new(help_name)
       invoke :setup
-      $control.init_help(help_name)
+      $control = Control.new(options[:dir]) # my_help called with target_dir
+
+      puts $control.init_help(help_name)
     end
 
     desc "delete HELP", "delete HELP"

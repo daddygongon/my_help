@@ -19,7 +19,7 @@ module MyHelpList
     help = auto_load(file_path)
     select = select_item(help, item) # or nil
     output = begin
-               help[:head][:cont] 
+               help[:head][:cont]
              rescue
                ''
              end
