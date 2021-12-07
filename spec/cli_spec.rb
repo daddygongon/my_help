@@ -26,3 +26,5 @@ RSpec.describe 'my_help', type: :aruba do
        it { expect(last_command_started).to have_output(expected) }
     end
   end
+end
+
