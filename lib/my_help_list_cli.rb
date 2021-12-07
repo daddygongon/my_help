@@ -23,13 +23,13 @@ module MyHelp
         begin
           puts $control.list_help(file) # list [file]
         rescue StandardError => e
-          puts e.to_s.red
+          raise Error, e
         end
       else
         begin
           puts $control.show_item(file, item) # list [file] [item]
         rescue StandardError => e
-          puts e.to_s.red
+          raise Error, e
         end
       end
     end
