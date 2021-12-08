@@ -11,9 +11,9 @@ RSpec.describe 'my_help', type: :aruba do
     # You may need to #stop_all_commands
     # before accessing #stdout of a single command -
     # e.g. #last_command_started.
-    # 英語訳して下さい．
-    # arubaでtestした時は，起動dirが./tmp/arubaらしい．
-    # testの下にあるmy_helpのtest dirを指すように-dで指定している．
+    # Relish英語訳して下さい．
+    # arubaでtestした時は，起動dirが./tmp/arubaらしいです．．
+    # testの下にあるmy_helpのtest dirを指すように-dで指定してね．
     it { expect(last_command_started.stdout).to match expected }
   end
 
@@ -21,14 +21,14 @@ RSpec.describe 'my_help', type: :aruba do
     expected = /set editor 'emacs'/
 
     let(:my_help){run_command("my_help set_editor emacs -d=\'../../test\'")}
-    # beforeではなく，letで変数に代入．
+    # beforeではなく，letで変数(:my_helpa)に代入．
     it { expect(my_help).to have_output(expected) }
   end
 
   context 'version option' do
     before(:each){run_command('my_help version')}
     it { expect(last_command_started).to be_successfully_executed}
-    it { expect(last_command_started).to have_output("0.9.0") }
+    it { expect(last_command_started).to have_output("1.0b") }
   end
 
 
