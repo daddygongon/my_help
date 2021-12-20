@@ -23,7 +23,7 @@ RSpec.describe 'my_help', type: :aruba do
     expected = /set editor 'emacs'/
 
     let(:my_help){run_command("my_help set_editor emacs -d=\'../../test\'")}
-    # beforeではなく，letで変数(:my_helpa)に代入．
+    # beforeではなく，letで変数(:my_help)に代入．
     it { expect(my_help).to have_output(expected) }
   end
 
@@ -49,6 +49,22 @@ RSpec.describe 'my_help', type: :aruba do
     before(:each) { run_command("my_help")}
     before(:each) { stop_all_commands }
     it { expect(last_command_started.stdout).to start_with expected }
+  end
+
+  context "command list" do
+    expected = <<~EXPECTED
+  my_help called with ''
+  > default target dir : ../../test
+
+  List all helps
+         org: - emacs org-modeのhelp
+        todo: - my todo
+  my_help_test: - ヘルプのサンプル雛形
+       emacs: - Emacs key bind
+  EXPECTED
+    before(:each) { run_command ("my_help list -d=\'../../test\'") }
+    it { expect(last_command_started).to be_successfully_executed }
+    it { expect(last_command_started).to eq(expected) }
   end
 end
 
