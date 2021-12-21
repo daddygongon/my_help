@@ -16,11 +16,21 @@ module MyHelp
   class CLI < Thor
     class_option :dir, type: :string, aliases: :d
 
+    # puts not only help file but command itself
+    # puts this expression on the top level
+    puts "my_help called with '%s'" % ARGV.join(" ")
+
+    # THOR to SILENCE DEPRECATION
+    # https://qiita.com/tbpgr/items/5edb1454634157ff816d
+    class << self
+      def exit_on_failure?
+        true
+      end
+    end
 
     desc "setup", "set up the test database"
 
     def setup(*args)
-      puts "my_help called with '%s'" % args.join(" ")
       puts "> default target dir : #{options[:dir]}" if options[:dir]
       $control = Control.new(options[:dir]) # my_help called with target_dir
       # if nil it will be handled in Control::initialize
@@ -50,10 +60,9 @@ module MyHelp
     def new(help_name)
       invoke :setup
       $control = Control.new(options[:dir]) # my_help called with target_dir
-
       begin
         $control.init_help(help_name)
-      rescue Error => e
+      rescue => e
         puts e
       end
     end

@@ -88,9 +88,11 @@ module MyHelp
     end
 
     def init_help(file = nil)
-      raise Error, "Specify NAME" if file.nil?
       target_help = File.join(@conf[:local_help_dir], file + ".org")
-      raise Error, "File exists. Delete it first to initialize it." if File::exist?(target_help)
+      if File::exist?(target_help)
+        raise Error,
+        "Warning: \'#{target_help}\' exists.  If sure, delete it first."
+      end
       template = File.join(@conf[:template_dir], "help_template.org")
       FileUtils::Verbose.cp(template, target_help)
     end
