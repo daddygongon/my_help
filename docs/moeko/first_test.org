@@ -1,24 +1,31 @@
-# 最初のテストHello
-
+#+qiita_private: ebc698d7658691a18387
+#+OPTIONS: ^:{}
+#+STARTUP: indent nolineimages
+#+OPTIONS:   toc:nil
+#+TAG: Ruby, test, my_help
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
+* 最初のテストHello
+  :PROPERTIES:
+  :CUSTOM_ID: 最初のテストhello
+  :END:
 最初のテストとしてHelloをテストしていく．
 
 chmodファイル名やディレクトリーのアクセス権を変更できる．
 下記では全ての権限を実行可能にしている．
 
-```
+#+begin_example
 chmod a+x exe/learner         
-```   
+#+end_example
 
 chmodについて参考資料
 
-[chmodとは](https://xtech.nikkei.com/it/article/COLUMN/20060227/230728/)
+[[https://xtech.nikkei.com/it/article/COLUMN/20060227/230728/][chmodとは]]
 
-
-
-## Helloをlib(library)に作成する．
-
-
-```learner/lib/learner.rb
+** Helloをlib(library)に作成する．
+   :PROPERTIES:
+   :CUSTOM_ID: helloをliblibraryに作成する
+   :END:
+#+begin_example
 require_relative "hello_thor/version"
 
 module HelloThor
@@ -32,27 +39,25 @@ module HelloThor
     end
   end
 end
-```
+#+end_example
 
 以下のように実行すると，
 
-```bash
+#+begin_src sh
 > bundle exec exe/learner 
-```
-
+#+end_src
 
 エラーが表示．
 
-```
+#+begin_example
 ~中略~
 最後行
 /Users/higashibatamoeko/learner/lib/learner.rb:9:in `run': wrong number of arguments (given 1, expected 0) (ArgumentError)
-
-```
+#+end_example
 
 runが引数不足ということなので，
 
-```learner/lib/learner.rb
+#+begin_example
 require_relative "hello_thor/version"
 
 module HelloThor
@@ -66,25 +71,26 @@ module HelloThor
     end
   end
 end
-```
+#+end_example
 
 もう一度実行すると，
 
-```bash
+#+begin_src sh
 > bundle exec exe/learner                                                        
 Hello world.
-```
+#+end_src
 
-注意
-- class名はキャメルケースで書く．
+注意 - class名はキャメルケースで書く．
 
-## Rspecに書き換え
-
+** Rspecに書き換え
+   :PROPERTIES:
+   :CUSTOM_ID: rspecに書き換え
+   :END:
 最初に，
 
-```bash
+#+begin_src sh
 > rake spec
-```
+#+end_src
 
 testをやっているようなもの．
 
@@ -92,7 +98,7 @@ testをやっているようなもの．
 
 エラーの内容．
 
-```bash
+#+begin_src sh
 ~中略~
 Learner
   has a version number
@@ -123,15 +129,14 @@ Failed examples:
 rspec ./spec/learner_spec.rb:8 # Learner does something useful
 
 ~以下省略~
-```
+#+end_src
 
-エラー内容をみると，
-spec/learner_spec.rb:8 # Learner does something useful
-ここが失敗していると出ている！
+エラー内容をみると， spec/learner_spec.rb:8 # Learner does something
+useful ここが失敗していると出ている！
 
 中身を見てみると，
 
-```spec/hello_thor_spec.rb
+#+begin_example
 # frozen_string_literal: true
 
 RSpec.describe HelloThor do
@@ -143,11 +148,11 @@ RSpec.describe HelloThor do
     expect(true).to eq(true)
   end
 end
-```
+#+end_example
+
 does something usefulを変えていく．
 
-
-```spec/learner_spec.rb
+#+begin_example
 # frozen_string_literal: true
 
 RSpec.describe Learner do
@@ -168,36 +173,37 @@ RSpec.describe Learner do
 
   end
 end
-```
-
+#+end_example
 
 RSpec参考資料
 
-[basic structure('describe/it')]("https://relishapp.com/rspec/rspec-core/v/3-8/docs/example-groups/basic-structure-describe-it")
-[The RSpec Style Guide]('https://rspec.rubystyle.guide/#introduction')
+[[file:%22https://relishapp.com/rspec/rspec-core/v/3-8/docs/example-groups/basic-structure-describe-it%22][basic
+structure('describe/it')]]
+[[file:'https://rspec.rubystyle.guide/#introduction'][The RSpec Style
+Guide]]
 
 - describeは記述するということ．
 - subjectは主語(誰が？)今回はlearnerのhelloが．．．となる.
 
-
-## Thor
-
+** Thor
+   :PROPERTIES:
+   :CUSTOM_ID: thor
+   :END:
 まず，Thorを入れなければいけないが，それは前記事にて説明済み.
-
 
 現在，以下のように打つと，
 
-```bash
+#+begin_src sh
 > bundle exec exe/learner
-```
+#+end_src
 
-```
+#+begin_example
 Hello world.
-```
+#+end_example
 
 と返ってくるだけだが，これをhelp画面がかえってくるようにしたい．
 
-```lib/cli.rb
+#+begin_example
 # frozen_string_literal: true
 
 require_relative "learner/version"
@@ -216,36 +222,37 @@ module Learner
     end
   end
 end
-```
+#+end_example
 
 次にCLIを呼ぶ.
 元々classを呼んでいた，Learner::Hello.new.run(ARGV.shift)はコメントアウトして，以下のようにする．
 
-```exe/learner
+#+begin_example
 #!/usr/bin/env ruby
 
 require "learner"
 require "cli"
 
 Learner::CLI.start(ARGV)
-```
+#+end_example
 
 以下のように実行すると，help画面として出てきた．
 
-```bash
+#+begin_src sh
 bundle exec exe/learner                                                      208ms  木 12/ 2 14:06:47 2021
 Commands:
   learner hello           # hello
   learner help [COMMAND]  # Describe available commands or one specific command
   learner version         # version
-```
+#+end_src
 
-## Aruba
-
+** Aruba
+   :PROPERTIES:
+   :CUSTOM_ID: aruba
+   :END:
 CLAをテストするのを手助けしてくれるもの．
 
-
-```spec/cli_spec.rb
+#+begin_example
  1  require 'spec_helper'
  2  
  3  RSpec.describe 'hello_thor', type: :aruba do
@@ -267,11 +274,11 @@ CLAをテストするのを手助けしてくれるもの．
 19      it { expect(last_command_started).to have_output("Hello Rudy.") }
 20    end
 21  end
-```
+#+end_example
 
 これをテストすると，
 
-```bash
+#+begin_src sh
 > bundle exec rspec spec/cli_spec.rb
 
 hello_thor
@@ -290,7 +297,7 @@ hello_thor
 
 Finished in 1.07 seconds (files took 0.08791 seconds to load)
 8 examples, 0 failures
-```
+#+end_src
 
 テストが無事通っている．
 
@@ -298,22 +305,10 @@ Finished in 1.07 seconds (files took 0.08791 seconds to load)
 - learnerを直接叩く.
 - コマンドラインにあるものをそのまま叩ける.
 
+* 参考資料
+  :PROPERTIES:
+  :CUSTOM_ID: 参考資料
+  :END:
 
-# 参考資料
-
-- [Day 8 :Thor and Aruba]('https://qiita.com/daddygongon/private/db15283b51d4388051f2')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- [[file:'https://qiita.com/daddygongon/private/db15283b51d4388051f2'][Day
+  8 :Thor and Aruba]]

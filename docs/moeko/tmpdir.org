@@ -1,13 +1,23 @@
-# temdirをtestで使えるように理解する
-
-## 初めに
-
+#+qiita_private: 8f5a62ac589c3e1bfe10
+#+OPTIONS: ^:{}
+#+STARTUP: indent nolineimages
+#+OPTIONS:   toc:nil
+#+TAG: Ruby, test, my_help
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
+* temdirをtestで使えるように理解する
+  :PROPERTIES:
+  :CUSTOM_ID: temdirをtestで使えるように理解する
+  :END:
+** 初めに
+   :PROPERTIES:
+   :CUSTOM_ID: 初めに
+   :END:
 tmpdirをtestに書こうと思ったが，理解に苦しんだため自分が理解した所までをメモとして残しておくことにした．
 
 tmpdirはlearnerでも使っていた．
 なんでtmpdirを使わないといけないのか，それはlistを表示させた時に生じる問題があるからだ．
 
-```bash
+#+begin_src sh
 >  my_help list                                                                     
 my_help called with ''
 
@@ -17,54 +27,58 @@ List all helps
       todo: - my todo
       HELP: - ヘルプのサンプル雛形
      emacs: - Emacs key bind
-```
+#+end_src
 
 上記はmy_help listを表示させた時である．
 これではtesterによって環境が違う為，テストに再現性がなくなってしまう．これが問題である．
 
 そこでtmpdirを使ってこの問題を解消しようとした．
 
-
-## temdirとは
-
+** temdirとは
+   :PROPERTIES:
+   :CUSTOM_ID: temdirとは
+   :END:
 temporary = 一時的
 
 temporary file = 一時的なファイル
 
 その名も通りそのclassの中のみで一時的に作成されるファイルであり，そのclassを抜けるときに削除されるものである．
 
-## .my_helpでのtemporary file の作り方
+** .my_helpでのtemporary file の作り方
+   :PROPERTIES:
+   :CUSTOM_ID: my_helpでのtemporary-file-の作り方
+   :END:
+ここではtemporary fileの作り方を記す． まず，Dir.tmpdirを表示させる．
 
-ここではtemporary fileの作り方を記す．
-まず，Dir.tmpdirを表示させる．
-
-```bash
+#+begin_src sh
 > p Dir.tmpdir
 "/var/folders/39/679vp6x167n83277zc8_nrqr0000gn/T"←環境に依存するため人によって違う
 => "/var/folders/39/679vp6x167n83277zc8_nrqr0000gn/T"←環境に依存するため人によって違う
-```
+#+end_src
+
 Dir.tmpdirをtmpdirに代入する．
 
-```bash
+#+begin_src sh
 > tmpdir = Dir.tmpdir
-```
+#+end_src
 
 File.joinを使ってtemporary fileを作る
 
-```bash
+#+begin_src sh
 > Dir.mkdir(File.join(tmpdir,'.my_help')
-```
+#+end_src
 
 Dir.mkdirは()で指定された新しいディレクトリを作る．
 ()の中ではFile.joinでtmpdirと.my_helpをくっつける．
 
-```bash
+#+begin_src sh
 > File.exist?(tmpdir)
-```
+#+end_src
 
 これでtpmdirが消えることになる．
 
-## 方針・わからないこと
-
+** 方針・わからないこと
+   :PROPERTIES:
+   :CUSTOM_ID: 方針わからないこと
+   :END:
 tmpdirでできることは理解した．ただテストでどう活かしていけば良いのかがわからない．
-
