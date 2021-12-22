@@ -30,11 +30,11 @@ RSpec.describe 'my_help', type: :aruba do
   context 'version option' do
     before(:each){run_command('my_help version')}
     it { expect(last_command_started).to be_successfully_executed}
-    it { expect(last_command_started).to have_output("1.0b") }
+    it { expect(last_command_started).to have_output(/1.0b/) }
   end
 
   context "default help" do
-    expected = /^Commands:/
+    expected = /Commands:/
     # 長い出力の全文を一致させるのではなく，
     # 最初だけを示すRegExpに一致させるように変更
     let(:my_help){ run_command("my_help") }
@@ -42,7 +42,7 @@ RSpec.describe 'my_help', type: :aruba do
   end
 
   context "default help start_with matcher" do
-    expected = "Commands:"
+    expected = "my_help called with ''"
     # stop_all_commandsを使って，stdoutを取り出し，start_withを試した
     # とりあえず，こんなぐらいあればrspecは書けるかな？
     # raise_errorを試したい．．．
@@ -53,7 +53,7 @@ RSpec.describe 'my_help', type: :aruba do
 
   context "command list" do
     expected = <<~EXPECTED
-  my_help called with ''
+  my_help called with 'list -d=../../test'
   > default target dir : ../../test
 
   List all helps
@@ -63,8 +63,10 @@ RSpec.describe 'my_help', type: :aruba do
        emacs: - Emacs key bind
   EXPECTED
     before(:each) { run_command ("my_help list -d=\'../../test\'") }
+    before(:each) { stop_all_commands }
+    it { puts last_command_started.stdout }
     it { expect(last_command_started).to be_successfully_executed }
-    it { expect(last_command_started).to eq(expected) }
+    it { expect(last_command_started.stdout).to eq(expected) }
   end
 end
 
