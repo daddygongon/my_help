@@ -1,0 +1,44 @@
+#+OPTIONS: ^:{}
+#+STARTUP: indent nolineimages
+#+TITLE: title
+#+AUTHOR: Moeko Higashibata
+#+EMAIL:     (concat "ewh42930@kwansei.ac.jp")
+#+LANGUAGE:  jp
+# +OPTIONS:   H:4 toc:t num:2
+#+OPTIONS:   toc:nil
+#+TAG: hoge, hoge2
+#+TWITTER: off
+# +SETUPFILE: ~/.emacs.d/org-mode/theme-readtheorg.setup
+
+- [[file:./template_rspec.org]]
+
+[[https://qiita.com/mek001/private/12c94d368e9a28462734]]
+- [[file:./first_test.org]]
+
+[[https://qiita.com/mek001/private/ebc698d7658691a18387]]
+- [[file:./git_hub_rnvironmental.org]]
+
+[[https://qiita.com/mek001/private/d36b040367a8fb17e535]]
+- [[file:./example_dir.org]]
+
+[[https://qiita.com/mek001/private/6aa9ee370537a00d30d3]]
+- [[file:./stop_all_command.org]]
+
+[[https://qiita.com/mek001/private/7d52a3c172cbd0aa6abe]]
+- [[file:./each_command_place.org]]
+
+[[https://qiita.com/mek001/private/6c940ee3e229f455ed15]]
+- [[file:./tmpdir.org]]
+
+[[https://qiita.com/mek001/private/8f5a62ac589c3e1bfe10]]
+- [[file:./environmental.org]]
+
+[[https://qiita.com/mek001/private/a824683705cf79a8f296]]
+- [[file:./new_delete_command.org]]
+
+[[https://qiita.com/mek001/private/83b80898afd6257e9cfc]]
+- [[file:./command_test.org]]
+
+[[https://qiita.com/mek001/private/1dba2516b80835de1d12]]
+
+

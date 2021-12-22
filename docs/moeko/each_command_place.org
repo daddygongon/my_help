@@ -1,0 +1,48 @@
+#+qiita_private: 6c940ee3e229f455ed15
+#+OPTIONS: ^:{}
+#+STARTUP: indent nolineimages
+#+OPTIONS:   toc:nil
+#+TAG: Ruby, test, my_help
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
+* my_help 各コマンドを動かしている場所を整理する
+  :PROPERTIES:
+  :CUSTOM_ID: my_help-各コマンドを動かしている場所を整理する
+  :END:
+testを動かす際にローカルで動かしているのか，currentで動かしているのか，
+よくごちゃごちゃになるので，メモとしておいてみた．
+
+** current working directoryを動かす．
+   :PROPERTIES:
+   :CUSTOM_ID: current-working-directoryを動かす
+   :END:
+2つ手段がある 今回はlistを表示させる場合を例として取り上げる．
+
+一つ目は
+
+#+begin_src sh
+> rake install :local
+#+end_src
+
+これで更新された．そして
+
+#+begin_src sh
+> my_help list
+#+end_src
+
+をする
+
+二つ目は
+
+#+begin_src sh
+> bundle exec exe/my_help list
+#+end_src
+
+これのみ．
+
+** localを動かす
+   :PROPERTIES:
+   :CUSTOM_ID: localを動かす
+   :END:
+#+begin_src sh
+> my_help list
+#+end_src

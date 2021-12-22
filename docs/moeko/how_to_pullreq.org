@@ -1,0 +1,45 @@
+#+qiita_private: 6415aa067a3c1abebc49
+#+OPTIONS: ^:{}
+#+STARTUP: indent nolineimages
+#+OPTIONS:   toc:nil
+#+TAG: Ruby, test, my_help
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
+* git hubでpull requestを送る
+  :PROPERTIES:
+  :CUSTOM_ID: git-hubでpull-requestを送る
+  :END:
+** pull_requestとは?
+   :PROPERTIES:
+   :CUSTOM_ID: pull_requestとは
+   :END:
+アプリを共同で開発している際に，他の人が作った箇所の間違いに気づいたりした時に，これではここが動かなかったということをコメント付きで送れるgithubの機能である．
+
+** 方法
+   :PROPERTIES:
+   :CUSTOM_ID: 方法
+   :END:
+まずいつも通り更新をする
+
+#+begin_src sh
+> git add -A
+#+end_src
+
+#+begin_src sh
+> git commit
+#+end_src
+
+#+begin_src sh
+> git push origin main
+#+end_src
+
+conflictもなく無事に更新できたら，
+
+#+begin_src sh
+> pull_request
+#+end_src
+
+とすると，mek001/my_helpのgithubのページが開く． 1.
+そのページから左上のPull requestを開く． 2. 緑のボタンのNew pull
+requestを開く． 3. create new pull requestを押す． 4.
+コメントを書く欄が出てくるため，そこに適宜コメントを入れる． 5.
+そしてCreate pull requestを押すとpull requestができたことになる．
