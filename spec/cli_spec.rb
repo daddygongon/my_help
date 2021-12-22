@@ -68,6 +68,12 @@ RSpec.describe 'my_help', type: :aruba do
     it { expect(last_command_started).to be_successfully_executed }
     it { expect(last_command_started.stdout).to eq(expected) }
   end
+
+  # https://www.jorgemanrubia.com/2017/11/26/testing-a-command-line-tool-with-plain-ruby/
+  # type_when_prompted(*list, &block)
+  # def type_when_prompted(*list, &block)
+  #   $stdin.stub(:gets, proc { list.shift }, &block)
+  # end
 end
 
 
