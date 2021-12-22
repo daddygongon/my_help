@@ -1,14 +1,26 @@
-# my_help commandのテストでdiffが通らない
-
-## 問題点
-
-my_help commandをテストしようとしたが，出力が長すぎてなかなかdiffが通らない．
+#+qiita_private: 1dba2516b80835de1d12
+#+OPTIONS: ^:{}
+#+STARTUP: indent nolineimages
+#+OPTIONS:   toc:nil
+#+TAG: Ruby, test, my_help
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
+* my_help commandのテストでdiffが通らない
+  :PROPERTIES:
+  :CUSTOM_ID: my_help-commandのテストでdiffが通らない
+  :END:
+** 問題点
+   :PROPERTIES:
+   :CUSTOM_ID: 問題点
+   :END:
+my_help
+commandをテストしようとしたが，出力が長すぎてなかなかdiffが通らない．
 diffが起こっているところを見てもどこがずれているのかがわからない.
-また，diffが解消してもdiff emptyと出る．この解決策がわからない．←これは未だに解消法不明
+また，diffが解消してもdiff
+emptyと出る．この解決策がわからない．←これは未だに解消法不明
 
 以下はmy_helpにおける出力結果である．
 
-```bash
+#+begin_src sh
 > my_help
 Commands:
   my_help delete HELP             # delete HELP
@@ -23,14 +35,15 @@ Commands:
 
 Options:
   d, [--dir=DIR]  
-```
+#+end_src
 
-
-## 問題出力
-
+** 問題出力
+   :PROPERTIES:
+   :CUSTOM_ID: 問題出力
+   :END:
 以下のようにテストを行なった．
 
-```ruby:cli_spec.rb
+#+begin_example
   context "default help start_with matcher" do
     expected = <<~EXPECTED
     Commands:
@@ -54,11 +67,11 @@ Options:
     before(:each) { run_command("my_help")}
     it { expect(last_command_started).to have_output(expected) }
   end
-```
+#+end_example
 
 すると，エラーがこのように出てきた．
 
-```bash  
+#+begin_src sh
 default help start_with matcher
     is expected to have output: "Commands:\n  my_help delete HELP             # delete HELP\n  my_help edit HELP               # edit...test database\n  my_help version                 # show version\n\nOptions:\n  d, [--dir=DIR]  \n\n" (FAILED - 1)
 
@@ -95,16 +108,18 @@ Finished in 1.53 seconds (files took 0.1471 seconds to load)
 Failed examples:
 
 rspec ./spec/cli_spec.rb:75 # my_help default help start_with matcher is expected to have output: "Commands:\n  my_help delete HELP             # delete HELP\n  my_help edit HELP               # edit...test database\n  my_help version                 # show version\n\nOptions:\n  d, [--dir=DIR]  \n\n"
-```
+#+end_src
 
 探っても中々解決策が見つからなかったので別の方法でテストを行うことにした．
 
-## 解決方法
-
+** 解決方法
+   :PROPERTIES:
+   :CUSTOM_ID: 解決方法
+   :END:
 解決方法として，冒頭の部分が出力と一致しているとテストを通すことにした．
 以下のような書き方で行う．
 
-```ruby:cli_spec.rb
+#+begin_example
   context "default help" do
     expected = /^Commands:/
     # 長い出力の全文を一致させるのではなく，
@@ -112,25 +127,26 @@ rspec ./spec/cli_spec.rb:75 # my_help default help start_with matcher is expecte
     let(:my_help){ run_command("my_help") }
     it { expect(my_help).to have_output(expected) }
   end
-```
+#+end_example
 
 すると無事テストが通った．
 
-
-
-
-
-# my_help commandのテストでdiffが通らない
-
-## 問題点
-
-my_help commandをテストしようとしたが，出力が長すぎてなかなかdiffが通らない．
+* my_help commandのテストでdiffが通らない
+  :PROPERTIES:
+  :CUSTOM_ID: my_help-commandのテストでdiffが通らない-1
+  :END:
+** 問題点
+   :PROPERTIES:
+   :CUSTOM_ID: 問題点-1
+   :END:
+my_help
+commandをテストしようとしたが，出力が長すぎてなかなかdiffが通らない．
 diffが起こっているところを見てもどこがずれているのかがわからない.
 また，diffが解消してもdiff emptyと出る．この解決策がわからない．
 
 以下はmy_helpにおける出力結果である．
 
-```bash
+#+begin_src sh
 > my_help
 Commands:
   my_help delete HELP             # delete HELP
@@ -145,14 +161,15 @@ Commands:
 
 Options:
   d, [--dir=DIR]  
-```
+#+end_src
 
-
-## 問題出力
-
+** 問題出力
+   :PROPERTIES:
+   :CUSTOM_ID: 問題出力-1
+   :END:
 以下のようにテストを行なった．
 
-```ruby:cli_spec.rb
+#+begin_example
   context "default help start_with matcher" do
     expected = <<~EXPECTED
     Commands:
@@ -176,11 +193,11 @@ Options:
     before(:each) { run_command("my_help")}
     it { expect(last_command_started).to have_output(expected) }
   end
-```
+#+end_example
 
 すると，エラーがこのように出てきた．
 
-```bash  
+#+begin_src sh
 default help start_with matcher
     is expected to have output: "Commands:\n  my_help delete HELP             # delete HELP\n  my_help edit HELP               # edit...test database\n  my_help version                 # show version\n\nOptions:\n  d, [--dir=DIR]  \n\n" (FAILED - 1)
 
@@ -217,16 +234,18 @@ Finished in 1.53 seconds (files took 0.1471 seconds to load)
 Failed examples:
 
 rspec ./spec/cli_spec.rb:75 # my_help default help start_with matcher is expected to have output: "Commands:\n  my_help delete HELP             # delete HELP\n  my_help edit HELP               # edit...test database\n  my_help version                 # show version\n\nOptions:\n  d, [--dir=DIR]  \n\n"
-```
+#+end_src
 
 探っても中々解決策が見つからなかったので別の方法でテストを行うことにした．
 
-## 解決方法
-
+** 解決方法
+   :PROPERTIES:
+   :CUSTOM_ID: 解決方法-1
+   :END:
 解決方法として，冒頭の部分が出力と一致しているとテストを通すことにした．
 以下のような書き方で行う．
 
-```ruby:cli_spec.rb
+#+begin_example
   context "default help" do
     expected = /^Commands:/
     # 長い出力の全文を一致させるのではなく，
@@ -234,11 +253,6 @@ rspec ./spec/cli_spec.rb:75 # my_help default help start_with matcher is expecte
     let(:my_help){ run_command("my_help") }
     it { expect(my_help).to have_output(expected) }
   end
-```
+#+end_example
 
 すると無事テストが通った．
-
-
-
-
-
