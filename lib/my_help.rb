@@ -80,6 +80,7 @@ module MyHelp
       p push_or_pull
       invoke :setup
       argument_size = args.size
+      p $control.local_help_dir
       Dir.chdir($control.local_help_dir) do
         case push_or_pull
         when "push"

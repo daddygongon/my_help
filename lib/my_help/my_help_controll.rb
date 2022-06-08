@@ -6,6 +6,7 @@ require_relative "./my_help_list"
 
 module MyHelp
   WrongFileName = Class.new(RuntimeError)
+
   class Error < StandardError
   end
 
@@ -17,6 +18,8 @@ module MyHelp
     def initialize(conf_path = nil)
       @conf_path = conf_path || ENV["HOME"]
       @conf = Config.new(@conf_path).config
+      @local_help_dir = @conf[:local_help_dir]
+      # for git command in ../my_help.rb, the method shoule be revise in this directory. (22/06/08)
       # puts YAML::dump(@conf)
       set_help_dir_if_not_exists
     end
@@ -91,7 +94,7 @@ module MyHelp
       target_help = File.join(@conf[:local_help_dir], file + ".org")
       if File::exist?(target_help)
         raise Error,
-        "Warning: \'#{target_help}\' exists.  If sure, delete it first."
+              "Warning: \'#{target_help}\' exists.  If sure, delete it first."
       end
       template = File.join(@conf[:template_dir], "help_template.org")
       FileUtils::Verbose.cp(template, target_help)
