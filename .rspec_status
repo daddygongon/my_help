@@ -1,12 +1,13 @@
 example_id                  | status | run_time        |
 --------------------------- | ------ | --------------- |
-./spec/cli_spec.rb[1:1:1]   | passed | 0.41108 seconds |
-./spec/cli_spec.rb[1:2:1]   | passed | 0.2098 seconds  |
-./spec/cli_spec.rb[1:3:1]   | passed | 0.20837 seconds |
-./spec/cli_spec.rb[1:3:2]   | passed | 0.21137 seconds |
-./spec/cli_spec.rb[1:4:1]   | passed | 0.2089 seconds  |
-./spec/cli_spec.rb[1:5:1]   | passed | 0.20845 seconds |
-./spec/cli_spec.rb[1:6:1]   | passed | 0.20765 seconds |
-./spec/cli_spec.rb[1:6:2]   | passed | 0.2101 seconds  |
-./spec/cli_spec.rb[1:6:3]   | passed | 0.20931 seconds |
+./spec/cli_spec.rb[1:1:1]   | passed | 0.62906 seconds |
+./spec/cli_spec.rb[1:2:1]   | passed | 0.72739 seconds |
+./spec/cli_spec.rb[1:3:1]   | passed | 0.74424 seconds |
+./spec/cli_spec.rb[1:3:2]   | passed | 0.62868 seconds |
+./spec/cli_spec.rb[1:4:1]   | passed | 0.72959 seconds |
+./spec/cli_spec.rb[1:5:1]   | passed | 0.72738 seconds |
+./spec/cli_spec.rb[1:6:1]   | passed | 0.62963 seconds |
+./spec/cli_spec.rb[1:6:2]   | passed | 0.73304 seconds |
+./spec/cli_spec.rb[1:6:3]   | passed | 0.62197 seconds |
+>>>>>>> 109eba2eca113dc29eed7cbfeba8b08d44d8d86b
 ./spec/my_help_spec.rb[1:1] | passed | 0.00078 seconds |
