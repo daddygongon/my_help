@@ -85,7 +85,7 @@ module MyHelp
       if local_help_entries.member?(file + ".org")
         system "#{@conf[:editor]} #{target_help}"
       else
-        puts "file #{target_help} does not exits in #{@conf[:local_help_dir]}."
+        puts "file #{target_help} does not exist in #{@conf[:local_help_dir]}."
         puts "make #{file} first by 'new' command."
       end
     end
