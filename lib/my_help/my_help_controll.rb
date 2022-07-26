@@ -31,6 +31,13 @@ module MyHelp
       return "set editor '#{@conf[:editor]}'"
     end
 
+    def set_ext(ext_name)
+      @conf[:ext] = ext_name
+      conf = { ext: ext_name }
+      File.open(@conf[:conf_file], "w") { |f| YAML.dump(conf, f) }
+      return "set ext '#{@conf[:ext]}'"
+    end
+
     def set_help_dir_if_not_exists
       return if File::exist?(@conf[:local_help_dir])
       FileUtils.mkdir_p(@conf[:local_help_dir], :verbose => true)

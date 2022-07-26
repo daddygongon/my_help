@@ -48,6 +48,13 @@ module MyHelp
       puts $control.set_editor(editor_name)
     end
 
+    desc "set_ext EXT_NAME", "set ext to EXT_NAME"
+    def set_ext(ext_name)
+      invoke :setup
+      puts "set ext \'md\'"
+      $control.set_ext(ext_name)
+    end
+
     desc "edit HELP", "edit HELP"
 
     def edit(help_name)

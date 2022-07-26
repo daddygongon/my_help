@@ -25,6 +25,14 @@ RSpec.describe "my_help", type: :aruba do
     it { expect(my_help).to have_output(expected) }
   end
 
+  context "set ext have_output matcher" do
+    expected = /set ext 'md'/
+
+    let(:my_help) { run_command("my_help set_ext md -d=\'../../test\'") }
+    # beforeではなく，letで変数(:my_help)に代入．
+    it { expect(my_help).to have_output(expected) }
+  end
+
   context "version option" do
     before(:each) { run_command("my_help version") }
     it { expect(last_command_started).to be_successfully_executed }
