@@ -100,11 +100,8 @@ GEM
 
 PLATFORMS
   arm64-darwin-20
-<<<<<<< HEAD
-  arm64-darwin-21
-=======
   x86_64-darwin-21
->>>>>>> 109eba2eca113dc29eed7cbfeba8b08d44d8d86b
+
 
 DEPENDENCIES
   aruba
@@ -119,8 +116,5 @@ DEPENDENCIES
   yard
 
 BUNDLED WITH
-<<<<<<< HEAD
    2.3.12
-=======
-   2.3.17
->>>>>>> 109eba2eca113dc29eed7cbfeba8b08d44d8d86b
+
