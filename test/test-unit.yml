@@ -1,0 +1,11 @@
+runner: console
+console_options:
+  color_scheme: inverted
+color_schemes:
+  inverted:
+    success:
+      name: red
+      bold: true
+    failure:
+      name: green
+      bold: true

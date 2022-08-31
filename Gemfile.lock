@@ -19,9 +19,8 @@ GEM
     ast (2.4.2)
     builder (3.2.4)
     childprocess (4.1.0)
-    color_echo (3.1.1)
     colorize (0.8.1)
-    command_line (1.1.0)
+    command_line (2.0.1)
     contracts (0.17)
     cucumber (8.0.0)
       builder (~> 3.2, >= 3.2.4)
@@ -35,7 +34,7 @@ GEM
       mime-types (~> 3.4, >= 3.4.1)
       multi_test (~> 1.1, >= 1.1.0)
       sys-uname (~> 1.2, >= 1.2.2)
-    cucumber-ci-environment (9.0.4)
+    cucumber-ci-environment (9.1.0)
     cucumber-core (11.0.0)
       cucumber-gherkin (~> 23.0, >= 23.0.1)
       cucumber-messages (~> 18.0, >= 18.0.0)
@@ -55,7 +54,7 @@ GEM
     mime-types-data (3.2022.0105)
     multi_test (1.1.0)
     parallel (1.22.1)
-    parser (3.1.2.0)
+    parser (3.1.2.1)
       ast (~> 2.4.1)
     power_assert (2.0.1)
     rainbow (3.1.1)
@@ -75,17 +74,17 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.11.0)
     rspec-support (3.11.0)
-    rubocop (1.31.2)
+    rubocop (1.35.1)
       json (~> 2.3)
       parallel (~> 1.10)
-      parser (>= 3.1.0.0)
+      parser (>= 3.1.2.1)
       rainbow (>= 2.2.2, < 4.0)
       regexp_parser (>= 1.8, < 3.0)
       rexml (>= 3.2.5, < 4.0)
-      rubocop-ast (>= 1.18.0, < 2.0)
+      rubocop-ast (>= 1.20.1, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 3.0)
-    rubocop-ast (1.19.1)
+    rubocop-ast (1.21.0)
       parser (>= 3.1.1.0)
     ruby-progressbar (1.11.0)
     sys-uname (1.2.2)
@@ -100,21 +99,15 @@ GEM
 
 PLATFORMS
   arm64-darwin-20
-  x86_64-darwin-21
-
 
 DEPENDENCIES
-  aruba
-  color_echo
-  command_line (~> 1.1.0)
-  ffi (~> 1.9)
+  aruba (~> 2.1.0)
   my_help!
-  rake
-  rspec
+  rake (~> 13.0)
+  rspec (~> 3.0)
   rubocop
   test-unit
   yard
 
 BUNDLED WITH
-   2.3.12
-
+   2.2.25
