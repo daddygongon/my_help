@@ -1,4 +1,4 @@
-#+STARTUP: indent nolineimages
+#+STARTUP: indent nolineimages overview
 * head
 - Emacs key bind
 - 

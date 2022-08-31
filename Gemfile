@@ -1,7 +1,11 @@
-source 'https://rubygems.org'
+# frozen_string_literal: true
+
+source "https://rubygems.org"
+
+# Specify your gem's dependencies in my_help.gemspec
 gemspec
-gem 'ffi', '~> 1.9'
-#gem 'aruba', '~> 0.14.12'
-gem 'command_line', '~> 1.1.0'
-gem 'color_echo'
-#gem 'aruba', '~> 2.0.0'
+
+gem "rake", "~> 13.0"
+
+gem "rspec", "~> 3.0"
+gem 'aruba', '~> 2.1.0'
