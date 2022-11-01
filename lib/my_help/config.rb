@@ -1,20 +1,20 @@
-# frozen_string_literal: true
-
-require "yaml"
-require "colorize"
-
 module MyHelp
+
   # make @config from default and load yaml
-  # as shown https://stackoverflow.com/questions/6233124/where-to-place-access-config-file-in-gem
+  # as shown
+  # https://stackoverflow.com/questions/6233124/where-to-place-access-config-file-in-gem
   class Config
     # Configuration defaults
     def initialize(conf_path = nil)
       conf_path ||= ENV["HOME"]
+      local_help_dir = File.join(conf_path, ".my_help")
       @config = {
         template_dir: File.expand_path("../templates", __dir__),
-        local_help_dir: File.join(conf_path, ".my_help"),
-        conf_file: File.join(conf_path, ".my_help", ".my_help_conf.yml"),
+        local_help_dir: local_help_dir,
+        conf_file: File.join(local_help_dir, ".my_help_conf.yml"),
         editor: ENV["EDITOR"] || "emacs",
+        ext: ".org",
+        verbose: false,
       }
       @valid_config_keys = @config.keys
       configure_with(@config[:conf_file])
@@ -26,8 +26,15 @@ module MyHelp
     def configure(opts = nil)
       return if opts == nil
       opts.each do |k, v|
-        @config[k.to_sym] = v if @valid_config_keys.include? k.to_sym
+        if @valid_config_keys.include? k.to_sym
+          @config[k.to_sym] = v
+        else
+          raise KeyError.new("Error: keyword '#{k}' is invalid",
+                             receiver: @config,
+                             key: k)
+        end
       end
+      @config
     end
 
     # Configure through yaml file
@@ -36,11 +43,18 @@ module MyHelp
         config = YAML.safe_load(IO.read(path),
                                 permitted_classes: [Symbol])
       rescue Errno::ENOENT => e
-        $stderr.puts "WARNING: #{e.message}.\nUsing default conf."
+        message = "WARNING: #{e.message}.\nUsing default conf."
+        $stderr.puts message if @config[:verbose]
       rescue Psych::SyntaxError => e
-        $stderr.puts "WARNING: #{e}.\nUsing default conf."
+        message = "WARNING: #{e.message}.\nUsing default conf."
+        $stderr.puts message if @config[:verbose]
       end
       configure(config)
+    end
+
+    # save config in  @config[:conf_file]
+    def save_config()
+      File.write(@config[:conf_file], YAML.dump(config))
     end
 
     attr_reader :config
