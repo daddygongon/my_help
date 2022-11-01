@@ -1,24 +1,24 @@
 # -*- coding: utf-8 -*-
-require 'yaml'
-require 'pp'
+require "yaml"
+require "pp"
 
-class OrgToYaml
+class Org2Yaml
   attr_accessor :help_cont
 
   def initialize(file)
     @help_cont = {} #{ head: [File.basename(file, '.org')] }
     @head_sym = nil
-    @conts = ''
+    @conts = ""
     @short_stored = []
     org_to_yaml(File.readlines(file))
   end
 
   def make_options(line)
-    head, desc = line.split(':')
+    head, desc = line.split(":")
     desc ||= head.to_s
     short = "-#{head[0]}"
-    if @short_stored.include?(short) or head=='license' or head=='head'
-      short = ''
+    if @short_stored.include?(short) or head == "license" or head == "head"
+      short = ""
     else
       @short_stored << short
     end
@@ -27,11 +27,11 @@ class OrgToYaml
 
   def next_cont(head)
     @help_cont[@head_sym][:cont] = @conts if @head_sym
-    return if head == 'EOF'
-    @conts = ''
+    return if head == "EOF"
+    @conts = ""
     @head_sym = head.to_sym
     @help_cont[@head_sym] = {
-      opts: make_options(head), title: head, cont: ''
+      opts: make_options(head), title: head, cont: "",
     }
   end
 
@@ -44,11 +44,11 @@ class OrgToYaml
         @conts << line
       end
     end
-    next_cont 'EOF'
+    next_cont "EOF"
   end
 end
 
-if $PROGRAM_NAME == __FILE__ 
+if $PROGRAM_NAME == __FILE__
   helps = OrgToYaml.new(ARGV[0])
   pp helps.help_cont
 end

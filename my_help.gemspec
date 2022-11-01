@@ -1,27 +1,28 @@
-require File.join([File.dirname(__FILE__),'lib','my_help','version.rb'])
-spec = Gem::Specification.new do |s|
-  s.name = 'my_help'
-  s.version = MyHelp::VERSION
-  s.author = 'Shigeot R. Nishitani'
-  s.email = ''
-  s.homepage = 'https://github.com/daddygongon/my_help'
-  s.platform = Gem::Platform::RUBY
-  s.license       = "MIT"
-  s.summary       = %q{user building help}
-  s.description   = %q{user building help}
-  s.files         = `git ls-files -z`.split("\x0").reject do |f|
-    f.match(%r{^(test|spec|features)/})
+# frozen_string_literal: true
+
+require_relative "lib/my_help/version"
+
+Gem::Specification.new do |spec|
+  spec.name = "my_help"
+  spec.version = MyHelp::VERSION
+  spec.authors = ["Shigeto R. Nishiani"]
+  spec.email = ["daddygongon@users.noreply.github.com"]
+  spec.license       = "MIT"
+  spec.summary       = %q{user building help}
+  spec.description   = %q{user building help}
+  spec.files = Dir.chdir(File.expand_path(__dir__)) do
+    `git ls-files -z`.split("\x0").reject { |f| f.match(%r{\A(?:test|spec|features)/}) }
   end
-  s.require_paths = ["lib"]
-  s.bindir        = "exe"
-  s.executables   = s.files.grep(%r{^exe/}) { |f| File.basename(f) }
-  s.add_development_dependency 'rake'
-  s.add_development_dependency 'rubocop'
-  s.add_development_dependency 'rspec'
-  s.add_development_dependency 'aruba'
-  s.add_development_dependency 'yard'
-  s.add_development_dependency 'test-unit'
-  s.add_runtime_dependency 'thor'
-  s.add_runtime_dependency "colorize"
-  s.add_runtime_dependency "command_line"
+  spec.bindir = "exe"
+  spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
+  spec.require_paths = ["lib"]
+
+  # Uncomment to register a new dependency of your gem
+  spec.add_development_dependency "rspec"
+  spec.add_runtime_dependency "thor"
+  spec.add_runtime_dependency "command_line"
+  spec.add_runtime_dependency "colorize"
+  spec.add_development_dependency "aruba"
+  # For more information and examples about making a new gem, checkout our
+  # guide at: https://bundler.io/guides/creating_gem.html
 end
