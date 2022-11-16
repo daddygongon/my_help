@@ -1,3 +1,4 @@
+
 RSpec.describe "md2hash" do
   context "options" do
     it "accept options" do
