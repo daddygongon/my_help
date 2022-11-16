@@ -15,7 +15,7 @@ RSpec.describe "my_help cli_spec.rb by aruba", type: :aruba do
   context "version option" do
     before(:each) { run_command("my_help version") }
     it { expect(last_command_started).to be_successfully_executed }
-    it { expect(last_command_started).to have_output("1.0b") }
+    it { expect(last_command_started).to have_output("1.0c") }
   end
   context "no option" do
     before(:each) { run_command("my_help") }
