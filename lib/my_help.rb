@@ -10,6 +10,7 @@ require_relative "my_help/modify"
 require_relative "my_help/init"
 require_relative "my_help/cli"
 require_relative "my_help/org2hash"
+require_relative "my_help/md2hash"
 
 module MyHelp
   class Error < StandardError; end
