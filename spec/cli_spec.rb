@@ -1,3 +1,4 @@
+# acceptance受け入れ test
 require "spec_helper"
 require "aruba/api"
 RSpec.describe "my_help cli_spec.rb by aruba", type: :aruba do
@@ -19,6 +20,12 @@ RSpec.describe "my_help cli_spec.rb by aruba", type: :aruba do
   end
   context "no option" do
     before(:each) { run_command("my_help") }
+    it { expect(last_command_started).to be_successfully_executed }
+    it { expect(last_command_started).to have_output() }
+  end
+
+  context "list option" do
+    before(:each) { run_command("my_help list") }
     it { expect(last_command_started).to be_successfully_executed }
     it { expect(last_command_started).to have_output(/my_help help/) }
   end
