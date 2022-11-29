@@ -10,7 +10,7 @@ module MyHelp
       @ext = ext
     end
 
-    def list(help_options = "")
+    def list(help_options = "", level = 0)
       name, item = help_options.split(" ")
       if item == nil && name == nil
         list_helps()
