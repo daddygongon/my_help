@@ -26,4 +26,7 @@ require 'rubocop/rake_task'
 
 RuboCop::RakeTask.new
 
-task default: %i[test rubocop]
+#task default: %i[test rubocop]
+task :default do
+  system "rake -T"
+end

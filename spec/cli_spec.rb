@@ -21,13 +21,29 @@ RSpec.describe "my_help cli_spec.rb by aruba", type: :aruba do
   context "no option" do
     before(:each) { run_command("my_help") }
     it { expect(last_command_started).to be_successfully_executed }
-    it { expect(last_command_started).to have_output() }
+    it { expect(last_command_started).to have_output(/^Commands:/) }
   end
 
   context "list option" do
-    before(:each) { run_command("my_help list") }
-    it { expect(last_command_started).to be_successfully_executed }
-    it { expect(last_command_started).to have_output(/my_help help/) }
+    # include_context :uses_temp_dir
+    temp_dir = Dir.pwd
+    let(:help_name) { "example2" }
+    let(:example_file) { File.join(temp_dir, ".my_help", help_name + ".org") }
+    before(:each) {
+      # FileUtils.mkdir(File.join(temp_dir, ".my_help"))
+      run_command("my_help new #{help_name}")
+      stop_all_commands
+    }
+    it "example2が新たに作られる" do
+      expect(File.exist?(example_file)).to be_truthy
+    end
+    it "list with name" do
+      run_command("my_help list #{help_name} a_item")
+      #      stop_all_commands
+      p example_file
+      #      expect(File.exist?(example_file)).to be_truthy
+      expect(last_command_started).to have_output(/a_item/)
+    end
   end
 
   context "edit option" do
@@ -135,7 +151,7 @@ RSpec.describe "my_help cli_spec.rb by aruba", type: :aruba do
     end
   end
 
-  describe "# run_command interfactiveの例" do
+  describe "# run_command interactiveの例" do
     context "hello 'bob'に反応する" do
       before { run_command("my_help hello") }
       #      before(:each) { stop_all_commands }
