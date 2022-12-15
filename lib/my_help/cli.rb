@@ -1,4 +1,5 @@
 require "command_line/global"
+require_relative "./git_cli"
 
 module MyHelp
   class Error < StandardError; end
@@ -20,12 +21,8 @@ module MyHelp
       puts VERSION
     end
 
-    desc "git  [pull|push]", "git operations"
-
-    def git
-      puts "git opration"
-      puts "hello"
-    end
+    desc "git [pull|push]", "git operations"
+    subcommand "git", Git
 
     desc "init", "initialize my_help environment"
 
@@ -43,7 +40,7 @@ module MyHelp
       puts "If you want change editor use my_help set editor code."
     end
 
-    desc "set  [:key] [VAL]", "set editor or ext"
+    desc "set [:key] [VAL]", "set editor or ext"
 
     def set(*args)
       config = get_config(args)
@@ -55,10 +52,12 @@ module MyHelp
     end
 
     desc "list [HELP] [ITEM]", "list helps"
-
+    option :help_dir, :type => :string
+    # use method_options [[https://github.com/rails/thor/wiki/Method-Options]]
     def list(*args)
       config = get_config(args).config
-      puts List.new(config[:local_help_dir],
+      help_dir = options["help_dir"] || config[:local_help_dir]
+      puts List.new(help_dir,
                     config[:ext]).list(*args.join(" "))
     end
 
