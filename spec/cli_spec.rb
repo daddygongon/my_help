@@ -13,34 +13,26 @@ RSpec.describe "my_help cli_spec.rb by aruba", type: :aruba do
 
     attr_reader :temp_dir
   end
-  context "version option" do
+  context "version command" do
     before(:each) { run_command("my_help version") }
     it { expect(last_command_started).to be_successfully_executed }
     it { expect(last_command_started).to have_output("1.0c") }
   end
-  context "no option" do
+  context "no command" do
     before(:each) { run_command("my_help") }
     it { expect(last_command_started).to be_successfully_executed }
     it { expect(last_command_started).to have_output(/^Commands:/) }
   end
 
-  context "list option" do
-    # include_context :uses_temp_dir
+  context "list command" do
     temp_dir = Dir.pwd
-    let(:help_name) { "example2" }
+    let(:help_name) { "example" }
     #    let(:example_file) { File.join(temp_dir, ".my_help", help_name + ".org") }
-    let(:example_file) { File.join(temp_dir, "tmp", "aruba", ".my_help", help_name + ".org") }
-    before(:each) {
-      FileUtils.mkdir(File.join(temp_dir, "tmp", "aruba", ".my_help"))
-      #run_command("my_help new #{help_name}")
+    let(:help_dir) { File.join(temp_dir, "lib", "templates") }
 
-      stop_all_commands
-    }
     it "list with name" do
-      run_command("my_help list #{help_name} a_item")
-      # stop_all_commands
-      p example_file
-      p temp_dir
+      run_command("my_help list #{help_name} a_item --help_dir=#{help_dir}")
+      stop_all_commands
       #      expect(File.exist?(example_file)).to be_truthy
       expect(last_command_started).to have_output(/a_item/)
     end

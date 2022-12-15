@@ -12,6 +12,9 @@
 #+TWITTER: off
 # +SETUPFILE: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
 
+* <2022-12-15 Thu> subcommand
+- [[https://hawksnowlog.blogspot.com/2020/09/ruby-thor-tutorial.html#hello-thor][Ruby thor で CLI ツールの開発に入門してみる]]
+
 * <2022-12-15 Thu> rspecでerror
 Arubaでrspecするとpwd directoryが/tmp/arubaになる？
 そうすると今のままではrspecが通らなくなる．
