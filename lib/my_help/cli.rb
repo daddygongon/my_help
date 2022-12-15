@@ -24,6 +24,7 @@ module MyHelp
 
     def git
       puts "git opration"
+      puts "hello"
     end
 
     desc "init", "initialize my_help environment"
@@ -103,7 +104,7 @@ module MyHelp
 
     no_commands {
       def get_config(args)
-        # Rspec環境と，実動環境の差をここで吸収
+        # RSpec環境と，実動環境の差をここで吸収
         # RSpecではargsの最後にtemp_dirをつけているから
         args[0] = "" if args.size == 0
         help_dir = args[-1]

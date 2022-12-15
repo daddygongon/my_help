@@ -12,6 +12,42 @@
 #+TWITTER: off
 # +SETUPFILE: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
 
+* <2022-12-15 Thu> rspecでerror
+Arubaでrspecするとpwd directoryが/tmp/arubaになる？
+そうすると今のままではrspecが通らなくなる．
+example2.orgの置き場が不定．
+spec側で強引に作るか．．．
+
+それもsmartにしたいよね．
+newでは後ろにoptionがあって，#{temp_dir}での作成とできるが，
+これをその他のoptionsでやるのは難しそう．
+
+#+begin_src ruby
+bundle exec rspec --format documentation -e list spec/cli_spec.rb
+Run options: include {:full_description=>/list/}
+
+my_help cli_spec.rb by aruba
+  list option
+    example2が新たに作られる
+"/Users/bob/git_hub/my_help/.my_help/example2.org"
+"/Users/bob/git_hub/my_help"
+    list with name (FAILED - 1)
+
+Failures:
+
+  1) my_help cli_spec.rb by aruba list option list with name
+     Failure/Error: expect(last_command_started).to have_output(/a_item/)
+     
+       expected `my_help list example2 a_item` to have output /a_item/
+       but was:
+          "/Users/bob/git_hub/my_help/tmp/aruba"
+          /Users/bob/git_hub/my_help/lib/my_help/list.rb:26:in `read': No such file or directory @ rb_sysopen - /Users/bob/git_hub/my_help/tmp/aruba/.my_help/example2.org (Errno::ENOENT)
+
+#+end_src
+とのError. 
+
+config
+
 * <2021-10-18 月> conf_pathの追加
 my_help.confの場所を指定するconf_pathをnewで指定できるようにする．
 
