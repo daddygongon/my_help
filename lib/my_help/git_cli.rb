@@ -3,9 +3,10 @@ module MyHelp
     desc "pull", "pull my helps"
 
     def pull
-      config = get_config(args)
       puts "called my_help git pull"
+      config = get_config(args)
       help_dir = config.config[:local_help_dir]
+      puts "on the target git directory : %s" % help_dir
       Dir.chdir(help_dir) do
         system "git pull origin main"
       end
@@ -14,14 +15,15 @@ module MyHelp
     desc "push", "push my helps"
 
     def push
-      config = get_config(args)
       puts "called my_help git push"
+      config = get_config(args)
       help_dir = config.config[:local_help_dir]
+      puts "on the target git directory : %s" % help_dir
       Dir.chdir(help_dir) do
         system "git add -A"
         system "git commit -m 'auto commit from my_help'"
-        system "git pull"
-        system "git push"
+        system "git pull origin main"
+        system "git push origin main"
       end
     end
 
