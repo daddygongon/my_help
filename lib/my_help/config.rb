@@ -28,6 +28,9 @@ module MyHelp
       opts.each do |k, v|
         if @valid_config_keys.include? k.to_sym
           @config[k.to_sym] = v
+        elsif k == "".to_sym
+          print "Valid key words are follows:"
+          p @valid_config_keys
         else
           raise KeyError.new("Error: keyword '#{k}' is invalid",
                              receiver: @config,
