@@ -31,6 +31,7 @@ module MyHelp
     def list_helps()
       files = File.join(@path, "*#{@ext}")
       Dir.glob(files).inject("") do |out, file|
+        p [out, file]
         help_info = read_help(file)
         out << "%10s: %s\n" % [help_info[:name],
                                help_info[:items]["head"].split("\n")[0]]
