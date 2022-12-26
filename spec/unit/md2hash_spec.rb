@@ -1,3 +1,4 @@
+
 module MyHelp
   RSpec.describe Md2Hash do
     context "options" do
