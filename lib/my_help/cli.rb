@@ -106,8 +106,14 @@ module MyHelp
 
     no_commands {
       def get_config(args)
-        # RSpec環境と，実動環境の差をここで吸収
+        # RSpec環境と，実働環境の差をここで吸収
         # RSpecではargsの最後にtemp_dirをつけているから
+        # 明示的に--help_dirとした方がいいかも．
+        # listにて改善中．
+        # arubaは明示，rspecはテスト環境を指定．．．
+        # cli_spec.rbのrun_command("my_help list #{help_name} a_item --help_dir=#{help_dir}")
+        # に統一していくべき．
+
         args[0] = "" if args.size == 0
         help_dir = args[-1]
         help_dir = ENV["HOME"] unless File.exist?(help_dir)
