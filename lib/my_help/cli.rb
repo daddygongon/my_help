@@ -53,12 +53,15 @@ module MyHelp
 
     desc "list [HELP] [ITEM]", "list helps"
     option :help_dir, :type => :string
+    option :layer, :type => :numeric
     # use method_options [[https://github.com/rails/thor/wiki/Method-Options]]
     def list(*args)
       config = get_config(args).config
       help_dir = options["help_dir"] || config[:local_help_dir]
+      layer = options["layer"] || 1
       puts List.new(help_dir,
-                    config[:ext]).list(*args.join(" "))
+                    config[:ext],
+                    layer).list(*args.join(" "))
     end
 
     desc "edit [HELP]", "edit help"

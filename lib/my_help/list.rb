@@ -5,9 +5,10 @@ require "colorized_string"
 module MyHelp
   # Your code goes here...
   class List
-    def initialize(path = "", ext = ".org")
+    def initialize(path = "", ext = ".org", layer = 1)
       @path = path
       @ext = ext
+      p @layer = layer
     end
 
     def list(help_options = "", level = 0)
@@ -31,7 +32,7 @@ module MyHelp
     def list_helps()
       files = File.join(@path, "*#{@ext}")
       Dir.glob(files).inject("") do |out, file|
-        p [out, file]
+        #        p [out, file]
         help_info = read_help(file)
         out << "%10s: %s\n" % [help_info[:name],
                                help_info[:items]["head"].split("\n")[0]]
