@@ -4,6 +4,7 @@ module MyHelp
   # as shown
   # https://stackoverflow.com/questions/6233124/where-to-place-access-config-file-in-gem
   class Config
+    attr_reader :valid_config_keys
     # Configuration defaults
     def initialize(conf_path = nil)
       conf_path ||= ENV["HOME"]

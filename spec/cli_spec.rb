@@ -114,24 +114,22 @@ RSpec.describe "my_help cli_spec.rb by aruba", type: :aruba do
 
   context "set editor code" do
     include_context :uses_temp_dir
-    before(:each) { }
-    it "my_help/.my_help_conf.ymlに:editor = 'code'がセットされる" do
+    before(:each) {
       FileUtils.mkdir(File.join(temp_dir, ".my_help"))
+    }
+    it "my_help/.my_help_conf.ymlに:editor = 'code'がセットされる" do
       run_command("my_help set editor 'code' #{temp_dir}")
       stop_all_commands
       conf_file = File.join(temp_dir, ".my_help", ".my_help_conf.yml")
       expect(File.exist?(conf_file)).to be_truthy
-      #      puts File.read(conf_file)
       expect(YAML.load_file(conf_file)[:editor]).to eq "code"
     end
+
     it "setで引数がないとvalidなkeywordが表示される" do
-      FileUtils.mkdir(File.join(temp_dir, ".my_help"))
-      run_command("my_help set #{temp_dir}")
+      run_command("my_help set")
       stop_all_commands
-      conf_file = File.join(temp_dir, ".my_help", ".my_help_conf.yml")
-      expect(File.exist?(conf_file)).to be_truthy
       #      puts File.read(conf_file)
-      expect(YAML.load_file(conf_file)[:editor]).to eq "code"
+      expect(last_command_started).to have_output(/Valid key words/)
     end
   end
 
