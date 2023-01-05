@@ -3,16 +3,8 @@ require "spec_helper"
 require "aruba/api"
 RSpec.describe "my_help cli_spec.rb by aruba", type: :aruba do
   #  include_context "uses aruba API"
-  shared_context :uses_temp_dir do
-    around do |example|
-      Dir.mktmpdir("rspec-") do |dir|
-        @temp_dir = dir
-        example.run
-      end
-    end
+  # context :uses_temp_dir is put on spec/spec_helper.rb now.
 
-    attr_reader :temp_dir
-  end
   context "version command" do
     before(:each) { run_command("my_help version") }
     it { expect(last_command_started).to be_successfully_executed }
@@ -27,13 +19,11 @@ RSpec.describe "my_help cli_spec.rb by aruba", type: :aruba do
   context "list command" do
     temp_dir = Dir.pwd
     let(:help_name) { "example" }
-    #    let(:example_file) { File.join(temp_dir, ".my_help", help_name + ".org") }
     let(:help_dir) { File.join(temp_dir, "lib", "templates") }
-
     it "list with name" do
+      p help_dir
       run_command("my_help list #{help_name} a_item --help_dir=#{help_dir}")
       stop_all_commands
-      #      expect(File.exist?(example_file)).to be_truthy
       expect(last_command_started).to have_output(/a_item/)
     end
   end
@@ -43,10 +33,10 @@ RSpec.describe "my_help cli_spec.rb by aruba", type: :aruba do
     let(:help_name) { "example2" }
     before(:each) {
       FileUtils.mkdir(File.join(temp_dir, ".my_help"))
-      run_command("my_help edit #{help_name} #{temp_dir}")
+      run_command("my_help edit #{help_name} --help_dir=#{temp_dir}")
       stop_all_commands
     }
-    it "editorをsystemでopen"
+    #    it "editorをsystemでopen"
     it "存在しないHELPは，newしなさいと注意" do
       output = Regexp.new("make #{help_name} first by 'new' command.")
       expect(last_command_started).to have_output output
@@ -59,7 +49,7 @@ RSpec.describe "my_help cli_spec.rb by aruba", type: :aruba do
     let(:example_file) { File.join(temp_dir, ".my_help", help_name + ".org") }
     before(:each) {
       FileUtils.mkdir(File.join(temp_dir, ".my_help"))
-      run_command("my_help new #{help_name} #{temp_dir}")
+      run_command("my_help new #{help_name} --help_dir=#{temp_dir}")
       stop_all_commands
     }
     it "example2が新たに作られる" do
@@ -76,20 +66,20 @@ RSpec.describe "my_help cli_spec.rb by aruba", type: :aruba do
       FileUtils.touch(example_file)
     }
     it "type Yでexample2が消される" do
-      run_command("my_help delete #{help_name} #{temp_dir}")
+      run_command("my_help delete #{help_name}  --help_dir=#{temp_dir}")
       type "Y\n"
       stop_all_commands
       expect(File.exist?(example_file)).to be_falsey
     end
     it "type Nでexample2が残る" do
-      run_command("my_help delete #{help_name} #{temp_dir}")
+      run_command("my_help delete #{help_name}  --help_dir=#{temp_dir}")
       type "N\n"
       stop_all_commands
       expect(last_command_started).to have_output(/Leave .+ exists./)
       expect(File.exist?(example_file)).to be_truthy
     end
     it "存在しないHELPのdeleteはできない" do
-      run_command("my_help delete example1 #{temp_dir}")
+      run_command("my_help delete example1  --help_dir=#{temp_dir}")
       type "Y\n"
       stop_all_commands
       expect(last_command_started).to have_output(/does not exist./)
@@ -98,7 +88,9 @@ RSpec.describe "my_help cli_spec.rb by aruba", type: :aruba do
 
   context "init option" do
     include_context :uses_temp_dir
-    before(:each) { run_command("my_help init #{temp_dir}") }
+    before(:each) do
+      run_command("my_help init  --help_dir=#{temp_dir} ")
+    end
 
     it "confとhelpsがtemp_dirに保存される" do
       type ".md\n"
@@ -109,7 +101,7 @@ RSpec.describe "my_help cli_spec.rb by aruba", type: :aruba do
       example_file = File.join(temp_dir, ".my_help", "example.md")
       expect(File.exist?(example_file)).to be_truthy
     end
-    it ":editor/:extの複数setupは，arubaでのrspecがわからなかったので，後で修正するようにputs"
+    #   it ":editor/:extの複数setupは，arubaでのrspecがわからなかったので，後で修正するようにputs"
   end
 
   context "set editor code" do
@@ -118,7 +110,7 @@ RSpec.describe "my_help cli_spec.rb by aruba", type: :aruba do
       FileUtils.mkdir(File.join(temp_dir, ".my_help"))
     }
     it "my_help/.my_help_conf.ymlに:editor = 'code'がセットされる" do
-      run_command("my_help set editor 'code' #{temp_dir}")
+      run_command("my_help set editor 'code' --help_dir=#{temp_dir}")
       stop_all_commands
       conf_file = File.join(temp_dir, ".my_help", ".my_help_conf.yml")
       expect(File.exist?(conf_file)).to be_truthy
@@ -126,7 +118,7 @@ RSpec.describe "my_help cli_spec.rb by aruba", type: :aruba do
     end
 
     it "setで引数がないとvalidなkeywordが表示される" do
-      run_command("my_help set")
+      run_command("my_help set --help_dir=#{temp_dir}")
       stop_all_commands
       #      puts File.read(conf_file)
       expect(last_command_started).to have_output(/Valid key words/)

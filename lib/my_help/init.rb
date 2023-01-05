@@ -4,7 +4,7 @@ module MyHelp
       @config = config
     end
 
-    def check_dir_exist
+    def help_dir_exist?
       File.exist?(@config[:local_help_dir])
     end
 

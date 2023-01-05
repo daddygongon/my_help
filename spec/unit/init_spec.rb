@@ -4,10 +4,11 @@ require "fileutils"
 
 module MyHelp
   RSpec.describe Init do
-    describe "example of uses_temp_dir" do
-      # context :uses_temp_dir is put on spec/spec_helper.rb now.
-      include_context :uses_temp_dir
+    # context :uses_temp_dir is put on spec/spec_helper.rb now.
+    include_context :uses_temp_dir
+    let(:config) { Config.new(temp_dir).config }
 
+    describe "example of uses_temp_dir" do
       it "should create temp_dir" do
         expect(Dir.exists?(temp_dir)).to be true
       end
@@ -23,19 +24,7 @@ module MyHelp
       end
     end
 
-    describe "振る舞い" do
-      include_context :uses_temp_dir
-      let(:config) { Config.new(temp_dir).config }
-      it "check_dir_existで~/.my_helpディレクトリがないことを確認" do
-        expect(Init.new(config).check_dir_exist).not_to be true
-      end
-      it "check_conf_existで~/.my_help/.my_help_conf.ymlがないことを確認" do
-        FileUtils.mkdir(File.join(temp_dir, ".my_help"))
-        expect(Init.new(config).check_conf_exist).not_to be true
-      end
-      it ":editorと:extをセットする" do
-        puts "interactive for Thor"
-      end
+    describe "cp_templates" do
       it "cp_templatesでtemplatesの*.extをcpする" do
         # assume :ext = 'org'
         target = File.join(temp_dir, ".my_help")

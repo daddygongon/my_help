@@ -6,6 +6,9 @@ module MyHelp
 
   # Your code goes here...
   class CLI < Thor
+    class_option :help_dir, :type => :string
+    #    option :help_dir, :type => :string
+    #    option :layer, :type => :numeric
 
     # THOR to SILENCE DEPRECATION
     # https://qiita.com/tbpgr/items/5edb1454634157ff816d
@@ -30,10 +33,10 @@ module MyHelp
       config = get_config(args)
       #config.ask_default
       init = Init.new(config.config)
-      raise "Local help dir exist." if init.check_dir_exist
+      raise "Local help dir exist." if init.help_dir_exist?
       puts "Choose default markup '.org' [Y or .md]? "
-      responce = $stdin.gets.chomp
-      config.configure(:ext => responce) unless responce.upcase[0] == "Y"
+      response = $stdin.gets.chomp
+      config.configure(:ext => response) unless response.upcase[0] == "Y"
       init.mk_help_dir
       config.save_config
       init.cp_templates
@@ -52,7 +55,7 @@ module MyHelp
     end
 
     desc "list [HELP] [ITEM]", "list helps"
-    option :help_dir, :type => :string
+    #    option :help_dir, :type => :string
     option :layer, :type => :numeric
     # use method_options [[https://github.com/rails/thor/wiki/Method-Options]]
     def list(*args)
@@ -114,8 +117,9 @@ module MyHelp
         # cli_spec.rbのrun_command("my_help list #{help_name} a_item --help_dir=#{help_dir}")
         # に統一していくべき．
 
-        args[0] = "" if args.size == 0
-        help_dir = args[-1]
+        #        args[0] = "" if args.size == 0
+        #        help_dir = args[-1]
+        help_dir = options["help_dir"]
         help_dir = ENV["HOME"] unless File.exist?(help_dir)
         return Config.new(help_dir)
       end

@@ -3,26 +3,22 @@ require "fileutils"
 
 module MyHelp
   RSpec.describe Config do
+    include_context :uses_temp_dir
+    let(:tmp_conf) {
+      Config.new(temp_dir)
+    }
     describe "クラス変数config" do
-      include_context :uses_temp_dir
-      let(:tmp_conf) {
-        Config.new(temp_dir).config
-      }
       it "default confを返す" do
-        expect(tmp_conf[:ext]).to eq(".org")
+        expect(tmp_conf.config[:ext]).to eq(".org")
       end
       it "default confに正しいkeyが設定されている" do
-        # pp Config.new.config
         [:template_dir, :local_help_dir, :conf_file, :editor, :ext].each do |key|
-          expect(tmp_conf).to have_key(key)
+          expect(tmp_conf.config).to have_key(key)
         end
       end
     end
 
     describe "configを変更するconfigure" do
-      let(:tmp_conf) {
-        Config.new
-      }
       it "間違ったkey(:dir)を設定するとKeyErrorが返る" do
         file_path = "hoge"
         expect {
@@ -38,10 +34,6 @@ module MyHelp
     end
 
     describe "temp_dirを指定してconfigure" do
-      include_context :uses_temp_dir
-      let(:tmp_conf) {
-        Config.new(temp_dir)
-      }
       it ":local_help_dirにpathが正しく設定されている" do
         expect(tmp_conf.config[:local_help_dir]).to eq(File.join(temp_dir, ".my_help"))
       end
