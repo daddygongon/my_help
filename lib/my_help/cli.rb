@@ -30,7 +30,7 @@ module MyHelp
     desc "init", "initialize my_help environment"
 
     def init(*args)
-      config = get_config(args)
+      config = get_config
       #config.ask_default
       init = Init.new(config.config)
       raise "Local help dir exist." if init.help_dir_exist?
@@ -46,8 +46,9 @@ module MyHelp
     desc "set [:key] [VAL]", "set editor or ext"
 
     def set(*args)
-      config = get_config(args)
-      config.configure(args[0].to_sym => args[1])
+      config = get_config
+      key = args[0] || ""
+      config.configure(key.to_sym => args[1])
       config.save_config
       conf_file_path = config.config[:conf_file]
       puts "conf_file_path: %s" % conf_file_path
@@ -59,42 +60,42 @@ module MyHelp
     option :layer, :type => :numeric
     # use method_options [[https://github.com/rails/thor/wiki/Method-Options]]
     def list(*args)
-      config = get_config(args).config
+      config = get_config
       help_dir = options["help_dir"] || config[:local_help_dir]
       layer = options["layer"] || 1
       puts List.new(help_dir,
-                    config[:ext],
+                    config.config[:ext],
                     layer).list(*args.join(" "))
     end
 
     desc "edit [HELP]", "edit help"
 
     def edit(*args)
-      c = get_config(args).config
+      c = get_config
       help_name = args[0]
-      Modify.new(c).edit(help_name)
+      Modify.new(c.config).edit(help_name)
     end
 
     desc "new  [HELP]", "mk new HELP"
 
     def new(*args)
-      c = get_config(args).config
+      c = get_config
       help_name = args[0]
-      help_file = File.join(c[:local_help_dir], help_name + c[:ext])
-      Modify.new(c).new(help_file)
+      help_file = File.join(c.config[:local_help_dir], help_name + c.config[:ext])
+      Modify.new(c.config).new(help_file)
       #     puts res.stdout
     end
 
     desc "delete [HELP]", "delete HELP"
 
     def delete(*args)
-      c = get_config(args).config
+      c = get_config
       help_name = args[0]
-      help_file = File.join(c[:local_help_dir], help_name + c[:ext])
+      help_file = File.join(c.config[:local_help_dir], help_name + c.config[:ext])
       puts "Are you sure to delete #{help_file}? [YN]"
       responce = $stdin.gets.chomp
       if responce.upcase[0] == "Y"
-        Modify.new(c).delete(help_file)
+        Modify.new(c.config).delete(help_file)
       else
         puts "Leave #{help_file} exists."
       end
@@ -108,7 +109,7 @@ module MyHelp
     end
 
     no_commands {
-      def get_config(args)
+      def get_config #(args)
         # RSpec環境と，実働環境の差をここで吸収
         # RSpecではargsの最後にtemp_dirをつけているから
         # 明示的に--help_dirとした方がいいかも．
@@ -119,9 +120,9 @@ module MyHelp
 
         #        args[0] = "" if args.size == 0
         #        help_dir = args[-1]
-        help_dir = options["help_dir"]
-        help_dir = ENV["HOME"] unless File.exist?(help_dir)
-        return Config.new(help_dir)
+        parent_help_dir = options["help_dir"] || ""
+        parent_help_dir = ENV["HOME"] unless File.exist?(parent_help_dir)
+        return Config.new(parent_help_dir)
       end
     }
   end
