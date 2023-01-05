@@ -30,7 +30,7 @@ module MyHelp
     desc "init", "initialize my_help environment"
 
     def init(*args)
-      config = get_config
+      config = get_config # for using methods in Config
       #config.ask_default
       init = Init.new(config.config)
       raise "Local help dir exist." if init.help_dir_exist?
@@ -46,7 +46,7 @@ module MyHelp
     desc "set [:key] [VAL]", "set editor or ext"
 
     def set(*args)
-      config = get_config
+      config = get_config # for using methods in Config
       key = args[0] || ""
       config.configure(key.to_sym => args[1])
       config.save_config
@@ -60,42 +60,42 @@ module MyHelp
     option :layer, :type => :numeric
     # use method_options [[https://github.com/rails/thor/wiki/Method-Options]]
     def list(*args)
-      config = get_config
+      config = get_config.config
       help_dir = options["help_dir"] || config[:local_help_dir]
       layer = options["layer"] || 1
       puts List.new(help_dir,
-                    config.config[:ext],
+                    config[:ext],
                     layer).list(*args.join(" "))
     end
 
     desc "edit [HELP]", "edit help"
 
     def edit(*args)
-      c = get_config
+      c = get_config.config
       help_name = args[0]
-      Modify.new(c.config).edit(help_name)
+      Modify.new(c).edit(help_name)
     end
 
     desc "new  [HELP]", "mk new HELP"
 
     def new(*args)
-      c = get_config
+      c = get_config.config
       help_name = args[0]
-      help_file = File.join(c.config[:local_help_dir], help_name + c.config[:ext])
-      Modify.new(c.config).new(help_file)
+      help_file = File.join(c[:local_help_dir], help_name + c[:ext])
+      Modify.new(c).new(help_file)
       #     puts res.stdout
     end
 
     desc "delete [HELP]", "delete HELP"
 
     def delete(*args)
-      c = get_config
+      c = get_config.config
       help_name = args[0]
-      help_file = File.join(c.config[:local_help_dir], help_name + c.config[:ext])
+      help_file = File.join(c[:local_help_dir], help_name + c[:ext])
       puts "Are you sure to delete #{help_file}? [YN]"
       responce = $stdin.gets.chomp
       if responce.upcase[0] == "Y"
-        Modify.new(c.config).delete(help_file)
+        Modify.new(c).delete(help_file)
       else
         puts "Leave #{help_file} exists."
       end
