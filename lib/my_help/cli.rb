@@ -32,7 +32,7 @@ module MyHelp
     def init(*args)
       config = get_config # for using methods in Config
       #config.ask_default
-      init = Init.new(config.config)
+      init = Init.new(config)
       raise "Local help dir exist." if init.help_dir_exist?
       puts "Choose default markup '.org' [Y or .md]? "
       response = $stdin.gets.chomp
@@ -50,7 +50,7 @@ module MyHelp
       key = args[0] || ""
       config.configure(key.to_sym => args[1])
       config.save_config
-      conf_file_path = config.config[:conf_file]
+      conf_file_path = config[:conf_file]
       puts "conf_file_path: %s" % conf_file_path
       puts File.read(conf_file_path)
     end
@@ -60,7 +60,7 @@ module MyHelp
     option :layer, :type => :numeric
     # use method_options [[https://github.com/rails/thor/wiki/Method-Options]]
     def list(*args)
-      config = get_config.config
+      config = get_config
       help_dir = options["help_dir"] || config[:local_help_dir]
       layer = options["layer"] || 1
       puts List.new(help_dir,
@@ -71,7 +71,7 @@ module MyHelp
     desc "edit [HELP]", "edit help"
 
     def edit(*args)
-      c = get_config.config
+      c = get_config
       help_name = args[0]
       Modify.new(c).edit(help_name)
     end
@@ -79,7 +79,7 @@ module MyHelp
     desc "new  [HELP]", "mk new HELP"
 
     def new(*args)
-      c = get_config.config
+      c = get_config
       help_name = args[0]
       help_file = File.join(c[:local_help_dir], help_name + c[:ext])
       Modify.new(c).new(help_file)
@@ -89,7 +89,7 @@ module MyHelp
     desc "delete [HELP]", "delete HELP"
 
     def delete(*args)
-      c = get_config.config
+      c = get_config
       help_name = args[0]
       help_file = File.join(c[:local_help_dir], help_name + c[:ext])
       puts "Are you sure to delete #{help_file}? [YN]"

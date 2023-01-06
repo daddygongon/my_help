@@ -62,5 +62,9 @@ module MyHelp
     end
 
     attr_reader :config
+
+    def [](sym)
+      @config[sym]
+    end
   end
 end
