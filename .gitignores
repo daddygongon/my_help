@@ -1,0 +1,17 @@
+/tmp
+.DS_Store
+/.bundle/
+/.yardoc
+/_yardoc/
+/coverage/
+/docs/
+/pkg/
+/spec/reports/
+/vendor/
+/tmp/
+/.tags
+*~
+\#*
+.\#*
+
+.ruby-version
