@@ -9,7 +9,7 @@ module MyHelp
     }
     describe "クラス変数config" do
       it "default confを返す" do
-        expect(tmp_conf.config[:ext]).to eq(".org")
+        expect(tmp_conf[:ext]).to eq(".org")
       end
       it "default confに正しいkeyが設定されている" do
         [:template_dir, :local_help_dir, :conf_file, :editor, :ext].each do |key|
@@ -38,12 +38,17 @@ module MyHelp
         expect(tmp_conf.config[:local_help_dir]).to eq(File.join(temp_dir, ".my_help"))
       end
       it ":extに'.org'が正しく設定されている" do
-        expect(tmp_conf.config[:ext]).to eq(".org")
+        expect(tmp_conf[:ext]).to eq(".org")
       end
       it ":local_help_dirに.my_help_conf.ymlを保存する" do
-        Dir.mkdir(tmp_conf.config[:local_help_dir])
+        Dir.mkdir(tmp_conf[:local_help_dir])
         tmp_conf.save_config()
         expect(File.exist?(File.join(temp_dir, ".my_help", ".my_help_conf.yml"))).to be_truthy
+      end
+    end
+    describe "[]メソッド" do
+      it "[:local_help_dir]を適切に返す" do
+        expect(tmp_conf[:local_help_dir]).to eq(File.join(temp_dir, ".my_help"))
       end
     end
   end

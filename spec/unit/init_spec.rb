@@ -6,7 +6,7 @@ module MyHelp
   RSpec.describe Init do
     # context :uses_temp_dir is put on spec/spec_helper.rb now.
     include_context :uses_temp_dir
-    let(:config) { Config.new(temp_dir).config }
+    let(:config) { Config.new(temp_dir) }
 
     describe "example of uses_temp_dir" do
       it "should create temp_dir" do

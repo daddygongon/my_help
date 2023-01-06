@@ -17,7 +17,8 @@
 テスト環境と本番環境でのhelp_dirあるいはconfig_dir指定の
 差異の吸収メモ．
 - --help_dirでcliはhelp_dirを指定できる．
-  - ただし使っているのはlistのみ
+  - 全て変更したはず．
+  - configが混乱しやすい．．．config[:ext]なんかを自動で返すといいが．
 - rspec/unitでは
   - config_spec.rb, modify_spec.rbではtmp_confをtemp_dirに作成
   - list_spec.rbではtemplates_pathを絶対パスで参照

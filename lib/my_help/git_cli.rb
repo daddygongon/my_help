@@ -5,7 +5,7 @@ module MyHelp
     def pull
       puts "called my_help git pull"
       config = get_config(args)
-      help_dir = config.config[:local_help_dir]
+      help_dir = config[:local_help_dir]
       puts "on the target git directory : %s" % help_dir
       Dir.chdir(help_dir) do
         system "git pull origin main"
@@ -17,7 +17,7 @@ module MyHelp
     def push
       puts "called my_help git push"
       config = get_config(args)
-      help_dir = config.config[:local_help_dir]
+      help_dir = config[:local_help_dir]
       puts "on the target git directory : %s" % help_dir
       Dir.chdir(help_dir) do
         system "git add -A"
@@ -26,16 +26,5 @@ module MyHelp
         system "git push origin main"
       end
     end
-
-    no_commands {
-      def get_config(args)
-        # RSpec環境と，実動環境の差をここで吸収
-        # RSpecではargsの最後にtemp_dirをつけているから
-        args[0] = "" if args.size == 0
-        help_dir = args[-1]
-        help_dir = ENV["HOME"] unless File.exist?(help_dir)
-        return Config.new(help_dir)
-      end
-    }
   end
 end
