@@ -125,6 +125,18 @@ RSpec.describe "my_help cli_spec.rb by aruba", type: :aruba do
     end
   end
 
+  context "git option" do
+    include_context :uses_temp_dir
+    before(:each) {
+      FileUtils.mkdir(File.join(temp_dir, ".my_help"))
+    }
+    it "git push はtemp_dirでは失敗する(git system callまでの挙動確認)" do
+      run_command("my_help git push --help_dir=#{temp_dir}")
+      stop_all_commands
+      expect(last_command_started).to have_output(/not a git repository/)
+    end
+  end
+
   describe "# run_command でinteractiveにできるサンプル" do
     context "cat helloを試す" do
       before { run_command "cat" }
