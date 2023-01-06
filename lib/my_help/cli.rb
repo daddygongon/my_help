@@ -1,11 +1,6 @@
-require "command_line/global"
-require_relative "./git_cli"
-
 module MyHelp
-  class Error < StandardError; end
-
-  # Your code goes here...
   class CLI < Thor
+    include GetConfig
     class_option :help_dir, :type => :string
     #    option :help_dir, :type => :string
     #    option :layer, :type => :numeric
@@ -107,23 +102,5 @@ module MyHelp
       name = $stdin.gets.chomp
       puts("Hello #{name}.")
     end
-
-    no_commands {
-      def get_config #(args)
-        # RSpec環境と，実働環境の差をここで吸収
-        # RSpecではargsの最後にtemp_dirをつけているから
-        # 明示的に--help_dirとした方がいいかも．
-        # listにて改善中．
-        # arubaは明示，rspecはテスト環境を指定．．．
-        # cli_spec.rbのrun_command("my_help list #{help_name} a_item --help_dir=#{help_dir}")
-        # に統一していくべき．
-
-        #        args[0] = "" if args.size == 0
-        #        help_dir = args[-1]
-        parent_help_dir = options["help_dir"] || ""
-        parent_help_dir = ENV["HOME"] unless File.exist?(parent_help_dir)
-        return Config.new(parent_help_dir)
-      end
-    }
   end
 end
