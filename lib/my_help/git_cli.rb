@@ -1,10 +1,20 @@
 module MyHelp
+  module GetConfig
+    def get_config #(args)
+      parent_help_dir = options["help_dir"] || ""
+      parent_help_dir = ENV["HOME"] unless File.exist?(parent_help_dir)
+      return Config.new(parent_help_dir)
+    end
+  end
+
   class Git < Thor
+    include MyHelp::GetConfig
+
     desc "pull", "pull my helps"
 
     def pull
       puts "called my_help git pull"
-      config = get_config(args)
+      config = get_config
       help_dir = config[:local_help_dir]
       puts "on the target git directory : %s" % help_dir
       Dir.chdir(help_dir) do
@@ -16,7 +26,7 @@ module MyHelp
 
     def push
       puts "called my_help git push"
-      config = get_config(args)
+      config = get_config
       help_dir = config[:local_help_dir]
       puts "on the target git directory : %s" % help_dir
       Dir.chdir(help_dir) do
