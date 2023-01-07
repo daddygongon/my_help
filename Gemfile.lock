@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    my_help (1.0c)
+    my_help (1.2)
       colorize
       command_line
       thor
