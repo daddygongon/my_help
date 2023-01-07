@@ -13,10 +13,14 @@ module MyHelp
       end
     end
 
+    package_name 'my_help'
+    map "-v" => :version
+    map "--version" => :version
+
     desc "version", "show version"
 
     def version
-      puts VERSION
+      print "my_help #{VERSION}"
     end
 
     desc "git [pull|push]", "git operations"
@@ -102,5 +106,6 @@ module MyHelp
       name = $stdin.gets.chomp
       puts("Hello #{name}.")
     end
+
   end
 end

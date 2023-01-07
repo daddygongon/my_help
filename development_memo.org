@@ -12,6 +12,23 @@
 #+TWITTER: off
 #+SETUPFILE: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
 
+* <2023-01-07 Sat> Thor
+いくつかのaliasをThorで実現したい
+- my_help -v
+- my_help --version
+という標準的なoption期待に答える．
+
+- [[https://marsbased.com/blog/2020/04/27/building-ruby-cli-thor/][author token, aliases sample]]
+- [[https://stackoverflow.com/questions/28504373/command-aliasing-in-thor][map]]
+なんかの記述があったが，
+- https://github.com/rails/thor/wiki
+で解決．やっぱり原典ね．
+
+あと，その後ろの方に，例文の引き方があって，
+- https://gist.github.com/search?l=ruby&q=.thor
+が便利なんがわかった．これは，使える．
+
+
 * <2023-01-06 Fri> get_configの置き場所
 Thorのsubcommandを使ってclassを分けたが，共通で利用する
 get_configメソッドをどこに置くかで悩んだ．
