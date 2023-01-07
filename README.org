@@ -1,27 +1,17 @@
+#+STARTUP: indent nolineimages content
+#+OPTIONS: ^:{}
 * Name
-  :PROPERTIES:
-  :CUSTOM_ID: name
-  :END:
-
-my\_help
+- my_help :: manual like help for each user
 
 * Summary
-  :PROPERTIES:
-  :CUSTOM_ID: summary
-  :END:
-
 This gem makes and supplies user specific helps, emulating CUI(CLI) help
 usage.
 
 * Target
-  :PROPERTIES:
-  :CUSTOM_ID: target
-  :END:
-
-A very novice of learning some specific operation, 
+A very novice of learning a specific operation, 
 such as CUI, shell, or emacs, 
 has a difficulty in remembering commands and grammers. 
-Some simple key reminds all, but no key brings nothing. 
+Some simple `key' reminds all, but no key brings nothing. 
 Especially a non-English-native has a strong difficulty 
 on the key remembering. 
 The problems are,
@@ -32,34 +22,26 @@ The problems are,
 -  but a memo goes away somewhere...
 
 * Specs
-  :PROPERTIES:
-  :CUSTOM_ID: specs
-  :END:
+This gem aims to supply own help by gem environment. 
+Specs are, 
+- user makes his own help 
+- supplies a template 
+- a same format, looks, operation, and hierarchy 
+- easily see, read 
+- supplies editing and install commands.
 
-This gem aims to supply own help by gem environment. Specs are, - user
-makes his own help - supplies a template - same format, looks,
-operation, and hierarchy - easily see, read - supplies editing and
-install commands.
-
-Wiki targets the whole engineer, my\_help target the specific person.
-Half of the wiki aim should be covered by my\_help. Making own manual is
-one of the best practices for remembering operations. Memo applications
-are good, if you remember the key word. my\_help supplies the key for
-remembering the word.
+Wiki targets the whole engineer, my_help targets a specific person.
+Half of the wiki aim should be covered by my_help. 
+Making own manual is one of the best practices for remembering operations. 
+Memo applications are good, if you remember the key word. 
+my_help supplies the key for remembering the word.
 
 * Usage
-  :PROPERTIES:
-  :CUSTOM_ID: 使用法
-  :END:
 ** Install
 
 : $ gem install my_help
 
 ** Simple Usage
-   :PROPERTIES:
-   :CUSTOM_ID: 簡単な使用法
-   :END:
-
 At first, you can see the commands supplied by my_help.
 #+begin_example
 > my_help
@@ -116,10 +98,6 @@ When you add HELP_NAME and item (-o)wo'
 #+END_EXAMPLE
 
 ** Make your own help
-   :PROPERTIES:
-   :CUSTOM_ID: 独自のhelpを作る方法
-   :END:
-
 For making your new help, you can do tha as follows:
 : my_help new new_help
 
