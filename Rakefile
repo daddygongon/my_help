@@ -30,3 +30,22 @@ RuboCop::RakeTask.new
 task :default do
   system "rake -T"
 end
+
+require "colorize"
+require 'command_line/global'
+
+desc 'git auto'
+task :git_auto do
+  print "Input comments: "
+  comment = STDIN.gets.chomp 
+  comment = comment == "" ? "auto pull and push" : comment.gsub("\'", "\\'")
+  ["git add -A",
+   "git commit -m '#{comment}'",
+   "git pull origin main",
+   "git push origin main"].each do |comm|
+    puts comm.cyan
+    res = command_line comm
+    puts res.stdout.green
+  end
+end
+
