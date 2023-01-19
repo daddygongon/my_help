@@ -13,7 +13,7 @@ RSpec.describe "my_help cli_spec.rb by aruba", type: :aruba do
   context "no command" do
     before(:each) { run_command("my_help") }
     it { expect(last_command_started).to be_successfully_executed }
-    it { expect(last_command_started).to have_output(/^Commands:/) }
+    it { expect(last_command_started).to have_output(/my_help commands:/) }
   end
 
   context "list command" do
