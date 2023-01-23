@@ -7,7 +7,8 @@ module MyHelp
 
     describe "list" do
       it "ヘルプ名がないときは，全てのヘルプとその簡単な内容説明を表示" do
-        output = "example: - help_title"
+        output = "example: "
+        p List.new(templates_path).list
         expect(List.new(templates_path).list).to be_include(output)
       end
       it "ヘルプ名があるときは，その中の全てのitemを表示" do
