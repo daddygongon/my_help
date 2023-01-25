@@ -14,7 +14,7 @@ module MyHelp
       it 'ヘルプ名があるときは，その中の全てのitemを表示' do
         output = 'example'
         help_options = 'example'
-        p List.new(templates_path).list(help_options)
+        # p List.new(templates_path).list(help_options)
         expect(List.new(templates_path).list(help_options)).to be_include(output)
       end
       it 'item名があるときは，そのcontentを表示' do
