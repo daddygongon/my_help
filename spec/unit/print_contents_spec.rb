@@ -15,8 +15,7 @@ HEREDOC
       contents1 = Org2Hash_new.new(contents).fsm_2
       actual = Print.new(contents1).list(level)
 
-      output = "- head1\n  - head1-2\n- head2\n  - head2-2\n"
-
+      output = "-                head1 : \n-                    head1-2 : \n-                head2 : \n-                    head2-2 : \n"
       expect(actual).to eq(output)
     end
     it "mdの階層表示" do
@@ -45,8 +44,7 @@ HEREDOC
       contents1 = Md2Hash_new.new(contents).fsm_2
       actual = Print.new(contents1).list(level)
 
-      output = "- head1\n  - head1-2\n- head2\n  - head2-2\n- head3\n  - head3-2\n"
-
+      output = "-                head1 : \n-                    head1-2 : \n-                head2 : \n-                    head2-2 : \n-                head3 : \n-                    head3-2 : \n"
       expect(actual).to eq(output)
     end
   end

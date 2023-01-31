@@ -77,6 +77,7 @@ module MyHelp
         current_item = case action
           when :ignore
           when :item
+            # m = line.match(/^(#*) (.+)/)
             m = line.match(/^(#*) (.+)/)
             head, item = m[1], m[2]
             head_num = head.chomp.size || 0

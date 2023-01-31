@@ -58,7 +58,7 @@ module MyHelp
         current_item = case action
           when :ignore
           when :item
-            m = line.match(/^(.*) (.+)/)
+            m = line.match(/^(\*+) (.+)/)
             head, item = m[1], m[2]
             head_num = head.chomp.size || 0
             contents[item] = { head_num: head_num, cont: [] }
@@ -76,3 +76,18 @@ module MyHelp
     end
   end
 end
+
+=begin
+  
+rescue => exception
+  
+else
+  
+end
+contents = <<HEREDOC
+* head1 : a
+- hoge 
+** head1-2 
+HEREDOC
+p MyHelp::Org2Hash_new.new(contents).fsm_2
+=end
