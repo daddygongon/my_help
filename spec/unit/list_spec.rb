@@ -38,17 +38,7 @@ module MyHelp
         end
         # 追加
         it "layerが指定されているときは，指定されたlayerに合うように階層表示" do
-=begin
-        output = <<HEREDOC
--               head1  :  a
--                   head1-2  :  b
--               head2  :  c
--               head3  :  d
--                   head3-2  :  e
--                         head3-3  :
-HEREDOC
-=end
-          output = "\e[0;36;49mmy_help called with name : sample, item : \n\e[0m-               head1  :  a\n-                   head1-2  :  b\n-               head2  :  c\n-               head3  :  d\n-                   head3-2  :  e\n-                         head3-3  : \n"
+          output = "\e[0;36;49mmy_help called with name : sample, item : \n\e[0m*                head1  :  a\n**             head1-2  :  b\n*                head2  :  c\n*                head3  :  d\n**             head3-2  :  e\n***            head3-3  : \n"
           ext = ".org"
           layer = 3
           help_options = "sample"
@@ -90,7 +80,7 @@ HEREDOC
           expect(List.new(templates_path, @ext).list(help_options)).to be_include(output)
         end
         it "layerが指定されているときは，指定されたlayerに合うように階層表示" do
-          output = "\e[0;36;49mmy_help called with name : sample, item : \n\e[0m-               head1  :  a\n-               head2  :  b\n-                   head2-2  :  c\n-                         head2-3  :  d\n-               head3  :  e\n-                   head3-2  :  f\n"
+          output = "\e[0;36;49mmy_help called with name : sample, item : \n\e[0m*                head1  :  a\n*                head2  :  b\n**             head2-2  :  c\n***            head2-3  :  d\n*                head3  :  e\n**             head3-2  :  f\n"
           layer = 3
           help_options = "sample"
           #p List.new(templates_path, @ext, layer).list(help_options)
