@@ -12,6 +12,6 @@
 - content_a
 
 # b_item
-
-- b_item
 - content_b
+- b_item
+

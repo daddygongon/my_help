@@ -1,5 +1,5 @@
 #+STARTUP: indent nolineimages overview
-* head
+* head 
 - Emacs key bind
 - special key command
   -   c-f, While pressing the control key, press 'f'

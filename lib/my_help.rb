@@ -15,6 +15,10 @@ require_relative "my_help/cli"
 require_relative "my_help/org2hash"
 require_relative "my_help/md2hash"
 
+require_relative "my_help/org2hash_new"
+require_relative "my_help/md2hash_new"
+require_relative "my_help/print_contents"
+
 module MyHelp
   class Error < StandardError; end
 
