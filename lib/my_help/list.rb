@@ -5,7 +5,7 @@ require "colorized_string"
 module MyHelp
   # Your code goes here...
   class List
-    def initialize(path = "", ext = ".md", layer = 1)
+    def initialize(path = "", ext = ".org", layer = 1)
       @path = path
       @ext = ext
       @layer = layer
@@ -51,7 +51,7 @@ module MyHelp
           else
             ""
           end
-        out << format("%10s: %s\n", help_info[:name], head)
+        out << format("%20s: %s\n", help_info[:name], head)
       end
     end
 
