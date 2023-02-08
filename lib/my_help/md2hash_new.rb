@@ -78,7 +78,7 @@ module MyHelp
           when :ignore
           when :item
             # m = line.match(/^(#*) (.+)/)
-            m = line.match(/^(#*) (.+)/)
+            m = line.match(/^(#+) (.+)/)
             head, item = m[1], m[2]
             head_num = head.chomp.size || 0
             contents[item] = { head_num: head_num, cont: [] }

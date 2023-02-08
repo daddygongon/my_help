@@ -42,7 +42,7 @@ module MyHelp
           ext = ".org"
           layer = 3
           help_options = "sample"
-          #p List.new(templates_path, ext, layer).list(help_options)
+          #puts List.new(templates_path, ext, layer).list(help_options)
           expect(List.new(templates_path, ext, layer).list(help_options)).to eq(output)
         end
         it "指定したlayerが2の時,2階層まで表示" do
@@ -106,24 +106,24 @@ module MyHelp
           expect(List.new(templates_path, @ext).list(help_options)).to be_include(output)
         end
         it "layerが指定されているときは，指定されたlayerに合うように階層表示" do
-          output = "\e[0;36;49mmy_help called with name : sample, item : \n\e[0m*                head1  :  a\n*                head2  :  b\n**             head2-2  :  c\n***            head2-3  :  d\n*                head3  :  e\n**             head3-2  :  f\n"
+          output = "\e[0;36;49mmy_help called with name : sample, item : \n\e[0m*                head1  :  a\n**             head1-2  :  b\n***            head1-3  :  \n*                head2  : \n**             head2-2  :  \n***            head2-3  :  d\n"
           layer = 3
           help_options = "sample"
-          #p List.new(templates_path, @ext, layer).list(help_options)
+          #puts List.new(templates_path, @ext, layer).list(help_options)
           expect(List.new(templates_path, @ext, layer).list(help_options)).to be_include(output)
         end
         it "指定したlayerが2の時,2階層まで表示" do
-          output = "\e[0;36;49mmy_help called with name : sample, item : \n\e[0m*               head1  :  a\n*               head2  :  b\n**            head2-2  :  c\n*               head3  :  e\n**            head3-2  :  f\n"
+          output = "\e[0;36;49mmy_help called with name : sample, item : \n\e[0m*               head1  :  a\n**            head1-2  :  b\n*               head2  : \n**            head2-2  :  \n"
           layer = 2
           help_options = "sample"
-          #p List.new(templates_path, @ext, layer).list(help_options)
+          #puts List.new(templates_path, @ext, layer).list(help_options)
           expect(List.new(templates_path, @ext, layer).list(help_options)).to be_include(output)
         end
         it "layerが-1と指定したとき，全て表示する" do
-          output = "\e[0;36;49mmy_help called with name : sample, item : \n\e[0m*                head1  :  a\n*                head2  :  b\n**             head2-2  :  c\n***            head2-3  :  d\n*                head3  :  e\n**             head3-2  :  f\n"
+          output = "\e[0;36;49mmy_help called with name : sample, item : \n\e[0m*                  head1  :  a\n**               head1-2  :  b\n***              head1-3  :  \n****             head1-4  :  c\n*****            head1-5  : \n*                  head2  : \n**               head2-2  :  \n***              head2-3  :  d\n"
           layer = -1
           help_options = "sample"
-          #p List.new(templates_path, @ext, layer).list(help_options)
+          #puts List.new(templates_path, @ext, layer).list(help_options)
           expect(List.new(templates_path, @ext, layer).list(help_options)).to eq(output)
         end
       end
