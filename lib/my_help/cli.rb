@@ -20,7 +20,7 @@ module MyHelp
     desc "version", "show version"
 
     def version
-      print "my_help #{VERSION}"
+      puts "my_help #{VERSION}"
     end
 
     desc "git [pull|push]", "git operations"
