@@ -12,7 +12,7 @@ module MyHelp
       @config = {
         template_dir: File.expand_path("../templates", __dir__),
         local_help_dir: local_help_dir,
-        conf_file: File.join(local_help_dir, ".my_help_conf.yml"),
+        conf_file: File.join(conf_path, ".my_help_conf.yml"),
         editor: ENV["EDITOR"] || "emacs",
         ext: ".org",
         verbose: false,

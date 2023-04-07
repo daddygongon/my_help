@@ -30,6 +30,7 @@ module MyHelp
 
     def init(*args)
       config = get_config # for using methods in Config
+
       #config.ask_default
       init = Init.new(config)
       raise "Local help dir exist." if init.help_dir_exist?
