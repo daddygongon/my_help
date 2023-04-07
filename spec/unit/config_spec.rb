@@ -43,7 +43,7 @@ module MyHelp
       it ":local_help_dirに.my_help_conf.ymlを保存する" do
         Dir.mkdir(tmp_conf[:local_help_dir])
         tmp_conf.save_config()
-        expect(File.exist?(File.join(temp_dir, ".my_help", ".my_help_conf.yml"))).to be_truthy
+        expect(File.exist?(File.join(temp_dir, ".my_help_conf.yml"))).to be_truthy
       end
     end
     describe "[]メソッド" do

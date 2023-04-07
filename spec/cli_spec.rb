@@ -95,7 +95,7 @@ RSpec.describe "my_help cli_spec.rb by aruba", type: :aruba do
     it "confとhelpsがtemp_dirに保存される" do
       type ".md\n"
       stop_all_commands
-      conf_file = File.join(temp_dir, ".my_help", ".my_help_conf.yml")
+      conf_file = File.join(temp_dir, ".my_help_conf.yml")
       expect(File.exist?(conf_file)).to be_truthy
       expect(YAML.load_file(conf_file)[:ext]).to eq ".md"
       example_file = File.join(temp_dir, ".my_help", "example.md")
@@ -109,10 +109,10 @@ RSpec.describe "my_help cli_spec.rb by aruba", type: :aruba do
     before(:each) {
       FileUtils.mkdir(File.join(temp_dir, ".my_help"))
     }
-    it "my_help/.my_help_conf.ymlに:editor = 'code'がセットされる" do
+    it "./.my_help_conf.ymlに:editor = 'code'がセットされる" do
       run_command("my_help set editor 'code' --help_dir=#{temp_dir}")
       stop_all_commands
-      conf_file = File.join(temp_dir, ".my_help", ".my_help_conf.yml")
+      conf_file = File.join(temp_dir, ".my_help_conf.yml")
       expect(File.exist?(conf_file)).to be_truthy
       expect(YAML.load_file(conf_file)[:editor]).to eq "code"
     end
