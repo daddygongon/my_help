@@ -6,7 +6,7 @@
 <title>
   File: README
   
-    &mdash; Documentation by YARD 0.9.28
+    &mdash; my_help
   
 </title>
 
@@ -57,67 +57,80 @@
         <div class="clear"></div>
       </div>
 
-      <div id="content"><div id='filecontents'><h1>概要</h1>
-<p>CUI(CLA)ヘルプのUsage出力を真似て，user独自のhelpを作成・提供するgem.</p>
-<h1>(my_helpで解決しようとする)問題点</h1>
-<p>CUIやshell, 何かのプログラミング言語などを習得しようとする初心者は，
-  commandや文法を覚えるのに苦労します．
-  少しのkey(とっかかり)があると思い出すんですが，
-  うろ覚えでは間違えて路頭に迷います．
-  問題点は，</p>
+      <div id="content"><div id='filecontents'><h1>Name</h1>
+<dl>
+  <dt>my_help</dt><dd>manual like help for each user</dd>
+</dl>
+<h1>Summary</h1>
+<p>This gem makes and supplies user specific helps, emulating CUI(CLI) help
+  usage.</p>
+<h1>Target</h1>
+<p>A very novice of learning a specific operation,
+  such as CUI, shell, or emacs,
+  has a difficulty in remembering commands and grammers.
+  Some simple `key&#8217; reminds all, but no key brings nothing.
+  Especially a non-English-native has a strong difficulty
+  on the key remembering.
+  The problems are,</p>
 <ul>
-  <li>manは基本的に英語</li>
-  <li>manualでは重たい</li>
-  <li>いつもおなじことをwebで検索して</li>
-  <li>同じとこ見ている</li>
-  <li>memoしても，どこへ置いたか忘れる</li>
+  <li>a man(ual) is in English</li>
+  <li>a man is heavily documented</li>
+  <li>On web, searching the same key word,</li>
+  <li>and reading the same URI repeatedly</li>
+  <li>but a memo goes away somewhere&#8230;</li>
 </ul>
-<p>などです．</p>
-<h1>特徴</h1>
-<p>これらをCLAとして提供しようというのが，このgemの目的です．
-  仕様としては，</p>
+<h1>Specs</h1>
+<p>This gem aims to supply own help by gem environment.
+  Specs are,</p>
 <ul>
-  <li>userが自分にあったmanを作成</li>
-  <li>雛形を提供</li>
-  <li>おなじformat, looks, 操作, 階層構造</li>
-  <li>すぐに手が届く</li>
-  <li>それらを追加・修正・削除できる</li>
+  <li>user makes his own help</li>
+  <li>supplies a template</li>
+  <li>a same format, looks, operation, and hierarchy</li>
+  <li>easily see, read</li>
+  <li>supplies editing and install commands.</li>
 </ul>
-<p>memoソフトでは，検索が必要となりますが，my_helpは
-  key(記憶のとっかかり)を提供することが目的です．
-  RPGでレベル上げとかアイテムを貯めるようにして，
-  プログラミングでスキルを発展させてください．</p>
-<p>VSCodeやGithub Copilotではcodeの候補を挙げてくれますが，
-  物覚えの悪い作者は，人の名前をitem分けして，こそっと使っています．</p>
-<h1>使用法</h1>
-<h2>インストール</h2>
+<p>Wiki targets the whole engineer, my_help targets a specific person.
+  Half of the wiki aim should be covered by my_help.
+  Making own manual is one of the best practices for remembering operations.
+  Memo applications are good, if you remember the key word.
+  my_help supplies the key for remembering the word.</p>
+<h1>Usage</h1>
+<h2>Install</h2>
 <pre class="code ruby"><code class="ruby">
-&gt; gem install my_help
+$ gem install my_help
 </code></pre>
-<p>です．</p>
-<h2>簡単な使用法</h2>
-<p>まずは，</p>
-<pre class="code bash"><code class="bash">
+<h2>Simple Usage</h2>
+<p>At first, you can see the commands supplied by my_help.</p>
+<pre class="code ruby"><code class="ruby">
 &gt; my_help
-Commands:
-  my_help delete HELP             # delete HELP
-  my_help edit HELP               # edit HELP
-  my_help help [COMMAND]          # Describe available commands or one specific command
-  my_help list [HELP] [ITEM]      # list all helps, specific HELP, or ITEM
-  my_help new HELP                # make new HELP
-  my_help set_editor EDITOR_NAME  # set editor to EDITOR_NAME
-  my_help setup                   # set up the test database
-  my_help version                 # show version
+NAME
+    my_help - make own help and list.
+
+SYNOPSIS
+    my_help [global options] command [command options] [arguments...]
+
+VERSION
+    0.7.0
+
+GLOBAL OPTIONS
+    --help    - Show this message
+    --version - Display the program version
+
+COMMANDS
+    delete - delete HELP_NAME help
+    edit   - edit HELP_NAME help
+    help   - Shows a list of commands or help for one command
+    list   - list all helps, specific HELP, or item
+     new   - make new HELP_NAME
 </code></pre>
-<p>としてください．このlistにNAMEやITEMを加えて行くとわかると思います．</p>
-<pre class="code bash"><code class="bash">
-&gt; my_help list
-&gt; my_help list emacs
-&gt; my_help list emacs -f
-&gt; my_help list emacs file
+<p>When you add HELP_NAME and item (-o)wo&#8217;</p>
+<pre class="code ruby"><code class="ruby">
+<span class='id identifier rubyid_my_help'>my_help</span> <span class='id identifier rubyid_list'>list</span>
+<span class='id identifier rubyid_my_help'>my_help</span> <span class='id identifier rubyid_list'>list</span> <span class='id identifier rubyid_emacs_help'>emacs_help</span>
+<span class='id identifier rubyid_my_help'>my_help</span> <span class='id identifier rubyid_list'>list</span> <span class='id identifier rubyid_emacs_help'>emacs_help</span> <span class='op'>-</span><span class='id identifier rubyid_f'>f</span>
+<span class='id identifier rubyid_my_help'>my_help</span> <span class='id identifier rubyid_list'>list</span> <span class='id identifier rubyid_emacs_help'>emacs_help</span> <span class='id identifier rubyid_file'>file</span>
 </code></pre>
-<p>として動かしてみてください．</p>
-<pre class="code bash"><code class="bash">
+<pre class="code ruby"><code class="ruby">
 - emacsのキーバインド
 - 
 特殊キー操作
@@ -139,39 +152,24 @@ Commands:
    -r, ruby-mode      : ruby-mode
    -d, dired          : ファイラとして使う
 </code></pre>
-<h2>my_helpがやっていること</h2>
-<p>my_helpの個々のヘルプファイルは&#8217;~/.my_help&#8217;に置かれています．
-  ヘルプファイルのフォーマットはEmacsのorg-modeです．
-  これをEditorで叩いて編集したり，
-  そこから情報を取り出したりしています．
-  単にファイル操作を集約しているだけなのですが，
-  これが面倒で．．．</p>
-<h2>独自のhelpを作る方法</h2>
-<p>独自のhelpを作る方法です．まずは，</p>
+<h2>Make your own help</h2>
+<p>For making your new help, you can do tha as follows:</p>
 <pre class="code ruby"><code class="ruby">
-$ my_help new new_help
+<span class='id identifier rubyid_my_help'>my_help</span> <span class='id identifier rubyid_new'>new</span> <span class='id identifier rubyid_new_help'>new_help</span>
 </code></pre>
-<p>で，new_helpというtemplateが用意されます．</p>
+<p>A templeate is compied, then you can edit as</p>
 <pre class="code ruby"><code class="ruby">
-$ my_help edit new_help
+<span class='id identifier rubyid_my_help'>my_help</span> <span class='id identifier rubyid_edit'>edit</span> <span class='id identifier rubyid_new_help'>new_help</span>
 </code></pre>
-<p>で編集してください． Emacs org形式で，格納されています．</p>
+<p>The file is stored in emacs org mode.</p>
+<p>You can delete if as follows:</p>
 <pre class="code ruby"><code class="ruby">
-$ my_help delete new_help
+<span class='id identifier rubyid_my_help'>my_help</span> <span class='id identifier rubyid_delete'>delete</span> <span class='id identifier rubyid_new_help'>new_help</span>
 </code></pre>
-<p>すると消されます．</p>
-<h2>editorの変更</h2>
-<pre class="code ruby"><code class="ruby">
-$ my_help set_editor vim
-</code></pre>
-<p>でeditorを変更できます．codeとかは確認していますが，
-  それ以外で動いたり，動かなかったりを報告してください．</p>
-<p>OS Xで&#8217;emacs&#8217;とした時にGUI版が立ち上がって嫌だという場合は，
-  &#8216;emacs -nw&#8217;として下さい．</p>
 </div></div>
 
       <div id="footer">
-  Generated on Fri Jan  6 13:07:57 2023 by
+  Generated on Fri Apr  7 15:56:54 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.0.2).
 </div>
