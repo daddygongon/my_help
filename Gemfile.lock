@@ -18,9 +18,9 @@ GEM
       thor (~> 1.0)
     builder (3.2.4)
     childprocess (4.1.0)
-    colorize (0.8.1)
+    colorize (1.0.1)
     command_line (2.0.1)
-    contracts (0.16.1)
+    contracts (0.17)
     cucumber (8.0.0)
       builder (~> 3.2, >= 3.2.4)
       cucumber-ci-environment (~> 9.0, >= 9.0.4)
@@ -33,7 +33,7 @@ GEM
       mime-types (~> 3.4, >= 3.4.1)
       multi_test (~> 1.1, >= 1.1.0)
       sys-uname (~> 1.2, >= 1.2.2)
-    cucumber-ci-environment (9.1.0)
+    cucumber-ci-environment (9.2.0)
     cucumber-core (11.0.0)
       cucumber-gherkin (~> 23.0, >= 23.0.1)
       cucumber-messages (~> 18.0, >= 18.0.0)
@@ -49,29 +49,28 @@ GEM
     ffi (1.15.5)
     mime-types (3.4.1)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2022.0105)
+    mime-types-data (3.2023.0218.1)
     multi_test (1.1.0)
     rake (13.0.6)
     rspec (3.12.0)
       rspec-core (~> 3.12.0)
       rspec-expectations (~> 3.12.0)
       rspec-mocks (~> 3.12.0)
-    rspec-core (3.12.0)
+    rspec-core (3.12.2)
       rspec-support (~> 3.12.0)
-    rspec-expectations (3.12.1)
+    rspec-expectations (3.12.3)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
-    rspec-mocks (3.12.1)
+    rspec-mocks (3.12.5)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
     rspec-support (3.12.0)
-    sys-uname (1.2.2)
+    sys-uname (1.2.3)
       ffi (~> 1.1)
-    thor (1.2.1)
+    thor (1.2.2)
 
 PLATFORMS
   arm64-darwin-20
-  x86_64-linux
 
 DEPENDENCIES
   aruba (~> 2.1.0)
@@ -80,4 +79,4 @@ DEPENDENCIES
   rspec (~> 3.0)
 
 BUNDLED WITH
-   2.3.23
+   2.4.14
