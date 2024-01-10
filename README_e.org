@@ -1,0 +1,110 @@
+#+STARTUP: indent nolineimages content
+#+OPTIONS: ^:{}
+* Name
+- my_help :: manual like help for each user
+
+* Summary
+This gem makes and supplies user specific helps, emulating CUI(CLI) help
+usage.
+
+* Target
+A very novice of learning a specific operation, 
+such as CUI, shell, or emacs, 
+has a difficulty in remembering commands and grammers. 
+Some simple `key' reminds all, but no key brings nothing. 
+Especially a non-English-native has a strong difficulty 
+on the key remembering. 
+The problems are,
+-  a man(ual) is in English
+-  a man is heavily documented
+-  On web, searching the same key word,
+-  and reading the same URI repeatedly
+-  but a memo goes away somewhere...
+
+* Specs
+This gem aims to supply own help by gem environment. 
+Specs are, 
+- user makes his own help 
+- supplies a template 
+- a same format, looks, operation, and hierarchy 
+- easily see, read 
+- supplies editing and install commands.
+
+Wiki targets the whole engineer, my_help targets a specific person.
+Half of the wiki aim should be covered by my_help. 
+Making own manual is one of the best practices for remembering operations. 
+Memo applications are good, if you remember the key word. 
+my_help supplies the key for remembering the word.
+
+* Usage
+** Install
+
+: $ gem install my_help
+
+** Simple Usage
+At first, you can see the commands supplied by my_help.
+#+begin_example
+> my_help
+NAME
+    my_help - make own help and list.
+
+SYNOPSIS
+    my_help [global options] command [command options] [arguments...]
+
+VERSION
+    0.7.0
+
+GLOBAL OPTIONS
+    --help    - Show this message
+    --version - Display the program version
+
+COMMANDS
+    delete - delete HELP_NAME help
+    edit   - edit HELP_NAME help
+    help   - Shows a list of commands or help for one command
+    list   - list all helps, specific HELP, or item
+     new   - make new HELP_NAME
+#+end_example
+
+When you add HELP_NAME and item (-o)wo'
+
+: my_help list
+: my_help list emacs_help
+: my_help list emacs_help -f
+: my_help list emacs_help file
+
+
+#+BEGIN_EXAMPLE
+- emacsのキーバインド
+- 
+特殊キー操作
+-   C-f, controlキーを押しながら    'f'
+-   M-f, escキーを押した後一度離して'f'
+-     操作の中断C-g, 操作の取り消し(Undo) C-x u
+     , head           : head
+     , license        : license
+   -c, cursor         : cursor
+   -e, edit           : edit
+   -s, short_cut      : short_cut
+   -f, file           : file
+   -q, quit           : quit
+   -p, page           : page
+   -w, window         : window
+   -b, buffer         : buffer
+   -m, mode           : mode
+     , query_replace  : query_replace
+   -r, ruby-mode      : ruby-mode
+   -d, dired          : ファイラとして使う
+#+END_EXAMPLE
+
+** Make your own help
+For making your new help, you can do tha as follows:
+: my_help new new_help
+
+A templeate is compied, then you can edit as 
+: my_help edit new_help
+The file is stored in emacs org mode.
+
+You can delete if as follows:
+: my_help delete new_help
+
