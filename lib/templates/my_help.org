@@ -1,0 +1,18 @@
+#+STARTUP: indent nolineimages overview
+* head
+- my_helpの日本語版
+* 初めに
+-特別なコマンド
+  -   c-f,「ctrl」キーと「f」を同時に押す
+　-   M-f,「Esc」キーを押した後に「f」を押す
+　-   c-g,操作を中断する
+　-   c-x u, 直前に行った操作を取り消す
+* license:      cc by Kaede Ogawa, 2024
+* 編集
+- [[file:./emacs_j.org]]
+* TODOを用いたタスク管理 
+- c-c ., カレンダーを表示して日付を追加(日付を選択する方法は?)
+- c-c c-s, カレンダーを表示して、予定を追加
+- c-c c-t, TODO タスク1のTODOをDONEに変更
+- -[], タスクの前に-[]を付けることでTODO プロジェクトA[完了タスク数/すべてのタスク数]と表示される
+- c-c c-c, []タスクの[]にチェックを付ける
