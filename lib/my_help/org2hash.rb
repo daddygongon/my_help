@@ -39,7 +39,12 @@ module MyHelp
     end
 
     def read_item(line)
-      line.match(/\* (.+)/)[1]
+      m = line.match(/\* (.+)/)
+      if m==nil
+        nil
+      else
+        m[1]
+      end
     end
   end
 end
