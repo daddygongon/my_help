@@ -20,12 +20,30 @@ module MyHelp
     desc "version", "show version"
 
     def version
-      print "my_help #{VERSION}"
+      puts "my_help #{VERSION}"
     end
 
     desc "git [pull|push]", "git operations"
     subcommand "git", Git
 
+    map "-a" => :add_defaults
+    desc "add_defaults", "add defaults org files"
+    def add_defaults
+      puts "Adding defaults org files in .my_help"
+      config = get_config
+      help_dir = options["help_dir"] || config[:local_help_dir]
+      p current_orgs = Dir.glob(File.join(help_dir, "*.org")).
+                         map!{|f| File.basename(f)}
+      new_orgs = Dir.glob(File.join(config[:template_dir],'*.org'))
+      new_orgs.each do |new_org|
+        p [new_org, current_orgs.include?(File.basename(new_org))]
+        unless current_orgs.include?(File.basename(new_org))
+          FileUtils.cp(new_org, help_dir, verbose: true)
+        end
+      end
+    end
+    
+    map "-i" => :init
     desc "init", "initialize my_help environment"
 
     def init(*args)
@@ -55,6 +73,7 @@ module MyHelp
       puts File.read(conf_file_path)
     end
 
+    map "-l" => :list
     desc "list [HELP] [ITEM]", "list helps"
     #    option :help_dir, :type => :string
     option :layer, :type => :numeric
@@ -68,8 +87,8 @@ module MyHelp
                     layer).list(*args.join(" "))
     end
 
+    map "-e" => :edit
     desc "edit [HELP]", "edit help"
-
     def edit(*args)
       c = get_config
       help_name = args[0]

@@ -1,4 +1,5 @@
-#+STARTUP: indent nolineimages overview
+#+OPTIONS: ^:{}
+#+STARTUP: indent nolineimages overview num
 * head
 - Emacs key bind
 - special key command

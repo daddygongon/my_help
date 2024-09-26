@@ -12,6 +12,11 @@
 #+TWITTER: off
 #+SETUPFILE: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
 
+* new development <2024-09-26 Thu>
+- test作ろう
+- '* ' 問題の解決
+- Japanese版の用意
+
 * <2023-01-07 Sat> Thor
 いくつかのaliasをThorで実現したい
 - my_help -v

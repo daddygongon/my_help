@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  File: README
+  
+    &mdash; my_help
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "README";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><div id='filecontents'><h1>概要</h1>
+<p>CUI(CLA)ヘルプのUsage出力を真似て，user独自のhelpを作成・提供するgem.</p>
+<h1>(my_helpで解決しようとする)問題点</h1>
+<p>CUIやshell, 何かのプログラミング言語などを習得しようとする初心者は，
+  commandや文法を覚えるのに苦労します．
+  少しのkey(とっかかり)があると思い出すんですが，
+  うろ覚えでは間違えて路頭に迷います．
+  問題点は，</p>
+<ul>
+  <li>manは基本的に英語</li>
+  <li>manualでは重たい</li>
+  <li>いつもおなじことをwebで検索して</li>
+  <li>同じとこ見ている</li>
+  <li>memoしても，どこへ置いたか忘れる</li>
+</ul>
+<p>などです．</p>
+<h1>特徴</h1>
+<p>これらをCLAとして提供しようというのが，このgemの目的です．
+  仕様としては，</p>
+<ul>
+  <li>userが自分にあったmanを作成</li>
+  <li>雛形を提供</li>
+  <li>おなじformat, looks, 操作, 階層構造</li>
+  <li>すぐに手が届く</li>
+  <li>それらを追加・修正・削除できる</li>
+</ul>
+<p>memoソフトでは，検索が必要となりますが，my_helpは
+  key(記憶のとっかかり)を提供することが目的です．
+  RPGでレベル上げとかアイテムを貯めるようにして，
+  プログラミングでスキルを発展させてください．</p>
+<p>VSCodeやGithub Copilotではcodeの候補を挙げてくれますが，
+  物覚えの悪い作者は，人の名前をitem分けして，こそっと使っています．</p>
+<h1>使用法</h1>
+<h2>インストール</h2>
+<pre class="code ruby"><code class="ruby">
+&gt; gem install my_help
+</code></pre>
+<p>です．</p>
+<h2>簡単な使用法</h2>
+<p>まずは，</p>
+<pre class="code bash"><code class="bash">
+&gt; my_help
+Commands:
+  my_help delete HELP             # delete HELP
+  my_help edit HELP               # edit HELP
+  my_help help [COMMAND]          # Describe available commands or one specific command
+  my_help list [HELP] [ITEM]      # list all helps, specific HELP, or ITEM
+  my_help new HELP                # make new HELP
+  my_help set_editor EDITOR_NAME  # set editor to EDITOR_NAME
+  my_help setup                   # set up the test database
+  my_help version                 # show version
+</code></pre>
+<p>としてください．このlistにNAMEやITEMを加えて行くとわかると思います．</p>
+<pre class="code bash"><code class="bash">
+&gt; my_help list
+&gt; my_help list emacs
+&gt; my_help list emacs -f
+&gt; my_help list emacs file
+</code></pre>
+<p>として動かしてみてください．</p>
+<pre class="code bash"><code class="bash">
+- emacsのキーバインド
+- 
+特殊キー操作
+-   C-f, controlキーを押しながら    &#39;f&#39;
+-   M-f, escキーを押した後一度離して&#39;f&#39;
+-     操作の中断C-g, 操作の取り消し(Undo) C-x u
+     , head           : head
+     , license        : license
+   -c, cursor         : cursor
+   -e, edit           : edit
+   -s, short_cut      : short_cut
+   -f, file           : file
+   -q, quit           : quit
+   -p, page           : page
+   -w, window         : window
+   -b, buffer         : buffer
+   -m, mode           : mode
+     , query_replace  : query_replace
+   -r, ruby-mode      : ruby-mode
+   -d, dired          : ファイラとして使う
+</code></pre>
+<h2>my_helpがやっていること</h2>
+<p>my_helpの個々のヘルプファイルは&#8217;~/.my_help&#8217;に置かれています．
+  ヘルプファイルのフォーマットはEmacsのorg-modeです．
+  これをEditorで叩いて編集したり，
+  そこから情報を取り出したりしています．
+  単にファイル操作を集約しているだけなのですが，
+  これが面倒で．．．</p>
+<h2>独自のhelpを作る方法</h2>
+<p>独自のhelpを作る方法です．まずは，</p>
+<pre class="code ruby"><code class="ruby">
+$ my_help new new_help
+</code></pre>
+<p>で，new_helpというtemplateが用意されます．</p>
+<pre class="code ruby"><code class="ruby">
+$ my_help edit new_help
+</code></pre>
+<p>で編集してください． Emacs org形式で，格納されています．</p>
+<pre class="code ruby"><code class="ruby">
+$ my_help delete new_help
+</code></pre>
+<p>すると消されます．</p>
+<h2>editorの変更</h2>
+<pre class="code ruby"><code class="ruby">
+$ my_help set_editor vim
+</code></pre>
+<p>でeditorを変更できます．codeとかは確認していますが，
+  それ以外で動いたり，動かなかったりを報告してください．</p>
+<p>OS Xで&#8217;emacs&#8217;とした時にGUI版が立ち上がって嫌だという場合は，
+  &#8216;emacs -nw&#8217;として下さい．</p>
+</div></div>
+
+      <div id="footer">
+  Generated on Thu Sep 26 14:20:52 2024 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.36 (ruby-3.0.2).
+</div>
+
+    </div>
+  </body>
+</html>

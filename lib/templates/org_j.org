@@ -1,0 +1,25 @@
+#+OPTIONS: ^:{}
+#+STARTUP: indent nolineimages overview num
+* head: orgを用いているmy_helpの使い方
+* license:      cc by Kaede Ogawa, 2024
+* 参考資料:
+- https://qiita.com/t4ku/items/315337745c3fa691027c
+- https://www.fabrica-com.co.jp/techblog/column/7928/
+* org
+- emacs上で動作するアウトライナー
+* アウトライナー
+- 文章の見出しを考えるときに使うツール
+- 見出しの下に小見出しを作成し、階層を深くしていくことができる
+- 階層的に記述できるため、タスク管理やメモ帳として便利である
+* TODOを用いたタスク管理
+- 「* TODO タスク」でやるべきことの見出しを記述
+- 「- 小タスク」TODOの下に記述することで小見出しを記述
+- c-c c-t, TODOタスクのTODOをDONEに変更
+- 「-[ ]　小タスク」, 小タスクの前に-[ ]を付けることで小タスクにチェックリストを作ることができる
+- c-c c-c,[ ]小タスクの[ ]にチェックを付ける
+- 「* TODO タスク [/]」でTODOのタスクに[完了タスク数/全てのタスク数]と表示できる
+- c-c ., カレンダーを表示して日付を追加(shift+矢印キーで日付を選択)
+* 階層的なメモの取り方
+- * space, 新しい項目の追加
+- - space, *の項目の中に要素を追加する
+- (shift+tab)*3, *の中身を表示する

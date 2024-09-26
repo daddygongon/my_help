@@ -1,6 +1,7 @@
-#+STARTUP: indent nolineimages overview
+#+OPTIONS: ^:{}
+#+STARTUP: indent nolineimages overview num
 * head: help_title example
-* license:      cc by Shigeto R. Nishitani, 2016-23
+* license:      cc by Shigeto R. Nishitani, 2016-24
 * a_item : item_short_description
 - content_a
 * b_item

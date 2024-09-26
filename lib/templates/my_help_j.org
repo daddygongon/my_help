@@ -1,0 +1,24 @@
+#+OPTIONS: ^:{}
+#+STARTUP: indent nolineimages overview num
+* head
+- my_helpの日本語版解説
+* license:      cc by Kaede Ogawa , 2024
+* my_helpのインストール
+- file:./my_help_install.org
+* emacsでの編集
+- [[file:./emacs_j.org]]
+* orgを使っているmy_helpのメモの取り方
+- file:./org.org
+* ファイルの参照方法
+- [*2 ファイル名 ]*2 とすることで他ファイルへのリンクを作成
+- c-c c-o,リンク上でコマンドを打つとそのファイルへアクセスできる
+* my_helpのよく使うコマンド
+- my_help new ファイル名, 新しいファイルを作成
+- my_help edit ファイル名, ファイルの編集画面を開く
+- my_help delete ファイル名, ファイルを削除する
+* my_helpでとったメモの参照方法
+- * headの項目は、そのファイルのタイトルのようなものである
+- ターミナル上でmy_help listと打つと、ファイル名の一覧とそのファイルのheadの中身の部分が表示されるようになっている
+- ターミナル上でmy_help list ファイル名 と打つと、そのファイルの項目がすべて表示される
+- my_help list ファイル名 項目名 と打つと、そのファイルの項目の中身を表示できる
+

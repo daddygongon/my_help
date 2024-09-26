@@ -1,0 +1,33 @@
+#+STARTUP: indent nolineimages overview
+* head
+- my_helpのインストール方法と動作環境の設定
+* license:      cc by Shigeto R. Nishitani, 2016-23
+* 参考文献:
+- https://qiita.com/fdui/items/6f28eebd60bb052d872a
+* my_helpのインストール
+-ターミナル上で「gem install my_help」と打つ
+-インストール後、ターミナル上で「my_help」と打つ
+ Commands:
+   my_help delete HELP             # delete HELP
+   my_help edit HELP               # edit HELP
+   my_help git [push|pull]         # git push or pull
+   my_help help [COMMAND]          # Describe available commands or one specif.
+   my_help list [HELP] [ITEM]      # list all helps, specific HELP, or ITEM             
+   my_help new HELP                # make new HELP
+   my_help set_editor EDITOR_NAME  # set editor to EDITOR_NAME
+   my_help setup                   # set up the test database
+   my_help version                 # show version
+
+ このように、コマンド一覧が表示されれば、インストールは完了
+
+* エディタの選択
+- my_helpを使用するために、エディタの選択をする
+- 「my_help set_editor emacs」と打ち、エディタをemacsにする
+
+* my_helpでよく使うコマンド
+- 「my_help new ファイル名」 で新しいメモファイルを作成する
+- 「my_help edit ファイル名」で指定したファイルを開き、編集できる
+- 「my_help list」で自分が作成したファイルのリストを表示する
+- 「my_help list ファイル名」で自分が作成したファイルの中の項目を表示する
+- 「my_help list ファイル名　そのファイルの中にある項目の名前」で項目の中身を表示する
+
