@@ -31,6 +31,13 @@ module MyHelp
     def add_defaults
       puts "Adding defaults org files in .my_help"
       config = get_config
+      if config[:template_dir] !=
+         File.expand_path("../templates", __dir__)
+        puts "inconsistency for :template_dir"
+        config.configure(:template_dir=>
+                         File.expand_path("../templates", __dir__))
+        config.save_config
+      end
       help_dir = options["help_dir"] || config[:local_help_dir]
       p current_orgs = Dir.glob(File.join(help_dir, "*.org")).
                          map!{|f| File.basename(f)}
