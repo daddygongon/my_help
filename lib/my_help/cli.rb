@@ -15,8 +15,6 @@ module MyHelp
 
     package_name 'my_help'
     map "-v" => :version
-    map "--version" => :version
-
     desc "version", "show version"
 
     def version
@@ -103,13 +101,23 @@ module MyHelp
     end
 
     desc "new  [HELP]", "mk new HELP"
-
+    map "-n" => :new
     def new(*args)
       c = get_config
       help_name = args[0]
       help_file = File.join(c[:local_help_dir], help_name + c[:ext])
       Modify.new(c).new(help_file)
       #     puts res.stdout
+    end
+
+    desc "place [TEMPLATE]", "place template on cwd"
+    map "-p" => :place
+    def place(*args)
+      config = get_config
+      help_name = args[0] || 'template'
+      t_file = File.join('.', help_name+".org")
+      FileUtils.cp(File.join(config[:template_dir],'template.org'),
+                   t_file, verbose: true) unless File.exist?(t_file)
     end
 
     desc "delete [HELP]", "delete HELP"
