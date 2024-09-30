@@ -3,6 +3,7 @@ module MyHelp
     def get_config #(args)
       parent_help_dir = options["help_dir"] || ""
       parent_help_dir = ENV["HOME"] unless File.exist?(parent_help_dir)
+      # Forget necessity of these 
       return Config.new(parent_help_dir)
     end
   end

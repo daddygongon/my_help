@@ -21,8 +21,19 @@ module MyHelp
       configure_with(@config[:conf_file])
       #      YAML.dump(@config, File.open(@config[:conf_file], 'w'))
       # no good for multiple testers.
+      check_template_dir
     end
 
+
+    def check_template_dir
+      temp_path = File.expand_path("../templates", __dir__)
+
+      if config[:template_dir] != temp_path
+        puts "inconsistency for :template_dir"
+        config[:template_dir]= temp_path
+        save_config
+      end
+    end
     # Configure through hash
     def configure(opts = nil)
       return if opts == nil

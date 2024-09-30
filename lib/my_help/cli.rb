@@ -29,13 +29,6 @@ module MyHelp
     def add_defaults
       puts "Adding defaults org files in .my_help"
       config = get_config
-      if config[:template_dir] !=
-         File.expand_path("../templates", __dir__)
-        puts "inconsistency for :template_dir"
-        config.configure(:template_dir=>
-                         File.expand_path("../templates", __dir__))
-        config.save_config
-      end
       help_dir = options["help_dir"] || config[:local_help_dir]
       p current_orgs = Dir.glob(File.join(help_dir, "*.org")).
                          map!{|f| File.basename(f)}
@@ -114,10 +107,15 @@ module MyHelp
     map "-p" => :place
     def place(*args)
       config = get_config
-      help_name = args[0] || 'template'
+      p help_name = File.basename( (args[0] || 'template.org'),
+                                   '.org')
       t_file = File.join('.', help_name+".org")
-      FileUtils.cp(File.join(config[:template_dir],'template.org'),
-                   t_file, verbose: true) unless File.exist?(t_file)
+      if File.exist?(t_file)
+        puts "File #{t_file} exists, set file_name."
+      else
+        FileUtils.cp(File.join(config[:template_dir],'template.org'),
+                     t_file, verbose: true)
+      end
     end
 
     desc "delete [HELP]", "delete HELP"
