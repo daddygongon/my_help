@@ -40,7 +40,12 @@ module MyHelp
 
     def read_item(line)
       m = line.match(/\* (.+)/)
-      return m ? m[1] : nil
+      item = if m
+               m[1].match(/head\s*/) ? "head" : m[1]
+             else
+               nil
+             end
+      return item
     end
   end
 end
