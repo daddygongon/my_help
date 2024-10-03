@@ -16,7 +16,7 @@ module MyHelp
       if item == nil && name == nil
         list_helps()
       else
-        path = File.exists?(name + @ext) ? name + @ext :
+        path = File.exist?(name + @ext) ? name + @ext :
           File.join(@path, name + @ext)
         list_help_with(path, name, item)
       end
@@ -32,14 +32,26 @@ module MyHelp
     def list_helps()
       files = File.join(@path, "*#{@ext}")
       Dir.glob(files).inject("") do |out, file|
-        #        p [out, file]
+#                p [out, file]
         help_info = read_help(file)
         head = help_info[:items]["head"] ?
-                 help_info[:items]["head"].split("\n")[0] :
-                 ''
+                 help_info[:items]["head"].split("\n")[0] : ''
+        # "head "ではだめ．．．やれやれ<24/10/02> revised
         out << "%10s: %s\n" % [help_info[:name], head]
+#        out << "%s: %s\n" % [help_info[:name], head]
+#        out << "%20s: %s\n" % [pad_with_bytes(help_info[:name],20), head]
       end
     end
+
+    def pad_with_bytes(str, length, padstr=" ")
+      p str="日本語"
+      p str_bytes = str.bytesize
+      p pad_bytes = length - str_bytes
+      p pad = padstr * (pad_bytes / padstr.bytesize)
+      exit
+      return pad + str
+    end
+
 
     # defaultで@path/name.@extのヘルプを読み込んで，itemを表示
     #
@@ -52,6 +64,7 @@ module MyHelp
           item, desc = item.split(":")
           desc ||= ""
           output << "- %20s : %s\n" % [item, desc]
+#          output << "%s: %s\n" % [pad_with_bytes(item, 40), desc]
         end
       else
         output << find_near(item)
