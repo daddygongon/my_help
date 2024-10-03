@@ -1,3 +1,6 @@
+# <2024/10/03 thu>
+# formatted padding for mixed bytes str
+
 def full_width_count(str)
   str.each_char.map do |c|
     c.bytesize == 1 ? 1 : 2
