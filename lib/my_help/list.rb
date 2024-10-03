@@ -37,18 +37,17 @@ module MyHelp
         head = help_info[:items]["head"] ?
                  help_info[:items]["head"].split("\n")[0] : ''
         # "head "ではだめ．．．やれやれ<24/10/02> revised
-        out << "%10s: %s\n" % [help_info[:name], head]
+#        out << "%10s: %s\n" % [help_info[:name], head]
 #        out << "%s: %s\n" % [help_info[:name], head]
-#        out << "%20s: %s\n" % [pad_with_bytes(help_info[:name],20), head]
+        out << "%s: %s\n" % [pad_with_bytes(help_info[:name],20), head]
       end
     end
 
     def pad_with_bytes(str, length, padstr=" ")
-      p str="日本語"
-      p str_bytes = str.bytesize
-      p pad_bytes = length - str_bytes
-      p pad = padstr * (pad_bytes / padstr.bytesize)
-      exit
+      str_bytes = str.each_char.map do |c|
+        c.bytesize == 1 ? 1 : 2
+      end.reduce(0, &:+)
+      pad = padstr * (length - str_bytes)
       return pad + str
     end
 
@@ -63,8 +62,8 @@ module MyHelp
         @help_info[:items].each_pair do |item, val|
           item, desc = item.split(":")
           desc ||= ""
-          output << "- %20s : %s\n" % [item, desc]
-#          output << "%s: %s\n" % [pad_with_bytes(item, 40), desc]
+#          output << "- %20s : %s\n" % [item, desc]
+          output << "%s: %s\n" % [pad_with_bytes(item, 20), desc]
         end
       else
         output << find_near(item)
