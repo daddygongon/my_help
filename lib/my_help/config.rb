@@ -29,7 +29,7 @@ module MyHelp
       temp_path = File.expand_path("../templates", __dir__)
 
       if config[:template_dir] != temp_path
-        puts "inconsistency for :template_dir"
+        puts "adjust inconsistency of template_dir.\n"
         config[:template_dir]= temp_path
         save_config
       end

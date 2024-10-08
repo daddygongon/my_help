@@ -36,34 +36,38 @@ module MyHelp
         help_info = read_help(file)
         head = help_info[:items]["head"] ?
                  help_info[:items]["head"].split("\n")[0] : ''
-        # "head "ではだめ．．．やれやれ<24/10/02> revised
 #        out << "%10s: %s\n" % [help_info[:name], head]
-#        out << "%s: %s\n" % [help_info[:name], head]
-        out << "%s: %s\n" % [pad_with_bytes(help_info[:name],20), head]
+        out << "%s: %s\n" %
+               [pad_multi_bytes(help_info[:name],20), head]
       end
     end
 
-    def pad_with_bytes(str, length, padstr=" ")
+    def pad_multi_bytes(str, length, padstr=" ")
       str_bytes = str.each_char.map do |c|
         c.bytesize == 1 ? 1 : 2
       end.reduce(0, &:+)
-      pad = padstr * (length - str_bytes)
-      return pad + str
+#      p [str, length, str_bytes]
+      if str_bytes<length
+        pad = padstr * (length - str_bytes)
+        return pad + str
+      else
+        return str
+      end
     end
 
 
-    # defaultで@path/name.@extのヘルプを読み込んで，itemを表示
-    #
     def list_help_with(path, name, item)
       @help_info = read_help(path)
-      output = ColorizedString["my_help called with name : #{name}, item : #{item}\n"].colorize(:cyan)
+      output = ColorizedString[
+        "my_help called with name : #{name},item : #{item}\n"
+      ].colorize(:cyan)
 
       if item == nil
         @help_info[:items].each_pair do |item, val|
           item, desc = item.split(":")
           desc ||= ""
-#          output << "- %20s : %s\n" % [item, desc]
-          output << "%s: %s\n" % [pad_with_bytes(item, 20), desc]
+          output << "%s: %s\n" %
+                    [pad_multi_bytes(item, 20), desc]
         end
       else
         output << find_near(item)
