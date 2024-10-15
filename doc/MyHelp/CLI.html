@@ -155,6 +155,28 @@
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#add_defaults-instance_method" title="#add_defaults (instance method)">#<strong>add_defaults</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#delete-instance_method" title="#delete (instance method)">#<strong>delete</strong>(*args)  &#x21d2; Object </a>
     
 
@@ -268,6 +290,28 @@
   <span class="summary_signature">
     
       <a href="#new-instance_method" title="#new (instance method)">#<strong>new</strong>(*args)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#place-instance_method" title="#place (instance method)">#<strong>place</strong>(*args)  &#x21d2; Object </a>
     
 
     
@@ -410,7 +454,59 @@
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="delete-instance_method">
+  <h3 class="signature first" id="add_defaults-instance_method">
+  
+    #<strong>add_defaults</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/my_help/cli.rb', line 29</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_add_defaults'>add_defaults</span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Adding defaults org files in .my_help</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_config'>config</span> <span class='op'>=</span> <span class='id identifier rubyid_get_config'>get_config</span>
+  <span class='id identifier rubyid_help_dir'>help_dir</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>help_dir</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='id identifier rubyid_config'>config</span><span class='lbracket'>[</span><span class='symbol'>:local_help_dir</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_p'>p</span> <span class='id identifier rubyid_current_orgs'>current_orgs</span> <span class='op'>=</span> <span class='const'>Dir</span><span class='period'>.</span><span class='id identifier rubyid_glob'>glob</span><span class='lparen'>(</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='id identifier rubyid_help_dir'>help_dir</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>*.org</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rparen'>)</span><span class='period'>.</span>
+                     <span class='id identifier rubyid_map!'>map!</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_f'>f</span><span class='op'>|</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_basename'>basename</span><span class='lparen'>(</span><span class='id identifier rubyid_f'>f</span><span class='rparen'>)</span><span class='rbrace'>}</span>
+  <span class='id identifier rubyid_new_orgs'>new_orgs</span> <span class='op'>=</span> <span class='const'>Dir</span><span class='period'>.</span><span class='id identifier rubyid_glob'>glob</span><span class='lparen'>(</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='id identifier rubyid_config'>config</span><span class='lbracket'>[</span><span class='symbol'>:template_dir</span><span class='rbracket'>]</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>*.org</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_new_orgs'>new_orgs</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_new_org'>new_org</span><span class='op'>|</span>
+    <span class='id identifier rubyid_p'>p</span> <span class='lbracket'>[</span><span class='id identifier rubyid_new_org'>new_org</span><span class='comma'>,</span> <span class='id identifier rubyid_current_orgs'>current_orgs</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_basename'>basename</span><span class='lparen'>(</span><span class='id identifier rubyid_new_org'>new_org</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='rbracket'>]</span>
+    <span class='kw'>unless</span> <span class='id identifier rubyid_current_orgs'>current_orgs</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_basename'>basename</span><span class='lparen'>(</span><span class='id identifier rubyid_new_org'>new_org</span><span class='rparen'>)</span><span class='rparen'>)</span>
+      <span class='const'>FileUtils</span><span class='period'>.</span><span class='id identifier rubyid_cp'>cp</span><span class='lparen'>(</span><span class='id identifier rubyid_new_org'>new_org</span><span class='comma'>,</span> <span class='id identifier rubyid_help_dir'>help_dir</span><span class='comma'>,</span> <span class='label'>verbose:</span> <span class='kw'>true</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="delete-instance_method">
   
     #<strong>delete</strong>(*args)  &#x21d2; <tt>Object</tt> 
   
@@ -424,21 +520,21 @@
       <pre class="lines">
 
 
-91
-92
-93
-94
-95
-96
-97
-98
-99
-100
-101
-102</pre>
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/my_help/cli.rb', line 91</span>
+      <pre class="code"><span class="info file"># File 'lib/my_help/cli.rb', line 123</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_c'>c</span> <span class='op'>=</span> <span class='id identifier rubyid_get_config'>get_config</span>
@@ -472,14 +568,14 @@
       <pre class="lines">
 
 
-73
-74
-75
-76
-77</pre>
+90
+91
+92
+93
+94</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/my_help/cli.rb', line 73</span>
+      <pre class="code"><span class="info file"># File 'lib/my_help/cli.rb', line 90</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_edit'>edit</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_c'>c</span> <span class='op'>=</span> <span class='id identifier rubyid_get_config'>get_config</span>
@@ -506,13 +602,13 @@
       <pre class="lines">
 
 
-106
-107
-108
-109</pre>
+138
+139
+140
+141</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/my_help/cli.rb', line 106</span>
+      <pre class="code"><span class="info file"># File 'lib/my_help/cli.rb', line 138</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_hello'>hello</span>
   <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='gvar'>$stdin</span><span class='period'>.</span><span class='id identifier rubyid_gets'>gets</span><span class='period'>.</span><span class='id identifier rubyid_chomp'>chomp</span>
@@ -538,23 +634,23 @@
       <pre class="lines">
 
 
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44</pre>
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/my_help/cli.rb', line 31</span>
+      <pre class="code"><span class="info file"># File 'lib/my_help/cli.rb', line 47</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_init'>init</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_config'>config</span> <span class='op'>=</span> <span class='id identifier rubyid_get_config'>get_config</span> <span class='comment'># for using methods in Config
@@ -601,17 +697,17 @@
       <pre class="lines">
 
 
-62
-63
-64
-65
-66
-67
-68
-69</pre>
+79
+80
+81
+82
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/my_help/cli.rb', line 62</span>
+      <pre class="code"><span class="info file"># File 'lib/my_help/cli.rb', line 79</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_list'>list</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_config'>config</span> <span class='op'>=</span> <span class='id identifier rubyid_get_config'>get_config</span>
@@ -641,16 +737,16 @@
       <pre class="lines">
 
 
-81
-82
-83
-84
-85
-86
-87</pre>
+98
+99
+100
+101
+102
+103
+104</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/my_help/cli.rb', line 81</span>
+      <pre class="code"><span class="info file"># File 'lib/my_help/cli.rb', line 98</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_c'>c</span> <span class='op'>=</span> <span class='id identifier rubyid_get_config'>get_config</span>
@@ -659,6 +755,54 @@
   <span class='const'><span class='object_link'><a href="Modify.html" title="MyHelp::Modify (class)">Modify</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Modify.html#new-instance_method" title="MyHelp::Modify#new (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_c'>c</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_help_file'>help_file</span><span class='rparen'>)</span>
   <span class='comment'>#     puts res.stdout
 </span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="place-instance_method">
+  
+    #<strong>place</strong>(*args)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/my_help/cli.rb', line 108</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_place'>place</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_config'>config</span> <span class='op'>=</span> <span class='id identifier rubyid_get_config'>get_config</span>
+  <span class='id identifier rubyid_p'>p</span> <span class='id identifier rubyid_help_name'>help_name</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_basename'>basename</span><span class='lparen'>(</span> <span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>template.org</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+                               <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.org</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_t_file'>t_file</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_help_name'>help_name</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>.org</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_exist?'>exist?</span><span class='lparen'>(</span><span class='id identifier rubyid_t_file'>t_file</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>File </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_t_file'>t_file</span><span class='embexpr_end'>}</span><span class='tstring_content'> exists, set file_name.</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>else</span>
+    <span class='const'>FileUtils</span><span class='period'>.</span><span class='id identifier rubyid_cp'>cp</span><span class='lparen'>(</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='id identifier rubyid_config'>config</span><span class='lbracket'>[</span><span class='symbol'>:template_dir</span><span class='rbracket'>]</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>template.org</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+                 <span class='id identifier rubyid_t_file'>t_file</span><span class='comma'>,</span> <span class='label'>verbose:</span> <span class='kw'>true</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -679,18 +823,18 @@
       <pre class="lines">
 
 
-48
-49
-50
-51
-52
-53
-54
-55
-56</pre>
+64
+65
+66
+67
+68
+69
+70
+71
+72</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/my_help/cli.rb', line 48</span>
+      <pre class="code"><span class="info file"># File 'lib/my_help/cli.rb', line 64</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set'>set</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_config'>config</span> <span class='op'>=</span> <span class='id identifier rubyid_get_config'>get_config</span> <span class='comment'># for using methods in Config
@@ -721,15 +865,15 @@
       <pre class="lines">
 
 
-22
-23
-24</pre>
+20
+21
+22</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/my_help/cli.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'lib/my_help/cli.rb', line 20</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_version'>version</span>
-  <span class='id identifier rubyid_print'>print</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my_help </span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="../MyHelp.html#VERSION-constant" title="MyHelp::VERSION (constant)">VERSION</a></span></span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my_help </span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="../MyHelp.html#VERSION-constant" title="MyHelp::VERSION (constant)">VERSION</a></span></span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -741,9 +885,9 @@
 </div>
 
       <div id="footer">
-  Generated on Thu Sep 26 14:20:52 2024 by
+  Generated on Tue Oct 15 12:36:20 2024 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.36 (ruby-3.0.2).
+  0.9.37 (ruby-3.0.2).
 </div>
 
     </div>
