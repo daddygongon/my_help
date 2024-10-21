@@ -42,19 +42,30 @@ module MyHelp
       end
     end
 
+#     def pad_multi_bytes(str, length, padstr=" ")
+#       str_bytes = str.each_char.map do |c|
+#         c.bytesize == 1 ? 1 : 2
+#       end.reduce(0, &:+)
+# #      p [str, length, str_bytes]
+#       if str_bytes<length
+#         pad = padstr * (length - str_bytes)
+#         return pad + str
+#       else
+#         return str
+#       end
+#     end
+
     def pad_multi_bytes(str, length, padstr=" ")
-      str_bytes = str.each_char.map do |c|
-        c.bytesize == 1 ? 1 : 2
-      end.reduce(0, &:+)
-#      p [str, length, str_bytes]
-      if str_bytes<length
-        pad = padstr * (length - str_bytes)
+      str_bytes = str.each_char.sum { |c| c.bytesize }
+      pad_length = length - str_bytes
+
+      if pad_length > 0
+        pad = padstr * pad_length
         return pad + str
       else
         return str
       end
     end
-
 
     def list_help_with(path, name, item)
       @help_info = read_help(path)
