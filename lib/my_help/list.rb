@@ -42,21 +42,21 @@ module MyHelp
       end
     end
 
-#     def pad_multi_bytes(str, length, padstr=" ")
-#       str_bytes = str.each_char.map do |c|
-#         c.bytesize == 1 ? 1 : 2
-#       end.reduce(0, &:+)
-# #      p [str, length, str_bytes]
-#       if str_bytes<length
-#         pad = padstr * (length - str_bytes)
-#         return pad + str
-#       else
-#         return str
-#       end
-#     end
+    # def pad_multi_bytes(str, length, padstr=" ")
+    #   str_bytes = str.each_char.map do |c|
+    #     c.bytesize == 1 ? 1 : 2
+    #   end.reduce(0, &:+)
+    #   p [str, length, str_bytes]
+    #   if str_bytes<length
+    #     pad = padstr * (length - str_bytes)
+    #     return pad + str
+    #   else
+    #     return str
+    #   end
+    # end
 
     def pad_multi_bytes(str, length, padstr=" ")
-      str_bytes = str.each_char.sum { |c| c.bytesize }
+      str_bytes = str.each_char.map { |c| c.bytesize == 1 ? 1 : 2 }.sum
       pad_length = length - str_bytes
 
       if pad_length > 0
