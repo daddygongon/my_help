@@ -14,6 +14,7 @@ require_relative "my_help/git_cli"
 require_relative "my_help/cli"
 require_relative "my_help/org2hash"
 require_relative "my_help/md2hash"
+require_relative "my_help/translate"
 
 module MyHelp
   class Error < StandardError; end

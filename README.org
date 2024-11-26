@@ -141,3 +141,10 @@ my_helpの個々のヘルプファイルは'~/.my_help'に置かれています�
 
 OS Xで'emacs'とした時にGUI版が立ち上がって嫌だという場合は，
 'emacs -nw'として下さい．
+* 日本語版
+- 環境変数LANGが[EN]であれば英語版、[JP]であれば日本語版が表示されるように変更
+- 環境変数LANGの変更方法
+  - 「sudo apt -y install language-pack-ja」で日本語の language-pack のパッケージをインストール
+  - 「sudo update-locale LANG=ja_JP.utf8」でロケールを日本語版に変更
+  - 「sudo update-locale LANG=C.utf8」で英語版に変更できる
+  - ターミナルを再起動しなければ言語が変更されない点に注意
