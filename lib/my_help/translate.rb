@@ -15,7 +15,7 @@ module MyHelp
         hello: "hello",
         git: "git operations",
         help: "Describe available commands or one specific command",
-        count: "display the number of times my_help is executed"
+        count: "Display the execution count of my_help [log|command|list|edit] for detailed information"
       },
       'JP' => {
         version: "バージョンを表示",
@@ -30,7 +30,7 @@ module MyHelp
         hello: "こんにちは",
         git: "gitの操作",
         help: "使用可能なコマンドまたは特定のコマンドについて説明",
-        count: "my_helpを実行した回数を表示"
+        count: "my_helpを実行した回数を表示[log|command|list|edit]で詳細確認"
       }
     }
     
