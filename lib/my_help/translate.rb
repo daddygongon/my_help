@@ -15,7 +15,15 @@ module MyHelp
         hello: "hello",
         git: "git operations",
         help: "Describe available commands or one specific command",
-        count: "Display the execution count of my_help [log|command|list|edit] for detailed information"
+        count: "Display history of my_help",
+        count_help: "Commands available in 'count'",
+        count_command_help_header: "Describe subcommands or one specific subcommand",
+        count_help_header: "my_help count commands:",
+        count_log: "Display execution count by date",
+        count_command: "Display execution count by command",
+        count_list: "Display usage history of 'list'",
+        count_edit: "Display edited file history of 'edit'",
+        count_history: "Display execution count by date per week",
       },
       'JP' => {
         version: "バージョンを表示",
@@ -29,8 +37,16 @@ module MyHelp
         delete: "HELPを削除",
         hello: "こんにちは",
         git: "gitの操作",
-        help: "使用可能なコマンドまたは特定のコマンドについて説明",
-        count: "my_helpを実行した回数を表示[log|command|list|edit]で詳細確認"
+        help: "利用可能なコマンドまたは特定のコマンドを説明する",
+        count: "my_helpの履歴を表示",
+        count_help: "'count'で使用できるコマンド",
+        count_command_help_header: "サブコマンドまたは特定のサブコマンドを説明する",
+        count_help_header: "countの使用可能なコマンド一覧：",
+        count_log: "日付別の実行回数を表示",
+        count_command: "コマンド別の実行回数を表示",
+        count_list: "'list' の使用履歴を表示",
+        count_edit: "'edit' で編集されたファイルの履歴を表示",
+        count_history: "1週間の日付別の実行回数を表示",
       }
     }
     
