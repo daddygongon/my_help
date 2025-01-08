@@ -69,7 +69,7 @@ module MyHelp
         "#{date} #{stars}"
       end.join("\n")
       
-      "#{header}\n#{display}\n#{total_label} #{total_count} 回\n"
+      ENV['LANG']&.start_with?('ja') ? "#{header}\n#{display}\n#{total_label} #{total_count} 回\n" : "#{header}\n#{display}\n#{total_label} #{total_count} times\n"
     end
 
     def display_weekly_log
