@@ -12,7 +12,9 @@ Gem::Specification.new do |spec|
   spec.description   = %q{user building help}
   spec.homepage      = 'https://github.com/daddygongon/my_help'
   spec.files = Dir.chdir(File.expand_path(__dir__)) do
-    `git ls-files -z`.split("\x0").reject { |f| f.match(%r{\A(?:test|spec|features)/}) }
+    `git ls-files -z`.split("\x0").reject do |f|
+    f.match(%r{\A(?:test|spec|features)/}) || f.include?("Zone.Identifier")
+    end
   end
   spec.files << 'lib/my_help/translate.rb' unless spec.files.include?('lib/my_help/translate.rb')
   spec.files << 'lib/my_help/count.rb' unless spec.files.include?('lib/my_help/count.rb')
