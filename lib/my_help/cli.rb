@@ -21,6 +21,19 @@ module MyHelp
       puts "my_help #{VERSION}"
     end
 
+    map "-s" => :search
+    desc "search [WORD]", "search word on my_helps dir"
+
+    def search(*args)
+      c = get_config
+      word = args[0]
+      targets = File.join(c[:local_help_dir],"*"+c[:ext])
+      puts "my_help search word on my_helps dir"
+      comm = "grep  #{word} #{targets}"
+      puts "#{comm}\n\n"
+      system comm
+    end
+
     desc "git [pull|push]", "git operations"
     subcommand "git", Git
 
