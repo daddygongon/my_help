@@ -58,7 +58,7 @@ module MyHelp
     def pad_multi_bytes(str, length, padstr=" ")
       str_bytes = str.each_char.map { |c| c.bytesize == 1 ? 1 : 2 }.sum
       pad_length = length - str_bytes
-
+      
       if pad_length > 0
         pad = padstr * pad_length
         return pad + str
@@ -66,7 +66,7 @@ module MyHelp
         return str
       end
     end
-
+    
     def list_help_with(path, name, item)
       @help_info = read_help(path)
       output = ColorizedString[
