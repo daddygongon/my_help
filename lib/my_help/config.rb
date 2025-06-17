@@ -16,6 +16,7 @@ module MyHelp
         editor: ENV["EDITOR"] || "emacs",
         ext: ".org",
         verbose: false,
+        bat: false,
       }
       @valid_config_keys = @config.keys
       configure_with(@config[:conf_file])

@@ -93,9 +93,18 @@ module MyHelp
       config = get_config
       help_dir = options["help_dir"] || config[:local_help_dir]
       layer = options["layer"] || 1
-      puts List.new(help_dir,
+      text = List.new(help_dir,
                     config[:ext],
                     layer).list(*args.join(" "))
+      if config[:bat]
+        require "tempfile"
+        t = Tempfile.open(['hoge', 'bar'])
+        File.write(t.path, text)
+      
+        system("cat #{t.path} | bat -l org -p")
+      else
+        puts text
+      end
     end
 
     map "-e" => :edit
