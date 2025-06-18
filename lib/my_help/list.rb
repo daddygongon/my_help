@@ -4,6 +4,7 @@ require "colorized_string"
 
 module MyHelp
   # Your code goes here...
+  
   class List
     def initialize(path = "", ext = ".org", layer = 1)
       @path = path
@@ -71,7 +72,7 @@ module MyHelp
       @help_info = read_help(path)
       output = ColorizedString[
         "my_help called with name : #{name},item : #{item}\n"
-      ].colorize(:cyan)
+      ] #.colorize(:cyan)
 
       if item == nil
         @help_info[:items].each_pair do |item, val|
@@ -95,8 +96,8 @@ module MyHelp
         "Can't find similar item name with : #{input_item}"
       else
         contents = candidates.collect do |near_item|
-          ColorizedString["item : #{near_item} \n"].colorize(:cyan) +
-          @help_info[:items][near_item]
+          #          ColorizedString["item : #{near_item} \n"].colorize(:cyan) +
+         "item : #{near_item} \n" + @help_info[:items][near_item]
         end
         contents.join("\n")
       end

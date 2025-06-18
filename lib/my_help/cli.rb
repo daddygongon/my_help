@@ -101,7 +101,7 @@ module MyHelp
         t = Tempfile.open(['hoge', 'bar'])
         File.write(t.path, text)
       
-        system("cat #{t.path} | bat -l org -p")
+        system("cat #{t.path} |bat -l zsh -p") #| bat -l org -p")
       else
         puts text
       end
