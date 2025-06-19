@@ -12,6 +12,10 @@
 #+TWITTER: off
 #+SETUPFILE: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
 
+* batcat <2025-06-19 Thu>
+- ENV['wsl']でbatcatを強制
+- markdown を再修正
+- さらにGemfileを.gemspecにして，Gemfile.lockは' bundle install'で自動生成
 * new development <2024-09-26 Thu>
 - test作ろう
 - '* ' 問題の解決
