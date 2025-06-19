@@ -33,7 +33,7 @@ module MyHelp
           item = read_item(line)
           @contents[item] = ""
         when :add_contents
-          @contents[item] += line + "\n"
+          @contents[item] << line
         end
       end
     end
