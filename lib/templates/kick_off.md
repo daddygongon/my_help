@@ -32,7 +32,7 @@
 
 - tree, open, code .,
 
-# directory(path) related commands
+# directory(path) comms
 
 - pwd : print working directory
 
@@ -41,7 +41,7 @@
 - cd \[DIR\] : change directory \# defaultは\'`'          # '`\' tilde,
   ホームdirectoryを指す
 
-# file related commands
+# file comms
 
 - mv : move
 - cp : copy
@@ -51,16 +51,19 @@
 
 # editor key binds
 
-- c-p(previous)
+-                       c-p(previous)
 - c-a(ahead), c-b(back), c-f(forward), c-e(end)
-- c-n(next)
+-                       c-n(next)
 - c-d(delete), c-k(kill-line), del
 - c-y(yank, paste)
 
-# capture commands
+# capture comms
 
-Screen capture Mac whole : Shift + Command + 3 select: Shift + Command +
-4 window: Shift + Command + 4 , space Desktopに保存
-
-Windows : Win + Shift + S, それからIcon操作
-ピクチャ」-\>「スクリーンショット」に保存
+- Mac 
+  - whole : Shift + Command + 3 
+  - select: Shift + Command + 4 
+  - window: Shift + Command + 4 , space 
+  -  Desktopに保存
+- Windows : 
+  - Win + Shift + S, それからIcon操作
+  - ピクチャ」-\>「スクリーンショット」に保存

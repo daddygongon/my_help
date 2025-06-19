@@ -25,7 +25,15 @@ module MyHelp
 
     def read_help(file)
       info = {}
-      info[:items] = Org2Hash.new(File.read(file)).contents
+      
+      info[:items] = case @ext
+                     when '.org' 
+                       Org2Hash.new(File.read(file)).contents
+                     when '.md'
+                       Md2Hash.new(File.read(file)).contents
+                     else
+                       RaiseError(:NoExtension)
+                     end
       info[:name] = File.basename(file).split(".")[0]
       return info
     end
@@ -70,9 +78,7 @@ module MyHelp
 
     def list_help_with(path, name, item)
       @help_info = read_help(path)
-      output = ColorizedString[
-        "my_help called with name : #{name},item : #{item}\n"
-      ] #.colorize(:cyan)
+      output = "my_help called with name : #{name},item : #{item}\n"
 
       if item == nil
         @help_info[:items].each_pair do |item, val|
@@ -97,7 +103,7 @@ module MyHelp
       else
         contents = candidates.collect do |near_item|
           #          ColorizedString["item : #{near_item} \n"].colorize(:cyan) +
-         "item : #{near_item} \n" + @help_info[:items][near_item]
+         "item : #{near_item} \n" + @help_info[:items][near_item].join("\n")
         end
         contents.join("\n")
       end
