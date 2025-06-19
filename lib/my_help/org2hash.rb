@@ -22,7 +22,7 @@ module MyHelp
 
     def simple_fsm()
       state = :header_read
-      item = ""
+      item = []
       @text.split("\n").each do |line|
         next if line.size < 1
         state, action = TRANSITIONS[state][line[0..1]] ||
@@ -31,7 +31,7 @@ module MyHelp
         when :ignore
         when :start_new_item
           item = read_item(line)
-          @contents[item] = ""
+          @contents[item] = []
         when :add_contents
           @contents[item] << line
         end

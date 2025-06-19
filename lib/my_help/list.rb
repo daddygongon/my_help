@@ -44,7 +44,7 @@ module MyHelp
 #                p [out, file]
         help_info = read_help(file)
         head = help_info[:items]["head"] ?
-                 help_info[:items]["head"].split("\n")[0] : ''
+                 help_info[:items]["head"][0] : ''
 #        out << "%10s: %s\n" % [help_info[:name], head]
         out << "%s: %s\n" %
                [pad_multi_bytes(help_info[:name],20), head]
