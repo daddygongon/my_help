@@ -1,11 +1,2 @@
-# frozen_string_literal: true
-
-source "https://rubygems.org"
-
-# Specify your gem's dependencies in my_help.gemspec
+source "http://www.rubygems.org"
 gemspec
-
-gem "rake", "~> 13.0"
-
-gem "rspec", "~> 3.0"
-gem 'aruba', '~> 2.1.0'
