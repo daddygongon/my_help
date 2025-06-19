@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-require 'yard'
 require 'bundler/gem_tasks'
 require 'rake/testtask'
 
@@ -21,10 +20,6 @@ task :yard do
     # see [[https://github.com/lsegal/yard/issues/66]] for the other options
   end
 end
-
-require 'rubocop/rake_task'
-
-RuboCop::RakeTask.new
 
 #task default: %i[test rubocop]
 task :default do
