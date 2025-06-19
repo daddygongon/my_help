@@ -19,13 +19,13 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   # Uncomment to register a new dependency of your gem
-  spec.add_development_dependency "rspec"
+#  spec.add_development_dependency "rspec"
   spec.add_runtime_dependency "thor"
   spec.add_runtime_dependency "command_line"
   spec.add_runtime_dependency "colorize"
 #  spec.add_development_dependency "aruba"
 #  spec.add_development_dependency "yard"
-  spec.add_development_dependency "rubocop"
+#  spec.add_development_dependency "rubocop"
   # For more information and examples about making a new gem, checkout our
   # guide at: https://bundler.io/guides/creating_gem.html
 end
