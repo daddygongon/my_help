@@ -77,7 +77,13 @@ module MyHelp
     def set(*args)
       config = get_config # for using methods in Config
       key = args[0] || ""
-      config.configure(key.to_sym => args[1])
+      begin
+        config.configure(key.to_sym => args[1])
+      rescue => e
+        puts e
+        exit
+      end
+
       config.save_config
       conf_file_path = config[:conf_file]
       puts "conf_file_path: %s" % conf_file_path

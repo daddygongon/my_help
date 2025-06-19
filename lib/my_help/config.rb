@@ -42,10 +42,13 @@ module MyHelp
         if @valid_config_keys.include? k.to_sym
           @config[k.to_sym] = v
         elsif k == "".to_sym
-          print "Valid key words are follows:"
-          p @valid_config_keys
+          print "Valid key words are follows: "
+          puts [@valid_config_keys.map{|v| v.to_s}].join(", ")
         else
-          raise KeyError.new("Error: keyword '#{k}' is invalid",
+          raise KeyError.new("KeywordError: keyword '#{k}' is invalid.\n
+Valid key words are follows; 
+          #{[@valid_config_keys.map{|v| v.to_s}].join(", ")}
+",
                              receiver: @config,
                              key: k)
         end
