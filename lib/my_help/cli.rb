@@ -54,7 +54,7 @@ module MyHelp
         end
       end
     end
-require "colorized_string"    
+
     map "-i" => :init
     desc "init", "initialize my_help environment"
 
@@ -65,7 +65,6 @@ require "colorized_string"
       init = Init.new(config)
       begin 
         init.help_dir_exist?
-        puts "hoge"
       rescue RuntimeError => e
         puts "RuntimeError: #{e.message}"
         exit
@@ -76,7 +75,8 @@ require "colorized_string"
       init.mk_help_dir
       config.save_config
       init.cp_templates
-      puts "If you want to change editor, type 'my_help set editor code'."
+      puts "For changing editor to code: 'my_help set editor code'.".green
+      puts "For activating batcat:       'my_help set bat true'.".green
     end
 
     desc "set [:key] [VAL]", "set editor or ext"

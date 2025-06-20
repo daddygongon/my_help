@@ -26,7 +26,7 @@ if you are sure, delete local help dir first.".green
       target_dir = @config[:local_help_dir]
       src_dir = @config[:template_dir]
       ext = @config[:ext]
-      puts "cp help templates *.#{ext}"
+      puts "cp help templates *#{ext}"
       Dir.glob(File.join(src_dir, "*#{ext}")).each do |file|
         FileUtils.cp(file, target_dir, verbose: false)
       end
