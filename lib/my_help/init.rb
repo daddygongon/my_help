@@ -18,6 +18,7 @@ if you are sure, delete local help dir first.".green
     end
 
     def mk_help_dir
+      puts "making local help dir: #{@config[:local_help_dir]}"
       FileUtils.mkdir(@config[:local_help_dir])
     end
 
@@ -25,6 +26,7 @@ if you are sure, delete local help dir first.".green
       target_dir = @config[:local_help_dir]
       src_dir = @config[:template_dir]
       ext = @config[:ext]
+      puts "cp help templates *.#{ext}"
       Dir.glob(File.join(src_dir, "*#{ext}")).each do |file|
         FileUtils.cp(file, target_dir, verbose: false)
       end

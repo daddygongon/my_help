@@ -73,6 +73,7 @@ Valid key words are follows;
 
     # save config in  @config[:conf_file]
     def save_config()
+      puts " save config in  #{@config[:conf_file]}"
       File.write(@config[:conf_file], YAML.dump(config))
     end
 

@@ -65,9 +65,9 @@ require "colorized_string"
       init = Init.new(config)
       begin 
         init.help_dir_exist?
+        puts "hoge"
       rescue RuntimeError => e
         puts "RuntimeError: #{e.message}"
-      ensure
         exit
       end
       puts "Choose default markup '.org' [Y or .md]? "
