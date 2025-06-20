@@ -107,7 +107,7 @@ module MyHelp
         t = Tempfile.open(['hoge', 'bar'])
         File.write(t.path, text)
         if ENV["WSL_DISTRO_NAME"]=="Ubuntu"
-          p ['config[:bat]',config[:bat]]
+#          p ['config[:bat]',config[:bat]]
           system("cat #{t.path} |batcat --theme Coldark-Cold -l zsh -p") #| bat -l org -p")
         else
           system("cat #{t.path} |bat -l zsh -p") #| bat -l org -p")
