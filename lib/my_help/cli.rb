@@ -1,3 +1,4 @@
+require 'colorize'
 module MyHelp
   class CLI < Thor
     include GetConfig
@@ -53,7 +54,7 @@ module MyHelp
         end
       end
     end
-    
+require "colorized_string"    
     map "-i" => :init
     desc "init", "initialize my_help environment"
 
@@ -62,14 +63,20 @@ module MyHelp
 
       #config.ask_default
       init = Init.new(config)
-      raise "Local help dir exist." if init.help_dir_exist?
+      begin 
+        init.help_dir_exist?
+      rescue RuntimeError => e
+        puts "RuntimeError: #{e.message}"
+      ensure
+        exit
+      end
       puts "Choose default markup '.org' [Y or .md]? "
       response = $stdin.gets.chomp
       config.configure(:ext => response) unless response.upcase[0] == "Y"
       init.mk_help_dir
       config.save_config
       init.cp_templates
-      puts "If you want change editor use my_help set editor code."
+      puts "If you want to change editor, type 'my_help set editor code'."
     end
 
     desc "set [:key] [VAL]", "set editor or ext"

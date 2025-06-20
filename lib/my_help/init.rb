@@ -1,3 +1,4 @@
+require 'colorize'
 module MyHelp
   class Init
     def initialize(config)
@@ -5,7 +6,11 @@ module MyHelp
     end
 
     def help_dir_exist?
-      File.exist?(@config[:local_help_dir])
+      if File.exist?(@config[:local_help_dir])
+        raise "Local help dir exist.\n".red+
+              "local help dir: #{@config[:local_help_dir]};
+if you are sure, delete local help dir first.".green
+      end
     end
 
     def check_conf_exist

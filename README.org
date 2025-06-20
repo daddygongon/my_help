@@ -113,6 +113,24 @@ Commands:
    -d, dired          : ファイラとして使う
 #+end_src
 
+* .md+code
+vscodeを使うuserからの要望で，vscodeと.mdを組み合わせて
+使えるようにしました．
+** init
+init時に.mdを選択するとdefaultのファイル拡張子を.mdにします．
+** default editorをvscodeに
+: > my_help set editor 
+* batcatによるcolorize
+bat(cat)でlist時にcolorize出力をさせるようにしました．<2025-06-20 Fri>
+ただ，実行環境(os)のチェックや，terminalの設定に対して
+特定の状況を想定しています．
+出力が見にくい場合は，
+: > my_help set bat false
+として，plain出力に戻してください．今の設定は，
+: > my_help list | batcat --theme ColdarkCold -l zsh
+です．pull requestを投げてもらったら対応できるかもしれません．
+
+* 詳しい解説
 ** my_helpがやっていること
 my_helpの個々のヘルプファイルは'~/.my_help'に置かれています．
 ヘルプファイルのフォーマットはEmacsのorg-modeです．
