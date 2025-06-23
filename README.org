@@ -113,7 +113,7 @@ Commands:
    -d, dired          : ファイラとして使う
 #+end_src
 
-* .md+code
+* .md + code
 vscodeを使うuserからの要望で，vscodeと.mdを組み合わせて
 使えるようにしました．
 ** init
@@ -129,6 +129,12 @@ bat(cat)でlist時にcolorize出力をさせるようにしました．<2025-06-
 として，plain出力に戻してください．今の設定は，
 : > my_help list | batcat --theme ColdarkCold -l zsh
 です．pull requestを投げてもらったら対応できるかもしれません．
+* current dir file
+: my_help list ./readme.org hoge
+のように，current dirを指定して*.orgなどをlistすると
+item: hogeがcolorizeして表示されます．
+
+長いreadme.orgからitemを抽出して表示するときに便利です．
 
 * 詳しい解説
 ** my_helpがやっていること
