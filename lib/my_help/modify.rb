@@ -2,6 +2,7 @@ module MyHelp
   class Modify
     def initialize(conf)
       @conf = conf
+      @ext = @conf[:ext]
     end
 
     def new(help_file)
@@ -19,13 +20,14 @@ module MyHelp
     end
 
     def edit(help_name)
-      p help_file = File.join(@conf[:local_help_dir],
-                              help_name + @conf[:ext])
-      if File.exist?(help_file)
-        p comm = "#{@conf[:editor]} #{help_file}"
+      name = File.basename(help_name[0], @ext)
+      path = File.exist?(name + @ext) ? name + @ext :
+          File.join(@conf[:local_help_dir], name + @ext)
+      if File.exist?(path)
+        p comm = "#{@conf[:editor]} #{path}"
         system(comm)
       else
-        puts "file #{help_file} does not exist,"
+        puts "file #{path} does not exist,"
         puts "make #{help_name} first by 'new' command."
       end
     end

@@ -128,7 +128,7 @@ module MyHelp
     desc "edit [HELP]", "edit help"
     def edit(*args)
       c = get_config
-      help_name = args[0]
+      help_name = *args[0] #.join(" ")
       Modify.new(c).edit(help_name)
     end
 

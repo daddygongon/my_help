@@ -17,6 +17,7 @@ module MyHelp
       if item == nil && name == nil
         list_helps()
       else
+        name = File.basename(name, @ext)
         path = File.exist?(name + @ext) ? name + @ext :
           File.join(@path, name + @ext)
         list_help_with(path, name, item)
