@@ -1,15 +1,23 @@
 #+OPTIONS: ^:{}
 #+STARTUP: indent nolineimages overview num
-* head: help_title example
-* license:      cc by Shigeto R. Nishitani, 2016-24
-* initial_operation
-最初(initial)の操作
+* head: 
+最初心者のためのコマンドメモ
+* license:      cc by Shigeto R. Nishitani, 2025
+* initial(最初)の操作
     1. cd comp_a_25s
     2. git stash                         # 変更をgitに無かったことに
     3. git pull origin main              # 最新のfilesをgitでpull(引っ張ってくる)
     4. cp bin/kick_off ~/bin             # 最新版のkick_offを~/binにcopy
     5. cd ~/my_comp_a/python
     6. cp ~/comp_a_25s/python/hogehoge . # hogehogeファイルを'.'にcp
+* git
+1. git config --global user.name "John Doe"
+1. git config --global user.email johndoe@example.com
+1. git config --global core.editor code
+1. git config pull.rebase true
+1. git stash                         # 変更をgitに無かったことに
+1. git pull origin main              # 最新のfilesをgitでpull(引っ張ってくる)
+
 * wsl shell commands
      - cat : catenate # 中身を出力する
       - cat results | pbcopy(clip.exe) 
@@ -23,7 +31,7 @@
     - history
       - history -r | tail -20 | clip.exe
     - tree, open, code .,
-* directory(path) related commands
+* directory(path)ディレクトリ
     - pwd : print working directory
               # 今いる絶対path(dir)
     - ls [DIR] : list # defaultは'.'
@@ -31,7 +39,7 @@
     - cd [DIR] : change directory # defaultは'~'
               # '~' tilde, ホームdirectoryを指す
               # '..' 一つ上の相対path
-* file related commands
+* fileファイル
     - mv  : move
     - cp  : copy
     - mkdir : make directory
@@ -44,7 +52,7 @@
     -                 c-n(next)
     - c-d(delete), c-k(kill-line), del
     - c-y(yank, paste)
-* capture commands
+* capture画面捕
     Screen capture
     Mac
       whole : Shift + Command + 3
