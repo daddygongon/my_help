@@ -7,8 +7,8 @@ module MyHelp
 
     def new(help_file)
       target = help_file
-      source = File.join(@conf[:template_dir], "example.org")
-      FileUtils.cp(source, target, verbose: @conf[:verbose])
+      source = File.join(@conf[:template_dir], "template#{@ext}")
+      FileUtils.cp(source, target, verbose: true)
     end
 
     def delete(help_file)
