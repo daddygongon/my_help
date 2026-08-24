@@ -5,7 +5,7 @@
 #+EMAIL:     (concat "shigeto_nishitani@mac.com")
 #+LANGUAGE:  jp
 #+OPTIONS:   H:4 toc:t num:2
-#+SETUPFILE: https://fniessen.github.io/org-html-themes/org/html-theme-readtheorg.setup
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/org/setup/html-theme-readtheorg.setup
 
 * head1
 ** head2
